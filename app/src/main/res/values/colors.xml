@@ -1,6 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
-  <color name="colorPrimary">#6200EE</color>
-  <color name="colorPrimaryDark">#3700B3</color>
-  <color name="colorAccent">#03DAC5</color>
+
+  <color name="black">#253a4c</color>
+  <color name="black_alpha_80">#cc253a4c</color>
+
+  <color name="blue">#5c99ff</color>
+
+  <color name="gray_10">#f9fafb</color>
+  <color name="gray_100">#e3e7eb</color>
+  <color name="gray_300">#acb8c5</color>
+  <color name="gray_50">#f4f6f8</color>
+  <color name="gray_500">#768ba0</color>
+
+  <color name="green">#3fc145</color>
+
+  <color name="primary">#ffa956</color>
+  <color name="primary_100">#ffe0c4</color>
+  <color name="primary_300">#ffc28b</color>
+  <color name="primary_700">#f19b49</color>
+
+  <color name="red">#ff6a3b</color>
+
+  <color name="social_facebook">#1877f2</color>
+  <color name="social_instagram">#e4405f</color>
+  <color name="social_ok">#ee8208</color>
+  <color name="social_vk">#4680c2</color>
+
+  <color name="white">#ffffff</color>
+
 </resources>

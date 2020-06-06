@@ -59,6 +59,33 @@ dependencies {
   implementation 'androidx.appcompat:appcompat:1.1.0'
   implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
+  // Material Design Components https://github.com/material-components/material-components-android
+  implementation 'com.google.android.material:material:1.2.0-beta01'
+
+  // Navigation https://developer.android.com/jetpack/androidx/releases/navigation
+  def navVersion = "2.2.2"
+  implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
+  implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
+
+  // ViewModel and LiveData https://developer.android.com/jetpack/androidx/releases/lifecycle
+  def lifecycleVersion = '2.2.0'
+  implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+  implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+  implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+  implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+
+  // LiveEvent
+  implementation "com.github.hadilq.liveevent:liveevent:1.2.0"
+
+  // Koin https://github.com/InsertKoinIO/koin
+  def koinVersion = '2.1.5'
+  implementation "org.koin:koin-android:$koinVersion"
+  implementation "org.koin:koin-androidx-scope:$koinVersion"
+  implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+
+  // Timber Kt https://github.com/ajalt/timberkt
+  implementation 'com.github.ajalt:timberkt:1.5.1'
+
   //
   // Test Libraries
   //

@@ -1,7 +1,8 @@
-package ru.poprobuy.poprobuy
+package ru.poprobuy.poprobuy.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import ru.poprobuy.poprobuy.R
 
 class MainActivity : AppCompatActivity() {
 

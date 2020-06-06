@@ -344,11 +344,11 @@ naming:
     excludes: ['**/test/**', '**/androidTest/**', '**/*.Test.kt', '**/*.Spec.kt', '**/*.Spek.kt']
     forbiddenName: []
   FunctionMaxLength:
-    active: false
+    active: true # Changed
     excludes: ['**/test/**', '**/androidTest/**', '**/*.Test.kt', '**/*.Spec.kt', '**/*.Spek.kt']
-    maximumFunctionNameLength: 30
+    maximumFunctionNameLength: 40 # Changed from 30
   FunctionMinLength:
-    active: false
+    active: true # Changed
     excludes: ['**/test/**', '**/androidTest/**', '**/*.Test.kt', '**/*.Spec.kt', '**/*.Spek.kt']
     minimumFunctionNameLength: 3
   FunctionNaming:
@@ -389,7 +389,7 @@ naming:
     propertyPattern: '[A-Za-z][_A-Za-z0-9]*'
     privatePropertyPattern: '_?[A-Za-z][_A-Za-z0-9]*'
   VariableMaxLength:
-    active: false
+    active: true # Changed
     excludes: ['**/test/**', '**/androidTest/**', '**/*.Test.kt', '**/*.Spec.kt', '**/*.Spek.kt']
     maximumVariableNameLength: 64
   VariableMinLength:
@@ -412,7 +412,7 @@ performance:
     active: true
     excludes: ['**/test/**', '**/androidTest/**', '**/*.Test.kt', '**/*.Spec.kt', '**/*.Spek.kt']
   SpreadOperator:
-    active: false # Changed
+    active: true
     excludes: ['**/test/**', '**/androidTest/**', '**/*.Test.kt', '**/*.Spec.kt', '**/*.Spek.kt']
   UnnecessaryTemporaryInstantiation:
     active: true
@@ -430,7 +430,7 @@ potential-bugs:
   ExplicitGarbageCollectionCall:
     active: true
   HasPlatformType:
-    active: false
+    active: true # Changed
   ImplicitDefaultLocale:
     active: true # Changed
   InvalidRange:
@@ -445,13 +445,13 @@ potential-bugs:
     excludeAnnotatedProperties: []
     ignoreOnClassesPattern: ''
   MapGetWithNotNullAssertionOperator:
-    active: false
+    active: true # Changed
   MissingWhenCase:
     active: true
   RedundantElseInWhen:
     active: true
   UnconditionalJumpStatementInLoop:
-    active: false
+    active: true # Changed
   UnnecessaryNotNullOperator:
     active: true # Changed
   UnnecessarySafeCall:
@@ -463,7 +463,7 @@ potential-bugs:
   UnsafeCast:
     active: false
   UselessPostfixExpression:
-    active: false
+    active: true # Changed
   WrongEqualsTypeParameter:
     active: true
 
@@ -479,7 +479,7 @@ style:
   EqualsNullCall:
     active: true
   EqualsOnSignatureLine:
-    active: false
+    active: true # Changed
   ExplicitCollectionElementAccessMethod:
     active: true # Changed
   ExplicitItLambdaParameter:
@@ -557,7 +557,7 @@ style:
   ProtectedMemberInFinalClass:
     active: true
   RedundantExplicitType:
-    active: false
+    active: true # Changed
   RedundantVisibilityModifierRule:
     active: true # Changed
   ReturnCount:
@@ -579,7 +579,7 @@ style:
   TrailingWhitespace:
     active: true # Changed
   UnderscoresInNumericLiterals:
-    active: false
+    active: true # Changed
     acceptableDecimalLength: 5
   UnnecessaryAbstractClass:
     active: true
@@ -601,7 +601,7 @@ style:
   UnusedPrivateClass:
     active: true
   UnusedPrivateMember:
-    active: false
+    active: true # Changed
     allowedNames: '(_|ignored|expected|serialVersionUID)'
   UseArrayLiteralsInAnnotations:
     active: true # Changed
