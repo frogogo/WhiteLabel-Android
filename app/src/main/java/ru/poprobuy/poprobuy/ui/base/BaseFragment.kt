@@ -8,10 +8,13 @@ import androidx.annotation.LayoutRes
 import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.extension.setSoftInputMode
 import ru.poprobuy.poprobuy.extension.setStatusBarColor
+import ru.poprobuy.poprobuy.navigation.NavigationRouter
 
 abstract class BaseFragment<out T : BaseViewModel>(
   @LayoutRes layoutId: Int,
@@ -32,6 +35,7 @@ abstract class BaseFragment<out T : BaseViewModel>(
     // Init fragment
     initViews()
     initObservers()
+    observeNavigation()
 
     viewModel.onCreate()
   }
@@ -60,4 +64,14 @@ abstract class BaseFragment<out T : BaseViewModel>(
       requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
     }
   }
+
+  /**
+   * Handles navigation events from a [ViewModel]
+   */
+  private fun observeNavigation() {
+    viewModel.navigationLive.observe {
+      NavigationRouter.navigate(findNavController(), it)
+    }
+  }
+
 }

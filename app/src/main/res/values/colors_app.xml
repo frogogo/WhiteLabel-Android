@@ -3,5 +3,6 @@
 
   <!-- App -->
   <color name="status_bar">@color/white</color>
+  <color name="screen_background">@color/white</color>
 
 </resources>
