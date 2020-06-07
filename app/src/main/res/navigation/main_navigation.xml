@@ -8,6 +8,17 @@
   <fragment
     android:id="@+id/splash"
     android:name="ru.poprobuy.poprobuy.ui.splash.SplashFragment"
-    tools:layout="@layout/fragment_splash" />
+    tools:layout="@layout/fragment_splash">
+    <action
+      android:id="@+id/splash_to_onboarding"
+      app:destination="@id/onboarding"
+      app:popUpTo="@id/main_navigation"
+      app:popUpToInclusive="true" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/onboarding"
+    android:name="ru.poprobuy.poprobuy.ui.onboarding.OnboardingFragment"
+    tools:layout="@layout/fragment_onboarding" />
 
 </navigation>

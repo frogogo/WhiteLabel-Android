@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-  <!-- App -->
-  <color name="status_bar">@color/white</color>
-  <color name="screen_background">@color/white</color>
-
-</resources>

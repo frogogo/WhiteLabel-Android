@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.data.local
+package ru.poprobuy.poprobuy.data.preferences
 
 import android.content.Context
 import androidx.core.content.edit
@@ -17,16 +17,16 @@ class UserPreferences(context: Context) {
     get() = sharedPrefs.getBoolean(KEY_IS_LOGGED_IN, false)
     set(value) = sharedPrefs.edit { putBoolean(KEY_IS_LOGGED_IN, value) }
 
-  var onboardingViewed: Boolean
-    get() = sharedPrefs.getBoolean(KEY_ONBOARDING_VIEWED, false)
-    set(value) = sharedPrefs.edit { putBoolean(KEY_ONBOARDING_VIEWED, value) }
+  var onboardingCompleted: Boolean
+    get() = sharedPrefs.getBoolean(KEY_ONBOARDING_COMPLETED, false)
+    set(value) = sharedPrefs.edit { putBoolean(KEY_ONBOARDING_COMPLETED, value) }
 
   companion object {
     private const val PREFERENCES_FILENAME = "user_preferences"
 
     // Keys
     private const val KEY_IS_LOGGED_IN = "is_logged_in"
-    private const val KEY_ONBOARDING_VIEWED = "onboarding_viewed"
+    private const val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
   }
 
 }

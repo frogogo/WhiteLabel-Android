@@ -2,7 +2,7 @@ package ru.poprobuy.poprobuy.ui.splash
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.ui.base.BaseFragment
+import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 
 class SplashFragment : BaseFragment<SplashViewModel>(R.layout.fragment_splash) {
 

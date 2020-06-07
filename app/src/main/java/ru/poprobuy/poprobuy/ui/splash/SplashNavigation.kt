@@ -1,6 +1,7 @@
 package ru.poprobuy.poprobuy.ui.splash
 
-import ru.poprobuy.poprobuy.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.R
+import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
 
 interface SplashNavigation {
   fun navigateToLogin(): NavigationCommand
@@ -19,7 +20,7 @@ class SplashNavigationImpl : SplashNavigation {
   }
 
   override fun navigateToOnboarding(): NavigationCommand {
-    return NavigationCommand.Back // TODO: 06.06.2020
+    return NavigationCommand.ById(R.id.splash_to_onboarding)
   }
 
 }

@@ -1,9 +1,9 @@
-package ru.poprobuy.poprobuy.ui.base
+package ru.poprobuy.poprobuy.arch.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.hadilq.liveevent.LiveEvent
-import ru.poprobuy.poprobuy.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
 
 open class BaseViewModel : ViewModel() {
 
@@ -17,8 +17,8 @@ open class BaseViewModel : ViewModel() {
   /**
    * Convenient method to handle navigation from a [ViewModel]
    */
-  fun navigate(command: NavigationCommand) {
-    _navigationLive.postValue(command)
+  fun NavigationCommand.navigate() {
+    _navigationLive.postValue(this)
   }
 
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <color name="status_bar">@color/white</color>
+  <color name="screen_background">@color/white</color>
+  <color name="button">@color/primary</color>
+
+  <!-- Onboarding -->
+  <color name="onboarding_title">@color/black</color>
+  <color name="onboarding_description">@color/gray_500</color>
+
+  <!-- Widgets -->
+  <color name="circle_indicator_selected">@color/primary</color>
+  <color name="circle_indicator_unselected">@color/gray_300</color>
+
+</resources>

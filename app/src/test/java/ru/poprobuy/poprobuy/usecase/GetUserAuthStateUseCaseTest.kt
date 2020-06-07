@@ -4,7 +4,7 @@ import io.mockk.every
 import io.mockk.mockk
 import org.junit.Before
 import org.junit.Test
-import ru.poprobuy.poprobuy.data.local.UserPreferences
+import ru.poprobuy.poprobuy.data.preferences.UserPreferences
 import ru.poprobuy.poprobuy.usecase.GetUserAuthStateUseCase.State
 import kotlin.test.assertEquals
 
@@ -28,34 +28,34 @@ class GetUserAuthStateUseCaseTest {
   }
 
   /**
-   * User already viewed onboarding but not authorized
-   * then [State.ONBOARDING_VIEWED] should be returned
+   * User already completed onboarding but not authorized
+   * then [State.ONBOARDING_COMPLETED] should be returned
    */
   @Test
-  fun `onboarding viewed`() {
-    every { userPreferences.onboardingViewed } returns true
-    assertEquals(State.ONBOARDING_VIEWED, getUserAuthStateUseCase())
+  fun `onboarding completed`() {
+    every { userPreferences.onboardingCompleted } returns true
+    assertEquals(State.ONBOARDING_COMPLETED, getUserAuthStateUseCase())
   }
 
   /**
-   * User already viewed onboarding and authorized
+   * User already completed onboarding and authorized
    * then [State.LOGGED_IN] should be returned
    */
   @Test
   fun `user authorized`() {
     every { userPreferences.isLoggedIn } returns true
-    every { userPreferences.onboardingViewed } returns true
+    every { userPreferences.onboardingCompleted } returns true
     assertEquals(State.LOGGED_IN, getUserAuthStateUseCase())
   }
 
   /**
-   * User has not viewed onboarding (how?) but authorized
+   * User has not completed onboarding (how?) but authorized
    * then [State.LOGGED_IN] should be returned
    */
   @Test
-  fun `user authorized but onboarding was not viewed`() {
+  fun `user authorized but onboarding was not completed`() {
     every { userPreferences.isLoggedIn } returns true
-    every { userPreferences.onboardingViewed } returns false
+    every { userPreferences.onboardingCompleted } returns false
 
     assertEquals(State.LOGGED_IN, getUserAuthStateUseCase())
   }

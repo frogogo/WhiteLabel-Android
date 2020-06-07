@@ -1,6 +1,6 @@
 package ru.poprobuy.poprobuy.usecase
 
-import ru.poprobuy.poprobuy.data.local.UserPreferences
+import ru.poprobuy.poprobuy.data.preferences.UserPreferences
 
 /**
  * Returns user authorization state
@@ -11,7 +11,7 @@ class GetUserAuthStateUseCase(
 
   operator fun invoke(): State = when {
     userPreferences.isLoggedIn -> State.LOGGED_IN
-    userPreferences.onboardingViewed -> State.ONBOARDING_VIEWED
+    userPreferences.onboardingCompleted -> State.ONBOARDING_COMPLETED
     else -> State.CLEAN_START
   }
 
@@ -20,7 +20,7 @@ class GetUserAuthStateUseCase(
     LOGGED_IN,
 
     // User has passed an onboarding
-    ONBOARDING_VIEWED,
+    ONBOARDING_COMPLETED,
 
     // User launched app first time or didn't passed onboarding
     CLEAN_START

@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.navigation
+package ru.poprobuy.poprobuy.arch.navigation
 
 import android.net.Uri
 import androidx.navigation.NavController

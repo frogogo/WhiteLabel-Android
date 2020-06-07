@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.ui.base
+package ru.poprobuy.poprobuy.arch.ui
 
 import android.os.Bundle
 import android.view.View
@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.extension.setSoftInputMode
 import ru.poprobuy.poprobuy.extension.setStatusBarColor
-import ru.poprobuy.poprobuy.navigation.NavigationRouter
+import ru.poprobuy.poprobuy.arch.navigation.NavigationRouter
 
 abstract class BaseFragment<out T : BaseViewModel>(
   @LayoutRes layoutId: Int,

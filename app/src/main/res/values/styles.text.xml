@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="Title1">
+    <item name="android:textSize">27sp</item>
+    <item name="android:lineSpacingExtra">5sp</item>
+  </style>
+
+  <style name="Title1.Medium">
+    <item name="android:fontFamily">@font/rubik_medium</item>
+  </style>
+
+  <style name="Body">
+    <item name="android:textSize">16sp</item>
+    <item name="android:lineSpacingExtra">8sp</item>
+  </style>
+
+</resources>

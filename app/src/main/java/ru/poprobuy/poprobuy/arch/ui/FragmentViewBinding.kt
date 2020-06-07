@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.ui.base
+package ru.poprobuy.poprobuy.arch.ui
 
 import android.os.Handler
 import android.os.Looper
