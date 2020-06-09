@@ -12,6 +12,9 @@ if (keystorePropertiesFile.exists()) {
   keystoreProperties['storeFile'] = debugKeystorePath
 }
 
+// Build archive name
+def applicationName = "Poprobuy"
+
 android {
 
   compileSdkVersion 29
@@ -27,6 +30,7 @@ android {
     versionName "0.0.1"
 
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    setProperty("archivesBaseName", applicationName + "-v" + versionCode + "(" + versionName + ")-" + getDate())
   }
 
   signingConfigs {
@@ -149,4 +153,11 @@ dependencies {
   // MockK https://github.com/mockk/mockk
   testImplementation 'io.mockk:mockk:1.10.0'
 
+}
+
+/**
+ * Returns current formatted date
+ */
+static def getDate() {
+  return new Date().format("[yyyy.MM.dd_HH-mm]")
 }
