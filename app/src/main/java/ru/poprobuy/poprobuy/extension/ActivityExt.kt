@@ -4,7 +4,8 @@ import android.app.Activity
 import android.view.WindowManager
 
 fun Activity.setStatusBarColor(color: Int) {
-  val window = window
-  window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-  window.statusBarColor = color
+  window.apply {
+    addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+    statusBarColor = color
+  }
 }
