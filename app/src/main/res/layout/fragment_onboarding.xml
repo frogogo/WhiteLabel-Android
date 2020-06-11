@@ -22,7 +22,7 @@
     style="@style/CircleIndicator"
     android:layout_width="wrap_content"
     android:layout_height="20dp"
-    android:layout_marginBottom="32dp"
+    android:layout_marginBottom="@dimen/spacing_8"
     app:layout_constraintBottom_toTopOf="@id/buttonFinish"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent" />
@@ -32,7 +32,7 @@
     style="@style/OutlinedButton"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/button_height"
-    android:layout_marginBottom="48dp"
+    android:layout_marginBottom="@dimen/spacing_12"
     android:minWidth="120dp"
     android:text="@string/onboarding_button_next"
     android:visibility="invisible"
