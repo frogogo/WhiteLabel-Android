@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
 // Load keystore
 def keystorePropertiesFile = rootProject.file("keystore.properties")
@@ -140,6 +142,11 @@ dependencies {
 
   // Timber Kt https://github.com/ajalt/timberkt
   implementation 'com.github.ajalt:timberkt:1.5.1'
+
+  // Firebase
+  // Firebase https://firebase.google.com/support/release-notes/android
+  implementation 'com.google.firebase:firebase-analytics:17.4.3'
+  implementation 'com.google.firebase:firebase-crashlytics:17.0.1'
 
   //
   // Test Libraries
