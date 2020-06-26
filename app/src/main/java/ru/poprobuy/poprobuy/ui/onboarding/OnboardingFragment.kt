@@ -5,12 +5,13 @@ import androidx.viewpager2.widget.ViewPager2
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.recycler.BaseDelegationAdapter
+import ru.poprobuy.poprobuy.arch.ui.BaseFragment
+import ru.poprobuy.poprobuy.arch.ui.viewBinding
 import ru.poprobuy.poprobuy.databinding.FragmentOnboardingBinding
 import ru.poprobuy.poprobuy.extension.goNext
 import ru.poprobuy.poprobuy.extension.hasNext
+import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible
-import ru.poprobuy.poprobuy.arch.ui.BaseFragment
-import ru.poprobuy.poprobuy.arch.ui.viewBinding
 
 class OnboardingFragment : BaseFragment<OnboardingViewModel>(R.layout.fragment_onboarding) {
 
@@ -51,7 +52,7 @@ class OnboardingFragment : BaseFragment<OnboardingViewModel>(R.layout.fragment_o
 
       // Init buttons
       buttonNext.setOnClickListener { if (viewPager.hasNext()) viewPager.goNext() }
-      buttonFinish.setOnClickListener { viewModel.completeOnboarding() }
+      buttonFinish.setOnSafeClickListener { viewModel.completeOnboarding() }
     }
 
     // Handle view pager back navigation
