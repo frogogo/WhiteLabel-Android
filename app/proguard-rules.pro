@@ -2,13 +2,12 @@
 # Poprobuy
 ############
 
--repackageclasses ru.poprobuy
+-repackageclasses ru.poprobuy.poprobuy
 
 # ViewBinding fragments
 -keep class * implements androidx.viewbinding.ViewBinding {
     public static *** bind(android.view.View);
 }
-
 
 ############
 # Crashlytics
