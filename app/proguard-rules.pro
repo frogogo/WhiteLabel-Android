@@ -21,3 +21,13 @@
 
 -keep class com.google.firebase.crashlytics.** { *; }
 -dontwarn com.google.firebase.crashlytics.**
+
+############
+# Crypto
+############
+
+-keep class com.google.crypto.tink.proto.** { *;}
+-dontwarn com.google.crypto.tink.proto.**
+
+-keep class androidx.security.crypto.** { *;}
+-dontwarn androidx.security.crypto.**
