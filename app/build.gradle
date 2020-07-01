@@ -4,6 +4,9 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
+if (project.hasProperty('useFirebasePerf')) {
+  apply plugin: 'com.google.firebase.firebase-perf'
+}
 
 // Load keystore
 def keystorePropertiesFile = rootProject.file("keystore.properties")
@@ -153,6 +156,7 @@ dependencies {
   // Firebase https://firebase.google.com/support/release-notes/android
   implementation 'com.google.firebase:firebase-analytics:17.4.3'
   implementation 'com.google.firebase:firebase-crashlytics:17.1.0'
+  implementation 'com.google.firebase:firebase-perf:19.0.7'
 
   //
   // Test Libraries
