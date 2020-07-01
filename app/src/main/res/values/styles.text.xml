@@ -1,18 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <style name="Title1">
-    <item name="android:textSize">27sp</item>
-    <item name="android:lineSpacingExtra">5sp</item>
+  <style name="Text" />
+
+  <!-- Title Large -->
+  <style name="Text.TitleLarge">
+    <item name="android:textSize">34sp</item>
+    <item name="android:lineSpacingExtra">2sp</item>
   </style>
 
-  <style name="Title1.Medium">
+  <style name="Text.TitleLarge.Medium">
     <item name="android:fontFamily">@font/rubik_medium</item>
   </style>
 
-  <style name="Body">
+  <!-- Title1 -->
+  <style name="Text.Title1">
+    <item name="android:textSize">27sp</item>
+  </style>
+
+  <style name="Text.Title1.Medium">
+    <item name="android:fontFamily">@font/rubik_medium</item>
+  </style>
+
+  <!-- Body -->
+  <style name="Text.Body">
     <item name="android:textSize">16sp</item>
-    <item name="android:lineSpacingExtra">8sp</item>
+    <item name="android:lineSpacingExtra">5sp</item>
+  </style>
+
+  <style name="Text.Body.Medium">
+    <item name="android:fontFamily">@font/rubik_medium</item>
+  </style>
+
+  <!-- UseCased Styles -->
+  <style name="Text.Error" parent="Text.Body">
+    <item name="android:textColor">@color/text_error</item>
+    <item name="android:lineSpacingExtra">0sp</item>
   </style>
 
 </resources>

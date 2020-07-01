@@ -12,7 +12,7 @@ object OnboardingAdapterDelegates {
   ) {
 
     bind {
-      with(binding) {
+      binding.apply {
         imageViewIcon.setImageResource(item.iconResId)
         textViewTitle.setText(item.titleResId)
         textViewDescription.setText(item.descriptionResId)

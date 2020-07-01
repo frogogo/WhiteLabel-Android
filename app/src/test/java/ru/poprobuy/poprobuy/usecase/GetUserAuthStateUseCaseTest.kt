@@ -28,13 +28,34 @@ class GetUserAuthStateUseCaseTest {
   }
 
   /**
-   * User already completed onboarding but not authorized
+   * User already completed onboarding but not accepted the policy
    * then [State.ONBOARDING_COMPLETED] should be returned
    */
   @Test
   fun `onboarding completed`() {
     every { userPreferences.onboardingCompleted } returns true
     assertEquals(State.ONBOARDING_COMPLETED, getUserAuthStateUseCase())
+  }
+
+  /**
+   * User already accepted the policy but not authorized
+   * then [State.POLICY_ACCEPTED] should be returned
+   */
+  @Test
+  fun `policy accepted`() {
+    every { userPreferences.policyAccepted } returns true
+    assertEquals(State.POLICY_ACCEPTED, getUserAuthStateUseCase())
+  }
+
+  /**
+   * User has not completed onboarding (how?) but accepted the policy
+   * then [State.POLICY_ACCEPTED] should be returned
+   */
+  @Test
+  fun `policy accepted but onboarding was not completed`() {
+    every { userPreferences.onboardingCompleted } returns false
+    every { userPreferences.policyAccepted } returns true
+    assertEquals(State.POLICY_ACCEPTED, getUserAuthStateUseCase())
   }
 
   /**
@@ -49,13 +70,13 @@ class GetUserAuthStateUseCaseTest {
   }
 
   /**
-   * User has not completed onboarding (how?) but authorized
+   * User has not accepted the policy (how?) but authorized
    * then [State.LOGGED_IN] should be returned
    */
   @Test
   fun `user authorized but onboarding was not completed`() {
     every { userPreferences.isLoggedIn } returns true
-    every { userPreferences.onboardingCompleted } returns false
+    every { userPreferences.policyAccepted } returns false
 
     assertEquals(State.LOGGED_IN, getUserAuthStateUseCase())
   }

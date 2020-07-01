@@ -4,19 +4,22 @@ package ru.poprobuy.poprobuy.di
 
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import ru.poprobuy.poprobuy.ui.onboarding.OnboardingNavigation
-import ru.poprobuy.poprobuy.ui.onboarding.OnboardingNavigationImpl
+import ru.poprobuy.poprobuy.ui.auth.code.AuthCodeConfirmationViewModel
+import ru.poprobuy.poprobuy.ui.auth.email.AuthEmailViewModel
+import ru.poprobuy.poprobuy.ui.auth.name.AuthNameViewModel
+import ru.poprobuy.poprobuy.ui.auth.phone.AuthPhoneViewModel
+import ru.poprobuy.poprobuy.ui.auth.policy.AuthPolicyViewModel
 import ru.poprobuy.poprobuy.ui.onboarding.OnboardingViewModel
-import ru.poprobuy.poprobuy.ui.splash.SplashNavigation
-import ru.poprobuy.poprobuy.ui.splash.SplashNavigationImpl
 import ru.poprobuy.poprobuy.ui.splash.SplashViewModel
 
 val screenModule = module {
-  // ViewModel
   viewModel { SplashViewModel(get(), get()) }
   viewModel { OnboardingViewModel(get(), get()) }
 
-  // Navigator
-  factory { SplashNavigationImpl() as SplashNavigation }
-  factory { OnboardingNavigationImpl() as OnboardingNavigation }
+  // Auth
+  viewModel { AuthPolicyViewModel(get(), get()) }
+  viewModel { AuthPhoneViewModel(get()) }
+  viewModel { AuthCodeConfirmationViewModel(get()) }
+  viewModel { AuthNameViewModel(get()) }
+  viewModel { (userName: String) -> AuthEmailViewModel(userName) }
 }

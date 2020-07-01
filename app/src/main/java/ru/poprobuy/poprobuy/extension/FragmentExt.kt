@@ -4,7 +4,3 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
 val Fragment.appCompatActivity get() = activity as? AppCompatActivity
-
-fun Fragment.setSoftInputMode(mode: Int?) {
-  mode?.let { activity?.window?.setSoftInputMode(it) }
-}

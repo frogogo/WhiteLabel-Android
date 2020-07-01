@@ -3,14 +3,24 @@
 
   <color name="status_bar">@color/white</color>
   <color name="screen_background">@color/white</color>
-  <color name="button">@color/primary</color>
+  <color name="screen_title">@color/black</color>
+  <color name="button">@color/primary_500</color>
+  <color name="text_error">@color/red</color>
+  <color name="text_button_title">@color/primary_500</color>
 
   <!-- Onboarding -->
   <color name="onboarding_title">@color/black</color>
   <color name="onboarding_description">@color/gray_500</color>
 
+  <!-- Auth -->
+  <color name="auth_subtitle">@color/gray_500</color>
+  <color name="auth_text">@color/black</color>
+  <color name="auth_text_placeholder">@color/gray_300</color>
+
+  <color name="auth_code_confirmation_phone">#1e1e3c</color>
+
   <!-- Widgets -->
-  <color name="circle_indicator_selected">@color/primary</color>
+  <color name="circle_indicator_selected">@color/primary_500</color>
   <color name="circle_indicator_unselected">@color/gray_300</color>
 
 </resources>

@@ -21,12 +21,17 @@ class UserPreferences(context: Context) {
     get() = sharedPrefs.getBoolean(KEY_ONBOARDING_COMPLETED, false)
     set(value) = sharedPrefs.edit { putBoolean(KEY_ONBOARDING_COMPLETED, value) }
 
+  var policyAccepted: Boolean
+    get() = sharedPrefs.getBoolean(KEY_POLICY_ACCEPTED, false)
+    set(value) = sharedPrefs.edit { putBoolean(KEY_POLICY_ACCEPTED, value) }
+
   companion object {
     private const val PREFERENCES_FILENAME = "user_preferences"
 
     // Keys
     private const val KEY_IS_LOGGED_IN = "is_logged_in"
     private const val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
+    private const val KEY_POLICY_ACCEPTED = "policy_accepted"
   }
 
 }

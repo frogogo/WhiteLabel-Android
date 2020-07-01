@@ -3,6 +3,7 @@ package ru.poprobuy.poprobuy.di
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
+import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.data.repository.OnboardingRepository
 
 val dataModule = module {
@@ -11,4 +12,5 @@ val dataModule = module {
 
   // Repository
   single { OnboardingRepository(get()) }
+  single { AuthRepository(get()) }
 }

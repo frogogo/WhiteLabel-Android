@@ -20,7 +20,7 @@ class OnboardingViewModel(
 
   fun completeOnboarding() {
     onboardingRepository.setOnboardingCompleted()
-    navigation.navigateToLogin().navigate()
+    navigation.navigateToAuth().navigate()
   }
 
 }

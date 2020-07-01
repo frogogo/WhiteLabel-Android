@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+  <!-- Paddings -->
+  <dimen name="padding_large">32dp</dimen>
+
   <dimen name="button_height">48dp</dimen>
+  <dimen name="progress_bar_size">18dp</dimen>
 
   <!-- Spacings -->
   <dimen name="spacing_1">4dp</dimen>
@@ -16,5 +20,8 @@
   <dimen name="spacing_16">64dp</dimen>
   <dimen name="spacing_18">72dp</dimen>
   <dimen name="spacing_20">80dp</dimen>
+
+  <!-- Auth -->
+  <dimen name="auth_confirmation_code_letter_spacing">0.37</dimen>
 
 </resources>

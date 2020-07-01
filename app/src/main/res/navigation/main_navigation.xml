@@ -14,11 +14,93 @@
       app:destination="@id/onboarding"
       app:popUpTo="@id/main_navigation"
       app:popUpToInclusive="true" />
+    <action
+      android:id="@+id/splash_to_auth_policy"
+      app:destination="@id/auth_policy"
+      app:popUpTo="@id/main_navigation"
+      app:popUpToInclusive="true" />
+    <action
+      android:id="@+id/splash_to_auth"
+      app:destination="@id/auth_phone"
+      app:popUpTo="@id/main_navigation"
+      app:popUpToInclusive="true" />
   </fragment>
 
   <fragment
     android:id="@+id/onboarding"
     android:name="ru.poprobuy.poprobuy.ui.onboarding.OnboardingFragment"
-    tools:layout="@layout/fragment_onboarding" />
+    tools:layout="@layout/fragment_onboarding">
+    <action
+      android:id="@+id/onboarding_to_auth_policy"
+      app:destination="@id/auth_policy"
+      app:popUpTo="@id/main_navigation"
+      app:popUpToInclusive="true" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/auth_policy"
+    android:name="ru.poprobuy.poprobuy.ui.auth.policy.AuthPolicyFragment"
+    tools:layout="@layout/fragment_auth_policy">
+    <action
+      android:id="@+id/auth_policy_to_auth_phone"
+      app:destination="@id/auth_phone"
+      app:enterAnim="@anim/slide_in_right"
+      app:exitAnim="@anim/slide_out_left"
+      app:popEnterAnim="@anim/slide_in_left"
+      app:popExitAnim="@anim/slide_out_right"
+      app:popUpTo="@id/main_navigation"
+      app:popUpToInclusive="true" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/auth_phone"
+    android:name="ru.poprobuy.poprobuy.ui.auth.phone.AuthPhoneFragment"
+    tools:layout="@layout/fragment_auth_phone">
+    <action
+      android:id="@+id/auth_phone_to_auth_code_confirmation"
+      app:destination="@id/auth_code_confirmation"
+      app:enterAnim="@anim/slide_in_right"
+      app:exitAnim="@anim/slide_out_left"
+      app:popEnterAnim="@anim/slide_in_left"
+      app:popExitAnim="@anim/slide_out_right" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/auth_code_confirmation"
+    android:name="ru.poprobuy.poprobuy.ui.auth.code.AuthCodeConfirmationFragment"
+    tools:layout="@layout/fragment_auth_code_confirmation">
+    <argument
+      android:name="phoneNumber"
+      app:argType="string" />
+    <action
+      android:id="@+id/auth_code_confirmation_to_auth_name"
+      app:destination="@id/auth_name"
+      app:enterAnim="@anim/slide_in_right"
+      app:exitAnim="@anim/slide_out_left"
+      app:popEnterAnim="@anim/slide_in_left"
+      app:popExitAnim="@anim/slide_out_right" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/auth_name"
+    android:name="ru.poprobuy.poprobuy.ui.auth.name.AuthNameFragment"
+    tools:layout="@layout/fragment_auth_name">
+    <action
+      android:id="@+id/auth_name_to_auth_email"
+      app:destination="@id/auth_email"
+      app:enterAnim="@anim/slide_in_right"
+      app:exitAnim="@anim/slide_out_left"
+      app:popEnterAnim="@anim/slide_in_left"
+      app:popExitAnim="@anim/slide_out_right" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/auth_email"
+    android:name="ru.poprobuy.poprobuy.ui.auth.email.AuthEmailFragment"
+    tools:layout="@layout/fragment_auth_email">
+    <argument
+      android:name="name"
+      app:argType="string" />
+  </fragment>
 
 </navigation>

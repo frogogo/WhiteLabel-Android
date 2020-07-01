@@ -27,7 +27,7 @@
 
   <TextView
     android:id="@+id/textViewTitle"
-    style="@style/Title1.Medium"
+    style="@style/Text.Title1.Medium"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/spacing_4"
@@ -40,7 +40,7 @@
 
   <TextView
     android:id="@+id/textViewDescription"
-    style="@style/Body"
+    style="@style/Text.Body"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:gravity="center"

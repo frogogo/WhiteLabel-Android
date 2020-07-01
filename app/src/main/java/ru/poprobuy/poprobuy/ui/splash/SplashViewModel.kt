@@ -20,17 +20,21 @@ class SplashViewModel(
   private fun navigateNext() = viewModelScope.launch {
     delay(750)
     when (getUserAuthStateUseCase()) {
-      State.LOGGED_IN -> {
-        i { "Navigating to app" }
-        navigation.navigateToApp()
-      }
-      State.ONBOARDING_COMPLETED -> {
-        i { "Navigating to login" }
-        navigation.navigateToLogin()
-      }
       State.CLEAN_START -> {
         i { "Navigating to onboarding" }
         navigation.navigateToOnboarding()
+      }
+      State.ONBOARDING_COMPLETED -> {
+        i { "Navigating to policy" }
+        navigation.navigateToPolicy()
+      }
+      State.POLICY_ACCEPTED -> {
+        i { "Navigating to auth" }
+        navigation.navigateToAuth()
+      }
+      State.LOGGED_IN -> {
+        i { "Navigating to app" }
+        navigation.navigateToApp()
       }
     }.navigate()
   }

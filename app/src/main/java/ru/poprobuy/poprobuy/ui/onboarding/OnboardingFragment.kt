@@ -37,7 +37,7 @@ class OnboardingFragment : BaseFragment<OnboardingViewModel>(R.layout.fragment_o
   }
 
   override fun initViews() {
-    with(binding) {
+    binding.run {
       // Init view pager
       viewPager.apply {
         adapter = this@OnboardingFragment.adapter
@@ -59,7 +59,7 @@ class OnboardingFragment : BaseFragment<OnboardingViewModel>(R.layout.fragment_o
     requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressCallback)
   }
 
-  override fun initObservers() = with(viewModel) {
+  override fun initObservers() = viewModel.run {
     pagesLive.observe {
       adapter.items = it
       updateButtons()
@@ -72,7 +72,7 @@ class OnboardingFragment : BaseFragment<OnboardingViewModel>(R.layout.fragment_o
    * buttonNext should be active on all pages except the last one
    * buttonFinish should be active only on the last page
    */
-  private fun updateButtons() = with(binding) {
+  private fun updateButtons() = binding.run {
     buttonNext.setVisible(viewPager.hasNext(), useInvisible = true)
     buttonFinish.setVisible(!viewPager.hasNext(), useInvisible = true)
   }

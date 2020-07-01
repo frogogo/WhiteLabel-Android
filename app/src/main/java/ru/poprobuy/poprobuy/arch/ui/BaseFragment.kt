@@ -13,7 +13,6 @@ import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.navigation.NavigationRouter
-import ru.poprobuy.poprobuy.extension.setSoftInputMode
 import ru.poprobuy.poprobuy.extension.setStatusBarColor
 import ru.poprobuy.poprobuy.util.SimpleWindowAnimator
 
@@ -21,7 +20,6 @@ abstract class BaseFragment<out T : BaseViewModel>(
   @LayoutRes layoutId: Int,
   @ColorRes private val statusBarColor: Int = R.color.status_bar,
   private val translucentStatusBar: Boolean = false,
-  private val softInputMode: Int = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN,
   private val windowAnimations: Boolean = false
 ) : Fragment(layoutId) {
 
@@ -47,7 +45,6 @@ abstract class BaseFragment<out T : BaseViewModel>(
   override fun onStart() {
     setStatusBarColor()
     setTranslucentStatusBar()
-    setSoftInputMode(softInputMode)
     super.onStart()
     viewModel.onStart()
 

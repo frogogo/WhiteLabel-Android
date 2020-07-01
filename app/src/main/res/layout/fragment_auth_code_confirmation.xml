@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:fillViewport="true">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/padding_large"
+    android:paddingEnd="@dimen/padding_large">
+
+    <TextView
+      android:id="@+id/textViewTitle"
+      style="@style/Text.TitleLarge.Medium"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:text="@string/auth_code_confirmation_title"
+      android:textColor="@color/screen_title"
+      app:layout_constraintBottom_toTopOf="@id/textViewSubtitle"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+      android:id="@+id/textViewSubtitle"
+      style="@style/Text.Body"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_4"
+      android:text="@string/auth_code_confirmation_subtitle"
+      android:textColor="@color/auth_subtitle"
+      app:layout_constraintBottom_toTopOf="@id/textViewPhoneNumber"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+
+    <TextView
+      android:id="@+id/textViewPhoneNumber"
+      style="@style/Text.Body.Medium"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="@color/auth_code_confirmation_phone"
+      app:layout_constrainedWidth="true"
+      app:layout_constraintBottom_toTopOf="@id/textInputLayout"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toLeftOf="@id/textViewPhoneNumberChange"
+      app:layout_constraintTop_toBottomOf="@id/textViewSubtitle"
+      tools:text="+7 (985) 555-88-60" />
+
+    <TextView
+      android:id="@+id/textViewPhoneNumberChange"
+      style="@style/Text.Body"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/spacing_2"
+      android:text="@string/auth_code_confirmation_button_phone_change"
+      android:textColor="@color/text_button_title"
+      app:layout_constraintBaseline_toBaselineOf="@id/textViewPhoneNumber"
+      app:layout_constraintLeft_toRightOf="@id/textViewPhoneNumber"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintWidth_min="wrap" />
+
+    <ru.poprobuy.poprobuy.view.AuthTextInputLayout
+      android:id="@+id/textInputLayout"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="40dp"
+      app:layout_constraintBottom_toTopOf="@id/textViewError"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/textViewPhoneNumber" />
+
+    <TextView
+      android:id="@+id/textViewError"
+      style="@style/Text.Error"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="24dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="@id/textInputLayout"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/textInputLayout" />
+
+    <com.google.android.material.button.MaterialButton
+      android:id="@+id/buttonResendCodeAwait"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_6"
+      android:layout_marginBottom="@dimen/spacing_6"
+      android:enabled="false"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/textViewError"
+      app:layout_constraintVertical_bias="1"
+      tools:text="99 секунд" />
+
+    <com.google.android.material.button.MaterialButton
+      android:id="@+id/buttonResendCode"
+      style="@style/OutlinedButton"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_6"
+      android:layout_marginBottom="@dimen/spacing_6"
+      android:text="@string/auth_code_confirmation_button_resend_code"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/textViewError"
+      app:layout_constraintVertical_bias="1"
+      tools:visibility="visible" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.ui.main
+package ru.poprobuy.poprobuy.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

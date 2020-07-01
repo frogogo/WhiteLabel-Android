@@ -43,7 +43,7 @@ class SplashViewModelTest {
   }
 
   /**
-   * User launched the application for the first time and must be prompted to login
+   * User has completed onboarding and must be prompted to policy
    */
   @Test
   fun `user completed onboarding`() = coroutineTestRule.runBlockingTest {
@@ -52,7 +52,20 @@ class SplashViewModelTest {
     splashViewModel.onCreate()
     advanceUntilIdle()
 
-    assertEquals(navigation.navigateToLogin(), splashViewModel.navigationLive.value)
+    assertEquals(navigation.navigateToPolicy(), splashViewModel.navigationLive.value)
+  }
+
+  /**
+   * User has accepted the policy and must be prompted to auth
+   */
+  @Test
+  fun `user accepted policy`() = coroutineTestRule.runBlockingTest {
+    every { getUserAuthStateUseCase.invoke() } returns GetUserAuthStateUseCase.State.POLICY_ACCEPTED
+
+    splashViewModel.onCreate()
+    advanceUntilIdle()
+
+    assertEquals(navigation.navigateToAuth(), splashViewModel.navigationLive.value)
   }
 
   /**

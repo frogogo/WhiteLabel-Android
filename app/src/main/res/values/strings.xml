@@ -2,6 +2,18 @@
 
   <string name="app_name">Попробуй</string>
 
+  <!-- Errors -->
+  <string name="error_phone_length">Телефон не может быть меньше 10 символов</string>
+  <string name="error_phone_format">Номер телефона содержит недопустимые символы</string>
+  <string name="error_user_name_length">Имя должно быть от 2 до 20 букв</string>
+  <string name="error_user_name_format">Имя содержит недопустимые символы</string>
+  <string name="error_confirmation_code_length">Код должен состоять из 4 цифр</string>
+  <string name="error_confirmation_code_format">Код должен состоять только из цифр</string>
+  <string name="error_email_format">Такой email не подойдет</string>
+
+  <string name="error_something_went_wrong">Что-то пошло не так!</string>
+  <string name="error_something_went_wrong_retry">Повторить</string>
+
   <!-- Onboarding -->
   <string name="onboarding_button_next">Дальше</string>
   <string name="onboarding_button_finish">Войти</string>
@@ -12,5 +24,35 @@
   <string name="onboarding_page_2_description">Сĸанируй чеĸи за покупки</string>
   <string name="onboarding_page_3_title">Пробуй новое</string>
   <string name="onboarding_page_3_description">Получай бесплатные товары из автомата</string>
+
+  <!-- Auth -->
+  <string name="auth_button_continue">Продолжить</string>
+
+  <string name="auth_policy_title">Попробуй</string>
+  <string name="auth_policy_text">Пользуясь этим приложением, вы соглашаетесь с использованием технологий cooke-файлов и со сбором и обработкой персональных данных.\n\nЭти технологии применяются для анализа и улучшения вашего пользовательского опыта.</string>
+  <string name="auth_policy_button_continue">Продолжить</string>
+
+  <string name="auth_phone_title">Вход</string>
+  <string name="auth_phone_subtitle">Введите номер телефона</string>
+
+  <string name="auth_code_confirmation_title">Введите код</string>
+  <string name="auth_code_confirmation_subtitle">Код отправлен на номер</string>
+  <string name="auth_code_confirmation_button_phone_change">Изменить</string>
+  <string name="auth_code_confirmation_button_resend_code">Выслать новый код</string>
+
+  <string name="auth_name_title">Давайте познакомимся!</string>
+  <string name="auth_name_subtitle">Как вас зовут?</string>
+  <string name="auth_name_placeholder">Ваше имя</string>
+
+  <string name="auth_email_title">Отлично,\n%1$s!</string>
+  <string name="auth_email_subtitle">Осталось ввести email</string>
+  <string name="auth_email_placeholder">Ваш email</string>
+
+  <plurals name="seconds_remaining">
+    <item quantity="one">%1$d секунда</item>
+    <item quantity="two">%1$d секунды</item>
+    <item quantity="few">%1$d секунды</item>
+    <item quantity="other">%1$d секунд</item>
+  </plurals>
 
 </resources>

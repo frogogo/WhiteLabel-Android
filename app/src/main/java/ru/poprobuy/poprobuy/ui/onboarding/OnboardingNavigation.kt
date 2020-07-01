@@ -1,15 +1,16 @@
 package ru.poprobuy.poprobuy.ui.onboarding
 
+import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
 
 interface OnboardingNavigation {
-  fun navigateToLogin(): NavigationCommand
+  fun navigateToAuth(): NavigationCommand
 }
 
 class OnboardingNavigationImpl : OnboardingNavigation {
 
-  override fun navigateToLogin(): NavigationCommand {
-    return NavigationCommand.Back
+  override fun navigateToAuth(): NavigationCommand {
+    return NavigationCommand.ById(R.id.onboarding_to_auth_policy)
   }
 
 }

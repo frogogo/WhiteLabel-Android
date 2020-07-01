@@ -53,7 +53,7 @@ class OnboardingViewModelTest {
       // State was saved
       onboardingRepository.setOnboardingCompleted()
       // Navigation executed
-      navigationObserver.onChanged(onboardingNavigation.navigateToLogin())
+      navigationObserver.onChanged(onboardingNavigation.navigateToAuth())
     }
   }
 
