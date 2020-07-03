@@ -10,4 +10,8 @@ class AuthRepository(
     userPreferences.policyAccepted = true
   }
 
+  fun setUserAuthorized() {
+    userPreferences.isLoggedIn = true
+  }
+
 }

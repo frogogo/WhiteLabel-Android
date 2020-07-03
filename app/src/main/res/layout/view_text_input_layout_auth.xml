@@ -31,6 +31,7 @@
     android:textColor="@color/auth_text_placeholder"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintHorizontal_bias="0"
+    app:layout_constrainedWidth="true"
     app:layout_constraintLeft_toRightOf="@id/textViewPrefix"
     app:layout_constraintRight_toLeftOf="@id/barrier"
     app:layout_constraintTop_toTopOf="parent"

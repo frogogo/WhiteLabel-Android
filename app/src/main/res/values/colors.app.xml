@@ -19,8 +19,20 @@
 
   <color name="auth_code_confirmation_phone">#1e1e3c</color>
 
+  <!-- Home -->
+  <color name="home_title">@color/black</color>
+  <color name="home_subtitle">@color/gray_500</color>
+
   <!-- Widgets -->
   <color name="circle_indicator_selected">@color/primary_500</color>
   <color name="circle_indicator_unselected">@color/gray_300</color>
+
+  <color name="receipt_title">@color/black</color>
+  <color name="receipt_subtitle">@color/gray_500</color>
+  <color name="receipt_value">@color/white</color>
+  <color name="receipt_date">#B3FFFFFF</color>
+  <color name="receipt_header_accept">@color/green</color>
+  <color name="receipt_header_reject">@color/red</color>
+  <color name="receipt_header_check">@color/blue</color>
 
 </resources>

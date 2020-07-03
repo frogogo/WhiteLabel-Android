@@ -6,6 +6,8 @@
 
   <dimen name="button_height">48dp</dimen>
   <dimen name="progress_bar_size">18dp</dimen>
+  <dimen name="toolbar_height">56dp</dimen>
+  <dimen name="divider_height">1dp</dimen>
 
   <!-- Spacings -->
   <dimen name="spacing_1">4dp</dimen>
@@ -23,5 +25,9 @@
 
   <!-- Auth -->
   <dimen name="auth_confirmation_code_letter_spacing">0.37</dimen>
+
+  <!-- Receipt -->
+  <dimen name="receipt_elevation">8dp</dimen>
+  <dimen name="receipt_top_radius">16dp</dimen>
 
 </resources>

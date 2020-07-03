@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:paddingStart="@dimen/spacing_4"
+  android:paddingEnd="@dimen/spacing_4">
+
+  <TextView
+    android:id="@+id/textViewDescription"
+    style="@style/Text.Subhead"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:text="@string/receipt_status_check_footer"
+    android:textColor="@color/receipt_subtitle" />
+
+</RelativeLayout>

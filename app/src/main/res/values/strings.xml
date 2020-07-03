@@ -55,4 +55,31 @@
     <item quantity="other">%1$d секунд</item>
   </plurals>
 
+  <!-- Home -->
+  <string name="home_empty_title">Теперь вы можете отсканировать чек из любого магазина, в котором есть аппарат «Попробуй»</string>
+  <string name="home_empty_instructions_title">Помните 2 простых правила:</string>
+  <string name="home_empty_instructions_step_1">Минимальная сумма чека указана на боковой поверхности аппарата в вашем магазине.</string>
+  <string name="home_empty_instructions_step_2">С момента покупки у вас есть 5 минут чтобы отсканировать чек в приложении. Вы не сможете отсканировать следующий чек, пока не проверится текущий.</string>
+  <string name="home_empty_button_scan_qr">Сканировать чек</string>
+
+  <string name="home_accepted_title">Отсканируйте QR код на аппарате либо введите его номер вручную</string>
+  <string name="home_accepted_button_enter">Ввести</string>
+  <string name="home_accepted_button_scan">Сканировать</string>
+
+  <string name="home_rejected_button_scan">Сканировать новый чек</string>
+
+  <!-- Receipt -->
+  <string name="receipt_id">№ %1$d</string>
+  <string name="receipt_status_accept">Поздравляем, чек принят!</string>
+  <string name="receipt_status_accept_description">Теперь вы можете получить товар на пробу в любом магазине %1$s, в котором есть аппарат «Попробуй»</string>
+  <string name="receipt_status_accept_footer_1">Пока вы не получите товар, вы не сможете отсканировать новый чек.</string>
+  <string name="receipt_status_accept_footer_2">После ввода номера у вас будет 1 минута, чтобы выбрать товар.</string>
+
+  <string name="receipt_status_reject">Ваш чек не прошел проверку!</string>
+  <string name="receipt_status_reject_description">Причина:</string>
+
+  <string name="receipt_status_check">Ваш чек находится на проверке</string>
+  <string name="receipt_status_check_description">Обычно это занимает несколько минут, но очень редко надо больше времени.</string>
+  <string name="receipt_status_check_footer">Если вы не хотите ждать, вы можете пойти домой. Когда ваш чек пройдет проверку, вы получите уведомление и сможете получить подарок при следующем посещении магазина.</string>
+
 </resources>

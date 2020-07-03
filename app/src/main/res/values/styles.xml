@@ -11,6 +11,7 @@
     <item name="android:fontFamily">@font/rubik</item>
 
     <item name="materialButtonStyle">@style/MaterialButton</item>
+    <item name="imageButtonStyle">@style/ImageButton</item>
   </style>
 
   <!-- Buttons -->
@@ -49,6 +50,10 @@
     <item name="android:insetBottom">0dp</item>
   </style>
 
+  <style name="ImageButton" parent="Widget.AppCompat.ImageButton">
+    <item name="android:background">?selectableItemBackgroundBorderless</item>
+  </style>
+
   <!-- Widgets -->
   <style name="CircleIndicator">
     <item name="ci_margin">4dp</item>
@@ -75,5 +80,17 @@
     <item name="android:paddingEnd">0dp</item>
     <item name="android:paddingBottom">0dp</item>
   </style>
+
+  <style name="Divider">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">@dimen/divider_height</item>
+    <item name="android:background">@color/gray_50</item>
+  </style>
+
+  <style name="ReceiptDateText" />
+
+  <style name="ReceiptDateText.Big" parent="Text.Body" />
+
+  <style name="ReceiptDateText.Small" parent="Text.Caption" />
 
 </resources>

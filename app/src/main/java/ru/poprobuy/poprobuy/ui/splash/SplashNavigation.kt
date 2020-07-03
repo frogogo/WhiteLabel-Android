@@ -21,7 +21,7 @@ class SplashNavigationImpl : SplashNavigation {
   }
 
   override fun navigateToApp(): NavigationCommand {
-    return NavigationCommand.Back // TODO: 06.06.2020
+    return NavigationCommand.ById(R.id.splash_to_home)
   }
 
   override fun navigateToOnboarding(): NavigationCommand {

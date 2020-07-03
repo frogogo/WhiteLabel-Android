@@ -2,6 +2,8 @@ package ru.poprobuy.poprobuy.util
 
 object Constants {
 
+  const val LOCALE_DEFAULT = "ru"
+
   // Preferences
   internal const val KEY_ALIAS = "Poprobuy_key"
 

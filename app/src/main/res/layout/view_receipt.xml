@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+
+  <View
+    android:id="@+id/viewHeader"
+    android:layout_width="0dp"
+    android:layout_height="135dp"
+    android:background="@drawable/receipt_header"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <!-- Receipt Values -->
+  <TextView
+    android:id="@+id/text_view_receipt_id"
+    style="@style/Text.Headline.Medium"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/spacing_4"
+    android:layout_marginTop="@dimen/spacing_4"
+    android:layout_marginEnd="@dimen/spacing_4"
+    android:textColor="@color/receipt_value"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toLeftOf="@id/text_view_receipt_value"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="№ 3493439" />
+
+  <TextView
+    android:id="@+id/text_view_receipt_value"
+    style="@style/Text.Headline.Medium"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_4"
+    android:layout_marginEnd="@dimen/spacing_4"
+    android:textColor="@color/receipt_value"
+    app:layout_constrainedWidth="true"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintWidth_min="wrap"
+    tools:text="5 403 ₽" />
+
+  <!-- Receipt Date and Shop -->
+  <androidx.constraintlayout.widget.Barrier
+    android:id="@+id/barrier"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:barrierDirection="bottom"
+    app:constraint_referenced_ids="text_view_receipt_id,text_view_receipt_value" />
+
+  <TextView
+    android:id="@+id/textViewShop"
+    style="@style/Text.Title2.Medium"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/spacing_4"
+    android:layout_marginEnd="@dimen/spacing_4"
+    android:gravity="center"
+    android:textColor="@color/receipt_value"
+    app:layout_constraintBottom_toTopOf="@id/textViewDate"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/barrier"
+    app:layout_constraintVertical_chainStyle="packed"
+    tools:text="ВкусВилл" />
+
+  <TextView
+    android:id="@+id/textViewDate"
+    style="@style/Text.Caption"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/spacing_4"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="@dimen/spacing_4"
+    android:gravity="center"
+    android:textColor="@color/receipt_date"
+    app:layout_constraintBottom_toTopOf="@id/imageViewStatus"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/textViewShop"
+    tools:text="23.05.2020 - 13:20" />
+
+  <View
+    android:id="@+id/viewBackground"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/white"
+    app:layout_constraintBottom_toTopOf="@id/imageFooter"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/viewHeader"
+    tools:background="@color/gray_100" />
+
+  <!-- Status -->
+  <ImageView
+    android:id="@+id/imageViewStatus"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="@id/viewHeader"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/viewHeader"
+    tools:src="@drawable/ic_receipt_accept" />
+
+  <TextView
+    android:id="@+id/textViewStatus"
+    style="@style/Text.Subhead.Medium"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/spacing_4"
+    android:layout_marginEnd="@dimen/spacing_4"
+    android:gravity="center"
+    android:textColor="@color/receipt_title"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/imageViewStatus"
+    tools:text="@string/receipt_status_accept" />
+
+  <TextView
+    android:id="@+id/textViewStatusSubtitle"
+    style="@style/Text.Subhead"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/spacing_4"
+    android:layout_marginTop="@dimen/spacing_3"
+    android:layout_marginEnd="@dimen/spacing_4"
+    android:gravity="center"
+    android:textColor="@color/receipt_subtitle"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/textViewStatus"
+    tools:text="@string/receipt_status_accept_description" />
+
+  <View
+    android:id="@+id/divider"
+    style="@style/Divider"
+    android:layout_width="0dp"
+    android:layout_marginStart="@dimen/spacing_4"
+    android:layout_marginTop="@dimen/spacing_3"
+    android:layout_marginEnd="@dimen/spacing_4"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/textViewStatusSubtitle" />
+
+  <!-- Footer -->
+  <include
+    android:id="@+id/layoutFooterAccept"
+    layout="@layout/view_receipt_footer_accept"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_3"
+    android:visibility="gone"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/divider"
+    tools:visibility="visible" />
+
+  <include
+    android:id="@+id/layoutFooterCheck"
+    layout="@layout/view_receipt_footer_check"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_3"
+    android:visibility="gone"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/divider" />
+
+  <androidx.constraintlayout.widget.Barrier
+    android:id="@+id/barrierFooter"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:barrierDirection="bottom"
+    app:constraint_referenced_ids="layoutFooterAccept,layoutFooterCheck" />
+
+  <ImageView
+    android:id="@+id/imageFooter"
+    android:layout_width="0dp"
+    android:layout_height="12dp"
+    android:layout_marginTop="15dp"
+    android:scaleType="fitXY"
+    android:src="@drawable/receipt_footer"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/barrierFooter"
+    tools:tint="@color/gray_100" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,6 @@
   android:duration="@integer/screen_animation_time">
 
   <translate
-    android:duration="@android:integer/config_shortAnimTime"
     android:fromXDelta="100%p"
     android:toXDelta="0" />
 

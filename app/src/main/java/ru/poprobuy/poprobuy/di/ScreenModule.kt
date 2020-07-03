@@ -9,7 +9,9 @@ import ru.poprobuy.poprobuy.ui.auth.email.AuthEmailViewModel
 import ru.poprobuy.poprobuy.ui.auth.name.AuthNameViewModel
 import ru.poprobuy.poprobuy.ui.auth.phone.AuthPhoneViewModel
 import ru.poprobuy.poprobuy.ui.auth.policy.AuthPolicyViewModel
+import ru.poprobuy.poprobuy.ui.home.HomeViewModel
 import ru.poprobuy.poprobuy.ui.onboarding.OnboardingViewModel
+import ru.poprobuy.poprobuy.ui.profile.ProfileViewModel
 import ru.poprobuy.poprobuy.ui.splash.SplashViewModel
 
 val screenModule = module {
@@ -21,5 +23,15 @@ val screenModule = module {
   viewModel { AuthPhoneViewModel(get()) }
   viewModel { AuthCodeConfirmationViewModel(get()) }
   viewModel { AuthNameViewModel(get()) }
-  viewModel { (userName: String) -> AuthEmailViewModel(userName) }
+  viewModel { (userName: String) ->
+    AuthEmailViewModel(
+      userName = userName,
+      navigation = get(),
+      authRepository = get()
+    )
+  }
+
+  // Home
+  viewModel { HomeViewModel(get()) }
+  viewModel { ProfileViewModel() }
 }

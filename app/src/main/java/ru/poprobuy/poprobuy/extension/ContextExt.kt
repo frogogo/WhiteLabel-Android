@@ -12,5 +12,9 @@ fun Context.showKeyboard(view: View) {
   getInputMethodManager().showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
 }
 
+fun Context.hideKeyboard() {
+  getInputMethodManager().toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
+}
+
 // Services
 fun Context.getInputMethodManager() = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
