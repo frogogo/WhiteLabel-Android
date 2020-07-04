@@ -134,11 +134,23 @@
     <action
       android:id="@+id/home_to_profile"
       app:destination="@id/profile" />
+    <action
+      android:id="@+id/home_to_scanner"
+      app:destination="@id/scanner" />
   </fragment>
 
   <fragment
     android:id="@+id/profile"
     android:name="ru.poprobuy.poprobuy.ui.profile.ProfileFragment"
     tools:layout="@layout/fragment_profile" />
+
+  <fragment
+    android:id="@+id/scanner"
+    android:name="ru.poprobuy.poprobuy.ui.scanner.ScannerFragment"
+    tools:layout="@layout/fragment_scanner">
+    <argument
+      android:name="mode"
+      app:argType="ru.poprobuy.poprobuy.dictionary.ScanMode" />
+  </fragment>
 
 </navigation>

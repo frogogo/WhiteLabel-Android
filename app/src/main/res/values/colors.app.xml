@@ -23,6 +23,9 @@
   <color name="home_title">@color/black</color>
   <color name="home_subtitle">@color/gray_500</color>
 
+  <!-- Scanner -->
+  <color name="scanner_viewfinder_mask">@color/black_alpha_80</color>
+
   <!-- Widgets -->
   <color name="circle_indicator_selected">@color/primary_500</color>
   <color name="circle_indicator_unselected">@color/gray_300</color>

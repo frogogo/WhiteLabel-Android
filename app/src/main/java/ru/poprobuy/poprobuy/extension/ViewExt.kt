@@ -5,7 +5,10 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.annotation.Px
 import androidx.annotation.StyleableRes
+import androidx.core.view.*
 import ru.poprobuy.poprobuy.util.SafeClickListener
 
 fun View.setVisible(visible: Boolean, useInvisible: Boolean = false) {
@@ -38,3 +41,23 @@ inline fun View.withTypedArray(
 ) = context.obtainStyledAttributes(attrs, styleable)
   .apply { block() }
   .recycle()
+
+/**
+ * Updates this view's margins. This version of the method allows using named parameters
+ * to just set one or more axes.
+ */
+fun View.updateMargin(
+  @Px left: Int = marginLeft,
+  @Px top: Int = marginTop,
+  @Px right: Int = marginRight,
+  @Px bottom: Int = marginBottom
+) = updateLayoutParams<ViewGroup.MarginLayoutParams> {
+  setMargins(left, top, right, bottom)
+}
+
+fun View.setSize(newWidth: Int, newHeight: Int) {
+  updateLayoutParams {
+    width = newWidth
+    height = newHeight
+  }
+}
