@@ -4,5 +4,6 @@ val appComponent = listOf(
   screenModule,
   navigationModule,
   dataModule,
-  useCaseModule
+  useCaseModule,
+  utilModule
 )

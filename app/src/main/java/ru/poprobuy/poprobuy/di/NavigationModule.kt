@@ -17,6 +17,8 @@ import ru.poprobuy.poprobuy.ui.home.HomeNavigation
 import ru.poprobuy.poprobuy.ui.home.HomeNavigationImpl
 import ru.poprobuy.poprobuy.ui.onboarding.OnboardingNavigation
 import ru.poprobuy.poprobuy.ui.onboarding.OnboardingNavigationImpl
+import ru.poprobuy.poprobuy.ui.profile.ProfileNavigation
+import ru.poprobuy.poprobuy.ui.profile.ProfileNavigationImpl
 import ru.poprobuy.poprobuy.ui.scanner.ScannerNavigation
 import ru.poprobuy.poprobuy.ui.scanner.ScannerNavigationImpl
 import ru.poprobuy.poprobuy.ui.splash.SplashNavigation
@@ -36,4 +38,5 @@ val navigationModule = module {
   // Home
   factory { HomeNavigationImpl() as HomeNavigation }
   factory { ScannerNavigationImpl() as ScannerNavigation }
+  factory { ProfileNavigationImpl() as ProfileNavigation }
 }

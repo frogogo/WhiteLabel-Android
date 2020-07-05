@@ -34,6 +34,6 @@ val screenModule = module {
 
   // Home
   viewModel { HomeViewModel(get()) }
-  viewModel { ProfileViewModel() }
+  viewModel { ProfileViewModel(get(), get()) }
   viewModel { ScannerViewModel(get()) }
 }

@@ -108,7 +108,7 @@
 
   <TextView
     android:id="@+id/textViewStatus"
-    style="@style/Text.Subhead.Medium"
+    style="@style/Text.Headline.Medium"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/spacing_4"

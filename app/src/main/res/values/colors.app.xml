@@ -7,6 +7,7 @@
   <color name="button">@color/primary_500</color>
   <color name="text_error">@color/red</color>
   <color name="text_button_title">@color/primary_500</color>
+  <color name="text_button">@color/gray_500</color>
 
   <!-- Onboarding -->
   <color name="onboarding_title">@color/black</color>
@@ -25,6 +26,12 @@
 
   <!-- Scanner -->
   <color name="scanner_viewfinder_mask">@color/black_alpha_80</color>
+
+  <!-- Profile -->
+  <color name="profile_title">@color/black</color>
+  <color name="profile_subtitle">@color/gray_500</color>
+  <color name="profile_button">@color/gray_500</color>
+  <color name="profile_invite_background">@color/gray_50</color>
 
   <!-- Widgets -->
   <color name="circle_indicator_selected">@color/primary_500</color>

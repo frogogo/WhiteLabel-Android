@@ -94,4 +94,12 @@
   <string name="scanner_button_help">Помощь</string>
   <string name="scanner_button_enter_manual">Ввести номер вручную</string>
 
+  <!-- Profile -->
+  <string name="profile_app_version">Версия %1$s (%2$d) от %3$s</string>
+  <string name="profile_invite_title">Пригласить друга</string>
+  <string name="profile_invite_description">Приглашайте друзей и получайте бесплатные товары</string>
+
+  <string name="profile_button_receipts">Мои чеки</string>
+  <string name="profile_button_goods">Мои товары</string>
+
 </resources>

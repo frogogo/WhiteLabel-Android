@@ -37,6 +37,8 @@ android {
 
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     setProperty("archivesBaseName", applicationName + "-v" + versionCode + "(" + versionName + ")-" + getDate())
+
+    buildConfigField "java.util.Date", "BUILD_TIME", "new java.util.Date(" + System.currentTimeMillis() + "L)"
   }
 
   signingConfigs {
