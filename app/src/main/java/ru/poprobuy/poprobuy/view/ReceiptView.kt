@@ -37,7 +37,7 @@ class ReceiptView @JvmOverloads constructor(
 
   fun setReceipt(receipt: ReceiptUiModel) = binding.run {
     // Header
-    val headerColor = context.getColor(receipt.status.getHeaderColor())
+    val headerColor = context.getColor(receipt.status.getColor())
     viewHeader.backgroundTintList = ColorStateList.valueOf(headerColor)
     // Id
     textViewReceiptId.text = context.getString(R.string.receipt_id, receipt.id)
@@ -56,7 +56,7 @@ class ReceiptView @JvmOverloads constructor(
     // Status Subtitle
     textViewStatusSubtitle.text = receipt.status.getStatusSubtitle(context)
     // Status Icon
-    imageViewStatus.setImageResource(receipt.status.getIcon())
+    imageViewStatus.setImageResource(receipt.status.getHeaderIcon())
     // Footer
     layoutFooterAccept.root.setVisible(receipt.status == ACCEPTED)
     layoutFooterCheck.root.setVisible(receipt.status == CHECK)

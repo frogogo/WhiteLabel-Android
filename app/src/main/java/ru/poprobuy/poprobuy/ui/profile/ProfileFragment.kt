@@ -1,6 +1,5 @@
 package ru.poprobuy.poprobuy.ui.profile
 
-import androidx.transition.TransitionManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
@@ -33,7 +32,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel>(R.layout.fragment_profile
 
   private fun renderProfile(profile: ProfileUiModel) {
     binding.layoutContent.apply {
-      TransitionManager.beginDelayedTransition(root)
+      // TransitionManager.beginDelayedTransition(root)
 
       // Set data
       textViewUserName.text = profile.name

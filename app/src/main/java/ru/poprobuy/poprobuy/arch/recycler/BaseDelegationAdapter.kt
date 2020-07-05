@@ -1,5 +1,6 @@
 package ru.poprobuy.poprobuy.arch.recycler
 
+import com.github.ajalt.timberkt.d
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 
@@ -8,11 +9,7 @@ open class BaseDelegationAdapter(
   /**
    * Model for empty state representation
    */
-  private val emptyListItem: RecyclerViewItem? = null,
-  /**
-   * Do not automatically add empty state item when list is empty
-   */
-  private val manualEmptyStateControl: Boolean = false
+  private val emptyListItem: RecyclerViewItem? = null
 ) : AsyncListDifferDelegationAdapter<RecyclerViewItem>(DiffUtilCallback) {
 
   init {
@@ -24,12 +21,12 @@ open class BaseDelegationAdapter(
   }
 
   fun setItems(items: MutableList<RecyclerViewItem>, commitCallback: (() -> Unit)?) {
-    if (!manualEmptyStateControl) {
-      emptyListItem?.let {
-        if (items.isEmpty()) items.add(it)
-      }
+    val itemsMutable = items.toMutableList()
+    emptyListItem?.let {
+      d { "List is empty, adding empty state" }
+      if (itemsMutable.isEmpty()) itemsMutable.add(it)
     }
-    differ.submitList(items, commitCallback)
+    differ.submitList(itemsMutable, commitCallback)
   }
 
 }

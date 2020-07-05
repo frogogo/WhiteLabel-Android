@@ -2,7 +2,9 @@ package ru.poprobuy.poprobuy.arch.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import com.github.ajalt.timberkt.d
 import com.hadilq.liveevent.LiveEvent
+import ru.poprobuy.poprobuy.arch.navigation.AppNavigation
 import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
 
 open class BaseViewModel : ViewModel() {
@@ -19,6 +21,14 @@ open class BaseViewModel : ViewModel() {
    */
   fun NavigationCommand.navigate() {
     _navigationLive.postValue(this)
+  }
+
+  /**
+   * Executes back navigation
+   */
+  fun navigateBack() {
+    d { "Navigating back" }
+    AppNavigation.navigateBack().navigate()
   }
 
 }

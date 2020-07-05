@@ -19,17 +19,17 @@
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginEnd="@dimen/spacing_3"
-      android:text="@string/profile_invite_title"
-      android:textColor="@color/profile_title"
+      android:text="@string/receipt_scan_available_title"
+      android:textColor="@color/card_title"
       app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toLeftOf="@id/buttonShare"
+      app:layout_constraintRight_toLeftOf="@id/imageViewIcon"
       app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-      android:id="@+id/buttonShare"
+    <ImageView
+      android:id="@+id/imageViewIcon"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:src="@drawable/ic_share"
+      android:src="@drawable/ic_scan_qr"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,8 +39,8 @@
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/spacing_1"
-      android:text="@string/profile_invite_description"
-      android:textColor="@color/profile_subtitle"
+      android:text="@string/receipt_scan_available_description"
+      android:textColor="@color/card_subtitle"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+  <!-- Common -->
+  <dimen name="card_corner_radius">16dp</dimen>
+  <dimen name="card_elevation">4dp</dimen>
+
   <!-- Paddings -->
   <dimen name="padding_large">32dp</dimen>
 
@@ -35,5 +39,9 @@
   <!-- Profile -->
   <dimen name="profile_side_padding">@dimen/spacing_8</dimen>
   <dimen name="profile_button_height">56dp</dimen>
+
+  <!-- Widgets -->
+  <dimen name="label_padding_vertical">4dp</dimen>
+  <dimen name="label_padding_horizontal">6dp</dimen>
 
 </resources>

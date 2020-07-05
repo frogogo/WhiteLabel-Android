@@ -31,11 +31,6 @@ class ProfileViewModel(
     }
   }
 
-  fun navigateBack() {
-    d { "Navigating to back" }
-    navigation.navigateBack().navigate()
-  }
-
   fun navigateToReceipts() {
     d { "Navigating to receipts" }
     navigation.navigateToReceipts().navigate()

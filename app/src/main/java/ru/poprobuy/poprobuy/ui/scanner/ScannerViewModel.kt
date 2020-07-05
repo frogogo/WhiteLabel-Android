@@ -11,11 +11,6 @@ class ScannerViewModel(
     d { "Handling QR string - $string" }
   }
 
-  fun navigateBack() {
-    d { "Navigating back" }
-    navigation.navigateBack().navigate()
-  }
-
   fun navigateToHelp() {
     d { "Navigating to help" }
     navigation.navigateToHelp().navigate()

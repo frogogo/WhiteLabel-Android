@@ -15,17 +15,17 @@ enum class ReceiptStatus {
    * @return color resource for given [ReceiptStatus]
    */
   @ColorRes
-  fun getHeaderColor(): Int = when (this) {
-    ACCEPTED -> R.color.receipt_header_accept
-    REJECTED -> R.color.receipt_header_reject
-    CHECK -> R.color.receipt_header_check
+  fun getColor(): Int = when (this) {
+    ACCEPTED -> R.color.receipt_status_accept
+    REJECTED -> R.color.receipt_status_reject
+    CHECK -> R.color.receipt_status_check
   }
 
   /**
    * @return drawable icon resource for given [ReceiptStatus]
    */
   @DrawableRes
-  fun getIcon(): Int = when (this) {
+  fun getHeaderIcon(): Int = when (this) {
     ACCEPTED -> R.drawable.ic_receipt_accept
     REJECTED -> R.drawable.ic_receipt_reject
     CHECK -> R.drawable.ic_receipt_check

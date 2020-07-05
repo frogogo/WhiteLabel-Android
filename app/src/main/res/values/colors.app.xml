@@ -8,6 +8,14 @@
   <color name="text_error">@color/red</color>
   <color name="text_button_title">@color/primary_500</color>
   <color name="text_button">@color/gray_500</color>
+  <color name="toolbar_title">@color/black</color>
+  <color name="card_title">@color/black</color>
+  <color name="card_subtitle">@color/gray_500</color>
+  <color name="card_background_light">@color/white</color>
+  <color name="card_background_dark">@color/gray_50</color>
+  <color name="elevation_shadow">#0F000000</color>
+  <color name="ripple_color">#1FFFA956</color>
+  <color name="empty_list_title">@color/gray_500</color>
 
   <!-- Onboarding -->
   <color name="onboarding_title">@color/black</color>
@@ -31,7 +39,10 @@
   <color name="profile_title">@color/black</color>
   <color name="profile_subtitle">@color/gray_500</color>
   <color name="profile_button">@color/gray_500</color>
-  <color name="profile_invite_background">@color/gray_50</color>
+
+  <!-- Receipt -->
+  <color name="receipt_item_text">@color/black</color>
+  <color name="receipt_item_label_text">@color/white</color>
 
   <!-- Widgets -->
   <color name="circle_indicator_selected">@color/primary_500</color>
@@ -41,8 +52,10 @@
   <color name="receipt_subtitle">@color/gray_500</color>
   <color name="receipt_value">@color/white</color>
   <color name="receipt_date">#B3FFFFFF</color>
-  <color name="receipt_header_accept">@color/green</color>
-  <color name="receipt_header_reject">@color/red</color>
-  <color name="receipt_header_check">@color/blue</color>
+  <color name="receipt_status_accept">@color/green</color>
+  <color name="receipt_status_reject">@color/red</color>
+  <color name="receipt_status_check">@color/blue</color>
+
+  <color name="label_text">@color/white</color>
 
 </resources>

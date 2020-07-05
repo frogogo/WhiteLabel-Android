@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <style name="Text" />
+  <style name="Text">
+    <item name="android:breakStrategy">balanced</item>
+  </style>
 
   <!-- Title Large -->
   <style name="Text.TitleLarge">
@@ -76,6 +78,10 @@
 
   <style name="Text.Caption.Medium">
     <item name="android:fontFamily">@font/rubik_medium</item>
+  </style>
+
+  <style name="Text.Caption.Bold">
+    <item name="android:fontFamily">@font/rubik_bold</item>
   </style>
 
   <!-- UseCased Styles -->

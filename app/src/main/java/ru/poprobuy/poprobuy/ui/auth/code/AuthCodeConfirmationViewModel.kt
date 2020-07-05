@@ -39,10 +39,6 @@ class AuthCodeConfirmationViewModel(
     tickerJob?.cancel()
   }
 
-  fun navigateBack() {
-    navigation.navigateBack().navigate()
-  }
-
   fun resendConfirmationCode() {
     // TODO: 28.06.2020 Implement code resending
   }
