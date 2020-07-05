@@ -1,11 +1,11 @@
 package ru.poprobuy.poprobuy.ui.auth.email
 
 import androidx.navigation.fragment.navArgs
+import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
-import ru.poprobuy.poprobuy.arch.ui.viewBinding
 import ru.poprobuy.poprobuy.databinding.FragmentAuthEmailBinding
 import ru.poprobuy.poprobuy.extension.hideKeyboard
 import ru.poprobuy.poprobuy.extension.initEmailType

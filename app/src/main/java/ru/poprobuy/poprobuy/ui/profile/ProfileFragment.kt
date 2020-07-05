@@ -1,10 +1,10 @@
 package ru.poprobuy.poprobuy.ui.profile
 
 import androidx.transition.TransitionManager
+import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
-import ru.poprobuy.poprobuy.arch.ui.viewBinding
 import ru.poprobuy.poprobuy.data.model.ui.profile.ProfileUiModel
 import ru.poprobuy.poprobuy.databinding.FragmentProfileBinding
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener

@@ -7,11 +7,6 @@
 -keep class ru.poprobuy.poprobuy.dictionary.** { *; }
 -keep class ru.poprobuy.poprobuy.data.model.** { *; }
 
-# ViewBinding fragments
--keep class * implements androidx.viewbinding.ViewBinding {
-    public static *** bind(android.view.View);
-}
-
 ############
 # Crashlytics
 ############

@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.view.doOnLayout
 import androidx.navigation.fragment.navArgs
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.github.ajalt.timberkt.d
 import com.github.ajalt.timberkt.e
 import com.google.zxing.BarcodeFormat
@@ -17,7 +18,6 @@ import com.journeyapps.barcodescanner.Size
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
-import ru.poprobuy.poprobuy.arch.ui.viewBinding
 import ru.poprobuy.poprobuy.databinding.FragmentScannerBinding
 import ru.poprobuy.poprobuy.di.alert
 import ru.poprobuy.poprobuy.di.withPermission

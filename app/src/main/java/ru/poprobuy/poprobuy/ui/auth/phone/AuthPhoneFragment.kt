@@ -1,10 +1,10 @@
 package ru.poprobuy.poprobuy.ui.auth.phone
 
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
-import ru.poprobuy.poprobuy.arch.ui.viewBinding
 import ru.poprobuy.poprobuy.databinding.FragmentAuthPhoneBinding
 import ru.poprobuy.poprobuy.extension.initPhoneType
 import ru.poprobuy.poprobuy.extension.setNullableTextRes

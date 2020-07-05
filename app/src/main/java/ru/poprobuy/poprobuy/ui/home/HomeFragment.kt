@@ -1,10 +1,10 @@
 package ru.poprobuy.poprobuy.ui.home
 
+import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.recycler.BaseDelegationAdapter
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
-import ru.poprobuy.poprobuy.arch.ui.viewBinding
 import ru.poprobuy.poprobuy.databinding.FragmentHomeBinding
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible

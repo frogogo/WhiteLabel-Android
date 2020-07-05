@@ -3,10 +3,10 @@ package ru.poprobuy.poprobuy.ui.auth.code
 import android.text.TextWatcher
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.navArgs
+import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
-import ru.poprobuy.poprobuy.arch.ui.viewBinding
 import ru.poprobuy.poprobuy.databinding.FragmentAuthCodeConfirmationBinding
 import ru.poprobuy.poprobuy.extension.*
 import ru.poprobuy.poprobuy.util.Constants

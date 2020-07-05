@@ -1,9 +1,9 @@
 package ru.poprobuy.poprobuy.ui.auth.name
 
+import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
-import ru.poprobuy.poprobuy.arch.ui.viewBinding
 import ru.poprobuy.poprobuy.databinding.FragmentAuthNameBinding
 import ru.poprobuy.poprobuy.extension.initUserNameType
 import ru.poprobuy.poprobuy.extension.setNullableTextRes
