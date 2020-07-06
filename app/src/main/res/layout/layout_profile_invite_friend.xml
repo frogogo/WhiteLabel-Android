@@ -39,6 +39,7 @@
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/spacing_1"
+      android:breakStrategy="balanced"
       android:text="@string/profile_invite_description"
       android:textColor="@color/profile_subtitle"
       app:layout_constraintBottom_toBottomOf="parent"

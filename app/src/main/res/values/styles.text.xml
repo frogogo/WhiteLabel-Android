@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <style name="Text">
-    <item name="android:breakStrategy">balanced</item>
-  </style>
+  <style name="Text" />
 
   <!-- Title Large -->
   <style name="Text.TitleLarge">
