@@ -24,7 +24,7 @@
 
   <TextView
     android:id="@+id/textViewPlaceholder"
-    style="@style/Text.Title1.Medium"
+    style="@style/Text.Title1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="6dp"
@@ -71,7 +71,7 @@
     android:id="@+id/progressBar"
     android:layout_width="@dimen/progress_bar_size"
     android:layout_height="@dimen/progress_bar_size"
-    android:layout_marginStart="@dimen/spacing_4"
+    android:layout_marginStart="@dimen/spacing_3"
     android:visibility="invisible"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintHorizontal_bias="0"
