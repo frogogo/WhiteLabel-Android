@@ -17,8 +17,8 @@ class HomeViewModel(
   private val navigation: HomeNavigation
 ) : BaseViewModel() {
 
-  private val _data = MutableLiveData<List<RecyclerViewItem>>()
-  val data: LiveData<List<RecyclerViewItem>> get() = _data
+  private val _dataLive = MutableLiveData<List<RecyclerViewItem>>()
+  val dataLive: LiveData<List<RecyclerViewItem>> get() = _dataLive
 
   init {
     val receipt = ReceiptUiModel(
@@ -31,7 +31,7 @@ class HomeViewModel(
 
     viewModelScope.launch {
       delay(500)
-      _data.postValue(
+      _dataLive.postValue(
         listOf(
           HomeState.Empty,
           HomeState.Receipt(receipt),

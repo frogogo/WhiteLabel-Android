@@ -132,6 +132,9 @@ dependencies {
   // CircleIndicator https://github.com/ongakuer/CircleIndicator
   implementation 'me.relex:circleindicator:2.1.4'
 
+  // CircularProgressBar https://github.com/lopspower/CircularProgressBar
+  implementation 'com.mikhaellopez:circularprogressbar:3.0.3'
+
   // LiveEvent https://github.com/hadilq/LiveEvent
   implementation "com.github.hadilq.liveevent:liveevent:1.2.0"
 
@@ -148,6 +151,9 @@ dependencies {
 
   // Input Mask https://github.com/RedMadRobot/input-mask-android
   implementation 'com.redmadrobot:input-mask-android:6.0.0'
+
+  // Coil https://github.com/coil-kt/coil/
+  implementation "io.coil-kt:coil:0.11.0"
 
   // Koin https://github.com/InsertKoinIO/koin
   def koinVersion = '2.1.6'

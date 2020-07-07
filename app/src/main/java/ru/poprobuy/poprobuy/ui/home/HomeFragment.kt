@@ -25,7 +25,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(R.layout.fragment_home) {
 
   override fun initObservers() {
     viewModel.run {
-      data.observe {
+      dataLive.observe {
         adapter.items = it
         binding.progressBar.setVisible(false)
       }

@@ -69,6 +69,11 @@ abstract class BaseFragment<out T : BaseViewModel>(
     }
   }
 
+  override fun onStop() {
+    super.onStop()
+    viewModel.onStop()
+  }
+
   @MainThread
   protected inline fun <T> LiveData<T>.observe(crossinline onChanged: (T) -> Unit) {
     observe(viewLifecycleOwner, onChanged)

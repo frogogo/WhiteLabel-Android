@@ -16,6 +16,8 @@ open class BaseViewModel : ViewModel() {
 
   open fun onStart() = Unit
 
+  open fun onStop() = Unit
+
   /**
    * Convenient method to handle navigation from a [ViewModel]
    */

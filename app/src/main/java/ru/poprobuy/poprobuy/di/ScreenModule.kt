@@ -11,6 +11,7 @@ import ru.poprobuy.poprobuy.ui.auth.phone.AuthPhoneViewModel
 import ru.poprobuy.poprobuy.ui.auth.policy.AuthPolicyViewModel
 import ru.poprobuy.poprobuy.ui.home.HomeViewModel
 import ru.poprobuy.poprobuy.ui.onboarding.OnboardingViewModel
+import ru.poprobuy.poprobuy.ui.products.ProductsViewModel
 import ru.poprobuy.poprobuy.ui.profile.ProfileViewModel
 import ru.poprobuy.poprobuy.ui.profile.receipts.ReceiptsViewModel
 import ru.poprobuy.poprobuy.ui.scanner.ScannerViewModel
@@ -36,6 +37,7 @@ val screenModule = module {
   // Home
   viewModel { HomeViewModel(get()) }
   viewModel { ScannerViewModel(get()) }
+  viewModel { ProductsViewModel() }
 
   // Profile
   viewModel { ProfileViewModel(get(), get()) }

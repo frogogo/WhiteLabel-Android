@@ -2,7 +2,8 @@
 <resources>
 
   <!-- Common -->
-  <dimen name="card_corner_radius">16dp</dimen>
+  <dimen name="card_corner_radius_small">10dp</dimen>
+  <dimen name="card_corner_radius_big">16dp</dimen>
   <dimen name="card_elevation">4dp</dimen>
 
   <!-- Paddings -->

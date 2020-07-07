@@ -7,33 +7,43 @@
   android:layout_height="match_parent"
   android:background="@color/screen_background">
 
-  <RelativeLayout
-    android:id="@+id/layoutToolbar"
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/toolbar"
     android:layout_width="0dp"
-    android:layout_height="@dimen/toolbar_height"
+    android:layout_height="wrap_content"
+    android:background="@color/screen_background"
+    android:elevation="@dimen/card_elevation"
+    android:outlineSpotShadowColor="@color/elevation_shadow"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-    <ImageButton
-      android:id="@+id/buttonBack"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignParentStart="true"
-      android:layout_centerVertical="true"
-      android:layout_marginStart="@dimen/spacing_4"
-      android:src="@drawable/ic_arrow_back" />
-
     <TextView
       android:id="@+id/textViewTitle"
       style="@style/Text.Title2.Medium"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_centerInParent="true"
-      android:text="@string/receipts_title"
-      android:textColor="@color/toolbar_title" />
+      android:layout_width="0dp"
+      android:layout_height="@dimen/toolbar_height"
+      android:gravity="center"
+      android:text="@string/products_title"
+      android:textColor="@color/toolbar_title"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 
-  </RelativeLayout>
+    <include
+      android:id="@+id/layoutTimer"
+      layout="@layout/layout_product_header_timer"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/spacing_4"
+      android:layout_marginEnd="@dimen/spacing_4"
+      android:layout_marginBottom="@dimen/spacing_4"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
 
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/recyclerView"
@@ -48,8 +58,8 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/layoutToolbar"
-    tools:listitem="@layout/item_receipt" />
+    app:layout_constraintTop_toBottomOf="@id/toolbar"
+    tools:listitem="@layout/item_product" />
 
   <ProgressBar
     android:id="@+id/progressBar"
@@ -58,6 +68,6 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/layoutToolbar" />
+    app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

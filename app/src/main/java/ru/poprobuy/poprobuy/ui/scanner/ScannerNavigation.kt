@@ -1,5 +1,6 @@
 package ru.poprobuy.poprobuy.ui.scanner
 
+import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
 
 interface ScannerNavigation {
@@ -10,7 +11,7 @@ interface ScannerNavigation {
 class ScannerNavigationImpl : ScannerNavigation {
 
   override fun navigateToHelp(): NavigationCommand {
-    return NavigationCommand.Back // TODO: 04.07.2020 Real action
+    return NavigationCommand.ById(R.id.scanner_to_products)
   }
 
   override fun navigateToManualMachineEnter(): NavigationCommand {

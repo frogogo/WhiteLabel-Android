@@ -142,7 +142,7 @@
   <fragment
     android:id="@+id/profile"
     android:name="ru.poprobuy.poprobuy.ui.profile.ProfileFragment"
-    tools:layout="@layout/fragment_profile" >
+    tools:layout="@layout/fragment_profile">
     <action
       android:id="@+id/profile_to_receipts"
       app:destination="@id/receipts" />
@@ -155,11 +155,19 @@
     <argument
       android:name="mode"
       app:argType="ru.poprobuy.poprobuy.dictionary.ScanMode" />
+    <action
+      android:id="@+id/scanner_to_products"
+      app:destination="@id/products" />
   </fragment>
 
   <fragment
     android:id="@+id/receipts"
     android:name="ru.poprobuy.poprobuy.ui.profile.receipts.ReceiptsFragment"
     tools:layout="@layout/fragment_receipts" />
+
+  <fragment
+    android:id="@+id/products"
+    android:name="ru.poprobuy.poprobuy.ui.products.ProductsFragment"
+    tools:layout="@layout/fragment_products" />
 
 </navigation>

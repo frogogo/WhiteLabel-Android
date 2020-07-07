@@ -20,12 +20,12 @@ class ReceiptsViewModel(
   private val _dataLive = MutableLiveData<List<RecyclerViewItem>>()
   val dataLive: MutableLiveData<List<RecyclerViewItem>> get() = _dataLive
 
-  private val _isLoading = MutableLiveData<Boolean>()
-  val isLoading: LiveData<Boolean> get() = _isLoading
+  private val _isLoadingLive = MutableLiveData<Boolean>()
+  val isLoadingLive: LiveData<Boolean> get() = _isLoadingLive
 
   init {
     viewModelScope.launch {
-      _isLoading.postValue(true)
+      _isLoadingLive.postValue(true)
       val receipt = ReceiptUiModel(
         id = 123_123_123,
         value = 3499,
@@ -35,7 +35,7 @@ class ReceiptsViewModel(
       )
 
       delay(500)
-      _isLoading.postValue(false)
+      _isLoadingLive.postValue(false)
       _dataLive.postValue(
         listOf(
           ReceiptsScanAvailable,

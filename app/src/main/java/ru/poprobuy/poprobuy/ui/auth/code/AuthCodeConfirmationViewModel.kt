@@ -7,6 +7,7 @@ import com.github.ajalt.timberkt.d
 import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.channels.ticker
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
@@ -27,16 +28,23 @@ class AuthCodeConfirmationViewModel(
   private val _resendCodeButtonState = MutableLiveData<Int>()
   val resendCodeButtonState: LiveData<Int> get() = _resendCodeButtonState
 
-  private var tickerJob: Job? = null
+  private var timerJob: Job? = null
   private var resendTime = Date(System.currentTimeMillis() + 30_000)
 
   override fun onStart() {
     startCodeResendCountdown()
   }
 
+  override fun onStop() {
+    super.onStop()
+    timerJob?.cancel()
+    d { "Timer job canceled" }
+  }
+
   override fun onCleared() {
     super.onCleared()
-    tickerJob?.cancel()
+    timerJob?.cancel()
+    d { "Timer job canceled" }
   }
 
   fun resendConfirmationCode() {
@@ -65,19 +73,21 @@ class AuthCodeConfirmationViewModel(
   }
 
   private fun startCodeResendCountdown() {
-    tickerJob?.cancel()
-    tickerJob = viewModelScope.launch {
-      repeat(Int.MAX_VALUE) {
+    d { "Starting timer" }
+    timerJob?.cancel()
+    timerJob = viewModelScope.launch {
+      val ticker = ticker(COUNTDOWN_INTERVAL, COUNTDOWN_START_DELAY)
+      for (ignored in ticker) {
         val difference = DateUtils.calculateSecondsDifferenceBetweenDates(Date(), resendTime)
         _resendCodeButtonState.postValue(difference)
         if (difference <= 0) cancel()
-        delay(COUNTDOWN_INTERVAL)
       }
     }
   }
 
   companion object {
     private const val COUNTDOWN_INTERVAL = 1000L
+    private const val COUNTDOWN_START_DELAY = 0L
   }
 
 }
