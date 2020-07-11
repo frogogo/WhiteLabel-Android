@@ -34,8 +34,3 @@ fun EditText.setMaxLength(maxLength: Int?) {
 
   filters = filtersList.toTypedArray()
 }
-
-/**
- * @return the with of the text in pixels
- */
-fun EditText.measureText(text: String): Int = paint.measureText(text).toInt()

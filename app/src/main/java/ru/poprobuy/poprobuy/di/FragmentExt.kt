@@ -1,7 +1,6 @@
 package ru.poprobuy.poprobuy.di
 
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.karumi.dexter.Dexter
@@ -49,5 +48,3 @@ fun Fragment.withPermission(
 inline fun Fragment.alert(dialog: MaterialAlertDialogBuilder.() -> Unit): AlertDialog {
   return MaterialAlertDialogBuilder(requireContext()).apply(dialog).show()
 }
-
-fun Fragment.requestApplyInsets() = ViewCompat.requestApplyInsets(requireView())
