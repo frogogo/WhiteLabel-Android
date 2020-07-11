@@ -17,6 +17,10 @@
   <color name="ripple_color">#1FFFA956</color>
   <color name="empty_list_title">@color/gray_500</color>
 
+  <!-- Swipe Refresh Layout -->
+  <color name="swipe_refresh_1">@color/primary_500</color>
+  <color name="swipe_refresh_2">@color/red</color>
+
   <!-- Onboarding -->
   <color name="onboarding_title">@color/black</color>
   <color name="onboarding_description">@color/gray_500</color>

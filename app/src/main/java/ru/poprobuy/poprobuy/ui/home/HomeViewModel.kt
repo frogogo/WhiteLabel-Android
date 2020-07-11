@@ -21,6 +21,11 @@ class HomeViewModel(
   val dataLive: LiveData<List<RecyclerViewItem>> get() = _dataLive
 
   init {
+    refreshData()
+  }
+
+  fun refreshData() {
+    // TODO: 11.07.2020 Implement me
     val receipt = ReceiptUiModel(
       id = 123_123_123,
       value = 3499,

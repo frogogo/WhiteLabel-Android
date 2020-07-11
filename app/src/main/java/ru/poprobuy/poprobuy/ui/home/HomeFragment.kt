@@ -1,5 +1,6 @@
 package ru.poprobuy.poprobuy.ui.home
 
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
@@ -9,7 +10,7 @@ import ru.poprobuy.poprobuy.databinding.FragmentHomeBinding
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible
 
-class HomeFragment : BaseFragment<HomeViewModel>(R.layout.fragment_home) {
+class HomeFragment : BaseFragment<HomeViewModel>(R.layout.fragment_home), SwipeRefreshLayout.OnRefreshListener {
 
   override val viewModel: HomeViewModel by viewModel()
 
@@ -20,6 +21,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(R.layout.fragment_home) {
     binding.apply {
       buttonProfile.setOnSafeClickListener { viewModel.navigateToProfile() }
       recyclerView.adapter = this@HomeFragment.adapter
+      swipeRefreshLayout.setOnRefreshListener(this@HomeFragment)
     }
   }
 
@@ -28,8 +30,13 @@ class HomeFragment : BaseFragment<HomeViewModel>(R.layout.fragment_home) {
       dataLive.observe { data ->
         adapter.items = data
         binding.progressBar.setVisible(false)
+        binding.swipeRefreshLayout.isRefreshing = false
       }
     }
+  }
+
+  override fun onRefresh() {
+    viewModel.refreshData()
   }
 
   private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(
