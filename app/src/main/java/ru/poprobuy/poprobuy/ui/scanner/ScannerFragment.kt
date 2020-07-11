@@ -70,8 +70,11 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
   }
 
   override fun barcodeResult(result: BarcodeResult) {
+    requireContext().vibratePhone()
     binding.barcodeView.pause()
     viewModel.handleQrString(result.text)
+
+    // FIXME Remove temp toast
     Toast.makeText(requireContext(), result.text, Toast.LENGTH_LONG).show()
   }
 
