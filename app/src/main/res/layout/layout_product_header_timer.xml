@@ -46,7 +46,7 @@
       android:layout_marginStart="@dimen/spacing_3"
       android:breakStrategy="balanced"
       android:text="@string/products_header"
-      android:textColor="@color/card_title"
+      android:textColor="@color/screen_title"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toRightOf="@id/viewTimer"
       app:layout_constraintRight_toRightOf="parent"

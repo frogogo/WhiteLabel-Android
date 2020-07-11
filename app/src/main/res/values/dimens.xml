@@ -45,4 +45,7 @@
   <dimen name="label_padding_vertical">4dp</dimen>
   <dimen name="label_padding_horizontal">6dp</dimen>
 
+  <!-- Product Select -->
+  <dimen name="product_select_buttons_min_width">94dp</dimen>
+
 </resources>

@@ -17,6 +17,8 @@
   <!-- Common -->
   <string name="common_button_ok">Ок</string>
   <string name="common_button_cancel">Отменить</string>
+  <string name="common_button_yes">Да</string>
+  <string name="common_button_no">Нет</string>
 
   <!-- Onboarding -->
   <string name="onboarding_button_next">Дальше</string>
@@ -109,7 +111,7 @@
   <string name="receipt_item_status_accepted">Принят</string>
   <string name="receipt_item_status_completed">Выполнен</string>
   <string name="receipt_item_status_rejected">Отклонен</string>
-  
+
   <string name="receipt_scan_available_title">Вы можете отсканировать чек</string>
   <string name="receipt_scan_available_description">Минимальная сумма чека указана на боковой поверхности аппарата</string>
 
@@ -118,5 +120,14 @@
   <string name="products_status_tried_before">Уже пробовал(а)</string>
   <string name="products_status_out_of_stock">Разобрали</string>
   <string name="products_header">Отлично, у вас есть 1 минута, чтобы выбрать товар.</string>
+
+  <!-- Product Select -->
+  <string name="product_select_title_confirmation">Вы точно хотите получить %1$s?</string>
+  <string name="product_select_title_goods_issue">Происходит выдача товара</string>
+  <string name="product_select_button_done">Готово</string>
+  <string name="product_select_done_title">Поздравляем!</string>
+  <string name="product_select_done_subtitle_1">Вы можете взять товар в лотке. Надеемся, что он вам понравится! </string>
+  <string name="product_select_done_subtitle_2">Уже завтра вы можете отсканировать новый чек и снова попробовать что-то новое!</string>
+  <string name="product_select_error_description">Возможно аппарат занят, повторите попытку через несколько минут.</string>
 
 </resources>

@@ -114,11 +114,6 @@ class ProductsViewModel : BaseViewModel() {
     d { "Timer job canceled" }
   }
 
-  fun selectProduct(product: ProductUiModel) {
-    d { "Selecting product - $product" }
-    // TODO: 06.07.2020 Product selection
-  }
-
   private fun getTimerState(duration: Int): TimerState {
     val currentTime = Date()
 

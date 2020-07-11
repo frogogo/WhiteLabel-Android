@@ -36,10 +36,6 @@ abstract class BaseFragment<out T : BaseViewModel>(
 
   private val windowAnimator: SimpleWindowAnimator by lazy { SimpleWindowAnimator(requireActivity().window) }
 
-  open fun initViews() = Unit
-
-  open fun initObservers() = Unit
-
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
@@ -73,6 +69,10 @@ abstract class BaseFragment<out T : BaseViewModel>(
     super.onStop()
     viewModel.onStop()
   }
+
+  open fun initViews() = Unit
+
+  open fun initObservers() = Unit
 
   @MainThread
   protected inline fun <T> LiveData<T>.observe(crossinline onChanged: (T) -> Unit) {

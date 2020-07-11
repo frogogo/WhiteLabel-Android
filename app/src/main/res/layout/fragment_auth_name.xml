@@ -33,7 +33,7 @@
       android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/spacing_4"
       android:text="@string/auth_name_subtitle"
-      android:textColor="@color/auth_subtitle"
+      android:textColor="@color/screen_subtitle"
       app:layout_constraintBottom_toTopOf="@id/textInputLayout"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"

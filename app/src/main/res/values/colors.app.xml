@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+  <color name="primary">@color/primary_500</color>
+  <color name="primary_dark">@color/primary_700</color>
+  <color name="accent">@color/primary_500</color>
+
   <color name="status_bar">@color/white</color>
   <color name="screen_background">@color/white</color>
   <color name="screen_title">@color/black</color>
+  <color name="screen_subtitle">@color/gray_500</color>
   <color name="button">@color/primary_500</color>
   <color name="text_error">@color/red</color>
   <color name="text_button_title">@color/primary_500</color>
   <color name="text_button">@color/gray_500</color>
-  <color name="toolbar_title">@color/black</color>
-  <color name="card_title">@color/black</color>
-  <color name="card_subtitle">@color/gray_500</color>
   <color name="card_background_light">@color/white</color>
   <color name="card_background_dark">@color/gray_50</color>
   <color name="elevation_shadow">#0F000000</color>
@@ -21,27 +23,16 @@
   <color name="swipe_refresh_1">@color/primary_500</color>
   <color name="swipe_refresh_2">@color/red</color>
 
-  <!-- Onboarding -->
-  <color name="onboarding_title">@color/black</color>
-  <color name="onboarding_description">@color/gray_500</color>
-
   <!-- Auth -->
-  <color name="auth_subtitle">@color/gray_500</color>
   <color name="auth_text">@color/black</color>
   <color name="auth_text_placeholder">@color/gray_300</color>
 
   <color name="auth_code_confirmation_phone">#1e1e3c</color>
 
-  <!-- Home -->
-  <color name="home_title">@color/black</color>
-  <color name="home_subtitle">@color/gray_500</color>
-
   <!-- Scanner -->
   <color name="scanner_viewfinder_mask">@color/black_alpha_80</color>
 
   <!-- Profile -->
-  <color name="profile_title">@color/black</color>
-  <color name="profile_subtitle">@color/gray_500</color>
   <color name="profile_button">@color/gray_500</color>
 
   <!-- Receipt -->
