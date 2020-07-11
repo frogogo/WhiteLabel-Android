@@ -18,15 +18,12 @@ fun View.setVisible(visible: Boolean, useInvisible: Boolean = false) {
 val View.layoutInflater: LayoutInflater
   get() = LayoutInflater.from(context)
 
-inline fun View.setOnSafeClickListener(crossinline onSafeClick: (View) -> Unit) {
-  setOnClickListener(SafeClickListener { v ->
-    onSafeClick(v)
-  })
-}
-
-inline fun View.setOnSafeClickListener(interval: Int, crossinline onSafeClick: (View) -> Unit) {
-  setOnClickListener(SafeClickListener(interval) { v ->
-    onSafeClick(v)
+inline fun View.setOnSafeClickListener(
+  throttleDuration: Long = 500,
+  crossinline clickAction: (View) -> Unit
+) {
+  setOnClickListener(SafeClickListener(throttleDuration) { v ->
+    clickAction(v)
   })
 }
 

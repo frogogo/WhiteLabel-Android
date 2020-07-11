@@ -4,7 +4,7 @@ import android.os.SystemClock
 import android.view.View
 
 class SafeClickListener(
-  private val interval: Int = 1000,
+  private val interval: Long,
   private val onSafeClick: (View) -> Unit
 ) : View.OnClickListener {
 
