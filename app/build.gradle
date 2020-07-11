@@ -102,7 +102,8 @@ dependencies {
   // AndroidX
   implementation 'androidx.core:core-ktx:1.3.0'
   implementation 'androidx.appcompat:appcompat:1.1.0'
-  implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta7'
+  // ConstraintLayout https://developer.android.com/jetpack/androidx/releases/constraintlayout
+  implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta8'
   // ViewPager2 https://developer.android.com/jetpack/androidx/releases/viewpager2
   implementation "androidx.viewpager2:viewpager2:1.0.0"
 
@@ -165,8 +166,8 @@ dependencies {
   implementation 'com.github.ajalt:timberkt:1.5.1'
 
   // Firebase https://firebase.google.com/support/release-notes/android
-  implementation 'com.google.firebase:firebase-analytics:17.4.3'
-  implementation 'com.google.firebase:firebase-crashlytics:17.1.0'
+  implementation 'com.google.firebase:firebase-analytics:17.4.4'
+  implementation 'com.google.firebase:firebase-crashlytics:17.1.1'
   implementation 'com.google.firebase:firebase-perf:19.0.7'
 
   // QR code scanner https://github.com/journeyapps/zxing-android-embedded
