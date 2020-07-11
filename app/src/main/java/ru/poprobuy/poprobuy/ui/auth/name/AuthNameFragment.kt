@@ -30,9 +30,9 @@ class AuthNameFragment : BaseFragment<AuthNameViewModel>(
   }
 
   override fun initObservers() = viewModel.run {
-    nameValidationLiveEvent.observe {
-      binding.textViewError.setNullableTextRes(it)
-      binding.textInputLayout.setError(it != null)
+    nameValidationLiveEvent.observe { errorRes ->
+      binding.textViewError.setNullableTextRes(errorRes)
+      binding.textInputLayout.setError(errorRes != null)
     }
   }
 

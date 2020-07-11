@@ -33,8 +33,8 @@ object ProductsAdapterDelegates {
         textViewName.text = item.name
 
         // Make content half transparent in disabled state
-        listOf(imageViewProduct, textViewName).forEach {
-          it.alpha = if (item.isActive()) ALPHA_ACTIVE else ALPHA_INACTIVE
+        listOf(imageViewProduct, textViewName).forEach { view ->
+          view.alpha = if (item.isActive()) ALPHA_ACTIVE else ALPHA_INACTIVE
         }
 
         // Label

@@ -35,13 +35,13 @@ class AuthEmailFragment : BaseFragment<AuthEmailViewModel>(
   }
 
   override fun initObservers() = viewModel.run {
-    emailValidationLiveEvent.observe {
-      binding.textViewError.setNullableTextRes(it)
-      binding.textInputLayout.setError(it != null)
+    emailValidationLiveEvent.observe { errorRes ->
+      binding.textViewError.setNullableTextRes(errorRes)
+      binding.textInputLayout.setError(errorRes != null)
     }
-    isLoadingLive.observe {
-      binding.textInputLayout.setLoading(it)
-      binding.buttonContinue.isEnabled = !it
+    isLoadingLive.observe { isLoading ->
+      binding.textInputLayout.setLoading(isLoading)
+      binding.buttonContinue.isEnabled = !isLoading
     }
     hideKeyboardLiveEvent.observe { requireActivity().hideKeyboard() }
   }

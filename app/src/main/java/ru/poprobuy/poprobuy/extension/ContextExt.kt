@@ -31,8 +31,8 @@ fun Context.showAppDetailsSettings() {
     Uri.fromParts("package", packageName, null)
   ).apply {
     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-  }.also {
-    startActivity(it)
+  }.also { intent ->
+    startActivity(intent)
   }
 }
 

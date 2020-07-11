@@ -91,8 +91,8 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
       // Decoder
       barcodeView.decoderFactory = DefaultDecoderFactory(BARCODE_FORMATS)
       // Size
-      doOnLayout {
-        val width = (it.width * 0.82).toInt()
+      doOnLayout { view ->
+        val width = (view.width * 0.82).toInt()
         val height = (width * 0.95).toInt()
         barcodeView.framingRectSize = Size(width, height)
         findViewById<View>(R.id.view_surface_edges).setSize(width, height)

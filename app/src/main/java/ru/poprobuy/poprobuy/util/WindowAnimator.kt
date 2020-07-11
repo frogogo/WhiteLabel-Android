@@ -32,7 +32,7 @@ class SimpleWindowAnimator(window: Window) : BaseWindowAnimator(window) {
 
   override val insetsListener: View.OnApplyWindowInsetsListener
     get() = View.OnApplyWindowInsetsListener { view, insets ->
-      sceneRoot?.let { TransitionManager.beginDelayedTransition(it, ChangeBounds()) }
+      sceneRoot?.let { scene -> TransitionManager.beginDelayedTransition(scene, ChangeBounds()) }
       return@OnApplyWindowInsetsListener view.onApplyWindowInsets(insets)
     }
 }

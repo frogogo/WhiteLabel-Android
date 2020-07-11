@@ -22,8 +22,8 @@ inline fun View.setOnSafeClickListener(
   throttleDuration: Long = 500,
   crossinline clickAction: (View) -> Unit
 ) {
-  setOnClickListener(SafeClickListener(throttleDuration) { v ->
-    clickAction(v)
+  setOnClickListener(SafeClickListener(throttleDuration) { view ->
+    clickAction(view)
   })
 }
 
@@ -35,9 +35,11 @@ inline fun View.withTypedArray(
   attrs: AttributeSet?,
   @StyleableRes styleable: IntArray,
   block: TypedArray.() -> Unit
-) = context.obtainStyledAttributes(attrs, styleable)
-  .apply { block() }
-  .recycle()
+) {
+  context.obtainStyledAttributes(attrs, styleable)
+    .apply(block)
+    .recycle()
+}
 
 /**
  * Updates this view's margins. This version of the method allows using named parameters
@@ -48,8 +50,10 @@ fun View.updateMargin(
   @Px top: Int = marginTop,
   @Px right: Int = marginRight,
   @Px bottom: Int = marginBottom
-) = updateLayoutParams<ViewGroup.MarginLayoutParams> {
-  setMargins(left, top, right, bottom)
+) {
+  updateLayoutParams<ViewGroup.MarginLayoutParams> {
+    setMargins(left, top, right, bottom)
+  }
 }
 
 fun View.setSize(newWidth: Int, newHeight: Int) {

@@ -83,8 +83,8 @@ abstract class BaseFragment<out T : BaseViewModel>(
    * Handles navigation events from a [ViewModel]
    */
   private fun observeNavigation() {
-    viewModel.navigationLive.observe {
-      NavigationRouter.navigate(findNavController(), it)
+    viewModel.navigationLive.observe { command ->
+      NavigationRouter.navigate(findNavController(), command)
     }
   }
 

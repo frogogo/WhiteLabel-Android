@@ -38,8 +38,8 @@ class AuthCodeConfirmationFragment : BaseFragment<AuthCodeConfirmationViewModel>
 
   override fun onResume() {
     super.onResume()
-    codeTextWatcher = binding.textInputLayout.binding.editText.addTextChangedListener {
-      if (it.toString().length == Constants.CONFIRMATION_CODE_LENGTH) {
+    codeTextWatcher = binding.textInputLayout.binding.editText.addTextChangedListener { editable ->
+      if (editable.toString().length == Constants.CONFIRMATION_CODE_LENGTH) {
         confirmPhone()
       }
     }
@@ -52,9 +52,9 @@ class AuthCodeConfirmationFragment : BaseFragment<AuthCodeConfirmationViewModel>
   }
 
   override fun initObservers() = viewModel.run {
-    codeValidationLiveEvent.observe {
-      binding.textViewError.setNullableTextRes(it)
-      binding.textInputLayout.setError(it != null)
+    codeValidationLiveEvent.observe { errorRes ->
+      binding.textViewError.setNullableTextRes(errorRes)
+      binding.textInputLayout.setError(errorRes != null)
     }
     isLoadingLive.observe { binding.textInputLayout.setLoading(it) }
     resendCodeButtonState.observe { renderResendCodeButton(it) }

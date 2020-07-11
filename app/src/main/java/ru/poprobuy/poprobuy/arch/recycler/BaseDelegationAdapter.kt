@@ -13,7 +13,7 @@ open class BaseDelegationAdapter(
 ) : AsyncListDifferDelegationAdapter<RecyclerViewItem>(DiffUtilCallback) {
 
   init {
-    adapterDelegates.forEach { delegatesManager.addDelegate(it) }
+    adapterDelegates.forEach { delegate -> delegatesManager.addDelegate(delegate) }
   }
 
   override fun setItems(items: MutableList<RecyclerViewItem>) {
@@ -22,9 +22,9 @@ open class BaseDelegationAdapter(
 
   fun setItems(items: MutableList<RecyclerViewItem>, commitCallback: (() -> Unit)?) {
     val itemsMutable = items.toMutableList()
-    emptyListItem?.let {
+    emptyListItem?.let { emptyItem ->
       d { "List is empty, adding empty state" }
-      if (itemsMutable.isEmpty()) itemsMutable.add(it)
+      if (itemsMutable.isEmpty()) itemsMutable.add(emptyItem)
     }
     differ.submitList(itemsMutable, commitCallback)
   }

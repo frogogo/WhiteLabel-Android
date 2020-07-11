@@ -60,8 +60,8 @@ class OnboardingFragment : BaseFragment<OnboardingViewModel>(R.layout.fragment_o
   }
 
   override fun initObservers() = viewModel.run {
-    pagesLive.observe {
-      adapter.items = it
+    pagesLive.observe { data ->
+      adapter.items = data
       updateButtons()
     }
   }

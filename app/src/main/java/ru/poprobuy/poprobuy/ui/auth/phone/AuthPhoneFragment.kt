@@ -28,13 +28,11 @@ class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(
   }
 
   override fun initObservers() = viewModel.run {
-    phoneValidationLiveEvent.observe {
-      binding.textViewError.setNullableTextRes(it)
-      binding.textInputLayout.setError(it != null)
+    phoneValidationLiveEvent.observe { errorRes ->
+      binding.textViewError.setNullableTextRes(errorRes)
+      binding.textInputLayout.setError(errorRes != null)
     }
-    isLoadingLive.observe {
-      binding.textInputLayout.setLoading(it)
-    }
+    isLoadingLive.observe { binding.textInputLayout.setLoading(it) }
   }
 
   override fun onTextChanged(maskFilled: Boolean, extractedValue: String, formattedValue: String) {
