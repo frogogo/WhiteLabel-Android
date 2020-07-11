@@ -112,7 +112,7 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
     withPermission(
       permission = Manifest.permission.CAMERA,
       onNeverAskAgain = {
-        d { "Permission request denied, never ask again" }
+        e { "Permission request denied, never ask again" }
         alert {
           setTitle(R.string.scanner_permissions_denied_title)
           setMessage(R.string.scanner_permissions_denied_settings)
@@ -122,7 +122,7 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
         }
       },
       onPermissionDenied = {
-        d { "Permission request denied" }
+        e { "Permission request denied" }
         alert {
           setMessage(R.string.scanner_permissions_denied_title)
           setPositiveButton(R.string.common_button_ok) { _, _ -> checkPermissions() }
@@ -131,7 +131,7 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
         }
       },
       onPermissionGranted = {
-        e { "Permission granted" }
+        d { "Permission granted" }
         binding.barcodeView.decodeContinuous(this)
       }
     )
