@@ -58,7 +58,9 @@ class ProductSelectionDialogFragment : BaseDialogFragment(R.layout.fragment_prod
     when (state) {
       is ProductSelectionState.Product -> {
         binding.layoutProduct.apply {
-          imageViewIcon.load(state.product.imageUrl)
+          imageViewIcon.load(state.product.imageUrl) {
+            placeholder(R.drawable.ic_placeholder)
+          }
 
           textViewTitle.text = if (!state.isLoading) {
             getString(R.string.product_select_title_confirmation, state.product.name)
