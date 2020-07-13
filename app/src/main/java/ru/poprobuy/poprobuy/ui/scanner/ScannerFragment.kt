@@ -117,7 +117,10 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
           setTitle(R.string.scanner_permissions_denied_title)
           setMessage(R.string.scanner_permissions_denied_settings)
           setPositiveButton(R.string.common_button_ok) { _, _ -> context.showAppDetailsSettings() }
-          setNegativeButton(R.string.common_button_cancel) { dialog: DialogInterface, _ -> dialog.cancel() }
+          setNegativeButton(R.string.common_button_cancel) { dialog: DialogInterface, _ ->
+            dialog.cancel()
+            viewModel.navigateBack()
+          }
           setCancelable(false)
         }
       },
@@ -126,7 +129,10 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
         alert {
           setMessage(R.string.scanner_permissions_denied_title)
           setPositiveButton(R.string.common_button_ok) { _, _ -> checkPermissions() }
-          setNegativeButton(R.string.common_button_cancel) { dialog: DialogInterface, _ -> dialog.cancel() }
+          setNegativeButton(R.string.common_button_cancel) { dialog: DialogInterface, _ ->
+            dialog.cancel()
+            viewModel.navigateBack()
+          }
           setCancelable(false)
         }
       },
