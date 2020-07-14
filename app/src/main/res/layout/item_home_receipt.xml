@@ -51,7 +51,7 @@
         android:id="@+id/buttonEnterMachine"
         style="@style/OutlinedButton"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/button_height"
         android:layout_marginTop="@dimen/spacing_6"
         android:layout_marginEnd="@dimen/spacing_1"
         android:text="@string/home_accepted_button_enter"
@@ -63,7 +63,7 @@
       <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonScanMachine"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/button_height"
         android:layout_marginStart="@dimen/spacing_1"
         android:layout_marginTop="@dimen/spacing_6"
         android:text="@string/home_accepted_button_scan"
@@ -77,7 +77,7 @@
     <com.google.android.material.button.MaterialButton
       android:id="@+id/buttonScanReceipt"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+      android:layout_height="@dimen/button_height"
       android:text="@string/home_rejected_button_scan"
       android:visibility="gone"
       app:icon="@drawable/ic_scan_qr"

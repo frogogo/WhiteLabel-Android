@@ -45,7 +45,7 @@
     <com.google.android.material.button.MaterialButton
       android:id="@+id/buttonContinue"
       android:layout_width="0dp"
-      android:layout_height="wrap_content"
+      android:layout_height="@dimen/button_height"
       android:layout_marginBottom="@dimen/spacing_12"
       android:text="@string/auth_policy_button_continue"
       app:layout_constraintBottom_toBottomOf="parent"

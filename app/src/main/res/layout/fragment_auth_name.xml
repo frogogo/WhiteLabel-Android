@@ -18,12 +18,14 @@
       style="@style/Text.TitleLarge.Medium"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_6"
       android:text="@string/auth_name_title"
       android:textColor="@color/screen_title"
       app:layout_constraintBottom_toTopOf="@id/textViewSubtitle"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.6"
       app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
@@ -55,8 +57,9 @@
       style="@style/Text.Error"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:layout_marginTop="24dp"
-      app:layout_constraintBottom_toBottomOf="parent"
+      android:layout_marginTop="@dimen/spacing_6"
+      android:layout_marginBottom="@dimen/spacing_6"
+      app:layout_constraintBottom_toTopOf="@id/buttonContinue"
       app:layout_constraintLeft_toLeftOf="@id/textInputLayout"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toBottomOf="@id/textInputLayout" />
@@ -64,15 +67,12 @@
     <com.google.android.material.button.MaterialButton
       android:id="@+id/buttonContinue"
       android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/spacing_6"
+      android:layout_height="@dimen/button_height"
       android:layout_marginBottom="@dimen/spacing_6"
       android:text="@string/auth_button_continue"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/textViewError"
-      app:layout_constraintVertical_bias="1" />
+      app:layout_constraintRight_toRightOf="parent" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 
