@@ -34,7 +34,7 @@
   <dimen name="auth_confirmation_code_letter_spacing">0.37</dimen>
 
   <!-- Receipt -->
-  <dimen name="receipt_elevation">8dp</dimen>
+  <dimen name="receipt_elevation">4dp</dimen>
   <dimen name="receipt_top_radius">16dp</dimen>
 
   <!-- Profile -->

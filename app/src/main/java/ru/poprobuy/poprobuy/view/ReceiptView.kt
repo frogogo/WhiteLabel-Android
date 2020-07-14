@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Outline
 import android.graphics.Rect
+import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewOutlineProvider
@@ -33,6 +34,9 @@ class ReceiptView @JvmOverloads constructor(
     val radius = resources.getDimensionPixelSize(R.dimen.receipt_top_radius).toFloat()
     outlineProvider = ReceiptOutlineProvider(radius)
     ViewCompat.setElevation(this, elevation)
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+      outlineSpotShadowColor = context.getColor(R.color.elevation_shadow)
+    }
   }
 
   fun setReceipt(receipt: ReceiptUiModel) = binding.run {
@@ -67,12 +71,13 @@ class ReceiptView @JvmOverloads constructor(
    */
   private class ReceiptOutlineProvider(private val radius: Float) : ViewOutlineProvider() {
     override fun getOutline(view: View, outline: Outline) {
+      val heightModifier = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) 1F else 0.97F
       val rect = Rect(
         0,
         0,
         view.width,
         // Make bottom point upper to respect curved footer
-        (view.height * 0.97F).toInt()
+        (view.height * heightModifier).toInt()
       )
       // Use radius to respect rounded top corners
       outline.setRoundRect(rect, radius)
