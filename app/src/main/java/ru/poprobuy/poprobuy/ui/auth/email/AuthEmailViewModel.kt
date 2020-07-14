@@ -23,8 +23,8 @@ class AuthEmailViewModel(
   private val _isLoadingLive = MutableLiveData<Boolean>()
   val isLoadingLive: LiveData<Boolean> get() = _isLoadingLive
 
-  private val _hideKeyboardLiveEvent = MutableLiveData<Unit>()
-  val hideKeyboardLiveEvent: LiveData<Unit> get() = _hideKeyboardLiveEvent
+  private val _command = LiveEvent<AuthEmailCommand>()
+  val command: LiveData<AuthEmailCommand> get() = _command
 
   fun updateUserData(email: String) {
     if (!validateEmail(email)) return
@@ -34,7 +34,7 @@ class AuthEmailViewModel(
       _isLoadingLive.postValue(true)
       delay(1000)
       authRepository.setUserAuthorized()
-      _hideKeyboardLiveEvent.postValue(Unit)
+      _command.postValue(AuthEmailCommand.HideKeyboard)
       navigation.navigateToApp().navigate()
     }
   }

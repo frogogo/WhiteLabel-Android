@@ -43,7 +43,11 @@ class AuthEmailFragment : BaseFragment<AuthEmailViewModel>(
       binding.textInputLayout.setLoading(isLoading)
       binding.buttonContinue.isEnabled = !isLoading
     }
-    hideKeyboardLiveEvent.observe { requireActivity().hideKeyboard() }
+    command.observe { command ->
+      when (command) {
+        AuthEmailCommand.HideKeyboard -> requireContext().hideKeyboard()
+      }
+    }
   }
 
   private fun setEmail() {

@@ -96,6 +96,10 @@
   <string name="scanner_button_help">Помощь</string>
   <string name="scanner_button_enter_manual">Ввести номер вручную</string>
 
+  <!-- Machine Select -->
+  <string name="machine_select_title">Введите номер аппарата</string>
+  <string name="machine_select_placeholder">Номер аппарата</string>
+
   <!-- Profile -->
   <string name="profile_app_version">Версия %1$s (%2$d) от %3$s</string>
   <string name="profile_invite_title">Пригласить друга</string>

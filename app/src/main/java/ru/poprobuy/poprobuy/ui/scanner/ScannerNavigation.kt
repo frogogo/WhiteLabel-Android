@@ -15,7 +15,7 @@ class ScannerNavigationImpl : ScannerNavigation {
   }
 
   override fun navigateToManualMachineEnter(): NavigationCommand {
-    return NavigationCommand.Back // TODO: 04.07.2020 Real action
+    return NavigationCommand.ById(R.id.scanner_to_machine_select)
   }
 
 }

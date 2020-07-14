@@ -23,14 +23,12 @@ class HomeNavigationImpl : HomeNavigation {
   }
 
   override fun navigateToMachineScan(): NavigationCommand {
-    // TODO: 03.07.2020 Add scan type machine
     val action = HomeFragmentDirections.homeToScanner(ScanMode.MACHINE)
     return NavigationCommand.ByAction(action)
   }
 
   override fun navigateToMachineEnter(): NavigationCommand {
-    // TODO: 02.07.2020
-    return NavigationCommand.Back
+    return NavigationCommand.ById(R.id.home_to_machine_select)
   }
 
 }

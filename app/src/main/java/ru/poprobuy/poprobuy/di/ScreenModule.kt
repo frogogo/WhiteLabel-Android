@@ -10,6 +10,7 @@ import ru.poprobuy.poprobuy.ui.auth.name.AuthNameViewModel
 import ru.poprobuy.poprobuy.ui.auth.phone.AuthPhoneViewModel
 import ru.poprobuy.poprobuy.ui.auth.policy.AuthPolicyViewModel
 import ru.poprobuy.poprobuy.ui.home.HomeViewModel
+import ru.poprobuy.poprobuy.ui.machine_select.MachineSelectViewModel
 import ru.poprobuy.poprobuy.ui.onboarding.OnboardingViewModel
 import ru.poprobuy.poprobuy.ui.products.ProductsViewModel
 import ru.poprobuy.poprobuy.ui.products.select.ProductSelectionInteractor
@@ -39,6 +40,7 @@ val screenModule = module {
   // Home
   viewModel { HomeViewModel(get()) }
   viewModel { ScannerViewModel(get()) }
+  viewModel { MachineSelectViewModel(get()) }
 
   // Products
   viewModel { ProductsViewModel() }

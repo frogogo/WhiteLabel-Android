@@ -8,7 +8,7 @@ import ru.poprobuy.poprobuy.util.Constants
 import ru.poprobuy.poprobuy.view.AuthTextInputLayout
 
 private const val DIGITS_PHONE_NUMBER = "1234567890+-() "
-private const val DIGITS_CONFIRMATION_CODE = "1234567890"
+private const val DIGITS_NUMBERS = "1234567890"
 
 fun AuthTextInputLayout.initPhoneType(listener: MaskedTextChangedListener.ValueListener) {
   // binding.apply {
@@ -34,7 +34,7 @@ fun AuthTextInputLayout.initCodeConfirmationType() {
     editText.apply {
       setMaxLength(Constants.CONFIRMATION_CODE_LENGTH)
       inputType = InputType.TYPE_CLASS_NUMBER
-      textKeyListener = DigitsKeyListener.getInstance(DIGITS_CONFIRMATION_CODE)
+      textKeyListener = DigitsKeyListener.getInstance(DIGITS_NUMBERS)
       setTextAppearance(R.style.AuthCodeConfirmation_EditText)
     }
     textViewPlaceholder.setTextAppearance(R.style.AuthCodeConfirmation)
@@ -48,4 +48,11 @@ fun AuthTextInputLayout.initUserNameType() {
 
 fun AuthTextInputLayout.initEmailType() {
   binding.editText.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+}
+
+fun AuthTextInputLayout.initMachineNumberType() {
+  binding.editText.apply {
+    inputType = InputType.TYPE_CLASS_NUMBER
+    textKeyListener = DigitsKeyListener.getInstance(DIGITS_NUMBERS)
+  }
 }

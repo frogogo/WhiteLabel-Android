@@ -137,6 +137,9 @@
     <action
       android:id="@+id/home_to_scanner"
       app:destination="@id/scanner" />
+    <action
+      android:id="@+id/home_to_machine_select"
+      app:destination="@id/machine_select" />
   </fragment>
 
   <fragment
@@ -157,6 +160,17 @@
       app:argType="ru.poprobuy.poprobuy.dictionary.ScanMode" />
     <action
       android:id="@+id/scanner_to_products"
+      app:destination="@id/products" />
+    <action
+      android:id="@+id/scanner_to_machine_select"
+      app:destination="@id/machine_select" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/machine_select"
+    android:name="ru.poprobuy.poprobuy.ui.machine_select.MachineSelectFragment" >
+    <action
+      android:id="@+id/machine_select_to_products"
       app:destination="@id/products" />
   </fragment>
 
