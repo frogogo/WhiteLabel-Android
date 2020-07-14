@@ -9,6 +9,7 @@ import ru.poprobuy.poprobuy.arch.recycler.BaseDelegationAdapter
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.data.model.ui.product.ProductUiModel
 import ru.poprobuy.poprobuy.databinding.FragmentProductsBinding
+import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible
 import ru.poprobuy.poprobuy.ui.products.select.ProductSelectionCommand
 import ru.poprobuy.poprobuy.ui.products.select.ProductSelectionDialogFragment
@@ -24,6 +25,7 @@ class ProductsFragment : BaseFragment<ProductsViewModel>(R.layout.fragment_produ
   private val adapter: BaseDelegationAdapter by lazy { createAdapter() }
 
   override fun initViews() {
+    binding.buttonClose.setOnSafeClickListener { viewModel.navigateBack() }
     // Recycler View
     val decorationSpacing = resources.getDimensionPixelSize(R.dimen.spacing_4)
     binding.recyclerView.apply {
