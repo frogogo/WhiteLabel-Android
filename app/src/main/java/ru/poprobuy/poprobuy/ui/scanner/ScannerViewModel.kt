@@ -2,8 +2,10 @@ package ru.poprobuy.poprobuy.ui.scanner
 
 import com.github.ajalt.timberkt.d
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.dictionary.ScanMode
 
 class ScannerViewModel(
+  private val scanMode: ScanMode,
   private val navigation: ScannerNavigation
 ) : BaseViewModel() {
 
@@ -12,8 +14,11 @@ class ScannerViewModel(
   }
 
   fun navigateToHelp() {
-    d { "Navigating to help" }
-    navigation.navigateToHelp().navigate()
+    d { "Navigating to help for scan mode - $scanMode" }
+    when (scanMode) {
+      ScanMode.RECEIPT -> navigation.navigateToReceiptHelp()
+      ScanMode.MACHINE -> navigation.navigateToMachineHelp()
+    }.navigate()
   }
 
   fun navigateToManualMachineEnter() {

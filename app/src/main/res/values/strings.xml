@@ -95,6 +95,8 @@
   <string name="scanner_title_receipt">Наведите камеру на QR код на чеке</string>
   <string name="scanner_button_help">Помощь</string>
   <string name="scanner_button_enter_manual">Ввести номер вручную</string>
+  <string name="scanner_help_machine_title">Как сканировать автомат</string>
+  <string name="scanner_help_receipt_title">Как сканировать чек</string>
 
   <!-- Machine Select -->
   <string name="machine_select_title">Введите номер аппарата</string>

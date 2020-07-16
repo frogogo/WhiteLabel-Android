@@ -43,7 +43,7 @@ class OnboardingViewModelTest {
   fun `onboarding view state is stored on going next`() {
     // Prepare
     val navigationObserver = mockk<Observer<NavigationCommand>>(relaxed = true)
-    onboardingViewModel.navigationLive.observeForever(navigationObserver)
+    onboardingViewModel.navigationLiveEvent.observeForever(navigationObserver)
 
     // Execute
     onboardingViewModel.completeOnboarding()

@@ -168,7 +168,8 @@
 
   <fragment
     android:id="@+id/machine_select"
-    android:name="ru.poprobuy.poprobuy.ui.machine_select.MachineSelectFragment" >
+    android:name="ru.poprobuy.poprobuy.ui.machine_select.MachineSelectFragment"
+    tools:layout="@layout/fragment_machine_select">
     <action
       android:id="@+id/machine_select_to_products"
       app:destination="@id/products" />
@@ -183,5 +184,23 @@
     android:id="@+id/products"
     android:name="ru.poprobuy.poprobuy.ui.products.ProductsFragment"
     tools:layout="@layout/fragment_products" />
+
+  <fragment
+    android:id="@+id/web_view"
+    android:name="ru.poprobuy.poprobuy.ui.webview.WebViewFragment"
+    tools:layout="@layout/fragment_web_view">
+    <argument
+      android:name="url"
+      app:argType="string" />
+    <argument
+      android:name="titleResId"
+      app:argType="integer" />
+  </fragment>
+
+  <!-- Actions -->
+
+  <action
+    android:id="@+id/action_global_web_view"
+    app:destination="@id/web_view" />
 
 </navigation>

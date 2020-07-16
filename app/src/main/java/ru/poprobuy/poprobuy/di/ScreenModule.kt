@@ -4,6 +4,7 @@ package ru.poprobuy.poprobuy.di
 
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import ru.poprobuy.poprobuy.dictionary.ScanMode
 import ru.poprobuy.poprobuy.ui.auth.code.AuthCodeConfirmationViewModel
 import ru.poprobuy.poprobuy.ui.auth.email.AuthEmailViewModel
 import ru.poprobuy.poprobuy.ui.auth.name.AuthNameViewModel
@@ -19,10 +20,12 @@ import ru.poprobuy.poprobuy.ui.profile.ProfileViewModel
 import ru.poprobuy.poprobuy.ui.profile.receipts.ReceiptsViewModel
 import ru.poprobuy.poprobuy.ui.scanner.ScannerViewModel
 import ru.poprobuy.poprobuy.ui.splash.SplashViewModel
+import ru.poprobuy.poprobuy.ui.webview.WebViewViewModel
 
 val screenModule = module {
   viewModel { SplashViewModel(get(), get()) }
   viewModel { OnboardingViewModel(get(), get()) }
+  viewModel { WebViewViewModel() }
 
   // Auth
   viewModel { AuthPolicyViewModel(get(), get()) }
@@ -39,7 +42,12 @@ val screenModule = module {
 
   // Home
   viewModel { HomeViewModel(get()) }
-  viewModel { ScannerViewModel(get()) }
+  viewModel { (scanMode: ScanMode) ->
+    ScannerViewModel(
+      scanMode = scanMode,
+      navigation = get()
+    )
+  }
   viewModel { MachineSelectViewModel(get()) }
 
   // Products

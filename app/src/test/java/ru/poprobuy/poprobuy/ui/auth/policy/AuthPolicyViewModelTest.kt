@@ -32,7 +32,7 @@ class AuthPolicyViewModelTest {
       policyNavigation.navigateToAuthPhoneEnter()
     }
 
-    assertEquals(policyNavigation.navigateToAuthPhoneEnter(), policyViewModel.navigationLive.value)
+    assertEquals(policyNavigation.navigateToAuthPhoneEnter(), policyViewModel.navigationLiveEvent.value)
   }
 
 }

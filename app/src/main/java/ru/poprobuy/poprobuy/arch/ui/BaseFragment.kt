@@ -10,6 +10,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.navigation.NavigationRouter
 import ru.poprobuy.poprobuy.extension.setFullScreen
@@ -35,6 +37,7 @@ abstract class BaseFragment<out T : BaseViewModel>(
   abstract val viewModel: T
 
   private val windowAnimator: SimpleWindowAnimator by lazy { SimpleWindowAnimator(requireActivity().window) }
+  private val navigationRouter: NavigationRouter by inject { parametersOf(requireActivity(), findNavController()) }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
@@ -83,9 +86,7 @@ abstract class BaseFragment<out T : BaseViewModel>(
    * Handles navigation events from a [ViewModel]
    */
   private fun observeNavigation() {
-    viewModel.navigationLive.observe { command ->
-      NavigationRouter.navigate(findNavController(), command)
-    }
+    viewModel.navigationLiveEvent.observe(navigationRouter::navigate)
   }
 
 }

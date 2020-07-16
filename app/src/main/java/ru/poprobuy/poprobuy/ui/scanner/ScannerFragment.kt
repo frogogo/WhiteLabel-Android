@@ -16,6 +16,7 @@ import com.journeyapps.barcodescanner.BarcodeResult
 import com.journeyapps.barcodescanner.DefaultDecoderFactory
 import com.journeyapps.barcodescanner.Size
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentScannerBinding
@@ -32,7 +33,7 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
   lightStatusBar = false
 ), BarcodeCallback {
 
-  override val viewModel: ScannerViewModel by viewModel()
+  override val viewModel: ScannerViewModel by viewModel { parametersOf(args.mode) }
 
   private val binding: FragmentScannerBinding by viewBinding()
   private val args: ScannerFragmentArgs by navArgs()

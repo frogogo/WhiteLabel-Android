@@ -9,8 +9,8 @@ import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
 
 open class BaseViewModel : ViewModel() {
 
-  private val _navigationLive = LiveEvent<NavigationCommand>()
-  internal val navigationLive: LiveData<NavigationCommand> = _navigationLive
+  private val _navigationLiveEvent = LiveEvent<NavigationCommand>()
+  internal val navigationLiveEvent: LiveData<NavigationCommand> = _navigationLiveEvent
 
   open fun onCreate() = Unit
 
@@ -22,7 +22,7 @@ open class BaseViewModel : ViewModel() {
    * Convenient method to handle navigation from a [ViewModel]
    */
   fun NavigationCommand.navigate() {
-    _navigationLive.postValue(this)
+    _navigationLiveEvent.postValue(this)
   }
 
   /**

@@ -39,7 +39,7 @@ class SplashViewModelTest {
     splashViewModel.onCreate()
     advanceUntilIdle()
 
-    assertEquals(navigation.navigateToOnboarding(), splashViewModel.navigationLive.value)
+    assertEquals(navigation.navigateToOnboarding(), splashViewModel.navigationLiveEvent.value)
   }
 
   /**
@@ -52,7 +52,7 @@ class SplashViewModelTest {
     splashViewModel.onCreate()
     advanceUntilIdle()
 
-    assertEquals(navigation.navigateToPolicy(), splashViewModel.navigationLive.value)
+    assertEquals(navigation.navigateToPolicy(), splashViewModel.navigationLiveEvent.value)
   }
 
   /**
@@ -65,7 +65,7 @@ class SplashViewModelTest {
     splashViewModel.onCreate()
     advanceUntilIdle()
 
-    assertEquals(navigation.navigateToAuth(), splashViewModel.navigationLive.value)
+    assertEquals(navigation.navigateToAuth(), splashViewModel.navigationLiveEvent.value)
   }
 
   /**
@@ -78,7 +78,7 @@ class SplashViewModelTest {
     splashViewModel.onCreate()
     advanceUntilIdle()
 
-    assertEquals(navigation.navigateToApp(), splashViewModel.navigationLive.value)
+    assertEquals(navigation.navigateToApp(), splashViewModel.navigationLiveEvent.value)
   }
 
 }
