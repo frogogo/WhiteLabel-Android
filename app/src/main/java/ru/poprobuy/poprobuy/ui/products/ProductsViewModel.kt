@@ -72,13 +72,7 @@ class ProductsViewModel : BaseViewModel() {
         )
       }
 
-      val sorted = list.sortedWith(
-        compareByDescending(ProductUiModel::isActive) then compareBy(
-          ProductUiModel::inStock,
-          ProductUiModel::triedBefore
-        )
-      )
-      _dataLive.postValue(sorted)
+      _dataLive.postValue(list)
       _isLoadingLive.postValue(false)
     }
   }
