@@ -16,7 +16,7 @@
   <color name="card_background_light">@color/white</color>
   <color name="card_background_dark">@color/gray_50</color>
   <color name="elevation_shadow">#0F000000</color>
-  <color name="ripple_color">#1FFFA956</color>
+  <color name="ripple">@color/black_alpha_4</color>
   <color name="empty_list_title">@color/gray_500</color>
 
   <!-- Swipe Refresh Layout -->
