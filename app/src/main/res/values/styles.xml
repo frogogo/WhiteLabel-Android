@@ -36,6 +36,7 @@
     <item name="colorPrimary">@color/primary</item>
     <item name="colorPrimaryDark">@color/primary_dark</item>
     <item name="colorAccent">@color/accent</item>
+    <item name="colorControlHighlight">@color/ripple</item>
 
     <item name="materialButtonStyle">@style/MaterialButton</item>
 
@@ -84,6 +85,7 @@
   <style name="OutlinedButton.White">
     <item name="android:textColor">@color/white</item>
     <item name="strokeColor">@color/white</item>
+    <item name="rippleColor">@color/ripple_gray</item>
   </style>
 
   <style name="TextButton" parent="Widget.MaterialComponents.Button.TextButton">
@@ -94,6 +96,7 @@
 
   <style name="TextButton.White">
     <item name="android:textColor">@color/white</item>
+    <item name="rippleColor">@color/ripple_gray</item>
   </style>
 
   <style name="ProfileMenuButton" parent="TextButton">
