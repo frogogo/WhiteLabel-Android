@@ -9,6 +9,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import ru.poprobuy.poprobuy.di.appComponent
+import ru.poprobuy.poprobuy.util.FirebaseReportingTree
 
 @Suppress("unused")
 class PoprobuyApp : Application(), ImageLoaderFactory {
@@ -20,7 +21,7 @@ class PoprobuyApp : Application(), ImageLoaderFactory {
   }
 
   private fun initLogger() {
-    Timber.plant(Timber.DebugTree())
+    Timber.plant(if (BuildConfig.DEBUG) Timber.DebugTree() else FirebaseReportingTree())
   }
 
   private fun initKoin() {
