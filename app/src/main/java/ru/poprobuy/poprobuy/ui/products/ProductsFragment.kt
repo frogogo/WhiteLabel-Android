@@ -37,7 +37,7 @@ class ProductsFragment : BaseFragment<ProductsViewModel>(R.layout.fragment_produ
   override fun initObservers() = viewModel.run {
     dataLive.observe { adapter.items = it }
     isLoadingLive.observe { binding.progressBar.setVisible(it) }
-    timerStateLive.observe { renderTimer(it) }
+    timerStateLive.observe(this@ProductsFragment::renderTimer)
   }
 
   private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(
@@ -55,7 +55,7 @@ class ProductsFragment : BaseFragment<ProductsViewModel>(R.layout.fragment_produ
   private fun showProductSelectionDialog(product: ProductUiModel) {
     d { "Selecting product $product" }
     selectionInteractor.issueCommand(ProductSelectionCommand.SetProduct(product))
-    ProductSelectionDialogFragment.newInstance().show(childFragmentManager, null)
+    ProductSelectionDialogFragment.newInstance().show(childFragmentManager, ProductSelectionDialogFragment.TAG)
   }
 
 }

@@ -14,7 +14,7 @@ class AuthPolicyFragment : BaseFragment<AuthPolicyViewModel>(R.layout.fragment_a
   private val binding: FragmentAuthPolicyBinding by viewBinding()
 
   override fun initViews() {
-    binding.buttonContinue.setOnSafeClickListener { viewModel.navigateNext() }
+    binding.buttonContinue.setOnSafeClickListener(viewModel::navigateNext)
   }
 
 }

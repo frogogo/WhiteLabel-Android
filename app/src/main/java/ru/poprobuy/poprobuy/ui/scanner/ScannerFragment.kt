@@ -44,11 +44,11 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
     binding.apply {
       layoutToolbar.updateMargin(top = requireActivity().getStatusBarHeight())
       buttonFlash.setOnClickListener { toggleFlash() }
-      buttonClose.setOnSafeClickListener { viewModel.navigateBack() }
-      buttonHelp.setOnSafeClickListener { viewModel.navigateToHelp() }
+      buttonClose.setOnSafeClickListener(viewModel::navigateBack)
+      buttonHelp.setOnSafeClickListener(viewModel::navigateToHelp)
       buttonEnterManual.apply {
         setVisible(args.mode == MACHINE)
-        setOnSafeClickListener { viewModel.navigateToManualMachineEnter() }
+        setOnSafeClickListener(viewModel::navigateToManualMachineEnter)
       }
     }
 

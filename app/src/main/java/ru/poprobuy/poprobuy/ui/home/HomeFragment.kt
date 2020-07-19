@@ -19,7 +19,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(R.layout.fragment_home), SwipeR
 
   override fun initViews() {
     binding.apply {
-      buttonProfile.setOnSafeClickListener { viewModel.navigateToProfile() }
+      buttonProfile.setOnSafeClickListener(viewModel::navigateToProfile)
       recyclerView.adapter = this@HomeFragment.adapter
       swipeRefreshLayout.setOnRefreshListener(this@HomeFragment)
     }

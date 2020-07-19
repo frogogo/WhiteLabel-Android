@@ -52,7 +52,7 @@ class OnboardingFragment : BaseFragment<OnboardingViewModel>(R.layout.fragment_o
 
       // Init buttons
       buttonNext.setOnClickListener { if (viewPager.hasNext()) viewPager.goNext() }
-      buttonFinish.setOnSafeClickListener { viewModel.completeOnboarding() }
+      buttonFinish.setOnSafeClickListener(viewModel::completeOnboarding)
     }
 
     // Handle view pager back navigation

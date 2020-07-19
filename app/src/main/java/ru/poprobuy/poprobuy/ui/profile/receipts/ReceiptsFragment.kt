@@ -20,7 +20,7 @@ class ReceiptsFragment : BaseFragment<ReceiptsViewModel>(R.layout.fragment_recei
   private val adapter: BaseDelegationAdapter by lazy { createAdapter() }
 
   override fun initViews() {
-    binding.buttonBack.setOnSafeClickListener { viewModel.navigateBack() }
+    binding.buttonBack.setOnSafeClickListener(viewModel::navigateBack)
 
     // Recycler View
     val decorationSpacing = resources.getDimensionPixelSize(R.dimen.spacing_4)

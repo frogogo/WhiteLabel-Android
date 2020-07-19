@@ -7,6 +7,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentWebViewBinding
+import ru.poprobuy.poprobuy.extension.setOnClickListener
 
 class WebViewFragment : BaseFragment<WebViewViewModel>(R.layout.fragment_web_view) {
 
@@ -17,7 +18,7 @@ class WebViewFragment : BaseFragment<WebViewViewModel>(R.layout.fragment_web_vie
 
   override fun initViews() {
     binding.apply {
-      buttonBack.setOnClickListener { viewModel.navigateBack() }
+      buttonBack.setOnClickListener(viewModel::navigateBack)
       textViewTitle.text = getString(args.titleResId)
     }
     initWebView()

@@ -19,12 +19,22 @@ val View.layoutInflater: LayoutInflater
   get() = LayoutInflater.from(context)
 
 inline fun View.setOnSafeClickListener(
-  throttleDuration: Long = 500,
-  crossinline clickAction: (View) -> Unit
+  crossinline clickAction: (View) -> Unit,
+  throttleDuration: Long = 500
 ) {
   setOnClickListener(SafeClickListener(throttleDuration) { view ->
     clickAction(view)
   })
+}
+
+inline fun View.setOnSafeClickListener(crossinline clickAction: () -> Unit) {
+  setOnClickListener(SafeClickListener(500) {
+    clickAction.invoke()
+  })
+}
+
+inline fun View.setOnClickListener(crossinline clickAction: () -> Unit) {
+  setOnClickListener { clickAction.invoke() }
 }
 
 /**

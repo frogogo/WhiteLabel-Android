@@ -29,7 +29,7 @@ class ProductSelectionDialogFragment : BaseDialogFragment(R.layout.fragment_prod
   override fun initViews() {
     binding.apply {
       layoutProduct.apply {
-        buttonYes.setOnSafeClickListener { viewModel.confirmSelection() }
+        buttonYes.setOnSafeClickListener(viewModel::confirmSelection)
         buttonNo.setOnSafeClickListener { dismiss() }
       }
       layoutSuccess.buttonDone.setOnSafeClickListener { dismiss() }
@@ -39,7 +39,7 @@ class ProductSelectionDialogFragment : BaseDialogFragment(R.layout.fragment_prod
 
   override fun initObservers() {
     viewModel.apply {
-      stateLive.observe(viewLifecycleOwner) { renderState(it) }
+      stateLive.observe(viewLifecycleOwner, this@ProductSelectionDialogFragment::renderState)
     }
     interactor.getCommandEvent().observe(viewLifecycleOwner) { event ->
       when (event) {
@@ -77,6 +77,9 @@ class ProductSelectionDialogFragment : BaseDialogFragment(R.layout.fragment_prod
   }
 
   companion object {
+
+    const val TAG = "ProductSelectionDialogFragment"
+
     fun newInstance(): ProductSelectionDialogFragment = ProductSelectionDialogFragment()
   }
 

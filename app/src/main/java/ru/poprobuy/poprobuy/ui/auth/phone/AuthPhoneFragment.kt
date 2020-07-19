@@ -22,7 +22,7 @@ class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(
     // Force keyboard
     binding.textInputLayout.apply {
       showKeyboard()
-      setEditGoAction { viewModel.requestCode() }
+      setEditGoAction(viewModel::requestCode)
       initPhoneType(this@AuthPhoneFragment)
     }
   }

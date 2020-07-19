@@ -16,18 +16,18 @@ class ProfileFragment : BaseFragment<ProfileViewModel>(R.layout.fragment_profile
   private val binding: FragmentProfileBinding by viewBinding()
 
   override fun initViews() {
-    binding.buttonClose.setOnSafeClickListener { viewModel.navigateBack() }
+    binding.buttonClose.setOnSafeClickListener(viewModel::navigateBack)
     binding.layoutContent.apply {
       layoutInvite.buttonShare.setOnSafeClickListener { /* TODO: 04.07.2020 Invitation */ }
       layoutMenu.apply {
-        buttonReceipts.setOnSafeClickListener { viewModel.navigateToReceipts() }
-        buttonGoods.setOnSafeClickListener { viewModel.navigateToGoods() }
+        buttonReceipts.setOnSafeClickListener(viewModel::navigateToReceipts)
+        buttonGoods.setOnSafeClickListener(viewModel::navigateToGoods)
       }
     }
   }
 
   override fun initObservers() = viewModel.run {
-    profileLive.observe { renderProfile(it) }
+    profileLive.observe(this@ProfileFragment::renderProfile)
   }
 
   private fun renderProfile(profile: ProfileUiModel) {
