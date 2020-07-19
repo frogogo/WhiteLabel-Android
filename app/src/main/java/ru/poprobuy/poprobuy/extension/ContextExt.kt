@@ -41,7 +41,8 @@ fun Context.showAppDetailsSettings() {
  */
 fun Context.openUrlInTabs(url: String, onFailed: () -> Unit = {}) {
   // Strictly require custom tabs-compatible browser
-  if (CustomTabsPackageHelper.getPackageNameToUse(this) == null) {
+  val packageName = CustomTabsPackageHelper.getPackageNameToUse(this)
+  if (packageName == null) {
     onFailed.invoke()
     return
   }
@@ -51,6 +52,9 @@ fun Context.openUrlInTabs(url: String, onFailed: () -> Unit = {}) {
     setShowTitle(true)
     setToolbarColor(getColor(R.color.status_bar))
   }.build()
+
+  // Set package name to use
+  intent.intent.setPackage(packageName)
 
   try {
     intent.launchUrl(this, Uri.parse(url))
