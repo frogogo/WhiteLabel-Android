@@ -40,11 +40,13 @@
 
   <string name="auth_phone_title">Вход</string>
   <string name="auth_phone_subtitle">Введите номер телефона</string>
+  <string name="auth_phone_error_too_many_requests">Превышено количество попыток запроса кода подтверждения</string>
 
-  <string name="auth_code_confirmation_title">Введите код</string>
-  <string name="auth_code_confirmation_subtitle">Код отправлен на номер</string>
-  <string name="auth_code_confirmation_button_phone_change">Изменить</string>
-  <string name="auth_code_confirmation_button_resend_code">Выслать новый код</string>
+  <string name="auth_code_title">Введите код</string>
+  <string name="auth_code_subtitle">Код отправлен на номер</string>
+  <string name="auth_code_button_phone_change">Изменить</string>
+  <string name="auth_code_button_resend_code">Выслать новый код</string>
+  <string name="auth_code_error_invalid_code">Неверный код, попробуйте еще раз или запросите новый</string>
 
   <string name="auth_name_title">Давайте познакомимся!</string>
   <string name="auth_name_subtitle">Как вас зовут?</string>

@@ -15,3 +15,9 @@ fun String.formatWithMask(mask: String): String {
     .formattedText
     .string
 }
+
+fun String.getUnformattedPhoneNumber(): String {
+  val regex = Regex("[()\\- ]") // Replaces all characters in
+
+  return this.replace(regex, "")
+}

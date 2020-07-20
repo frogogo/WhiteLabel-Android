@@ -4,12 +4,12 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import ru.poprobuy.poprobuy.CoroutinesTestRule
 import ru.poprobuy.poprobuy.usecase.GetUserAuthStateUseCase
-import kotlin.test.assertEquals
 
 @ExperimentalCoroutinesApi
 class SplashViewModelTest {
@@ -20,13 +20,13 @@ class SplashViewModelTest {
   @get:Rule
   val instantTaskExecutorRule = InstantTaskExecutorRule()
 
+  private lateinit var viewModel: SplashViewModel
   private val getUserAuthStateUseCase: GetUserAuthStateUseCase = mockk(relaxed = true)
   private val navigation: SplashNavigation = mockk(relaxed = true)
-  private lateinit var splashViewModel: SplashViewModel
 
   @Before
   fun setUp() {
-    splashViewModel = SplashViewModel(getUserAuthStateUseCase, navigation)
+    viewModel = SplashViewModel(getUserAuthStateUseCase, navigation)
   }
 
   /**
@@ -36,10 +36,10 @@ class SplashViewModelTest {
   fun `user first launch`() = coroutineTestRule.runBlockingTest {
     every { getUserAuthStateUseCase.invoke() } returns GetUserAuthStateUseCase.State.CLEAN_START
 
-    splashViewModel.onCreate()
+    viewModel.onCreate()
     advanceUntilIdle()
 
-    assertEquals(navigation.navigateToOnboarding(), splashViewModel.navigationLiveEvent.value)
+    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToOnboarding()
   }
 
   /**
@@ -49,10 +49,10 @@ class SplashViewModelTest {
   fun `user completed onboarding`() = coroutineTestRule.runBlockingTest {
     every { getUserAuthStateUseCase.invoke() } returns GetUserAuthStateUseCase.State.ONBOARDING_COMPLETED
 
-    splashViewModel.onCreate()
+    viewModel.onCreate()
     advanceUntilIdle()
 
-    assertEquals(navigation.navigateToPolicy(), splashViewModel.navigationLiveEvent.value)
+    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToPolicy()
   }
 
   /**
@@ -62,10 +62,10 @@ class SplashViewModelTest {
   fun `user accepted policy`() = coroutineTestRule.runBlockingTest {
     every { getUserAuthStateUseCase.invoke() } returns GetUserAuthStateUseCase.State.POLICY_ACCEPTED
 
-    splashViewModel.onCreate()
+    viewModel.onCreate()
     advanceUntilIdle()
 
-    assertEquals(navigation.navigateToAuth(), splashViewModel.navigationLiveEvent.value)
+    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToAuth()
   }
 
   /**
@@ -75,10 +75,10 @@ class SplashViewModelTest {
   fun `user logged in`() = coroutineTestRule.runBlockingTest {
     every { getUserAuthStateUseCase.invoke() } returns GetUserAuthStateUseCase.State.LOGGED_IN
 
-    splashViewModel.onCreate()
+    viewModel.onCreate()
     advanceUntilIdle()
 
-    assertEquals(navigation.navigateToApp(), splashViewModel.navigationLiveEvent.value)
+    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToApp()
   }
 
 }

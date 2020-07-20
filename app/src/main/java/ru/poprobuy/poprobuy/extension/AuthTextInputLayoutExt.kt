@@ -2,7 +2,7 @@ package ru.poprobuy.poprobuy.extension
 
 import android.text.InputType
 import android.text.method.DigitsKeyListener
-import com.redmadrobot.inputmask.MaskedTextChangedListener
+import android.widget.EditText
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.util.Constants
 import ru.poprobuy.poprobuy.view.AuthTextInputLayout
@@ -10,20 +10,17 @@ import ru.poprobuy.poprobuy.view.AuthTextInputLayout
 private const val DIGITS_PHONE_NUMBER = "1234567890+-() "
 private const val DIGITS_NUMBERS = "1234567890"
 
-fun AuthTextInputLayout.initPhoneType(listener: MaskedTextChangedListener.ValueListener) {
+val AuthTextInputLayout.editText: EditText
+  get() = binding.editText
+
+fun AuthTextInputLayout.initPhoneType() {
   // binding.apply {
-  binding.editText.inputType = InputType.TYPE_CLASS_NUMBER
+  editText.inputType = InputType.TYPE_CLASS_NUMBER
   textKeyListener = DigitsKeyListener.getInstance(DIGITS_PHONE_NUMBER)
 
-  // Set masked listener
-  val textChangedListener = MaskedTextChangedListener.installOn(
-    editText = binding.editText,
-    primaryFormat = Constants.PHONE_MASK,
-    valueListener = listener
-  )
-
   // Set placeholder
-  placeholder = textChangedListener.placeholder()
+  placeholder = "(000) 000-00-00"
+
   // Set prefix
   // Use space at the end to add some margin between prefix and main text
   prefix = "${Constants.PHONE_PREFIX} "
@@ -43,15 +40,15 @@ fun AuthTextInputLayout.initCodeConfirmationType() {
 }
 
 fun AuthTextInputLayout.initUserNameType() {
-  binding.editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_WORDS
+  editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_WORDS
 }
 
 fun AuthTextInputLayout.initEmailType() {
-  binding.editText.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+  editText.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
 }
 
 fun AuthTextInputLayout.initMachineNumberType() {
-  binding.editText.apply {
+  editText.apply {
     inputType = InputType.TYPE_CLASS_NUMBER
     textKeyListener = DigitsKeyListener.getInstance(DIGITS_NUMBERS)
   }

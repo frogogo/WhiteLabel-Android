@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
@@ -38,6 +39,8 @@ android {
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     setProperty("archivesBaseName", applicationName + "-v" + versionCode + "(" + versionName + ")-" + getDate())
 
+    buildConfigField 'int', 'API_VERSION', '1'
+    buildConfigField 'String', 'BASE_URL', '"https://poprobuy.ru"'
     buildConfigField "java.util.Date", "BUILD_TIME", "new java.util.Date(" + System.currentTimeMillis() + "L)"
   }
 
@@ -111,6 +114,11 @@ dependencies {
   // Browser https://developer.android.com/jetpack/androidx/releases/browser
   implementation 'androidx.browser:browser:1.2.0'
 
+  // Google Play Services https://developers.google.com/android/guides/setup
+  implementation 'com.google.android.gms:play-services-auth:18.1.0'
+  // https://developers.google.com/android/guides/releases
+  implementation 'com.google.android.gms:play-services-auth-api-phone:17.4.0'
+
   // Material Design Components https://github.com/material-components/material-components-android
   implementation 'com.google.android.material:material:1.2.0-beta01'
 
@@ -166,6 +174,24 @@ dependencies {
   implementation "org.koin:koin-androidx-scope:$koinVersion"
   implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
 
+  // Retrofit https://github.com/square/retrofit
+  def retrofitVersion = '2.9.0'
+  implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+  implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+  implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+  implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
+
+  // Moshi https://github.com/square/moshi
+  def moshiVersion = '1.9.3'
+  implementation "com.squareup.moshi:moshi:$moshiVersion"
+  implementation "com.squareup.moshi:moshi-adapters:$moshiVersion"
+  kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+
+  // Chuck https://github.com/jgilfelt/chuck
+  def chuckVersion = '1.1.0'
+  debugImplementation "com.readystatesoftware.chuck:library:$chuckVersion"
+  releaseImplementation "com.readystatesoftware.chuck:library-no-op:$chuckVersion"
+
   // Timber Kt https://github.com/ajalt/timberkt
   implementation 'com.github.ajalt:timberkt:1.5.1'
 
@@ -183,6 +209,13 @@ dependencies {
   //
   // Test Libraries
   //
+
+  // Kluent https://github.com/MarkusAmshove/Kluent
+  testImplementation 'org.amshove.kluent:kluent:1.61'
+
+  // Robolectric http://robolectric.org/getting-started/
+  testImplementation 'org.robolectric:robolectric:4.3.1'
+
   testImplementation 'junit:junit:4.12'
   testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
 
@@ -195,6 +228,8 @@ dependencies {
   // MockK https://github.com/mockk/mockk
   testImplementation 'io.mockk:mockk:1.10.0'
 
+  // Add field to BuildConfig
+  android.defaultConfig.buildConfigField 'String', 'RETROFIT_VERSION', "\"$retrofitVersion\""
 }
 
 /**

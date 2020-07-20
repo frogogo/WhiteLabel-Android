@@ -6,7 +6,7 @@ import ru.poprobuy.poprobuy.R
 
 object Validators {
 
-  private const val REGEX_NOT_NUM = "\\D+"
+  private val PATTERN_NON_DIGITS = Regex("[^0-9]+")
   private val PATTERN_DIGITS = Regex("\\d+")
   private val PATTERN_USER_NAME = Regex("[A-Za-zА-Яа-я\\-]+")
 
@@ -22,7 +22,7 @@ object Validators {
   @StringRes
   fun isPhone(text: String): Int? = when {
     // Check length
-    text.replace(REGEX_NOT_NUM, "").length < MIN_LENGTH_PHONE -> R.string.error_phone_length
+    text.replace(PATTERN_NON_DIGITS, "").length < MIN_LENGTH_PHONE -> R.string.error_phone_length
     // Check format
     !Patterns.PHONE.matcher(text).matches() -> R.string.error_phone_format
     // All is ok

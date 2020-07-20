@@ -11,6 +11,7 @@ import ru.poprobuy.poprobuy.extension.hideKeyboard
 import ru.poprobuy.poprobuy.extension.initEmailType
 import ru.poprobuy.poprobuy.extension.setNullableTextRes
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
+import ru.poprobuy.poprobuy.util.SpannableUtils
 
 class AuthEmailFragment : BaseFragment<AuthEmailViewModel>(
   layoutId = R.layout.fragment_auth_email,
@@ -35,17 +36,27 @@ class AuthEmailFragment : BaseFragment<AuthEmailViewModel>(
   }
 
   override fun initObservers() = viewModel.run {
-    emailValidationLiveEvent.observe { errorRes ->
-      binding.textViewError.setNullableTextRes(errorRes)
-      binding.textInputLayout.setError(errorRes != null)
-    }
     isLoadingLive.observe { isLoading ->
       binding.textInputLayout.setLoading(isLoading)
       binding.buttonContinue.isEnabled = !isLoading
     }
-    command.observe { command ->
-      when (command) {
-        AuthEmailCommand.HideKeyboard -> requireContext().hideKeyboard()
+    commandLiveEvent.observe(this@AuthEmailFragment::handleCommand)
+  }
+
+  private fun handleCommand(command: AuthEmailCommand) {
+    when (command) {
+      AuthEmailCommand.HideKeyboard -> {
+        requireContext().hideKeyboard()
+      }
+      AuthEmailCommand.SomethingWentWrong -> binding.apply {
+        textInputLayout.setError(true)
+        textViewError.text = SpannableUtils.createSomethingWentWrongSpan(requireContext()) {
+          setEmail()
+        }
+      }
+      is AuthEmailCommand.EmailValidationResult -> binding.apply {
+        textViewError.setNullableTextRes(command.errorRes)
+        textInputLayout.setError(command.errorRes != null)
       }
     }
   }

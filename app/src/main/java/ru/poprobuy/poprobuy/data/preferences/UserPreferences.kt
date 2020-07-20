@@ -13,6 +13,10 @@ class UserPreferences(context: Context) {
     EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
   )
 
+  var accessToken: String?
+    get() = sharedPrefs.getString(KEY_ACCESS_TOKEN, null)
+    set(value) = sharedPrefs.edit { putString(KEY_ACCESS_TOKEN, value) }
+
   var isLoggedIn: Boolean
     get() = sharedPrefs.getBoolean(KEY_IS_LOGGED_IN, false)
     set(value) = sharedPrefs.edit { putBoolean(KEY_IS_LOGGED_IN, value) }
@@ -29,6 +33,7 @@ class UserPreferences(context: Context) {
     private const val PREFERENCES_FILENAME = "user_preferences"
 
     // Keys
+    private const val KEY_ACCESS_TOKEN = "access_token"
     private const val KEY_IS_LOGGED_IN = "is_logged_in"
     private const val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
     private const val KEY_POLICY_ACCEPTED = "policy_accepted"

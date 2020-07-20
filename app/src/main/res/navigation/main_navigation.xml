@@ -66,7 +66,7 @@
     tools:layout="@layout/fragment_auth_phone">
     <action
       android:id="@+id/auth_phone_to_auth_code_confirmation"
-      app:destination="@id/auth_code_confirmation"
+      app:destination="@id/auth_code"
       app:enterAnim="@anim/slide_in_right"
       app:exitAnim="@anim/slide_out_left"
       app:popEnterAnim="@anim/slide_in_left"
@@ -74,9 +74,9 @@
   </fragment>
 
   <fragment
-    android:id="@+id/auth_code_confirmation"
-    android:name="ru.poprobuy.poprobuy.ui.auth.code.AuthCodeConfirmationFragment"
-    tools:layout="@layout/fragment_auth_code_confirmation">
+    android:id="@+id/auth_code"
+    android:name="ru.poprobuy.poprobuy.ui.auth.code.AuthCodeFragment"
+    tools:layout="@layout/fragment_auth_code">
     <argument
       android:name="phoneNumber"
       app:argType="string" />

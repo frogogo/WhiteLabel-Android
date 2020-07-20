@@ -8,19 +8,22 @@ import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.ticker
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.usecase.auth.AuthenticationResult
+import ru.poprobuy.poprobuy.usecase.auth.AuthenticationUseCase
 import ru.poprobuy.poprobuy.util.DateUtils
 import ru.poprobuy.poprobuy.util.Validators
 import java.util.*
 
-class AuthCodeConfirmationViewModel(
-  private val navigation: AuthCodeConfirmationNavigation
+class AuthCodeViewModel(
+  private val phoneNumber: String,
+  private val navigation: AuthCodeConfirmationNavigation,
+  private val authenticationUseCase: AuthenticationUseCase
 ) : BaseViewModel() {
 
-  private val _codeValidationLiveEvent = LiveEvent<Int?>()
-  val codeValidationLiveEvent: LiveData<Int?> get() = _codeValidationLiveEvent
+  private val _commandLiveEvent = LiveEvent<AuthCodeCommand>()
+  val commandLiveEvent: LiveData<AuthCodeCommand> get() = _commandLiveEvent
 
   private val _isLoadingLive = LiveEvent<Boolean>()
   val isLoadingLive: LiveData<Boolean> get() = _isLoadingLive
@@ -56,18 +59,27 @@ class AuthCodeConfirmationViewModel(
     if (!validateConfirmationCode(confirmationCode)) return
 
     viewModelScope.launch {
-      // TODO: 13.06.2020
-
-      // Tmp
       _isLoadingLive.postValue(true)
-      delay(1500)
-      navigation.navigateToAuthName().navigate()
+
+      when (val result = authenticationUseCase(phoneNumber, confirmationCode)) {
+        is AuthenticationResult.Success -> {
+          if (result.response.isNew) {
+            navigation.navigateToAuthName().navigate()
+          } else {
+            navigation.navigateToApp().navigate()
+          }
+        }
+        AuthenticationResult.Error -> _commandLiveEvent.postValue(AuthCodeCommand.SomethingWentWrong)
+        AuthenticationResult.NotFound -> _commandLiveEvent.postValue(AuthCodeCommand.UserNotFoundError)
+      }
+
+      _isLoadingLive.postValue(false)
     }
   }
 
   private fun validateConfirmationCode(code: String): Boolean {
     val error = Validators.isConfirmationCode(code)
-    _codeValidationLiveEvent.postValue(error)
+    _commandLiveEvent.postValue(AuthCodeCommand.CodeValidationResult(error))
 
     return error == null
   }

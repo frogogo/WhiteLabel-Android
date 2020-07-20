@@ -1,7 +1,6 @@
 package ru.poprobuy.poprobuy.ui.onboarding
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.Observer
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -13,26 +12,27 @@ import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.data.model.ui.onboarding.OnboardingPage
 import ru.poprobuy.poprobuy.data.repository.OnboardingRepository
+import ru.poprobuy.poprobuy.mockkObserver
 
 class OnboardingViewModelTest {
 
   @get:Rule
   val instantExecutorRule = InstantTaskExecutorRule()
 
-  private lateinit var onboardingViewModel: OnboardingViewModel
+  private lateinit var viewModel: OnboardingViewModel
   private val onboardingRepository: OnboardingRepository = mockk(relaxed = true)
-  private val onboardingNavigation: OnboardingNavigationImpl = mockk(relaxed = true)
+  private val navigation: OnboardingNavigationImpl = mockk(relaxed = true)
 
   @Before
   fun startUp() {
     every { onboardingRepository.getPages() } returns getOnboardingPages()
-    onboardingViewModel = OnboardingViewModel(onboardingRepository, onboardingNavigation)
+    viewModel = OnboardingViewModel(onboardingRepository, navigation)
   }
 
   @Test
   fun `posts proper list to LiveData`() {
-    val dataObserver = mockk<Observer<List<RecyclerViewItem>>>(relaxed = true)
-    onboardingViewModel.pagesLive.observeForever(dataObserver)
+    val dataObserver = mockkObserver<List<RecyclerViewItem>>()
+    viewModel.pagesLive.observeForever(dataObserver)
 
     verify {
       dataObserver.onChanged(getOnboardingPages())
@@ -42,18 +42,18 @@ class OnboardingViewModelTest {
   @Test
   fun `onboarding view state is stored on going next`() {
     // Prepare
-    val navigationObserver = mockk<Observer<NavigationCommand>>(relaxed = true)
-    onboardingViewModel.navigationLiveEvent.observeForever(navigationObserver)
+    val navigationObserver = mockkObserver<NavigationCommand>()
+    viewModel.navigationLiveEvent.observeForever(navigationObserver)
 
     // Execute
-    onboardingViewModel.completeOnboarding()
+    viewModel.completeOnboarding()
 
     // Verify
     verifyOrder {
       // State was saved
       onboardingRepository.setOnboardingCompleted()
       // Navigation executed
-      navigationObserver.onChanged(onboardingNavigation.navigateToAuth())
+      navigationObserver.onChanged(navigation.navigateToAuth())
     }
   }
 

@@ -1,21 +1,22 @@
-package ru.poprobuy.poprobuy.usecase
+package ru.poprobuy.poprobuy.usecase.auth
 
 import io.mockk.every
 import io.mockk.mockk
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Test
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
+import ru.poprobuy.poprobuy.usecase.GetUserAuthStateUseCase
 import ru.poprobuy.poprobuy.usecase.GetUserAuthStateUseCase.State
-import kotlin.test.assertEquals
 
 class GetUserAuthStateUseCaseTest {
 
-  private lateinit var getUserAuthStateUseCase: GetUserAuthStateUseCase
+  private lateinit var useCase: GetUserAuthStateUseCase
   private val userPreferences: UserPreferences = mockk(relaxed = true)
 
   @Before
   fun startUp() {
-    getUserAuthStateUseCase = GetUserAuthStateUseCase(userPreferences)
+    useCase = GetUserAuthStateUseCase(userPreferences)
   }
 
   /**
@@ -24,7 +25,7 @@ class GetUserAuthStateUseCaseTest {
    */
   @Test
   fun `first launch`() {
-    assertEquals(State.CLEAN_START, getUserAuthStateUseCase())
+    useCase() shouldBeEqualTo State.CLEAN_START
   }
 
   /**
@@ -34,7 +35,8 @@ class GetUserAuthStateUseCaseTest {
   @Test
   fun `onboarding completed`() {
     every { userPreferences.onboardingCompleted } returns true
-    assertEquals(State.ONBOARDING_COMPLETED, getUserAuthStateUseCase())
+
+    useCase() shouldBeEqualTo State.ONBOARDING_COMPLETED
   }
 
   /**
@@ -44,7 +46,8 @@ class GetUserAuthStateUseCaseTest {
   @Test
   fun `policy accepted`() {
     every { userPreferences.policyAccepted } returns true
-    assertEquals(State.POLICY_ACCEPTED, getUserAuthStateUseCase())
+
+    useCase() shouldBeEqualTo State.POLICY_ACCEPTED
   }
 
   /**
@@ -55,7 +58,8 @@ class GetUserAuthStateUseCaseTest {
   fun `policy accepted but onboarding was not completed`() {
     every { userPreferences.onboardingCompleted } returns false
     every { userPreferences.policyAccepted } returns true
-    assertEquals(State.POLICY_ACCEPTED, getUserAuthStateUseCase())
+
+    useCase() shouldBeEqualTo State.POLICY_ACCEPTED
   }
 
   /**
@@ -66,7 +70,8 @@ class GetUserAuthStateUseCaseTest {
   fun `user authorized`() {
     every { userPreferences.isLoggedIn } returns true
     every { userPreferences.onboardingCompleted } returns true
-    assertEquals(State.LOGGED_IN, getUserAuthStateUseCase())
+
+    useCase() shouldBeEqualTo State.LOGGED_IN
   }
 
   /**
@@ -78,7 +83,7 @@ class GetUserAuthStateUseCaseTest {
     every { userPreferences.isLoggedIn } returns true
     every { userPreferences.policyAccepted } returns false
 
-    assertEquals(State.LOGGED_IN, getUserAuthStateUseCase())
+    useCase() shouldBeEqualTo State.LOGGED_IN
   }
 
 }

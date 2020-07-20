@@ -4,46 +4,57 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.github.ajalt.timberkt.d
+import com.github.ajalt.timberkt.e
 import com.hadilq.liveevent.LiveEvent
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.extension.getUnformattedPhoneNumber
+import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationCodeUseCase
+import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationResult
+import ru.poprobuy.poprobuy.util.PhoneUtils
 import ru.poprobuy.poprobuy.util.Validators
 
 class AuthPhoneViewModel(
-  private val navigation: AuthPhoneNavigation
+  private val navigation: AuthPhoneNavigation,
+  private val requestConfirmationCodeUseCase: RequestConfirmationCodeUseCase
 ) : BaseViewModel() {
 
-  private val _phoneValidationLiveEvent = LiveEvent<Int?>()
-  val phoneValidationLiveEvent: LiveData<Int?> get() = _phoneValidationLiveEvent
+  private val _commandLiveEvent = LiveEvent<AuthPhoneCommand>()
+  val commandLiveEvent: LiveData<AuthPhoneCommand> get() = _commandLiveEvent
 
   private val _isLoadingLive = MutableLiveData<Boolean>()
   val isLoadingLive: LiveData<Boolean> get() = _isLoadingLive
 
-  private var phoneNumber = ""
+  fun requestCode(phoneNumber: String, showValidationError: Boolean = false) {
+    _commandLiveEvent.postValue(AuthPhoneCommand.ClearError)
 
-  fun setPhoneNumber(phoneNumber: String) {
-    d { "Entered phone - $phoneNumber" }
-    this.phoneNumber = phoneNumber
-    requestCode()
-  }
+    // Remove formatting
+    val phoneNumberUnformatted = phoneNumber.getUnformattedPhoneNumber()
+    d { "Entered phone - $phoneNumber, unformatted - $phoneNumberUnformatted" }
+    if (!validatePhone(phoneNumberUnformatted, showValidationError)) return
+    val phoneNumberPrefixed = PhoneUtils.addPrefix(phoneNumberUnformatted)
 
-  fun requestCode() {
-    if (!validatePhone(phoneNumber)) return
-    // TODO: 10.06.2020
-
-    // Temp
     viewModelScope.launch {
       _isLoadingLive.postValue(true)
-      delay(1500)
+      val result = requestConfirmationCodeUseCase(phoneNumberPrefixed)
       _isLoadingLive.postValue(false)
-      navigation.navigateToAuthCodeConfirmation(phoneNumber).navigate()
+
+      when (result) {
+        RequestConfirmationResult.Success -> navigation.navigateToAuthCodeConfirmation(phoneNumberPrefixed).navigate()
+        RequestConfirmationResult.TooManyRequests -> _commandLiveEvent.postValue(AuthPhoneCommand.TooManyRequestsError)
+        RequestConfirmationResult.Error -> _commandLiveEvent.postValue(AuthPhoneCommand.SomethingWentWrong)
+      }
     }
   }
 
-  private fun validatePhone(phoneNumber: String): Boolean {
+  private fun validatePhone(phoneNumber: String, showValidationError: Boolean = false): Boolean {
     val error = Validators.isPhone(phoneNumber)
-    _phoneValidationLiveEvent.postValue(error)
+    if (showValidationError) {
+      _commandLiveEvent.postValue(AuthPhoneCommand.PhoneValidationResult(error))
+    }
+
+    // Log negative result
+    error?.let { e { "Validation failed for number - $phoneNumber" } }
 
     return error == null
   }
