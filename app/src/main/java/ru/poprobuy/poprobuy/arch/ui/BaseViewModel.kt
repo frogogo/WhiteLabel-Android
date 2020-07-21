@@ -15,11 +15,11 @@ open class BaseViewModel : ViewModel() {
   private val _baseCommandLiveEvent = LiveEvent<BaseCommand>()
   val baseCommandLiveEvent: LiveData<BaseCommand> get() = _baseCommandLiveEvent
 
-  open fun onCreate() = Unit
+  open fun onCreate(): Unit = Unit
 
-  open fun onStart() = Unit
+  open fun onStart(): Unit = Unit
 
-  open fun onStop() = Unit
+  open fun onStop(): Unit = Unit
 
   /**
    * Convenient method to handle navigation from a [ViewModel]

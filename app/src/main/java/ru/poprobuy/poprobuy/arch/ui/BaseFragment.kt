@@ -74,9 +74,9 @@ abstract class BaseFragment<out T : BaseViewModel>(
     viewModel.onStop()
   }
 
-  open fun initViews() = Unit
+  open fun initViews(): Unit = Unit
 
-  open fun initObservers() = Unit
+  open fun initObservers(): Unit = Unit
 
   @MainThread
   protected inline fun <T> LiveData<T>.observe(crossinline onChanged: (T) -> Unit) {

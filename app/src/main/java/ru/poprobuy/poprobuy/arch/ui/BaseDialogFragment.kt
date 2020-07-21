@@ -34,8 +34,8 @@ open class BaseDialogFragment(
     initObservers()
   }
 
-  open fun initViews() = Unit
+  open fun initViews(): Unit = Unit
 
-  open fun initObservers() = Unit
+  open fun initObservers(): Unit = Unit
 
 }
