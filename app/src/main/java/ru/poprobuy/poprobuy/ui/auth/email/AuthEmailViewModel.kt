@@ -36,7 +36,7 @@ class AuthEmailViewModel(
 
       if (result is UseCaseResult.Success) {
         authRepository.setUserAuthorized()
-        _commandLiveEvent.postValue(AuthEmailCommand.HideKeyboard)
+        hideKeyboard()
         navigation.navigateToApp().navigate()
       } else {
         _commandLiveEvent.postValue(AuthEmailCommand.SomethingWentWrong)

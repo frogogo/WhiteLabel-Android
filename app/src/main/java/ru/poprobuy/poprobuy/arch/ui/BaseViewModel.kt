@@ -12,6 +12,9 @@ open class BaseViewModel : ViewModel() {
   private val _navigationLiveEvent = LiveEvent<NavigationCommand>()
   internal val navigationLiveEvent: LiveData<NavigationCommand> = _navigationLiveEvent
 
+  private val _baseCommandLiveEvent = LiveEvent<BaseCommand>()
+  val baseCommandLiveEvent: LiveData<BaseCommand> get() = _baseCommandLiveEvent
+
   open fun onCreate() = Unit
 
   open fun onStart() = Unit
@@ -31,6 +34,10 @@ open class BaseViewModel : ViewModel() {
   fun navigateBack() {
     d { "Navigating back" }
     AppNavigation.navigateBack().navigate()
+  }
+
+  fun hideKeyboard() {
+    _baseCommandLiveEvent.postValue(BaseCommand.HideKeyboard)
   }
 
 }

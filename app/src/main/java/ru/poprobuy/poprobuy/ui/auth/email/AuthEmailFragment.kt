@@ -7,7 +7,6 @@ import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentAuthEmailBinding
-import ru.poprobuy.poprobuy.extension.hideKeyboard
 import ru.poprobuy.poprobuy.extension.initEmailType
 import ru.poprobuy.poprobuy.extension.setNullableTextRes
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
@@ -45,9 +44,6 @@ class AuthEmailFragment : BaseFragment<AuthEmailViewModel>(
 
   private fun handleCommand(command: AuthEmailCommand) {
     when (command) {
-      AuthEmailCommand.HideKeyboard -> {
-        requireContext().hideKeyboard()
-      }
       AuthEmailCommand.SomethingWentWrong -> binding.apply {
         textInputLayout.setError(true)
         textViewError.text = SpannableUtils.createSomethingWentWrongSpan(requireContext()) {

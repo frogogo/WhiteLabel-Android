@@ -14,6 +14,7 @@ import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.navigation.NavigationRouter
+import ru.poprobuy.poprobuy.extension.hideKeyboard
 import ru.poprobuy.poprobuy.extension.setFullScreen
 import ru.poprobuy.poprobuy.extension.setStatusBarColor
 import ru.poprobuy.poprobuy.extension.setStatusBarLight
@@ -45,7 +46,7 @@ abstract class BaseFragment<out T : BaseViewModel>(
     // Init fragment
     initViews()
     initObservers()
-    observeNavigation()
+    initInnerObservers()
 
     viewModel.onCreate()
   }
@@ -85,8 +86,15 @@ abstract class BaseFragment<out T : BaseViewModel>(
   /**
    * Handles navigation events from a [ViewModel]
    */
-  private fun observeNavigation() {
-    viewModel.navigationLiveEvent.observe(navigationRouter::navigate)
+  private fun initInnerObservers() = viewModel.run {
+    navigationLiveEvent.observe(navigationRouter::navigate)
+    baseCommandLiveEvent.observe(this@BaseFragment::handleCommand)
+  }
+
+  private fun handleCommand(command: BaseCommand) {
+    when (command) {
+      BaseCommand.HideKeyboard -> requireContext().hideKeyboard()
+    }
   }
 
 }

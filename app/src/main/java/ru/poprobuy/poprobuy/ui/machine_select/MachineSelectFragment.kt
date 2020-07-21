@@ -33,16 +33,6 @@ class MachineSelectFragment : BaseFragment<MachineSelectViewModel>(
     }
   }
 
-  override fun initObservers() {
-    viewModel.apply {
-      command.observe { command ->
-        when (command) {
-          MachineSelectCommand.HideKeyboard -> requireContext().hideKeyboard()
-        }
-      }
-    }
-  }
-
   private fun selectMachine() {
     viewModel.selectMachine(binding.textInputLayout.text)
   }

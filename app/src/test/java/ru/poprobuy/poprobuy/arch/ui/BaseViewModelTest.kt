@@ -25,9 +25,7 @@ class BaseViewModelTest {
   @Test
   fun `navigate extensions calls live data`() {
     val navigationObserver = mockkObserver<NavigationCommand>()
-    viewModel.apply {
-      navigationLiveEvent.observeForever(navigationObserver)
-    }
+    viewModel.navigationLiveEvent.observeForever(navigationObserver)
 
     viewModel.apply {
       AppNavigation.navigateBack().navigate()
@@ -43,9 +41,7 @@ class BaseViewModelTest {
   @Test
   fun `navigateBack executes proper action`() {
     val navigationObserver = mockkObserver<NavigationCommand>()
-    viewModel.apply {
-      navigationLiveEvent.observeForever(navigationObserver)
-    }
+    viewModel.navigationLiveEvent.observeForever(navigationObserver)
 
     viewModel.navigateBack()
 
@@ -54,6 +50,19 @@ class BaseViewModelTest {
       navigationObserver.onChanged(destination)
     }
     viewModel.navigationLiveEvent.value shouldBeEqualTo destination
+  }
+
+  @Test
+  fun `hide command executes proper action`() {
+    val commandObserver = mockkObserver<BaseCommand>()
+    viewModel.baseCommandLiveEvent.observeForever(commandObserver)
+
+    viewModel.hideKeyboard()
+
+    verifySequence {
+      commandObserver.onChanged(BaseCommand.HideKeyboard)
+    }
+    viewModel.baseCommandLiveEvent.value shouldBeEqualTo BaseCommand.HideKeyboard
   }
 
 }
