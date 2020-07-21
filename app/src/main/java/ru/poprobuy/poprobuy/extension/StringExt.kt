@@ -7,8 +7,8 @@ import com.redmadrobot.inputmask.model.CaretString
  * @return string formatted with given mask
  */
 fun String.formatWithMask(mask: String): String {
-  val caretGravity = CaretString.CaretGravity.FORWARD(true)
-  val caret = CaretString(this, 0, caretGravity)
+  val caretGravity = CaretString.CaretGravity.FORWARD(false)
+  val caret = CaretString(this, length, caretGravity)
 
   return Mask.getOrCreate(mask, emptyList())
     .apply(caret)
