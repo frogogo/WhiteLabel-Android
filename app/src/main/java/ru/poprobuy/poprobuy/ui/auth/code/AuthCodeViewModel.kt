@@ -66,6 +66,7 @@ class AuthCodeViewModel(
           if (result.response.isNew) {
             navigation.navigateToAuthName().navigate()
           } else {
+            hideKeyboard()
             navigation.navigateToApp().navigate()
           }
         }
