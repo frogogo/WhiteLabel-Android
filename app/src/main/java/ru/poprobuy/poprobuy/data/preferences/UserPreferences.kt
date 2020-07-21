@@ -29,6 +29,10 @@ class UserPreferences(context: Context) {
     get() = sharedPrefs.getBoolean(KEY_POLICY_ACCEPTED, false)
     set(value) = sharedPrefs.edit { putBoolean(KEY_POLICY_ACCEPTED, value) }
 
+  fun clearData() {
+    sharedPrefs.edit { clear() }
+  }
+
   companion object {
     private const val PREFERENCES_FILENAME = "user_preferences"
 

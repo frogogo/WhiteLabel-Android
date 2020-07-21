@@ -111,6 +111,7 @@
 
   <string name="profile_button_receipts">Мои чеки</string>
   <string name="profile_button_goods">Мои товары</string>
+  <string name="profile_button_logout">Выход</string>
 
   <!-- Receipts -->
   <string name="receipts_title">Мои чеки</string>

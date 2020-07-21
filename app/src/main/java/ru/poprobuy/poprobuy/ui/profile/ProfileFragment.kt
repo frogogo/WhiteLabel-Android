@@ -2,6 +2,7 @@ package ru.poprobuy.poprobuy.ui.profile
 
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import ru.poprobuy.poprobuy.BuildConfig
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.data.model.ui.profile.ProfileUiModel
@@ -24,6 +25,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel>(R.layout.fragment_profile
         buttonGoods.setOnSafeClickListener(viewModel::navigateToGoods)
       }
     }
+    initLogoutButton()
   }
 
   override fun initObservers() = viewModel.run {
@@ -42,6 +44,18 @@ class ProfileFragment : BaseFragment<ProfileViewModel>(R.layout.fragment_profile
 
       // Show content
       root.setVisible(true)
+    }
+  }
+
+  /**
+   * DEBUG STUFF
+   */
+  @Suppress("ConstantConditionIf")
+  private fun initLogoutButton() {
+    if (!BuildConfig.DEBUG_STUFF) return
+    binding.buttonLogout.apply {
+      setVisible(true)
+      setOnSafeClickListener(viewModel::logout)
     }
   }
 

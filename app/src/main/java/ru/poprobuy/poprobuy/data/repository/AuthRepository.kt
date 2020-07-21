@@ -35,4 +35,8 @@ class AuthRepository(
     userPreferences.isLoggedIn = true
   }
 
+  fun logout() {
+    userPreferences.clearData()
+  }
+
 }

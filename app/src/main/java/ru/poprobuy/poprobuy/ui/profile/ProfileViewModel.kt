@@ -3,13 +3,15 @@ package ru.poprobuy.poprobuy.ui.profile
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.github.ajalt.timberkt.d
+import com.github.ajalt.timberkt.i
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.model.ui.profile.ProfileUiModel
+import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.util.ProfileUtils
 
 class ProfileViewModel(
+  private val authRepository: AuthRepository,
   private val navigation: ProfileNavigation,
   private val profileUtils: ProfileUtils
 ) : BaseViewModel() {
@@ -32,13 +34,19 @@ class ProfileViewModel(
   }
 
   fun navigateToReceipts() {
-    d { "Navigating to receipts" }
+    i { "Navigating to receipts" }
     navigation.navigateToReceipts().navigate()
   }
 
   fun navigateToGoods() {
-    d { "Navigating to goods" }
+    i { "Navigating to goods" }
     navigation.navigateToGoods().navigate()
+  }
+
+  fun logout() {
+    i { "Logging out" }
+    authRepository.logout()
+    navigation.navigateToSplash().navigate()
   }
 
 }
