@@ -20,7 +20,8 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+
       - name: Run Gradle command
         uses: Raul6469/android-gradle-action@2.0.0
         with:
-          script: test
+          script: testDebug
