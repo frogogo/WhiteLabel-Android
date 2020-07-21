@@ -26,9 +26,9 @@ class AuthEmailFragment : BaseFragment<AuthEmailViewModel>(
     binding.apply {
       textViewTitle.text = getString(R.string.auth_email_title, args.name)
       textInputLayout.apply {
-        showKeyboard()
-        setEditGoAction { setEmail() }
         initEmailType()
+        setEditGoAction { setEmail() }
+        showKeyboard()
       }
       buttonContinue.setOnSafeClickListener { setEmail() }
     }

@@ -21,9 +21,9 @@ class AuthNameFragment : BaseFragment<AuthNameViewModel>(
   override fun initViews() {
     // Force keyboard
     binding.textInputLayout.apply {
-      showKeyboard()
-      setEditGoAction { setName() }
       initUserNameType()
+      setEditGoAction { setName() }
+      showKeyboard()
     }
 
     binding.buttonContinue.setOnSafeClickListener { setName() }

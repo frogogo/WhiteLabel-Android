@@ -40,9 +40,9 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
   override fun initViews() {
     binding.apply {
       textInputLayout.apply {
-        showKeyboard()
-        setEditGoAction { confirmPhone() }
         initCodeConfirmationType()
+        setEditGoAction { confirmPhone() }
+        showKeyboard()
       }
 
       textViewPhoneNumber.text = args.phoneNumber.formatWithMask(Constants.PHONE_MASK_FULL)

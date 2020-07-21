@@ -27,9 +27,9 @@ class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(
 
   override fun initViews() {
     binding.textInputLayout.apply {
-      showKeyboard()
-      setEditGoAction { viewModel.requestCode(text, true) }
       initPhoneType()
+      setEditGoAction { viewModel.requestCode(text, true) }
+      showKeyboard()
     }
     binding.textViewError.movementMethod = LinkMovementMethod.getInstance()
   }
