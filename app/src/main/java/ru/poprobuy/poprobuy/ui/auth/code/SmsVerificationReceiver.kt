@@ -9,6 +9,7 @@ import com.github.ajalt.timberkt.e
 import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.common.api.Status
+import ru.poprobuy.poprobuy.extension.hideKeyboard
 
 class SmsVerificationReceiver(
   private val activityRequestCode: Int,
@@ -25,7 +26,11 @@ class SmsVerificationReceiver(
       CommonStatusCodes.SUCCESS -> {
         val consentIntent = extras.getParcelable<Intent>(SmsRetriever.EXTRA_CONSENT_INTENT)
         try {
-          fragmentRetriever.invoke().startActivityForResult(consentIntent, activityRequestCode)
+          val fragment = fragmentRetriever.invoke()
+          // Hide keyboard to make activity appearance more smooth
+          fragment.activity?.hideKeyboard()
+          // Show Consent Activity
+          fragment.startActivityForResult(consentIntent, activityRequestCode)
         } catch (ex: ActivityNotFoundException) {
           e(ex) { "Error while trying to start sms consent activity " }
         }
