@@ -9,7 +9,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import ru.poprobuy.poprobuy.CoroutinesTestRule
-import ru.poprobuy.poprobuy.TestFixtures
+import ru.poprobuy.poprobuy.DataFixtures
 import ru.poprobuy.poprobuy.data.model.ui.profile.ProfileUiModel
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.data.repository.UserRepository
@@ -54,8 +54,8 @@ class ProfileViewModelTest {
       isLoadingLive.observeForever(isLoadingObserver)
       profileLive.observeForever(profileObserver)
     }
-    every { userRepository.getUser() } returns TestFixtures.user
-    coEvery { getUserInfoUseCase() } returns UseCaseResult.Success(TestFixtures.user)
+    every { userRepository.getUser() } returns DataFixtures.user
+    coEvery { getUserInfoUseCase() } returns UseCaseResult.Success(DataFixtures.user)
 
     viewModel.onCreate()
 
@@ -75,8 +75,8 @@ class ProfileViewModelTest {
       isLoadingLive.observeForever(isLoadingObserver)
       profileLive.observeForever(profileObserver)
     }
-    every { userRepository.getUser() } returns TestFixtures.user
-    coEvery { getUserInfoUseCase() } returns UseCaseResult.Success(TestFixtures.user.copy(email = ""))
+    every { userRepository.getUser() } returns DataFixtures.user
+    coEvery { getUserInfoUseCase() } returns UseCaseResult.Success(DataFixtures.user.copy(email = ""))
 
     viewModel.onCreate()
 
@@ -95,7 +95,7 @@ class ProfileViewModelTest {
       profileLive.observeForever(profileObserver)
     }
     every { userRepository.getUser() } returns null
-    coEvery { getUserInfoUseCase() } returns UseCaseResult.Success(TestFixtures.user)
+    coEvery { getUserInfoUseCase() } returns UseCaseResult.Success(DataFixtures.user)
 
     viewModel.onCreate()
 

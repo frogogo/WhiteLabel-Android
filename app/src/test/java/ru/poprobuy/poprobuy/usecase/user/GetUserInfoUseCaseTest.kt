@@ -7,7 +7,7 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldBeInstanceOf
 import org.junit.Before
 import org.junit.Test
-import ru.poprobuy.poprobuy.TestFixtures
+import ru.poprobuy.poprobuy.DataFixtures
 import ru.poprobuy.poprobuy.data.repository.UserRepository
 import ru.poprobuy.poprobuy.failureNetworkCall
 import ru.poprobuy.poprobuy.successNetworkCall
@@ -27,7 +27,7 @@ class GetUserInfoUseCaseTest {
 
   @Test
   fun `use case return user and saves it to repository`() = runBlockingTest {
-    val user = TestFixtures.user
+    val user = DataFixtures.user
     coEvery { userRepository.fetchUser() } returns successNetworkCall(user)
 
     val result = useCase()
@@ -36,7 +36,7 @@ class GetUserInfoUseCaseTest {
     (result as UseCaseResult.Success).data shouldBeEqualTo user
     coVerifySequence {
       userRepository.fetchUser()
-      userRepository.saveUser(TestFixtures.user)
+      userRepository.saveUser(DataFixtures.user)
     }
   }
 
