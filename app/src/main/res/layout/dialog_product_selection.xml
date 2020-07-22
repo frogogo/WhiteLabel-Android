@@ -11,20 +11,20 @@
 
   <include
     android:id="@+id/layoutProduct"
-    layout="@layout/fragment_product_selection_product"
+    layout="@layout/dialog_product_selection_product"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
 
   <include
     android:id="@+id/layoutSuccess"
-    layout="@layout/fragment_product_selection_success"
+    layout="@layout/dialog_product_selection_success"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:visibility="gone" />
 
   <include
     android:id="@+id/layoutError"
-    layout="@layout/fragment_product_selection_error"
+    layout="@layout/dialog_product_selection_error"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:visibility="gone" />

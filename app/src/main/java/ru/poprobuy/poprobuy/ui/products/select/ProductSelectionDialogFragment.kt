@@ -9,16 +9,16 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseDialogFragment
-import ru.poprobuy.poprobuy.databinding.FragmentProductSelectionBinding
+import ru.poprobuy.poprobuy.databinding.DialogProductSelectionBinding
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible
 
-class ProductSelectionDialogFragment : BaseDialogFragment(R.layout.fragment_product_selection) {
+class ProductSelectionDialogFragment : BaseDialogFragment(R.layout.dialog_product_selection) {
 
   private val viewModel: ProductSelectionViewModel by viewModel()
   private val interactor: ProductSelectionInteractor by sharedViewModel()
-  private val binding: FragmentProductSelectionBinding by viewBinding {
-    FragmentProductSelectionBinding.bind(requireView())
+  private val binding: DialogProductSelectionBinding by viewBinding {
+    DialogProductSelectionBinding.bind(requireView())
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
