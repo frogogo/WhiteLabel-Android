@@ -5,6 +5,14 @@ import android.graphics.Rect
 import android.view.View
 import android.view.WindowManager
 
+fun Activity.hideKeyboard() {
+  var view = currentFocus
+  if (view == null) {
+    view = View(this)
+  }
+  view.hideKeyboard()
+}
+
 fun Activity.setStatusBarColor(color: Int) {
   window.apply {
     addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)

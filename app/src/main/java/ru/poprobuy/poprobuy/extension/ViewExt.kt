@@ -15,6 +15,10 @@ fun View.setVisible(visible: Boolean, useInvisible: Boolean = false) {
   visibility = if (visible) View.VISIBLE else if (useInvisible) View.INVISIBLE else View.GONE
 }
 
+fun View.hideKeyboard() {
+  context.getInputMethodManager().hideSoftInputFromWindow(windowToken, 0)
+}
+
 val View.layoutInflater: LayoutInflater
   get() = LayoutInflater.from(context)
 

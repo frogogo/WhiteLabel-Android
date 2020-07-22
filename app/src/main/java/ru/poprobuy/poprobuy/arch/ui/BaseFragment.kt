@@ -93,7 +93,7 @@ abstract class BaseFragment<out T : BaseViewModel>(
 
   private fun handleCommand(command: BaseCommand) {
     when (command) {
-      BaseCommand.HideKeyboard -> requireContext().hideKeyboard()
+      BaseCommand.HideKeyboard -> requireActivity().hideKeyboard()
     }
   }
 

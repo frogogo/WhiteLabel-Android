@@ -21,7 +21,7 @@ class MachineSelectFragment : BaseFragment<MachineSelectViewModel>(
   override fun initViews() {
     binding.apply {
       buttonBack.setOnSafeClickListener {
-        requireContext().hideKeyboard()
+        requireActivity().hideKeyboard()
         viewModel.navigateBack()
       }
       buttonContinue.setOnSafeClickListener { selectMachine() }
