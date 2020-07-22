@@ -8,10 +8,10 @@ import kotlinx.coroutines.test.runBlockingTest
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Test
-import retrofit2.Response
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
-import ru.poprobuy.poprobuy.util.network.NetworkError
-import ru.poprobuy.poprobuy.util.network.NetworkResource
+import ru.poprobuy.poprobuy.failureHttpNetworkCall
+import ru.poprobuy.poprobuy.failureNetworkCall
+import ru.poprobuy.poprobuy.successNetworkCall
 
 @ExperimentalCoroutinesApi
 class RequestConfirmationCodeUseCaseTest {
@@ -27,9 +27,7 @@ class RequestConfirmationCodeUseCaseTest {
 
   @Test
   fun `success result returned if request executed successfully`() = runBlockingTest {
-    coEvery {
-      authRepository.requestConfirmationCode(any())
-    } returns NetworkResource.Success(Response.success(Unit), Unit)
+    coEvery { authRepository.requestConfirmationCode(any()) } returns successNetworkCall(Unit)
 
     val result = useCase("")
 
@@ -38,9 +36,7 @@ class RequestConfirmationCodeUseCaseTest {
 
   @Test
   fun `error returned if request failed`() = runBlockingTest {
-    coEvery {
-      authRepository.requestConfirmationCode(any())
-    } returns NetworkResource.Error(null, NetworkError.Unknown())
+    coEvery { authRepository.requestConfirmationCode(any()) } returns failureNetworkCall()
 
     val result = useCase("")
 
@@ -49,9 +45,7 @@ class RequestConfirmationCodeUseCaseTest {
 
   @Test
   fun `too many requests returned if request failed with 429 status code`() = runBlockingTest {
-    coEvery {
-      authRepository.requestConfirmationCode(any())
-    } returns NetworkResource.Error<Unit, Any>(null, NetworkError.HttpError(429, null))
+    coEvery { authRepository.requestConfirmationCode(any()) } returns failureHttpNetworkCall(429)
 
     val result = useCase("")
 

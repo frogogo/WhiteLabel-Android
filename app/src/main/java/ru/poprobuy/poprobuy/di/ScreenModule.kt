@@ -63,6 +63,6 @@ val screenModule = module {
   viewModel { ProductSelectionInteractor() }
 
   // Profile
-  viewModel { ProfileViewModel(get(), get(), get()) }
+  viewModel { ProfileViewModel(get(), get(), get(), get(), get()) }
   viewModel { ReceiptsViewModel(get()) }
 }

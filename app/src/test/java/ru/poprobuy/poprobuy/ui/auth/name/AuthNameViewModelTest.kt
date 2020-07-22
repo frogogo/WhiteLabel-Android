@@ -54,7 +54,7 @@ class AuthNameViewModelTest {
 
     val navigationDestination = navigation.navigateToAuthEmail(name)
     verifySequence {
-      validationResultObserver.onChanged(null)
+      validationResultObserver.onChanged(isNull())
       navigationObserver.onChanged(navigationDestination)
     }
   }

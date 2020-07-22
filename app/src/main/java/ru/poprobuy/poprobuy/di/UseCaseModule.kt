@@ -4,6 +4,7 @@ import org.koin.dsl.module
 import ru.poprobuy.poprobuy.usecase.GetUserAuthStateUseCase
 import ru.poprobuy.poprobuy.usecase.auth.AuthenticationUseCase
 import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationCodeUseCase
+import ru.poprobuy.poprobuy.usecase.user.GetUserInfoUseCase
 import ru.poprobuy.poprobuy.usecase.user.UpdateUserDetailsUseCase
 
 val useCaseModule = module {
@@ -14,4 +15,5 @@ val useCaseModule = module {
 
   // User
   factory { UpdateUserDetailsUseCase(get()) }
+  factory { GetUserInfoUseCase(get()) }
 }

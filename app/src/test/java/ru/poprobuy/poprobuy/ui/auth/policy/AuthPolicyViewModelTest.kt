@@ -31,7 +31,6 @@ class AuthPolicyViewModelTest {
       authRepository.setPolicyAccepted()
       navigation.navigateToAuthPhoneEnter()
     }
-
     viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToAuthPhoneEnter()
   }
 

@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.usecase.auth
+package ru.poprobuy.poprobuy.usecase
 
 import io.mockk.every
 import io.mockk.mockk
@@ -6,7 +6,6 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Test
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
-import ru.poprobuy.poprobuy.usecase.GetUserAuthStateUseCase
 import ru.poprobuy.poprobuy.usecase.GetUserAuthStateUseCase.State
 
 class GetUserAuthStateUseCaseTest {

@@ -7,8 +7,10 @@ import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.data.model.ui.profile.ProfileUiModel
 import ru.poprobuy.poprobuy.databinding.FragmentProfileBinding
+import ru.poprobuy.poprobuy.extension.formatWithMask
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible
+import ru.poprobuy.poprobuy.util.Constants
 
 class ProfileFragment : BaseFragment<ProfileViewModel>(R.layout.fragment_profile) {
 
@@ -30,15 +32,14 @@ class ProfileFragment : BaseFragment<ProfileViewModel>(R.layout.fragment_profile
 
   override fun initObservers() = viewModel.run {
     profileLive.observe(this@ProfileFragment::renderProfile)
+    isLoadingLive.observe { binding.progressBar.setVisible(it) }
   }
 
   private fun renderProfile(profile: ProfileUiModel) {
     binding.layoutContent.apply {
-      // TransitionManager.beginDelayedTransition(root)
-
       // Set data
       textViewUserName.text = profile.name
-      textViewPhoneNumber.text = profile.phoneNumber
+      textViewPhoneNumber.text = profile.phoneNumber.formatWithMask(Constants.PHONE_MASK_FULL)
       textViewEmail.text = profile.email
       textViewVersion.text = profile.appVersion
 
