@@ -26,9 +26,9 @@ class MachineSelectFragment : BaseFragment<MachineSelectViewModel>(
       }
       buttonContinue.setOnSafeClickListener { selectMachine() }
       textInputLayout.apply {
-        showKeyboard()
         initMachineNumberType()
         setEditGoAction { selectMachine() }
+        showKeyboard()
       }
     }
   }
