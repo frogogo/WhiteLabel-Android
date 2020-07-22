@@ -5,15 +5,15 @@ import android.text.method.DigitsKeyListener
 import android.widget.EditText
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.util.Constants
-import ru.poprobuy.poprobuy.view.AuthTextInputLayout
+import ru.poprobuy.poprobuy.view.InputLayout
 
 private const val DIGITS_PHONE_NUMBER = "1234567890+-() "
 private const val DIGITS_NUMBERS = "1234567890"
 
-val AuthTextInputLayout.editText: EditText
+val InputLayout.editText: EditText
   get() = binding.editText
 
-fun AuthTextInputLayout.initPhoneType() {
+fun InputLayout.initPhoneType() {
   // binding.apply {
   editText.inputType = InputType.TYPE_CLASS_NUMBER
   textKeyListener = DigitsKeyListener.getInstance(DIGITS_PHONE_NUMBER)
@@ -26,7 +26,7 @@ fun AuthTextInputLayout.initPhoneType() {
   prefix = "${Constants.PHONE_PREFIX} "
 }
 
-fun AuthTextInputLayout.initCodeConfirmationType() {
+fun InputLayout.initCodeConfirmationType() {
   binding.apply {
     editText.apply {
       setMaxLength(Constants.CONFIRMATION_CODE_LENGTH)
@@ -39,15 +39,15 @@ fun AuthTextInputLayout.initCodeConfirmationType() {
   }
 }
 
-fun AuthTextInputLayout.initUserNameType() {
+fun InputLayout.initUserNameType() {
   editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_WORDS
 }
 
-fun AuthTextInputLayout.initEmailType() {
+fun InputLayout.initEmailType() {
   editText.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
 }
 
-fun AuthTextInputLayout.initMachineNumberType() {
+fun InputLayout.initMachineNumberType() {
   editText.apply {
     inputType = InputType.TYPE_CLASS_NUMBER
     textKeyListener = DigitsKeyListener.getInstance(DIGITS_NUMBERS)

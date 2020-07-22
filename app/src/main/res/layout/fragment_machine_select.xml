@@ -63,7 +63,7 @@
         app:layout_constraintVertical_bias="0.3"
         app:layout_constraintVertical_chainStyle="packed" />
 
-      <ru.poprobuy.poprobuy.view.AuthTextInputLayout
+      <ru.poprobuy.poprobuy.view.InputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

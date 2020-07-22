@@ -29,16 +29,16 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="6dp"
     android:textColor="@color/auth_text_placeholder"
+    app:layout_constrainedWidth="true"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintHorizontal_bias="0"
-    app:layout_constrainedWidth="true"
     app:layout_constraintLeft_toRightOf="@id/textViewPrefix"
     app:layout_constraintRight_toLeftOf="@id/barrier"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_goneMarginStart="0dp"
     tools:text="(000) 000-00-00" />
 
-  <EditText
+  <ru.poprobuy.poprobuy.view.ClearFocusEditText
     android:id="@+id/editText"
     style="@style/Text.Title1"
     android:layout_width="wrap_content"

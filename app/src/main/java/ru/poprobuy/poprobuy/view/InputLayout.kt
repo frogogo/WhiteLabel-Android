@@ -7,18 +7,18 @@ import android.view.inputmethod.EditorInfo
 import android.widget.FrameLayout
 import androidx.core.widget.doAfterTextChanged
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.databinding.ViewTextInputLayoutAuthBinding
+import ru.poprobuy.poprobuy.databinding.ViewInputLayoutAuthBinding
 import ru.poprobuy.poprobuy.extension.*
 
 typealias ImeGoAction = () -> Unit
 
-class AuthTextInputLayout @JvmOverloads constructor(
+class InputLayout @JvmOverloads constructor(
   context: Context,
   attrs: AttributeSet? = null,
   defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
-  val binding = ViewTextInputLayoutAuthBinding.inflate(layoutInflater, this, true)
+  val binding = ViewInputLayoutAuthBinding.inflate(layoutInflater, this, true)
 
   /**
    * EditText string value
@@ -64,9 +64,9 @@ class AuthTextInputLayout @JvmOverloads constructor(
   private var isActive: Boolean = true
 
   init {
-    withTypedArray(attrs, R.styleable.AuthTextInputLayout) {
+    withTypedArray(attrs, R.styleable.InputLayout) {
       if (!isInEditMode) {
-        getString(R.styleable.AuthTextInputLayout_placeholderText)?.let { placeholder = it }
+        getString(R.styleable.InputLayout_placeholderText)?.let { placeholder = it }
       }
     }
 

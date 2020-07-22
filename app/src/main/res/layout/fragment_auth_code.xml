@@ -69,7 +69,7 @@
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintWidth_min="wrap" />
 
-    <ru.poprobuy.poprobuy.view.AuthTextInputLayout
+    <ru.poprobuy.poprobuy.view.InputLayout
       android:id="@+id/textInputLayout"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
