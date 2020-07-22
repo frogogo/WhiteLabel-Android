@@ -71,7 +71,7 @@ class ReceiptView @JvmOverloads constructor(
    */
   private class ReceiptOutlineProvider(private val radius: Float) : ViewOutlineProvider() {
     override fun getOutline(view: View, outline: Outline) {
-      val heightModifier = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) 1F else 0.97F
+      val heightModifier = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) 0.99F else 0.97F
       val rect = Rect(
         0,
         0,
