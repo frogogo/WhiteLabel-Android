@@ -10,7 +10,8 @@ interface ReceiptsNavigation {
 class ReceiptsNavigationImpl : ReceiptsNavigation {
 
   override fun navigateToReceipt(receipt: ReceiptUiModel): NavigationCommand {
-    return NavigationCommand.Back
+    val action = ReceiptsFragmentDirections.actionReceiptsToReceiptDetails(receipt)
+    return NavigationCommand.ByAction(action)
   }
 
 }

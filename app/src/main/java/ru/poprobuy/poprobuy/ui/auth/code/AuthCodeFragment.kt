@@ -18,6 +18,8 @@ import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentAuthCodeBinding
 import ru.poprobuy.poprobuy.extension.*
+import ru.poprobuy.poprobuy.extension.binding.editText
+import ru.poprobuy.poprobuy.extension.binding.initCodeConfirmationType
 import ru.poprobuy.poprobuy.util.ConfirmationCodeUtils
 import ru.poprobuy.poprobuy.util.Constants
 import ru.poprobuy.poprobuy.util.ParallelAutoTransition

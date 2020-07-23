@@ -183,7 +183,26 @@
   <fragment
     android:id="@+id/receipts"
     android:name="ru.poprobuy.poprobuy.ui.profile.receipts.ReceiptsFragment"
-    tools:layout="@layout/fragment_receipts" />
+    tools:layout="@layout/fragment_receipts">
+    <action
+      android:id="@+id/action_receipts_to_receipt_details"
+      app:destination="@id/receipt_details" />
+  </fragment>
+
+  <dialog
+    android:id="@+id/receipt_details"
+    android:name="ru.poprobuy.poprobuy.ui.profile.receipts.details.ReceiptDetailsBottomDialog"
+    tools:layout="@layout/dialog_receipt_details">
+    <argument
+      android:name="receipt"
+      app:argType="ru.poprobuy.poprobuy.data.model.ui.ReceiptUiModel" />
+    <action
+      android:id="@+id/receipt_details_to_scanner"
+      app:destination="@id/scanner" />
+    <action
+      android:id="@+id/receipt_details_to_machine_select"
+      app:destination="@id/machine_select" />
+  </dialog>
 
   <fragment
     android:id="@+id/products"

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+
+  <View
+    android:id="@+id/viewHeader"
+    android:layout_width="0dp"
+    android:layout_height="@dimen/receipt_header_height_small"
+    android:background="@drawable/receipt_header"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <!-- Receipt Values -->
+  <TextView
+    android:id="@+id/textViewReceiptId"
+    style="@style/Text.Headline.Medium"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/spacing_4"
+    android:layout_marginTop="@dimen/receipt_header_margin_top_small"
+    android:layout_marginEnd="@dimen/spacing_4"
+    android:textColor="@color/receipt_value"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toLeftOf="@id/textViewReceiptValue"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="№ 3493439" />
+
+  <TextView
+    android:id="@+id/textViewReceiptValue"
+    style="@style/Text.Headline.Medium"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_4"
+    android:layout_marginEnd="@dimen/receipt_header_margin_top_small"
+    android:textColor="@color/receipt_value"
+    app:layout_constrainedWidth="true"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintWidth_min="wrap"
+    tools:text="5 403 ₽" />
+
+  <!-- Receipt Date and Shop -->
+  <androidx.constraintlayout.widget.Barrier
+    android:id="@+id/barrier"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:barrierDirection="bottom"
+    app:constraint_referenced_ids="textViewReceiptId,textViewReceiptValue" />
+
+  <TextView
+    android:id="@+id/textViewShop"
+    style="@style/Text.Title2.Medium"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/spacing_4"
+    android:layout_marginEnd="@dimen/spacing_4"
+    android:gravity="center"
+    android:textColor="@color/receipt_value"
+    app:layout_constraintBottom_toTopOf="@id/textViewDate"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/barrier"
+    app:layout_constraintVertical_chainStyle="packed"
+    tools:text="ВкусВилл" />
+
+  <TextView
+    android:id="@+id/textViewDate"
+    style="@style/Text.Caption"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/spacing_4"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="@dimen/spacing_4"
+    android:gravity="center"
+    android:textColor="@color/receipt_date"
+    app:layout_constraintBottom_toTopOf="@id/imageViewStatus"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/textViewShop"
+    tools:text="23.05.2020 - 13:20" />
+
+  <!-- Status -->
+  <ImageView
+    android:id="@+id/imageViewStatus"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="@id/viewHeader"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/viewHeader"
+    tools:src="@drawable/ic_receipt_accepted" />
+
+  <TextView
+    android:id="@+id/textViewStatus"
+    style="@style/Text.Headline.Medium"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/spacing_4"
+    android:layout_marginTop="@dimen/receipt_header_status_margin_top_small"
+    android:layout_marginEnd="@dimen/spacing_4"
+    android:gravity="center"
+    android:textColor="@color/receipt_title"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/imageViewStatus"
+    tools:text="@string/receipt_status_accepted" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

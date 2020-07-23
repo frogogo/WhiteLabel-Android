@@ -1,9 +1,10 @@
-package ru.poprobuy.poprobuy.extension
+package ru.poprobuy.poprobuy.extension.binding
 
 import android.text.InputType
 import android.text.method.DigitsKeyListener
 import android.widget.EditText
 import ru.poprobuy.poprobuy.R
+import ru.poprobuy.poprobuy.extension.setMaxLength
 import ru.poprobuy.poprobuy.util.Constants
 import ru.poprobuy.poprobuy.view.InputLayout
 

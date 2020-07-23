@@ -27,17 +27,19 @@ object HomeAdapterDelegates {
     viewBinding = { layoutInflater, root -> ItemHomeReceiptBinding.inflate(layoutInflater, root, false) }
   ) {
     binding.apply {
-      buttonScanMachine.setOnSafeClickListener { scanMachineCallback() }
-      buttonEnterMachine.setOnSafeClickListener { enterMachineAction() }
-      buttonScanReceipt.setOnSafeClickListener { scanReceiptAction() }
+      layoutControlsGoods.apply {
+        buttonScanMachine.setOnSafeClickListener { scanMachineCallback() }
+        buttonEnterMachine.setOnSafeClickListener { enterMachineAction() }
+      }
+      layoutControlsScan.root.setOnSafeClickListener { scanReceiptAction() }
     }
 
     bind {
       binding.apply {
         viewReceipt.setReceipt(item.receipt)
 
-        layoutAccept.setVisible(item.receipt.status == ReceiptStatus.ACCEPTED)
-        buttonScanReceipt.setVisible(item.receipt.status == ReceiptStatus.REJECTED)
+        layoutControlsGoods.root.setVisible(item.receipt.status == ReceiptStatus.ACCEPTED)
+        layoutControlsScan.root.setVisible(item.receipt.status == ReceiptStatus.REJECTED)
       }
     }
   }

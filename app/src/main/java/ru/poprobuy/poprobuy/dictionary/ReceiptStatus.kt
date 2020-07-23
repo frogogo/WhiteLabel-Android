@@ -7,18 +7,20 @@ import androidx.annotation.StringRes
 import ru.poprobuy.poprobuy.R
 
 enum class ReceiptStatus {
+  CHECK,
   ACCEPTED,
   REJECTED,
-  CHECK;
+  COMPLETED;
 
   /**
    * @return color resource for given [ReceiptStatus]
    */
   @ColorRes
   fun getColor(): Int = when (this) {
-    ACCEPTED -> R.color.receipt_status_accept
-    REJECTED -> R.color.receipt_status_reject
     CHECK -> R.color.receipt_status_check
+    ACCEPTED -> R.color.receipt_status_accepted
+    REJECTED -> R.color.receipt_status_rejected
+    COMPLETED -> R.color.receipt_status_completed
   }
 
   /**
@@ -26,9 +28,10 @@ enum class ReceiptStatus {
    */
   @DrawableRes
   fun getHeaderIcon(): Int = when (this) {
-    ACCEPTED -> R.drawable.ic_receipt_accept
-    REJECTED -> R.drawable.ic_receipt_reject
     CHECK -> R.drawable.ic_receipt_check
+    ACCEPTED -> R.drawable.ic_receipt_accepted
+    REJECTED -> R.drawable.ic_receipt_rejected
+    COMPLETED -> R.drawable.ic_receipt_completed
   }
 
   /**
@@ -36,18 +39,20 @@ enum class ReceiptStatus {
    */
   @StringRes
   fun getName(): Int = when (this) {
-    ACCEPTED -> R.string.receipt_status_accept
-    REJECTED -> R.string.receipt_status_reject
     CHECK -> R.string.receipt_status_check
+    ACCEPTED -> R.string.receipt_status_accepted
+    REJECTED -> R.string.receipt_status_rejected
+    COMPLETED -> R.string.receipt_status_completed
   }
 
   /**
    * @return string subtitle for given [ReceiptStatus]
    */
   fun getStatusSubtitle(context: Context): String = when (this) {
-    ACCEPTED -> context.getString(R.string.receipt_status_accept_description)
-    REJECTED -> "" // TODO: 03.07.2020
     CHECK -> context.getString(R.string.receipt_status_check_description)
+    ACCEPTED -> context.getString(R.string.receipt_status_accepted_description)
+    REJECTED -> "" // TODO: 03.07.2020
+    COMPLETED -> "" // TODO: 23.07.2020
   }
 
 }

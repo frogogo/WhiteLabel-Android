@@ -8,7 +8,7 @@ import ru.poprobuy.poprobuy.data.model.ui.receipts.ReceiptsScanAvailable
 import ru.poprobuy.poprobuy.databinding.ItemReceiptBinding
 import ru.poprobuy.poprobuy.databinding.ItemScanAvailableBinding
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
-import ru.poprobuy.poprobuy.extension.setReceiptStatus
+import ru.poprobuy.poprobuy.extension.binding.setReceiptStatus
 import ru.poprobuy.poprobuy.extension.toDateTime
 import ru.poprobuy.poprobuy.util.PriceUtils
 

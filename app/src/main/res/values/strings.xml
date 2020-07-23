@@ -78,17 +78,21 @@
 
   <!-- Receipt -->
   <string name="receipt_id">№ %1$d</string>
-  <string name="receipt_status_accept">Поздравляем, чек принят!</string>
-  <string name="receipt_status_accept_description">Теперь вы можете получить товар на пробу в любом магазине %1$s, в котором есть аппарат «Попробуй»</string>
-  <string name="receipt_status_accept_footer_1">Пока вы не получите товар, вы не сможете отсканировать новый чек.</string>
-  <string name="receipt_status_accept_footer_2">После ввода номера у вас будет 1 минута, чтобы выбрать товар.</string>
+  <string name="receipt_status_accepted">Поздравляем, чек принят!</string>
+  <string name="receipt_status_accepted_description">Теперь вы можете получить товар на пробу в любом магазине %1$s, в котором есть аппарат «Попробуй»</string>
+  <string name="receipt_status_accepted_footer_1">Пока вы не получите товар, вы не сможете отсканировать новый чек.</string>
+  <string name="receipt_status_accepted_footer_2">После ввода номера у вас будет 1 минута, чтобы выбрать товар.</string>
 
-  <string name="receipt_status_reject">Ваш чек не прошел проверку!</string>
-  <string name="receipt_status_reject_description">Причина:</string>
+  <string name="receipt_status_rejected">Ваш чек не прошел проверку!</string>
+  <string name="receipt_status_rejected_description">Причина:</string>
 
   <string name="receipt_status_check">Ваш чек находится на проверке</string>
   <string name="receipt_status_check_description">Обычно это занимает несколько минут, но очень редко надо больше времени.</string>
   <string name="receipt_status_check_footer">Если вы не хотите ждать, вы можете пойти домой. Когда ваш чек пройдет проверку, вы получите уведомление и сможете получить подарок при следующем посещении магазина.</string>
+
+  <string name="receipt_status_completed">Чек выполнен!</string>
+  <string name="receipt_status_completed_subtitle">Вы получили %1$s</string>
+  <string name="receipt_status_completed_next_step">Вы можете отсканировать новый чек и снова попробовать что-то новое!</string>
 
   <!-- Scanner -->
   <string name="scanner_permissions_denied_title">Для сканирования чеков требуется доступ к камере</string>

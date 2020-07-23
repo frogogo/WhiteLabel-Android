@@ -37,6 +37,14 @@
   <dimen name="receipt_elevation">4dp</dimen>
   <dimen name="receipt_top_radius">16dp</dimen>
 
+  <!-- Receipt Header -->
+  <dimen name="receipt_header_height_small">136dp</dimen>
+  <dimen name="receipt_header_height_large">144dp</dimen>
+  <dimen name="receipt_header_margin_top_small">@dimen/spacing_3</dimen>
+  <dimen name="receipt_header_margin_top_large">@dimen/spacing_4</dimen>
+  <dimen name="receipt_header_status_margin_top_small">0dp</dimen>
+  <dimen name="receipt_header_status_margin_top_large">@dimen/spacing_3</dimen>
+
   <!-- Profile -->
   <dimen name="profile_side_padding">@dimen/spacing_8</dimen>
   <dimen name="profile_button_height">56dp</dimen>

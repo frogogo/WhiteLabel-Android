@@ -1,20 +1,25 @@
 <resources>
 
   <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <!-- Colors -->
     <item name="colorPrimary">@color/primary</item>
     <item name="colorPrimaryDark">@color/primary_dark</item>
     <item name="colorAccent">@color/accent</item>
     <item name="colorControlHighlight">@color/ripple</item>
 
+    <!-- Status Bar -->
     <item name="android:statusBarColor">@color/status_bar</item>
     <item name="android:windowLightStatusBar">true</item>
 
+    <!-- Font -->
     <item name="android:fontFamily">@font/rubik</item>
 
+    <!-- Widget Styles -->
     <item name="android:textViewStyle">@style/Text</item>
     <item name="materialButtonStyle">@style/MaterialButton</item>
     <item name="imageButtonStyle">@style/ImageButton</item>
     <item name="materialCardViewStyle">@style/StyledCardView</item>
+    <item name="bottomSheetDialogTheme">@style/BottomSheetDialog</item>
   </style>
 
   <style name="AppTheme.Versioned">
@@ -47,6 +52,18 @@
 
     <item name="android:windowMinWidthMajor">60%</item>
     <item name="android:windowMinWidthMinor">90%</item>
+  </style>
+
+  <style name="BottomSheetDialog" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+    <item name="materialButtonStyle">@style/MaterialButton</item>
+    <item name="bottomSheetStyle">@style/BottomSheetModal</item>
+  </style>
+
+  <style name="BottomSheetModal" parent="Widget.MaterialComponents.BottomSheet.Modal">
+    <item name="android:background">@drawable/background_bottom_sheet</item>
+
+    <item name="shapeAppearance">@null</item>
+    <item name="shapeAppearanceOverlay">@null</item>
   </style>
 
   <!-- Buttons -->

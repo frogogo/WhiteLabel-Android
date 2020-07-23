@@ -41,7 +41,8 @@ class ReceiptsViewModel(
           ReceiptsScanAvailable,
           receipt,
           receipt.copy(status = ReceiptStatus.REJECTED),
-          receipt.copy(status = ReceiptStatus.CHECK)
+          receipt.copy(status = ReceiptStatus.CHECK),
+          receipt.copy(status = ReceiptStatus.COMPLETED)
         )
       )
     }

@@ -70,7 +70,10 @@ fun View.updateMargin(
   }
 }
 
-fun View.setSize(newWidth: Int, newHeight: Int) {
+fun View.setSize(
+  newWidth: Int = height,
+  newHeight: Int = width
+) {
   updateLayoutParams {
     width = newWidth
     height = newHeight

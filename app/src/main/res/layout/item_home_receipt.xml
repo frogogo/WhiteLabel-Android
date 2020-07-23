@@ -28,60 +28,16 @@
     app:layout_constraintLeft_toLeftOf="@id/viewReceipt"
     app:layout_constraintRight_toRightOf="@id/viewReceipt">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-      android:id="@+id/layout_accept"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+    <include
+      android:id="@+id/layoutControlsGoods"
+      layout="@layout/view_receipt_controls_goods"
       android:visibility="gone"
-      tools:visibility="visible">
+      tools:visibility="visible" />
 
-      <TextView
-        android:id="@+id/textViewTitle"
-        style="@style/Text.Subhead.Medium"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/home_accepted_title"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-      <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonEnterMachine"
-        style="@style/OutlinedButton"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/button_height"
-        android:layout_marginTop="@dimen/spacing_6"
-        android:layout_marginEnd="@dimen/spacing_1"
-        android:text="@string/home_accepted_button_enter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/buttonScanMachine"
-        app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
-
-      <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonScanMachine"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/button_height"
-        android:layout_marginStart="@dimen/spacing_1"
-        android:layout_marginTop="@dimen/spacing_6"
-        android:text="@string/home_accepted_button_scan"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/buttonEnterMachine"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.button.MaterialButton
-      android:id="@+id/buttonScanReceipt"
-      android:layout_width="match_parent"
-      android:layout_height="@dimen/button_height"
-      android:text="@string/home_rejected_button_scan"
-      android:visibility="gone"
-      app:icon="@drawable/ic_scan_qr"
-      app:iconGravity="textEnd" />
+    <include
+      android:id="@+id/layoutControlsScan"
+      layout="@layout/view_receipt_controls_scan"
+      android:visibility="gone" />
 
   </FrameLayout>
 

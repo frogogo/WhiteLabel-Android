@@ -7,7 +7,7 @@ import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.data.model.ui.product.ProductUiModel
 import ru.poprobuy.poprobuy.databinding.ItemProductBinding
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
-import ru.poprobuy.poprobuy.extension.setProductState
+import ru.poprobuy.poprobuy.extension.binding.setProductState
 
 typealias OnProductClickAction = (ProductUiModel) -> Unit
 
