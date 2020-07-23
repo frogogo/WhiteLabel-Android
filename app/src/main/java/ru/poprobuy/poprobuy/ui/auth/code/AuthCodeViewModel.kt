@@ -60,8 +60,10 @@ class AuthCodeViewModel(
 
     viewModelScope.launch {
       _isLoadingLive.postValue(true)
+      val result = authenticationUseCase(phoneNumber, confirmationCode)
+      _isLoadingLive.postValue(false)
 
-      when (val result = authenticationUseCase(phoneNumber, confirmationCode)) {
+      when (result) {
         is AuthenticationResult.Success -> {
           if (result.response.isNew) {
             navigation.navigateToAuthName().navigate()
@@ -73,8 +75,6 @@ class AuthCodeViewModel(
         AuthenticationResult.Error -> _commandLiveEvent.postValue(AuthCodeCommand.SomethingWentWrong)
         AuthenticationResult.NotFound -> _commandLiveEvent.postValue(AuthCodeCommand.UserNotFoundError)
       }
-
-      _isLoadingLive.postValue(false)
     }
   }
 
