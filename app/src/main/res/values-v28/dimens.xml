@@ -3,6 +3,7 @@
 
   <!-- Common -->
   <dimen name="card_elevation">16dp</dimen>
+  <dimen name="toolbar_elevation">16dp</dimen>
 
   <!-- Receipt -->
   <dimen name="receipt_elevation">16dp</dimen>

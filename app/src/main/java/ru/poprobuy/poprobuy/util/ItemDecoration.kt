@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class ItemDecoration(
-  @Px private val verticalSpacing: Int,
-  @Px private val horizontalSpacing: Int
+  @Px private val verticalSpacing: Int = 0,
+  @Px private val horizontalSpacing: Int = 0
 ) : RecyclerView.ItemDecoration() {
 
   override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {

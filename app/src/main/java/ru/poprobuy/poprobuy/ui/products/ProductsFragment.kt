@@ -30,7 +30,10 @@ class ProductsFragment : BaseFragment<ProductsViewModel>(R.layout.fragment_produ
     val decorationSpacing = resources.getDimensionPixelSize(R.dimen.spacing_4)
     binding.recyclerView.apply {
       adapter = this@ProductsFragment.adapter
-      addItemDecoration(ItemDecoration(verticalSpacing = decorationSpacing, horizontalSpacing = 0))
+      addItemDecoration(ItemDecoration(verticalSpacing = decorationSpacing))
+      setOnScrollChangeListener { _, _, _, _, _ ->
+        binding.toolbar.isSelected = canScrollVertically(-1)
+      }
     }
   }
 

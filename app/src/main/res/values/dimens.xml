@@ -5,6 +5,7 @@
   <dimen name="card_corner_radius_small">10dp</dimen>
   <dimen name="card_corner_radius_big">16dp</dimen>
   <dimen name="card_elevation">6dp</dimen>
+  <dimen name="toolbar_elevation">6dp</dimen>
 
   <!-- Paddings -->
   <dimen name="padding_large">32dp</dimen>

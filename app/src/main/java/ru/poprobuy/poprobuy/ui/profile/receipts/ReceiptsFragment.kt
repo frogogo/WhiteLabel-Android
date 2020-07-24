@@ -24,8 +24,13 @@ class ReceiptsFragment : BaseFragment<ReceiptsViewModel>(R.layout.fragment_recei
 
     // Recycler View
     val decorationSpacing = resources.getDimensionPixelSize(R.dimen.spacing_4)
-    binding.recyclerView.adapter = adapter
-    binding.recyclerView.addItemDecoration(ItemDecoration(verticalSpacing = decorationSpacing, horizontalSpacing = 0))
+    binding.recyclerView.apply {
+      adapter = this@ReceiptsFragment.adapter
+      addItemDecoration(ItemDecoration(verticalSpacing = decorationSpacing))
+      setOnScrollChangeListener { _, _, _, _, _ ->
+        binding.layoutToolbar.isSelected = canScrollVertically(-1)
+      }
+    }
   }
 
   override fun initObservers() = viewModel.run {
