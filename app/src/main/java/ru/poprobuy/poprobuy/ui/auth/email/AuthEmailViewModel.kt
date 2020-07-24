@@ -1,6 +1,5 @@
 package ru.poprobuy.poprobuy.ui.auth.email
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.github.ajalt.timberkt.d
@@ -8,6 +7,7 @@ import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
+import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.usecase.UseCaseResult
 import ru.poprobuy.poprobuy.usecase.user.UpdateUserDetailsUseCase
 import ru.poprobuy.poprobuy.util.Validators
@@ -20,10 +20,10 @@ class AuthEmailViewModel(
 ) : BaseViewModel() {
 
   private val _isLoadingLive = MutableLiveData<Boolean>()
-  val isLoadingLive: LiveData<Boolean> get() = _isLoadingLive
+  val isLoadingLive = _isLoadingLive.asLiveData()
 
   private val _commandLiveEvent = LiveEvent<AuthEmailCommand>()
-  val commandLiveEvent: LiveData<AuthEmailCommand> get() = _commandLiveEvent
+  val commandLiveEvent = _commandLiveEvent.asLiveData()
 
   fun updateUserData(email: String) {
     if (!validateEmail(email)) return

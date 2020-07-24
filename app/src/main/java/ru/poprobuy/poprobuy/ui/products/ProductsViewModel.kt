@@ -1,6 +1,5 @@
 package ru.poprobuy.poprobuy.ui.products
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.github.ajalt.timberkt.d
@@ -10,6 +9,7 @@ import ru.poprobuy.poprobuy.arch.navigation.AppNavigation
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.model.ui.product.ProductUiModel
+import ru.poprobuy.poprobuy.extension.asLiveData
 import java.util.*
 import kotlin.math.roundToLong
 import kotlin.random.Random
@@ -20,10 +20,10 @@ class ProductsViewModel : BaseViewModel() {
   private val _dataLive = MutableLiveData<List<RecyclerViewItem>>()
 
   private val _isLoadingLive = MutableLiveData<Boolean>()
-  val isLoadingLive: LiveData<Boolean> get() = _isLoadingLive
+  val isLoadingLive = _isLoadingLive.asLiveData()
 
   private val _timerStateLive = MutableLiveData<TimerState>()
-  val timerStateLive: LiveData<TimerState> get() = _timerStateLive
+  val timerStateLive = _timerStateLive.asLiveData()
 
   private var timerJob: Job? = null
   private var timerEnd = Date(System.currentTimeMillis() + SELECTION_TIME * 1000)

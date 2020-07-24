@@ -1,9 +1,9 @@
 package ru.poprobuy.poprobuy.ui.auth.name
 
-import androidx.lifecycle.LiveData
 import com.github.ajalt.timberkt.d
 import com.hadilq.liveevent.LiveEvent
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.util.Validators
 
 class AuthNameViewModel(
@@ -11,7 +11,7 @@ class AuthNameViewModel(
 ) : BaseViewModel() {
 
   private val _nameValidationLiveEvent = LiveEvent<Int?>()
-  val nameValidationLiveEvent: LiveData<Int?> get() = _nameValidationLiveEvent
+  val nameValidationLiveEvent = _nameValidationLiveEvent.asLiveData()
 
   fun setUserName(userName: String) {
     val nameTrimmed = userName.trim()

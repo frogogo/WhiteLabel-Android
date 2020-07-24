@@ -1,6 +1,5 @@
 package ru.poprobuy.poprobuy.ui.auth.code
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.github.ajalt.timberkt.d
@@ -10,6 +9,7 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.ticker
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.usecase.auth.AuthenticationResult
 import ru.poprobuy.poprobuy.usecase.auth.AuthenticationUseCase
 import ru.poprobuy.poprobuy.util.DateUtils
@@ -23,13 +23,13 @@ class AuthCodeViewModel(
 ) : BaseViewModel() {
 
   private val _commandLiveEvent = LiveEvent<AuthCodeCommand>()
-  val commandLiveEvent: LiveData<AuthCodeCommand> get() = _commandLiveEvent
+  val commandLiveEvent = _commandLiveEvent.asLiveData()
 
   private val _isLoadingLive = LiveEvent<Boolean>()
-  val isLoadingLive: LiveData<Boolean> get() = _isLoadingLive
+  val isLoadingLive = _isLoadingLive.asLiveData()
 
   private val _resendCodeButtonState = MutableLiveData<Int>()
-  val resendCodeButtonState: LiveData<Int> get() = _resendCodeButtonState
+  val resendCodeButtonState = _resendCodeButtonState.asLiveData()
 
   private var timerJob: Job? = null
   private var resendTime = Date(System.currentTimeMillis() + 30_000)

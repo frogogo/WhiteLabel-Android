@@ -1,17 +1,17 @@
 package ru.poprobuy.poprobuy.ui.products.select
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.model.ui.product.ProductUiModel
+import ru.poprobuy.poprobuy.extension.asLiveData
 
 class ProductSelectionViewModel : BaseViewModel() {
 
   private val _stateLive = MutableLiveData<ProductSelectionState>()
-  val stateLive: LiveData<ProductSelectionState> get() = _stateLive
+  val stateLive = _stateLive.asLiveData()
 
   private var product: ProductUiModel? = null
 

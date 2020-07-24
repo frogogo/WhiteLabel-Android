@@ -1,6 +1,5 @@
 package ru.poprobuy.poprobuy.ui.auth.phone
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.github.ajalt.timberkt.d
@@ -8,6 +7,7 @@ import com.github.ajalt.timberkt.e
 import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.extension.getUnformattedPhoneNumber
 import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationCodeUseCase
 import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationResult
@@ -20,10 +20,10 @@ class AuthPhoneViewModel(
 ) : BaseViewModel() {
 
   private val _commandLiveEvent = LiveEvent<AuthPhoneCommand>()
-  val commandLiveEvent: LiveData<AuthPhoneCommand> get() = _commandLiveEvent
+  val commandLiveEvent = _commandLiveEvent.asLiveData()
 
   private val _isLoadingLive = MutableLiveData<Boolean>()
-  val isLoadingLive: LiveData<Boolean> get() = _isLoadingLive
+  val isLoadingLive = _isLoadingLive.asLiveData()
 
   fun requestCode(phoneNumber: String, showValidationError: Boolean = false) {
     _commandLiveEvent.postValue(AuthPhoneCommand.ClearError)

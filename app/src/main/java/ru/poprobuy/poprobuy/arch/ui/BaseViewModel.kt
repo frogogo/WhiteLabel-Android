@@ -1,19 +1,19 @@
 package ru.poprobuy.poprobuy.arch.ui
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.github.ajalt.timberkt.d
 import com.hadilq.liveevent.LiveEvent
 import ru.poprobuy.poprobuy.arch.navigation.AppNavigation
 import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.extension.asLiveData
 
 open class BaseViewModel : ViewModel() {
 
   private val _navigationLiveEvent = LiveEvent<NavigationCommand>()
-  internal val navigationLiveEvent: LiveData<NavigationCommand> = _navigationLiveEvent
+  internal val navigationLiveEvent = _navigationLiveEvent.asLiveData()
 
   private val _baseCommandLiveEvent = LiveEvent<BaseCommand>()
-  val baseCommandLiveEvent: LiveData<BaseCommand> get() = _baseCommandLiveEvent
+  val baseCommandLiveEvent = _baseCommandLiveEvent.asLiveData()
 
   open fun onCreate(): Unit = Unit
 

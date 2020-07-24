@@ -1,6 +1,5 @@
 package ru.poprobuy.poprobuy.ui.home
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.github.ajalt.timberkt.d
@@ -11,6 +10,7 @@ import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.model.ui.ReceiptUiModel
 import ru.poprobuy.poprobuy.data.model.ui.home.HomeState
 import ru.poprobuy.poprobuy.dictionary.ReceiptStatus
+import ru.poprobuy.poprobuy.extension.asLiveData
 import java.util.*
 
 class HomeViewModel(
@@ -18,7 +18,7 @@ class HomeViewModel(
 ) : BaseViewModel() {
 
   private val _dataLive = MutableLiveData<List<RecyclerViewItem>>()
-  val dataLive: LiveData<List<RecyclerViewItem>> get() = _dataLive
+  val dataLive = _dataLive.asLiveData()
 
   init {
     refreshData()

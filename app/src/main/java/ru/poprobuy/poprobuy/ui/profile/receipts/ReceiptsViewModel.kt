@@ -1,6 +1,5 @@
 package ru.poprobuy.poprobuy.ui.profile.receipts
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.github.ajalt.timberkt.d
@@ -11,6 +10,7 @@ import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.model.ui.ReceiptUiModel
 import ru.poprobuy.poprobuy.data.model.ui.receipts.ReceiptsScanAvailable
 import ru.poprobuy.poprobuy.dictionary.ReceiptStatus
+import ru.poprobuy.poprobuy.extension.asLiveData
 import java.util.*
 
 class ReceiptsViewModel(
@@ -18,10 +18,10 @@ class ReceiptsViewModel(
 ) : BaseViewModel() {
 
   private val _dataLive = MutableLiveData<List<RecyclerViewItem>>()
-  val dataLive: MutableLiveData<List<RecyclerViewItem>> get() = _dataLive
+  val dataLive = _dataLive.asLiveData()
 
   private val _isLoadingLive = MutableLiveData<Boolean>()
-  val isLoadingLive: LiveData<Boolean> get() = _isLoadingLive
+  val isLoadingLive = _isLoadingLive.asLiveData()
 
   init {
     viewModelScope.launch {

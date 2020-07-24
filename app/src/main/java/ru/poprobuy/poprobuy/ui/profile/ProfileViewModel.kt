@@ -1,6 +1,5 @@
 package ru.poprobuy.poprobuy.ui.profile
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.distinctUntilChanged
 import androidx.lifecycle.viewModelScope
@@ -12,6 +11,7 @@ import ru.poprobuy.poprobuy.data.model.ui.profile.ProfileUiModel
 import ru.poprobuy.poprobuy.data.model.ui.profile.toProfileModel
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.data.repository.UserRepository
+import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.usecase.onFailure
 import ru.poprobuy.poprobuy.usecase.onSuccess
 import ru.poprobuy.poprobuy.usecase.user.GetUserInfoUseCase
@@ -26,10 +26,10 @@ class ProfileViewModel(
 ) : BaseViewModel() {
 
   private val _profileLive = MutableLiveData<ProfileUiModel>()
-  val profileLive: LiveData<ProfileUiModel> get() = _profileLive.distinctUntilChanged()
+  val profileLive = _profileLive.asLiveData().distinctUntilChanged()
 
   private val _isLoadingLive = MutableLiveData<Boolean>()
-  val isLoadingLive: LiveData<Boolean> get() = _isLoadingLive
+  val isLoadingLive = _isLoadingLive.asLiveData()
 
   override fun onCreate() {
     viewModelScope.launch {
