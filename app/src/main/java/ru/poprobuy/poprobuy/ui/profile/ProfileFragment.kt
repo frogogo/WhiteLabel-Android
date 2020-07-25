@@ -19,20 +19,31 @@ class ProfileFragment : BaseFragment<ProfileViewModel>(R.layout.fragment_profile
   private val binding: FragmentProfileBinding by viewBinding()
 
   override fun initViews() {
-    binding.buttonClose.setOnSafeClickListener(viewModel::navigateBack)
-    binding.layoutContent.apply {
-      layoutInvite.buttonShare.setOnSafeClickListener { /* TODO: 04.07.2020 Invitation */ }
-      layoutMenu.apply {
-        buttonReceipts.setOnSafeClickListener(viewModel::navigateToReceipts)
-        buttonGoods.setOnSafeClickListener(viewModel::navigateToGoods)
+    binding.apply {
+      buttonClose.setOnSafeClickListener(viewModel::navigateBack)
+      viewErrorState.setOnRefreshClickListener(viewModel::loadProfile)
+      layoutContent.apply {
+        layoutInvite.buttonShare.setOnSafeClickListener { /* TODO: 04.07.2020 Invitation */ }
+        layoutMenu.apply {
+          buttonReceipts.setOnSafeClickListener(viewModel::navigateToReceipts)
+          buttonGoods.setOnSafeClickListener(viewModel::navigateToGoods)
+        }
       }
+      initLogoutButton()
     }
-    initLogoutButton()
   }
 
-  override fun initObservers() = viewModel.run {
-    profileLive.observe(this@ProfileFragment::renderProfile)
-    isLoadingLive.observe { binding.progressBar.setVisible(it) }
+  override fun initObservers() {
+    viewModel.stateLiveData.observe(this::renderState)
+  }
+
+  private fun renderState(state: ProfileViewModel.ViewState) {
+    state.profile?.let(this::renderProfile)
+
+    binding.apply {
+      progressBar.setVisible(state.isLoading)
+      viewErrorState.setVisible(state.isError)
+    }
   }
 
   private fun renderProfile(profile: ProfileUiModel) {

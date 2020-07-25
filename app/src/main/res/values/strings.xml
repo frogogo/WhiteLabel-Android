@@ -143,4 +143,8 @@
   <string name="product_select_done_subtitle_2">Уже завтра вы можете отсканировать новый чек и снова попробовать что-то новое!</string>
   <string name="product_select_error_description">Возможно аппарат занят, повторите попытку через несколько минут.</string>
 
+  <!-- Error State -->
+  <string name="view_error_state_description">Ошибка загрузки</string>
+  <string name="view_error_state_button">Повторить</string>
+
 </resources>
