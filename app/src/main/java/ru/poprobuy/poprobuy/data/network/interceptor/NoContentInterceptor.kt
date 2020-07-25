@@ -12,10 +12,10 @@ class NoContentInterceptor : Interceptor {
   override fun intercept(chain: Interceptor.Chain): Response {
     val response = chain.proceed(chain.request())
 
-    return if (response.code != 204) {
-      response
-    } else {
+    return if (response.code == 204) {
       response.newBuilder().code(200).build()
+    } else {
+      response
     }
   }
 }

@@ -11,6 +11,7 @@ object Constants {
 
   // Network
   const val POPROBUY_API_ENDPOINT = "${BuildConfig.BASE_URL}/api/"
+  const val POPROBUY_API_VERSION = BuildConfig.VERSION_CODE
 
   // Urls
   const val HELP_SCAN_RECEIPT_URL = "https://poprobuy.ru" // TODO: 14.07.2020 Change url

@@ -13,10 +13,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import ru.poprobuy.poprobuy.BuildConfig
 import ru.poprobuy.poprobuy.data.network.PoprobuyApi
-import ru.poprobuy.poprobuy.data.network.interceptor.AuthInterceptor
-import ru.poprobuy.poprobuy.data.network.interceptor.NoContentInterceptor
-import ru.poprobuy.poprobuy.data.network.interceptor.PoprobuyInterceptor
+import ru.poprobuy.poprobuy.data.network.interceptor.*
+import ru.poprobuy.poprobuy.util.Constants
 import ru.poprobuy.poprobuy.util.Constants.POPROBUY_API_ENDPOINT
+import ru.poprobuy.poprobuy.util.network.UserAgentFactory
 import java.io.File
 import java.util.concurrent.TimeUnit
 
@@ -35,7 +35,8 @@ val networkModule = module {
   single {
     createHttpClient(
       context = androidContext(),
-      authorizationInterceptor = get()
+      authorizationInterceptor = get(),
+      userAgent = UserAgentFactory.create()
     )
   }
   single {
@@ -49,7 +50,8 @@ val networkModule = module {
 
 fun createHttpClient(
   context: Context,
-  authorizationInterceptor: Interceptor
+  authorizationInterceptor: Interceptor,
+  userAgent: String
 ): OkHttpClient {
   return OkHttpClient.Builder().apply {
     // Timeout settings
@@ -65,7 +67,9 @@ fun createHttpClient(
         level = HttpLoggingInterceptor.Level.HEADERS
       })
     }
-    addInterceptor(PoprobuyInterceptor())
+    addInterceptor(UserAgentInterceptor(userAgent))
+    addInterceptor(AcceptInterceptor())
+    addInterceptor(ApiVersionInterceptor(Constants.POPROBUY_API_VERSION))
     addInterceptor(NoContentInterceptor())
     addInterceptor(authorizationInterceptor)
 
