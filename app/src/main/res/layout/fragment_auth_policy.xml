@@ -11,9 +11,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/screen_background"
-    android:paddingStart="@dimen/padding_large"
-    android:paddingTop="@dimen/padding_large"
-    android:paddingEnd="@dimen/padding_large">
+    android:paddingStart="@dimen/spacing_8"
+    android:paddingTop="@dimen/spacing_8"
+    android:paddingEnd="@dimen/spacing_8">
 
     <TextView
       android:id="@+id/textViewTitle"

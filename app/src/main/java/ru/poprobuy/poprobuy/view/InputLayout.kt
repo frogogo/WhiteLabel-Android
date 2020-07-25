@@ -7,7 +7,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.FrameLayout
 import androidx.core.widget.doAfterTextChanged
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.databinding.ViewInputLayoutAuthBinding
+import ru.poprobuy.poprobuy.databinding.ViewInputLayoutBinding
 import ru.poprobuy.poprobuy.extension.*
 
 typealias ImeGoAction = () -> Unit
@@ -18,7 +18,7 @@ class InputLayout @JvmOverloads constructor(
   defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
-  val binding = ViewInputLayoutAuthBinding.inflate(layoutInflater, this, true)
+  val binding = ViewInputLayoutBinding.inflate(layoutInflater, this, true)
 
   /**
    * EditText string value

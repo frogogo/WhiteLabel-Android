@@ -48,7 +48,7 @@
     android:layout_height="@dimen/button_height"
     android:layout_marginStart="@dimen/spacing_4"
     android:layout_marginEnd="@dimen/spacing_4"
-    android:layout_marginBottom="48dp"
+    android:layout_marginBottom="@dimen/spacing_12"
     android:minWidth="120dp"
     android:text="@string/onboarding_button_finish"
     android:visibility="invisible"

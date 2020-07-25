@@ -11,8 +11,8 @@
     android:id="@+id/layoutContent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="@dimen/padding_large"
-    android:paddingEnd="@dimen/padding_large">
+    android:paddingStart="@dimen/spacing_8"
+    android:paddingEnd="@dimen/spacing_8">
 
     <TextView
       android:id="@+id/textViewTitle"
@@ -46,7 +46,7 @@
       android:id="@+id/textInputLayout"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:layout_marginTop="66dp"
+      android:layout_marginTop="@dimen/auth_phone_text_layout_margin_top"
       app:layout_constraintBottom_toTopOf="@id/textViewError"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
