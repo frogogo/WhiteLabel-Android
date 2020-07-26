@@ -96,6 +96,9 @@
       app:exitAnim="@anim/scale_exit"
       app:popUpTo="@id/main_navigation"
       app:popUpToInclusive="true" />
+    <argument
+      android:name="codeRefreshRate"
+      app:argType="integer" />
   </fragment>
 
   <fragment

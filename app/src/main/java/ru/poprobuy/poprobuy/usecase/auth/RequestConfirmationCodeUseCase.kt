@@ -15,7 +15,7 @@ class RequestConfirmationCodeUseCase(
   ): RequestConfirmationResult = when (val result = authRepository.requestConfirmationCode(phoneNumber)) {
     is NetworkResource.Success -> {
       i { "Code requested successfully" }
-      RequestConfirmationResult.Success
+      RequestConfirmationResult.Success(result.data.passwordRefreshRate)
     }
     is NetworkResource.Error -> {
       val error = result.error

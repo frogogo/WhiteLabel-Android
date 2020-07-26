@@ -3,6 +3,7 @@ package ru.poprobuy.poprobuy.data.repository
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationRequest
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponse
 import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequest
+import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequestResponse
 import ru.poprobuy.poprobuy.data.network.PoprobuyApi
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
 import ru.poprobuy.poprobuy.util.network.NetworkResource
@@ -13,7 +14,7 @@ class AuthRepository(
   private val userPreferences: UserPreferences
 ) {
 
-  suspend fun requestConfirmationCode(phoneNumber: String): NetworkResource<Unit, Any> {
+  suspend fun requestConfirmationCode(phoneNumber: String): NetworkResource<ConfirmationCodeRequestResponse, Any> {
     val request = ConfirmationCodeRequest(phoneNumber)
     return apiCall { api.requestPasswordCode(request) }
   }

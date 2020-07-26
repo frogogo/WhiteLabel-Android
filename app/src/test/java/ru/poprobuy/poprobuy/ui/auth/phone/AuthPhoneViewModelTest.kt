@@ -63,7 +63,7 @@ class AuthPhoneViewModelTest {
 
   @Test
   fun `view model handles success result`() {
-    coEvery { requestConfirmationCodeUseCase(any()) } returns RequestConfirmationResult.Success
+    coEvery { requestConfirmationCodeUseCase(any()) } returns RequestConfirmationResult.Success(60)
     val commandsObserver = mockkObserver<AuthPhoneCommand>()
     val isLoadingObserver = mockkObserver<Boolean>()
     val navigationObserver = mockkObserver<NavigationCommand>()
@@ -75,7 +75,7 @@ class AuthPhoneViewModelTest {
 
     viewModel.requestCode(VALID_PHONE_NUMBER)
 
-    val navigationDestination = navigation.navigateToAuthCodeConfirmation(VALID_PHONE_NUMBER)
+    val navigationDestination = navigation.navigateToAuthCodeConfirmation(VALID_PHONE_NUMBER, 60)
     coVerifySequence {
       commandsObserver.onChanged(AuthPhoneCommand.ClearError)
       isLoadingObserver.onChanged(true)

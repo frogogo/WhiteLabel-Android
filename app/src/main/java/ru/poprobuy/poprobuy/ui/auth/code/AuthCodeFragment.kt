@@ -1,25 +1,35 @@
 package ru.poprobuy.poprobuy.ui.auth.code
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.os.Handler
 import android.text.TextWatcher
+import androidx.core.os.postDelayed
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.github.ajalt.timberkt.e
 import com.github.ajalt.timberkt.i
+import com.github.razir.progressbutton.hideDrawable
+import com.github.razir.progressbutton.hideProgress
+import com.github.razir.progressbutton.showDrawable
+import com.github.razir.progressbutton.showProgress
 import com.google.android.gms.auth.api.phone.SmsRetriever
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentAuthCodeBinding
-import ru.poprobuy.poprobuy.extension.*
 import ru.poprobuy.poprobuy.extension.binding.editText
 import ru.poprobuy.poprobuy.extension.binding.initCodeConfirmationType
+import ru.poprobuy.poprobuy.extension.formatWithMask
+import ru.poprobuy.poprobuy.extension.setNullableTextRes
+import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
+import ru.poprobuy.poprobuy.extension.setVisible
 import ru.poprobuy.poprobuy.util.ConfirmationCodeUtils
 import ru.poprobuy.poprobuy.util.Constants
 import ru.poprobuy.poprobuy.util.ParallelAutoTransition
@@ -38,6 +48,7 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
     SmsVerificationReceiver(SMS_CONSENT_REQUEST) { this }
   }
   private var codeTextWatcher: TextWatcher? = null
+  private val handler = Handler()
 
   override fun initViews() {
     binding.apply {
@@ -56,7 +67,13 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
   override fun initObservers() = viewModel.run {
     commandLiveEvent.observe(this@AuthCodeFragment::handleCommand)
     isLoadingLive.observe(this@AuthCodeFragment.binding.textInputLayout::setLoading)
-    resendCodeButtonState.observe(this@AuthCodeFragment::renderResendCodeButton)
+    isResendingCodeLive.observe(this@AuthCodeFragment::renderCodeIsResending)
+    resendCodeTimeRemainingLive.observe(this@AuthCodeFragment::renderResendCodeButton)
+  }
+
+  override fun onAttach(context: Context) {
+    super.onAttach(context)
+    viewModel.setResendDelay(args.codeRefreshRate)
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,6 +91,7 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
 
   override fun onStop() {
     super.onStop()
+    handler.removeCallbacksAndMessages(null)
     requireActivity().unregisterReceiver(smsVerificationReceiver)
   }
 
@@ -131,6 +149,18 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
           confirmPhone()
         }
       }
+      AuthCodeCommand.CodeResendError -> {
+        val drawableSize = resources.getDimensionPixelSize(R.dimen.button_icon_size)
+        val drawable = requireContext().getDrawable(R.drawable.ic_exclamation_mark_primary)!!.apply {
+          setBounds(0, 0, drawableSize, drawableSize)
+        }
+        binding.buttonResendCode.showDrawable(drawable) {
+          buttonTextRes = R.string.auth_code_error_resend
+        }
+        handler.postDelayed(CODE_RESEND_ERROR_DURATION) {
+          binding.buttonResendCode.hideDrawable(R.string.auth_code_button_resend_code)
+        }
+      }
       is AuthCodeCommand.CodeValidationResult -> binding.apply {
         textViewError.setNullableTextRes(command.errorRes)
         textInputLayout.setError(command.errorRes != null)
@@ -155,7 +185,19 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
     }
   }
 
+  private fun renderCodeIsResending(isResending: Boolean) {
+    if (isResending) {
+      binding.buttonResendCode.showProgress {
+        buttonTextRes = R.string.auth_code_button_resend_resending
+        progressColorRes = R.color.button
+      }
+    } else {
+      binding.buttonResendCode.hideProgress(R.string.auth_code_button_resend_code)
+    }
+  }
+
   companion object {
+    private const val CODE_RESEND_ERROR_DURATION = 1500L
     private const val SMS_CONSENT_REQUEST = 2
   }
 

@@ -40,9 +40,15 @@ class AuthPhoneViewModel(
       _isLoadingLive.postValue(false)
 
       when (result) {
-        RequestConfirmationResult.Success -> navigation.navigateToAuthCodeConfirmation(phoneNumberPrefixed).navigate()
-        RequestConfirmationResult.TooManyRequests -> _commandLiveEvent.postValue(AuthPhoneCommand.TooManyRequestsError)
-        RequestConfirmationResult.Error -> _commandLiveEvent.postValue(AuthPhoneCommand.SomethingWentWrong)
+        is RequestConfirmationResult.Success -> {
+          navigation.navigateToAuthCodeConfirmation(phoneNumberPrefixed, result.refreshRate).navigate()
+        }
+        RequestConfirmationResult.TooManyRequests -> {
+          _commandLiveEvent.postValue(AuthPhoneCommand.TooManyRequestsError)
+        }
+        RequestConfirmationResult.Error -> {
+          _commandLiveEvent.postValue(AuthPhoneCommand.SomethingWentWrong)
+        }
       }
     }
   }

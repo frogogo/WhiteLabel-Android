@@ -4,10 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class AuthenticationResponse(
-  // Auth Data
-  @Json(name = "jwt")
-  val accessToken: String,
-  @Json(name = "is_new")
-  val isNew: Boolean
+data class ConfirmationCodeRequestResponse(
+  @Json(name = "password_refresh_rate")
+  val passwordRefreshRate: Int
 )

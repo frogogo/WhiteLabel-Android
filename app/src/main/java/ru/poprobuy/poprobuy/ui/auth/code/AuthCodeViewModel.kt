@@ -6,33 +6,38 @@ import com.github.ajalt.timberkt.d
 import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.channels.ticker
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
 import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.usecase.auth.AuthenticationResult
 import ru.poprobuy.poprobuy.usecase.auth.AuthenticationUseCase
-import ru.poprobuy.poprobuy.util.DateUtils
+import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationCodeUseCase
+import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationResult
+import ru.poprobuy.poprobuy.util.OtpRequestDisabler
 import ru.poprobuy.poprobuy.util.Validators
-import java.util.*
 
 class AuthCodeViewModel(
   private val phoneNumber: String,
   private val navigation: AuthCodeConfirmationNavigation,
-  private val authenticationUseCase: AuthenticationUseCase
+  private val authenticationUseCase: AuthenticationUseCase,
+  private val requestConfirmationCodeUseCase: RequestConfirmationCodeUseCase,
+  private val otpRequestDisabler: OtpRequestDisabler
 ) : BaseViewModel() {
 
   private val _commandLiveEvent = LiveEvent<AuthCodeCommand>()
   val commandLiveEvent = _commandLiveEvent.asLiveData()
 
-  private val _isLoadingLive = LiveEvent<Boolean>()
+  private val _isLoadingLive = MutableLiveData<Boolean>()
   val isLoadingLive = _isLoadingLive.asLiveData()
 
-  private val _resendCodeButtonState = MutableLiveData<Int>()
-  val resendCodeButtonState = _resendCodeButtonState.asLiveData()
+  private val _isResendingCodeLive = MutableLiveData<Boolean>()
+  val isResendingCodeLive = _isResendingCodeLive.asLiveData()
+
+  private val _resendCodeTimeRemainingLive = MutableLiveData<Int>()
+  val resendCodeTimeRemainingLive = _resendCodeTimeRemainingLive
 
   private var timerJob: Job? = null
-  private var resendTime = Date(System.currentTimeMillis() + 30_000)
 
   override fun onStart() {
     startCodeResendCountdown()
@@ -50,8 +55,23 @@ class AuthCodeViewModel(
     d { "Timer job canceled" }
   }
 
+  fun setResendDelay(delay: Int) {
+    otpRequestDisabler.submitDelay(delay)
+    startCodeResendCountdown()
+  }
+
   fun resendConfirmationCode() {
-    // TODO: 28.06.2020 Implement code resending
+    viewModelScope.launch {
+      _isResendingCodeLive.postValue(true)
+      val result = requestConfirmationCodeUseCase(phoneNumber)
+      _isResendingCodeLive.postValue(false)
+
+      if (result is RequestConfirmationResult.Success) {
+        setResendDelay(result.refreshRate)
+      } else {
+        _commandLiveEvent.postValue(AuthCodeCommand.CodeResendError)
+      }
+    }
   }
 
   fun confirmPhoneNumber(confirmationCode: String) {
@@ -65,7 +85,7 @@ class AuthCodeViewModel(
 
       when (result) {
         is AuthenticationResult.Success -> {
-          if (result.response.isNew) {
+          if (result.isNewUser) {
             navigation.navigateToAuthName().navigate()
           } else {
             hideKeyboard()
@@ -89,18 +109,11 @@ class AuthCodeViewModel(
     d { "Starting timer" }
     timerJob?.cancel()
     timerJob = viewModelScope.launch {
-      val ticker = ticker(COUNTDOWN_INTERVAL, COUNTDOWN_START_DELAY)
-      for (ignored in ticker) {
-        val difference = DateUtils.calculateSecondsDifferenceBetweenDates(Date(), resendTime)
-        _resendCodeButtonState.postValue(difference)
-        if (difference <= 0) cancel()
+      otpRequestDisabler.disabledForSecondsFlow.collect { timeRemaining ->
+        _resendCodeTimeRemainingLive.postValue(timeRemaining ?: 0)
+        if (timeRemaining == null) cancel()
       }
     }
-  }
-
-  companion object {
-    private const val COUNTDOWN_INTERVAL = 1000L
-    private const val COUNTDOWN_START_DELAY = 0L
   }
 
 }

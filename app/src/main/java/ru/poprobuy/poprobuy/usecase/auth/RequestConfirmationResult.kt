@@ -1,7 +1,7 @@
 package ru.poprobuy.poprobuy.usecase.auth
 
 sealed class RequestConfirmationResult {
-  object Success : RequestConfirmationResult()
+  data class Success(val refreshRate: Int) : RequestConfirmationResult()
   object Error : RequestConfirmationResult()
   object TooManyRequests : RequestConfirmationResult()
 }

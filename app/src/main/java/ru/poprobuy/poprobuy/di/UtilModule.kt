@@ -5,6 +5,7 @@ import androidx.navigation.NavController
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import ru.poprobuy.poprobuy.arch.navigation.NavigationRouter
+import ru.poprobuy.poprobuy.util.OtpRequestDisabler
 import ru.poprobuy.poprobuy.util.ProfileUtils
 
 val utilModule = module {
@@ -15,4 +16,5 @@ val utilModule = module {
       controller = navController
     )
   }
+  factory { OtpRequestDisabler() }
 }

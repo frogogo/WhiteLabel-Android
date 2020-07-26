@@ -35,7 +35,9 @@ val screenModule = module {
     AuthCodeViewModel(
       phoneNumber = phoneNumber,
       navigation = get(),
-      authenticationUseCase = get()
+      authenticationUseCase = get(),
+      requestConfirmationCodeUseCase = get(),
+      otpRequestDisabler = get()
     )
   }
   viewModel { AuthNameViewModel(get()) }

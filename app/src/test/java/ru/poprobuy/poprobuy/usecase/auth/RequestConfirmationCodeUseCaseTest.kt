@@ -8,6 +8,7 @@ import kotlinx.coroutines.test.runBlockingTest
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Test
+import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequestResponse
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.failureHttpNetworkCall
 import ru.poprobuy.poprobuy.failureNetworkCall
@@ -27,11 +28,12 @@ class RequestConfirmationCodeUseCaseTest {
 
   @Test
   fun `success result returned if request executed successfully`() = runBlockingTest {
-    coEvery { authRepository.requestConfirmationCode(any()) } returns successNetworkCall(Unit)
+    val response = ConfirmationCodeRequestResponse(60)
+    coEvery { authRepository.requestConfirmationCode(any()) } returns successNetworkCall(response)
 
     val result = useCase("")
 
-    result shouldBeEqualTo RequestConfirmationResult.Success
+    result shouldBeEqualTo RequestConfirmationResult.Success(60)
   }
 
   @Test

@@ -20,7 +20,7 @@ class AuthenticationUseCase(
         saveAuthToken(result.data.accessToken)
         setUserAuthorized()
       }
-      AuthenticationResult.Success(result.data)
+      AuthenticationResult.Success(result.data.isNew)
     }
     is NetworkResource.Error -> {
       val error = result.error
