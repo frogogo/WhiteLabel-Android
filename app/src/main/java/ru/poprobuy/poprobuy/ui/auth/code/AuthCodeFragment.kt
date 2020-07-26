@@ -14,10 +14,7 @@ import androidx.transition.TransitionManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.github.ajalt.timberkt.e
 import com.github.ajalt.timberkt.i
-import com.github.razir.progressbutton.hideDrawable
-import com.github.razir.progressbutton.hideProgress
-import com.github.razir.progressbutton.showDrawable
-import com.github.razir.progressbutton.showProgress
+import com.github.razir.progressbutton.*
 import com.google.android.gms.auth.api.phone.SmsRetriever
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -61,6 +58,7 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
       textViewPhoneNumber.text = args.phoneNumber.formatWithMask(Constants.PHONE_MASK_FULL)
       textViewPhoneNumberChange.setOnSafeClickListener(viewModel::navigateBack)
       buttonResendCode.setOnSafeClickListener(viewModel::resendConfirmationCode)
+      bindProgressButton(buttonResendCode)
     }
   }
 
