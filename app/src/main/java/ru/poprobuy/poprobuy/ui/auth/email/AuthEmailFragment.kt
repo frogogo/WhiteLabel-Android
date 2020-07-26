@@ -1,5 +1,6 @@
 package ru.poprobuy.poprobuy.ui.auth.email
 
+import android.text.method.LinkMovementMethod
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -31,6 +32,7 @@ class AuthEmailFragment : BaseFragment<AuthEmailViewModel>(
         showKeyboard()
       }
       buttonContinue.setOnSafeClickListener { setEmail() }
+      textViewError.movementMethod = LinkMovementMethod.getInstance()
     }
   }
 

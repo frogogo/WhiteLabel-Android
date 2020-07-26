@@ -7,6 +7,7 @@ import android.content.IntentFilter
 import android.os.Bundle
 import android.os.Handler
 import android.text.TextWatcher
+import android.text.method.LinkMovementMethod
 import androidx.core.os.postDelayed
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.navArgs
@@ -58,6 +59,7 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
       textViewPhoneNumber.text = args.phoneNumber.formatWithMask(Constants.PHONE_MASK_FULL)
       textViewPhoneNumberChange.setOnSafeClickListener(viewModel::navigateBack)
       buttonResendCode.setOnSafeClickListener(viewModel::resendConfirmationCode)
+      textViewError.movementMethod = LinkMovementMethod.getInstance()
       bindProgressButton(buttonResendCode)
     }
   }
