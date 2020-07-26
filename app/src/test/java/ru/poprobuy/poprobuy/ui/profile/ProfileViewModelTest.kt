@@ -4,16 +4,16 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.amshove.kluent.*
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import ru.poprobuy.poprobuy.CoroutinesTestRule
 import ru.poprobuy.poprobuy.DataFixtures
+import ru.poprobuy.poprobuy.data.model.ui.profile.ProfileUiModel
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.data.repository.UserRepository
 import ru.poprobuy.poprobuy.mockkObserver
-import ru.poprobuy.poprobuy.ui.profile.ProfileViewModel.ViewState
 import ru.poprobuy.poprobuy.usecase.UseCaseResult
 import ru.poprobuy.poprobuy.usecase.user.GetUserInfoUseCase
 import ru.poprobuy.poprobuy.util.ProfileUtils
@@ -34,6 +34,10 @@ class ProfileViewModelTest {
   private val navigation: ProfileNavigation = mockk(relaxed = true)
   private val profileUtils: ProfileUtils = mockk(relaxed = true)
 
+  private val isLoadingObserver = mockkObserver<Boolean>()
+  private val profileObserver = mockkObserver<ProfileUiModel>()
+  private val errorOccurredObserver = mockkObserver<Unit>()
+
   @Before
   fun startUp() {
     clearAllMocks()
@@ -43,13 +47,15 @@ class ProfileViewModelTest {
       authRepository = authRepository,
       navigation = navigation,
       profileUtils = profileUtils
-    )
+    ).apply {
+      isLoadingLive.observeForever(isLoadingObserver)
+      profileLive.observeForever(profileObserver)
+      errorOccurredLiveEvent.observeForever(errorOccurredObserver)
+    }
   }
 
   @Test
   fun `verify flow when user data cached and network data loaded`() = runBlockingTest {
-    val stateObserver = mockkObserver<ViewState>()
-    viewModel.stateLiveData.observeForever(stateObserver)
     every { userRepository.getUser() } returns DataFixtures.user
     coEvery { getUserInfoUseCase() } returns UseCaseResult.Success(DataFixtures.user)
 
@@ -57,80 +63,54 @@ class ProfileViewModelTest {
 
     verifySequence {
       // Cached data
-      stateObserver.onChanged(matchViewState(profileIsNull = false))
+      profileObserver.onChanged(isNull(inverse = true))
       // Network data
-      stateObserver.onChanged(matchViewState(profileIsNull = false))
-    }
-
-    viewModel.stateLiveData.value?.apply {
-      isLoading.shouldBeFalse()
-      isError.shouldBeFalse()
-      profile.shouldNotBeNull()
+      profileObserver.onChanged(isNull(inverse = true))
     }
   }
 
   @Test
   fun `verify flow when user data cached and network request failed`() = runBlockingTest {
-    val stateObserver = mockkObserver<ViewState>()
-    viewModel.stateLiveData.observeForever(stateObserver)
     every { userRepository.getUser() } returns DataFixtures.user
     coEvery { getUserInfoUseCase() } returns UseCaseResult.Failure()
 
     viewModel.loadProfile()
 
-    verifySequence {
-      // Cached data
-      stateObserver.onChanged(matchViewState(profileIsNull = false))
-      // Error not passed as data exists
-      stateObserver.onChanged(matchViewState(profileIsNull = false))
-    }
-
-    viewModel.stateLiveData.value?.apply {
-      isLoading.shouldBeFalse()
-      isError.shouldBeFalse()
-      profile.shouldNotBeNull()
+    coVerifySequence {
+      userRepository.getUser()
+      profileObserver.onChanged(isNull(inverse = true))
+      getUserInfoUseCase()
     }
   }
 
   @Test
   fun `verify flow when no cached user data and network data is loaded`() = runBlockingTest {
-    val stateObserver = mockkObserver<ViewState>()
-    viewModel.stateLiveData.observeForever(stateObserver)
     every { userRepository.getUser() } returns null
     coEvery { getUserInfoUseCase() } returns UseCaseResult.Success(DataFixtures.user)
 
     viewModel.loadProfile()
 
-    verifySequence {
-      stateObserver.onChanged(matchViewState(isLoading = true))
-      stateObserver.onChanged(matchViewState(profileIsNull = false))
-    }
-
-    viewModel.stateLiveData.value?.apply {
-      isLoading.shouldBeFalse()
-      isError.shouldBeFalse()
-      profile.shouldNotBeNull()
+    coVerifySequence {
+      userRepository.getUser()
+      isLoadingObserver.onChanged(true)
+      getUserInfoUseCase()
+      profileObserver.onChanged(isNull(inverse = true))
+      isLoadingObserver.onChanged(false)
     }
   }
 
   @Test
   fun `verify flow when no cached user data and network request failed`() = runBlockingTest {
-    val stateObserver = mockkObserver<ViewState>()
-    viewModel.stateLiveData.observeForever(stateObserver)
     every { userRepository.getUser() } returns null
     coEvery { getUserInfoUseCase() } returns UseCaseResult.Failure()
 
     viewModel.loadProfile()
 
-    verifySequence {
-      stateObserver.onChanged(matchViewState(isLoading = true))
-      stateObserver.onChanged(matchViewState(isError = true))
-    }
-
-    viewModel.stateLiveData.value?.apply {
-      isLoading.shouldBeFalse()
-      isError.shouldBeTrue()
-      profile.shouldBeNull()
+    coVerifySequence {
+      userRepository.getUser()
+      isLoadingObserver.onChanged(true)
+      getUserInfoUseCase()
+      errorOccurredObserver.onChanged(Unit)
     }
   }
 
@@ -139,19 +119,6 @@ class ProfileViewModelTest {
     viewModel.navigateToReceipts()
 
     viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToReceipts()
-  }
-
-  /**
-   * Matcher that defines default view state and allow changes
-   */
-  private fun MockKMatcherScope.matchViewState(
-    isLoading: Boolean = ViewState().isLoading,
-    isError: Boolean = ViewState().isError,
-    profileIsNull: Boolean = true
-  ) = match<ViewState> {
-    it.isError == isError &&
-        it.isLoading == isLoading &&
-        (it.profile == null) == profileIsNull
   }
 
 }

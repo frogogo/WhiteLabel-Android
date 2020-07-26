@@ -33,17 +33,10 @@ class ProfileFragment : BaseFragment<ProfileViewModel>(R.layout.fragment_profile
     }
   }
 
-  override fun initObservers() {
-    viewModel.stateLiveData.observe(this::renderState)
-  }
-
-  private fun renderState(state: ProfileViewModel.ViewState) {
-    state.profile?.let(this::renderProfile)
-
-    binding.apply {
-      progressBar.setVisible(state.isLoading)
-      viewErrorState.setVisible(state.isError)
-    }
+  override fun initObservers() = viewModel.run {
+    profileLive.observe(this@ProfileFragment::renderProfile)
+    isLoadingLive.observe { renderState(isLoading = it) }
+    errorOccurredLiveEvent.observe { renderState(isError = true) }
   }
 
   private fun renderProfile(profile: ProfileUiModel) {
@@ -56,6 +49,13 @@ class ProfileFragment : BaseFragment<ProfileViewModel>(R.layout.fragment_profile
 
       // Show content
       root.setVisible(true)
+    }
+  }
+
+  private fun renderState(isLoading: Boolean = false, isError: Boolean = false) {
+    binding.apply {
+      progressBar.setVisible(isLoading && !isError)
+      viewErrorState.setVisible(isError && !isLoading)
     }
   }
 
