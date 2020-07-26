@@ -21,7 +21,7 @@ abstract class BaseBottomSheetDialogFragment<out T : BaseViewModel>(
 
   abstract val viewModel: T
 
-  private val navigationRouter: NavigationRouter by inject { parametersOf(requireActivity(), findNavController()) }
+  private val navigationRouter: NavigationRouter by inject { parametersOf(findNavController()) }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     return inflater.inflate(layoutResId, container, false)

@@ -1,13 +1,10 @@
 package ru.poprobuy.poprobuy.arch.navigation
 
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import ru.poprobuy.poprobuy.MainNavigationDirections
-import ru.poprobuy.poprobuy.extension.openUrlInTabs
 
 class NavigationRouter(
-  private val activity: AppCompatActivity,
   private val controller: NavController
 ) {
 
@@ -27,12 +24,8 @@ class NavigationRouter(
         controller.navigate(uri, command.navOptions)
       }
       is NavigationCommand.ByWebUrl -> {
-        // Try to open url in chrome tabs
-        activity.openUrlInTabs(command.url) {
-          // Open own WebView fragment if tabs failed
-          val action = MainNavigationDirections.actionGlobalWebView(command.url, command.titleRes)
-          controller.navigate(action)
-        }
+        val action = MainNavigationDirections.actionGlobalWebView(command.url, command.titleRes)
+        controller.navigate(action)
       }
       NavigationCommand.Back -> {
         controller.navigateUp()

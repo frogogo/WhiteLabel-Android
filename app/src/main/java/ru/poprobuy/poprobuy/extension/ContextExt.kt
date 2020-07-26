@@ -9,10 +9,6 @@ import android.os.Vibrator
 import android.provider.Settings
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.browser.customtabs.CustomTabsIntent
-import com.github.ajalt.timberkt.e
-import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.util.CustomTabsPackageHelper
 
 fun Context.showKeyboard(view: View) {
   getInputMethodManager().showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
@@ -29,34 +25,6 @@ fun Context.showAppDetailsSettings() {
     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
   }.also { intent ->
     startActivity(intent)
-  }
-}
-
-/**
- * Opens url in custom tabs
- */
-fun Context.openUrlInTabs(url: String, onFailed: () -> Unit = {}) {
-  // Strictly require custom tabs-compatible browser
-  val packageName = CustomTabsPackageHelper.getPackageNameToUse(this)
-  if (packageName == null) {
-    onFailed.invoke()
-    return
-  }
-
-  val intent = CustomTabsIntent.Builder().apply {
-    addDefaultShareMenuItem()
-    setShowTitle(true)
-    setToolbarColor(getColor(R.color.status_bar))
-  }.build()
-
-  // Set package name to use
-  intent.intent.setPackage(packageName)
-
-  try {
-    intent.launchUrl(this, Uri.parse(url))
-  } catch (ex: Exception) {
-    e(ex) { "No activity was found to handle this intent" }
-    onFailed()
   }
 }
 

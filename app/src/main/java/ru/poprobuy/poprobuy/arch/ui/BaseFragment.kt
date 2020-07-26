@@ -38,7 +38,7 @@ abstract class BaseFragment<out T : BaseViewModel>(
   abstract val viewModel: T
 
   private val windowAnimator: SimpleWindowAnimator by lazy { SimpleWindowAnimator(requireActivity().window) }
-  private val navigationRouter: NavigationRouter by inject { parametersOf(requireActivity(), findNavController()) }
+  private val navigationRouter: NavigationRouter by inject { parametersOf(findNavController()) }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)

@@ -112,8 +112,6 @@ dependencies {
   implementation "androidx.viewpager2:viewpager2:1.0.0"
   // SwipeRefresh https://developer.android.com/jetpack/androidx/releases/swiperefreshlayout
   implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-  // Browser https://developer.android.com/jetpack/androidx/releases/browser
-  implementation 'androidx.browser:browser:1.2.0'
 
   // Google Play Services https://developers.google.com/android/guides/setup
   implementation 'com.google.android.gms:play-services-auth:18.1.0'
