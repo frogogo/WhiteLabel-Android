@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/screen_background">
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guidelineLeft"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_begin="@dimen/profile_side_padding" />
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guidelineRight"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_end="@dimen/profile_side_padding" />
+
+  <!-- Header -->
+  <TextView
+    android:id="@+id/textViewUserName"
+    style="@style/Text.TitleLarge.Medium"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_4"
+    android:textColor="@color/screen_title"
+    app:layout_constraintBottom_toTopOf="@+id/textViewPhoneNumber"
+    app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
+    app:layout_constraintRight_toRightOf="@id/guidelineRight"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.3"
+    app:layout_constraintVertical_chainStyle="packed"
+    tools:text="Александр" />
+
+  <TextView
+    android:id="@+id/textViewPhoneNumber"
+    style="@style/Text.Body"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_4"
+    android:textColor="@color/screen_subtitle"
+    app:layout_constraintBottom_toTopOf="@+id/textViewEmail"
+    app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
+    app:layout_constraintRight_toRightOf="@id/guidelineRight"
+    app:layout_constraintTop_toBottomOf="@+id/textViewUserName"
+    tools:text="+7 (985) 555-88-60" />
+
+  <TextView
+    android:id="@+id/textViewEmail"
+    style="@style/Text.Body"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:textColor="@color/screen_subtitle"
+    app:layout_constraintBottom_toTopOf="@+id/layoutMenu"
+    app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
+    app:layout_constraintRight_toRightOf="@id/guidelineRight"
+    app:layout_constraintTop_toBottomOf="@+id/textViewPhoneNumber"
+    tools:text="alex@mail.com" />
+
+  <include
+    android:id="@+id/layoutMenu"
+    layout="@layout/layout_profile_menu"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_8"
+    app:layout_constraintBottom_toTopOf="@+id/layoutInvite"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
+
+  <!-- Friend Invitation -->
+  <include
+    android:id="@+id/layoutInvite"
+    layout="@layout/layout_profile_invite_friend"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_8"
+    android:layout_marginBottom="@dimen/spacing_8"
+    app:layout_constraintBottom_toTopOf="@+id/textViewVersion"
+    app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
+    app:layout_constraintRight_toRightOf="@id/guidelineRight"
+    app:layout_constraintTop_toBottomOf="@+id/layoutMenu" />
+
+  <!-- App Version -->
+  <TextView
+    android:id="@+id/textViewVersion"
+    style="@style/Text.Caption"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_8"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
+    app:layout_constraintRight_toRightOf="@id/guidelineRight"
+    tools:text="Версия 1.0.0 (32) от 01.02.2020" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

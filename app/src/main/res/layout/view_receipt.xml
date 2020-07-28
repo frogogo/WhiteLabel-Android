@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guidelineTop"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_begin="@dimen/receipt_top_radius" />
+
+  <View
+    android:id="@+id/viewBackground"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/white"
+    app:layout_constraintBottom_toTopOf="@id/imageFooter"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/guidelineTop"
+    tools:background="@color/gray_100" />
+
+  <include
+    android:id="@+id/layoutHeader"
+    layout="@layout/view_receipt_header"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <!-- Footer -->
+  <include
+    android:id="@+id/layoutFooterAccepted"
+    layout="@layout/view_receipt_footer_accepted"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_3"
+    android:visibility="gone"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/layoutHeader"
+    tools:visibility="visible" />
+
+  <include
+    android:id="@+id/layoutFooterCheck"
+    layout="@layout/view_receipt_footer_check"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_3"
+    android:visibility="gone"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/layoutHeader" />
+
+  <androidx.constraintlayout.widget.Barrier
+    android:id="@+id/barrierFooter"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:barrierDirection="bottom"
+    app:constraint_referenced_ids="layoutFooterAccepted,layoutFooterCheck" />
+
+  <ImageView
+    android:id="@+id/imageFooter"
+    android:layout_width="0dp"
+    android:layout_height="12dp"
+    android:layout_marginTop="15dp"
+    android:scaleType="fitXY"
+    android:src="@drawable/receipt_footer"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/barrierFooter"
+    tools:tint="@color/gray_100" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

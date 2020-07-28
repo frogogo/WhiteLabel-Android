@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <dimen name="button_height">48dp</dimen>
+  <dimen name="button_icon_size">22dp</dimen>
+  <dimen name="button_text_size">16sp</dimen>
+  <dimen name="toolbar_height">56dp</dimen>
+
+  <!-- Auth -->
+  <dimen name="auth_phone_text_layout_margin_top">66dp</dimen>
+
+  <!-- Receipt Header -->
+  <dimen name="receipt_header_height_small">136dp</dimen>
+  <dimen name="receipt_header_height_large">144dp</dimen>
+
+</resources>

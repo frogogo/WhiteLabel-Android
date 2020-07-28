@@ -1,21 +1,31 @@
-# Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+############
+# Poprobuy
+############
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+-repackageclasses ru.poprobuy.poprobuy
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+-keep class ru.poprobuy.poprobuy.dictionary.** { *; }
+-keep class ru.poprobuy.poprobuy.data.model.** { *; }
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+############
+# Crashlytics
+############
+
+# Deobfuscated crash reports in Crashlytics
+# https://firebase.google.com/docs/crashlytics/get-deobfuscated-reports#android
+-keepattributes *Annotation*
+-keepattributes SourceFile,LineNumberTable
+-keep public class * extends java.lang.Exception
+
+-keep class com.google.firebase.crashlytics.** { *; }
+-dontwarn com.google.firebase.crashlytics.**
+
+############
+# Crypto
+############
+
+-keep class com.google.crypto.tink.proto.** { *;}
+-dontwarn com.google.crypto.tink.proto.**
+
+-keep class androidx.security.crypto.** { *;}
+-dontwarn androidx.security.crypto.**

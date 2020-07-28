@@ -1,3 +1,152 @@
 <resources>
-  <string name="app_name">Poprobuy</string>
+
+  <string name="app_name">Попробуй</string>
+
+  <!-- Errors -->
+  <string name="error_phone_length">Телефон не может быть меньше 10 символов</string>
+  <string name="error_phone_format">Номер телефона содержит недопустимые символы</string>
+  <string name="error_user_name_length">Имя должно быть от 2 до 20 букв</string>
+  <string name="error_user_name_format">Имя содержит недопустимые символы</string>
+  <string name="error_confirmation_code_length">Код должен состоять из 4 цифр</string>
+  <string name="error_confirmation_code_format">Код должен состоять только из цифр</string>
+  <string name="error_email_format">Такой email не подойдет</string>
+
+  <string name="error_something_went_wrong">Что-то пошло не так!</string>
+  <string name="error_something_went_wrong_retry">Повторить</string>
+
+  <!-- Common -->
+  <string name="common_button_ok">Ок</string>
+  <string name="common_button_cancel">Отменить</string>
+  <string name="common_button_yes">Да</string>
+  <string name="common_button_no">Нет</string>
+
+  <!-- Onboarding -->
+  <string name="onboarding_button_next">Дальше</string>
+  <string name="onboarding_button_finish">Войти</string>
+
+  <string name="onboarding_page_1_title">Покупай</string>
+  <string name="onboarding_page_1_description">Совершай поĸупĸи в любимых магазинах</string>
+  <string name="onboarding_page_2_title">Сĸанируй</string>
+  <string name="onboarding_page_2_description">Сĸанируй чеĸи за покупки</string>
+  <string name="onboarding_page_3_title">Пробуй новое</string>
+  <string name="onboarding_page_3_description">Получай бесплатные товары из автомата</string>
+
+  <!-- Auth -->
+  <string name="auth_button_continue">Продолжить</string>
+
+  <string name="auth_policy_title">Попробуй</string>
+  <string name="auth_policy_text">Пользуясь этим приложением, вы соглашаетесь с использованием технологий cooke-файлов и со сбором и обработкой персональных данных.\n\nЭти технологии применяются для анализа и улучшения вашего пользовательского опыта.</string>
+  <string name="auth_policy_button_continue">Продолжить</string>
+
+  <string name="auth_phone_title">Вход</string>
+  <string name="auth_phone_subtitle">Введите номер телефона</string>
+  <string name="auth_phone_error_too_many_requests">Превышено количество попыток запроса кода подтверждения</string>
+
+  <string name="auth_code_title">Введите код</string>
+  <string name="auth_code_subtitle">Код отправлен на номер</string>
+  <string name="auth_code_button_phone_change">Изменить</string>
+  <string name="auth_code_button_resend_code">Выслать новый код</string>
+  <string name="auth_code_button_resend_resending">Отправка кода</string>
+  <string name="auth_code_error_invalid_code">Неверный код, попробуйте еще раз или запросите новый</string>
+  <string name="auth_code_error_resend">Ошибка отправки</string>
+
+  <string name="auth_name_title">Давайте познакомимся!</string>
+  <string name="auth_name_subtitle">Как вас зовут?</string>
+  <string name="auth_name_placeholder">Ваше имя</string>
+
+  <string name="auth_email_title">Отлично,\n%1$s!</string>
+  <string name="auth_email_subtitle">Осталось ввести email</string>
+  <string name="auth_email_placeholder">Ваш email</string>
+
+  <plurals name="seconds_remaining">
+    <item quantity="one">%1$d секунда</item>
+    <item quantity="two">%1$d секунды</item>
+    <item quantity="few">%1$d секунды</item>
+    <item quantity="other">%1$d секунд</item>
+  </plurals>
+
+  <!-- Home -->
+  <string name="home_empty_title">Теперь вы можете отсканировать чек из любого магазина, в котором есть аппарат «Попробуй»</string>
+  <string name="home_empty_instructions_title">Помните 2 простых правила:</string>
+  <string name="home_empty_instructions_step_1">Минимальная сумма чека указана на боковой поверхности аппарата в вашем магазине.</string>
+  <string name="home_empty_instructions_step_2">С момента покупки у вас есть 5 минут чтобы отсканировать чек в приложении. Вы не сможете отсканировать следующий чек, пока не проверится текущий.</string>
+  <string name="home_empty_button_scan_qr">Сканировать чек</string>
+
+  <string name="home_accepted_title">Отсканируйте QR код на аппарате либо введите его номер вручную</string>
+  <string name="home_accepted_button_enter">Ввести</string>
+  <string name="home_accepted_button_scan">Сканировать</string>
+
+  <string name="home_rejected_button_scan">Сканировать новый чек</string>
+
+  <!-- Receipt -->
+  <string name="receipt_id">№ %1$d</string>
+  <string name="receipt_status_accepted">Поздравляем, чек принят!</string>
+  <string name="receipt_status_accepted_description">Теперь вы можете получить товар на пробу в любом магазине %1$s, в котором есть аппарат «Попробуй»</string>
+  <string name="receipt_status_accepted_footer_1">Пока вы не получите товар, вы не сможете отсканировать новый чек.</string>
+  <string name="receipt_status_accepted_footer_2">После ввода номера у вас будет 1 минута, чтобы выбрать товар.</string>
+
+  <string name="receipt_status_rejected">Ваш чек не прошел проверку!</string>
+  <string name="receipt_status_rejected_description">Причина:</string>
+
+  <string name="receipt_status_check">Ваш чек находится на проверке</string>
+  <string name="receipt_status_check_description">Обычно это занимает несколько минут, но очень редко надо больше времени.</string>
+  <string name="receipt_status_check_footer">Если вы не хотите ждать, вы можете пойти домой. Когда ваш чек пройдет проверку, вы получите уведомление и сможете получить подарок при следующем посещении магазина.</string>
+
+  <string name="receipt_status_completed">Чек выполнен!</string>
+  <string name="receipt_status_completed_subtitle">Вы получили %1$s</string>
+  <string name="receipt_status_completed_next_step">Вы можете отсканировать новый чек и снова попробовать что-то новое!</string>
+
+  <!-- Scanner -->
+  <string name="scanner_permissions_denied_title">Для сканирования чеков требуется доступ к камере</string>
+  <string name="scanner_permissions_denied_settings">Разрешение необходимо предоставить в настройках</string>
+  <string name="scanner_title_machine">Наведите камеру на QR код на лицевой стороне аппарата</string>
+  <string name="scanner_title_receipt">Наведите камеру на QR код на чеке</string>
+  <string name="scanner_button_help">Помощь</string>
+  <string name="scanner_button_enter_manual">Ввести номер вручную</string>
+  <string name="scanner_help_machine_title">Как сканировать автомат</string>
+  <string name="scanner_help_receipt_title">Как сканировать чек</string>
+
+  <!-- Machine Select -->
+  <string name="machine_select_title">Введите номер аппарата</string>
+  <string name="machine_select_placeholder">Номер аппарата</string>
+
+  <!-- Profile -->
+  <string name="profile_app_version">Версия %1$s (%2$d) от %3$s</string>
+  <string name="profile_invite_title">Пригласить друга</string>
+  <string name="profile_invite_description">Приглашайте друзей и получайте бесплатные товары</string>
+
+  <string name="profile_button_receipts">Мои чеки</string>
+  <string name="profile_button_goods">Мои товары</string>
+  <string name="profile_button_logout">Выход</string>
+
+  <!-- Receipts -->
+  <string name="receipts_title">Мои чеки</string>
+  <string name="receipts_empty_title">У вас пока нет отсканированных чеков</string>
+  <string name="receipt_item_status_check">Проверяется</string>
+  <string name="receipt_item_status_accepted">Принят</string>
+  <string name="receipt_item_status_completed">Выполнен</string>
+  <string name="receipt_item_status_rejected">Отклонен</string>
+
+  <string name="receipt_scan_available_title">Вы можете отсканировать чек</string>
+  <string name="receipt_scan_available_description">Минимальная сумма чека указана на боковой поверхности аппарата</string>
+
+  <!-- Products -->
+  <string name="products_title">Выбор товара</string>
+  <string name="products_status_tried_before">Уже пробовал(а)</string>
+  <string name="products_status_out_of_stock">Разобрали</string>
+  <string name="products_header">Отлично, у вас есть 1 минута, чтобы выбрать товар.</string>
+
+  <!-- Product Select -->
+  <string name="product_select_title_confirmation">Вы точно хотите получить %1$s?</string>
+  <string name="product_select_title_goods_issue">Происходит выдача товара</string>
+  <string name="product_select_button_done">Готово</string>
+  <string name="product_select_done_title">Поздравляем!</string>
+  <string name="product_select_done_subtitle_1">Вы можете взять товар в лотке. Надеемся, что он вам понравится! </string>
+  <string name="product_select_done_subtitle_2">Уже завтра вы можете отсканировать новый чек и снова попробовать что-то новое!</string>
+  <string name="product_select_error_description">Возможно аппарат занят, повторите попытку через несколько минут.</string>
+
+  <!-- Error State -->
+  <string name="view_error_state_description">Ошибка загрузки</string>
+  <string name="view_error_state_button">Повторить</string>
+
 </resources>

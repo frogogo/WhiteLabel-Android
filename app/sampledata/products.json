@@ -1,0 +1,26 @@
+{
+  "comment": "Product samples - products.json",
+  "data": [
+    {
+      "name": "Чай черный Greenfield"
+    },
+    {
+      "name": "Батончик Kinder Bueno"
+    },
+    {
+      "name": "Печенье Полет Овсяное"
+    },
+    {
+      "name": "Биойогурт питьевой Активиа"
+    },
+    {
+      "name": "Чай черный Tess Summer"
+    },
+    {
+      "name": "Шоколад Milka Bubbles"
+    },
+    {
+      "name": "Чипсы кукурузные Doritos Hot Corn"
+    }
+  ]
+}

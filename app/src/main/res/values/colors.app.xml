@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <color name="primary">@color/primary_500</color>
+  <color name="primary_dark">@color/primary_700</color>
+  <color name="accent">@color/primary_500</color>
+
+  <color name="status_bar">@color/white</color>
+  <color name="screen_background">@color/white</color>
+  <color name="screen_title">@color/black</color>
+  <color name="screen_subtitle">@color/gray_500</color>
+  <color name="button">@color/primary_500</color>
+  <color name="text_error">@color/red</color>
+  <color name="text_button_title">@color/primary_500</color>
+  <color name="text_button">@color/gray_500</color>
+  <color name="card_background_light">@color/white</color>
+  <color name="card_background_dark">@color/gray_50</color>
+  <color name="elevation_shadow">#0F000000</color>
+  <color name="ripple">@color/black_alpha_4</color>
+  <color name="ripple_gray">#0FACB8C5</color>
+  <color name="empty_list_title">@color/gray_500</color>
+
+  <!-- Swipe Refresh Layout -->
+  <color name="swipe_refresh_1">@color/primary_500</color>
+  <color name="swipe_refresh_2">@color/red</color>
+
+  <!-- Auth -->
+  <color name="auth_text">@color/black</color>
+  <color name="auth_text_placeholder">@color/gray_300</color>
+
+  <color name="auth_code_confirmation_phone">#1e1e3c</color>
+
+  <!-- Scanner -->
+  <color name="scanner_viewfinder_mask">@color/black_alpha_80</color>
+
+  <!-- Profile -->
+  <color name="profile_button">@color/gray_500</color>
+
+  <!-- Receipt -->
+  <color name="receipt_item_text">@color/black</color>
+  <color name="receipt_item_label_text">@color/white</color>
+
+  <!-- Products -->
+  <color name="products_state_tried_before">@color/green</color>
+  <color name="products_state_out_of_stock">@color/red</color>
+
+  <!-- Widgets -->
+  <color name="circle_indicator_selected">@color/primary_500</color>
+  <color name="circle_indicator_unselected">@color/gray_300</color>
+
+  <color name="receipt_title">@color/black</color>
+  <color name="receipt_subtitle">@color/gray_500</color>
+  <color name="receipt_value">@color/white</color>
+  <color name="receipt_date">#B3FFFFFF</color>
+  <color name="receipt_status_accepted">@color/green</color>
+  <color name="receipt_status_rejected">@color/red</color>
+  <color name="receipt_status_check">@color/blue</color>
+  <color name="receipt_status_completed">@color/primary_500</color>
+
+  <color name="label_text">@color/white</color>
+
+</resources>

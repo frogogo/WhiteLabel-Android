@@ -1,37 +1,247 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+if (project.hasProperty('useFirebasePerf')) {
+  apply plugin: 'com.google.firebase.firebase-perf'
+}
+
+// Load keystore
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+def debugKeystorePath = 'key/debug.jks'
+if (keystorePropertiesFile.exists()) {
+  keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+} else {
+  keystoreProperties['storeFile'] = debugKeystorePath
+}
+
+// Build archive name
+def applicationName = "Poprobuy"
 
 android {
+
   compileSdkVersion 29
   buildToolsVersion "29.0.3"
 
   defaultConfig {
     applicationId "ru.poprobuy.poprobuy"
+
     minSdkVersion 23
     targetSdkVersion 29
+
     versionCode 1
-    versionName "1.0"
+    versionName "0.0.1"
 
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    setProperty("archivesBaseName", applicationName + "-v" + versionCode + "(" + versionName + ")-" + getDate())
+
+    buildConfigField 'int', 'API_VERSION', '1'
+    buildConfigField 'String', 'BASE_URL', '"https://poprobuy.ru"'
+    buildConfigField 'boolean', 'DEBUG_STUFF', 'true'
+    buildConfigField "java.util.Date", "BUILD_TIME", "new java.util.Date(" + System.currentTimeMillis() + "L)"
+  }
+
+  signingConfigs {
+    release {
+      storeFile file(keystoreProperties['storeFile'])
+      if (keystorePropertiesFile.exists()) {
+        storePassword keystoreProperties['storePassword']
+        keyAlias keystoreProperties['keyAlias']
+        keyPassword keystoreProperties['keyPassword']
+      }
+    }
+    debug {
+      storeFile file(debugKeystorePath)
+    }
   }
 
   buildTypes {
     release {
-      minifyEnabled false
+      minifyEnabled true
+      shrinkResources true
+      zipAlignEnabled true
+
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+      signingConfig signingConfigs.release
+    }
+    debug {
+      debuggable true
+      signingConfig signingConfigs.debug
+      ext.enableCrashlytics = false
     }
   }
+
+  androidExtensions {
+    features = ["parcelize"]
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  // https://developer.android.com/studio/write/java8-support
+  kotlinOptions {
+    jvmTarget = JavaVersion.VERSION_1_8
+  }
+
+  lintOptions {
+    disable 'ContentDescription'
+  }
+
+  buildFeatures {
+    viewBinding = true
+  }
+
 }
 
 dependencies {
-  implementation fileTree(dir: "libs", include: ["*.jar"])
-  implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  // Kotlin
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+
+  // AndroidX
   implementation 'androidx.core:core-ktx:1.3.0'
   implementation 'androidx.appcompat:appcompat:1.1.0'
-  implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-  testImplementation 'junit:junit:4.12'
-  androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-  androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+  // ConstraintLayout https://developer.android.com/jetpack/androidx/releases/constraintlayout
+  implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta8'
+  // ViewPager2 https://developer.android.com/jetpack/androidx/releases/viewpager2
+  implementation "androidx.viewpager2:viewpager2:1.0.0"
+  // SwipeRefresh https://developer.android.com/jetpack/androidx/releases/swiperefreshlayout
+  implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
+  // Google Play Services https://developers.google.com/android/guides/setup
+  implementation 'com.google.android.gms:play-services-auth:18.1.0'
+  // https://developers.google.com/android/guides/releases
+  implementation 'com.google.android.gms:play-services-auth-api-phone:17.4.0'
+
+  // Material Design Components https://github.com/material-components/material-components-android
+  implementation 'com.google.android.material:material:1.2.0-rc01'
+
+  // Navigation https://developer.android.com/jetpack/androidx/releases/navigation
+  def navVersion = "2.3.0"
+  implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
+  implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
+
+  // ViewModel and LiveData https://developer.android.com/jetpack/androidx/releases/lifecycle
+  def lifecycleVersion = '2.2.0'
+  implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+  implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+  implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+  implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+
+  // Adapter Delegates https://github.com/sockeqwe/AdapterDelegates
+  def adapterDelegatesVersion = '4.3.0'
+  implementation "com.hannesdorfmann:adapterdelegates4:$adapterDelegatesVersion"
+  implementation "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding:$adapterDelegatesVersion"
+
+  // ViewBindingPropertyDelegate https://github.com/kirich1409/ViewBindingPropertyDelegate
+  implementation 'com.kirich1409.viewbindingpropertydelegate:viewbindingpropertydelegate:1.0.0-beta1'
+
+  // CircleIndicator https://github.com/ongakuer/CircleIndicator
+  implementation 'me.relex:circleindicator:2.1.4'
+
+  // CircularProgressBar https://github.com/lopspower/CircularProgressBar
+  implementation 'com.mikhaellopez:circularprogressbar:3.0.3'
+
+  // LiveEvent https://github.com/hadilq/LiveEvent
+  implementation "com.github.hadilq.liveevent:liveevent:1.2.0"
+
+  // WhatIf https://github.com/skydoves/WhatIf
+  implementation "com.github.skydoves:whatif:1.0.4"
+
+  // Coroutines https://github.com/Kotlin/kotlinx.coroutines
+  def coroutinesVersion = '1.3.8'
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+
+  // AndroidX Crypto https://developer.android.com/jetpack/androidx/releases/security
+  implementation 'androidx.security:security-crypto:1.0.0-rc02'
+
+  // Input Mask https://github.com/RedMadRobot/input-mask-android
+  implementation 'com.redmadrobot:input-mask-android:6.0.0'
+
+  // Coil https://github.com/coil-kt/coil/
+  implementation "io.coil-kt:coil:0.11.0"
+
+  // Koin https://github.com/InsertKoinIO/koin
+  def koinVersion = '2.1.6'
+  implementation "org.koin:koin-android:$koinVersion"
+  implementation "org.koin:koin-androidx-scope:$koinVersion"
+  implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+
+  // Retrofit https://github.com/square/retrofit
+  def retrofitVersion = '2.9.0'
+  implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+  implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+  implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+
+  // OkHttp https://github.com/square/okhttp/
+  def okHttpVersion = '4.8.0'
+  implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+  implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+
+  // Moshi https://github.com/square/moshi
+  def moshiVersion = '1.9.3'
+  implementation "com.squareup.moshi:moshi:$moshiVersion"
+  implementation "com.squareup.moshi:moshi-adapters:$moshiVersion"
+  kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+
+  // Chuck https://github.com/jgilfelt/chuck
+  def chuckVersion = '1.1.0'
+  debugImplementation "com.readystatesoftware.chuck:library:$chuckVersion"
+  releaseImplementation "com.readystatesoftware.chuck:library-no-op:$chuckVersion"
+
+  // Timber Kt https://github.com/ajalt/timberkt
+  implementation 'com.github.ajalt:timberkt:1.5.1'
+
+  // Firebase https://firebase.google.com/support/release-notes/android
+  implementation 'com.google.firebase:firebase-analytics:17.4.4'
+  implementation 'com.google.firebase:firebase-crashlytics:17.1.1'
+  implementation 'com.google.firebase:firebase-perf:19.0.8'
+
+  // QR code scanner https://github.com/journeyapps/zxing-android-embedded
+  implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
+
+  // Dexter https://github.com/Karumi/Dexter
+  implementation 'com.karumi:dexter:6.2.1'
+
+  // Progress Button https://github.com/razir/ProgressButton
+  implementation 'com.github.razir.progressbutton:progressbutton:2.1.0'
+
+  //
+  // Test Libraries
+  //
+
+  // Kluent https://github.com/MarkusAmshove/Kluent
+  testImplementation 'org.amshove.kluent:kluent:1.61'
+
+  // Robolectric http://robolectric.org/getting-started/
+  testImplementation 'org.robolectric:robolectric:4.3.1'
+
+  testImplementation 'junit:junit:4.13'
+  testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
+  testImplementation "com.squareup.okhttp3:mockwebserver:$okHttpVersion"
+
+  // Coroutines Test
+  testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
+
+  // Arch https://developer.android.com/jetpack/androidx/releases/arch
+  testImplementation "androidx.arch.core:core-testing:2.1.0"
+
+  // MockK https://github.com/mockk/mockk
+  testImplementation 'io.mockk:mockk:1.10.0'
+
+  // Add field to BuildConfig
+  android.defaultConfig.buildConfigField 'String', 'RETROFIT_VERSION', "\"$retrofitVersion\""
+}
+
+/**
+ * Returns current formatted date
+ */
+static def getDate() {
+  return new Date().format("[yyyy.MM.dd_HH-mm]")
 }

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="Text" />
+
+  <!-- Title Large -->
+  <style name="Text.TitleLarge">
+    <item name="android:textSize">32sp</item>
+    <item name="android:lineSpacingExtra">1.5sp</item>
+  </style>
+
+  <style name="Text.TitleLarge.Medium">
+    <item name="android:fontFamily">@font/rubik_medium</item>
+  </style>
+
+  <!-- Title1 -->
+  <style name="Text.Title1">
+    <item name="android:textSize">25sp</item>
+    <item name="autoSizeTextType">uniform</item>
+    <item name="autoSizeMinTextSize">21sp</item>
+  </style>
+
+  <style name="Text.Title1.Medium">
+    <item name="android:fontFamily">@font/rubik_medium</item>
+  </style>
+
+  <!-- Title2 -->
+  <style name="Text.Title2">
+    <item name="android:textSize">18sp</item>
+  </style>
+
+  <style name="Text.Title2.Medium">
+    <item name="android:fontFamily">@font/rubik_medium</item>
+  </style>
+
+  <!-- Headline -->
+  <style name="Text.Headline">
+    <item name="android:textSize">14sp</item>
+    <item name="android:lineSpacingExtra">4sp</item>
+  </style>
+
+  <style name="Text.Headline.Medium">
+    <item name="android:fontFamily">@font/rubik_medium</item>
+  </style>
+
+  <style name="Text.Headline.Bold">
+    <item name="android:fontFamily">@font/rubik_bold</item>
+  </style>
+
+  <!-- Body -->
+  <style name="Text.Body">
+    <item name="android:textSize">14sp</item>
+    <item name="android:lineSpacingExtra">4sp</item>
+  </style>
+
+  <style name="Text.Body.Medium">
+    <item name="android:fontFamily">@font/rubik_medium</item>
+  </style>
+
+  <!-- Subhead -->
+  <style name="Text.Subhead">
+    <item name="android:textSize">12sp</item>
+    <item name="android:lineSpacingExtra">2sp</item>
+  </style>
+
+  <style name="Text.Subhead.Medium">
+    <item name="android:fontFamily">@font/rubik_medium</item>
+  </style>
+
+  <style name="Text.Subhead.Bold">
+    <item name="android:fontFamily">@font/rubik_bold</item>
+  </style>
+
+  <!-- Caption -->
+  <style name="Text.Caption">
+    <item name="android:textSize">11sp</item>
+    <item name="android:lineSpacingExtra">2sp</item>
+  </style>
+
+  <style name="Text.Caption.Medium">
+    <item name="android:fontFamily">@font/rubik_medium</item>
+  </style>
+
+  <style name="Text.Caption.Bold">
+    <item name="android:fontFamily">@font/rubik_bold</item>
+  </style>
+
+  <!-- UseCased Styles -->
+  <style name="Text.Error" parent="Text.Body">
+    <item name="android:textColor">@color/text_error</item>
+    <item name="android:lineSpacingExtra">0sp</item>
+  </style>
+
+</resources>

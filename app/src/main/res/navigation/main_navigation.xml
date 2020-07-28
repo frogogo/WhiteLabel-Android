@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/main_navigation"
+  app:startDestination="@id/splash">
+
+  <fragment
+    android:id="@+id/splash"
+    android:name="ru.poprobuy.poprobuy.ui.splash.SplashFragment"
+    tools:layout="@layout/fragment_splash">
+    <action
+      android:id="@+id/splash_to_onboarding"
+      app:destination="@id/onboarding"
+      app:enterAnim="@anim/slide_in_right"
+      app:exitAnim="@anim/slide_out_left"
+      app:popEnterAnim="@anim/slide_in_left"
+      app:popExitAnim="@anim/slide_out_right"
+      app:popUpTo="@id/main_navigation"
+      app:popUpToInclusive="true" />
+    <action
+      android:id="@+id/splash_to_auth_policy"
+      app:destination="@id/auth_policy"
+      app:enterAnim="@anim/slide_in_right"
+      app:exitAnim="@anim/slide_out_left"
+      app:popEnterAnim="@anim/slide_in_left"
+      app:popExitAnim="@anim/slide_out_right"
+      app:popUpTo="@id/main_navigation"
+      app:popUpToInclusive="true" />
+    <action
+      android:id="@+id/splash_to_auth"
+      app:destination="@id/auth_phone"
+      app:enterAnim="@anim/slide_in_right"
+      app:exitAnim="@anim/slide_out_left"
+      app:popEnterAnim="@anim/slide_in_left"
+      app:popExitAnim="@anim/slide_out_right"
+      app:popUpTo="@id/main_navigation"
+      app:popUpToInclusive="true" />
+    <action
+      android:id="@+id/splash_to_home"
+      app:destination="@id/home"
+      app:enterAnim="@anim/scale_enter"
+      app:exitAnim="@anim/scale_exit"
+      app:popUpTo="@id/main_navigation"
+      app:popUpToInclusive="true" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/onboarding"
+    android:name="ru.poprobuy.poprobuy.ui.onboarding.OnboardingFragment"
+    tools:layout="@layout/fragment_onboarding">
+    <action
+      android:id="@+id/onboarding_to_auth_policy"
+      app:destination="@id/auth_policy"
+      app:enterAnim="@anim/slide_in_right"
+      app:exitAnim="@anim/slide_out_left"
+      app:popEnterAnim="@anim/slide_in_left"
+      app:popExitAnim="@anim/slide_out_right"
+      app:popUpTo="@id/main_navigation"
+      app:popUpToInclusive="true" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/auth_policy"
+    android:name="ru.poprobuy.poprobuy.ui.auth.policy.AuthPolicyFragment"
+    tools:layout="@layout/fragment_auth_policy">
+    <action
+      android:id="@+id/auth_policy_to_auth_phone"
+      app:destination="@id/auth_phone"
+      app:enterAnim="@anim/slide_in_right"
+      app:exitAnim="@anim/slide_out_left"
+      app:popEnterAnim="@anim/slide_in_left"
+      app:popExitAnim="@anim/slide_out_right"
+      app:popUpTo="@id/main_navigation"
+      app:popUpToInclusive="true" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/auth_phone"
+    android:name="ru.poprobuy.poprobuy.ui.auth.phone.AuthPhoneFragment"
+    tools:layout="@layout/fragment_auth_phone">
+    <action
+      android:id="@+id/auth_phone_to_auth_code_confirmation"
+      app:destination="@id/auth_code"
+      app:enterAnim="@anim/slide_in_right"
+      app:exitAnim="@anim/slide_out_left"
+      app:popEnterAnim="@anim/slide_in_left"
+      app:popExitAnim="@anim/slide_out_right" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/auth_code"
+    android:name="ru.poprobuy.poprobuy.ui.auth.code.AuthCodeFragment"
+    tools:layout="@layout/fragment_auth_code">
+    <argument
+      android:name="phoneNumber"
+      app:argType="string" />
+    <action
+      android:id="@+id/auth_code_confirmation_to_auth_name"
+      app:destination="@id/auth_name"
+      app:enterAnim="@anim/slide_in_right"
+      app:exitAnim="@anim/slide_out_left"
+      app:popEnterAnim="@anim/slide_in_left"
+      app:popExitAnim="@anim/slide_out_right"
+      app:popUpTo="@id/main_navigation"
+      app:popUpToInclusive="true" />
+    <action
+      android:id="@+id/auth_code_confirmation_to_home"
+      app:destination="@id/home"
+      app:enterAnim="@anim/scale_enter"
+      app:exitAnim="@anim/scale_exit"
+      app:popUpTo="@id/main_navigation"
+      app:popUpToInclusive="true" />
+    <argument
+      android:name="codeRefreshRate"
+      app:argType="integer" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/auth_name"
+    android:name="ru.poprobuy.poprobuy.ui.auth.name.AuthNameFragment"
+    tools:layout="@layout/fragment_auth_name">
+    <action
+      android:id="@+id/auth_name_to_auth_email"
+      app:destination="@id/auth_email"
+      app:enterAnim="@anim/slide_in_right"
+      app:exitAnim="@anim/slide_out_left"
+      app:popEnterAnim="@anim/slide_in_left"
+      app:popExitAnim="@anim/slide_out_right" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/auth_email"
+    android:name="ru.poprobuy.poprobuy.ui.auth.email.AuthEmailFragment"
+    tools:layout="@layout/fragment_auth_email">
+    <argument
+      android:name="name"
+      app:argType="string" />
+    <action
+      android:id="@+id/auth_email_to_home"
+      app:destination="@id/home"
+      app:enterAnim="@anim/scale_enter"
+      app:exitAnim="@anim/scale_exit"
+      app:popUpTo="@id/main_navigation"
+      app:popUpToInclusive="true" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/home"
+    android:name="ru.poprobuy.poprobuy.ui.home.HomeFragment"
+    tools:layout="@layout/fragment_home">
+    <action
+      android:id="@+id/home_to_profile"
+      app:destination="@id/profile" />
+    <action
+      android:id="@+id/home_to_scanner"
+      app:destination="@id/scanner" />
+    <action
+      android:id="@+id/home_to_machine_select"
+      app:destination="@id/machine_select" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/profile"
+    android:name="ru.poprobuy.poprobuy.ui.profile.ProfileFragment"
+    tools:layout="@layout/fragment_profile">
+    <action
+      android:id="@+id/profile_to_receipts"
+      app:destination="@id/receipts" />
+    <action
+      android:id="@+id/profile_to_splash"
+      app:destination="@id/splash"
+      app:popUpTo="@id/main_navigation"
+      app:popUpToInclusive="true" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/scanner"
+    android:name="ru.poprobuy.poprobuy.ui.scanner.ScannerFragment"
+    tools:layout="@layout/fragment_scanner">
+    <argument
+      android:name="mode"
+      app:argType="ru.poprobuy.poprobuy.dictionary.ScanMode" />
+    <action
+      android:id="@+id/scanner_to_products"
+      app:destination="@id/products" />
+    <action
+      android:id="@+id/scanner_to_machine_select"
+      app:destination="@id/machine_select" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/machine_select"
+    android:name="ru.poprobuy.poprobuy.ui.machine_select.MachineSelectFragment"
+    tools:layout="@layout/fragment_machine_select">
+    <action
+      android:id="@+id/machine_select_to_products"
+      app:destination="@id/products" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/receipts"
+    android:name="ru.poprobuy.poprobuy.ui.profile.receipts.ReceiptsFragment"
+    tools:layout="@layout/fragment_receipts">
+    <action
+      android:id="@+id/action_receipts_to_receipt_details"
+      app:destination="@id/receipt_details" />
+  </fragment>
+
+  <dialog
+    android:id="@+id/receipt_details"
+    android:name="ru.poprobuy.poprobuy.ui.profile.receipts.details.ReceiptDetailsBottomDialog"
+    tools:layout="@layout/dialog_receipt_details">
+    <argument
+      android:name="receipt"
+      app:argType="ru.poprobuy.poprobuy.data.model.ui.ReceiptUiModel" />
+    <action
+      android:id="@+id/receipt_details_to_scanner"
+      app:destination="@id/scanner" />
+    <action
+      android:id="@+id/receipt_details_to_machine_select"
+      app:destination="@id/machine_select" />
+  </dialog>
+
+  <fragment
+    android:id="@+id/products"
+    android:name="ru.poprobuy.poprobuy.ui.products.ProductsFragment"
+    tools:layout="@layout/fragment_products" />
+
+  <fragment
+    android:id="@+id/web_view"
+    android:name="ru.poprobuy.poprobuy.ui.webview.WebViewFragment"
+    tools:layout="@layout/fragment_web_view">
+    <argument
+      android:name="url"
+      app:argType="string" />
+    <argument
+      android:name="titleResId"
+      app:argType="integer" />
+  </fragment>
+
+  <!-- Actions -->
+
+  <action
+    android:id="@+id/action_global_web_view"
+    app:destination="@id/web_view" />
+
+</navigation>

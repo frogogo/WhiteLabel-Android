@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:paddingStart="@dimen/spacing_4"
+  android:paddingEnd="@dimen/spacing_4">
+
+  <TextView
+    android:id="@+id/textViewStatusSubtitle"
+    style="@style/Text.Subhead"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:textColor="@color/receipt_subtitle"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="Вы получили батончик Kinder Bueno" />
+
+  <ImageView
+    android:id="@+id/imageViewProduct"
+    android:layout_width="129dp"
+    android:layout_height="129dp"
+    android:layout_marginTop="@dimen/spacing_4"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/textViewStatusSubtitle"
+    tools:src="@sample/product" />
+
+  <ImageView
+    android:id="@+id/imageViewStep"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_info"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toTopOf="@id/textViewStep" />
+
+  <View
+    android:id="@+id/divider"
+    style="@style/Divider"
+    android:layout_width="0dp"
+    android:layout_marginTop="@dimen/spacing_4"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/imageViewProduct" />
+
+  <TextView
+    android:id="@+id/textViewStep"
+    style="@style/Text.Caption"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/spacing_3"
+    android:layout_marginTop="@dimen/spacing_3"
+    android:text="@string/receipt_status_completed_next_step"
+    android:textColor="@color/receipt_subtitle"
+    app:layout_constraintLeft_toRightOf="@id/imageViewStep"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/divider" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
