@@ -7,6 +7,7 @@ import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.data.model.ui.profile.ProfileUiModel
 import ru.poprobuy.poprobuy.databinding.FragmentProfileBinding
+import ru.poprobuy.poprobuy.di.observe
 import ru.poprobuy.poprobuy.extension.formatWithMask
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible
@@ -33,10 +34,12 @@ class ProfileFragment : BaseFragment<ProfileViewModel>(R.layout.fragment_profile
     }
   }
 
-  override fun initObservers() = viewModel.run {
-    profileLive.observe(this@ProfileFragment::renderProfile)
-    isLoadingLive.observe { renderState(isLoading = it) }
-    errorOccurredLiveEvent.observe { renderState(isError = true) }
+  override fun initObservers() {
+    viewModel.run {
+      observe(profileLive, this@ProfileFragment::renderProfile)
+      observe(isLoadingLive) { renderState(isLoading = it) }
+      observe(errorOccurredLiveEvent) { renderState(isError = true) }
+    }
   }
 
   private fun renderProfile(profile: ProfileUiModel) {

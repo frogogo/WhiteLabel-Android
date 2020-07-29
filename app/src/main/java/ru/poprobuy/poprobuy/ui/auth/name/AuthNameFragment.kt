@@ -5,6 +5,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentAuthNameBinding
+import ru.poprobuy.poprobuy.di.observe
 import ru.poprobuy.poprobuy.extension.binding.initUserNameType
 import ru.poprobuy.poprobuy.extension.setNullableTextRes
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
@@ -29,8 +30,8 @@ class AuthNameFragment : BaseFragment<AuthNameViewModel>(
     binding.buttonContinue.setOnSafeClickListener { setName() }
   }
 
-  override fun initObservers() = viewModel.run {
-    nameValidationLiveEvent.observe { errorRes ->
+  override fun initObservers() {
+    observe(viewModel.nameValidationLiveEvent) { errorRes ->
       binding.textViewError.setNullableTextRes(errorRes)
       binding.textInputLayout.setError(errorRes != null)
     }

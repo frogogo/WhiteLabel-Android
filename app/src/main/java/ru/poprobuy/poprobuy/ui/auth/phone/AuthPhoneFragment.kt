@@ -8,6 +8,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentAuthPhoneBinding
+import ru.poprobuy.poprobuy.di.observe
 import ru.poprobuy.poprobuy.extension.binding.editText
 import ru.poprobuy.poprobuy.extension.binding.initPhoneType
 import ru.poprobuy.poprobuy.extension.setNullableTextRes
@@ -34,9 +35,9 @@ class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(
     binding.textViewError.movementMethod = LinkMovementMethod.getInstance()
   }
 
-  override fun initObservers() = viewModel.run {
-    commandLiveEvent.observe(this@AuthPhoneFragment::handleCommand)
-    isLoadingLive.observe(binding.textInputLayout::setLoading)
+  override fun initObservers() {
+    observe(viewModel.commandLiveEvent, this::handleCommand)
+    observe(viewModel.isLoadingLive, binding.textInputLayout::setLoading)
   }
 
   override fun onStart() {

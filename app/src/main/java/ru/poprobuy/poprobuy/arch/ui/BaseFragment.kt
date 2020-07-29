@@ -4,16 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.ColorRes
 import androidx.annotation.LayoutRes
-import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.navigation.NavigationRouter
+import ru.poprobuy.poprobuy.di.observe
 import ru.poprobuy.poprobuy.extension.hideKeyboard
 import ru.poprobuy.poprobuy.extension.setFullScreen
 import ru.poprobuy.poprobuy.extension.setStatusBarColor
@@ -78,17 +76,14 @@ abstract class BaseFragment<out T : BaseViewModel>(
 
   open fun initObservers(): Unit = Unit
 
-  @MainThread
-  protected inline fun <T> LiveData<T>.observe(crossinline onChanged: (T) -> Unit) {
-    observe(viewLifecycleOwner, onChanged)
-  }
-
   /**
    * Handles navigation events from a [ViewModel]
    */
-  private fun initInnerObservers() = viewModel.run {
-    navigationLiveEvent.observe(navigationRouter::navigate)
-    baseCommandLiveEvent.observe(this@BaseFragment::handleCommand)
+  private fun initInnerObservers() {
+    viewModel.run {
+      observe(navigationLiveEvent, navigationRouter::navigate)
+      observe(baseCommandLiveEvent, this@BaseFragment::handleCommand)
+    }
   }
 
   private fun handleCommand(command: BaseCommand) {

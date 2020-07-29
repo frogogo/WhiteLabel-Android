@@ -22,6 +22,7 @@ import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentAuthCodeBinding
+import ru.poprobuy.poprobuy.di.observe
 import ru.poprobuy.poprobuy.extension.binding.editText
 import ru.poprobuy.poprobuy.extension.binding.initCodeConfirmationType
 import ru.poprobuy.poprobuy.extension.formatWithMask
@@ -64,11 +65,11 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
     }
   }
 
-  override fun initObservers() = viewModel.run {
-    commandLiveEvent.observe(this@AuthCodeFragment::handleCommand)
-    isLoadingLive.observe(this@AuthCodeFragment.binding.textInputLayout::setLoading)
-    isResendingCodeLive.observe(this@AuthCodeFragment::renderCodeIsResending)
-    resendCodeTimeRemainingLive.observe(this@AuthCodeFragment::renderResendCodeButton)
+  override fun initObservers() {
+    observe(viewModel.commandLiveEvent, this::handleCommand)
+    observe(viewModel.isLoadingLive, binding.textInputLayout::setLoading)
+    observe(viewModel.isResendingCodeLive, this::renderCodeIsResending)
+    observe(viewModel.resendCodeTimeRemainingLive, this::renderResendCodeButton)
   }
 
   override fun onAttach(context: Context) {
