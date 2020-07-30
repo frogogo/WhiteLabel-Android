@@ -67,6 +67,6 @@ val screenModule = module {
 
   // Profile
   viewModel { ProfileViewModel(get(), get(), get(), get(), get()) }
-  viewModel { ReceiptsViewModel(get()) }
+  viewModel { ReceiptsViewModel(get(), get()) }
   viewModel { ReceiptDetailsViewModel(get()) }
 }

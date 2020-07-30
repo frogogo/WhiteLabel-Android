@@ -72,29 +72,29 @@
   <string name="home_empty_instructions_step_2">С момента покупки у вас есть 5 минут чтобы отсканировать чек в приложении. Вы не сможете отсканировать следующий чек, пока не проверится текущий.</string>
   <string name="home_empty_button_scan_qr">Сканировать чек</string>
 
-  <string name="home_accepted_title">Отсканируйте QR код на аппарате либо введите его номер вручную</string>
-  <string name="home_accepted_button_enter">Ввести</string>
-  <string name="home_accepted_button_scan">Сканировать</string>
+  <string name="home_approved_title">Отсканируйте QR код на аппарате либо введите его номер вручную</string>
+  <string name="home_approved_button_enter">Ввести</string>
+  <string name="home_approved_button_scan">Сканировать</string>
 
   <string name="home_rejected_button_scan">Сканировать новый чек</string>
 
   <!-- Receipt -->
-  <string name="receipt_id">№ %1$d</string>
-  <string name="receipt_status_accepted">Поздравляем, чек принят!</string>
-  <string name="receipt_status_accepted_description">Теперь вы можете получить товар на пробу в любом магазине %1$s, в котором есть аппарат «Попробуй»</string>
-  <string name="receipt_status_accepted_footer_1">Пока вы не получите товар, вы не сможете отсканировать новый чек.</string>
-  <string name="receipt_status_accepted_footer_2">После ввода номера у вас будет 1 минута, чтобы выбрать товар.</string>
+  <string name="receipt_number">№ %1$d</string>
+  <string name="receipt_state_approved">Поздравляем, чек принят!</string>
+  <string name="receipt_state_approved_description">Теперь вы можете получить товар на пробу в любом магазине %1$s, в котором есть аппарат «Попробуй»</string>
+  <string name="receipt_state_approved_footer_1">Пока вы не получите товар, вы не сможете отсканировать новый чек.</string>
+  <string name="receipt_state_approved_footer_2">После ввода номера у вас будет 1 минута, чтобы выбрать товар.</string>
 
-  <string name="receipt_status_rejected">Ваш чек не прошел проверку!</string>
-  <string name="receipt_status_rejected_description">Причина:</string>
+  <string name="receipt_state_rejected">Ваш чек не прошел проверку!</string>
+  <string name="receipt_state_rejected_description">Причина:</string>
 
-  <string name="receipt_status_check">Ваш чек находится на проверке</string>
-  <string name="receipt_status_check_description">Обычно это занимает несколько минут, но очень редко надо больше времени.</string>
-  <string name="receipt_status_check_footer">Если вы не хотите ждать, вы можете пойти домой. Когда ваш чек пройдет проверку, вы получите уведомление и сможете получить подарок при следующем посещении магазина.</string>
+  <string name="receipt_state_processing">Ваш чек находится на проверке</string>
+  <string name="receipt_state_processing_description">Обычно это занимает несколько минут, но очень редко надо больше времени.</string>
+  <string name="receipt_state_processing_footer">Если вы не хотите ждать, вы можете пойти домой. Когда ваш чек пройдет проверку, вы получите уведомление и сможете получить подарок при следующем посещении магазина.</string>
 
-  <string name="receipt_status_completed">Чек выполнен!</string>
-  <string name="receipt_status_completed_subtitle">Вы получили %1$s</string>
-  <string name="receipt_status_completed_next_step">Вы можете отсканировать новый чек и снова попробовать что-то новое!</string>
+  <string name="receipt_state_completed">Чек выполнен!</string>
+  <string name="receipt_state_completed_subtitle">Вы получили %1$s</string>
+  <string name="receipt_state_completed_next_step">Вы можете отсканировать новый чек и снова попробовать что-то новое!</string>
 
   <!-- Scanner -->
   <string name="scanner_permissions_denied_title">Для сканирования чеков требуется доступ к камере</string>
@@ -122,10 +122,10 @@
   <!-- Receipts -->
   <string name="receipts_title">Мои чеки</string>
   <string name="receipts_empty_title">У вас пока нет отсканированных чеков</string>
-  <string name="receipt_item_status_check">Проверяется</string>
-  <string name="receipt_item_status_accepted">Принят</string>
-  <string name="receipt_item_status_completed">Выполнен</string>
-  <string name="receipt_item_status_rejected">Отклонен</string>
+  <string name="receipt_item_state_processing">Проверяется</string>
+  <string name="receipt_item_state_approved">Принят</string>
+  <string name="receipt_item_state_completed">Выполнен</string>
+  <string name="receipt_item_state_rejected">Отклонен</string>
 
   <string name="receipt_scan_available_title">Вы можете отсканировать чек</string>
   <string name="receipt_scan_available_description">Минимальная сумма чека указана на боковой поверхности аппарата</string>

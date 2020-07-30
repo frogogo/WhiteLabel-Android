@@ -21,7 +21,10 @@ class ReceiptsFragment : BaseFragment<ReceiptsViewModel>(R.layout.fragment_recei
   private val adapter: BaseDelegationAdapter by lazy { createAdapter() }
 
   override fun initViews() {
-    binding.buttonBack.setOnSafeClickListener(viewModel::navigateBack)
+    binding.apply {
+      buttonBack.setOnSafeClickListener(viewModel::navigateBack)
+      viewErrorState.setOnRefreshClickListener(viewModel::loadReceipts)
+    }
 
     // Recycler View
     val decorationSpacing = resources.getDimensionPixelSize(R.dimen.spacing_4)
@@ -37,7 +40,15 @@ class ReceiptsFragment : BaseFragment<ReceiptsViewModel>(R.layout.fragment_recei
   override fun initObservers() {
     viewModel.run {
       observe(dataLive) { adapter.items = it }
-      observe(isLoadingLive) { binding.progressBar.setVisible(it) }
+      observe(isLoadingLive) { renderState(isLoading = it) }
+      observe(errorOccurredLiveEvent) { renderState(isError = true) }
+    }
+  }
+
+  private fun renderState(isLoading: Boolean = false, isError: Boolean = false) {
+    binding.apply {
+      progressBar.setVisible(isLoading && !isError)
+      viewErrorState.setVisible(isError && !isLoading)
     }
   }
 

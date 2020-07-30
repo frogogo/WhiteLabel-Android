@@ -1,23 +1,21 @@
 package ru.poprobuy.poprobuy.ui.auth.name
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import io.mockk.Called
 import io.mockk.mockk
 import io.mockk.verify
 import io.mockk.verifySequence
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
+import ru.poprobuy.poprobuy.ViewModelTest
 import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.mockkObserver
 
+@ExperimentalCoroutinesApi
 @RunWith(RobolectricTestRunner::class)
-class AuthNameViewModelTest {
-
-  @get:Rule
-  val instantExecutorRule = InstantTaskExecutorRule()
+class AuthNameViewModelTest : ViewModelTest() {
 
   private lateinit var viewModel: AuthNameViewModel
   private val navigation: AuthNameNavigation = mockk(relaxed = true)

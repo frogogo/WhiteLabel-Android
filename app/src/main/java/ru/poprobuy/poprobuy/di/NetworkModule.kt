@@ -16,6 +16,7 @@ import ru.poprobuy.poprobuy.data.network.PoprobuyApi
 import ru.poprobuy.poprobuy.data.network.interceptor.*
 import ru.poprobuy.poprobuy.util.Constants
 import ru.poprobuy.poprobuy.util.Constants.POPROBUY_API_ENDPOINT
+import ru.poprobuy.poprobuy.util.moshi.MoshiUtils
 import ru.poprobuy.poprobuy.util.network.UserAgentFactory
 import java.io.File
 import java.util.concurrent.TimeUnit
@@ -90,5 +91,5 @@ private fun createRetrofit(client: OkHttpClient, url: String): Retrofit {
 private inline fun <reified T> getApi(retrofit: Retrofit): T = retrofit.create(T::class.java)
 
 private fun createMoshiConverterFactory(): Converter.Factory {
-  return MoshiConverterFactory.create()
+  return MoshiConverterFactory.create(MoshiUtils.getNetworkAdapter())
 }

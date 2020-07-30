@@ -17,7 +17,7 @@
 
   <!-- Receipt Values -->
   <TextView
-    android:id="@+id/textViewReceiptId"
+    android:id="@+id/textViewReceiptNumber"
     style="@style/Text.Headline.Medium"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:barrierDirection="bottom"
-    app:constraint_referenced_ids="textViewReceiptId,textViewReceiptValue" />
+    app:constraint_referenced_ids="textViewReceiptNumber,textViewReceiptValue" />
 
   <TextView
     android:id="@+id/textViewShop"
@@ -78,7 +78,7 @@
     android:layout_marginEnd="@dimen/spacing_4"
     android:gravity="center"
     android:textColor="@color/receipt_date"
-    app:layout_constraintBottom_toTopOf="@id/imageViewStatus"
+    app:layout_constraintBottom_toTopOf="@id/imageViewState"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@id/textViewShop"
@@ -86,28 +86,28 @@
 
   <!-- Status -->
   <ImageView
-    android:id="@+id/imageViewStatus"
+    android:id="@+id/imageViewState"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:layout_constraintBottom_toBottomOf="@id/viewHeader"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@id/viewHeader"
-    tools:src="@drawable/ic_receipt_accepted" />
+    tools:src="@drawable/ic_receipt_approved" />
 
   <TextView
-    android:id="@+id/textViewStatus"
+    android:id="@+id/textViewState"
     style="@style/Text.Headline.Medium"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/spacing_4"
-    android:layout_marginTop="@dimen/receipt_header_status_margin_top_small"
+    android:layout_marginTop="@dimen/receipt_header_state_margin_top_small"
     android:layout_marginEnd="@dimen/spacing_4"
     android:gravity="center"
     android:textColor="@color/receipt_title"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/imageViewStatus"
-    tools:text="@string/receipt_status_accepted" />
+    app:layout_constraintTop_toBottomOf="@id/imageViewState"
+    tools:text="@string/receipt_state_approved" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

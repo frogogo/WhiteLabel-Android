@@ -5,7 +5,7 @@ import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.data.model.ui.home.HomeState
 import ru.poprobuy.poprobuy.databinding.ItemHomeEmptyBinding
 import ru.poprobuy.poprobuy.databinding.ItemHomeReceiptBinding
-import ru.poprobuy.poprobuy.dictionary.ReceiptStatus
+import ru.poprobuy.poprobuy.dictionary.ReceiptState
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible
 
@@ -19,7 +19,7 @@ object HomeAdapterDelegates {
     binding.buttonScan.setOnSafeClickListener { scanReceiptAction() }
   }
 
-  fun acceptedStateDelegate(
+  fun approvedStateDelegate(
     scanMachineCallback: () -> Unit,
     enterMachineAction: () -> Unit,
     scanReceiptAction: () -> Unit
@@ -38,8 +38,8 @@ object HomeAdapterDelegates {
       binding.apply {
         viewReceipt.setReceipt(item.receipt)
 
-        layoutControlsGoods.root.setVisible(item.receipt.status == ReceiptStatus.ACCEPTED)
-        layoutControlsScan.root.setVisible(item.receipt.status == ReceiptStatus.REJECTED)
+        layoutControlsGoods.root.setVisible(item.receipt.state == ReceiptState.APPROVED)
+        layoutControlsScan.root.setVisible(item.receipt.state == ReceiptState.REJECTED)
       }
     }
   }

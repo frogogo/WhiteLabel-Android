@@ -1,26 +1,22 @@
 package ru.poprobuy.poprobuy.ui.auth.phone
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.amshove.kluent.shouldBeInstanceOf
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
+import ru.poprobuy.poprobuy.ViewModelTest
 import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.mockkObserver
 import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationCodeUseCase
 import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationResult
 
-@RunWith(RobolectricTestRunner::class)
 @ExperimentalCoroutinesApi
-class AuthPhoneViewModelTest {
-
-  @get:Rule
-  val instantExecutorRule = InstantTaskExecutorRule()
+@RunWith(RobolectricTestRunner::class)
+class AuthPhoneViewModelTest : ViewModelTest() {
 
   private lateinit var viewModel: AuthPhoneViewModel
   private val requestConfirmationCodeUseCase: RequestConfirmationCodeUseCase = mockk(relaxed = true)

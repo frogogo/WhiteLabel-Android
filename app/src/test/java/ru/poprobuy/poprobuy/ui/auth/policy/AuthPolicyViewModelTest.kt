@@ -1,18 +1,16 @@
 package ru.poprobuy.poprobuy.ui.auth.policy
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import io.mockk.mockk
 import io.mockk.verify
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
+import ru.poprobuy.poprobuy.ViewModelTest
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 
-class AuthPolicyViewModelTest {
-
-  @get:Rule
-  val instantExecutorRule = InstantTaskExecutorRule()
+@ExperimentalCoroutinesApi
+class AuthPolicyViewModelTest : ViewModelTest() {
 
   private lateinit var viewModel: AuthPolicyViewModel
   private val authRepository: AuthRepository = mockk(relaxed = true)

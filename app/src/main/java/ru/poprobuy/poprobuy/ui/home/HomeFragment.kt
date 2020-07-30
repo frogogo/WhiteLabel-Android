@@ -40,7 +40,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(R.layout.fragment_home), SwipeR
 
   private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(
     HomeAdapterDelegates.emptyStateDelegate(viewModel::navigateToReceiptScan),
-    HomeAdapterDelegates.acceptedStateDelegate(
+    HomeAdapterDelegates.approvedStateDelegate(
       scanMachineCallback = viewModel::navigateToMachineScan,
       enterMachineAction = viewModel::navigateToMachineEnter,
       scanReceiptAction = viewModel::navigateToReceiptScan

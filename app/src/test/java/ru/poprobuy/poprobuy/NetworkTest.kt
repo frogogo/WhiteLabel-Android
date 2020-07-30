@@ -3,7 +3,7 @@ package ru.poprobuy.poprobuy
 import okhttp3.Request
 import okhttp3.mockwebserver.MockWebServer
 
-open class BaseNetworkTest {
+open class NetworkTest {
 
   val mockWebServer = MockWebServer().apply { start() }
 

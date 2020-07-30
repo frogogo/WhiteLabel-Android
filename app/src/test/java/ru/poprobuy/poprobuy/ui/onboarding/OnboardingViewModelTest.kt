@@ -1,23 +1,21 @@
 package ru.poprobuy.poprobuy.ui.onboarding
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import io.mockk.verifyOrder
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
+import ru.poprobuy.poprobuy.ViewModelTest
 import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.data.model.ui.onboarding.OnboardingPage
 import ru.poprobuy.poprobuy.data.repository.OnboardingRepository
 import ru.poprobuy.poprobuy.mockkObserver
 
-class OnboardingViewModelTest {
-
-  @get:Rule
-  val instantExecutorRule = InstantTaskExecutorRule()
+@ExperimentalCoroutinesApi
+class OnboardingViewModelTest : ViewModelTest() {
 
   private lateinit var viewModel: OnboardingViewModel
   private val onboardingRepository: OnboardingRepository = mockk(relaxed = true)

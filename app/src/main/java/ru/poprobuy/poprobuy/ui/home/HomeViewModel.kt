@@ -9,7 +9,7 @@ import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.model.ui.ReceiptUiModel
 import ru.poprobuy.poprobuy.data.model.ui.home.HomeState
-import ru.poprobuy.poprobuy.dictionary.ReceiptStatus
+import ru.poprobuy.poprobuy.dictionary.ReceiptState
 import ru.poprobuy.poprobuy.extension.asLiveData
 import java.util.*
 
@@ -28,10 +28,11 @@ class HomeViewModel(
     // TODO: 11.07.2020 Implement me
     val receipt = ReceiptUiModel(
       id = 123_123_123,
+      number = 1_233_434,
       value = 3499,
       date = Date(),
       shopName = "ВкусВилл",
-      status = ReceiptStatus.ACCEPTED
+      state = ReceiptState.APPROVED
     )
 
     viewModelScope.launch {
@@ -40,8 +41,8 @@ class HomeViewModel(
         listOf(
           HomeState.Empty,
           HomeState.Receipt(receipt),
-          HomeState.Receipt(receipt.copy(status = ReceiptStatus.REJECTED)),
-          HomeState.Receipt(receipt.copy(status = ReceiptStatus.CHECK))
+          HomeState.Receipt(receipt.copy(state = ReceiptState.REJECTED)),
+          HomeState.Receipt(receipt.copy(state = ReceiptState.PROCESSING))
         )
       )
     }

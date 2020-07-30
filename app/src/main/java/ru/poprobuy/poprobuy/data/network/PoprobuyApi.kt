@@ -9,6 +9,7 @@ import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationRequest
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponse
 import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequest
 import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequestResponse
+import ru.poprobuy.poprobuy.data.model.api.receipt.Receipt
 import ru.poprobuy.poprobuy.data.model.api.user.User
 import ru.poprobuy.poprobuy.data.model.api.user.UserUpdateRequest
 
@@ -25,5 +26,8 @@ interface PoprobuyApi {
 
   @GET("user")
   suspend fun getUser(): Response<User>
+
+  @GET("receipts")
+  suspend fun getReceipts(): Response<List<Receipt>>
 
 }

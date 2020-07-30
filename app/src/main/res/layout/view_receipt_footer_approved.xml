@@ -9,7 +9,7 @@
   android:paddingEnd="@dimen/spacing_4">
 
   <TextView
-    android:id="@+id/textViewStatusSubtitle"
+    android:id="@+id/textViewStateSubtitle"
     style="@style/Text.Subhead"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:text="@string/receipt_status_accepted_description" />
+    tools:text="@string/receipt_state_approved_description" />
 
   <View
     android:id="@+id/divider"
@@ -27,7 +27,7 @@
     android:layout_marginTop="@dimen/spacing_3"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/textViewStatusSubtitle" />
+    app:layout_constraintTop_toBottomOf="@id/textViewStateSubtitle" />
 
   <ImageView
     android:id="@+id/imageViewStep1"
@@ -44,7 +44,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/spacing_3"
     android:layout_marginTop="@dimen/spacing_3"
-    android:text="@string/receipt_status_accepted_footer_1"
+    android:text="@string/receipt_state_approved_footer_1"
     android:textColor="@color/receipt_subtitle"
     app:layout_constraintLeft_toRightOf="@id/imageViewStep1"
     app:layout_constraintRight_toRightOf="parent"
@@ -65,7 +65,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/spacing_3"
     android:layout_marginTop="@dimen/spacing_4"
-    android:text="@string/receipt_status_accepted_footer_2"
+    android:text="@string/receipt_state_approved_footer_2"
     android:textColor="@color/receipt_subtitle"
     app:layout_constraintLeft_toRightOf="@id/imageViewStep2"
     app:layout_constraintRight_toRightOf="parent"

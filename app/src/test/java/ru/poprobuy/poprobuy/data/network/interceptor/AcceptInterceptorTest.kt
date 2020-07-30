@@ -4,9 +4,9 @@ import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Test
-import ru.poprobuy.poprobuy.BaseNetworkTest
+import ru.poprobuy.poprobuy.NetworkTest
 
-class AcceptInterceptorTest : BaseNetworkTest() {
+class AcceptInterceptorTest : NetworkTest() {
 
   private val client = OkHttpClient.Builder()
     .addInterceptor(AcceptInterceptor())
