@@ -8,6 +8,7 @@ import ru.poprobuy.poprobuy.arch.recycler.BaseDelegationAdapter
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.data.model.ui.ReceiptsEmptyState
 import ru.poprobuy.poprobuy.databinding.FragmentReceiptsBinding
+import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible
 import ru.poprobuy.poprobuy.util.ItemDecoration
@@ -20,7 +21,10 @@ class ReceiptsFragment : BaseFragment<ReceiptsViewModel>(R.layout.fragment_recei
   private val adapter: BaseDelegationAdapter by lazy { createAdapter() }
 
   override fun initViews() {
-    binding.buttonBack.setOnSafeClickListener(viewModel::navigateBack)
+    binding.apply {
+      buttonBack.setOnSafeClickListener(viewModel::navigateBack)
+      viewErrorState.setOnRefreshClickListener(viewModel::loadReceipts)
+    }
 
     // Recycler View
     val decorationSpacing = resources.getDimensionPixelSize(R.dimen.spacing_4)
@@ -33,9 +37,19 @@ class ReceiptsFragment : BaseFragment<ReceiptsViewModel>(R.layout.fragment_recei
     }
   }
 
-  override fun initObservers() = viewModel.run {
-    dataLive.observe { adapter.items = it }
-    isLoadingLive.observe { binding.progressBar.setVisible(it) }
+  override fun initObservers() {
+    viewModel.run {
+      observe(dataLive) { adapter.items = it }
+      observe(isLoadingLive) { renderState(isLoading = it) }
+      observe(errorOccurredLiveEvent) { renderState(isError = true) }
+    }
+  }
+
+  private fun renderState(isLoading: Boolean = false, isError: Boolean = false) {
+    binding.apply {
+      progressBar.setVisible(isLoading && !isError)
+      viewErrorState.setVisible(isError && !isLoading)
+    }
   }
 
   private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(

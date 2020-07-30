@@ -1,7 +1,10 @@
-package ru.poprobuy.poprobuy.di
+package ru.poprobuy.poprobuy.extension
 
+import androidx.annotation.MainThread
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.observe
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
@@ -47,4 +50,9 @@ fun Fragment.withPermission(
 
 inline fun Fragment.alert(dialog: MaterialAlertDialogBuilder.() -> Unit): AlertDialog {
   return MaterialAlertDialogBuilder(requireContext()).apply(dialog).show()
+}
+
+@MainThread
+inline fun <T> Fragment.observe(liveData: LiveData<T>, crossinline onChanged: (T) -> Unit) {
+  liveData.observe(viewLifecycleOwner, onChanged)
 }

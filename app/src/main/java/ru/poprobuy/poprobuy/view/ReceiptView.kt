@@ -37,8 +37,8 @@ class ReceiptView @JvmOverloads constructor(
   fun setReceipt(receipt: ReceiptUiModel) = binding.run {
     layoutHeader.setReceipt(receipt)
     // Footer
-    layoutFooterAccepted.setReceipt(receipt)
-    layoutFooterCheck.setReceipt(receipt)
+    layoutFooterApproved.setReceipt(receipt)
+    layoutFooterProcessing.setReceipt(receipt)
   }
 
   /**

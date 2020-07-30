@@ -8,12 +8,12 @@
   android:paddingEnd="@dimen/spacing_4">
 
   <TextView
-    android:id="@+id/textViewStatusSubtitle"
+    android:id="@+id/textViewStateSubtitle"
     style="@style/Text.Subhead"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:text="@string/receipt_status_check_description"
+    android:text="@string/receipt_state_processing_description"
     android:textColor="@color/receipt_subtitle"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
@@ -26,7 +26,7 @@
     android:layout_marginTop="@dimen/spacing_3"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/textViewStatusSubtitle" />
+    app:layout_constraintTop_toBottomOf="@id/textViewStateSubtitle" />
 
   <TextView
     android:id="@+id/textViewDescription"
@@ -35,7 +35,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/spacing_3"
     android:gravity="center"
-    android:text="@string/receipt_status_check_footer"
+    android:text="@string/receipt_state_processing_footer"
     android:textColor="@color/receipt_subtitle"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"

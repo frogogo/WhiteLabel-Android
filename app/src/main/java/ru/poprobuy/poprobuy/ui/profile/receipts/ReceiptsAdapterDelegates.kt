@@ -8,7 +8,7 @@ import ru.poprobuy.poprobuy.data.model.ui.receipts.ReceiptsScanAvailable
 import ru.poprobuy.poprobuy.databinding.ItemReceiptBinding
 import ru.poprobuy.poprobuy.databinding.ItemScanAvailableBinding
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
-import ru.poprobuy.poprobuy.extension.binding.setReceiptStatus
+import ru.poprobuy.poprobuy.extension.binding.setReceiptState
 import ru.poprobuy.poprobuy.extension.toDateTime
 import ru.poprobuy.poprobuy.util.PriceUtils
 
@@ -26,10 +26,10 @@ object ReceiptsAdapterDelegates {
 
     bind {
       binding.apply {
-        textViewReceiptId.text = context.getString(R.string.receipt_id, item.id)
+        textViewReceiptNumber.text = context.getString(R.string.receipt_number, item.number)
         textViewReceiptValue.text = PriceUtils.formatPrice(item.value)
         textViewDate.text = item.date.toDateTime()
-        viewLabel.setReceiptStatus(item.status)
+        viewLabel.setReceiptState(item.state)
       }
     }
   }

@@ -8,6 +8,7 @@ import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.recycler.BaseDelegationAdapter
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentOnboardingBinding
+import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.goNext
 import ru.poprobuy.poprobuy.extension.hasNext
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
@@ -59,8 +60,8 @@ class OnboardingFragment : BaseFragment<OnboardingViewModel>(R.layout.fragment_o
     requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressCallback)
   }
 
-  override fun initObservers() = viewModel.run {
-    pagesLive.observe { data ->
+  override fun initObservers() {
+    observe(viewModel.pagesLive) { data ->
       adapter.items = data
       updateButtons()
     }

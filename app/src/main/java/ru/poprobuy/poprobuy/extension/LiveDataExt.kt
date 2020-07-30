@@ -5,3 +5,5 @@ import androidx.lifecycle.MutableLiveData
 
 @Suppress("detekt.UnsafeCast")
 fun <T> MutableLiveData<T>.asLiveData(): LiveData<T> = this
+
+fun <T> LiveData<T>.isEmpty() = value == null

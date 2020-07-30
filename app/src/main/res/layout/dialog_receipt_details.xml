@@ -27,8 +27,8 @@
 
   <!-- Footer -->
   <include
-    android:id="@+id/layoutFooterAccepted"
-    layout="@layout/view_receipt_footer_accepted"
+    android:id="@+id/layoutFooterApproved"
+    layout="@layout/view_receipt_footer_approved"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/spacing_3"
@@ -39,8 +39,8 @@
     tools:visibility="visible" />
 
   <include
-    android:id="@+id/layoutFooterCheck"
-    layout="@layout/view_receipt_footer_check"
+    android:id="@+id/layoutFooterProcessing"
+    layout="@layout/view_receipt_footer_processing"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/spacing_3"
@@ -65,7 +65,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:barrierDirection="bottom"
-    app:constraint_referenced_ids="layoutFooterAccepted,layoutFooterCheck,layoutFooterCompleted" />
+    app:constraint_referenced_ids="layoutFooterApproved,layoutFooterProcessing,layoutFooterCompleted" />
 
   <include
     android:id="@+id/layoutControlsGoods"

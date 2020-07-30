@@ -9,6 +9,7 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.github.ajalt.timberkt.d
 import com.github.ajalt.timberkt.e
+import com.github.ajalt.timberkt.i
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.ResultPoint
 import com.journeyapps.barcodescanner.BarcodeCallback
@@ -20,8 +21,6 @@ import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentScannerBinding
-import ru.poprobuy.poprobuy.di.alert
-import ru.poprobuy.poprobuy.di.withPermission
 import ru.poprobuy.poprobuy.dictionary.ScanMode.MACHINE
 import ru.poprobuy.poprobuy.dictionary.ScanMode.RECEIPT
 import ru.poprobuy.poprobuy.extension.*
@@ -55,22 +54,42 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
     initScanner()
   }
 
+  override fun initObservers() {
+    viewModel.run {
+      observe(isLoadingLive) { binding.progressBar.setVisible(it) }
+      observe(errorLiveEvent) { error ->
+        // FIXME: 30.07.2020 Temp realisation
+        alert {
+          setTitle(error)
+          setPositiveButton("ОК", null)
+          setOnCancelListener {
+            binding.barcodeView.resume()
+          }
+          setOnDismissListener {
+            binding.barcodeView.resume()
+          }
+        }
+      }
+    }
+  }
+
   override fun onStart() {
     super.onStart()
     checkPermissions()
   }
 
   override fun onResume() {
-    binding.barcodeView.resume()
     super.onResume()
+    binding.barcodeView.resume()
   }
 
   override fun onPause() {
-    binding.barcodeView.pause()
     super.onPause()
+    binding.barcodeView.pause()
   }
 
   override fun barcodeResult(result: BarcodeResult) {
+    i { "QR code handled - $result" }
     requireContext().vibratePhone()
     binding.barcodeView.pause()
     viewModel.handleQrString(result.text)

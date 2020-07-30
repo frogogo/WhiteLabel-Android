@@ -12,7 +12,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseBottomSheetDialogFragment
 import ru.poprobuy.poprobuy.databinding.DialogReceiptDetailsBinding
-import ru.poprobuy.poprobuy.dictionary.ReceiptStatus
+import ru.poprobuy.poprobuy.dictionary.ReceiptState
 import ru.poprobuy.poprobuy.extension.binding.setReceipt
 import ru.poprobuy.poprobuy.extension.binding.useLargeSize
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
@@ -54,17 +54,17 @@ class ReceiptDetailsBottomDialog : BaseBottomSheetDialogFragment<ReceiptDetailsV
 
     binding.apply {
       // Footer
-      layoutFooterAccepted.setReceipt(receipt)
-      layoutFooterCheck.setReceipt(receipt)
+      layoutFooterApproved.setReceipt(receipt)
+      layoutFooterProcessing.setReceipt(receipt)
       layoutFooterCompleted.setReceipt(receipt)
       // Controls
       layoutControlsGoods.apply {
-        root.setVisible(receipt.status == ReceiptStatus.ACCEPTED)
+        root.setVisible(receipt.state == ReceiptState.APPROVED)
         buttonEnterMachine.setOnSafeClickListener(viewModel::navigateToMachineEnter)
         buttonScanMachine.setOnSafeClickListener(viewModel::navigateToMachineScan)
       }
       layoutControlsScan.root.apply {
-        setVisible(receipt.status in listOf(ReceiptStatus.COMPLETED, ReceiptStatus.REJECTED))
+        setVisible(receipt.state in listOf(ReceiptState.COMPLETED, ReceiptState.REJECTED))
         setOnSafeClickListener(viewModel::navigateToReceiptScan)
       }
     }

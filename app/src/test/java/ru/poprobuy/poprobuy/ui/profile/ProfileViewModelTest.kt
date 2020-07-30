@@ -1,15 +1,13 @@
 package ru.poprobuy.poprobuy.ui.profile
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
-import ru.poprobuy.poprobuy.CoroutinesTestRule
 import ru.poprobuy.poprobuy.DataFixtures
+import ru.poprobuy.poprobuy.ViewModelTest
 import ru.poprobuy.poprobuy.data.model.ui.profile.ProfileUiModel
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.data.repository.UserRepository
@@ -19,13 +17,7 @@ import ru.poprobuy.poprobuy.usecase.user.GetUserInfoUseCase
 import ru.poprobuy.poprobuy.util.ProfileUtils
 
 @ExperimentalCoroutinesApi
-class ProfileViewModelTest {
-
-  @get:Rule
-  val coroutineTestRule = CoroutinesTestRule()
-
-  @get:Rule
-  val instantExecutorRule = InstantTaskExecutorRule()
+class ProfileViewModelTest : ViewModelTest() {
 
   private lateinit var viewModel: ProfileViewModel
   private val getUserInfoUseCase: GetUserInfoUseCase = mockk(relaxed = true)
@@ -72,7 +64,7 @@ class ProfileViewModelTest {
   @Test
   fun `verify flow when user data cached and network request failed`() = runBlockingTest {
     every { userRepository.getUser() } returns DataFixtures.user
-    coEvery { getUserInfoUseCase() } returns UseCaseResult.Failure()
+    coEvery { getUserInfoUseCase() } returns UseCaseResult.Failure(Unit)
 
     viewModel.loadProfile()
 
@@ -102,7 +94,7 @@ class ProfileViewModelTest {
   @Test
   fun `verify flow when no cached user data and network request failed`() = runBlockingTest {
     every { userRepository.getUser() } returns null
-    coEvery { getUserInfoUseCase() } returns UseCaseResult.Failure()
+    coEvery { getUserInfoUseCase() } returns UseCaseResult.Failure(Unit)
 
     viewModel.loadProfile()
 

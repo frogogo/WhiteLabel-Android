@@ -1,19 +1,17 @@
 package ru.poprobuy.poprobuy.arch.ui
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import io.mockk.verifySequence
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
+import ru.poprobuy.poprobuy.ViewModelTest
 import ru.poprobuy.poprobuy.arch.navigation.AppNavigation
 import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.mockkObserver
 
-class BaseViewModelTest {
-
-  @get:Rule
-  val instantExecutorRule = InstantTaskExecutorRule()
+@ExperimentalCoroutinesApi
+class BaseViewModelTest : ViewModelTest() {
 
   private lateinit var viewModel: BaseViewModel
 

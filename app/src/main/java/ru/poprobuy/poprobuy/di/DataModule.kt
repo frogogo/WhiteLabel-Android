@@ -5,6 +5,7 @@ import org.koin.dsl.module
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.data.repository.OnboardingRepository
+import ru.poprobuy.poprobuy.data.repository.ReceiptsRepository
 import ru.poprobuy.poprobuy.data.repository.UserRepository
 
 val dataModule = module {
@@ -15,4 +16,5 @@ val dataModule = module {
   single { OnboardingRepository(get()) }
   single { AuthRepository(get(), get()) }
   single { UserRepository(get(), get()) }
+  single { ReceiptsRepository(get()) }
 }

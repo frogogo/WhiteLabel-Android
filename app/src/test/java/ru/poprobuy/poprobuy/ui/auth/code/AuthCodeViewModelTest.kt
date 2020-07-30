@@ -1,13 +1,11 @@
 package ru.poprobuy.poprobuy.ui.auth.code
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
-import ru.poprobuy.poprobuy.CoroutinesTestRule
+import ru.poprobuy.poprobuy.ViewModelTest
 import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.arch.ui.BaseCommand
 import ru.poprobuy.poprobuy.mockkObserver
@@ -18,13 +16,7 @@ import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationResult
 import ru.poprobuy.poprobuy.util.OtpRequestDisabler
 
 @ExperimentalCoroutinesApi
-class AuthCodeViewModelTest {
-
-  @get:Rule
-  val coroutineTestRule = CoroutinesTestRule()
-
-  @get:Rule
-  val instantExecutorRule = InstantTaskExecutorRule()
+class AuthCodeViewModelTest : ViewModelTest() {
 
   private lateinit var viewModel: AuthCodeViewModel
   private val navigation: AuthCodeConfirmationNavigation = mockk(relaxed = true)

@@ -7,6 +7,7 @@ import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.recycler.BaseDelegationAdapter
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentHomeBinding
+import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible
 
@@ -26,12 +27,10 @@ class HomeFragment : BaseFragment<HomeViewModel>(R.layout.fragment_home), SwipeR
   }
 
   override fun initObservers() {
-    viewModel.run {
-      dataLive.observe { data ->
-        adapter.items = data
-        binding.progressBar.setVisible(false)
-        binding.swipeRefreshLayout.isRefreshing = false
-      }
+    observe(viewModel.dataLive) { data ->
+      adapter.items = data
+      binding.progressBar.setVisible(false)
+      binding.swipeRefreshLayout.isRefreshing = false
     }
   }
 
@@ -41,7 +40,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(R.layout.fragment_home), SwipeR
 
   private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(
     HomeAdapterDelegates.emptyStateDelegate(viewModel::navigateToReceiptScan),
-    HomeAdapterDelegates.acceptedStateDelegate(
+    HomeAdapterDelegates.approvedStateDelegate(
       scanMachineCallback = viewModel::navigateToMachineScan,
       enterMachineAction = viewModel::navigateToMachineEnter,
       scanReceiptAction = viewModel::navigateToReceiptScan

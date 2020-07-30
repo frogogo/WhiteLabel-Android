@@ -1,8 +1,11 @@
 package ru.poprobuy.poprobuy
 
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponse
+import ru.poprobuy.poprobuy.data.model.api.receipt.Receipt
 import ru.poprobuy.poprobuy.data.model.api.user.User
 import ru.poprobuy.poprobuy.data.model.ui.product.ProductUiModel
+import ru.poprobuy.poprobuy.dictionary.ReceiptState
+import java.util.*
 
 object DataFixtures {
 
@@ -15,6 +18,14 @@ object DataFixtures {
     firstName = USER_NAME,
     email = USER_EMAIL,
     phoneNumber = PHONE_NUMBER
+  )
+
+  val receipt = Receipt(
+    id = 1,
+    number = 101,
+    state = ReceiptState.PROCESSING,
+    timestamp = Date(),
+    sum = 100
   )
 
   val product = ProductUiModel(

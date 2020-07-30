@@ -8,10 +8,10 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldBeNull
 import org.junit.Before
 import org.junit.Test
-import ru.poprobuy.poprobuy.BaseNetworkTest
+import ru.poprobuy.poprobuy.NetworkTest
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
 
-class AuthInterceptorTest : BaseNetworkTest() {
+class AuthInterceptorTest : NetworkTest() {
 
   private val userPreferences: UserPreferences = mockk(relaxed = true)
 
