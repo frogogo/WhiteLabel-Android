@@ -64,7 +64,7 @@ class ProfileViewModelTest : ViewModelTest() {
   @Test
   fun `verify flow when user data cached and network request failed`() = runBlockingTest {
     every { userRepository.getUser() } returns DataFixtures.user
-    coEvery { getUserInfoUseCase() } returns UseCaseResult.Failure()
+    coEvery { getUserInfoUseCase() } returns UseCaseResult.Failure(Unit)
 
     viewModel.loadProfile()
 
@@ -94,7 +94,7 @@ class ProfileViewModelTest : ViewModelTest() {
   @Test
   fun `verify flow when no cached user data and network request failed`() = runBlockingTest {
     every { userRepository.getUser() } returns null
-    coEvery { getUserInfoUseCase() } returns UseCaseResult.Failure()
+    coEvery { getUserInfoUseCase() } returns UseCaseResult.Failure(Unit)
 
     viewModel.loadProfile()
 

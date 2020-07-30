@@ -10,6 +10,7 @@ import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponse
 import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequest
 import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequestResponse
 import ru.poprobuy.poprobuy.data.model.api.receipt.Receipt
+import ru.poprobuy.poprobuy.data.model.api.receipt.ReceiptCreationRequest
 import ru.poprobuy.poprobuy.data.model.api.user.User
 import ru.poprobuy.poprobuy.data.model.api.user.UserUpdateRequest
 
@@ -29,5 +30,11 @@ interface PoprobuyApi {
 
   @GET("receipts")
   suspend fun getReceipts(): Response<List<Receipt>>
+
+  /**
+   * Request for activating qr string from receipt
+   */
+  @POST("receipts")
+  suspend fun createReceipt(@Body body: ReceiptCreationRequest): Response<Unit>
 
 }

@@ -55,7 +55,9 @@ val screenModule = module {
   viewModel { (scanMode: ScanMode) ->
     ScannerViewModel(
       scanMode = scanMode,
-      navigation = get()
+      navigation = get(),
+      createReceiptUseCase = get(),
+      resourceProvider = get()
     )
   }
   viewModel { MachineSelectViewModel(get()) }

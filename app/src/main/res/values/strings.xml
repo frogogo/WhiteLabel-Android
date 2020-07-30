@@ -105,6 +105,8 @@
   <string name="scanner_button_enter_manual">Ввести номер вручную</string>
   <string name="scanner_help_machine_title">Как сканировать автомат</string>
   <string name="scanner_help_receipt_title">Как сканировать чек</string>
+  <string name="scanner_error_receipt">Возможно чек уже был отсканирован</string>
+  <string name="scanner_error_receipt_format">Отсканированный QR-код имеет неверный формат</string>
 
   <!-- Machine Select -->
   <string name="machine_select_title">Введите номер аппарата</string>

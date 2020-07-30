@@ -19,7 +19,7 @@ class GetReceiptsUseCase(
       }
       is NetworkResource.Error -> {
         e { "Receipts fetching failed" }
-        UseCaseResult.Failure()
+        UseCaseResult.Failure(Unit)
       }
     }
 }

@@ -8,7 +8,7 @@ import ru.poprobuy.poprobuy.arch.recycler.BaseDelegationAdapter
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.data.model.ui.ReceiptsEmptyState
 import ru.poprobuy.poprobuy.databinding.FragmentReceiptsBinding
-import ru.poprobuy.poprobuy.di.observe
+import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible
 import ru.poprobuy.poprobuy.util.ItemDecoration

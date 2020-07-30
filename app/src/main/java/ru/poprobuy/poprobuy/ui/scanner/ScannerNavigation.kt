@@ -8,6 +8,7 @@ interface ScannerNavigation {
   fun navigateToMachineHelp(): NavigationCommand
   fun navigateToReceiptHelp(): NavigationCommand
   fun navigateToManualMachineEnter(): NavigationCommand
+  fun navigateToHome(): NavigationCommand
 }
 
 class ScannerNavigationImpl : ScannerNavigation {
@@ -22,6 +23,10 @@ class ScannerNavigationImpl : ScannerNavigation {
 
   override fun navigateToManualMachineEnter(): NavigationCommand {
     return NavigationCommand.ById(R.id.scanner_to_machine_select)
+  }
+
+  override fun navigateToHome(): NavigationCommand {
+    return NavigationCommand.ById(R.id.scanner_to_home)
   }
 
 }

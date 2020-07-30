@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.di
+package ru.poprobuy.poprobuy.extension
 
 import androidx.annotation.MainThread
 import androidx.appcompat.app.AlertDialog

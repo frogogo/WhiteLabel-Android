@@ -78,7 +78,7 @@ class ReceiptsViewModelTest : ViewModelTest() {
 
   @Test
   fun `verify flow when data loading failed`() = runBlockingTest {
-    coEvery { getReceiptsUseCase() } returns UseCaseResult.Failure()
+    coEvery { getReceiptsUseCase() } returns UseCaseResult.Failure(Unit)
 
     viewModel.loadReceipts()
 

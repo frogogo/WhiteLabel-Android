@@ -7,7 +7,7 @@ import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.data.model.ui.profile.ProfileUiModel
 import ru.poprobuy.poprobuy.databinding.FragmentProfileBinding
-import ru.poprobuy.poprobuy.di.observe
+import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.formatWithMask
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible

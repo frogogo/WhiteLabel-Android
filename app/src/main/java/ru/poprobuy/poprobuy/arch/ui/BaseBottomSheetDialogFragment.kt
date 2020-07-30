@@ -11,7 +11,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.arch.navigation.NavigationRouter
-import ru.poprobuy.poprobuy.di.observe
+import ru.poprobuy.poprobuy.extension.observe
 
 abstract class BaseBottomSheetDialogFragment<out T : BaseViewModel>(
   @LayoutRes private val layoutResId: Int

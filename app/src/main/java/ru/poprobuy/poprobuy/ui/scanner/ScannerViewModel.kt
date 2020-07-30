@@ -1,16 +1,65 @@
 package ru.poprobuy.poprobuy.ui.scanner
 
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.github.ajalt.timberkt.d
+import com.hadilq.liveevent.LiveEvent
+import kotlinx.coroutines.launch
+import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
 import ru.poprobuy.poprobuy.dictionary.ScanMode
+import ru.poprobuy.poprobuy.extension.asLiveData
+import ru.poprobuy.poprobuy.usecase.receipt.CreateReceiptResult
+import ru.poprobuy.poprobuy.usecase.receipt.CreateReceiptUseCase
+import ru.poprobuy.poprobuy.util.QRCodeUtils
+import ru.poprobuy.poprobuy.util.ResourceProvider
 
 class ScannerViewModel(
   private val scanMode: ScanMode,
-  private val navigation: ScannerNavigation
+  private val navigation: ScannerNavigation,
+  private val createReceiptUseCase: CreateReceiptUseCase,
+  private val resourceProvider: ResourceProvider
 ) : BaseViewModel() {
+
+  private val _isLoadingLive = MutableLiveData<Boolean>()
+  val isLoadingLive = _isLoadingLive.asLiveData()
+
+  private val _errorLiveEvent = LiveEvent<String>()
+  val errorLiveEvent = _errorLiveEvent.asLiveData()
 
   fun handleQrString(string: String) {
     d { "Handling QR string - $string" }
+
+    when (scanMode) {
+      ScanMode.RECEIPT -> createReceipt(string)
+      ScanMode.MACHINE -> TODO()
+    }
+  }
+
+  private fun createReceipt(string: String) {
+    if (!QRCodeUtils.isQueryString(string)) {
+      _errorLiveEvent.postValue(resourceProvider.getString(R.string.scanner_error_receipt_format))
+      return
+    }
+
+    viewModelScope.launch {
+      _isLoadingLive.postValue(true)
+      val result = createReceiptUseCase(string)
+      _isLoadingLive.postValue(false)
+
+      when (result) {
+        CreateReceiptResult.Success -> {
+          navigation.navigateToHome().navigate()
+        }
+        CreateReceiptResult.Error -> {
+          _errorLiveEvent.postValue(resourceProvider.getString(R.string.error_something_went_wrong))
+        }
+        CreateReceiptResult.UnprocessableEntity -> {
+          // TODO: 30.07.2020 Handle error enum
+          _errorLiveEvent.postValue(resourceProvider.getString(R.string.scanner_error_receipt))
+        }
+      }
+    }
   }
 
   fun navigateToHelp() {

@@ -22,7 +22,7 @@ class UseCaseResultKtTest {
   fun `onSuccess is not called`() {
     val action = mockk<(Int) -> Unit>(relaxed = true)
 
-    UseCaseResult.Failure<Int, Unit>().onSuccess(action)
+    UseCaseResult.Failure<Int, Unit>(Unit).onSuccess(action)
 
     verify {
       action wasNot Called
@@ -33,7 +33,7 @@ class UseCaseResultKtTest {
   fun `onFailure is called`() {
     val action = mockk<() -> Unit>(relaxed = true)
 
-    UseCaseResult.Failure<Int, Unit>().onFailure(action)
+    UseCaseResult.Failure<Int, Unit>(Unit).onFailure(action)
 
     verify {
       action()

@@ -8,7 +8,7 @@ import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.recycler.BaseDelegationAdapter
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentOnboardingBinding
-import ru.poprobuy.poprobuy.di.observe
+import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.goNext
 import ru.poprobuy.poprobuy.extension.hasNext
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
