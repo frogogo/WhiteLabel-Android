@@ -1,6 +1,7 @@
 package ru.poprobuy.poprobuy
 
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponse
+import ru.poprobuy.poprobuy.data.model.api.home.HomeResponse
 import ru.poprobuy.poprobuy.data.model.api.receipt.Receipt
 import ru.poprobuy.poprobuy.data.model.api.user.User
 import ru.poprobuy.poprobuy.data.model.ui.product.ProductUiModel
@@ -40,5 +41,7 @@ object DataFixtures {
     accessToken = "token",
     isNew = true
   )
+
+  val home = HomeResponse(receipt)
 
 }

@@ -4,6 +4,7 @@ import org.koin.dsl.module
 import ru.poprobuy.poprobuy.usecase.GetUserAuthStateUseCase
 import ru.poprobuy.poprobuy.usecase.auth.AuthenticationUseCase
 import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationCodeUseCase
+import ru.poprobuy.poprobuy.usecase.home.GetHomeUseCase
 import ru.poprobuy.poprobuy.usecase.receipt.CreateReceiptUseCase
 import ru.poprobuy.poprobuy.usecase.receipt.GetReceiptsUseCase
 import ru.poprobuy.poprobuy.usecase.user.GetUserInfoUseCase
@@ -14,6 +15,9 @@ val useCaseModule = module {
   factory { GetUserAuthStateUseCase(get()) }
   factory { RequestConfirmationCodeUseCase(get()) }
   factory { AuthenticationUseCase(get()) }
+
+  // Home
+  factory { GetHomeUseCase(get()) }
 
   // User
   factory { UpdateUserDetailsUseCase(get()) }

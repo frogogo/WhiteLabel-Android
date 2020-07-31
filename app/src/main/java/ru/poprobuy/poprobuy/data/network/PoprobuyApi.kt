@@ -9,6 +9,7 @@ import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationRequest
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponse
 import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequest
 import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequestResponse
+import ru.poprobuy.poprobuy.data.model.api.home.HomeResponse
 import ru.poprobuy.poprobuy.data.model.api.receipt.Receipt
 import ru.poprobuy.poprobuy.data.model.api.receipt.ReceiptCreationRequest
 import ru.poprobuy.poprobuy.data.model.api.user.User
@@ -36,5 +37,8 @@ interface PoprobuyApi {
    */
   @POST("receipts")
   suspend fun createReceipt(@Body body: ReceiptCreationRequest): Response<Unit>
+
+  @GET("home")
+  suspend fun getHome(): Response<HomeResponse>
 
 }

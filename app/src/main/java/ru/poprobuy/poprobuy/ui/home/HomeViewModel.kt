@@ -3,49 +3,88 @@ package ru.poprobuy.poprobuy.ui.home
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.github.ajalt.timberkt.d
+import com.github.ajalt.timberkt.i
+import com.hadilq.liveevent.LiveEvent
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
-import ru.poprobuy.poprobuy.data.model.ui.ReceiptUiModel
-import ru.poprobuy.poprobuy.data.model.ui.home.HomeState
-import ru.poprobuy.poprobuy.dictionary.ReceiptState
+import ru.poprobuy.poprobuy.data.mapper.toUiModel
 import ru.poprobuy.poprobuy.extension.asLiveData
-import java.util.*
+import ru.poprobuy.poprobuy.extension.isEmpty
+import ru.poprobuy.poprobuy.usecase.UseCaseResult
+import ru.poprobuy.poprobuy.usecase.home.GetHomeUseCase
 
 class HomeViewModel(
-  private val navigation: HomeNavigation
+  private val navigation: HomeNavigation,
+  private val getHomeUseCase: GetHomeUseCase
 ) : BaseViewModel() {
+
+  private var refreshLooperJob: Job? = null
+  private var isRefreshing: Boolean = false
 
   private val _dataLive = MutableLiveData<List<RecyclerViewItem>>()
   val dataLive = _dataLive.asLiveData()
 
-  init {
-    refreshData()
+  private val _isLoadingLive = MutableLiveData<Boolean>()
+  val isLoadingLive = _isLoadingLive.asLiveData()
+
+  private val _errorOccurredLiveEvent = LiveEvent<Unit>()
+  val errorOccurredLiveEvent = _errorOccurredLiveEvent.asLiveData()
+
+  override fun onStart() {
+    super.onStart()
+    isRefreshing = false
+
+    i { "Starting refresh looper" }
+    refreshLooperJob?.cancel()
+    refreshLooperJob = viewModelScope.launch(Dispatchers.IO) {
+      while (true) {
+        refreshDataImpl()
+        delay(REFRESH_DELAY)
+      }
+    }
+  }
+
+  override fun onStop() {
+    super.onStop()
+    i { "Finishing refresh looper" }
+    refreshLooperJob?.cancel()
+    isRefreshing = false
+  }
+
+  override fun onCleared() {
+    super.onCleared()
+    i { "Finishing refresh looper" }
+    refreshLooperJob?.cancel()
+    isRefreshing = false
   }
 
   fun refreshData() {
-    // TODO: 11.07.2020 Implement me
-    val receipt = ReceiptUiModel(
-      id = 123_123_123,
-      number = 1_233_434,
-      value = 3499,
-      date = Date(),
-      shopName = "ВкусВилл",
-      state = ReceiptState.APPROVED
-    )
+    viewModelScope.launch { refreshDataImpl() }
+  }
 
-    viewModelScope.launch {
-      delay(500)
-      _dataLive.postValue(
-        listOf(
-          HomeState.Empty,
-          HomeState.Receipt(receipt),
-          HomeState.Receipt(receipt.copy(state = ReceiptState.REJECTED)),
-          HomeState.Receipt(receipt.copy(state = ReceiptState.PROCESSING))
-        )
-      )
+  private suspend fun refreshDataImpl() {
+    if (isRefreshing) return
+    isRefreshing = true
+
+    _isLoadingLive.postValue(_dataLive.isEmpty() || _dataLive.value == errorState)
+    val result = getHomeUseCase()
+    _isLoadingLive.postValue(false)
+
+    when (result) {
+      is UseCaseResult.Success -> {
+        _dataLive.postValue(listOf(result.data.toUiModel()))
+      }
+      is UseCaseResult.Failure -> {
+        _dataLive.postValue(errorState)
+        _errorOccurredLiveEvent.postValue(Unit)
+      }
     }
+
+    isRefreshing = false
   }
 
   fun navigateToProfile() {
@@ -66,6 +105,11 @@ class HomeViewModel(
   fun navigateToMachineScan() {
     d { "Navigating to machine scan" }
     navigation.navigateToMachineScan().navigate()
+  }
+
+  companion object {
+    private const val REFRESH_DELAY = 5 * 1000L // 5 seconds
+    private val errorState = emptyList<RecyclerViewItem>()
   }
 
 }

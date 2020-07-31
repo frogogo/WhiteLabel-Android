@@ -23,19 +23,31 @@ class HomeFragment : BaseFragment<HomeViewModel>(R.layout.fragment_home), SwipeR
       buttonProfile.setOnSafeClickListener(viewModel::navigateToProfile)
       recyclerView.adapter = this@HomeFragment.adapter
       swipeRefreshLayout.setOnRefreshListener(this@HomeFragment)
+      viewErrorState.setOnRefreshClickListener(viewModel::refreshData)
     }
   }
 
   override fun initObservers() {
-    observe(viewModel.dataLive) { data ->
-      adapter.items = data
-      binding.progressBar.setVisible(false)
-      binding.swipeRefreshLayout.isRefreshing = false
+    viewModel.run {
+      observe(viewModel.dataLive) { adapter.items = it }
+      observe(isLoadingLive) { isLoading ->
+        renderState(isLoading = isLoading)
+        binding.swipeRefreshLayout.isRefreshing = false
+      }
+      observe(errorOccurredLiveEvent) { renderState(isError = true) }
     }
   }
 
   override fun onRefresh() {
     viewModel.refreshData()
+  }
+
+  private fun renderState(isLoading: Boolean = false, isError: Boolean = false) {
+    binding.apply {
+      progressBar.setVisible(isLoading && !isError)
+      viewErrorState.setVisible(isError && !isLoading)
+      recyclerView.setVisible(!isLoading && !isError)
+    }
   }
 
   private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(
