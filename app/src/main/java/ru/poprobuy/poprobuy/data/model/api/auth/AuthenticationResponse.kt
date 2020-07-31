@@ -5,7 +5,6 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class AuthenticationResponse(
-  // Auth Data
   @Json(name = "jwt")
   val accessToken: String,
   @Json(name = "is_new")

@@ -51,7 +51,7 @@ val screenModule = module {
   }
 
   // Home
-  viewModel { HomeViewModel(get()) }
+  viewModel { HomeViewModel(get(), get()) }
   viewModel { (scanMode: ScanMode) ->
     ScannerViewModel(
       scanMode = scanMode,
