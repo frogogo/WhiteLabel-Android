@@ -5,7 +5,6 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
-apply plugin: 'com.getkeepsafe.dexcount'
 if (project.hasProperty('useFirebasePerf')) {
   apply plugin: 'com.google.firebase.firebase-perf'
 }
