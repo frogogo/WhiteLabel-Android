@@ -33,12 +33,8 @@
   <!-- Scanner -->
   <color name="scanner_viewfinder_mask">@color/black_alpha_80</color>
 
-  <!-- Profile -->
-  <color name="profile_button">@color/gray_500</color>
-
   <!-- Receipt -->
   <color name="receipt_item_text">@color/black</color>
-  <color name="receipt_item_label_text">@color/white</color>
 
   <!-- Products -->
   <color name="products_state_tried_before">@color/green</color>

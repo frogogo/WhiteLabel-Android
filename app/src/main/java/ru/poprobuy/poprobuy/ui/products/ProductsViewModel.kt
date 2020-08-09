@@ -77,6 +77,7 @@ class ProductsViewModel : BaseViewModel() {
     }
   }
 
+  @ObsoleteCoroutinesApi
   override fun onStart() {
     super.onStart()
     d { "Starting timer job" }
