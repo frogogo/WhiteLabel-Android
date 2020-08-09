@@ -105,7 +105,8 @@ dependencies {
 
   // AndroidX
   implementation 'androidx.core:core-ktx:1.3.1'
-  implementation 'androidx.appcompat:appcompat:1.1.0'
+  // https://developer.android.com/jetpack/androidx/releases/appcompat
+  implementation 'androidx.appcompat:appcompat:1.2.0'
   // ConstraintLayout https://developer.android.com/jetpack/androidx/releases/constraintlayout
   implementation 'androidx.constraintlayout:constraintlayout:2.0.0-rc1'
   // ViewPager2 https://developer.android.com/jetpack/androidx/releases/viewpager2
@@ -119,7 +120,7 @@ dependencies {
   implementation 'com.google.android.gms:play-services-auth-api-phone:17.4.0'
 
   // Material Design Components https://github.com/material-components/material-components-android
-  implementation 'com.google.android.material:material:1.2.0-rc01'
+  implementation 'com.google.android.material:material:1.2.0'
 
   // Navigation https://developer.android.com/jetpack/androidx/releases/navigation
   def navVersion = "2.3.0"
@@ -151,7 +152,7 @@ dependencies {
   implementation "com.github.hadilq.liveevent:liveevent:1.2.0"
 
   // WhatIf https://github.com/skydoves/WhatIf
-  implementation "com.github.skydoves:whatif:1.0.5"
+  implementation "com.github.skydoves:whatif:1.0.6"
 
   // Coroutines https://github.com/Kotlin/kotlinx.coroutines
   def coroutinesVersion = '1.3.8'
