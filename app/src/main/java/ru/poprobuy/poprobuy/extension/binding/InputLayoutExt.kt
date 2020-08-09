@@ -23,8 +23,7 @@ fun InputLayout.initPhoneType() {
   placeholder = "(000) 000-00-00"
 
   // Set prefix
-  // Use space at the end to add some margin between prefix and main text
-  prefix = "${Constants.PHONE_PREFIX} "
+  prefix = Constants.PHONE_PREFIX
 }
 
 fun InputLayout.initCodeConfirmationType() {
