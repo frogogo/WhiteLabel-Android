@@ -20,7 +20,7 @@ fun InputLayout.initPhoneType() {
   textKeyListener = DigitsKeyListener.getInstance(DIGITS_PHONE_NUMBER)
 
   // Set placeholder
-  placeholder = "(000) 000-00-00"
+  placeholder = context.getString(R.string.auth_phone_placeholder)
 
   // Set prefix
   prefix = Constants.PHONE_PREFIX
@@ -35,7 +35,7 @@ fun InputLayout.initCodeConfirmationType() {
       setTextAppearance(R.style.AuthCodeConfirmation_EditText)
     }
     textViewPlaceholder.setTextAppearance(R.style.AuthCodeConfirmation)
-    placeholder = "・・・・"
+    placeholder = context.getString(R.string.auth_code_placeholder)
   }
 }
 
