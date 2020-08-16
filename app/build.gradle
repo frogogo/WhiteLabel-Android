@@ -205,7 +205,9 @@ dependencies {
   implementation 'com.google.firebase:firebase-perf:19.0.8'
 
   // QR code scanner https://github.com/journeyapps/zxing-android-embedded
-  implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
+  implementation('com.journeyapps:zxing-android-embedded:4.1.0') { transitive = false }
+  //noinspection GradleDependency
+  implementation 'com.google.zxing:core:3.3.0'
 
   // Dexter https://github.com/Karumi/Dexter
   implementation 'com.karumi:dexter:6.2.1'
