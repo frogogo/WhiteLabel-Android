@@ -4,6 +4,7 @@ object ConfirmationCodeUtils {
 
   /**
    * Extracts confirmation code from given [message]
+   * https://stackoverflow.com/a/40858181/13212776
    */
   fun extractConfirmationCodeFromSms(message: String?): String? {
     message ?: return null
