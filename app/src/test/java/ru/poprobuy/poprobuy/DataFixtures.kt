@@ -14,6 +14,7 @@ object DataFixtures {
   const val USER_EMAIL = "mail@google.com"
   const val USER_NAME = "Alex"
   const val SMS_CODE = "3030"
+  const val ACCESS_TOKEN = "token"
 
   val user = User(
     firstName = USER_NAME,
@@ -38,7 +39,7 @@ object DataFixtures {
   )
 
   val authenticationResponse = AuthenticationResponse(
-    accessToken = "token",
+    accessToken = ACCESS_TOKEN,
     isNew = true
   )
 
