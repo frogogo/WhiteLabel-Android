@@ -24,7 +24,7 @@ open class BaseDelegationAdapter(
     val itemsMutable = items.toMutableList()
     emptyListItem?.let { emptyItem ->
       d { "List is empty, adding empty state" }
-      if (itemsMutable.isEmpty()) itemsMutable.add(emptyItem)
+      itemsMutable.ifEmpty { itemsMutable.add(emptyItem) }
     }
     differ.submitList(itemsMutable, commitCallback)
   }
