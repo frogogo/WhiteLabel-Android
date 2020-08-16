@@ -22,13 +22,9 @@ import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentAuthCodeBinding
-import ru.poprobuy.poprobuy.extension.observe
+import ru.poprobuy.poprobuy.extension.*
 import ru.poprobuy.poprobuy.extension.binding.editText
 import ru.poprobuy.poprobuy.extension.binding.initCodeConfirmationType
-import ru.poprobuy.poprobuy.extension.formatWithMask
-import ru.poprobuy.poprobuy.extension.setNullableTextRes
-import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
-import ru.poprobuy.poprobuy.extension.setVisible
 import ru.poprobuy.poprobuy.util.ConfirmationCodeUtils
 import ru.poprobuy.poprobuy.util.Constants
 import ru.poprobuy.poprobuy.util.ParallelAutoTransition
@@ -152,7 +148,7 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
       }
       AuthCodeCommand.CodeResendError -> {
         val drawableSize = resources.getDimensionPixelSize(R.dimen.button_icon_size)
-        val drawable = requireContext().getDrawable(R.drawable.ic_exclamation_mark_primary)!!.apply {
+        val drawable = requireContext().fetchDrawable(R.drawable.ic_exclamation_mark_primary)!!.apply {
           setBounds(0, 0, drawableSize, drawableSize)
         }
         binding.buttonResendCode.showDrawable(drawable) {

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
   <string name="app_name">Попробуй</string>
 
@@ -10,6 +10,9 @@
   <string name="error_confirmation_code_length">Код должен состоять из 4 цифр</string>
   <string name="error_confirmation_code_format">Код должен состоять только из цифр</string>
   <string name="error_email_format">Такой email не подойдет</string>
+
+  <string name="error_receipt_not_unique">Данный чек уже был отсканирован ранее</string>
+  <string name="error_receipt_format">Отсканированный QR-код имеет неверный формат</string>
 
   <string name="error_something_went_wrong">Что-то пошло не так!</string>
   <string name="error_something_went_wrong_retry">Повторить</string>
@@ -40,10 +43,12 @@
 
   <string name="auth_phone_title">Вход</string>
   <string name="auth_phone_subtitle">Введите номер телефона</string>
+  <string name="auth_phone_placeholder" tools:ignore="TypographyDashes">(000) 000-00-00</string>
   <string name="auth_phone_error_too_many_requests">Превышено количество попыток запроса кода подтверждения</string>
 
   <string name="auth_code_title">Введите код</string>
   <string name="auth_code_subtitle">Код отправлен на номер</string>
+  <string name="auth_code_placeholder">・・・・</string>
   <string name="auth_code_button_phone_change">Изменить</string>
   <string name="auth_code_button_resend_code">Выслать новый код</string>
   <string name="auth_code_button_resend_resending">Отправка кода</string>
@@ -105,8 +110,6 @@
   <string name="scanner_button_enter_manual">Ввести номер вручную</string>
   <string name="scanner_help_machine_title">Как сканировать автомат</string>
   <string name="scanner_help_receipt_title">Как сканировать чек</string>
-  <string name="scanner_error_receipt">Возможно чек уже был отсканирован</string>
-  <string name="scanner_error_receipt_format">Отсканированный QR-код имеет неверный формат</string>
 
   <!-- Machine Select -->
   <string name="machine_select_title">Введите номер аппарата</string>

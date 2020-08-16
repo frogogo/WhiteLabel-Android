@@ -59,8 +59,7 @@
     app:layout_constraintLeft_toRightOf="@id/textViewPrefix"
     app:layout_constraintRight_toLeftOf="@id/progressBar"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_goneMarginStart="0dp"
-    tools:ignore="LabelFor,TextFields" />
+    app:layout_goneMarginStart="0dp" />
 
   <androidx.constraintlayout.widget.Barrier
     android:id="@+id/barrier"

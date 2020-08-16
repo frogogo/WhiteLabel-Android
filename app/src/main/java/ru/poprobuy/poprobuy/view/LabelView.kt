@@ -6,6 +6,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatTextView
 import ru.poprobuy.poprobuy.R
+import ru.poprobuy.poprobuy.extension.fetchDrawable
 
 class LabelView @JvmOverloads constructor(
   context: Context,
@@ -15,7 +16,7 @@ class LabelView @JvmOverloads constructor(
 
   init {
     setPaddings()
-    background = context.getDrawable(R.drawable.background_label)
+    background = context.fetchDrawable(R.drawable.background_label)
   }
 
   private fun setPaddings() {

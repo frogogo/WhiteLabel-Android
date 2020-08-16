@@ -38,7 +38,7 @@ class ScannerViewModel(
 
   private fun createReceipt(string: String) {
     if (!QRCodeUtils.isQueryString(string)) {
-      _errorLiveEvent.postValue(resourceProvider.getString(R.string.scanner_error_receipt_format))
+      _errorLiveEvent.postValue(resourceProvider.getString(R.string.error_receipt_format))
       return
     }
 
@@ -54,9 +54,8 @@ class ScannerViewModel(
         CreateReceiptResult.Error -> {
           _errorLiveEvent.postValue(resourceProvider.getString(R.string.error_something_went_wrong))
         }
-        CreateReceiptResult.UnprocessableEntity -> {
-          // TODO: 30.07.2020 Handle error enum
-          _errorLiveEvent.postValue(resourceProvider.getString(R.string.scanner_error_receipt))
+        is CreateReceiptResult.ValidationError -> {
+          _errorLiveEvent.postValue(resourceProvider.getString(result.errorRes))
         }
       }
     }

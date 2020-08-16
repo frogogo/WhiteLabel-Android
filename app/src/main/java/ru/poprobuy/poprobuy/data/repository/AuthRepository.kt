@@ -1,5 +1,6 @@
 package ru.poprobuy.poprobuy.data.repository
 
+import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationRequest
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponse
 import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequest
@@ -14,12 +15,17 @@ class AuthRepository(
   private val userPreferences: UserPreferences
 ) {
 
-  suspend fun requestConfirmationCode(phoneNumber: String): NetworkResource<ConfirmationCodeRequestResponse, Any> {
+  suspend fun requestConfirmationCode(
+    phoneNumber: String
+  ): NetworkResource<ConfirmationCodeRequestResponse, ErrorResponse> {
     val request = ConfirmationCodeRequest(phoneNumber)
     return apiCall { api.requestPasswordCode(request) }
   }
 
-  suspend fun authenticate(phoneNumber: String, password: String): NetworkResource<AuthenticationResponse, Any> {
+  suspend fun authenticate(
+    phoneNumber: String,
+    password: String
+  ): NetworkResource<AuthenticationResponse, ErrorResponse> {
     val request = AuthenticationRequest(phoneNumber = phoneNumber, password = password)
     return apiCall { api.authenticate(request) }
   }

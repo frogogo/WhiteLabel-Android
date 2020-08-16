@@ -3,7 +3,8 @@ name: test
 on: push
 
 jobs:
-  build:
+  test:
+    name: Test Code
     runs-on: self-hosted
 
     steps:
