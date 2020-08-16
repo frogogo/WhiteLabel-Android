@@ -9,6 +9,10 @@ import android.os.Vibrator
 import android.provider.Settings
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
+
+fun Context.fetchDrawable(@DrawableRes id: Int) = ContextCompat.getDrawable(this, id)
 
 fun Context.showKeyboard(view: View) {
   getInputMethodManager().showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
