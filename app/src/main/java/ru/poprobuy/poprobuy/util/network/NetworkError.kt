@@ -13,7 +13,8 @@ sealed class NetworkError<E> {
   class Timeout<E> : NetworkError<E>()
   class Unknown<E> : NetworkError<E>()
   class JsonParsingError<E>(val exception: JsonDataException) : NetworkError<E>()
+}
 
-  fun isHttpErrorWithCode(code: Int): Boolean = this is HttpError && this.httpCode == code
-
+inline fun <E> NetworkError<E>.onHttpErrorWithCode(code: Int, callback: (NetworkError.HttpError<E>) -> Unit) {
+  if (this is NetworkError.HttpError<E> && this.httpCode == code) callback(this)
 }

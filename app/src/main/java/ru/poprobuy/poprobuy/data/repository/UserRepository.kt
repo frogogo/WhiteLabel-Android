@@ -1,5 +1,6 @@
 package ru.poprobuy.poprobuy.data.repository
 
+import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
 import ru.poprobuy.poprobuy.data.model.api.user.User
 import ru.poprobuy.poprobuy.data.model.api.user.UserUpdateRequest
 import ru.poprobuy.poprobuy.data.network.PoprobuyApi
@@ -12,12 +13,12 @@ class UserRepository(
   private val userPreferences: UserPreferences
 ) {
 
-  suspend fun updateUser(email: String, name: String): NetworkResource<Unit, Any> {
+  suspend fun updateUser(email: String, name: String): NetworkResource<Unit, ErrorResponse> {
     val request = UserUpdateRequest(email = email, firstName = name)
     return apiCall { api.updateUser(request) }
   }
 
-  suspend fun fetchUser(): NetworkResource<User, Any> = apiCall { api.getUser() }
+  suspend fun fetchUser(): NetworkResource<User, ErrorResponse> = apiCall { api.getUser() }
 
   fun getUser(): User? = userPreferences.user
 

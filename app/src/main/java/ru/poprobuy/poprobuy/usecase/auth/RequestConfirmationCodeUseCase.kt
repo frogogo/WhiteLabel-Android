@@ -5,6 +5,7 @@ import com.github.ajalt.timberkt.i
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.util.network.HttpStatus
 import ru.poprobuy.poprobuy.util.network.NetworkResource
+import ru.poprobuy.poprobuy.util.network.onHttpErrorWithCode
 
 class RequestConfirmationCodeUseCase(
   private val authRepository: AuthRepository
@@ -19,13 +20,13 @@ class RequestConfirmationCodeUseCase(
     }
     is NetworkResource.Error -> {
       val error = result.error
-      if (error.isHttpErrorWithCode(HttpStatus.TOO_MANY_REQUESTS_429)) {
+      error.onHttpErrorWithCode(HttpStatus.TOO_MANY_REQUESTS_429) {
         e { "TooManyRequests while requesting code" }
-        RequestConfirmationResult.TooManyRequests
-      } else {
-        e { "Generic error while requesting code" }
-        RequestConfirmationResult.Error
+        return RequestConfirmationResult.TooManyRequests
       }
+
+      e { "Generic error while requesting code" }
+      RequestConfirmationResult.Error
     }
   }
 

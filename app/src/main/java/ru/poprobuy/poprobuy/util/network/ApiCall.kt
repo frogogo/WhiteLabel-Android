@@ -1,5 +1,6 @@
 package ru.poprobuy.poprobuy.util.network
 
 import retrofit2.Response
+import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
 
-inline fun <T> apiCall(block: () -> Response<T>) = safeApiCall<T, Any>(block)
+inline fun <reified T> apiCall(block: () -> Response<T>): NetworkResource<T, ErrorResponse> = safeApiCall(block)

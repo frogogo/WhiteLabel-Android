@@ -5,6 +5,7 @@ import com.github.ajalt.timberkt.i
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.util.network.HttpStatus
 import ru.poprobuy.poprobuy.util.network.NetworkResource
+import ru.poprobuy.poprobuy.util.network.onHttpErrorWithCode
 
 class AuthenticationUseCase(
   private val authRepository: AuthRepository
@@ -24,13 +25,13 @@ class AuthenticationUseCase(
     }
     is NetworkResource.Error -> {
       val error = result.error
-      if (error.isHttpErrorWithCode(HttpStatus.NOT_FOUND_404)) {
+      error.onHttpErrorWithCode(HttpStatus.NOT_FOUND_404) {
         e { "User not found while performing authorization" }
-        AuthenticationResult.NotFound
-      } else {
-        e { "Generic error while performing authorization" }
-        AuthenticationResult.Error
+        return AuthenticationResult.NotFound
       }
+
+      e { "Generic error while performing authorization" }
+      AuthenticationResult.Error
     }
   }
 

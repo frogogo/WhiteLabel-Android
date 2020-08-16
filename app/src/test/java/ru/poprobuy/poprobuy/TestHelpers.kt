@@ -9,8 +9,11 @@ import ru.poprobuy.poprobuy.util.network.NetworkResource
 fun <T> mockkObserver() = mockk<Observer<T>>(relaxed = true)
 
 // Network
-fun <T> successNetworkCall(result: T) = NetworkResource.Success<T, Any>(Response.success(result), result)
+fun <T, E> successNetworkCall(result: T): NetworkResource.Success<T, E> =
+  NetworkResource.Success<T, E>(Response.success(result), result)
 
-fun <T> failureNetworkCall() = NetworkResource.Error<T, Any>(null, NetworkError.Unknown())
+fun <T, E> failureNetworkCall(): NetworkResource.Error<T, E> =
+  NetworkResource.Error(null, NetworkError.Unknown())
 
-fun <T> failureHttpNetworkCall(code: Int) = NetworkResource.Error<T, Any>(null, NetworkError.HttpError(code, null))
+fun <T, E> failureHttpNetworkCall(code: Int): NetworkResource<T, E> =
+  NetworkResource.Error<T, E>(null, NetworkError.HttpError(code, null))
