@@ -12,8 +12,12 @@ import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible
 import ru.poprobuy.poprobuy.util.ItemDecoration
+import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
-class ReceiptsFragment : BaseFragment<ReceiptsViewModel>(R.layout.fragment_receipts) {
+class ReceiptsFragment : BaseFragment<ReceiptsViewModel>(
+  layoutId = R.layout.fragment_receipts,
+  screen = AnalyticsScreen.RECEIPTS
+) {
 
   override val viewModel: ReceiptsViewModel by viewModel()
 

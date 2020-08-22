@@ -24,9 +24,11 @@ import ru.poprobuy.poprobuy.databinding.FragmentScannerBinding
 import ru.poprobuy.poprobuy.dictionary.ScanMode.MACHINE
 import ru.poprobuy.poprobuy.dictionary.ScanMode.RECEIPT
 import ru.poprobuy.poprobuy.extension.*
+import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
 class ScannerFragment : BaseFragment<ScannerViewModel>(
   layoutId = R.layout.fragment_scanner,
+  screen = AnalyticsScreen.SCANNER,
   statusBarColor = R.color.transparent,
   fullscreen = true,
   lightStatusBar = false

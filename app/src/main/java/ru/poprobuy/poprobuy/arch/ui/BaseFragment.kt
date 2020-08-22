@@ -11,15 +11,15 @@ import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.navigation.NavigationRouter
-import ru.poprobuy.poprobuy.extension.observe
-import ru.poprobuy.poprobuy.extension.hideKeyboard
-import ru.poprobuy.poprobuy.extension.setFullScreen
-import ru.poprobuy.poprobuy.extension.setStatusBarColor
-import ru.poprobuy.poprobuy.extension.setStatusBarLight
+import ru.poprobuy.poprobuy.extension.*
 import ru.poprobuy.poprobuy.util.SimpleWindowAnimator
+import ru.poprobuy.poprobuy.util.analytics.AnalyticsManager
+import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
+import java.util.*
 
 abstract class BaseFragment<out T : BaseViewModel>(
   @LayoutRes layoutId: Int,
+  private val screen: AnalyticsScreen,
   @ColorRes private val statusBarColor: Int = R.color.status_bar,
   private val fullscreen: Boolean = false,
   /**
@@ -37,6 +37,7 @@ abstract class BaseFragment<out T : BaseViewModel>(
 
   private val windowAnimator: SimpleWindowAnimator by lazy { SimpleWindowAnimator(requireActivity().window) }
   private val navigationRouter: NavigationRouter by inject { parametersOf(findNavController()) }
+  private val analytics: AnalyticsManager by inject()
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
@@ -70,6 +71,15 @@ abstract class BaseFragment<out T : BaseViewModel>(
   override fun onStop() {
     super.onStop()
     viewModel.onStop()
+  }
+
+  override fun onResume() {
+    super.onResume()
+    // Track fragment
+    analytics.trackScreen(
+      screenName = screen.name.toLowerCase(Locale.getDefault()),
+      className = javaClass.simpleName
+    )
   }
 
   open fun initViews(): Unit = Unit

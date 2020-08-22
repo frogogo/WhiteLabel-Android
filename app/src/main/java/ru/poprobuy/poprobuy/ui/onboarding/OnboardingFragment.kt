@@ -8,13 +8,13 @@ import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.recycler.BaseDelegationAdapter
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentOnboardingBinding
-import ru.poprobuy.poprobuy.extension.observe
-import ru.poprobuy.poprobuy.extension.goNext
-import ru.poprobuy.poprobuy.extension.hasNext
-import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
-import ru.poprobuy.poprobuy.extension.setVisible
+import ru.poprobuy.poprobuy.extension.*
+import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
-class OnboardingFragment : BaseFragment<OnboardingViewModel>(R.layout.fragment_onboarding) {
+class OnboardingFragment : BaseFragment<OnboardingViewModel>(
+  layoutId = R.layout.fragment_onboarding,
+  screen = AnalyticsScreen.ONBOARDING
+) {
 
   override val viewModel: OnboardingViewModel by viewModel()
 

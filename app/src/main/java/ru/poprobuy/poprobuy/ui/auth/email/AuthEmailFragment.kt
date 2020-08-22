@@ -8,14 +8,16 @@ import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentAuthEmailBinding
-import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.binding.initEmailType
+import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.setNullableTextRes
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.util.SpannableUtils
+import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
 class AuthEmailFragment : BaseFragment<AuthEmailViewModel>(
   layoutId = R.layout.fragment_auth_email,
+  screen = AnalyticsScreen.AUTH_EMAIL,
   windowAnimations = true
 ) {
 

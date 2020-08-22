@@ -6,8 +6,12 @@ import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentAuthPolicyBinding
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
+import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
-class AuthPolicyFragment : BaseFragment<AuthPolicyViewModel>(R.layout.fragment_auth_policy) {
+class AuthPolicyFragment : BaseFragment<AuthPolicyViewModel>(
+  layoutId = R.layout.fragment_auth_policy,
+  screen = AnalyticsScreen.AUTH_POLICY
+) {
 
   override val viewModel: AuthPolicyViewModel by viewModel()
 

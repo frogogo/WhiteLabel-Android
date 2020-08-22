@@ -29,9 +29,11 @@ import ru.poprobuy.poprobuy.util.ConfirmationCodeUtils
 import ru.poprobuy.poprobuy.util.Constants
 import ru.poprobuy.poprobuy.util.ParallelAutoTransition
 import ru.poprobuy.poprobuy.util.SpannableUtils
+import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
 class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
   layoutId = R.layout.fragment_auth_code,
+  screen = AnalyticsScreen.AUTH_CODE,
   windowAnimations = true
 ) {
 

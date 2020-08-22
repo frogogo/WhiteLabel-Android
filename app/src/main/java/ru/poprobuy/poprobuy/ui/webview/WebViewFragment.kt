@@ -8,8 +8,12 @@ import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentWebViewBinding
 import ru.poprobuy.poprobuy.extension.setOnClickListener
+import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
-class WebViewFragment : BaseFragment<WebViewViewModel>(R.layout.fragment_web_view) {
+class WebViewFragment : BaseFragment<WebViewViewModel>(
+  layoutId = R.layout.fragment_web_view,
+  screen = AnalyticsScreen.WEB_VIEW
+) {
 
   override val viewModel: WebViewViewModel by viewModel()
 

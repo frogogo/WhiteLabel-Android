@@ -7,13 +7,17 @@ import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.data.model.ui.profile.ProfileUiModel
 import ru.poprobuy.poprobuy.databinding.FragmentProfileBinding
-import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.formatWithMask
+import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible
 import ru.poprobuy.poprobuy.util.Constants
+import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
-class ProfileFragment : BaseFragment<ProfileViewModel>(R.layout.fragment_profile) {
+class ProfileFragment : BaseFragment<ProfileViewModel>(
+  layoutId = R.layout.fragment_profile,
+  screen = AnalyticsScreen.PROFILE
+) {
 
   override val viewModel: ProfileViewModel by viewModel()
 
