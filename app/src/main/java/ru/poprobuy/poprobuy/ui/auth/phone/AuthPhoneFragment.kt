@@ -38,8 +38,10 @@ class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(
   }
 
   override fun initObservers() {
-    observe(viewModel.commandLiveEvent, this::handleCommand)
-    observe(viewModel.isLoadingLive, binding.textInputLayout::setLoading)
+    with(viewModel) {
+      observe(commandLiveEvent, ::handleCommand)
+      observe(isLoadingLive, binding.textInputLayout::setLoading)
+    }
   }
 
   override fun onStart() {

@@ -30,7 +30,7 @@ abstract class BaseFragment<out T : BaseViewModel>(
    * Determines status bar color state.
    * Should be true if status bar color is light and status bar content should be dark
    */
-  private val lightStatusBar: Boolean = true
+  private val lightStatusBar: Boolean = true,
 ) : Fragment(layoutId) {
 
   abstract val viewModel: T
@@ -90,9 +90,9 @@ abstract class BaseFragment<out T : BaseViewModel>(
    * Handles navigation events from a [ViewModel]
    */
   private fun initInnerObservers() {
-    viewModel.run {
+    with(viewModel) {
       observe(navigationLiveEvent, navigationRouter::navigate)
-      observe(baseCommandLiveEvent, this@BaseFragment::handleCommand)
+      observe(baseCommandLiveEvent, ::handleCommand)
     }
   }
 

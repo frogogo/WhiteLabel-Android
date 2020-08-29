@@ -39,8 +39,8 @@ class ProfileFragment : BaseFragment<ProfileViewModel>(
   }
 
   override fun initObservers() {
-    viewModel.run {
-      observe(profileLive, this@ProfileFragment::renderProfile)
+    with(viewModel) {
+      observe(profileLive, ::renderProfile)
       observe(isLoadingLive) { renderState(isLoading = it) }
       observe(errorOccurredLiveEvent) { renderState(isError = true) }
     }

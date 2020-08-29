@@ -38,8 +38,8 @@ class ProductSelectionDialogFragment : BaseDialogFragment(R.layout.dialog_produc
   }
 
   override fun initObservers() {
-    observe(viewModel.stateLive, this::renderState)
-    observe(interactor.getCommandEvent(), this::handleCommand)
+    observe(viewModel.stateLive, ::renderState)
+    observe(interactor.getCommandEvent(), ::handleCommand)
   }
 
   private fun renderState(state: ProductSelectionState) {

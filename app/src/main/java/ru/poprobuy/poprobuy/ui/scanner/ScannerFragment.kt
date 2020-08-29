@@ -57,8 +57,8 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
   }
 
   override fun initObservers() {
-    viewModel.run {
-      observe(isLoadingLive) { binding.progressBar.setVisible(it) }
+    with(viewModel) {
+      observe(isLoadingLive, binding.progressBar::setVisible)
       observe(errorLiveEvent) { error ->
         // FIXME: 30.07.2020 Temp realisation
         alert {

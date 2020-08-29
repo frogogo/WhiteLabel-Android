@@ -43,10 +43,10 @@ class ProductsFragment : BaseFragment<ProductsViewModel>(
   }
 
   override fun initObservers() {
-    viewModel.run {
+    with(viewModel) {
       observe(dataLive) { adapter.items = it }
       observe(isLoadingLive) { binding.progressBar.setVisible(it) }
-      observe(timerStateLive, this@ProductsFragment::renderTimer)
+      observe(timerStateLive, ::renderTimer)
     }
   }
 

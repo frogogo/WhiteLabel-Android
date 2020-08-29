@@ -42,7 +42,7 @@ class ReceiptsFragment : BaseFragment<ReceiptsViewModel>(
   }
 
   override fun initObservers() {
-    viewModel.run {
+    with(viewModel) {
       observe(dataLive) { adapter.items = it }
       observe(isLoadingLive) { renderState(isLoading = it) }
       observe(errorOccurredLiveEvent) { renderState(isError = true) }

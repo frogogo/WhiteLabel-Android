@@ -32,7 +32,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(
   }
 
   override fun initObservers() {
-    viewModel.run {
+    with(viewModel) {
       observe(viewModel.dataLive) { adapter.items = it }
       observe(isLoadingLive) { isLoading ->
         renderState(isLoading = isLoading)

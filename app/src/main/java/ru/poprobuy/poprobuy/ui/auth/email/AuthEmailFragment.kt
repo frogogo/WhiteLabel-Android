@@ -40,11 +40,13 @@ class AuthEmailFragment : BaseFragment<AuthEmailViewModel>(
   }
 
   override fun initObservers() {
-    observe(viewModel.isLoadingLive) { isLoading ->
-      binding.textInputLayout.setLoading(isLoading)
-      binding.buttonContinue.isEnabled = !isLoading
+    with(viewModel) {
+      observe(isLoadingLive) { isLoading ->
+        binding.textInputLayout.setLoading(isLoading)
+        binding.buttonContinue.isEnabled = !isLoading
+      }
+      observe(commandLiveEvent, ::handleCommand)
     }
-    observe(viewModel.commandLiveEvent, this::handleCommand)
   }
 
   private fun handleCommand(command: AuthEmailCommand) {
