@@ -14,7 +14,7 @@ class ReceiptsDataFactoryTest {
 
   @Test
   fun `factory maps receipts`() {
-    val receipts = listOf(DataFixtures.receipt, DataFixtures.receipt.copy(number = 2))
+    val receipts = listOf(DataFixtures.receipt, DataFixtures.receipt.copy(id = 2))
     createReceiptsData(receipts) shouldContainAll receipts.map { it.toUiModel() }
   }
 

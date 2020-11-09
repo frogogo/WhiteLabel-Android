@@ -8,6 +8,7 @@ import java.util.*
 
 @Parcelize
 data class ReceiptUiModel(
+  val id: Int,
   val number: Int,
   val shopName: String?,
   val date: Date,
@@ -15,7 +16,7 @@ data class ReceiptUiModel(
   val state: ReceiptState
 ) : RecyclerViewItem, Parcelable {
 
-  override fun getId(): Any = "$ID$number"
+  override fun getId(): Any = "$ID$id"
 
   companion object {
     private const val ID = "ITEM_RECEIPT"

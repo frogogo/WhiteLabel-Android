@@ -7,6 +7,8 @@ import java.util.*
 
 @JsonClass(generateAdapter = true)
 data class Receipt(
+  @Json(name = "id")
+  val id: Int,
   @Json(name = "number")
   val number: Int,
   @Json(name = "sum")
