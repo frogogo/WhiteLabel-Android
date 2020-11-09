@@ -23,7 +23,6 @@ object DataFixtures {
   )
 
   val receipt = Receipt(
-    id = 1,
     number = 101,
     state = ReceiptState.PROCESSING,
     timestamp = Date(),
