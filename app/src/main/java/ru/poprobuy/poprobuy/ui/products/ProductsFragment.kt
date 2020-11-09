@@ -16,8 +16,12 @@ import ru.poprobuy.poprobuy.ui.products.select.ProductSelectionCommand
 import ru.poprobuy.poprobuy.ui.products.select.ProductSelectionDialogFragment
 import ru.poprobuy.poprobuy.ui.products.select.ProductSelectionInteractor
 import ru.poprobuy.poprobuy.util.ItemDecoration
+import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
-class ProductsFragment : BaseFragment<ProductsViewModel>(R.layout.fragment_products) {
+class ProductsFragment : BaseFragment<ProductsViewModel>(
+  layoutId = R.layout.fragment_products,
+  screen = AnalyticsScreen.PRODUCTS
+) {
 
   override val viewModel: ProductsViewModel by viewModel()
 
@@ -39,10 +43,10 @@ class ProductsFragment : BaseFragment<ProductsViewModel>(R.layout.fragment_produ
   }
 
   override fun initObservers() {
-    viewModel.run {
+    with(viewModel) {
       observe(dataLive) { adapter.items = it }
       observe(isLoadingLive) { binding.progressBar.setVisible(it) }
-      observe(timerStateLive, this@ProductsFragment::renderTimer)
+      observe(timerStateLive, ::renderTimer)
     }
   }
 

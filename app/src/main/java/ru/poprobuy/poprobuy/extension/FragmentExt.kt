@@ -54,5 +54,5 @@ inline fun Fragment.alert(dialog: MaterialAlertDialogBuilder.() -> Unit): AlertD
 
 @MainThread
 inline fun <T> Fragment.observe(liveData: LiveData<T>, crossinline onChanged: (T) -> Unit) {
-  liveData.observe(viewLifecycleOwner, onChanged)
+  liveData.observe(owner = viewLifecycleOwner, onChanged = onChanged)
 }

@@ -29,9 +29,11 @@ import ru.poprobuy.poprobuy.util.ConfirmationCodeUtils
 import ru.poprobuy.poprobuy.util.Constants
 import ru.poprobuy.poprobuy.util.ParallelAutoTransition
 import ru.poprobuy.poprobuy.util.SpannableUtils
+import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
 class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
   layoutId = R.layout.fragment_auth_code,
+  screen = AnalyticsScreen.AUTH_CODE,
   windowAnimations = true
 ) {
 
@@ -62,10 +64,12 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
   }
 
   override fun initObservers() {
-    observe(viewModel.commandLiveEvent, this::handleCommand)
-    observe(viewModel.isLoadingLive, binding.textInputLayout::setLoading)
-    observe(viewModel.isResendingCodeLive, this::renderCodeIsResending)
-    observe(viewModel.resendCodeTimeRemainingLive, this::renderResendCodeButton)
+    with(viewModel) {
+      observe(commandLiveEvent, ::handleCommand)
+      observe(isLoadingLive, binding.textInputLayout::setLoading)
+      observe(isResendingCodeLive, ::renderCodeIsResending)
+      observe(resendCodeTimeRemainingLive, ::renderResendCodeButton)
+    }
   }
 
   override fun onAttach(context: Context) {

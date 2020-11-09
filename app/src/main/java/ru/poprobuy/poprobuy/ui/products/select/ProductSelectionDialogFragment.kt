@@ -2,14 +2,14 @@ package ru.poprobuy.poprobuy.ui.products.select
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.observe
 import by.kirich1409.viewbindingdelegate.viewBinding
-import coil.api.load
+import coil.load
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseDialogFragment
 import ru.poprobuy.poprobuy.databinding.DialogProductSelectionBinding
+import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible
 
@@ -38,14 +38,8 @@ class ProductSelectionDialogFragment : BaseDialogFragment(R.layout.dialog_produc
   }
 
   override fun initObservers() {
-    viewModel.apply {
-      stateLive.observe(viewLifecycleOwner, this@ProductSelectionDialogFragment::renderState)
-    }
-    interactor.getCommandEvent().observe(viewLifecycleOwner) { event ->
-      when (event) {
-        is ProductSelectionCommand.SetProduct -> viewModel.setProduct(event.product)
-      }
-    }
+    observe(viewModel.stateLive, ::renderState)
+    observe(interactor.getCommandEvent(), ::handleCommand)
   }
 
   private fun renderState(state: ProductSelectionState) {
@@ -74,6 +68,10 @@ class ProductSelectionDialogFragment : BaseDialogFragment(R.layout.dialog_produc
       }
     }
 
+  }
+
+  private fun handleCommand(command: ProductSelectionCommand) = when (command) {
+    is ProductSelectionCommand.SetProduct -> viewModel.setProduct(command.product)
   }
 
   companion object {

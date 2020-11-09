@@ -24,9 +24,11 @@ import ru.poprobuy.poprobuy.databinding.FragmentScannerBinding
 import ru.poprobuy.poprobuy.dictionary.ScanMode.MACHINE
 import ru.poprobuy.poprobuy.dictionary.ScanMode.RECEIPT
 import ru.poprobuy.poprobuy.extension.*
+import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
 class ScannerFragment : BaseFragment<ScannerViewModel>(
   layoutId = R.layout.fragment_scanner,
+  screen = AnalyticsScreen.SCANNER,
   statusBarColor = R.color.transparent,
   fullscreen = true,
   lightStatusBar = false
@@ -55,8 +57,8 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
   }
 
   override fun initObservers() {
-    viewModel.run {
-      observe(isLoadingLive) { binding.progressBar.setVisible(it) }
+    with(viewModel) {
+      observe(isLoadingLive, binding.progressBar::setVisible)
       observe(errorLiveEvent) { error ->
         // FIXME: 30.07.2020 Temp realisation
         alert {

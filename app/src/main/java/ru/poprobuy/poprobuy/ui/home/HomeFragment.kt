@@ -10,8 +10,12 @@ import ru.poprobuy.poprobuy.databinding.FragmentHomeBinding
 import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible
+import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
-class HomeFragment : BaseFragment<HomeViewModel>(R.layout.fragment_home), SwipeRefreshLayout.OnRefreshListener {
+class HomeFragment : BaseFragment<HomeViewModel>(
+  layoutId = R.layout.fragment_home,
+  screen = AnalyticsScreen.HOME
+), SwipeRefreshLayout.OnRefreshListener {
 
   override val viewModel: HomeViewModel by viewModel()
 
@@ -28,7 +32,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(R.layout.fragment_home), SwipeR
   }
 
   override fun initObservers() {
-    viewModel.run {
+    with(viewModel) {
       observe(viewModel.dataLive) { adapter.items = it }
       observe(isLoadingLive) { isLoading ->
         renderState(isLoading = isLoading)

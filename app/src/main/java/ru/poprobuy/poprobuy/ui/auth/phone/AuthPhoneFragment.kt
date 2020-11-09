@@ -8,16 +8,18 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentAuthPhoneBinding
-import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.binding.editText
 import ru.poprobuy.poprobuy.extension.binding.initPhoneType
+import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.setNullableTextRes
 import ru.poprobuy.poprobuy.util.Constants
 import ru.poprobuy.poprobuy.util.ParallelAutoTransition
 import ru.poprobuy.poprobuy.util.SpannableUtils
+import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
 class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(
   layoutId = R.layout.fragment_auth_phone,
+  screen = AnalyticsScreen.AUTH_PHONE,
   windowAnimations = true
 ), MaskedTextChangedListener.ValueListener {
 
@@ -36,8 +38,10 @@ class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(
   }
 
   override fun initObservers() {
-    observe(viewModel.commandLiveEvent, this::handleCommand)
-    observe(viewModel.isLoadingLive, binding.textInputLayout::setLoading)
+    with(viewModel) {
+      observe(commandLiveEvent, ::handleCommand)
+      observe(isLoadingLive, binding.textInputLayout::setLoading)
+    }
   }
 
   override fun onStart() {

@@ -1,3 +1,5 @@
+@file:Suppress("USELESS_CAST")
+
 package ru.poprobuy.poprobuy.di
 
 import android.content.Context

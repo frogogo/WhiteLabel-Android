@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.github.ajalt.timberkt.d
 import com.github.ajalt.timberkt.e
 import com.hadilq.liveevent.LiveEvent
+import com.skydoves.whatif.whatIfNotNull
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
 import ru.poprobuy.poprobuy.extension.asLiveData
@@ -60,7 +61,7 @@ class AuthPhoneViewModel(
     }
 
     // Log negative result
-    error?.let { e { "Validation failed for number - $phoneNumber" } }
+    error.whatIfNotNull { e { "Validation failed for number - $phoneNumber" } }
 
     return error == null
   }

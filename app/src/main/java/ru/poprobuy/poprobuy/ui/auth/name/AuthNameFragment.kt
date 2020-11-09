@@ -5,13 +5,15 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentAuthNameBinding
-import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.binding.initUserNameType
+import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.setNullableTextRes
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
+import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
 class AuthNameFragment : BaseFragment<AuthNameViewModel>(
   layoutId = R.layout.fragment_auth_name,
+  screen = AnalyticsScreen.AUTH_NAME,
   windowAnimations = true
 ) {
 

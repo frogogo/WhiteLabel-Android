@@ -1,6 +1,6 @@
 package ru.poprobuy.poprobuy.extension.binding
 
-import coil.api.load
+import coil.load
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.data.model.ui.ReceiptUiModel
 import ru.poprobuy.poprobuy.databinding.ViewReceiptFooterApprovedBinding
