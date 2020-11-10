@@ -8,7 +8,8 @@ enum class ErrorReason(
 ) {
   DEFAULT("something_went_wrong", R.string.error_something_went_wrong),
   RECEIPT_INVALID("qr_string_invalid", R.string.error_receipt_format),
-  RECEIPT_NOT_UNIQUE("qr_string_not_unique", R.string.error_receipt_not_unique);
+  RECEIPT_NOT_UNIQUE("qr_string_not_unique", R.string.error_receipt_not_unique),
+  RECEIPT_DAILY_LIMIT("user_daily_limit_reached", R.string.error_receipt_daily_limit);
 
   companion object {
     fun valueOfOrDefault(error: String): ErrorReason = values().find { it.errorReason == error } ?: DEFAULT
