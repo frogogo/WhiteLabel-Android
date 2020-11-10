@@ -7,5 +7,5 @@ import ru.poprobuy.poprobuy.data.model.api.receipt.Receipt
 @JsonClass(generateAdapter = true)
 class HomeResponse(
   @Json(name = "receipt")
-  val receipt: Receipt?
+  val receipt: Receipt?,
 )

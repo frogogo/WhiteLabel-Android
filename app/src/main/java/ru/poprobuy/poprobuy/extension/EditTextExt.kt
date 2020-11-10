@@ -8,7 +8,7 @@ import android.widget.EditText
  */
 inline fun EditText.onImeAction(
   imeAction: Int,
-  crossinline action: (EditText) -> Unit
+  crossinline action: (EditText) -> Unit,
 ) {
   setOnEditorActionListener { _, actionId, _ ->
     if (actionId == imeAction) {

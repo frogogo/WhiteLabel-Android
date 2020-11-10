@@ -13,7 +13,7 @@ data class ReceiptUiModel(
   val shopName: String?,
   val date: Date,
   val value: Int,
-  val state: ReceiptState
+  val state: ReceiptState,
 ) : RecyclerViewItem, Parcelable {
 
   override fun getId(): Any = "$ID$id"

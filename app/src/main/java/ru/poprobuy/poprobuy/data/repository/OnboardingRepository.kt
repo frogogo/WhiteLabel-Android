@@ -5,7 +5,7 @@ import ru.poprobuy.poprobuy.data.model.ui.onboarding.OnboardingPage
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
 
 class OnboardingRepository(
-  private val userPreferences: UserPreferences
+  private val userPreferences: UserPreferences,
 ) {
 
   fun getPages(): List<OnboardingPage> = listOf(

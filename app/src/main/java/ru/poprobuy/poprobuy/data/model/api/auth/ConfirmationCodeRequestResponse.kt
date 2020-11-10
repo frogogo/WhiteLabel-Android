@@ -6,5 +6,5 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class ConfirmationCodeRequestResponse(
   @Json(name = "password_refresh_rate")
-  val passwordRefreshRate: Int
+  val passwordRefreshRate: Int,
 )

@@ -8,12 +8,12 @@ import ru.poprobuy.poprobuy.util.network.NetworkResource
 import ru.poprobuy.poprobuy.util.network.onHttpErrorWithCode
 
 class AuthenticationUseCase(
-  private val authRepository: AuthRepository
+  private val authRepository: AuthRepository,
 ) {
 
   suspend operator fun invoke(
     phoneNumber: String,
-    password: String
+    password: String,
   ): AuthenticationResult = when (val result = authRepository.authenticate(phoneNumber, password)) {
     is NetworkResource.Success -> {
       i { "User authorized successfully" }

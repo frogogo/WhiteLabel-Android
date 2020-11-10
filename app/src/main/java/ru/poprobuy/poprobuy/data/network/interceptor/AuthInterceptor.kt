@@ -6,7 +6,7 @@ import okhttp3.Response
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
 
 internal class AuthInterceptor(
-  private val userPrefs: UserPreferences
+  private val userPrefs: UserPreferences,
 ) : Interceptor {
 
   override fun intercept(chain: Interceptor.Chain): Response {

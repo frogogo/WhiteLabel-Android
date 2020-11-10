@@ -10,5 +10,5 @@ data class User(
   @Json(name = "first_name")
   val firstName: String,
   @Json(name = "phone_number")
-  val phoneNumber: String
+  val phoneNumber: String,
 )

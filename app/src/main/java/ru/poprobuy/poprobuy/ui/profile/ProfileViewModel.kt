@@ -22,7 +22,7 @@ class ProfileViewModel(
   private val userRepository: UserRepository,
   private val authRepository: AuthRepository,
   private val navigation: ProfileNavigation,
-  private val profileUtils: ProfileUtils
+  private val profileUtils: ProfileUtils,
 ) : BaseViewModel() {
 
   private val _profileLive = MutableLiveData<ProfileUiModel>()

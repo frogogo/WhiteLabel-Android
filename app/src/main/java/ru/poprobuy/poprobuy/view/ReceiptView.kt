@@ -18,7 +18,7 @@ import ru.poprobuy.poprobuy.extension.layoutInflater
 class ReceiptView @JvmOverloads constructor(
   context: Context,
   attrs: AttributeSet? = null,
-  defStyleAttr: Int = 0
+  defStyleAttr: Int = 0,
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
   private val binding = ViewReceiptBinding.inflate(layoutInflater, this, true)

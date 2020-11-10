@@ -6,7 +6,7 @@ import ru.poprobuy.poprobuy.data.preferences.UserPreferences
  * Returns user authorization state
  */
 class GetUserAuthStateUseCase(
-  private val userPreferences: UserPreferences
+  private val userPreferences: UserPreferences,
 ) {
 
   operator fun invoke(): State = when {

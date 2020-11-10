@@ -8,7 +8,7 @@ import ru.poprobuy.poprobuy.usecase.UseCaseResult
 import ru.poprobuy.poprobuy.util.network.NetworkResource
 
 class GetHomeUseCase(
-  private val homeRepository: HomeRepository
+  private val homeRepository: HomeRepository,
 ) {
 
   suspend operator fun invoke(): UseCaseResult<HomeResponse, Any> = when (val result = homeRepository.getHome()) {

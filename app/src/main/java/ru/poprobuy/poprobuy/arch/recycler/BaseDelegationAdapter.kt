@@ -9,7 +9,7 @@ open class BaseDelegationAdapter(
   /**
    * Model for empty state representation
    */
-  private val emptyListItem: RecyclerViewItem? = null
+  private val emptyListItem: RecyclerViewItem? = null,
 ) : AsyncListDifferDelegationAdapter<RecyclerViewItem>(DiffUtilCallback) {
 
   init {

@@ -4,7 +4,7 @@ import ru.poprobuy.poprobuy.R
 
 enum class ErrorReason(
   val errorReason: String,
-  val errorResId: Int
+  val errorResId: Int,
 ) {
   DEFAULT("something_went_wrong", R.string.error_something_went_wrong),
   RECEIPT_INVALID("qr_string_invalid", R.string.error_receipt_format),

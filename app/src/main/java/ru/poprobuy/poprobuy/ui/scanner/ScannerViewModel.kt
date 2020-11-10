@@ -18,7 +18,7 @@ class ScannerViewModel(
   private val scanMode: ScanMode,
   private val navigation: ScannerNavigation,
   private val createReceiptUseCase: CreateReceiptUseCase,
-  private val resourceProvider: ResourceProvider
+  private val resourceProvider: ResourceProvider,
 ) : BaseViewModel() {
 
   private val _isLoadingLive = MutableLiveData<Boolean>()

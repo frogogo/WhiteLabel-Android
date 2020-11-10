@@ -11,7 +11,7 @@ import ru.poprobuy.poprobuy.extension.fetchDrawable
 class LabelView @JvmOverloads constructor(
   context: Context,
   attrs: AttributeSet? = null,
-  defStyleAttr: Int = 0
+  defStyleAttr: Int = 0,
 ) : AppCompatTextView(context, attrs, defStyleAttr) {
 
   init {

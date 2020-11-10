@@ -16,7 +16,7 @@ import ru.poprobuy.poprobuy.usecase.receipt.GetReceiptsUseCase
 
 class ReceiptsViewModel(
   private val navigation: ReceiptsNavigation,
-  private val getReceiptsUseCase: GetReceiptsUseCase
+  private val getReceiptsUseCase: GetReceiptsUseCase,
 ) : BaseViewModel() {
 
   private val _dataLive = MutableLiveData<List<RecyclerViewItem>>()

@@ -9,7 +9,7 @@ import androidx.fragment.app.DialogFragment
 import ru.poprobuy.poprobuy.R
 
 open class BaseDialogFragment(
-  @LayoutRes private val layoutId: Int
+  @LayoutRes private val layoutId: Int,
 ) : DialogFragment() {
 
   override fun onCreate(savedInstanceState: Bundle?) {

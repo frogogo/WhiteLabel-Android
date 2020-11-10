@@ -16,5 +16,5 @@ data class Receipt(
   @Json(name = "state")
   val state: ReceiptState,
   @Json(name = "timestamp")
-  val timestamp: Date
+  val timestamp: Date,
 )

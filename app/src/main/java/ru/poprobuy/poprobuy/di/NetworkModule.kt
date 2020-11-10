@@ -54,7 +54,7 @@ val networkModule = module {
 fun createHttpClient(
   context: Context,
   authorizationInterceptor: Interceptor,
-  userAgent: String
+  userAgent: String,
 ): OkHttpClient {
   return OkHttpClient.Builder().apply {
     // Timeout settings

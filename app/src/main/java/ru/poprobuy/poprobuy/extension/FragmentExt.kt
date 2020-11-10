@@ -21,7 +21,7 @@ fun Fragment.withPermission(
   onShowRationale: RationaleShouldBeShown = { it.continuePermissionRequest() },
   onPermissionDenied: Func? = null,
   onNeverAskAgain: Func? = null,
-  onPermissionGranted: Func
+  onPermissionGranted: Func,
 ) {
   val listener = object : PermissionListener {
     override fun onPermissionGranted(response: PermissionGrantedResponse) {

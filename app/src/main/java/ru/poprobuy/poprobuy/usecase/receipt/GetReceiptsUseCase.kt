@@ -8,7 +8,7 @@ import ru.poprobuy.poprobuy.usecase.UseCaseResult
 import ru.poprobuy.poprobuy.util.network.NetworkResource
 
 class GetReceiptsUseCase(
-  private val receiptsRepository: ReceiptsRepository
+  private val receiptsRepository: ReceiptsRepository,
 ) {
 
   suspend operator fun invoke(): UseCaseResult<List<Receipt>, Any> =

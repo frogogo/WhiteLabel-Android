@@ -6,5 +6,5 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class ReceiptCreationRequest(
   @Json(name = "qr_string")
-  val qrString: String
+  val qrString: String,
 )

@@ -5,7 +5,7 @@ import ru.poprobuy.poprobuy.data.repository.AuthRepository
 
 class AuthPolicyViewModel(
   private val authRepository: AuthRepository,
-  private val navigation: AuthPolicyNavigation
+  private val navigation: AuthPolicyNavigation,
 ) : BaseViewModel() {
 
   fun navigateNext() {

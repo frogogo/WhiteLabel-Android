@@ -9,7 +9,7 @@ import ru.poprobuy.poprobuy.util.network.NetworkResource
 import ru.poprobuy.poprobuy.util.network.onHttpErrorWithCode
 
 class CreateReceiptUseCase(
-  private val receiptsRepository: ReceiptsRepository
+  private val receiptsRepository: ReceiptsRepository,
 ) {
 
   suspend operator fun invoke(qrString: String): CreateReceiptResult =

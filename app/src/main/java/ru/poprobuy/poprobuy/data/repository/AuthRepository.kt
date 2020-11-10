@@ -12,11 +12,11 @@ import ru.poprobuy.poprobuy.util.network.apiCall
 
 class AuthRepository(
   private val api: PoprobuyApi,
-  private val userPreferences: UserPreferences
+  private val userPreferences: UserPreferences,
 ) {
 
   suspend fun requestConfirmationCode(
-    phoneNumber: String
+    phoneNumber: String,
   ): NetworkResource<ConfirmationCodeRequestResponse, ErrorResponse> {
     val request = ConfirmationCodeRequest(phoneNumber)
     return apiCall { api.requestPasswordCode(request) }
@@ -24,7 +24,7 @@ class AuthRepository(
 
   suspend fun authenticate(
     phoneNumber: String,
-    password: String
+    password: String,
   ): NetworkResource<AuthenticationResponse, ErrorResponse> {
     val request = AuthenticationRequest(phoneNumber = phoneNumber, password = password)
     return apiCall { api.authenticate(request) }

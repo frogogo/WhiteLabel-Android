@@ -10,7 +10,7 @@ sealed class HomeState : RecyclerViewItem {
   }
 
   data class Receipt(
-    val receipt: ReceiptUiModel
+    val receipt: ReceiptUiModel,
   ) : HomeState() {
     override fun getId(): Any = ID_RECEIPT
   }

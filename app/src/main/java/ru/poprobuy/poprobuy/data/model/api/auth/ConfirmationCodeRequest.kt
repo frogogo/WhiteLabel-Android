@@ -6,5 +6,5 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class ConfirmationCodeRequest(
   @Json(name = "phone_number")
-  val phoneNumber: String
+  val phoneNumber: String,
 )

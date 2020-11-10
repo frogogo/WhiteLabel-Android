@@ -126,7 +126,7 @@ class ProductsViewModel : BaseViewModel() {
   data class TimerState(
     val progress: Float,
     val maxProgress: Int,
-    val timeRemaining: Long
+    val timeRemaining: Long,
   )
 
   companion object {
