@@ -10,7 +10,7 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:4.1.0'
+    classpath 'com.android.tools.build:gradle:4.1.1'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     classpath 'com.google.gms:google-services:4.3.4'
     classpath 'com.google.firebase:firebase-crashlytics-gradle:2.3.0'
@@ -19,7 +19,7 @@ buildscript {
     // Detekt https://github.com/detekt/detekt
     classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion"
     // Versions https://github.com/ben-manes/gradle-versions-plugin
-    classpath "com.github.ben-manes:gradle-versions-plugin:0.34.0"
+    classpath "com.github.ben-manes:gradle-versions-plugin:0.36.0"
   }
 }
 
