@@ -221,7 +221,7 @@
     tools:layout="@layout/dialog_receipt_details">
     <argument
       android:name="receipt"
-      app:argType="ru.poprobuy.poprobuy.data.model.ui.ReceiptUiModel" />
+      app:argType="ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel" />
     <action
       android:id="@+id/receipt_details_to_scanner"
       app:destination="@id/scanner" />

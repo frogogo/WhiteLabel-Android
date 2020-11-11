@@ -4,7 +4,7 @@ import com.skydoves.whatif.whatIf
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.data.mapper.toUiModel
 import ru.poprobuy.poprobuy.data.model.api.receipt.Receipt
-import ru.poprobuy.poprobuy.data.model.ui.receipts.ReceiptsScanAvailable
+import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptsScanAvailable
 import ru.poprobuy.poprobuy.dictionary.ReceiptState
 
 object ReceiptsDataFactory {

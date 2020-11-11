@@ -8,56 +8,57 @@
   android:paddingStart="@dimen/spacing_4"
   android:paddingEnd="@dimen/spacing_4">
 
+  <View
+    android:id="@+id/divider1"
+    style="@style/Divider"
+    android:layout_width="0dp"
+    android:layout_marginTop="@dimen/spacing_3"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
   <TextView
-    android:id="@+id/textViewStateSubtitle"
+    android:id="@+id/textViewRejectReason"
     style="@style/Text.Subhead"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_3"
     android:gravity="center"
     android:textColor="@color/receipt_subtitle"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    tools:text="Вы получили батончик Kinder Bueno" />
-
-  <ImageView
-    android:id="@+id/imageViewProduct"
-    android:layout_width="129dp"
-    android:layout_height="129dp"
-    android:layout_marginTop="@dimen/spacing_4"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/textViewStateSubtitle"
-    tools:src="@sample/product" />
+    app:layout_constraintTop_toBottomOf="@id/divider1"
+    app:layout_goneMarginTop="0dp"
+    tools:text="Причина: Магазин, в котором был выбит чек, не участвует в акциях приложения «Попробуй»." />
 
   <View
-    android:id="@+id/divider"
+    android:id="@+id/divider2"
     style="@style/Divider"
     android:layout_width="0dp"
-    android:layout_marginTop="@dimen/spacing_4"
+    android:layout_marginTop="@dimen/spacing_3"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/imageViewProduct" />
+    app:layout_constraintTop_toBottomOf="@id/textViewRejectReason" />
 
   <ImageView
-    android:id="@+id/imageViewStep"
+    android:id="@+id/imageViewInfo"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:src="@drawable/ic_info"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toTopOf="@id/textViewStep" />
+    app:layout_constraintTop_toTopOf="@id/textViewInfo" />
 
   <TextView
-    android:id="@+id/textViewStep"
+    android:id="@+id/textViewInfo"
     style="@style/Text.Caption"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/spacing_3"
     android:layout_marginTop="@dimen/spacing_3"
-    android:text="@string/receipt_state_completed_next_step"
+    android:text="@string/receipt_state_rejected_info"
     android:textColor="@color/receipt_subtitle"
-    app:layout_constraintLeft_toRightOf="@id/imageViewStep"
+    app:layout_constraintLeft_toRightOf="@id/imageViewInfo"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/divider" />
+    app:layout_constraintTop_toBottomOf="@id/divider2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

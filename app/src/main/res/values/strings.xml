@@ -15,6 +15,13 @@
   <string name="error_receipt_format">Отсканированный QR-код имеет неверный формат</string>
   <string name="error_receipt_daily_limit">Превышено максимальное число сканирований на сегодня</string>
 
+  <string name="error_receipt_reject_reason_invalid_date">Неверная дата покупки</string>
+  <string name="error_receipt_reject_reason_invalid_sum">Неверная сумма покупки</string>
+  <string name="error_receipt_reject_reason_invalid_type">Неверный тип чека: ФСН, и т.д.</string>
+  <string name="error_receipt_reject_reason_invalid_data">Не соответствует условиям акции</string>
+  <string name="error_receipt_reject_reason_duplicate">Дубликат чека</string>
+  <string name="error_receipt_reject_reason_system_error">Ошибка на сервере. Повторите позже или обратитесь в поддержку.</string>
+
   <string name="error_something_went_wrong">Что-то пошло не так!</string>
   <string name="error_something_went_wrong_retry">Повторить</string>
 
@@ -92,7 +99,8 @@
   <string name="receipt_state_approved_footer_2">После ввода номера у вас будет 1 минута, чтобы выбрать товар.</string>
 
   <string name="receipt_state_rejected">Ваш чек не прошел проверку!</string>
-  <string name="receipt_state_rejected_description">Причина:</string>
+  <string name="receipt_state_rejected_reason">Причина:</string>
+  <string name="receipt_state_rejected_info">Вы можете отсканировать чек из любого магазина, в котором есть аппарат «Попробуй».</string>
 
   <string name="receipt_state_processing">Ваш чек находится на проверке</string>
   <string name="receipt_state_processing_description">Обычно это занимает несколько минут, но очень редко надо больше времени.</string>

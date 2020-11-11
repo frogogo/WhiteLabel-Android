@@ -57,6 +57,7 @@ class ReceiptDetailsBottomDialog : BaseBottomSheetDialogFragment<ReceiptDetailsV
       layoutFooterApproved.setReceipt(receipt)
       layoutFooterProcessing.setReceipt(receipt)
       layoutFooterCompleted.setReceipt(receipt)
+      layoutFooterRejected.setReceipt(receipt, showTopDivider = true)
       // Controls
       layoutControlsGoods.apply {
         root.setVisible(receipt.state == ReceiptState.APPROVED)

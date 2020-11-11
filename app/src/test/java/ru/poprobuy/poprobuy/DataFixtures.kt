@@ -25,9 +25,12 @@ object DataFixtures {
   val receipt = Receipt(
     id = 1,
     number = 101,
+    sum = 100,
     state = ReceiptState.PROCESSING,
     timestamp = Date(),
-    sum = 100
+    promotion = null,
+    product = null,
+    rejectReason = null
   )
 
   val product = ProductUiModel(
