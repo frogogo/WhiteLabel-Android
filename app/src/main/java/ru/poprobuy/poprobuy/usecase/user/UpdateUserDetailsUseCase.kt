@@ -7,7 +7,7 @@ import ru.poprobuy.poprobuy.usecase.UseCaseResult
 import ru.poprobuy.poprobuy.util.network.NetworkResource
 
 class UpdateUserDetailsUseCase(
-  private val userRepository: UserRepository
+  private val userRepository: UserRepository,
 ) {
 
   suspend operator fun invoke(email: String, name: String): UseCaseResult<Unit, Unit> {

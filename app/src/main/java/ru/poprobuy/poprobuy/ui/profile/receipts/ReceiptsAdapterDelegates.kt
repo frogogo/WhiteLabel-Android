@@ -3,12 +3,12 @@ package ru.poprobuy.poprobuy.ui.profile.receipts
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
-import ru.poprobuy.poprobuy.data.model.ui.ReceiptUiModel
-import ru.poprobuy.poprobuy.data.model.ui.receipts.ReceiptsScanAvailable
+import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
+import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptsScanAvailable
 import ru.poprobuy.poprobuy.databinding.ItemReceiptBinding
 import ru.poprobuy.poprobuy.databinding.ItemScanAvailableBinding
-import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.binding.setReceiptState
+import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.toDateTime
 import ru.poprobuy.poprobuy.util.PriceUtils
 
@@ -17,7 +17,7 @@ typealias OnReceiptClickAction = (ReceiptUiModel) -> Unit
 object ReceiptsAdapterDelegates {
 
   fun receiptDelegate(
-    clickAction: OnReceiptClickAction
+    clickAction: OnReceiptClickAction,
   ) = adapterDelegateViewBinding<ReceiptUiModel, RecyclerViewItem, ItemReceiptBinding>(
     viewBinding = { layoutInflater, root -> ItemReceiptBinding.inflate(layoutInflater, root, false) }
   ) {

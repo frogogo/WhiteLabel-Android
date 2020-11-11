@@ -8,5 +8,5 @@ data class UserUpdateRequest(
   @Json(name = "email")
   val email: String,
   @Json(name = "first_name")
-  val firstName: String
+  val firstName: String,
 )

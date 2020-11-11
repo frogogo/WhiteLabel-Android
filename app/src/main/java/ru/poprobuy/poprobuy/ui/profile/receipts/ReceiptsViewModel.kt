@@ -7,7 +7,7 @@ import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
-import ru.poprobuy.poprobuy.data.model.ui.ReceiptUiModel
+import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.extension.isEmpty
 import ru.poprobuy.poprobuy.usecase.onFailure
@@ -16,7 +16,7 @@ import ru.poprobuy.poprobuy.usecase.receipt.GetReceiptsUseCase
 
 class ReceiptsViewModel(
   private val navigation: ReceiptsNavigation,
-  private val getReceiptsUseCase: GetReceiptsUseCase
+  private val getReceiptsUseCase: GetReceiptsUseCase,
 ) : BaseViewModel() {
 
   private val _dataLive = MutableLiveData<List<RecyclerViewItem>>()

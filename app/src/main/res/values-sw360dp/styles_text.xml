@@ -10,6 +10,7 @@
   <!-- Title1 -->
   <style name="Text.Title1">
     <item name="android:textSize">27sp</item>
+    <item name="android:lineSpacingExtra">0sp</item>
 
     <item name="autoSizeTextType">uniform</item>
     <item name="autoSizeMinTextSize">24sp</item>
@@ -18,6 +19,7 @@
   <!-- Title2 -->
   <style name="Text.Title2">
     <item name="android:textSize">20sp</item>
+    <item name="android:lineSpacingExtra">0sp</item>
   </style>
 
   <!-- Headline -->
@@ -41,7 +43,7 @@
   <!-- Caption -->
   <style name="Text.Caption">
     <item name="android:textSize">12sp</item>
-    <item name="android:lineSpacingExtra">3sp</item>
+    <item name="android:lineSpacingExtra">2sp</item>
   </style>
 
 </resources>

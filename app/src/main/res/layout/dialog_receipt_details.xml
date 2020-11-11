@@ -60,12 +60,23 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@id/layoutHeader" />
 
+  <include
+    android:id="@+id/layoutFooterRejected"
+    layout="@layout/view_receipt_footer_rejected"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_3"
+    android:visibility="gone"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/layoutHeader" />
+
   <androidx.constraintlayout.widget.Barrier
     android:id="@+id/barrierFooter"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:barrierDirection="bottom"
-    app:constraint_referenced_ids="layoutFooterApproved,layoutFooterProcessing,layoutFooterCompleted" />
+    app:constraint_referenced_ids="layoutFooterApproved,layoutFooterProcessing,layoutFooterCompleted,layoutFooterRejected" />
 
   <include
     android:id="@+id/layoutControlsGoods"

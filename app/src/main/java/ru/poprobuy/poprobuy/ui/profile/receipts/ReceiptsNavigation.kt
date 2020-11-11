@@ -1,7 +1,7 @@
 package ru.poprobuy.poprobuy.ui.profile.receipts
 
 import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
-import ru.poprobuy.poprobuy.data.model.ui.ReceiptUiModel
+import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 
 interface ReceiptsNavigation {
   fun navigateToReceipt(receipt: ReceiptUiModel): NavigationCommand

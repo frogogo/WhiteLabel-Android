@@ -8,5 +8,5 @@ data class AuthenticationResponse(
   @Json(name = "jwt")
   val accessToken: String,
   @Json(name = "is_new")
-  val isNew: Boolean
+  val isNew: Boolean,
 )

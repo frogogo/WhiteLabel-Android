@@ -8,5 +8,5 @@ data class AuthenticationRequest(
   @Json(name = "phone_number")
   val phoneNumber: String,
   @Json(name = "password")
-  val password: String
+  val password: String,
 )

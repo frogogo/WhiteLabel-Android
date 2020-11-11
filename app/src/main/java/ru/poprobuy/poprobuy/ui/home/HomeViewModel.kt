@@ -19,7 +19,7 @@ import ru.poprobuy.poprobuy.usecase.home.GetHomeUseCase
 
 class HomeViewModel(
   private val navigation: HomeNavigation,
-  private val getHomeUseCase: GetHomeUseCase
+  private val getHomeUseCase: GetHomeUseCase,
 ) : BaseViewModel() {
 
   private var refreshLooperJob: Job? = null

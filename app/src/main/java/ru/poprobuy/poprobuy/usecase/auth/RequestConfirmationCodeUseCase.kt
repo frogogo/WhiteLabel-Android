@@ -8,11 +8,11 @@ import ru.poprobuy.poprobuy.util.network.NetworkResource
 import ru.poprobuy.poprobuy.util.network.onHttpErrorWithCode
 
 class RequestConfirmationCodeUseCase(
-  private val authRepository: AuthRepository
+  private val authRepository: AuthRepository,
 ) {
 
   suspend operator fun invoke(
-    phoneNumber: String
+    phoneNumber: String,
   ): RequestConfirmationResult = when (val result = authRepository.requestConfirmationCode(phoneNumber)) {
     is NetworkResource.Success -> {
       i { "Code requested successfully" }

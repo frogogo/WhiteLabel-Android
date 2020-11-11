@@ -7,7 +7,7 @@ import ru.poprobuy.poprobuy.util.network.NetworkResource
 import ru.poprobuy.poprobuy.util.network.apiCall
 
 class HomeRepository(
-  private val api: PoprobuyApi
+  private val api: PoprobuyApi,
 ) {
 
   suspend fun getHome(): NetworkResource<HomeResponse, ErrorResponse> = apiCall { api.getHome() }

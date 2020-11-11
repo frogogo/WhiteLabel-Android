@@ -4,7 +4,7 @@ import com.github.ajalt.timberkt.d
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
 
 class ReceiptDetailsViewModel(
-  private val navigation: ReceiptDetailsNavigation
+  private val navigation: ReceiptDetailsNavigation,
 ) : BaseViewModel() {
 
   fun navigateToReceiptScan() {

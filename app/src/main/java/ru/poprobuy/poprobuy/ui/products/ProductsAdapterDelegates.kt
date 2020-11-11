@@ -17,7 +17,7 @@ object ProductsAdapterDelegates {
   private const val ALPHA_INACTIVE = 0.5F
 
   fun productDelegate(
-    clickAction: OnProductClickAction
+    clickAction: OnProductClickAction,
   ) = adapterDelegateViewBinding<ProductUiModel, RecyclerViewItem, ItemProductBinding>(
     viewBinding = { layoutInflater, root -> ItemProductBinding.inflate(layoutInflater, root, false) }
   ) {

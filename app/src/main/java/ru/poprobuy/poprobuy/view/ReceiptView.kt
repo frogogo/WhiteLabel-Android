@@ -10,7 +10,7 @@ import android.view.ViewOutlineProvider
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.data.model.ui.ReceiptUiModel
+import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 import ru.poprobuy.poprobuy.databinding.ViewReceiptBinding
 import ru.poprobuy.poprobuy.extension.binding.setReceipt
 import ru.poprobuy.poprobuy.extension.layoutInflater
@@ -18,7 +18,7 @@ import ru.poprobuy.poprobuy.extension.layoutInflater
 class ReceiptView @JvmOverloads constructor(
   context: Context,
   attrs: AttributeSet? = null,
-  defStyleAttr: Int = 0
+  defStyleAttr: Int = 0,
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
   private val binding = ViewReceiptBinding.inflate(layoutInflater, this, true)
@@ -39,6 +39,7 @@ class ReceiptView @JvmOverloads constructor(
     // Footer
     layoutFooterApproved.setReceipt(receipt)
     layoutFooterProcessing.setReceipt(receipt)
+    layoutFooterRejected.setReceipt(receipt)
   }
 
   /**

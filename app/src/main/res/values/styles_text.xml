@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <style name="Text" />
+  <style name="Text">
+    <item name="android:includeFontPadding">false</item>
+  </style>
 
   <!-- Title Large -->
   <style name="Text.TitleLarge">
@@ -16,6 +18,8 @@
   <!-- Title1 -->
   <style name="Text.Title1">
     <item name="android:textSize">25sp</item>
+    <item name="android:lineSpacingExtra">0sp</item>
+
     <item name="autoSizeTextType">uniform</item>
     <item name="autoSizeMinTextSize">21sp</item>
   </style>
@@ -27,6 +31,7 @@
   <!-- Title2 -->
   <style name="Text.Title2">
     <item name="android:textSize">18sp</item>
+    <item name="android:lineSpacingExtra">0sp</item>
   </style>
 
   <style name="Text.Title2.Medium">
@@ -74,7 +79,7 @@
   <!-- Caption -->
   <style name="Text.Caption">
     <item name="android:textSize">11sp</item>
-    <item name="android:lineSpacingExtra">2sp</item>
+    <item name="android:lineSpacingExtra">1.5sp</item>
   </style>
 
   <style name="Text.Caption.Medium">

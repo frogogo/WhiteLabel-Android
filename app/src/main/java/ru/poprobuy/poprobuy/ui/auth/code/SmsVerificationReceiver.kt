@@ -13,7 +13,7 @@ import ru.poprobuy.poprobuy.extension.hideKeyboard
 
 class SmsVerificationReceiver(
   private val activityRequestCode: Int,
-  private val fragmentRetriever: () -> Fragment
+  private val fragmentRetriever: () -> Fragment,
 ) : BroadcastReceiver() {
 
   override fun onReceive(context: Context, intent: Intent) {

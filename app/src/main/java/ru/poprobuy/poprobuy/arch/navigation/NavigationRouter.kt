@@ -5,7 +5,7 @@ import androidx.navigation.NavController
 import ru.poprobuy.poprobuy.MainNavigationDirections
 
 class NavigationRouter(
-  private val controller: NavController
+  private val controller: NavController,
 ) {
 
   /**

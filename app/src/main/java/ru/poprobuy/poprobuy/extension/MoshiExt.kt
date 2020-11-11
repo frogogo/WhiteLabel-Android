@@ -13,7 +13,7 @@ fun <T> JsonAdapter<T>.fromJsonOrNull(json: String?): T? {
 
 inline fun <reified T : Any> Moshi.fromJson(
   json: String,
-  lenient: Boolean = false
+  lenient: Boolean = false,
 ): T? {
   var jsonAdapter = adapter(T::class.java)
   if (lenient) {

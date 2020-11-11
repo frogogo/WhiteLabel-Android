@@ -10,7 +10,7 @@ import ru.poprobuy.poprobuy.util.network.apiCall
 
 class UserRepository(
   private val api: PoprobuyApi,
-  private val userPreferences: UserPreferences
+  private val userPreferences: UserPreferences,
 ) {
 
   suspend fun updateUser(email: String, name: String): NetworkResource<Unit, ErrorResponse> {

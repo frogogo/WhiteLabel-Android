@@ -16,7 +16,7 @@ class AuthEmailViewModel(
   private val userName: String,
   private val navigation: AuthEmailNavigation,
   private val authRepository: AuthRepository,
-  private val updateUserDetailsUseCase: UpdateUserDetailsUseCase
+  private val updateUserDetailsUseCase: UpdateUserDetailsUseCase,
 ) : BaseViewModel() {
 
   private val _isLoadingLive = MutableLiveData<Boolean>()

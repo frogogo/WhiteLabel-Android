@@ -9,7 +9,7 @@ import android.view.View
  */
 class ClickableSpanKtx(
   private val action: () -> Unit,
-  private val underline: Boolean = false
+  private val underline: Boolean = false,
 ) : ClickableSpan() {
 
   override fun updateDrawState(ds: TextPaint) {

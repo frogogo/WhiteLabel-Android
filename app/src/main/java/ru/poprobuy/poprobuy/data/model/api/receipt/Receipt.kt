@@ -2,6 +2,7 @@ package ru.poprobuy.poprobuy.data.model.api.receipt
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import ru.poprobuy.poprobuy.dictionary.ReceiptRejectReason
 import ru.poprobuy.poprobuy.dictionary.ReceiptState
 import java.util.*
 
@@ -16,5 +17,11 @@ data class Receipt(
   @Json(name = "state")
   val state: ReceiptState,
   @Json(name = "timestamp")
-  val timestamp: Date
+  val timestamp: Date,
+  @Json(name = "promotion")
+  val promotion: ReceiptPromotion?,
+  @Json(name = "item")
+  val product: ReceiptProduct?,
+  @Json(name = "reject_reason")
+  val rejectReason: ReceiptRejectReason?,
 )

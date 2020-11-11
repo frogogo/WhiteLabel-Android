@@ -12,7 +12,7 @@ import ru.poprobuy.poprobuy.extension.setVisible
 object HomeAdapterDelegates {
 
   fun emptyStateDelegate(
-    scanReceiptAction: () -> Unit
+    scanReceiptAction: () -> Unit,
   ) = adapterDelegateViewBinding<HomeState.Empty, RecyclerViewItem, ItemHomeEmptyBinding>(
     viewBinding = { layoutInflater, root -> ItemHomeEmptyBinding.inflate(layoutInflater, root, false) }
   ) {
@@ -22,7 +22,7 @@ object HomeAdapterDelegates {
   fun approvedStateDelegate(
     scanMachineCallback: () -> Unit,
     enterMachineAction: () -> Unit,
-    scanReceiptAction: () -> Unit
+    scanReceiptAction: () -> Unit,
   ) = adapterDelegateViewBinding<HomeState.Receipt, RecyclerViewItem, ItemHomeReceiptBinding>(
     viewBinding = { layoutInflater, root -> ItemHomeReceiptBinding.inflate(layoutInflater, root, false) }
   ) {

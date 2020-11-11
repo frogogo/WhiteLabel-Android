@@ -17,7 +17,7 @@ import ru.poprobuy.poprobuy.util.Validators
 
 class AuthPhoneViewModel(
   private val navigation: AuthPhoneNavigation,
-  private val requestConfirmationCodeUseCase: RequestConfirmationCodeUseCase
+  private val requestConfirmationCodeUseCase: RequestConfirmationCodeUseCase,
 ) : BaseViewModel() {
 
   private val _commandLiveEvent = LiveEvent<AuthPhoneCommand>()

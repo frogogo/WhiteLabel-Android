@@ -8,7 +8,7 @@ import ru.poprobuy.poprobuy.usecase.UseCaseResult
 import ru.poprobuy.poprobuy.util.network.NetworkResource
 
 class GetUserInfoUseCase(
-  private val userRepository: UserRepository
+  private val userRepository: UserRepository,
 ) {
 
   suspend operator fun invoke(): UseCaseResult<User, Unit> = when (val result = userRepository.fetchUser()) {

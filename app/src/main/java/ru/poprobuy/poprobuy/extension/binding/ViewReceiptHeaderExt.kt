@@ -2,7 +2,7 @@ package ru.poprobuy.poprobuy.extension.binding
 
 import android.content.res.ColorStateList
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.data.model.ui.ReceiptUiModel
+import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 import ru.poprobuy.poprobuy.databinding.ViewReceiptHeaderBinding
 import ru.poprobuy.poprobuy.dictionary.ReceiptState
 import ru.poprobuy.poprobuy.extension.setSize
@@ -10,6 +10,11 @@ import ru.poprobuy.poprobuy.extension.setVisible
 import ru.poprobuy.poprobuy.extension.toDateTime
 import ru.poprobuy.poprobuy.extension.updateMargin
 import ru.poprobuy.poprobuy.util.PriceUtils
+
+private val STATES_WITHOUT_SHOP_NAME = listOf(
+  ReceiptState.PROCESSING,
+  ReceiptState.REJECTED
+)
 
 fun ViewReceiptHeaderBinding.setReceipt(receipt: ReceiptUiModel) {
   // Header
@@ -20,12 +25,12 @@ fun ViewReceiptHeaderBinding.setReceipt(receipt: ReceiptUiModel) {
   // Value
   textViewReceiptValue.text = PriceUtils.formatPrice(receipt.value)
   // Shop
-  textViewShop.text = receipt.shopName
-  textViewShop.setVisible(receipt.state != ReceiptState.PROCESSING)
+  textViewShop.text = receipt.promotion?.name.orEmpty()
+  textViewShop.setVisible(receipt.state !in STATES_WITHOUT_SHOP_NAME)
   // Date
   textViewDate.text = receipt.date.toDateTime()
   textViewDate.setTextAppearance(
-    if (receipt.state == ReceiptState.PROCESSING) R.style.ReceiptDateText_Big else R.style.ReceiptDateText_Small
+    if (receipt.state in STATES_WITHOUT_SHOP_NAME) R.style.ReceiptDateText_Big else R.style.ReceiptDateText_Small
   )
   // Status Icon
   imageViewState.setImageResource(receipt.state.getHeaderIcon())

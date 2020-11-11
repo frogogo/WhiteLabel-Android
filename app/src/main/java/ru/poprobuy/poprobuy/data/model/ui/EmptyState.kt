@@ -10,7 +10,7 @@ private const val ID = "ITEM_EMPTY_LIST"
 open class EmptyState(
   @StringRes val titleResId: Int? = null,
   val title: String? = null,
-  @DrawableRes val imageResId: Int
+  @DrawableRes val imageResId: Int,
 ) : RecyclerViewItem {
 
   override fun getId(): Any = ID

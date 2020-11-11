@@ -64,6 +64,6 @@ fun <T, E : Any> handleException(exception: Throwable?): NetworkResource<T, E> =
 inline fun <reified E : Any> deserializeError(responseBody: ResponseBody): E? {
   val str = responseBody.string()
   return runCatching {
-    MoshiUtils.networkParserMoshi.fromJson<E>(str)
+    MoshiUtils.networkErrorParserMoshi.fromJson<E>(str)
   }.onFailure { e { it.toString() } }.getOrNull()
 }

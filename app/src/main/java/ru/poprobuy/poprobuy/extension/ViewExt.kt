@@ -24,7 +24,7 @@ val View.layoutInflater: LayoutInflater
 
 inline fun View.setOnSafeClickListener(
   crossinline clickAction: (View) -> Unit,
-  throttleDuration: Long = 500
+  throttleDuration: Long = 500,
 ) {
   setOnClickListener(SafeClickListener(throttleDuration) { view ->
     clickAction(view)
@@ -48,7 +48,7 @@ inline fun View.setOnClickListener(crossinline clickAction: () -> Unit) {
 inline fun View.withTypedArray(
   attrs: AttributeSet?,
   @StyleableRes styleable: IntArray,
-  block: TypedArray.() -> Unit
+  block: TypedArray.() -> Unit,
 ) {
   context.obtainStyledAttributes(attrs, styleable)
     .apply(block)
@@ -63,7 +63,7 @@ fun View.updateMargin(
   @Px left: Int = marginLeft,
   @Px top: Int = marginTop,
   @Px right: Int = marginRight,
-  @Px bottom: Int = marginBottom
+  @Px bottom: Int = marginBottom,
 ) {
   updateLayoutParams<ViewGroup.MarginLayoutParams> {
     setMargins(left, top, right, bottom)
@@ -72,7 +72,7 @@ fun View.updateMargin(
 
 fun View.setSize(
   newWidth: Int = height,
-  newHeight: Int = width
+  newHeight: Int = width,
 ) {
   updateLayoutParams {
     width = newWidth

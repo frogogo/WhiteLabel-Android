@@ -9,7 +9,7 @@ data class ProductUiModel(
   val name: String,
   val imageUrl: String,
   val inStock: Boolean,
-  val triedBefore: Boolean
+  val triedBefore: Boolean,
 ) : RecyclerViewItem {
 
   override fun getId(): Any = "$ID$id"

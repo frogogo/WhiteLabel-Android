@@ -15,7 +15,7 @@ typealias ImeGoAction = () -> Unit
 class InputLayout @JvmOverloads constructor(
   context: Context,
   attrs: AttributeSet? = null,
-  defStyleAttr: Int = 0
+  defStyleAttr: Int = 0,
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
   val binding = ViewInputLayoutBinding.inflate(layoutInflater, this, true)

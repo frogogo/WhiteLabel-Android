@@ -14,7 +14,7 @@ import ru.poprobuy.poprobuy.arch.navigation.NavigationRouter
 import ru.poprobuy.poprobuy.extension.observe
 
 abstract class BaseBottomSheetDialogFragment<out T : BaseViewModel>(
-  @LayoutRes private val layoutResId: Int
+  @LayoutRes private val layoutResId: Int,
 ) : BottomSheetDialogFragment() {
 
   abstract val viewModel: T

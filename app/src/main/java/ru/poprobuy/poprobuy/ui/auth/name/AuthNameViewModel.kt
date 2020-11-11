@@ -7,7 +7,7 @@ import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.util.Validators
 
 class AuthNameViewModel(
-  private val navigation: AuthNameNavigation
+  private val navigation: AuthNameNavigation,
 ) : BaseViewModel() {
 
   private val _nameValidationLiveEvent = LiveEvent<Int?>()

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ItemDecoration(
   @Px private val verticalSpacing: Int = 0,
-  @Px private val horizontalSpacing: Int = 0
+  @Px private val horizontalSpacing: Int = 0,
 ) : RecyclerView.ItemDecoration() {
 
   override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
@@ -74,7 +74,7 @@ class ItemDecoration(
     // Span size of current item
     val spanSize: Int,
     // span index in current item's span group
-    val spanIndex: Int
+    val spanIndex: Int,
   )
 
 }

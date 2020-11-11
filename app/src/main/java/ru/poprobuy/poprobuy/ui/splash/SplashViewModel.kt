@@ -10,7 +10,7 @@ import ru.poprobuy.poprobuy.usecase.GetUserAuthStateUseCase.State
 
 class SplashViewModel(
   private val getUserAuthStateUseCase: GetUserAuthStateUseCase,
-  private val navigation: SplashNavigation
+  private val navigation: SplashNavigation,
 ) : BaseViewModel() {
 
   override fun onCreate() {

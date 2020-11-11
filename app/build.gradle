@@ -115,7 +115,7 @@ dependencies {
   implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
   // Google Play Services https://developers.google.com/android/guides/setup
-  implementation 'com.google.android.gms:play-services-auth:18.1.0'
+  implementation 'com.google.android.gms:play-services-auth:19.0.0'
   // https://developers.google.com/android/guides/releases
   implementation 'com.google.android.gms:play-services-auth-api-phone:17.5.0'
 
@@ -166,7 +166,7 @@ dependencies {
   implementation 'com.redmadrobot:input-mask-android:6.0.0'
 
   // Coil https://github.com/coil-kt/coil/
-  implementation "io.coil-kt:coil:0.12.0"
+  implementation "io.coil-kt:coil:1.0.0"
 
   // Koin https://github.com/InsertKoinIO/koin
   def koinVersion = '2.1.6'
@@ -191,10 +191,10 @@ dependencies {
   implementation "com.squareup.moshi:moshi-adapters:$moshiVersion"
   kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
 
-  // Chuck https://github.com/jgilfelt/chuck
-  def chuckVersion = '1.1.0'
-  debugImplementation "com.readystatesoftware.chuck:library:$chuckVersion"
-  releaseImplementation "com.readystatesoftware.chuck:library-no-op:$chuckVersion"
+  // Chucker https://github.com/ChuckerTeam/chucker
+  def chuckerVersion = '3.4.0'
+  debugImplementation "com.github.chuckerteam.chucker:library:$chuckerVersion"
+  releaseImplementation "com.github.chuckerteam.chucker:library-no-op:$chuckerVersion"
 
   // Timber Kt https://github.com/ajalt/timberkt
   implementation 'com.github.ajalt:timberkt:1.5.1'
@@ -219,15 +219,24 @@ dependencies {
   // Test Libraries
   //
 
+  testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
+  testImplementation "com.squareup.okhttp3:mockwebserver:$okHttpVersion"
+
   // Kluent https://github.com/MarkusAmshove/Kluent
   testImplementation 'org.amshove.kluent:kluent:1.63'
 
   // Robolectric http://robolectric.org/getting-started/
   testImplementation 'org.robolectric:robolectric:4.4'
 
+  // Junit 4
   testImplementation 'junit:junit:4.13.1'
-  testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
-  testImplementation "com.squareup.okhttp3:mockwebserver:$okHttpVersion"
+
+  // Junit 5
+  def junit5Version = "5.7.0"
+  testImplementation "org.junit.jupiter:junit-jupiter-api:$junit5Version"
+  testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit5Version"
+  testImplementation "org.junit.jupiter:junit-jupiter-params:$junit5Version"
+  testImplementation "org.junit.vintage:junit-vintage-engine:$junit5Version"
 
   // Coroutines Test
   testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"

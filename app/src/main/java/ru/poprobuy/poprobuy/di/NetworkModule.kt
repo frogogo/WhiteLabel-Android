@@ -3,7 +3,7 @@
 package ru.poprobuy.poprobuy.di
 
 import android.content.Context
-import com.readystatesoftware.chuck.ChuckInterceptor
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -54,7 +54,7 @@ val networkModule = module {
 fun createHttpClient(
   context: Context,
   authorizationInterceptor: Interceptor,
-  userAgent: String
+  userAgent: String,
 ): OkHttpClient {
   return OkHttpClient.Builder().apply {
     // Timeout settings
@@ -65,7 +65,7 @@ fun createHttpClient(
     // Interceptors
     @Suppress("ConstantConditionIf")
     if (BuildConfig.DEBUG) {
-      addInterceptor(ChuckInterceptor(context))
+      addInterceptor(ChuckerInterceptor.Builder(context).build())
       addInterceptor(HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.HEADERS
       })

@@ -22,7 +22,7 @@ class AuthCodeViewModel(
   private val navigation: AuthCodeConfirmationNavigation,
   private val authenticationUseCase: AuthenticationUseCase,
   private val requestConfirmationCodeUseCase: RequestConfirmationCodeUseCase,
-  private val otpRequestDisabler: OtpRequestDisabler
+  private val otpRequestDisabler: OtpRequestDisabler,
 ) : BaseViewModel() {
 
   private val _commandLiveEvent = LiveEvent<AuthCodeCommand>()

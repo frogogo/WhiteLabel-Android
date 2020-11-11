@@ -8,7 +8,7 @@ import ru.poprobuy.poprobuy.util.network.NetworkResource
 import ru.poprobuy.poprobuy.util.network.apiCall
 
 class ReceiptsRepository(
-  private val api: PoprobuyApi
+  private val api: PoprobuyApi,
 ) {
 
   suspend fun getReceipts(): NetworkResource<List<Receipt>, ErrorResponse> {

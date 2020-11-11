@@ -8,7 +8,7 @@ import ru.poprobuy.poprobuy.extension.asLiveData
 
 class OnboardingViewModel(
   private val onboardingRepository: OnboardingRepository,
-  private val navigation: OnboardingNavigation
+  private val navigation: OnboardingNavigation,
 ) : BaseViewModel() {
 
   private val _pagesLive = MutableLiveData<List<RecyclerViewItem>>()

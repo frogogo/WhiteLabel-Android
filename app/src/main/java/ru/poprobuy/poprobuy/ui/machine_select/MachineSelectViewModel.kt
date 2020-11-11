@@ -4,7 +4,7 @@ import com.github.ajalt.timberkt.d
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
 
 class MachineSelectViewModel(
-  private val navigation: MachineSelectNavigation
+  private val navigation: MachineSelectNavigation,
 ) : BaseViewModel() {
 
   fun selectMachine(machineNumber: String) {

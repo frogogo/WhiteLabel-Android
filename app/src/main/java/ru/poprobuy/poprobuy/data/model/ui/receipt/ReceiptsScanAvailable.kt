@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.data.model.ui.receipts
+package ru.poprobuy.poprobuy.data.model.ui.receipt
 
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
 
