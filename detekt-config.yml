@@ -9,6 +9,7 @@ build:
 
 config:
   validation: true
+  warningsAsErrors: false
   # when writing own rules with new properties, exclude the property path e.g.: 'my_rule_set,.*>.*>[my_property]'
   excludes: ''
 
@@ -101,6 +102,8 @@ complexity:
   NestedBlockDepth:
     active: true
     threshold: 4
+  ReplaceSafeCallChainWithRun:
+    active: true # Changed
   StringLiteralDuplication:
     active: true # Changed
     excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
@@ -125,6 +128,8 @@ coroutines:
   GlobalCoroutineUsage:
     active: true # Changed
   RedundantSuspendModifier:
+    active: true # Changed
+  SuspendFunWithFlowReturnType:
     active: true # Changed
 
 empty-blocks:
@@ -228,6 +233,12 @@ formatting:
   AnnotationOnSeparateLine:
     active: true # Changed
     autoCorrect: true
+  AnnotationSpacing:
+    active: true # Changed
+    autoCorrect: true
+  ArgumentListWrapping:
+    active: false
+    autoCorrect: true
   ChainWrapping:
     active: true
     autoCorrect: true
@@ -316,7 +327,7 @@ formatting:
     active: true
     autoCorrect: true
   SpacingAroundDoubleColon:
-    active: false
+    active: true # Changed
     autoCorrect: true
   SpacingAroundKeyword:
     active: true
@@ -368,7 +379,7 @@ naming:
   FunctionMinLength:
     active: true # Changed
     excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
-    minimumFunctionNameLength: 2
+    minimumFunctionNameLength: 3
   FunctionNaming:
     active: true
     excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
@@ -391,6 +402,9 @@ naming:
   MemberNameEqualsClassName:
     active: true
     ignoreOverridden: true
+  NonBooleanPropertyPrefixedWithIs:
+    active: true # Changed
+    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
   ObjectPropertyNaming:
     active: true
     excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
@@ -497,6 +511,8 @@ potential-bugs:
 
 style:
   active: true
+  ClassOrdering:
+    active: true # Changed
   CollapsibleIfStatements:
     active: true # Changed
   DataClassContainsFunctions:
@@ -637,6 +653,8 @@ style:
     allowedNames: '(_|ignored|expected|serialVersionUID)[A-Za-z0-9]*'
   UseArrayLiteralsInAnnotations:
     active: true # Changed
+  UseCheckNotNull:
+    active: true # Changed
   UseCheckOrError:
     active: true # Changed
   UseDataClass:
@@ -648,6 +666,8 @@ style:
   UseIfInsteadOfWhen:
     active: false
   UseRequire:
+    active: true # Changed
+  UseRequireNotNull:
     active: true # Changed
   UselessCallOnNotNull:
     active: true

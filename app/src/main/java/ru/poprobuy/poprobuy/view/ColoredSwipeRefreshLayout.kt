@@ -7,14 +7,14 @@ import ru.poprobuy.poprobuy.R
 
 class ColoredSwipeRefreshLayout : SwipeRefreshLayout {
 
-  constructor(context: Context) : super(context)
-  constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
-
   init {
     setColorSchemeResources(
       R.color.swipe_refresh_1,
       R.color.swipe_refresh_2
     )
   }
+
+  constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
+  constructor(context: Context) : super(context)
 
 }
