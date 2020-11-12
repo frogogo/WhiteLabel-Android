@@ -4,6 +4,7 @@ import com.skydoves.whatif.whatIf
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.data.mapper.toUiModel
 import ru.poprobuy.poprobuy.data.model.api.receipt.Receipt
+import ru.poprobuy.poprobuy.data.model.ui.profile.receipts.ReceiptsEmptyState
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptsScanAvailable
 import ru.poprobuy.poprobuy.dictionary.ReceiptState
 
@@ -19,8 +20,15 @@ object ReceiptsDataFactory {
     val list = mutableListOf<RecyclerViewItem>()
 
     // Header
-    receiptsMapped.none { it.state in LOCKING_STATES }.whatIf {
-      list += ReceiptsScanAvailable
+    if (receiptsMapped.isNotEmpty()) {
+      receiptsMapped.none { it.state in LOCKING_STATES }.whatIf {
+        list += ReceiptsScanAvailable
+      }
+    }
+
+    // Empty state
+    if (receiptsMapped.isEmpty()) {
+      list += ReceiptsEmptyState
     }
 
     // Receipts

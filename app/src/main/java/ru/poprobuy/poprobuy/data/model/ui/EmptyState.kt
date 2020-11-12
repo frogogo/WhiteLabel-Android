@@ -2,7 +2,6 @@ package ru.poprobuy.poprobuy.data.model.ui
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
 
 private const val ID = "ITEM_EMPTY_LIST"
@@ -16,8 +15,3 @@ open class EmptyState(
   override fun getId(): Any = ID
 
 }
-
-object ReceiptsEmptyState : EmptyState(
-  titleResId = R.string.receipts_empty_title,
-  imageResId = R.drawable.ic_receipts_empty
-)

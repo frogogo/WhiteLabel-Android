@@ -135,7 +135,7 @@
 
   <!-- Receipts -->
   <string name="receipts_title">Мои чеки</string>
-  <string name="receipts_empty_title">У вас пока нет отсканированных чеков</string>
+  <string name="receipts_empty_title">У вас пока нет\nотсканированных чеков</string>
   <string name="receipt_item_state_processing">Проверяется</string>
   <string name="receipt_item_state_approved">Принят</string>
   <string name="receipt_item_state_completed">Выполнен</string>

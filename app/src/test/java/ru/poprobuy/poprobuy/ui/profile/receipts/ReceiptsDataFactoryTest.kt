@@ -6,6 +6,7 @@ import org.amshove.kluent.shouldNotContain
 import org.junit.Test
 import ru.poprobuy.poprobuy.DataFixtures
 import ru.poprobuy.poprobuy.data.mapper.toUiModel
+import ru.poprobuy.poprobuy.data.model.ui.profile.receipts.ReceiptsEmptyState
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptsScanAvailable
 import ru.poprobuy.poprobuy.dictionary.ReceiptState
 import ru.poprobuy.poprobuy.ui.profile.receipts.ReceiptsDataFactory.createReceiptsData
@@ -19,8 +20,8 @@ class ReceiptsDataFactoryTest {
   }
 
   @Test
-  fun `factory adds scan available to empty list`() {
-    createReceiptsData(listOf()) shouldContain ReceiptsScanAvailable
+  fun `factory should show empty state when list is empty`() {
+    createReceiptsData(listOf()) shouldContain ReceiptsEmptyState
   }
 
   @Test

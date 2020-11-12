@@ -3,9 +3,11 @@ package ru.poprobuy.poprobuy.ui.profile.receipts
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
+import ru.poprobuy.poprobuy.data.model.ui.profile.receipts.ReceiptsEmptyState
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptsScanAvailable
 import ru.poprobuy.poprobuy.databinding.ItemReceiptBinding
+import ru.poprobuy.poprobuy.databinding.ItemReceiptsEmptyStateBinding
 import ru.poprobuy.poprobuy.databinding.ItemScanAvailableBinding
 import ru.poprobuy.poprobuy.extension.binding.setReceiptState
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
@@ -33,6 +35,11 @@ object ReceiptsAdapterDelegates {
       }
     }
   }
+
+  fun receiptEmptyState() =
+    adapterDelegateViewBinding<ReceiptsEmptyState, RecyclerViewItem, ItemReceiptsEmptyStateBinding>(
+      viewBinding = { layoutInflater, root -> ItemReceiptsEmptyStateBinding.inflate(layoutInflater, root, false) }
+    ) {}
 
   fun scanAvailableDelegate() =
     adapterDelegateViewBinding<ReceiptsScanAvailable, RecyclerViewItem, ItemScanAvailableBinding>(
