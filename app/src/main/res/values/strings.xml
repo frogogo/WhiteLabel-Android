@@ -15,13 +15,6 @@
   <string name="error_receipt_format">Отсканированный QR-код имеет неверный формат</string>
   <string name="error_receipt_daily_limit">Превышено максимальное число сканирований на сегодня</string>
 
-  <string name="error_receipt_reject_reason_invalid_date">Неверная дата покупки</string>
-  <string name="error_receipt_reject_reason_invalid_sum">Неверная сумма покупки</string>
-  <string name="error_receipt_reject_reason_invalid_type">Неверный тип чека: ФСН, и т.д.</string>
-  <string name="error_receipt_reject_reason_invalid_data">Не соответствует условиям акции</string>
-  <string name="error_receipt_reject_reason_duplicate">Дубликат чека</string>
-  <string name="error_receipt_reject_reason_system_error">Ошибка на сервере. Повторите позже или обратитесь в поддержку.</string>
-
   <string name="error_something_went_wrong">Что-то пошло не так!</string>
   <string name="error_something_went_wrong_retry">Повторить</string>
 

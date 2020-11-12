@@ -4,6 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class ReceiptPromotionUiModel(
-  val name: String,
+data class ReceiptRejectReasonUiModel(
+  val reason: String,
+  val reasonText: String,
 ) : Parcelable

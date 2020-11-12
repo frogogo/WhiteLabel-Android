@@ -16,7 +16,7 @@ class ReceiptMappersKtTest {
       date = receipt.timestamp,
       value = receipt.sum,
       state = receipt.state,
-      promotion = null,
+      distributionNetwork = null,
       product = null,
       rejectReason = null
     )

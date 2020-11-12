@@ -3,7 +3,6 @@ package ru.poprobuy.poprobuy.data.model.ui.receipt
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
-import ru.poprobuy.poprobuy.dictionary.ReceiptRejectReason
 import ru.poprobuy.poprobuy.dictionary.ReceiptState
 import java.util.*
 
@@ -14,9 +13,9 @@ data class ReceiptUiModel(
   val date: Date,
   val value: Int,
   val state: ReceiptState,
-  val promotion: ReceiptPromotionUiModel?,
+  val distributionNetwork: ReceiptDistributionNetworkUiModel?,
   val product: ReceiptProductUiModel?,
-  val rejectReason: ReceiptRejectReason?
+  val rejectReason: ReceiptRejectReasonUiModel?,
 ) : RecyclerViewItem, Parcelable {
 
   override fun getId(): Any = "$ID$id"
