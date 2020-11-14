@@ -12,14 +12,15 @@ class HomeMapperKtTest {
   fun `empty home maps to empty home state`() {
     val home = HomeResponse(null)
 
-    home.toUiModel() shouldBeEqualTo HomeState.Empty
+    home.toDomain() shouldBeEqualTo HomeState.Empty
   }
 
   @Test
   fun `home with receipt maps to receipt home state`() {
-    val home = HomeResponse(DataFixtures.receipt)
+    val receipt = DataFixtures.getReceipt()
+    val home = HomeResponse(receipt)
 
-    home.toUiModel() shouldBeEqualTo HomeState.Receipt(DataFixtures.receipt.toUiModel())
+    home.toDomain() shouldBeEqualTo HomeState.Receipt(receipt.toDomain())
   }
 
 }

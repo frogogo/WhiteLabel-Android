@@ -7,8 +7,10 @@ import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequest
 import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequestResponse
 import ru.poprobuy.poprobuy.data.network.PoprobuyApi
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
-import ru.poprobuy.poprobuy.util.network.NetworkResource
+import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.util.network.NetworkError
 import ru.poprobuy.poprobuy.util.network.apiCall
+import ru.poprobuy.poprobuy.util.network.mapToResult
 
 class AuthRepository(
   private val api: PoprobuyApi,
@@ -17,17 +19,17 @@ class AuthRepository(
 
   suspend fun requestConfirmationCode(
     phoneNumber: String,
-  ): NetworkResource<ConfirmationCodeRequestResponse, ErrorResponse> {
+  ): Result<ConfirmationCodeRequestResponse, NetworkError<ErrorResponse>> {
     val request = ConfirmationCodeRequest(phoneNumber)
-    return apiCall { api.requestPasswordCode(request) }
+    return apiCall { api.requestPasswordCode(request) }.mapToResult()
   }
 
   suspend fun authenticate(
     phoneNumber: String,
     password: String,
-  ): NetworkResource<AuthenticationResponse, ErrorResponse> {
+  ): Result<AuthenticationResponse, NetworkError<ErrorResponse>> {
     val request = AuthenticationRequest(phoneNumber = phoneNumber, password = password)
-    return apiCall { api.authenticate(request) }
+    return apiCall { api.authenticate(request) }.mapToResult()
   }
 
   fun saveAuthToken(token: String) {

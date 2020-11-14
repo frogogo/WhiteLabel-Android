@@ -12,10 +12,11 @@ import org.junit.Test
 import ru.poprobuy.poprobuy.DataFixtures
 import ru.poprobuy.poprobuy.ViewModelTest
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
-import ru.poprobuy.poprobuy.data.mapper.toUiModel
 import ru.poprobuy.poprobuy.mockkObserver
-import ru.poprobuy.poprobuy.usecase.UseCaseResult
+import ru.poprobuy.poprobuy.testError
 import ru.poprobuy.poprobuy.usecase.receipt.GetReceiptsUseCase
+import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.util.network.NetworkError
 
 @ExperimentalCoroutinesApi
 class ReceiptsViewModelTest : ViewModelTest() {
@@ -43,15 +44,15 @@ class ReceiptsViewModelTest : ViewModelTest() {
 
   @Test
   fun `verify flow when data loaded successfully`() = runBlockingTest {
-    coEvery { getReceiptsUseCase() } returns UseCaseResult.Success(listOf(DataFixtures.receipt))
+    coEvery { getReceiptsUseCase() } returns Result.Success(listOf(DataFixtures.getReceiptUIModel()))
 
     viewModel.loadReceipts()
 
     coVerifySequence {
       isLoadingObserver.onChanged(true)
       getReceiptsUseCase()
-      isLoadingObserver.onChanged(false)
       dataObserver.onChanged(isNull(inverse = true))
+      isLoadingObserver.onChanged(false)
     }
   }
 
@@ -79,21 +80,21 @@ class ReceiptsViewModelTest : ViewModelTest() {
 
   @Test
   fun `verify flow when data loading failed`() = runBlockingTest {
-    coEvery { getReceiptsUseCase() } returns UseCaseResult.Failure(Unit)
+    coEvery { getReceiptsUseCase() } returns Result.Failure(NetworkError.testError())
 
     viewModel.loadReceipts()
 
     coVerifySequence {
       isLoadingObserver.onChanged(true)
       getReceiptsUseCase()
-      isLoadingObserver.onChanged(false)
       errorOccurredObserver.onChanged(Unit)
+      isLoadingObserver.onChanged(false)
     }
   }
 
   @Test
   fun `view model navigates to receipt`() {
-    val receipt = DataFixtures.receipt.toUiModel()
+    val receipt = DataFixtures.getReceiptUIModel()
     viewModel.navigateToReceipt(receipt)
 
     viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToReceipt(receipt)

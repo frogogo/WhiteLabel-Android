@@ -9,8 +9,8 @@ class ReceiptMappersKtTest {
 
   @Test
   fun `receipt maps to ui model`() {
-    val receipt = DataFixtures.receipt
-    receipt.toUiModel() shouldBeEqualTo ReceiptUiModel(
+    val receipt = DataFixtures.getReceipt()
+    receipt.toDomain() shouldBeEqualTo ReceiptUiModel(
       id = receipt.id,
       number = receipt.number,
       date = receipt.timestamp,

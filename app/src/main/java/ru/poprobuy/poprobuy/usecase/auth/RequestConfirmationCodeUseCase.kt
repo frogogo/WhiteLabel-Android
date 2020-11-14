@@ -3,8 +3,8 @@ package ru.poprobuy.poprobuy.usecase.auth
 import com.github.ajalt.timberkt.e
 import com.github.ajalt.timberkt.i
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
+import ru.poprobuy.poprobuy.util.Result
 import ru.poprobuy.poprobuy.util.network.HttpStatus
-import ru.poprobuy.poprobuy.util.network.NetworkResource
 import ru.poprobuy.poprobuy.util.network.onHttpErrorWithCode
 
 class RequestConfirmationCodeUseCase(
@@ -14,11 +14,11 @@ class RequestConfirmationCodeUseCase(
   suspend operator fun invoke(
     phoneNumber: String,
   ): RequestConfirmationResult = when (val result = authRepository.requestConfirmationCode(phoneNumber)) {
-    is NetworkResource.Success -> {
+    is Result.Success -> {
       i { "Code requested successfully" }
-      RequestConfirmationResult.Success(result.data.passwordRefreshRate)
+      RequestConfirmationResult.Success(result.value.passwordRefreshRate)
     }
-    is NetworkResource.Error -> {
+    is Result.Failure -> {
       val error = result.error
       error.onHttpErrorWithCode(HttpStatus.TOO_MANY_REQUESTS_429) {
         e { "TooManyRequests while requesting code" }

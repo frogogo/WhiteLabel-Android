@@ -3,8 +3,8 @@ package ru.poprobuy.poprobuy.usecase.auth
 import com.github.ajalt.timberkt.e
 import com.github.ajalt.timberkt.i
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
+import ru.poprobuy.poprobuy.util.Result
 import ru.poprobuy.poprobuy.util.network.HttpStatus
-import ru.poprobuy.poprobuy.util.network.NetworkResource
 import ru.poprobuy.poprobuy.util.network.onHttpErrorWithCode
 
 class AuthenticationUseCase(
@@ -15,15 +15,15 @@ class AuthenticationUseCase(
     phoneNumber: String,
     password: String,
   ): AuthenticationResult = when (val result = authRepository.authenticate(phoneNumber, password)) {
-    is NetworkResource.Success -> {
+    is Result.Success -> {
       i { "User authorized successfully" }
       authRepository.apply {
-        saveAuthToken(result.data.accessToken)
+        saveAuthToken(result.value.accessToken)
         setUserAuthorized()
       }
-      AuthenticationResult.Success(result.data.isNew)
+      AuthenticationResult.Success(result.value.isNew)
     }
-    is NetworkResource.Error -> {
+    is Result.Failure -> {
       val error = result.error
       error.onHttpErrorWithCode(HttpStatus.NOT_FOUND_404) {
         e { "User not found while performing authorization" }

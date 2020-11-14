@@ -10,9 +10,8 @@ import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.extension.isEmpty
-import ru.poprobuy.poprobuy.usecase.onFailure
-import ru.poprobuy.poprobuy.usecase.onSuccess
 import ru.poprobuy.poprobuy.usecase.receipt.GetReceiptsUseCase
+import ru.poprobuy.poprobuy.util.handle
 
 class ReceiptsViewModel(
   private val navigation: ReceiptsNavigation,
@@ -35,14 +34,11 @@ class ReceiptsViewModel(
   fun loadReceipts() {
     viewModelScope.launch {
       _isLoadingLive.postValue(_dataLive.isEmpty())
-      val result = getReceiptsUseCase()
+      getReceiptsUseCase().handle(
+        onSuccess = { _dataLive.postValue(ReceiptsDataFactory.createReceiptsData(it)) },
+        onFailure = { _errorOccurredLiveEvent.postValue(Unit) }
+      )
       _isLoadingLive.postValue(false)
-
-      result.onSuccess { receipts ->
-        _dataLive.postValue(ReceiptsDataFactory.createReceiptsData(receipts))
-      }.onFailure {
-        _errorOccurredLiveEvent.postValue(Unit)
-      }
     }
   }
 

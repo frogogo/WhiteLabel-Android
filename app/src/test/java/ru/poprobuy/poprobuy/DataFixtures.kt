@@ -1,10 +1,12 @@
 package ru.poprobuy.poprobuy
 
+import ru.poprobuy.poprobuy.data.mapper.toDomain
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponse
 import ru.poprobuy.poprobuy.data.model.api.home.HomeResponse
 import ru.poprobuy.poprobuy.data.model.api.receipt.Receipt
 import ru.poprobuy.poprobuy.data.model.api.user.User
 import ru.poprobuy.poprobuy.data.model.ui.product.ProductUiModel
+import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 import ru.poprobuy.poprobuy.dictionary.ReceiptState
 import java.util.*
 
@@ -22,17 +24,6 @@ object DataFixtures {
     phoneNumber = PHONE_NUMBER
   )
 
-  val receipt = Receipt(
-    id = 1,
-    number = 101,
-    sum = 100,
-    state = ReceiptState.PROCESSING,
-    timestamp = Date(),
-    promotion = null,
-    product = null,
-    rejectReason = null
-  )
-
   val product = ProductUiModel(
     id = 1,
     name = "Name",
@@ -46,6 +37,19 @@ object DataFixtures {
     isNew = true
   )
 
-  val home = HomeResponse(receipt)
+  val home = HomeResponse(getReceipt())
+
+  fun getReceipt(id: Int = 1): Receipt = Receipt(
+    id = id,
+    number = 101,
+    sum = 100,
+    state = ReceiptState.PROCESSING,
+    timestamp = Date(),
+    promotion = null,
+    product = null,
+    rejectReason = null
+  )
+
+  fun getReceiptUIModel(id: Int = 1): ReceiptUiModel = getReceipt(id).toDomain()
 
 }

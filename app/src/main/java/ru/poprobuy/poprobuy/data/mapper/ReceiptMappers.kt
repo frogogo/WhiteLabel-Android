@@ -9,7 +9,7 @@ import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptDistributionNetworkUiMo
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptRejectReasonUiModel
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 
-fun Receipt.toUiModel(): ReceiptUiModel = ReceiptUiModel(
+fun Receipt.toDomain(): ReceiptUiModel = ReceiptUiModel(
   id = id,
   number = number,
   state = state,

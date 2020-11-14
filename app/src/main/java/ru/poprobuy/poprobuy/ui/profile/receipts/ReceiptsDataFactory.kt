@@ -2,9 +2,8 @@ package ru.poprobuy.poprobuy.ui.profile.receipts
 
 import com.skydoves.whatif.whatIf
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
-import ru.poprobuy.poprobuy.data.mapper.toUiModel
-import ru.poprobuy.poprobuy.data.model.api.receipt.Receipt
 import ru.poprobuy.poprobuy.data.model.ui.profile.receipts.ReceiptsEmptyState
+import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptsScanAvailable
 import ru.poprobuy.poprobuy.dictionary.ReceiptState
 
@@ -15,24 +14,23 @@ object ReceiptsDataFactory {
    */
   private val LOCKING_STATES = listOf(ReceiptState.APPROVED, ReceiptState.PROCESSING)
 
-  fun createReceiptsData(receipts: List<Receipt>): List<RecyclerViewItem> {
-    val receiptsMapped = receipts.map { it.toUiModel() }
+  fun createReceiptsData(receipts: List<ReceiptUiModel>): List<RecyclerViewItem> {
     val list = mutableListOf<RecyclerViewItem>()
 
     // Header
-    if (receiptsMapped.isNotEmpty()) {
-      receiptsMapped.none { it.state in LOCKING_STATES }.whatIf {
+    if (receipts.isNotEmpty()) {
+      receipts.none { it.state in LOCKING_STATES }.whatIf {
         list += ReceiptsScanAvailable
       }
     }
 
     // Empty state
-    if (receiptsMapped.isEmpty()) {
+    if (receipts.isEmpty()) {
       list += ReceiptsEmptyState
     }
 
     // Receipts
-    list += receiptsMapped
+    list += receipts
 
     return list
   }

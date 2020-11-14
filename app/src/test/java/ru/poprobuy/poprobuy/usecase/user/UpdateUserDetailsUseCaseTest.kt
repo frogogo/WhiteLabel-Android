@@ -6,13 +6,14 @@ import io.mockk.coVerifySequence
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.amshove.kluent.shouldBeInstanceOf
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Test
+import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
 import ru.poprobuy.poprobuy.data.repository.UserRepository
-import ru.poprobuy.poprobuy.failureNetworkCall
-import ru.poprobuy.poprobuy.successNetworkCall
-import ru.poprobuy.poprobuy.usecase.UseCaseResult
+import ru.poprobuy.poprobuy.testError
+import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.util.network.NetworkError
 
 @ExperimentalCoroutinesApi
 class UpdateUserDetailsUseCaseTest {
@@ -28,11 +29,12 @@ class UpdateUserDetailsUseCaseTest {
 
   @Test
   fun `success result returned if request executed successfully`() = runBlockingTest {
-    coEvery { userRepository.updateUser(any(), any()) } returns successNetworkCall(Unit)
+    val response = Result.Success<Unit, NetworkError<ErrorResponse>>(Unit)
+    coEvery { userRepository.updateUser(any(), any()) } returns response
 
     val result = useCase("", "")
 
-    result shouldBeInstanceOf UseCaseResult.Success::class
+    result shouldBeEqualTo response
     coVerifySequence {
       userRepository.updateUser(any(), any())
     }
@@ -40,11 +42,12 @@ class UpdateUserDetailsUseCaseTest {
 
   @Test
   fun `error returned if request failed`() = runBlockingTest {
-    coEvery { userRepository.updateUser(any(), any()) } returns failureNetworkCall()
+    val response = Result.Failure<Unit, NetworkError<ErrorResponse>>(NetworkError.testError())
+    coEvery { userRepository.updateUser(any(), any()) } returns response
 
     val result = useCase("", "")
 
-    result shouldBeInstanceOf UseCaseResult.Failure::class
+    result shouldBeEqualTo response
     coVerifySequence {
       userRepository.updateUser(any(), any())
     }

@@ -12,10 +12,10 @@ import ru.poprobuy.poprobuy.data.model.ui.profile.ProfileUiModel
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.data.repository.UserRepository
 import ru.poprobuy.poprobuy.extension.asLiveData
-import ru.poprobuy.poprobuy.usecase.onFailure
-import ru.poprobuy.poprobuy.usecase.onSuccess
 import ru.poprobuy.poprobuy.usecase.user.GetUserInfoUseCase
 import ru.poprobuy.poprobuy.util.ProfileUtils
+import ru.poprobuy.poprobuy.util.doOnFailure
+import ru.poprobuy.poprobuy.util.doOnSuccess
 
 class ProfileViewModel(
   private val getUserInfoUseCase: GetUserInfoUseCase,
@@ -48,10 +48,10 @@ class ProfileViewModel(
       )
 
       // Fetch network data
-      getUserInfoUseCase().onSuccess {
+      getUserInfoUseCase().doOnSuccess {
         _profileLive.postValue(it.toProfileModel(profileUtils.getAboutVersionText()))
         _isLoadingLive.postValue(false)
-      }.onFailure {
+      }.doOnFailure {
         // Do not pass error if user retrieved from local storage
         if (user == null) _errorOccurredLiveEvent.postValue(Unit)
       }

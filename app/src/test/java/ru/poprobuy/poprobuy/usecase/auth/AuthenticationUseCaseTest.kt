@@ -9,9 +9,9 @@ import org.junit.Before
 import org.junit.Test
 import ru.poprobuy.poprobuy.DataFixtures
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
-import ru.poprobuy.poprobuy.failureHttpNetworkCall
-import ru.poprobuy.poprobuy.failureNetworkCall
-import ru.poprobuy.poprobuy.successNetworkCall
+import ru.poprobuy.poprobuy.testError
+import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.util.network.NetworkError
 
 @ExperimentalCoroutinesApi
 class AuthenticationUseCaseTest {
@@ -37,7 +37,7 @@ class AuthenticationUseCaseTest {
 
   @Test
   fun `user was not found returned on 404 error`() = runBlockingTest {
-    coEvery { authRepository.authenticate(any(), any()) } returns failureHttpNetworkCall(404)
+    coEvery { authRepository.authenticate(any(), any()) } returns Result.Failure(NetworkError.testError(404))
 
     val result = useCase(DataFixtures.PHONE_NUMBER, DataFixtures.SMS_CODE)
 
@@ -54,7 +54,7 @@ class AuthenticationUseCaseTest {
 
   @Test
   fun `error returned on failure execution`() = runBlockingTest {
-    coEvery { authRepository.authenticate(any(), any()) } returns failureNetworkCall()
+    coEvery { authRepository.authenticate(any(), any()) } returns Result.Failure(NetworkError.testError())
 
     val result = useCase(DataFixtures.PHONE_NUMBER, DataFixtures.SMS_CODE)
 
@@ -71,7 +71,7 @@ class AuthenticationUseCaseTest {
 
   private fun testSuccess(isNew: Boolean) = runBlocking {
     val response = DataFixtures.authenticationResponse.copy(isNew = isNew)
-    coEvery { authRepository.authenticate(any(), any()) } returns successNetworkCall(response)
+    coEvery { authRepository.authenticate(any(), any()) } returns Result.Success(response)
 
     val result = useCase(DataFixtures.PHONE_NUMBER, DataFixtures.SMS_CODE)
 

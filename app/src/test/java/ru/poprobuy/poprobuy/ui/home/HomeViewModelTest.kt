@@ -12,10 +12,12 @@ import org.junit.Test
 import ru.poprobuy.poprobuy.DataFixtures
 import ru.poprobuy.poprobuy.ViewModelTest
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
-import ru.poprobuy.poprobuy.data.mapper.toUiModel
+import ru.poprobuy.poprobuy.data.mapper.toDomain
 import ru.poprobuy.poprobuy.mockkObserver
-import ru.poprobuy.poprobuy.usecase.UseCaseResult
+import ru.poprobuy.poprobuy.testError
 import ru.poprobuy.poprobuy.usecase.home.GetHomeUseCase
+import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.util.network.NetworkError
 
 @ExperimentalCoroutinesApi
 class HomeViewModelTest : ViewModelTest() {
@@ -50,7 +52,7 @@ class HomeViewModelTest : ViewModelTest() {
   fun `verify flow when data was refreshed after successful fetch`() = runBlockingTest {
     executeSuccessFetch()
     clearAllMocks()
-    coEvery { getHomeUseCase() } returns UseCaseResult.Success(DataFixtures.home)
+    coEvery { getHomeUseCase() } returns Result.Success(DataFixtures.home.toDomain())
 
     viewModel.refreshData()
 
@@ -58,8 +60,8 @@ class HomeViewModelTest : ViewModelTest() {
       // Refresh
       isLoadingObserver.onChanged(false)
       getHomeUseCase()
+      dataObserver.onChanged(listOf(DataFixtures.home.toDomain()))
       isLoadingObserver.onChanged(false)
-      dataObserver.onChanged(listOf(DataFixtures.home.toUiModel()))
     }
   }
 
@@ -73,7 +75,7 @@ class HomeViewModelTest : ViewModelTest() {
     executeSuccessFetch()
     clearAllMocks()
 
-    coEvery { getHomeUseCase() } returns UseCaseResult.Failure(Unit)
+    coEvery { getHomeUseCase() } returns Result.Failure(NetworkError.testError())
 
     viewModel.refreshData()
 
@@ -81,9 +83,9 @@ class HomeViewModelTest : ViewModelTest() {
       // Loading should not be shown as we invoke refresh from swipe refresh layout
       isLoadingObserver.onChanged(false)
       getHomeUseCase()
-      isLoadingObserver.onChanged(false)
       dataObserver.onChanged(emptyList())
       errorOccurredObserver.onChanged(Unit)
+      isLoadingObserver.onChanged(false)
     }
   }
 
@@ -131,29 +133,29 @@ class HomeViewModelTest : ViewModelTest() {
 
   private fun executeSuccessFetch() {
     val home = DataFixtures.home
-    coEvery { getHomeUseCase() } returns UseCaseResult.Success(home)
+    coEvery { getHomeUseCase() } returns Result.Success(home.toDomain())
 
     viewModel.refreshData()
 
     coVerifySequence {
       isLoadingObserver.onChanged(true)
       getHomeUseCase()
+      dataObserver.onChanged(listOf(home.toDomain()))
       isLoadingObserver.onChanged(false)
-      dataObserver.onChanged(listOf(home.toUiModel()))
     }
   }
 
   private fun executeFailureFetch() {
-    coEvery { getHomeUseCase() } returns UseCaseResult.Failure(Unit)
+    coEvery { getHomeUseCase() } returns Result.Failure(NetworkError.testError())
 
     viewModel.refreshData()
 
     coVerifySequence {
       isLoadingObserver.onChanged(true)
       getHomeUseCase()
-      isLoadingObserver.onChanged(false)
       dataObserver.onChanged(emptyList())
       errorOccurredObserver.onChanged(Unit)
+      isLoadingObserver.onChanged(false)
     }
   }
 

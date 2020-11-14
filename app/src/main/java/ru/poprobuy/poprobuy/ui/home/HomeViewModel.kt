@@ -11,11 +11,10 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
-import ru.poprobuy.poprobuy.data.mapper.toUiModel
 import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.extension.isEmpty
-import ru.poprobuy.poprobuy.usecase.UseCaseResult
 import ru.poprobuy.poprobuy.usecase.home.GetHomeUseCase
+import ru.poprobuy.poprobuy.util.handle
 
 class HomeViewModel(
   private val navigation: HomeNavigation,
@@ -71,19 +70,14 @@ class HomeViewModel(
     isRefreshing = true
 
     _isLoadingLive.postValue(_dataLive.isEmpty() || _dataLive.value == errorState)
-    val result = getHomeUseCase()
-    _isLoadingLive.postValue(false)
-
-    when (result) {
-      is UseCaseResult.Success -> {
-        _dataLive.postValue(listOf(result.data.toUiModel()))
-      }
-      is UseCaseResult.Failure -> {
+    getHomeUseCase().handle(
+      onSuccess = { _dataLive.postValue(listOf(it)) },
+      onFailure = {
         _dataLive.postValue(errorState)
         _errorOccurredLiveEvent.postValue(Unit)
       }
-    }
-
+    )
+    _isLoadingLive.postValue(false)
     isRefreshing = false
   }
 
