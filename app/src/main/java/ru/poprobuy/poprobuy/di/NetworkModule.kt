@@ -72,6 +72,7 @@ fun createHttpClient(
     }
     addInterceptor(UserAgentInterceptor(userAgent))
     addInterceptor(AcceptInterceptor())
+    addInterceptor(AcceptLanguageInterceptor())
     addInterceptor(ApiVersionInterceptor(Constants.POPROBUY_API_VERSION))
     addInterceptor(NoContentInterceptor())
     addInterceptor(authorizationInterceptor)
