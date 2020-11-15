@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="home_empty_title">Теперь вы можете отсканировать чек из любого магазина, в котором есть аппарат
+    «Попробуй»</string>
+  <string name="home_empty_instructions_title">Помните 2 простых правила:</string>
+  <string name="home_empty_instructions_step_1">Минимальная сумма чека указана на боковой поверхности аппарата в
+    вашем магазине.</string>
+  <string name="home_empty_instructions_step_2">С момента покупки у вас есть 5 минут чтобы отсканировать чек в
+    приложении. Вы не сможете отсканировать следующий чек, пока не проверится текущий.</string>
+  <string name="home_empty_button_scan_qr">Сканировать чек</string>
+
+  <string name="home_approved_title">Отсканируйте QR код на аппарате либо введите его номер вручную</string>
+  <string name="home_approved_button_enter">Ввести</string>
+  <string name="home_approved_button_scan">Сканировать</string>
+
+  <string name="home_rejected_button_scan">Сканировать новый чек</string>
+
+</resources>

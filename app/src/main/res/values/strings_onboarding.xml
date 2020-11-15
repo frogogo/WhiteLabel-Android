@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="onboarding_button_next">Дальше</string>
+  <string name="onboarding_button_finish">Войти</string>
+
+  <string name="onboarding_page_1_title">Покупай</string>
+  <string name="onboarding_page_1_description">Совершай покупки в любимых магазинах</string>
+  <string name="onboarding_page_2_title">Сканируй</string>
+  <string name="onboarding_page_2_description">Сканируй чеки за покупки</string>
+  <string name="onboarding_page_3_title">Пробуй новое</string>
+  <string name="onboarding_page_3_description">Получай бесплатные товары из автомата</string>
+
+</resources>
