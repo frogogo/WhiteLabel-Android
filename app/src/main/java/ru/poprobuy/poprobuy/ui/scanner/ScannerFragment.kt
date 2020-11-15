@@ -34,7 +34,7 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
   lightStatusBar = false
 ), BarcodeCallback {
 
-  override val viewModel: ScannerViewModel by viewModel { parametersOf(args.mode) }
+  override val viewModel: ScannerViewModel by viewModel { parametersOf(args.mode, args.receiptId) }
 
   private val binding: FragmentScannerBinding by viewBinding()
   private val args: ScannerFragmentArgs by navArgs()

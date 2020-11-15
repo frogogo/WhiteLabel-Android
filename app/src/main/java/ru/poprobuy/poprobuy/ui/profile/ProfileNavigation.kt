@@ -1,6 +1,5 @@
 package ru.poprobuy.poprobuy.ui.profile
 
-import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
 
 interface ProfileNavigation {
@@ -12,7 +11,8 @@ interface ProfileNavigation {
 class ProfileNavigationImpl : ProfileNavigation {
 
   override fun navigateToReceipts(): NavigationCommand {
-    return NavigationCommand.ById(R.id.profile_to_receipts)
+    val action = ProfileFragmentDirections.profileToReceipts()
+    return NavigationCommand.ByAction(action)
   }
 
   override fun navigateToGoods(): NavigationCommand {
@@ -20,7 +20,8 @@ class ProfileNavigationImpl : ProfileNavigation {
   }
 
   override fun navigateToSplash(): NavigationCommand {
-    return NavigationCommand.ById(R.id.profile_to_splash)
+    val action = ProfileFragmentDirections.profileToSplash()
+    return NavigationCommand.ByAction(action)
   }
 
 }

@@ -1,20 +1,20 @@
 package ru.poprobuy.poprobuy.ui.home
 
-import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.dictionary.ScanMode
 
 interface HomeNavigation {
   fun navigateToProfile(): NavigationCommand
   fun navigateToReceiptScan(): NavigationCommand
-  fun navigateToMachineScan(): NavigationCommand
+  fun navigateToMachineScan(receiptId: Int): NavigationCommand
   fun navigateToMachineEnter(receiptId: Int): NavigationCommand
 }
 
 class HomeNavigationImpl : HomeNavigation {
 
   override fun navigateToProfile(): NavigationCommand {
-    return NavigationCommand.ById(R.id.home_to_profile)
+    val action = HomeFragmentDirections.homeToProfile()
+    return NavigationCommand.ByAction(action)
   }
 
   override fun navigateToReceiptScan(): NavigationCommand {
@@ -22,8 +22,11 @@ class HomeNavigationImpl : HomeNavigation {
     return NavigationCommand.ByAction(action)
   }
 
-  override fun navigateToMachineScan(): NavigationCommand {
-    val action = HomeFragmentDirections.homeToScanner(ScanMode.MACHINE)
+  override fun navigateToMachineScan(receiptId: Int): NavigationCommand {
+    val action = HomeFragmentDirections.homeToScanner(
+      mode = ScanMode.MACHINE,
+      receiptId = receiptId
+    )
     return NavigationCommand.ByAction(action)
   }
 

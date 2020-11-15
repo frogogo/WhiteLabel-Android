@@ -5,19 +5,22 @@ import ru.poprobuy.poprobuy.dictionary.ScanMode
 
 interface ReceiptDetailsNavigation {
   fun navigateToReceiptScan(): NavigationCommand
-  fun navigateToMachineScan(): NavigationCommand
+  fun navigateToMachineScan(receiptId: Int): NavigationCommand
   fun navigateToMachineEnter(receiptId: Int): NavigationCommand
 }
 
 class ReceiptDetailsNavigationImpl : ReceiptDetailsNavigation {
 
   override fun navigateToReceiptScan(): NavigationCommand {
-    val action = ReceiptDetailsBottomDialogDirections.receiptDetailsToScanner(ScanMode.RECEIPT)
+    val action = ReceiptDetailsBottomDialogDirections.receiptDetailsToScanner(mode = ScanMode.RECEIPT)
     return NavigationCommand.ByAction(action)
   }
 
-  override fun navigateToMachineScan(): NavigationCommand {
-    val action = ReceiptDetailsBottomDialogDirections.receiptDetailsToScanner(ScanMode.MACHINE)
+  override fun navigateToMachineScan(receiptId: Int): NavigationCommand {
+    val action = ReceiptDetailsBottomDialogDirections.receiptDetailsToScanner(
+      mode = ScanMode.MACHINE,
+      receiptId = receiptId
+    )
     return NavigationCommand.ByAction(action)
   }
 

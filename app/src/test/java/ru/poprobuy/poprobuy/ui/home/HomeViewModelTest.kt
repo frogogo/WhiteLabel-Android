@@ -126,9 +126,9 @@ class HomeViewModelTest : ViewModelTest() {
 
   @Test
   fun `view model navigates to machine scan`() {
-    viewModel.navigateToMachineScan()
+    viewModel.navigateToMachineScan(1)
 
-    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToMachineScan()
+    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToMachineScan(1)
   }
 
   private fun executeSuccessFetch() {

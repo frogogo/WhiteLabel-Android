@@ -1,6 +1,5 @@
 package ru.poprobuy.poprobuy.ui.auth.email
 
-import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
 
 interface AuthEmailNavigation {
@@ -10,7 +9,8 @@ interface AuthEmailNavigation {
 class AuthEmailNavigationImpl : AuthEmailNavigation {
 
   override fun navigateToApp(): NavigationCommand {
-    return NavigationCommand.ById(R.id.auth_email_to_home)
+    val action = AuthEmailFragmentDirections.authEmailToHome()
+    return NavigationCommand.ByAction(action)
   }
 
 }

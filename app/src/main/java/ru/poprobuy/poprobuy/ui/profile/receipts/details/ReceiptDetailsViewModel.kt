@@ -17,9 +17,9 @@ class ReceiptDetailsViewModel(
     navigation.navigateToMachineEnter(receiptId).navigate()
   }
 
-  fun navigateToMachineScan() {
+  fun navigateToMachineScan(receiptId: Int) {
     d { "Navigating to machine scan" }
-    navigation.navigateToMachineScan().navigate()
+    navigation.navigateToMachineScan(receiptId).navigate()
   }
 
 }

@@ -20,7 +20,7 @@ class ScannerViewModelTest {
   @Test
   fun `view model navigates to machine help`() {
     val navigation = mockk<ScannerNavigation>(relaxed = true)
-    val viewModel = ScannerViewModel(ScanMode.MACHINE, navigation, createReceiptUseCase, resourceProvider)
+    val viewModel = ScannerViewModel(ScanMode.MACHINE, 1, navigation, createReceiptUseCase, resourceProvider)
 
     viewModel.navigateToHelp()
 
@@ -30,7 +30,7 @@ class ScannerViewModelTest {
   @Test
   fun `view model navigates to receipt help`() {
     val navigation = mockk<ScannerNavigation>(relaxed = true)
-    val viewModel = ScannerViewModel(ScanMode.RECEIPT, navigation, createReceiptUseCase, resourceProvider)
+    val viewModel = ScannerViewModel(ScanMode.RECEIPT, -1, navigation, createReceiptUseCase, resourceProvider)
 
     viewModel.navigateToHelp()
 
@@ -40,11 +40,11 @@ class ScannerViewModelTest {
   @Test
   fun `view model navigates to manual machine enter`() {
     val navigation = mockk<ScannerNavigation>(relaxed = true)
-    val viewModel = ScannerViewModel(ScanMode.MACHINE, navigation, createReceiptUseCase, resourceProvider)
+    val viewModel = ScannerViewModel(ScanMode.MACHINE, 1, navigation, createReceiptUseCase, resourceProvider)
 
     viewModel.navigateToManualMachineEnter()
 
-    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToManualMachineEnter()
+    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToManualMachineEnter(1)
   }
 
 }

@@ -3,6 +3,7 @@ package ru.poprobuy.poprobuy.ui.scanner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.github.ajalt.timberkt.d
+import com.github.ajalt.timberkt.e
 import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.R
@@ -16,6 +17,7 @@ import ru.poprobuy.poprobuy.util.ResourceProvider
 
 class ScannerViewModel(
   private val scanMode: ScanMode,
+  private val receiptId: Int,
   private val navigation: ScannerNavigation,
   private val createReceiptUseCase: CreateReceiptUseCase,
   private val resourceProvider: ResourceProvider,
@@ -71,7 +73,11 @@ class ScannerViewModel(
 
   fun navigateToManualMachineEnter() {
     d { "Navigating to manual machine enter" }
-    navigation.navigateToManualMachineEnter().navigate()
+    receiptId.takeIf { it != -1 }?.let { id ->
+      navigation.navigateToManualMachineEnter(id).navigate()
+    } ?: run {
+      e { "Receipt wasn't set" }
+    }
   }
 
 }

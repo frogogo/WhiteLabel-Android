@@ -55,9 +55,10 @@ val screenModule = module {
 
   // Home
   viewModel { HomeViewModel(get(), get()) }
-  viewModel { (scanMode: ScanMode) ->
+  viewModel { (scanMode: ScanMode, receiptId: Int) ->
     ScannerViewModel(
       scanMode = scanMode,
+      receiptId = receiptId,
       navigation = get(),
       createReceiptUseCase = get(),
       resourceProvider = get()

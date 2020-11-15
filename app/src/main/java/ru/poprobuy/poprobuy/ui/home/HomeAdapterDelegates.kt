@@ -20,7 +20,7 @@ object HomeAdapterDelegates {
   }
 
   fun approvedStateDelegate(
-    scanMachineCallback: () -> Unit,
+    scanMachineCallback: (Int) -> Unit,
     enterMachineAction: (Int) -> Unit,
     scanReceiptAction: () -> Unit,
   ) = adapterDelegateViewBinding<HomeState.Receipt, RecyclerViewItem, ItemHomeReceiptBinding>(
@@ -28,7 +28,7 @@ object HomeAdapterDelegates {
   ) {
     binding.apply {
       layoutControlsGoods.apply {
-        buttonScanMachine.setOnSafeClickListener { scanMachineCallback() }
+        buttonScanMachine.setOnSafeClickListener { scanMachineCallback(item.receipt.id) }
         buttonEnterMachine.setOnSafeClickListener { enterMachineAction(item.receipt.id) }
       }
       layoutControlsScan.root.setOnSafeClickListener { scanReceiptAction() }
