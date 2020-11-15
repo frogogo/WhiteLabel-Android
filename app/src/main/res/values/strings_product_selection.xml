@@ -4,6 +4,8 @@
   <!-- Machine Select -->
   <string name="machine_select_title">Введите номер аппарата</string>
   <string name="machine_select_placeholder">Номер аппарата</string>
+  <string name="machine_select_error_not_found">Запрашиваемый автомат не был найден, проверьте правильность введённого
+    номера</string>
 
   <!-- Product Select -->
   <string name="product_select_title_confirmation">Вы точно хотите получить %1$s?</string>

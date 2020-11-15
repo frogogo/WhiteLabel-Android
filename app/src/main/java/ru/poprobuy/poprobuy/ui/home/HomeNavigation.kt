@@ -8,7 +8,7 @@ interface HomeNavigation {
   fun navigateToProfile(): NavigationCommand
   fun navigateToReceiptScan(): NavigationCommand
   fun navigateToMachineScan(): NavigationCommand
-  fun navigateToMachineEnter(): NavigationCommand
+  fun navigateToMachineEnter(receiptId: Int): NavigationCommand
 }
 
 class HomeNavigationImpl : HomeNavigation {
@@ -27,8 +27,9 @@ class HomeNavigationImpl : HomeNavigation {
     return NavigationCommand.ByAction(action)
   }
 
-  override fun navigateToMachineEnter(): NavigationCommand {
-    return NavigationCommand.ById(R.id.home_to_machine_select)
+  override fun navigateToMachineEnter(receiptId: Int): NavigationCommand {
+    val action = HomeFragmentDirections.homeToMachineSelect(receiptId)
+    return NavigationCommand.ByAction(action)
   }
 
 }

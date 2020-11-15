@@ -1,12 +1,11 @@
 package ru.poprobuy.poprobuy.data.network
 
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.PATCH
-import retrofit2.http.POST
+import retrofit2.http.*
 import ru.poprobuy.poprobuy.data.model.api.auth.*
 import ru.poprobuy.poprobuy.data.model.api.home.HomeResponse
+import ru.poprobuy.poprobuy.data.model.api.machine.VendingMachine
+import ru.poprobuy.poprobuy.data.model.api.machine.VendingMachineAssignRequest
 import ru.poprobuy.poprobuy.data.model.api.receipt.Receipt
 import ru.poprobuy.poprobuy.data.model.api.receipt.ReceiptCreationRequest
 import ru.poprobuy.poprobuy.data.model.api.user.User
@@ -40,5 +39,11 @@ interface PoprobuyApi {
 
   @GET("home")
   suspend fun getHome(): Response<HomeResponse>
+
+  @POST("vending_machines/{machineId}/assign")
+  suspend fun assignVendingMachine(
+    @Path("machineId") machineId: String,
+    @Body body: VendingMachineAssignRequest,
+  ): Response<VendingMachine>
 
 }

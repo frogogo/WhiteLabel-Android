@@ -51,5 +51,6 @@ fun InputLayout.initMachineNumberType() {
   editText.apply {
     inputType = InputType.TYPE_CLASS_NUMBER
     textKeyListener = DigitsKeyListener.getInstance(DIGITS_NUMBERS)
+    setMaxLength(Constants.VENDING_MACHINE_ID_MAX_LENGTH)
   }
 }

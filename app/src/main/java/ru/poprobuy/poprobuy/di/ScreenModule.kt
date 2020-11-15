@@ -4,6 +4,7 @@ package ru.poprobuy.poprobuy.di
 
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import ru.poprobuy.poprobuy.data.model.ui.machine.VendingMachineUiModel
 import ru.poprobuy.poprobuy.dictionary.ScanMode
 import ru.poprobuy.poprobuy.ui.MainViewModel
 import ru.poprobuy.poprobuy.ui.auth.code.AuthCodeViewModel
@@ -62,10 +63,10 @@ val screenModule = module {
       resourceProvider = get()
     )
   }
-  viewModel { MachineSelectViewModel(get()) }
+  viewModel { (receiptId: Int) -> MachineSelectViewModel(receiptId, get(), get(), get()) }
 
   // Products
-  viewModel { ProductsViewModel() }
+  viewModel { (vendingMachine: VendingMachineUiModel) -> ProductsViewModel(vendingMachine) }
   viewModel { ProductSelectionViewModel() }
   viewModel { ProductSelectionInteractor() }
 

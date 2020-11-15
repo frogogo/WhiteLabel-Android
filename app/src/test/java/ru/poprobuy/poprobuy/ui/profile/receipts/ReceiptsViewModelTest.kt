@@ -51,8 +51,8 @@ class ReceiptsViewModelTest : ViewModelTest() {
     coVerifySequence {
       isLoadingObserver.onChanged(true)
       getReceiptsUseCase()
-      dataObserver.onChanged(isNull(inverse = true))
       isLoadingObserver.onChanged(false)
+      dataObserver.onChanged(isNull(inverse = true))
     }
   }
 
@@ -87,8 +87,8 @@ class ReceiptsViewModelTest : ViewModelTest() {
     coVerifySequence {
       isLoadingObserver.onChanged(true)
       getReceiptsUseCase()
-      errorOccurredObserver.onChanged(Unit)
       isLoadingObserver.onChanged(false)
+      errorOccurredObserver.onChanged(Unit)
     }
   }
 

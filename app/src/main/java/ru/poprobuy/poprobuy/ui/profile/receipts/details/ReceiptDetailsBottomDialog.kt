@@ -61,7 +61,7 @@ class ReceiptDetailsBottomDialog : BaseBottomSheetDialogFragment<ReceiptDetailsV
       // Controls
       layoutControlsGoods.apply {
         root.setVisible(receipt.state == ReceiptState.APPROVED)
-        buttonEnterMachine.setOnSafeClickListener(viewModel::navigateToMachineEnter)
+        buttonEnterMachine.setOnSafeClickListener { viewModel.navigateToMachineEnter(receipt.id) }
         buttonScanMachine.setOnSafeClickListener(viewModel::navigateToMachineScan)
       }
       layoutControlsScan.root.apply {

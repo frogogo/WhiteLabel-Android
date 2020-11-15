@@ -70,14 +70,15 @@ class HomeViewModel(
     isRefreshing = true
 
     _isLoadingLive.postValue(_dataLive.isEmpty() || _dataLive.value == errorState)
-    getHomeUseCase().handle(
+    val result = getHomeUseCase()
+    _isLoadingLive.postValue(false)
+    result.handle(
       onSuccess = { _dataLive.postValue(listOf(it)) },
       onFailure = {
         _dataLive.postValue(errorState)
         _errorOccurredLiveEvent.postValue(Unit)
       }
     )
-    _isLoadingLive.postValue(false)
     isRefreshing = false
   }
 
@@ -91,9 +92,9 @@ class HomeViewModel(
     navigation.navigateToReceiptScan().navigate()
   }
 
-  fun navigateToMachineEnter() {
+  fun navigateToMachineEnter(receiptId: Int) {
     d { "Navigating to machine enter" }
-    navigation.navigateToMachineEnter().navigate()
+    navigation.navigateToMachineEnter(receiptId).navigate()
   }
 
   fun navigateToMachineScan() {

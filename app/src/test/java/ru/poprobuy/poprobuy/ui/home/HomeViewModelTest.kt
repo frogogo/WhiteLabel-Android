@@ -60,8 +60,8 @@ class HomeViewModelTest : ViewModelTest() {
       // Refresh
       isLoadingObserver.onChanged(false)
       getHomeUseCase()
-      dataObserver.onChanged(listOf(DataFixtures.home.toDomain()))
       isLoadingObserver.onChanged(false)
+      dataObserver.onChanged(listOf(DataFixtures.home.toDomain()))
     }
   }
 
@@ -83,9 +83,9 @@ class HomeViewModelTest : ViewModelTest() {
       // Loading should not be shown as we invoke refresh from swipe refresh layout
       isLoadingObserver.onChanged(false)
       getHomeUseCase()
+      isLoadingObserver.onChanged(false)
       dataObserver.onChanged(emptyList())
       errorOccurredObserver.onChanged(Unit)
-      isLoadingObserver.onChanged(false)
     }
   }
 
@@ -119,9 +119,9 @@ class HomeViewModelTest : ViewModelTest() {
 
   @Test
   fun `view model navigates to machine code enter`() {
-    viewModel.navigateToMachineEnter()
+    viewModel.navigateToMachineEnter(1)
 
-    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToMachineEnter()
+    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToMachineEnter(1)
   }
 
   @Test
@@ -140,8 +140,8 @@ class HomeViewModelTest : ViewModelTest() {
     coVerifySequence {
       isLoadingObserver.onChanged(true)
       getHomeUseCase()
-      dataObserver.onChanged(listOf(home.toDomain()))
       isLoadingObserver.onChanged(false)
+      dataObserver.onChanged(listOf(home.toDomain()))
     }
   }
 
@@ -153,9 +153,9 @@ class HomeViewModelTest : ViewModelTest() {
     coVerifySequence {
       isLoadingObserver.onChanged(true)
       getHomeUseCase()
+      isLoadingObserver.onChanged(false)
       dataObserver.onChanged(emptyList())
       errorOccurredObserver.onChanged(Unit)
-      isLoadingObserver.onChanged(false)
     }
   }
 

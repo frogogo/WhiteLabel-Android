@@ -11,6 +11,7 @@ fun Activity.hideKeyboard() {
     view = View(this)
   }
   view.hideKeyboard()
+  view.clearFocus()
 }
 
 fun Activity.setStatusBarColor(color: Int) {

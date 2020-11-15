@@ -208,6 +208,9 @@
     <action
       android:id="@+id/machine_select_to_products"
       app:destination="@id/products" />
+    <argument
+      android:name="receiptId"
+      app:argType="integer" />
   </fragment>
 
   <fragment
@@ -237,7 +240,11 @@
   <fragment
     android:id="@+id/products"
     android:name="ru.poprobuy.poprobuy.ui.products.ProductsFragment"
-    tools:layout="@layout/fragment_products" />
+    tools:layout="@layout/fragment_products">
+    <argument
+      android:name="vendingMachine"
+      app:argType="ru.poprobuy.poprobuy.data.model.ui.machine.VendingMachineUiModel" />
+  </fragment>
 
   <fragment
     android:id="@+id/web_view"

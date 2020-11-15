@@ -1,13 +1,12 @@
 package ru.poprobuy.poprobuy.ui.profile.receipts.details
 
-import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.dictionary.ScanMode
 
 interface ReceiptDetailsNavigation {
   fun navigateToReceiptScan(): NavigationCommand
   fun navigateToMachineScan(): NavigationCommand
-  fun navigateToMachineEnter(): NavigationCommand
+  fun navigateToMachineEnter(receiptId: Int): NavigationCommand
 }
 
 class ReceiptDetailsNavigationImpl : ReceiptDetailsNavigation {
@@ -22,8 +21,9 @@ class ReceiptDetailsNavigationImpl : ReceiptDetailsNavigation {
     return NavigationCommand.ByAction(action)
   }
 
-  override fun navigateToMachineEnter(): NavigationCommand {
-    return NavigationCommand.ById(R.id.receipt_details_to_machine_select)
+  override fun navigateToMachineEnter(receiptId: Int): NavigationCommand {
+    val action = ReceiptDetailsBottomDialogDirections.receiptDetailsToMachineSelect(receiptId)
+    return NavigationCommand.ByAction(action)
   }
 
 }

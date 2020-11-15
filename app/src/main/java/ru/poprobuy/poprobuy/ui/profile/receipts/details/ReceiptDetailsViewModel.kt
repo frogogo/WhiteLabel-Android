@@ -12,9 +12,9 @@ class ReceiptDetailsViewModel(
     navigation.navigateToReceiptScan().navigate()
   }
 
-  fun navigateToMachineEnter() {
+  fun navigateToMachineEnter(receiptId: Int) {
     d { "Navigating to machine enter" }
-    navigation.navigateToMachineEnter().navigate()
+    navigation.navigateToMachineEnter(receiptId).navigate()
   }
 
   fun navigateToMachineScan() {

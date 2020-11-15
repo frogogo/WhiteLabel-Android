@@ -34,11 +34,12 @@ class ReceiptsViewModel(
   fun loadReceipts() {
     viewModelScope.launch {
       _isLoadingLive.postValue(_dataLive.isEmpty())
-      getReceiptsUseCase().handle(
+      val result = getReceiptsUseCase()
+      _isLoadingLive.postValue(false)
+      result.handle(
         onSuccess = { _dataLive.postValue(ReceiptsDataFactory.createReceiptsData(it)) },
         onFailure = { _errorOccurredLiveEvent.postValue(Unit) }
       )
-      _isLoadingLive.postValue(false)
     }
   }
 

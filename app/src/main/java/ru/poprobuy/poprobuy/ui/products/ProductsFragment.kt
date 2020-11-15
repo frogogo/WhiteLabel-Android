@@ -1,9 +1,11 @@
 package ru.poprobuy.poprobuy.ui.products
 
+import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.github.ajalt.timberkt.d
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.recycler.BaseDelegationAdapter
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
@@ -23,10 +25,11 @@ class ProductsFragment : BaseFragment<ProductsViewModel>(
   screen = AnalyticsScreen.PRODUCTS
 ) {
 
-  override val viewModel: ProductsViewModel by viewModel()
+  override val viewModel: ProductsViewModel by viewModel { parametersOf(args.vendingMachine) }
 
   private val selectionInteractor: ProductSelectionInteractor by sharedViewModel()
   private val binding: FragmentProductsBinding by viewBinding()
+  private val args: ProductsFragmentArgs by navArgs()
   private val adapter: BaseDelegationAdapter by lazy { createAdapter() }
 
   override fun initViews() {
