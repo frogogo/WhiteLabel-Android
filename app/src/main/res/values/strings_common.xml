@@ -4,6 +4,7 @@
   <!-- Common -->
   <string name="common_button_ok">Ок</string>
   <string name="common_button_cancel">Отменить</string>
+  <string name="common_button_continue">Продолжить</string>
   <string name="common_button_yes">Да</string>
   <string name="common_button_no">Нет</string>
 
