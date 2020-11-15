@@ -6,6 +6,10 @@ import com.google.firebase.analytics.FirebaseAnalytics
 
 class AnalyticsManager(private val analytics: FirebaseAnalytics) {
 
+  fun logEvent(event: AnalyticsEvent) {
+    analytics.logEvent(event.eventName, event.getEventParameters())
+  }
+
   fun trackScreen(screenName: String, className: String) {
     d { "Screen tracked - $screenName, $className" }
     val params = bundleOf(
