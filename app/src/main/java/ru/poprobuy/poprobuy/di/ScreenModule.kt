@@ -5,6 +5,7 @@ package ru.poprobuy.poprobuy.di
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import ru.poprobuy.poprobuy.dictionary.ScanMode
+import ru.poprobuy.poprobuy.ui.MainViewModel
 import ru.poprobuy.poprobuy.ui.auth.code.AuthCodeViewModel
 import ru.poprobuy.poprobuy.ui.auth.email.AuthEmailViewModel
 import ru.poprobuy.poprobuy.ui.auth.name.AuthNameViewModel
@@ -24,13 +25,14 @@ import ru.poprobuy.poprobuy.ui.splash.SplashViewModel
 import ru.poprobuy.poprobuy.ui.webview.WebViewViewModel
 
 val screenModule = module {
+  viewModel { MainViewModel(get(), get()) }
   viewModel { SplashViewModel(get(), get()) }
   viewModel { OnboardingViewModel(get(), get()) }
   viewModel { WebViewViewModel() }
 
   // Auth
   viewModel { AuthPolicyViewModel(get(), get()) }
-  viewModel { AuthPhoneViewModel(get(), get()) }
+  viewModel { (showLogoutDialog: Boolean) -> AuthPhoneViewModel(showLogoutDialog, get(), get()) }
   viewModel { (phoneNumber: String) ->
     AuthCodeViewModel(
       phoneNumber = phoneNumber,

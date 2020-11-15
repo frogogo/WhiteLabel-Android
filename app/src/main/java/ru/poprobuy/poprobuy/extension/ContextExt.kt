@@ -11,6 +11,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
+import androidx.work.WorkManager
 
 fun Context.fetchDrawable(@DrawableRes id: Int) = ContextCompat.getDrawable(this, id)
 
@@ -43,6 +44,9 @@ fun Context.vibratePhone(duration: Long = 200) {
     vibrator.vibrate(duration)
   }
 }
+
+fun Context.getWorkManager(): WorkManager =
+  WorkManager.getInstance(applicationContext)
 
 // Services
 fun Context.getInputMethodManager() = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

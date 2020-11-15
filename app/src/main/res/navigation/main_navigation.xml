@@ -87,6 +87,10 @@
       app:exitAnim="@anim/slide_out_left"
       app:popEnterAnim="@anim/slide_in_left"
       app:popExitAnim="@anim/slide_out_right" />
+    <argument
+      android:name="showLogoutDialog"
+      app:argType="boolean"
+      android:defaultValue="false" />
   </fragment>
 
   <fragment
@@ -252,5 +256,11 @@
   <action
     android:id="@+id/action_global_web_view"
     app:destination="@id/web_view" />
+
+  <action
+    android:id="@+id/action_global_login_destructive"
+    app:destination="@id/auth_phone"
+    app:popUpTo="@id/main_navigation"
+    app:popUpToInclusive="true" />
 
 </navigation>

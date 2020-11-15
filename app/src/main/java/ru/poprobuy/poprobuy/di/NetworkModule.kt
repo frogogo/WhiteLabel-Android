@@ -4,6 +4,7 @@ package ru.poprobuy.poprobuy.di
 
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
+import okhttp3.Authenticator
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -33,12 +34,14 @@ private const val CACHE_DIRECTORY = "network"
 val networkModule = module {
   // Interceptors
   single { AuthInterceptor(get()) as Interceptor }
+  single { TokenAuthenticator() as Authenticator }
 
   // Network
   single {
     createHttpClient(
       context = androidContext(),
       authorizationInterceptor = get(),
+      authenticator = get(),
       userAgent = UserAgentFactory.create()
     )
   }
@@ -49,11 +52,15 @@ val networkModule = module {
     )
   }
   single { getApi<PoprobuyApi>(get()) }
+
+  // Util
+  single { AutoLogoutNotifier(get()) }
 }
 
 fun createHttpClient(
   context: Context,
   authorizationInterceptor: Interceptor,
+  authenticator: Authenticator,
   userAgent: String,
 ): OkHttpClient {
   return OkHttpClient.Builder().apply {
@@ -75,6 +82,9 @@ fun createHttpClient(
     addInterceptor(AcceptLanguageInterceptor())
     addInterceptor(ApiVersionInterceptor(Constants.POPROBUY_API_VERSION))
     addInterceptor(NoContentInterceptor())
+
+    // Auth
+    authenticator(authenticator)
     addInterceptor(authorizationInterceptor)
 
     // Cache

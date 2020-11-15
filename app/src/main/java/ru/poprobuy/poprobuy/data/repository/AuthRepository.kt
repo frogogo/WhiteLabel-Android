@@ -1,10 +1,7 @@
 package ru.poprobuy.poprobuy.data.repository
 
 import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
-import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationRequest
-import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponse
-import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequest
-import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequestResponse
+import ru.poprobuy.poprobuy.data.model.api.auth.*
 import ru.poprobuy.poprobuy.data.network.PoprobuyApi
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
 import ru.poprobuy.poprobuy.util.Result
@@ -32,9 +29,21 @@ class AuthRepository(
     return apiCall { api.authenticate(request) }.mapToResult()
   }
 
-  fun saveAuthToken(token: String) {
-    userPreferences.accessToken = token
+  suspend fun refreshToken(refreshToken: String): Result<AuthenticationResponse, NetworkError<ErrorResponse>> {
+    val request = TokenRefreshRequest(refreshToken)
+    return apiCall { api.refreshToken(request) }.mapToResult()
   }
+
+  fun saveAuthTokens(accessToken: String, refreshToken: String) {
+    userPreferences.apply {
+      this.accessToken = accessToken
+      this.refreshToken = refreshToken
+    }
+  }
+
+  fun getAccessToken(): String? = userPreferences.accessToken
+
+  fun getRefreshToken(): String? = userPreferences.refreshToken
 
   fun setPolicyAccepted() {
     userPreferences.policyAccepted = true

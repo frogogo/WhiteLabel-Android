@@ -5,10 +5,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
-import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationRequest
-import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponse
-import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequest
-import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequestResponse
+import ru.poprobuy.poprobuy.data.model.api.auth.*
 import ru.poprobuy.poprobuy.data.model.api.home.HomeResponse
 import ru.poprobuy.poprobuy.data.model.api.receipt.Receipt
 import ru.poprobuy.poprobuy.data.model.api.receipt.ReceiptCreationRequest
@@ -22,6 +19,9 @@ interface PoprobuyApi {
 
   @POST("user_token")
   suspend fun authenticate(@Body body: AuthenticationRequest): Response<AuthenticationResponse>
+
+  @POST("user_token")
+  suspend fun refreshToken(@Body body: TokenRefreshRequest): Response<AuthenticationResponse>
 
   @PATCH("user")
   suspend fun updateUser(@Body body: UserUpdateRequest): Response<Unit>

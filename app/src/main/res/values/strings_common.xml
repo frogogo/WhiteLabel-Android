@@ -23,6 +23,7 @@
 
   <string name="error_something_went_wrong">Что-то пошло не так!</string>
   <string name="error_something_went_wrong_retry">Повторить</string>
+  <string name="error_logout">Произошла внутренняя ошибка, авторизуйтесь заново</string>
 
   <!-- Error State -->
   <string name="view_error_state_description">Ошибка загрузки</string>

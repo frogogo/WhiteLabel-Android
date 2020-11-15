@@ -8,7 +8,9 @@ import com.github.ajalt.timberkt.Timber
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import ru.poprobuy.poprobuy.di.appComponent
+import ru.poprobuy.poprobuy.extension.getWorkManager
 import ru.poprobuy.poprobuy.util.FirebaseReportingTree
+import ru.poprobuy.poprobuy.work.TokenRefreshWorker
 
 @Suppress("unused")
 class PoprobuyApp : Application(), ImageLoaderFactory {
@@ -17,6 +19,19 @@ class PoprobuyApp : Application(), ImageLoaderFactory {
     super.onCreate()
     initLogger()
     initKoin()
+    scheduleWorks()
+  }
+
+  override fun newImageLoader(): ImageLoader {
+    return ImageLoader.Builder(applicationContext)
+      .crossfade(true) // Show a short crossfade when loading images from network or disk.
+      .apply {
+        // Enable logging to the standard Android log if this is a debug build.
+        if (BuildConfig.DEBUG) {
+          logger(DebugLogger())
+        }
+      }
+      .build()
   }
 
   private fun initLogger() {
@@ -30,16 +45,8 @@ class PoprobuyApp : Application(), ImageLoaderFactory {
     }
   }
 
-  override fun newImageLoader(): ImageLoader {
-    return ImageLoader.Builder(applicationContext)
-      .crossfade(true) // Show a short crossfade when loading images from network or disk.
-      .apply {
-        // Enable logging to the standard Android log if this is a debug build.
-        if (BuildConfig.DEBUG) {
-          logger(DebugLogger())
-        }
-      }
-      .build()
+  private fun scheduleWorks() {
+    TokenRefreshWorker.enqueue(applicationContext.getWorkManager())
   }
 
 }
