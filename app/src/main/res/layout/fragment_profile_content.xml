@@ -81,6 +81,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/spacing_8"
     android:layout_marginBottom="@dimen/spacing_8"
+    android:visibility="invisible"
     app:layout_constraintBottom_toTopOf="@+id/textViewVersion"
     app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
     app:layout_constraintRight_toRightOf="@id/guidelineRight"
