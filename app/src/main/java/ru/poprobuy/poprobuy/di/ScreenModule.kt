@@ -20,6 +20,7 @@ import ru.poprobuy.poprobuy.ui.products.select.ProductSelectionInteractor
 import ru.poprobuy.poprobuy.ui.products.select.ProductSelectionViewModel
 import ru.poprobuy.poprobuy.ui.profile.ProfileViewModel
 import ru.poprobuy.poprobuy.ui.profile.receipts.ReceiptsViewModel
+import ru.poprobuy.poprobuy.ui.profile.receipts.details.ReceiptDetailsButtonState
 import ru.poprobuy.poprobuy.ui.profile.receipts.details.ReceiptDetailsViewModel
 import ru.poprobuy.poprobuy.ui.scanner.ScannerViewModel
 import ru.poprobuy.poprobuy.ui.splash.SplashViewModel
@@ -74,5 +75,5 @@ val screenModule = module {
   // Profile
   viewModel { ProfileViewModel(get(), get(), get(), get(), get()) }
   viewModel { ReceiptsViewModel(get(), get()) }
-  viewModel { ReceiptDetailsViewModel(get()) }
+  viewModel { (buttonState: ReceiptDetailsButtonState) -> ReceiptDetailsViewModel(get(), buttonState) }
 }

@@ -22,5 +22,9 @@
   <string name="receipt_scan_available_description">Минимальная сумма чека указана на боковой поверхности аппарата
   </string>
 
+  <string name="receipt_details_error_create_unavailable">Сканирование нового чека недоступно, т.к. у вас есть чек в
+    состоянии \"Принят\" или \"Проверяется\"</string>
+  <string name="receipt_details_error_take_unavailable">Получение товара недоступно, т.к. у вас нет чека в состоянии
+    \"Принят\"</string>
 
 </resources>

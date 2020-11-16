@@ -239,6 +239,9 @@
     <action
       android:id="@+id/receipt_details_to_machine_select"
       app:destination="@id/machine_select" />
+    <argument
+      android:name="buttonState"
+      app:argType="ru.poprobuy.poprobuy.ui.profile.receipts.details.ReceiptDetailsButtonState" />
   </dialog>
 
   <fragment

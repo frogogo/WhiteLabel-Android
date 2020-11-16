@@ -27,6 +27,8 @@ class ReceiptsViewModel(
   private val _errorOccurredLiveEvent = LiveEvent<Unit>()
   val errorOccurredLiveEvent = _errorOccurredLiveEvent.asLiveData()
 
+  private val receipts: MutableList<ReceiptUiModel> = mutableListOf()
+
   override fun onCreate() {
     loadReceipts()
   }
@@ -37,7 +39,13 @@ class ReceiptsViewModel(
       val result = getReceiptsUseCase()
       _isLoadingLive.postValue(false)
       result.handle(
-        onSuccess = { _dataLive.postValue(ReceiptsDataFactory.createReceiptsData(it)) },
+        onSuccess = { receipts ->
+          _dataLive.postValue(ReceiptsDataUtils.createReceiptsData(receipts))
+          this@ReceiptsViewModel.receipts.apply {
+            clear()
+            addAll(receipts)
+          }
+        },
         onFailure = { _errorOccurredLiveEvent.postValue(Unit) }
       )
     }
@@ -45,7 +53,10 @@ class ReceiptsViewModel(
 
   fun navigateToReceipt(receipt: ReceiptUiModel) {
     d { "Navigating to receipt details" }
-    navigation.navigateToReceipt(receipt).navigate()
+    navigation.navigateToReceipt(
+      receipt = receipt,
+      ReceiptsDataUtils.getReceiptDetailsButtonState(receipts)
+    ).navigate()
   }
 
 }
