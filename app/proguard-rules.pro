@@ -5,7 +5,6 @@
 -repackageclasses ru.poprobuy.poprobuy
 
 -keep class ru.poprobuy.poprobuy.dictionary.** { *; }
--keep class ru.poprobuy.poprobuy.data.model.** { *; }
 
 ############
 # Crashlytics
