@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="receipt_number">№ %1$d</string>
+  <string name="receipt_state_approved">Поздравляем, чек принят!</string>
+  <string name="receipt_state_approved_description">Теперь вы можете получить товар на пробу в любом магазине %1$s,
+    в котором есть аппарат «Попробуй»</string>
+  <string name="receipt_state_approved_footer_1">Пока вы не получите товар, вы не сможете отсканировать новый чек.
+  </string>
+  <string name="receipt_state_approved_footer_2">После ввода номера у вас будет 1 минута, чтобы выбрать товар.</string>
+
+  <string name="receipt_state_rejected">Ваш чек не прошел проверку!</string>
+  <string name="receipt_state_rejected_reason">Причина:</string>
+  <string name="receipt_state_rejected_info">Вы можете отсканировать чек из любого магазина, в котором есть аппарат
+    «Попробуй».</string>
+
+  <string name="receipt_state_processing">Ваш чек находится на проверке</string>
+  <string name="receipt_state_processing_description">Обычно это занимает несколько минут, но очень редко надо больше
+    времени.</string>
+  <string name="receipt_state_processing_footer">Если вы не хотите ждать, вы можете пойти домой. Когда ваш чек пройдет
+    проверку, вы получите уведомление и сможете получить подарок при следующем посещении магазина.</string>
+
+  <string name="receipt_state_completed">Чек выполнен!</string>
+  <string name="receipt_state_completed_subtitle">Вы получили %1$s</string>
+  <string name="receipt_state_completed_next_step">Вы можете отсканировать новый чек и снова попробовать что-то новое!
+  </string>
+
+
+</resources>

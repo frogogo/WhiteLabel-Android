@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+  <string name="auth_button_continue">Продолжить</string>
+
+  <string name="auth_policy_title">Попробуй</string>
+  <string name="auth_policy_text">Пользуясь этим приложением, вы соглашаетесь с использованием технологий cooke-файлов
+    и со сбором и обработкой персональных данных.\n\nЭти технологии применяются для анализа и улучшения вашего
+    пользовательского опыта.</string>
+  <string name="auth_policy_button_continue">Продолжить</string>
+
+  <string name="auth_phone_title">Вход</string>
+  <string name="auth_phone_subtitle">Введите номер телефона</string>
+  <string name="auth_phone_placeholder" tools:ignore="TypographyDashes">(000) 000-00-00</string>
+  <string name="auth_phone_error_too_many_requests">Превышено количество попыток запроса кода подтверждения</string>
+
+  <string name="auth_code_title">Введите код</string>
+  <string name="auth_code_subtitle">Код отправлен на номер</string>
+  <string name="auth_code_placeholder">・・・・</string>
+  <string name="auth_code_button_phone_change">Изменить</string>
+  <string name="auth_code_button_resend_code">Выслать новый код</string>
+  <string name="auth_code_button_resend_resending">Отправка кода</string>
+  <string name="auth_code_error_invalid_code">Неверный код, попробуйте еще раз или запросите новый</string>
+  <string name="auth_code_error_resend">Ошибка отправки</string>
+
+  <string name="auth_name_title">Давайте познакомимся!</string>
+  <string name="auth_name_subtitle">Как вас зовут?</string>
+  <string name="auth_name_placeholder">Ваше имя</string>
+
+  <string name="auth_email_title">Отлично,\n%1$s!</string>
+  <string name="auth_email_subtitle">Осталось ввести email</string>
+  <string name="auth_email_placeholder">Ваш email</string>
+
+</resources>

@@ -2,11 +2,14 @@ package ru.poprobuy.poprobuy.arch.ui
 
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.ColorRes
 import androidx.annotation.LayoutRes
+import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
@@ -82,6 +85,11 @@ abstract class BaseFragment<out T : BaseViewModel>(
     )
   }
 
+  override fun onDestroy() {
+    super.onDestroy()
+    (view as? ViewGroup)?.let(this::unsubscribeAdapters)
+  }
+
   open fun initViews(): Unit = Unit
 
   open fun initObservers(): Unit = Unit
@@ -99,6 +107,15 @@ abstract class BaseFragment<out T : BaseViewModel>(
   private fun handleCommand(command: BaseCommand) {
     when (command) {
       BaseCommand.HideKeyboard -> requireActivity().hideKeyboard()
+    }
+  }
+
+  private fun unsubscribeAdapters(viewGroup: ViewGroup) {
+    viewGroup.children.forEach { view ->
+      when (view) {
+        is RecyclerView -> view.adapter = null
+        is ViewGroup -> unsubscribeAdapters(view)
+      }
     }
   }
 

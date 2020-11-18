@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- Common -->
+  <string name="common_button_ok">Ок</string>
+  <string name="common_button_continue">Продолжить</string>
+  <string name="common_button_cancel">Отменить</string>
+  <string name="common_button_yes">Да</string>
+  <string name="common_button_no">Нет</string>
+
+  <!-- Errors -->
+  <string name="error_phone_length">Телефон не может быть меньше 10 символов</string>
+  <string name="error_phone_format">Номер телефона содержит недопустимые символы</string>
+  <string name="error_user_name_length">Имя должно быть от 2 до 20 букв</string>
+  <string name="error_user_name_format">Имя содержит недопустимые символы</string>
+  <string name="error_confirmation_code_length">Код должен состоять из 4 цифр</string>
+  <string name="error_confirmation_code_format">Код должен состоять только из цифр</string>
+  <string name="error_email_format">Такой email не подойдет</string>
+  <string name="error_machine_number_empty">Необходимо ввести номер аппарата</string>
+
+  <string name="error_receipt_not_unique">Данный чек уже был отсканирован ранее</string>
+  <string name="error_receipt_format">Отсканированный QR-код имеет неверный формат</string>
+  <string name="error_receipt_daily_limit">Превышено максимальное число сканирований на сегодня</string>
+
+  <string name="error_something_went_wrong">Что-то пошло не так!</string>
+  <string name="error_something_went_wrong_retry">Повторить</string>
+  <string name="error_logout">Произошла внутренняя ошибка, авторизуйтесь заново</string>
+
+  <!-- Error State -->
+  <string name="view_error_state_description">Ошибка загрузки</string>
+  <string name="view_error_state_button">Повторить</string>
+
+</resources>

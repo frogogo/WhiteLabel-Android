@@ -1,6 +1,5 @@
 package ru.poprobuy.poprobuy.ui.auth.policy
 
-import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
 
 interface AuthPolicyNavigation {
@@ -10,7 +9,8 @@ interface AuthPolicyNavigation {
 class AuthPolicyNavigationImpl : AuthPolicyNavigation {
 
   override fun navigateToAuthPhoneEnter(): NavigationCommand {
-    return NavigationCommand.ById(R.id.auth_policy_to_auth_phone)
+    val action = AuthPolicyFragmentDirections.authPolicyToAuthPhone()
+    return NavigationCommand.ByAction(action)
   }
 
 }

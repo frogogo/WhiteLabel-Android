@@ -1,29 +1,32 @@
 package ru.poprobuy.poprobuy.ui.profile.receipts.details
 
-import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.dictionary.ScanMode
 
 interface ReceiptDetailsNavigation {
   fun navigateToReceiptScan(): NavigationCommand
-  fun navigateToMachineScan(): NavigationCommand
-  fun navigateToMachineEnter(): NavigationCommand
+  fun navigateToMachineScan(receiptId: Int): NavigationCommand
+  fun navigateToMachineEnter(receiptId: Int): NavigationCommand
 }
 
 class ReceiptDetailsNavigationImpl : ReceiptDetailsNavigation {
 
   override fun navigateToReceiptScan(): NavigationCommand {
-    val action = ReceiptDetailsBottomDialogDirections.receiptDetailsToScanner(ScanMode.RECEIPT)
+    val action = ReceiptDetailsBottomDialogDirections.receiptDetailsToScanner(mode = ScanMode.RECEIPT)
     return NavigationCommand.ByAction(action)
   }
 
-  override fun navigateToMachineScan(): NavigationCommand {
-    val action = ReceiptDetailsBottomDialogDirections.receiptDetailsToScanner(ScanMode.MACHINE)
+  override fun navigateToMachineScan(receiptId: Int): NavigationCommand {
+    val action = ReceiptDetailsBottomDialogDirections.receiptDetailsToScanner(
+      mode = ScanMode.MACHINE,
+      receiptId = receiptId
+    )
     return NavigationCommand.ByAction(action)
   }
 
-  override fun navigateToMachineEnter(): NavigationCommand {
-    return NavigationCommand.ById(R.id.receipt_details_to_machine_select)
+  override fun navigateToMachineEnter(receiptId: Int): NavigationCommand {
+    val action = ReceiptDetailsBottomDialogDirections.receiptDetailsToMachineSelect(receiptId)
+    return NavigationCommand.ByAction(action)
   }
 
 }

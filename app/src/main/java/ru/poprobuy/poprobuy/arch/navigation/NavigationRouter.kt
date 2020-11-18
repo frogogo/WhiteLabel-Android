@@ -13,9 +13,6 @@ class NavigationRouter(
    */
   fun navigate(command: NavigationCommand) {
     when (command) {
-      is NavigationCommand.ById -> {
-        controller.navigate(command.id)
-      }
       is NavigationCommand.ByAction -> {
         controller.navigate(command.action, command.navOptions)
       }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <plurals name="seconds_remaining">
+    <item quantity="one">%1$d секунда</item>
+    <item quantity="two">%1$d секунды</item>
+    <item quantity="few">%1$d секунды</item>
+    <item quantity="other">%1$d секунд</item>
+  </plurals>
+
+</resources>

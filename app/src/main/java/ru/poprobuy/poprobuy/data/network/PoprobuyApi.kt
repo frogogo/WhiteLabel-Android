@@ -1,15 +1,11 @@
 package ru.poprobuy.poprobuy.data.network
 
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.PATCH
-import retrofit2.http.POST
-import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationRequest
-import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponse
-import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequest
-import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequestResponse
+import retrofit2.http.*
+import ru.poprobuy.poprobuy.data.model.api.auth.*
 import ru.poprobuy.poprobuy.data.model.api.home.HomeResponse
+import ru.poprobuy.poprobuy.data.model.api.machine.VendingMachine
+import ru.poprobuy.poprobuy.data.model.api.machine.VendingMachineAssignRequest
 import ru.poprobuy.poprobuy.data.model.api.receipt.Receipt
 import ru.poprobuy.poprobuy.data.model.api.receipt.ReceiptCreationRequest
 import ru.poprobuy.poprobuy.data.model.api.user.User
@@ -22,6 +18,9 @@ interface PoprobuyApi {
 
   @POST("user_token")
   suspend fun authenticate(@Body body: AuthenticationRequest): Response<AuthenticationResponse>
+
+  @POST("user_token")
+  suspend fun refreshToken(@Body body: TokenRefreshRequest): Response<AuthenticationResponse>
 
   @PATCH("user")
   suspend fun updateUser(@Body body: UserUpdateRequest): Response<Unit>
@@ -40,5 +39,11 @@ interface PoprobuyApi {
 
   @GET("home")
   suspend fun getHome(): Response<HomeResponse>
+
+  @POST("vending_machines/{machineId}/assign")
+  suspend fun assignVendingMachine(
+    @Path("machineId") machineId: String,
+    @Body body: VendingMachineAssignRequest,
+  ): Response<VendingMachine>
 
 }

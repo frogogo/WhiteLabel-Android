@@ -10,9 +10,9 @@ import org.junit.Before
 import org.junit.Test
 import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequestResponse
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
-import ru.poprobuy.poprobuy.failureHttpNetworkCall
-import ru.poprobuy.poprobuy.failureNetworkCall
-import ru.poprobuy.poprobuy.successNetworkCall
+import ru.poprobuy.poprobuy.testError
+import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.util.network.NetworkError
 
 @ExperimentalCoroutinesApi
 class RequestConfirmationCodeUseCaseTest {
@@ -29,7 +29,7 @@ class RequestConfirmationCodeUseCaseTest {
   @Test
   fun `success result returned if request executed successfully`() = runBlockingTest {
     val response = ConfirmationCodeRequestResponse(60)
-    coEvery { authRepository.requestConfirmationCode(any()) } returns successNetworkCall(response)
+    coEvery { authRepository.requestConfirmationCode(any()) } returns Result.Success(response)
 
     val result = useCase("")
 
@@ -38,7 +38,7 @@ class RequestConfirmationCodeUseCaseTest {
 
   @Test
   fun `error returned if request failed`() = runBlockingTest {
-    coEvery { authRepository.requestConfirmationCode(any()) } returns failureNetworkCall()
+    coEvery { authRepository.requestConfirmationCode(any()) } returns Result.Failure(NetworkError.testError())
 
     val result = useCase("")
 
@@ -47,7 +47,7 @@ class RequestConfirmationCodeUseCaseTest {
 
   @Test
   fun `too many requests returned if request failed with 429 status code`() = runBlockingTest {
-    coEvery { authRepository.requestConfirmationCode(any()) } returns failureHttpNetworkCall(429)
+    coEvery { authRepository.requestConfirmationCode(any()) } returns Result.Failure(NetworkError.testError(429))
 
     val result = useCase("")
 

@@ -27,8 +27,11 @@ class AuthRepositoryTest {
 
   @Test
   fun `auth token is stored to shared preferences`() {
-    authRepository.saveAuthToken(DataFixtures.ACCESS_TOKEN)
-    verify { userPreferences.accessToken = DataFixtures.ACCESS_TOKEN }
+    authRepository.saveAuthTokens(DataFixtures.ACCESS_TOKEN, DataFixtures.REFRESH_TOKEN)
+    verify {
+      userPreferences.accessToken = DataFixtures.ACCESS_TOKEN
+      userPreferences.refreshToken = DataFixtures.REFRESH_TOKEN
+    }
   }
 
   @Test

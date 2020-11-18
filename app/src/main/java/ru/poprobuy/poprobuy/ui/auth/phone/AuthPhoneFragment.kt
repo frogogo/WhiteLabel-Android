@@ -1,10 +1,12 @@
 package ru.poprobuy.poprobuy.ui.auth.phone
 
 import android.text.method.LinkMovementMethod
+import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentAuthPhoneBinding
@@ -16,6 +18,7 @@ import ru.poprobuy.poprobuy.util.Constants
 import ru.poprobuy.poprobuy.util.ParallelAutoTransition
 import ru.poprobuy.poprobuy.util.SpannableUtils
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
+import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragment
 
 class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(
   layoutId = R.layout.fragment_auth_phone,
@@ -23,9 +26,10 @@ class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(
   windowAnimations = true
 ), MaskedTextChangedListener.ValueListener {
 
-  override val viewModel: AuthPhoneViewModel by viewModel()
+  override val viewModel: AuthPhoneViewModel by viewModel { parametersOf(args.showLogoutDialog) }
 
   private val binding: FragmentAuthPhoneBinding by viewBinding()
+  private val args: AuthPhoneFragmentArgs by navArgs()
   private var textChangedListener: MaskedTextChangedListener? = null
 
   override fun initViews() {
@@ -76,6 +80,10 @@ class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(
       AuthPhoneCommand.TooManyRequestsError -> binding.apply {
         textInputLayout.setError(true)
         textViewError.setText(R.string.auth_phone_error_too_many_requests)
+      }
+      AuthPhoneCommand.ShowLogoutDialog -> {
+        ErrorDialogFragment.newInstance(getString(R.string.error_logout))
+          .show(childFragmentManager, ErrorDialogFragment.TAG)
       }
       is AuthPhoneCommand.PhoneValidationResult -> binding.apply {
         textViewError.setNullableTextRes(command.errorRes)

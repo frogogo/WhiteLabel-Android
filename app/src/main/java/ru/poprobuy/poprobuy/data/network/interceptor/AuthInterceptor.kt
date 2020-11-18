@@ -1,9 +1,9 @@
 package ru.poprobuy.poprobuy.data.network.interceptor
 
 import okhttp3.Interceptor
-import okhttp3.Request
 import okhttp3.Response
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
+import ru.poprobuy.poprobuy.extension.addAuthHeader
 
 internal class AuthInterceptor(
   private val userPrefs: UserPreferences,
@@ -21,14 +21,6 @@ internal class AuthInterceptor(
       .build()
 
     return chain.proceed(request)
-  }
-
-  private fun Request.Builder.addAuthHeader(token: String): Request.Builder =
-    header(AUTHORIZATION_HEADER, "$BEARER_PREFIX $token")
-
-  companion object {
-    private const val AUTHORIZATION_HEADER = "Authorization"
-    private const val BEARER_PREFIX = "Bearer"
   }
 
 }

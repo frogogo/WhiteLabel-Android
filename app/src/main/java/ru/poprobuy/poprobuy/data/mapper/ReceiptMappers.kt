@@ -2,23 +2,30 @@ package ru.poprobuy.poprobuy.data.mapper
 
 import ru.poprobuy.poprobuy.data.model.api.receipt.Receipt
 import ru.poprobuy.poprobuy.data.model.api.receipt.ReceiptProduct
-import ru.poprobuy.poprobuy.data.model.api.receipt.ReceiptPromotion
+import ru.poprobuy.poprobuy.data.model.api.receipt.ReceiptDistributionNetwork
+import ru.poprobuy.poprobuy.data.model.api.receipt.ReceiptRejectReason
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptProductUiModel
-import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptPromotionUiModel
+import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptDistributionNetworkUiModel
+import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptRejectReasonUiModel
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 
-fun Receipt.toUiModel(): ReceiptUiModel = ReceiptUiModel(
+fun Receipt.toDomain(): ReceiptUiModel = ReceiptUiModel(
   id = id,
   number = number,
   state = state,
   date = timestamp,
   value = sum,
-  promotion = promotion?.toDomain(),
+  distributionNetwork = promotion?.toDomain(),
   product = product?.toDomain(),
-  rejectReason = rejectReason
+  rejectReason = rejectReason?.toDomain()
 )
 
-fun ReceiptPromotion.toDomain(): ReceiptPromotionUiModel = ReceiptPromotionUiModel(
+fun ReceiptRejectReason.toDomain(): ReceiptRejectReasonUiModel = ReceiptRejectReasonUiModel(
+  reason = reason,
+  reasonText = reasonText
+)
+
+fun ReceiptDistributionNetwork.toDomain(): ReceiptDistributionNetworkUiModel = ReceiptDistributionNetworkUiModel(
   name = name
 )
 

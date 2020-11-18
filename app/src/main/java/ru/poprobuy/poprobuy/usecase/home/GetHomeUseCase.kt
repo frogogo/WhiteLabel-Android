@@ -1,25 +1,16 @@
 package ru.poprobuy.poprobuy.usecase.home
 
-import com.github.ajalt.timberkt.e
-import com.github.ajalt.timberkt.i
-import ru.poprobuy.poprobuy.data.model.api.home.HomeResponse
+import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
+import ru.poprobuy.poprobuy.data.model.ui.home.HomeState
 import ru.poprobuy.poprobuy.data.repository.HomeRepository
-import ru.poprobuy.poprobuy.usecase.UseCaseResult
-import ru.poprobuy.poprobuy.util.network.NetworkResource
+import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.util.network.NetworkError
 
 class GetHomeUseCase(
   private val homeRepository: HomeRepository,
 ) {
 
-  suspend operator fun invoke(): UseCaseResult<HomeResponse, Any> = when (val result = homeRepository.getHome()) {
-    is NetworkResource.Success -> {
-      i { "Home fetched successfully" }
-      UseCaseResult.Success(result.data)
-    }
-    is NetworkResource.Error -> {
-      e { "Generic error while fetching home" }
-      UseCaseResult.Failure(Unit)
-    }
-  }
+  suspend operator fun invoke(): Result<HomeState, NetworkError<ErrorResponse>> =
+    homeRepository.getHome()
 
 }

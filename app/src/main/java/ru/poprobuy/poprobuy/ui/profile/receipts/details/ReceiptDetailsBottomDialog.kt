@@ -4,17 +4,20 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseBottomSheetDialogFragment
 import ru.poprobuy.poprobuy.databinding.DialogReceiptDetailsBinding
 import ru.poprobuy.poprobuy.dictionary.ReceiptState
 import ru.poprobuy.poprobuy.extension.binding.setReceipt
 import ru.poprobuy.poprobuy.extension.binding.useLargeSize
+import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible
 
@@ -22,7 +25,7 @@ class ReceiptDetailsBottomDialog : BaseBottomSheetDialogFragment<ReceiptDetailsV
   R.layout.dialog_receipt_details
 ) {
 
-  override val viewModel: ReceiptDetailsViewModel by viewModel()
+  override val viewModel: ReceiptDetailsViewModel by viewModel { parametersOf(args.buttonState) }
 
   private val args: ReceiptDetailsBottomDialogArgs by navArgs()
   private val binding: DialogReceiptDetailsBinding by viewBinding()
@@ -33,6 +36,10 @@ class ReceiptDetailsBottomDialog : BaseBottomSheetDialogFragment<ReceiptDetailsV
       layoutHeader.useLargeSize()
     }
     initFooters()
+  }
+
+  override fun initObservers() {
+    observe(viewModel.commandEvent, ::handleCommand)
   }
 
   override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -61,13 +68,19 @@ class ReceiptDetailsBottomDialog : BaseBottomSheetDialogFragment<ReceiptDetailsV
       // Controls
       layoutControlsGoods.apply {
         root.setVisible(receipt.state == ReceiptState.APPROVED)
-        buttonEnterMachine.setOnSafeClickListener(viewModel::navigateToMachineEnter)
-        buttonScanMachine.setOnSafeClickListener(viewModel::navigateToMachineScan)
+        buttonEnterMachine.setOnSafeClickListener { viewModel.navigateToMachineEnter(receipt.id) }
+        buttonScanMachine.setOnSafeClickListener { viewModel.navigateToMachineScan(receipt.id) }
       }
       layoutControlsScan.root.apply {
         setVisible(receipt.state in listOf(ReceiptState.COMPLETED, ReceiptState.REJECTED))
-        setOnSafeClickListener(viewModel::navigateToReceiptScan)
+        setOnSafeClickListener { viewModel.navigateToReceiptScan() }
       }
+    }
+  }
+
+  private fun handleCommand(command: ReceiptDetailsCommand) {
+    when (command) {
+      is ReceiptDetailsCommand.ShowToast -> Toast.makeText(requireContext(), command.textRes, Toast.LENGTH_LONG).show()
     }
   }
 

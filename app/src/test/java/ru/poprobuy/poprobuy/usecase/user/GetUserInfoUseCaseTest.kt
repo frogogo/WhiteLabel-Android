@@ -4,14 +4,15 @@ import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.amshove.kluent.shouldBeEqualTo
-import org.amshove.kluent.shouldBeInstanceOf
 import org.junit.Before
 import org.junit.Test
 import ru.poprobuy.poprobuy.DataFixtures
+import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
+import ru.poprobuy.poprobuy.data.model.api.user.User
 import ru.poprobuy.poprobuy.data.repository.UserRepository
-import ru.poprobuy.poprobuy.failureNetworkCall
-import ru.poprobuy.poprobuy.successNetworkCall
-import ru.poprobuy.poprobuy.usecase.UseCaseResult
+import ru.poprobuy.poprobuy.testError
+import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.util.network.NetworkError
 
 @ExperimentalCoroutinesApi
 class GetUserInfoUseCaseTest {
@@ -28,12 +29,12 @@ class GetUserInfoUseCaseTest {
   @Test
   fun `use case return user and saves it to repository`() = runBlockingTest {
     val user = DataFixtures.user
-    coEvery { userRepository.fetchUser() } returns successNetworkCall(user)
+    val response = Result.Success<User, NetworkError<ErrorResponse>>(user)
+    coEvery { userRepository.fetchUser() } returns response
 
     val result = useCase()
 
-    result shouldBeInstanceOf UseCaseResult.Success::class
-    (result as UseCaseResult.Success).data shouldBeEqualTo user
+    result shouldBeEqualTo response
     coVerifySequence {
       userRepository.fetchUser()
       userRepository.saveUser(DataFixtures.user)
@@ -42,11 +43,12 @@ class GetUserInfoUseCaseTest {
 
   @Test
   fun `use case return failure and doesn't touch repository`() = runBlockingTest {
-    coEvery { userRepository.fetchUser() } returns failureNetworkCall()
+    val response = Result.Failure<User, NetworkError<ErrorResponse>>(NetworkError.testError())
+    coEvery { userRepository.fetchUser() } returns response
 
     val result = useCase()
 
-    result shouldBeInstanceOf UseCaseResult.Failure::class
+    result shouldBeEqualTo response
     coVerifySequence {
       userRepository.fetchUser()
     }

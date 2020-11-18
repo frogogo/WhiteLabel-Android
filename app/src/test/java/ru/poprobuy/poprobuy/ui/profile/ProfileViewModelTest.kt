@@ -12,9 +12,11 @@ import ru.poprobuy.poprobuy.data.model.ui.profile.ProfileUiModel
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.data.repository.UserRepository
 import ru.poprobuy.poprobuy.mockkObserver
-import ru.poprobuy.poprobuy.usecase.UseCaseResult
+import ru.poprobuy.poprobuy.testError
 import ru.poprobuy.poprobuy.usecase.user.GetUserInfoUseCase
 import ru.poprobuy.poprobuy.util.ProfileUtils
+import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.util.network.NetworkError
 
 @ExperimentalCoroutinesApi
 class ProfileViewModelTest : ViewModelTest() {
@@ -49,7 +51,7 @@ class ProfileViewModelTest : ViewModelTest() {
   @Test
   fun `verify flow when user data cached and network data loaded`() = runBlockingTest {
     every { userRepository.getUser() } returns DataFixtures.user
-    coEvery { getUserInfoUseCase() } returns UseCaseResult.Success(DataFixtures.user)
+    coEvery { getUserInfoUseCase() } returns Result.Success(DataFixtures.user)
 
     viewModel.loadProfile()
 
@@ -64,7 +66,7 @@ class ProfileViewModelTest : ViewModelTest() {
   @Test
   fun `verify flow when user data cached and network request failed`() = runBlockingTest {
     every { userRepository.getUser() } returns DataFixtures.user
-    coEvery { getUserInfoUseCase() } returns UseCaseResult.Failure(Unit)
+    coEvery { getUserInfoUseCase() } returns Result.Failure(NetworkError.testError())
 
     viewModel.loadProfile()
 
@@ -78,7 +80,7 @@ class ProfileViewModelTest : ViewModelTest() {
   @Test
   fun `verify flow when no cached user data and network data is loaded`() = runBlockingTest {
     every { userRepository.getUser() } returns null
-    coEvery { getUserInfoUseCase() } returns UseCaseResult.Success(DataFixtures.user)
+    coEvery { getUserInfoUseCase() } returns Result.Success(DataFixtures.user)
 
     viewModel.loadProfile()
 
@@ -94,7 +96,7 @@ class ProfileViewModelTest : ViewModelTest() {
   @Test
   fun `verify flow when no cached user data and network request failed`() = runBlockingTest {
     every { userRepository.getUser() } returns null
-    coEvery { getUserInfoUseCase() } returns UseCaseResult.Failure(Unit)
+    coEvery { getUserInfoUseCase() } returns Result.Failure(NetworkError.testError())
 
     viewModel.loadProfile()
 

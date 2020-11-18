@@ -55,11 +55,11 @@ class HomeFragment : BaseFragment<HomeViewModel>(
   }
 
   private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(
-    HomeAdapterDelegates.emptyStateDelegate(viewModel::navigateToReceiptScan),
+    HomeAdapterDelegates.emptyStateDelegate { viewModel.navigateToReceiptScan() },
     HomeAdapterDelegates.approvedStateDelegate(
-      scanMachineCallback = viewModel::navigateToMachineScan,
-      enterMachineAction = viewModel::navigateToMachineEnter,
-      scanReceiptAction = viewModel::navigateToReceiptScan
+      scanMachineCallback = { viewModel.navigateToMachineScan(it) },
+      enterMachineAction = { viewModel.navigateToMachineEnter(it) },
+      scanReceiptAction = { viewModel.navigateToReceiptScan() }
     )
   )
 

@@ -3,6 +3,8 @@
 package ru.poprobuy.poprobuy.di
 
 import org.koin.dsl.module
+import ru.poprobuy.poprobuy.ui.MainNavigation
+import ru.poprobuy.poprobuy.ui.MainNavigationImpl
 import ru.poprobuy.poprobuy.ui.auth.code.AuthCodeConfirmationNavigation
 import ru.poprobuy.poprobuy.ui.auth.code.AuthCodeConfirmationNavigationImpl
 import ru.poprobuy.poprobuy.ui.auth.email.AuthEmailNavigation
@@ -31,6 +33,7 @@ import ru.poprobuy.poprobuy.ui.splash.SplashNavigation
 import ru.poprobuy.poprobuy.ui.splash.SplashNavigationImpl
 
 val navigationModule = module {
+  factory { MainNavigationImpl() as MainNavigation }
   factory { SplashNavigationImpl() as SplashNavigation }
   factory { OnboardingNavigationImpl() as OnboardingNavigation }
 

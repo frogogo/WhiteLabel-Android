@@ -19,12 +19,51 @@ import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationResult
 class AuthPhoneViewModelTest : ViewModelTest() {
 
   private lateinit var viewModel: AuthPhoneViewModel
+
   private val requestConfirmationCodeUseCase: RequestConfirmationCodeUseCase = mockk(relaxed = true)
   private val navigation: AuthPhoneNavigation = mockk(relaxed = true)
 
   @Before
   fun setUp() {
-    viewModel = AuthPhoneViewModel(navigation, requestConfirmationCodeUseCase)
+    viewModel = AuthPhoneViewModel(false, navigation, requestConfirmationCodeUseCase)
+  }
+
+  @Test
+  fun `viewModel should show logout dialog`() {
+    val viewModel = AuthPhoneViewModel(true, navigation, requestConfirmationCodeUseCase)
+    val commandsObserver = mockkObserver<AuthPhoneCommand>()
+    viewModel.commandLiveEvent.observeForever(commandsObserver)
+
+    viewModel.onCreate()
+
+    coVerifySequence {
+      commandsObserver.onChanged(AuthPhoneCommand.ShowLogoutDialog)
+    }
+  }
+
+  @Test
+  fun `viewModel shouldn't show logout dialog`() {
+    val viewModel = AuthPhoneViewModel(false, navigation, requestConfirmationCodeUseCase)
+    val commandsObserver = mockkObserver<AuthPhoneCommand>()
+    viewModel.commandLiveEvent.observeForever(commandsObserver)
+
+    viewModel.onCreate()
+
+    confirmVerified(commandsObserver, requestConfirmationCodeUseCase, navigation)
+  }
+
+  @Test
+  fun `viewModel shouldn't show logout dialog second time`() {
+    val viewModel = AuthPhoneViewModel(true, navigation, requestConfirmationCodeUseCase)
+    val commandsObserver = mockkObserver<AuthPhoneCommand>()
+    viewModel.commandLiveEvent.observeForever(commandsObserver)
+
+    viewModel.onCreate()
+    viewModel.onCreate()
+
+    coVerifySequence {
+      commandsObserver.onChanged(AuthPhoneCommand.ShowLogoutDialog)
+    }
   }
 
   @Test

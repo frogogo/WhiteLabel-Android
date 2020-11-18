@@ -10,9 +10,8 @@ import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.extension.isEmpty
-import ru.poprobuy.poprobuy.usecase.onFailure
-import ru.poprobuy.poprobuy.usecase.onSuccess
 import ru.poprobuy.poprobuy.usecase.receipt.GetReceiptsUseCase
+import ru.poprobuy.poprobuy.util.handle
 
 class ReceiptsViewModel(
   private val navigation: ReceiptsNavigation,
@@ -28,6 +27,8 @@ class ReceiptsViewModel(
   private val _errorOccurredLiveEvent = LiveEvent<Unit>()
   val errorOccurredLiveEvent = _errorOccurredLiveEvent.asLiveData()
 
+  private val receipts: MutableList<ReceiptUiModel> = mutableListOf()
+
   override fun onCreate() {
     loadReceipts()
   }
@@ -37,18 +38,25 @@ class ReceiptsViewModel(
       _isLoadingLive.postValue(_dataLive.isEmpty())
       val result = getReceiptsUseCase()
       _isLoadingLive.postValue(false)
-
-      result.onSuccess { receipts ->
-        _dataLive.postValue(ReceiptsDataFactory.createReceiptsData(receipts))
-      }.onFailure {
-        _errorOccurredLiveEvent.postValue(Unit)
-      }
+      result.handle(
+        onSuccess = { receipts ->
+          _dataLive.postValue(ReceiptsDataUtils.createReceiptsData(receipts))
+          this@ReceiptsViewModel.receipts.apply {
+            clear()
+            addAll(receipts)
+          }
+        },
+        onFailure = { _errorOccurredLiveEvent.postValue(Unit) }
+      )
     }
   }
 
   fun navigateToReceipt(receipt: ReceiptUiModel) {
     d { "Navigating to receipt details" }
-    navigation.navigateToReceipt(receipt).navigate()
+    navigation.navigateToReceipt(
+      receipt = receipt,
+      ReceiptsDataUtils.getReceiptDetailsButtonState(receipts)
+    ).navigate()
   }
 
 }

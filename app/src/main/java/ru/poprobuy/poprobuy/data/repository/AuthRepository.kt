@@ -1,14 +1,13 @@
 package ru.poprobuy.poprobuy.data.repository
 
 import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
-import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationRequest
-import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponse
-import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequest
-import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequestResponse
+import ru.poprobuy.poprobuy.data.model.api.auth.*
 import ru.poprobuy.poprobuy.data.network.PoprobuyApi
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
-import ru.poprobuy.poprobuy.util.network.NetworkResource
+import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.util.network.NetworkError
 import ru.poprobuy.poprobuy.util.network.apiCall
+import ru.poprobuy.poprobuy.util.network.mapToResult
 
 class AuthRepository(
   private val api: PoprobuyApi,
@@ -17,22 +16,34 @@ class AuthRepository(
 
   suspend fun requestConfirmationCode(
     phoneNumber: String,
-  ): NetworkResource<ConfirmationCodeRequestResponse, ErrorResponse> {
+  ): Result<ConfirmationCodeRequestResponse, NetworkError<ErrorResponse>> {
     val request = ConfirmationCodeRequest(phoneNumber)
-    return apiCall { api.requestPasswordCode(request) }
+    return apiCall { api.requestPasswordCode(request) }.mapToResult()
   }
 
   suspend fun authenticate(
     phoneNumber: String,
     password: String,
-  ): NetworkResource<AuthenticationResponse, ErrorResponse> {
+  ): Result<AuthenticationResponse, NetworkError<ErrorResponse>> {
     val request = AuthenticationRequest(phoneNumber = phoneNumber, password = password)
-    return apiCall { api.authenticate(request) }
+    return apiCall { api.authenticate(request) }.mapToResult()
   }
 
-  fun saveAuthToken(token: String) {
-    userPreferences.accessToken = token
+  suspend fun refreshToken(refreshToken: String): Result<AuthenticationResponse, NetworkError<ErrorResponse>> {
+    val request = TokenRefreshRequest(refreshToken)
+    return apiCall { api.refreshToken(request) }.mapToResult()
   }
+
+  fun saveAuthTokens(accessToken: String, refreshToken: String) {
+    userPreferences.apply {
+      this.accessToken = accessToken
+      this.refreshToken = refreshToken
+    }
+  }
+
+  fun getAccessToken(): String? = userPreferences.accessToken
+
+  fun getRefreshToken(): String? = userPreferences.refreshToken
 
   fun setPolicyAccepted() {
     userPreferences.policyAccepted = true

@@ -19,7 +19,7 @@ fun ViewReceiptFooterApprovedBinding.setReceipt(receipt: ReceiptUiModel) {
 
   textViewStateSubtitle.text = context.getString(
     R.string.receipt_state_approved_description,
-    receipt.promotion?.name.orEmpty()
+    receipt.distributionNetwork?.name.orEmpty()
   )
 }
 
@@ -53,7 +53,7 @@ fun ViewReceiptFooterRejectedBinding.setReceipt(receipt: ReceiptUiModel, showTop
     }
 
     append(" ")
-    receipt.rejectReason?.errorResId?.let { append(context.getString(it)) }
+    receipt.rejectReason?.reasonText?.let { append(it) }
   }
 
 }

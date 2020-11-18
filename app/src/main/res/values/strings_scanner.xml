@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="scanner_permissions_denied_title">Для сканирования чеков требуется доступ к камере</string>
+  <string name="scanner_permissions_denied_settings">Разрешение необходимо предоставить в настройках</string>
+  <string name="scanner_title_machine">Наведите камеру на QR код на лицевой стороне аппарата</string>
+  <string name="scanner_title_receipt">Наведите камеру на QR код на чеке</string>
+  <string name="scanner_button_help">Помощь</string>
+  <string name="scanner_button_enter_manual">Ввести номер вручную</string>
+  <string name="scanner_help_machine_title">Как сканировать автомат</string>
+  <string name="scanner_help_receipt_title">Как сканировать чек</string>
+
+</resources>

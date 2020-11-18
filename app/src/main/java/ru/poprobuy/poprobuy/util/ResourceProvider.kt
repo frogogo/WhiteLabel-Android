@@ -30,8 +30,9 @@ class ResourceProvider(private val context: Context) {
     return context.getString(resId)
   }
 
-  fun getString(@StringRes resId: Int, vararg formatArgs: Any?): String {
-    return context.getString(resId, formatArgs)
+  fun getString(@StringRes resId: Int, vararg formatArgs: Any): String {
+    val formatStrings = formatArgs.map { it.toString() }.toTypedArray()
+    return context.getString(resId, *formatStrings)
   }
 
   fun getStringArray(@ArrayRes resId: Int): Array<String> {
@@ -42,8 +43,9 @@ class ResourceProvider(private val context: Context) {
     return context.resources.getQuantityString(resId, quantity)
   }
 
-  fun getQuantityString(@PluralsRes resId: Int, quantity: Int, vararg formatArgs: Any?): String {
-    return context.resources.getQuantityString(resId, quantity, formatArgs)
+  fun getQuantityString(@PluralsRes resId: Int, quantity: Int, vararg formatArgs: Any): String {
+    val formatStrings = formatArgs.map { it.toString() }.toTypedArray()
+    return context.resources.getQuantityString(resId, quantity, *formatStrings)
   }
 
   fun getInteger(@IntegerRes resId: Int): Int {

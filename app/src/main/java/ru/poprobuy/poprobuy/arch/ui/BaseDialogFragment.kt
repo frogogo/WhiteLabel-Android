@@ -22,7 +22,7 @@ open class BaseDialogFragment(
 
     requireDialog().window?.apply {
       setBackgroundDrawableResource(R.drawable.background_dialog)
-      setDimAmount(0.75F)
+      setDimAmount(0.65F)
     }
 
     return inflater.inflate(layoutId, container, false)

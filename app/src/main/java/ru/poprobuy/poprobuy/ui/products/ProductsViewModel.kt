@@ -8,13 +8,17 @@ import kotlinx.coroutines.channels.ticker
 import ru.poprobuy.poprobuy.arch.navigation.AppNavigation
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.data.model.ui.machine.VendingMachineUiModel
 import ru.poprobuy.poprobuy.data.model.ui.product.ProductUiModel
 import ru.poprobuy.poprobuy.extension.asLiveData
 import java.util.*
 import kotlin.math.roundToLong
 import kotlin.random.Random
 
-class ProductsViewModel : BaseViewModel() {
+class ProductsViewModel(
+  @Suppress("unused")
+  private val vendingMachine: VendingMachineUiModel,
+) : BaseViewModel() {
 
   val dataLive: MutableLiveData<List<RecyclerViewItem>> get() = _dataLive
   private val _dataLive = MutableLiveData<List<RecyclerViewItem>>()

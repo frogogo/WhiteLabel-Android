@@ -69,4 +69,14 @@ object Validators {
     else -> null
   }
 
+  /**
+   * Checks vending machine validity
+   * @return string res or null if all checks passed
+   */
+  @StringRes
+  fun isVendingMachineNumber(text: String): Int? = when {
+    text.isBlank() -> R.string.error_machine_number_empty
+    else -> null
+  }
+
 }

@@ -1,12 +1,12 @@
 package ru.poprobuy.poprobuy.data.model.api.auth
 
-import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import ru.poprobuy.poprobuy.data.model.api.user.User
 
 @JsonClass(generateAdapter = true)
 data class AuthenticationResponse(
-  @Json(name = "jwt")
+  val user: User,
   val accessToken: String,
-  @Json(name = "is_new")
+  val refreshToken: String,
   val isNew: Boolean,
 )

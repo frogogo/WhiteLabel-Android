@@ -16,6 +16,7 @@ import ru.poprobuy.poprobuy.util.PhoneUtils
 import ru.poprobuy.poprobuy.util.Validators
 
 class AuthPhoneViewModel(
+  private val showLogoutDialog: Boolean,
   private val navigation: AuthPhoneNavigation,
   private val requestConfirmationCodeUseCase: RequestConfirmationCodeUseCase,
 ) : BaseViewModel() {
@@ -25,6 +26,16 @@ class AuthPhoneViewModel(
 
   private val _isLoadingLive = MutableLiveData<Boolean>()
   val isLoadingLive = _isLoadingLive.asLiveData()
+
+  private var logoutDialogShown = false
+
+  override fun onCreate() {
+    super.onCreate()
+    if (showLogoutDialog && !logoutDialogShown) {
+      logoutDialogShown = true
+      _commandLiveEvent.postValue(AuthPhoneCommand.ShowLogoutDialog)
+    }
+  }
 
   fun requestCode(phoneNumber: String, showValidationError: Boolean = false) {
     _commandLiveEvent.postValue(AuthPhoneCommand.ClearError)

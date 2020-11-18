@@ -1,9 +1,6 @@
 package ru.poprobuy.poprobuy.ui.profile.receipts
 
-import io.mockk.clearAllMocks
-import io.mockk.coEvery
-import io.mockk.coVerifySequence
-import io.mockk.mockk
+import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.amshove.kluent.shouldBeEqualTo
@@ -12,10 +9,12 @@ import org.junit.Test
 import ru.poprobuy.poprobuy.DataFixtures
 import ru.poprobuy.poprobuy.ViewModelTest
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
-import ru.poprobuy.poprobuy.data.mapper.toUiModel
 import ru.poprobuy.poprobuy.mockkObserver
-import ru.poprobuy.poprobuy.usecase.UseCaseResult
+import ru.poprobuy.poprobuy.testError
+import ru.poprobuy.poprobuy.ui.profile.receipts.details.ReceiptDetailsButtonState
 import ru.poprobuy.poprobuy.usecase.receipt.GetReceiptsUseCase
+import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.util.network.NetworkError
 
 @ExperimentalCoroutinesApi
 class ReceiptsViewModelTest : ViewModelTest() {
@@ -31,6 +30,8 @@ class ReceiptsViewModelTest : ViewModelTest() {
   @Before
   fun startUp() {
     clearAllMocks()
+    mockkObject(ReceiptsDataUtils)
+
     viewModel = ReceiptsViewModel(
       navigation = navigation,
       getReceiptsUseCase = getReceiptsUseCase
@@ -43,7 +44,7 @@ class ReceiptsViewModelTest : ViewModelTest() {
 
   @Test
   fun `verify flow when data loaded successfully`() = runBlockingTest {
-    coEvery { getReceiptsUseCase() } returns UseCaseResult.Success(listOf(DataFixtures.receipt))
+    coEvery { getReceiptsUseCase() } returns Result.Success(listOf(DataFixtures.getReceiptUIModel()))
 
     viewModel.loadReceipts()
 
@@ -79,7 +80,7 @@ class ReceiptsViewModelTest : ViewModelTest() {
 
   @Test
   fun `verify flow when data loading failed`() = runBlockingTest {
-    coEvery { getReceiptsUseCase() } returns UseCaseResult.Failure(Unit)
+    coEvery { getReceiptsUseCase() } returns Result.Failure(NetworkError.testError())
 
     viewModel.loadReceipts()
 
@@ -93,10 +94,12 @@ class ReceiptsViewModelTest : ViewModelTest() {
 
   @Test
   fun `view model navigates to receipt`() {
-    val receipt = DataFixtures.receipt.toUiModel()
+    val state = ReceiptDetailsButtonState(canCreateReceipt = false, canTakeProduct = false)
+    every { ReceiptsDataUtils.getReceiptDetailsButtonState(any()) } returns state
+    val receipt = DataFixtures.getReceiptUIModel()
     viewModel.navigateToReceipt(receipt)
 
-    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToReceipt(receipt)
+    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToReceipt(receipt, state)
   }
 
 }
