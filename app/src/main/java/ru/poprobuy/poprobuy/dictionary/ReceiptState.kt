@@ -1,6 +1,5 @@
 package ru.poprobuy.poprobuy.dictionary
 
-import android.content.Context
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -43,16 +42,6 @@ enum class ReceiptState {
     APPROVED -> R.string.receipt_state_approved
     REJECTED -> R.string.receipt_state_rejected
     COMPLETED -> R.string.receipt_state_completed
-  }
-
-  /**
-   * @return string subtitle for given [ReceiptState]
-   */
-  fun getStateSubtitle(context: Context): String = when (this) {
-    PROCESSING -> context.getString(R.string.receipt_state_processing_description)
-    APPROVED -> context.getString(R.string.receipt_state_approved_description)
-    REJECTED -> "" // TODO: 03.07.2020
-    COMPLETED -> "" // TODO: 23.07.2020
   }
 
 }
