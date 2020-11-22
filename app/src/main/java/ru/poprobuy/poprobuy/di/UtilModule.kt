@@ -1,6 +1,7 @@
 package ru.poprobuy.poprobuy.di
 
 import androidx.navigation.NavController
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.analytics.FirebaseAnalytics
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
@@ -20,4 +21,5 @@ val utilModule = module {
     )
   }
   factory { OtpRequestDisabler() }
+  single { RecyclerView.RecycledViewPool() }
 }
