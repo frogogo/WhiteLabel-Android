@@ -52,7 +52,7 @@ class OnboardingFragment : BaseFragment<OnboardingViewModel>(
       adapter.registerAdapterDataObserver(circleIndicator.adapterDataObserver)
 
       // Init buttons
-      buttonNext.setOnClickListener { if (viewPager.hasNext()) viewPager.goNext() }
+      buttonNext.setOnClickListener { viewPager.goNext() }
       buttonFinish.setOnSafeClickListener(viewModel::completeOnboarding)
     }
 
@@ -73,9 +73,12 @@ class OnboardingFragment : BaseFragment<OnboardingViewModel>(
    * buttonNext should be active on all pages except the last one
    * buttonFinish should be active only on the last page
    */
-  private fun updateButtons() = binding.run {
-    buttonNext.setVisible(viewPager.hasNext(), useInvisible = true)
-    buttonFinish.setVisible(!viewPager.hasNext(), useInvisible = true)
+  private fun updateButtons() {
+    binding.apply {
+      val hasNext = viewPager.hasNext()
+      buttonNext.setVisible(hasNext, useInvisible = true)
+      buttonFinish.setVisible(!hasNext, useInvisible = true)
+    }
   }
 
   private fun createAdapter() = BaseDelegationAdapter(
