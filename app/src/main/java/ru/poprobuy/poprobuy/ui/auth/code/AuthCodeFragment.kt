@@ -1,7 +1,6 @@
 package ru.poprobuy.poprobuy.ui.auth.code
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
@@ -72,8 +71,8 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
     }
   }
 
-  override fun onAttach(context: Context) {
-    super.onAttach(context)
+  override fun onActivityCreated(savedInstanceState: Bundle?) {
+    super.onActivityCreated(savedInstanceState)
     viewModel.setResendDelay(args.codeRefreshRate)
   }
 
