@@ -2,6 +2,7 @@ package ru.poprobuy.poprobuy.ui.scanner
 
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.data.model.ui.machine.VendingMachineUiModel
 import ru.poprobuy.poprobuy.util.Constants
 
 interface ScannerNavigation {
@@ -9,6 +10,7 @@ interface ScannerNavigation {
   fun navigateToReceiptHelp(): NavigationCommand
   fun navigateToManualMachineEnter(receiptId: Int): NavigationCommand
   fun navigateToHome(): NavigationCommand
+  fun navigateToProducts(receiptId: Int, vendingMachine: VendingMachineUiModel): NavigationCommand
 }
 
 class ScannerNavigationImpl : ScannerNavigation {
@@ -28,6 +30,11 @@ class ScannerNavigationImpl : ScannerNavigation {
 
   override fun navigateToHome(): NavigationCommand {
     val action = ScannerFragmentDirections.scannerToHome()
+    return NavigationCommand.ByAction(action)
+  }
+
+  override fun navigateToProducts(receiptId: Int, vendingMachine: VendingMachineUiModel): NavigationCommand {
+    val action = ScannerFragmentDirections.scannerToProducts(receiptId, vendingMachine)
     return NavigationCommand.ByAction(action)
   }
 

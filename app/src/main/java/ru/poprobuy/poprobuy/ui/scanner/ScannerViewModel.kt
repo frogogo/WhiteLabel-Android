@@ -13,6 +13,8 @@ import ru.poprobuy.poprobuy.dictionary.ScanMode
 import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.usecase.receipt.CreateReceiptResult
 import ru.poprobuy.poprobuy.usecase.receipt.CreateReceiptUseCase
+import ru.poprobuy.poprobuy.usecase.vending_machine.AssignVendingMachineUseCase
+import ru.poprobuy.poprobuy.usecase.vending_machine.AssignVendingMachineUseCaseResult
 import ru.poprobuy.poprobuy.util.QRCodeUtils
 import ru.poprobuy.poprobuy.util.ResourceProvider
 
@@ -21,6 +23,7 @@ class ScannerViewModel(
   private val receiptId: Int,
   private val navigation: ScannerNavigation,
   private val createReceiptUseCase: CreateReceiptUseCase,
+  private val assignVendingMachineUseCase: AssignVendingMachineUseCase,
   private val resourceProvider: ResourceProvider,
 ) : BaseViewModel() {
 
@@ -36,7 +39,7 @@ class ScannerViewModel(
     @Exhaustive
     when (scanMode) {
       ScanMode.RECEIPT -> createReceipt(string)
-      ScanMode.MACHINE -> TODO()
+      ScanMode.MACHINE -> assignMachine(string)
     }
   }
 
@@ -61,6 +64,37 @@ class ScannerViewModel(
         }
         is CreateReceiptResult.ValidationError -> {
           _errorLiveEvent.postValue(resourceProvider.getString(result.errorRes))
+        }
+      }
+    }
+  }
+
+  private fun assignMachine(string: String) {
+    val number = QRCodeUtils.getVendingMachineNumber(string)
+    if (number.isNullOrEmpty()) {
+      e { "Machine QR-string is wrong - $string" }
+      _errorLiveEvent.postValue(resourceProvider.getString(R.string.error_receipt_format))
+      return
+    }
+
+    viewModelScope.launch {
+      _isLoadingLive.postValue(true)
+      val result = assignVendingMachineUseCase(number, receiptId)
+      _isLoadingLive.postValue(false)
+
+      @Exhaustive
+      when (result) {
+        is AssignVendingMachineUseCaseResult.Success -> {
+          navigation.navigateToProducts(receiptId, result.vendingMachine).navigate()
+        }
+        is AssignVendingMachineUseCaseResult.ValidationFailure -> {
+          _errorLiveEvent.postValue(result.error)
+        }
+        AssignVendingMachineUseCaseResult.MachineNotFound -> {
+          _errorLiveEvent.postValue(resourceProvider.getString(R.string.machine_select_error_not_found))
+        }
+        AssignVendingMachineUseCaseResult.Failure -> {
+          _errorLiveEvent.postValue(null)
         }
       }
     }

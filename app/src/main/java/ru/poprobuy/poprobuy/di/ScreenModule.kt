@@ -24,6 +24,7 @@ import ru.poprobuy.poprobuy.ui.profile.receipts.details.ReceiptDetailsViewModel
 import ru.poprobuy.poprobuy.ui.scanner.ScannerViewModel
 import ru.poprobuy.poprobuy.ui.splash.SplashViewModel
 import ru.poprobuy.poprobuy.ui.webview.WebViewViewModel
+import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragmentCallbackViewModel
 
 val screenModule = module {
   viewModel { MainViewModel(get(), get()) }
@@ -61,6 +62,7 @@ val screenModule = module {
       receiptId = receiptId,
       navigation = get(),
       createReceiptUseCase = get(),
+      assignVendingMachineUseCase = get(),
       resourceProvider = get()
     )
   }
@@ -87,4 +89,7 @@ val screenModule = module {
   viewModel { ProfileViewModel(get(), get(), get(), get(), get()) }
   viewModel { ReceiptsViewModel(get(), get()) }
   viewModel { (buttonState: ReceiptDetailsButtonState) -> ReceiptDetailsViewModel(get(), buttonState) }
+
+  // Stuff
+  viewModel { ErrorDialogFragmentCallbackViewModel() }
 }
