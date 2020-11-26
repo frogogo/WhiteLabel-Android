@@ -7,6 +7,7 @@ buildscript {
   repositories {
     google()
     jcenter()
+    gradlePluginPortal()
   }
 
   dependencies {
@@ -20,10 +21,13 @@ buildscript {
     classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion"
     // Versions https://github.com/ben-manes/gradle-versions-plugin
     classpath "com.github.ben-manes:gradle-versions-plugin:0.36.0"
+    // https://github.com/plnice/can-i-drop-jetifier
+    classpath "com.github.plnice:canidropjetifier:0.5"
   }
 }
 
 allprojects {
+  apply plugin: "com.github.plnice.canidropjetifier"
   apply from: "$rootDir/detekt.gradle"
 
   repositories {
