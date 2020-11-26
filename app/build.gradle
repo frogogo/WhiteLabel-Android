@@ -157,7 +157,7 @@ dependencies {
   implementation "com.github.skydoves:whatif:1.0.8"
 
   // Coroutines https://github.com/Kotlin/kotlinx.coroutines
-  def coroutinesVersion = '1.4.1'
+  def coroutinesVersion = '1.4.2'
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
 
@@ -168,7 +168,7 @@ dependencies {
   implementation 'com.redmadrobot:input-mask-android:6.0.0'
 
   // Coil https://github.com/coil-kt/coil/
-  implementation "io.coil-kt:coil:1.0.0"
+  implementation "io.coil-kt:coil:1.1.0"
 
   // Koin https://github.com/InsertKoinIO/koin
   def koinVersion = '2.2.1'
