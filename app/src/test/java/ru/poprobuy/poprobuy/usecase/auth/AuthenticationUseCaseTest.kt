@@ -2,7 +2,6 @@ package ru.poprobuy.poprobuy.usecase.auth
 
 import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runBlockingTest
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
@@ -33,12 +32,36 @@ class AuthenticationUseCaseTest {
 
   @Test
   fun `user data is saved on success and new user is returned`() = runBlockingTest {
-    testSuccess(true)
+    val response = DataFixtures.authenticationResponse.copy(isNew = true, user = null)
+    coEvery { authRepository.authenticate(any(), any()) } returns Result.Success(response)
+
+    val result = useCase(DataFixtures.PHONE_NUMBER, DataFixtures.SMS_CODE)
+
+    coVerifySequence {
+      authRepository.authenticate(DataFixtures.PHONE_NUMBER, DataFixtures.SMS_CODE)
+      authRepository.saveAuthTokens(response.accessToken, response.refreshToken)
+    }
+    confirmVerified()
+
+    result shouldBeEqualTo AuthenticationResult.Success(true)
   }
 
   @Test
   fun `user data is saved on success and new user is not new returned`() = runBlockingTest {
-    testSuccess(false)
+    val response = DataFixtures.authenticationResponse.copy(isNew = false)
+    coEvery { authRepository.authenticate(any(), any()) } returns Result.Success(response)
+
+    val result = useCase(DataFixtures.PHONE_NUMBER, DataFixtures.SMS_CODE)
+
+    coVerifySequence {
+      authRepository.authenticate(DataFixtures.PHONE_NUMBER, DataFixtures.SMS_CODE)
+      authRepository.saveAuthTokens(response.accessToken, response.refreshToken)
+      authRepository.setUserAuthorized()
+      userRepository.saveUser(response.user!!)
+    }
+    confirmVerified()
+
+    result shouldBeEqualTo AuthenticationResult.Success(false)
   }
 
   @Test
@@ -69,22 +92,24 @@ class AuthenticationUseCaseTest {
     result shouldBeEqualTo AuthenticationResult.Error
   }
 
-  private fun testSuccess(isNew: Boolean) = runBlocking {
-    val response = DataFixtures.authenticationResponse.copy(isNew = isNew)
-    coEvery { authRepository.authenticate(any(), any()) } returns Result.Success(response)
-
-    val result = useCase(DataFixtures.PHONE_NUMBER, DataFixtures.SMS_CODE)
-
-    coVerifySequence {
-      authRepository.authenticate(DataFixtures.PHONE_NUMBER, DataFixtures.SMS_CODE)
-      authRepository.saveAuthTokens(response.accessToken, response.refreshToken)
-      authRepository.setUserAuthorized()
-      userRepository.saveUser(response.user!!)
-    }
-    confirmVerified()
-
-    result shouldBeEqualTo AuthenticationResult.Success(isNew)
-  }
+//  private fun testSuccess(isNew: Boolean) = runBlocking {
+//    val response = DataFixtures.authenticationResponse.copy(isNew = isNew)
+//    coEvery { authRepository.authenticate(any(), any()) } returns Result.Success(response)
+//
+//    val result = useCase(DataFixtures.PHONE_NUMBER, DataFixtures.SMS_CODE)
+//
+//    coVerifySequence {
+//      authRepository.authenticate(DataFixtures.PHONE_NUMBER, DataFixtures.SMS_CODE)
+//      authRepository.saveAuthTokens(response.accessToken, response.refreshToken)
+//      authRepository.setUserAuthorized()
+//      if (!isNew) {
+//        userRepository.saveUser(response.user!!)
+//      }
+//    }
+//    confirmVerified()
+//
+//    result shouldBeEqualTo AuthenticationResult.Success(isNew)
+//  }
 
   private fun confirmVerified() {
     confirmVerified(authRepository, userRepository)
