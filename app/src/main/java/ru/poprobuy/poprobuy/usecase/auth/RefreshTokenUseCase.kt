@@ -19,7 +19,7 @@ class RefreshTokenUseCase(
       .successOrNull() ?: return null
 
     authRepository.saveAuthTokens(accessToken = authData.accessToken, refreshToken = authData.refreshToken)
-    userRepository.saveUser(authData.user)
+    authData.user?.let { userRepository.saveUser(it) }
 
     return authData.accessToken
   }

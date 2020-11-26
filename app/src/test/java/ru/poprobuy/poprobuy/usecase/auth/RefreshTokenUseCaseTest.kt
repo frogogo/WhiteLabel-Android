@@ -43,7 +43,7 @@ internal class RefreshTokenUseCaseTest {
       authRepository.getRefreshToken()
       authRepository.refreshToken(DataFixtures.REFRESH_TOKEN)
       authRepository.saveAuthTokens(accessToken = response.accessToken, refreshToken = response.refreshToken)
-      userRepository.saveUser(response.user)
+      userRepository.saveUser(response.user!!)
     }
     confirmVerified()
   }

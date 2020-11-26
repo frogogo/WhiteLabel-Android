@@ -24,7 +24,7 @@ class AuthenticationUseCase(
         saveAuthTokens(data.accessToken, data.refreshToken)
         setUserAuthorized()
       }
-      userRepository.saveUser(data.user)
+      data.user?.let { userRepository.saveUser(it) }
       AuthenticationResult.Success(result.value.isNew)
     }
     is Result.Failure -> {

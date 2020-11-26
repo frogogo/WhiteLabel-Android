@@ -79,7 +79,7 @@ class AuthenticationUseCaseTest {
       authRepository.authenticate(DataFixtures.PHONE_NUMBER, DataFixtures.SMS_CODE)
       authRepository.saveAuthTokens(response.accessToken, response.refreshToken)
       authRepository.setUserAuthorized()
-      userRepository.saveUser(response.user)
+      userRepository.saveUser(response.user!!)
     }
     confirmVerified()
 

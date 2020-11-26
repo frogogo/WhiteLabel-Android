@@ -6,9 +6,9 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class AuthenticationResponseJson(
   @Json(name = "email")
-  val email: String,
+  val email: String?,
   @Json(name = "first_name")
-  val firstName: String,
+  val firstName: String?,
   @Json(name = "phone_number")
   val phoneNumber: String,
   @Json(name = "jwt")
