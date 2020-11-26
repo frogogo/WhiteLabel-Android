@@ -16,6 +16,7 @@ import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.BarcodeResult
 import com.journeyapps.barcodescanner.DefaultDecoderFactory
 import com.journeyapps.barcodescanner.Size
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
@@ -25,6 +26,9 @@ import ru.poprobuy.poprobuy.dictionary.ScanMode.MACHINE
 import ru.poprobuy.poprobuy.dictionary.ScanMode.RECEIPT
 import ru.poprobuy.poprobuy.extension.*
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
+import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragment
+import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragment.Companion.showIn
+import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragmentCallbackViewModel
 
 class ScannerFragment : BaseFragment<ScannerViewModel>(
   layoutId = R.layout.fragment_scanner,
@@ -36,6 +40,7 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
 
   override val viewModel: ScannerViewModel by viewModel { parametersOf(args.mode, args.receiptId) }
 
+  private val errorDialogFragmentCallbackViewModel: ErrorDialogFragmentCallbackViewModel by sharedViewModel()
   private val binding: FragmentScannerBinding by viewBinding()
   private val args: ScannerFragmentArgs by navArgs()
   private var flashIsOn = false
@@ -59,19 +64,10 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
   override fun initObservers() {
     with(viewModel) {
       observe(isLoadingLive, binding.progressBar::setVisible)
-      observe(errorLiveEvent) { error ->
-        // FIXME: 30.07.2020 Temp realisation
-        alert {
-          setTitle(error)
-          setPositiveButton("ОК", null)
-          setOnCancelListener {
-            binding.barcodeView.resume()
-          }
-          setOnDismissListener {
-            binding.barcodeView.resume()
-          }
-        }
-      }
+      observe(errorLiveEvent, ::showErrorDialog)
+    }
+    observeEvent(errorDialogFragmentCallbackViewModel.onDismissEvent) { dialogId ->
+      if (dialogId == ERROR_DIALOG_ID) binding.barcodeView.resume()
     }
   }
 
@@ -165,8 +161,14 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
     )
   }
 
+  private fun showErrorDialog(error: String?) {
+    ErrorDialogFragment.newInstance(error, ERROR_DIALOG_ID)
+      .showIn(childFragmentManager)
+  }
+
   companion object {
     private val BARCODE_FORMATS = listOf(BarcodeFormat.QR_CODE)
+    private val ERROR_DIALOG_ID = ErrorDialogFragment.getDialogId()
   }
 
 }

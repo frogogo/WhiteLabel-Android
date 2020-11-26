@@ -2,10 +2,11 @@ package ru.poprobuy.poprobuy.data.model.ui.machine
 
 import android.os.Parcelable
 import androidx.annotation.Keep
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Keep
 @Parcelize
 data class VendingMachineUiModel(
-  val products: List<VendingProductUiModel>,
+  val id: Int,
+  val cells: List<VendingCellUiModel>,
 ) : Parcelable

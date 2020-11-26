@@ -1,7 +1,9 @@
 package ru.poprobuy.poprobuy.ui.home
 
+import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import by.kirich1409.viewbindingdelegate.viewBinding
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.recycler.BaseDelegationAdapter
@@ -20,11 +22,13 @@ class HomeFragment : BaseFragment<HomeViewModel>(
   override val viewModel: HomeViewModel by viewModel()
 
   private val binding: FragmentHomeBinding by viewBinding()
+  private val recycledViewPool: RecyclerView.RecycledViewPool by inject()
   private val adapter by lazy { createAdapter() }
 
   override fun initViews() {
     binding.apply {
       buttonProfile.setOnSafeClickListener(viewModel::navigateToProfile)
+      recyclerView.setRecycledViewPool(recycledViewPool)
       recyclerView.adapter = this@HomeFragment.adapter
       swipeRefreshLayout.setOnRefreshListener(this@HomeFragment)
       viewErrorState.setOnRefreshClickListener(viewModel::refreshData)

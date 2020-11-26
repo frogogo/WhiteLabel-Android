@@ -1,5 +1,6 @@
 package ru.poprobuy.poprobuy.extension
 
+import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -11,6 +12,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
+import androidx.core.content.getSystemService
 import androidx.work.WorkManager
 
 fun Context.fetchDrawable(@DrawableRes id: Int) = ContextCompat.getDrawable(this, id)
@@ -49,6 +51,13 @@ fun Context.getWorkManager(): WorkManager =
   WorkManager.getInstance(applicationContext)
 
 // Services
-fun Context.getInputMethodManager() = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
-fun Context.getVibrator() = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+fun Context.getInputMethodManager(): InputMethodManager = requireSystemService()
+
+fun Context.getVibrator(): Vibrator = requireSystemService()
+
+fun Context.getActivityManager(): ActivityManager = requireSystemService()
+
+private inline fun <reified T : Any> Context.requireSystemService(): T {
+  return checkNotNull(getSystemService()) { "System service of type ${T::class.java} was not found." }
+}

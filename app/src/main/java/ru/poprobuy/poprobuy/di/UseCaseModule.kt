@@ -13,29 +13,31 @@ import ru.poprobuy.poprobuy.usecase.receipt.GetReceiptsUseCase
 import ru.poprobuy.poprobuy.usecase.user.GetUserInfoUseCase
 import ru.poprobuy.poprobuy.usecase.user.UpdateUserDetailsUseCase
 import ru.poprobuy.poprobuy.usecase.vending_machine.AssignVendingMachineUseCase
+import ru.poprobuy.poprobuy.usecase.vending_machine.TakeProductUseCase
 
 val useCaseModule = module {
   // Auth
-  factory { GetUserAuthStateUseCase(get()) }
-  factory { RequestConfirmationCodeUseCase(get()) }
-  factory { AuthenticationUseCase(get(), get()) }
-  factory { RefreshTokenUseCase(get(), get()) }
-  factory { RefreshTokenWorkerUseCase(get(), get(), get()) }
+  single { GetUserAuthStateUseCase(get()) }
+  single { RequestConfirmationCodeUseCase(get()) }
+  single { AuthenticationUseCase(get(), get()) }
+  single { RefreshTokenUseCase(get(), get()) }
+  single { RefreshTokenWorkerUseCase(get(), get(), get()) }
 
   // Home
-  factory { GetHomeUseCase(get()) }
+  single { GetHomeUseCase(get()) }
 
   // User
-  factory { UpdateUserDetailsUseCase(get()) }
-  factory { GetUserInfoUseCase(get()) }
+  single { UpdateUserDetailsUseCase(get()) }
+  single { GetUserInfoUseCase(get()) }
 
   // Receipt
-  factory { GetReceiptsUseCase(get()) }
-  factory { CreateReceiptUseCase(get()) }
+  single { GetReceiptsUseCase(get()) }
+  single { CreateReceiptUseCase(get()) }
 
   // Vending Machine
-  factory { AssignVendingMachineUseCase(get()) }
+  single { AssignVendingMachineUseCase(get()) }
+  single { TakeProductUseCase(get()) }
 
   // System
-  factory { ClearUserDataUseCase(get()) }
+  single { ClearUserDataUseCase(get()) }
 }

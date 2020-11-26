@@ -5,6 +5,8 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class VendingMachine(
+  @Json(name = "public_id")
+  val id: Int,
   @Json(name = "address")
   val address: String,
   @Json(name = "vending_cells")
@@ -12,5 +14,5 @@ data class VendingMachine(
   @Json(name = "vending_cells_columns")
   val vendingCellsColumns: Int,
   @Json(name = "vending_cells_rows")
-  val vendingCellsRows: Int
+  val vendingCellsRows: Int,
 )

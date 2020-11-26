@@ -8,11 +8,12 @@ import ru.poprobuy.poprobuy.data.model.api.machine.VendingMachine
 import ru.poprobuy.poprobuy.data.model.api.machine.VendingProduct
 import ru.poprobuy.poprobuy.data.model.api.receipt.Receipt
 import ru.poprobuy.poprobuy.data.model.api.user.User
+import ru.poprobuy.poprobuy.data.model.ui.machine.VendingCellUiModel
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingMachineUiModel
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingProductUiModel
-import ru.poprobuy.poprobuy.data.model.ui.product.ProductUiModel
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 import ru.poprobuy.poprobuy.dictionary.ReceiptState
+import ru.poprobuy.poprobuy.dictionary.VendingProductState
 import java.util.*
 
 object DataFixtures {
@@ -28,14 +29,6 @@ object DataFixtures {
     firstName = USER_NAME,
     email = USER_EMAIL,
     phoneNumber = PHONE_NUMBER
-  )
-
-  val product = ProductUiModel(
-    id = 1,
-    name = "Name",
-    imageUrl = "https://picsum.photos/200",
-    inStock = true,
-    triedBefore = false
   )
 
   val authenticationResponse = AuthenticationResponse(
@@ -60,25 +53,33 @@ object DataFixtures {
 
   fun getReceiptUIModel(id: Int = 1): ReceiptUiModel = getReceipt(id).toDomain()
 
-  fun getVendingMachine(): VendingMachine = VendingMachine(
+  fun getVendingMachine(id: Int = 1): VendingMachine = VendingMachine(
+    id = id,
     address = "",
     vendingCells = listOf(
-      VendingCell(1, 1, getVendingProduct(1), 10),
-      VendingCell(2, 2, getVendingProduct(2), 10),
-      VendingCell(3, 3, getVendingProduct(3), 10),
-      VendingCell(4, 4, getVendingProduct(4), 10),
+      VendingCell(1, getVendingProduct(1)),
+      VendingCell(2, getVendingProduct(2)),
+      VendingCell(3, getVendingProduct(3)),
+      VendingCell(4, getVendingProduct(4)),
     ),
     vendingCellsColumns = 10,
     vendingCellsRows = 6
   )
 
-  fun getVendingMachineUiModel(): VendingMachineUiModel = getVendingMachine().toDomain()
+  fun getVendingMachineUiModel(id: Int = 1): VendingMachineUiModel = getVendingMachine(id).toDomain()
+
+  fun getVendingCell(id: Int = 1): VendingCell = VendingCell(
+    id = id,
+    getVendingProduct(id * 10)
+  )
+
+  fun getVendingCellUiModel(id: Int = 1): VendingCellUiModel = getVendingCell(id).toDomain()!!
 
   fun getVendingProduct(id: Int = 1): VendingProduct = VendingProduct(
     id = id,
     name = "Name $id",
     imageUrl = "https://picsum.photos/${500 + id}/${500 + id}",
-    availableToTake = false
+    state = VendingProductState.AVAILABLE
   )
 
   fun getVendingProductUiModel(id: Int = 1): VendingProductUiModel = getVendingProduct(id).toDomain()

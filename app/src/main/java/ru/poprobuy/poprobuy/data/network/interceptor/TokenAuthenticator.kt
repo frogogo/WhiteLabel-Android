@@ -7,13 +7,15 @@ import okhttp3.Authenticator
 import okhttp3.Request
 import okhttp3.Response
 import okhttp3.Route
-import org.koin.core.KoinComponent
-import org.koin.core.inject
+import org.koin.core.component.KoinApiExtension
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.extension.addAuthHeader
 import ru.poprobuy.poprobuy.usecase.auth.RefreshTokenUseCase
 import java.net.HttpURLConnection
 
+@OptIn(KoinApiExtension::class)
 class TokenAuthenticator : Authenticator, KoinComponent {
 
   private val authRepository: AuthRepository by inject()

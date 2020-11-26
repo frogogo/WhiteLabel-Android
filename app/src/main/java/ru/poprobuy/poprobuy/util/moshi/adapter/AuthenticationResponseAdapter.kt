@@ -5,6 +5,7 @@ import ru.poprobuy.poprobuy.data.mapper.toResponse
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponse
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponseJson
 
+// TODO: 26.11.2020 Tests
 class AuthenticationResponseAdapter {
 
   @FromJson

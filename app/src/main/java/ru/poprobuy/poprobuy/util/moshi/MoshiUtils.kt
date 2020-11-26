@@ -5,6 +5,7 @@ import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import ru.poprobuy.poprobuy.util.moshi.adapter.AuthenticationResponseAdapter
 import ru.poprobuy.poprobuy.util.moshi.adapter.ErrorReasonJsonAdapter
 import ru.poprobuy.poprobuy.util.moshi.adapter.ReceiptStateJsonAdapter
+import ru.poprobuy.poprobuy.util.moshi.adapter.VendingProductStateJsonAdapter
 import java.util.*
 
 object MoshiUtils {
@@ -17,6 +18,7 @@ object MoshiUtils {
     .add(Date::class.java, Rfc3339DateJsonAdapter())
     .add(ReceiptStateJsonAdapter())
     .add(AuthenticationResponseAdapter())
+    .add(VendingProductStateJsonAdapter())
     .build()
 
 }

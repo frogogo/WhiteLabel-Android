@@ -2,6 +2,7 @@ package ru.poprobuy.poprobuy.ui.auth.email
 
 import android.text.method.LinkMovementMethod
 import androidx.navigation.fragment.navArgs
+import app.cash.exhaustive.Exhaustive
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -50,6 +51,7 @@ class AuthEmailFragment : BaseFragment<AuthEmailViewModel>(
   }
 
   private fun handleCommand(command: AuthEmailCommand) {
+    @Exhaustive
     when (command) {
       AuthEmailCommand.SomethingWentWrong -> binding.apply {
         textInputLayout.setError(true)

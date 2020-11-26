@@ -1,10 +1,13 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'com.google.gms.google-services'
-apply plugin: 'com.google.firebase.crashlytics'
-apply plugin: 'androidx.navigation.safeargs.kotlin'
+plugins {
+  id 'com.android.application'
+  id 'kotlin-android'
+  id 'kotlin-parcelize'
+  id 'kotlin-kapt'
+  id 'com.google.gms.google-services'
+  id 'com.google.firebase.crashlytics'
+  id 'androidx.navigation.safeargs.kotlin'
+}
+
 if (project.hasProperty('useFirebasePerf')) {
   apply plugin: 'com.google.firebase.firebase-perf'
 }
@@ -75,10 +78,6 @@ android {
     }
   }
 
-  androidExtensions {
-    features = ["parcelize"]
-  }
-
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
@@ -87,6 +86,7 @@ android {
   // https://developer.android.com/studio/write/java8-support
   kotlinOptions {
     jvmTarget = JavaVersion.VERSION_1_8
+    freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
   }
 
   lintOptions {
@@ -154,10 +154,10 @@ dependencies {
   implementation "com.github.hadilq.liveevent:liveevent:1.2.0"
 
   // WhatIf https://github.com/skydoves/WhatIf
-  implementation "com.github.skydoves:whatif:1.0.7"
+  implementation "com.github.skydoves:whatif:1.0.8"
 
   // Coroutines https://github.com/Kotlin/kotlinx.coroutines
-  def coroutinesVersion = '1.4.1'
+  def coroutinesVersion = '1.4.2'
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
 
@@ -168,10 +168,10 @@ dependencies {
   implementation 'com.redmadrobot:input-mask-android:6.0.0'
 
   // Coil https://github.com/coil-kt/coil/
-  implementation "io.coil-kt:coil:1.0.0"
+  implementation "io.coil-kt:coil:1.1.0"
 
   // Koin https://github.com/InsertKoinIO/koin
-  def koinVersion = '2.1.6'
+  def koinVersion = '2.2.1'
   implementation "org.koin:koin-android:$koinVersion"
   implementation "org.koin:koin-androidx-scope:$koinVersion"
   implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
@@ -213,7 +213,7 @@ dependencies {
   implementation 'com.google.zxing:core:3.3.0'
 
   // Dexter https://github.com/Karumi/Dexter
-  implementation 'com.karumi:dexter:6.2.1'
+  implementation 'com.karumi:dexter:6.2.2'
 
   // Progress Button https://github.com/razir/ProgressButton
   implementation 'com.github.razir.progressbutton:progressbutton:2.1.0'
@@ -229,15 +229,15 @@ dependencies {
   testImplementation "com.squareup.okhttp3:mockwebserver:$okHttpVersion"
 
   // Kluent https://github.com/MarkusAmshove/Kluent
-  testImplementation 'org.amshove.kluent:kluent:1.63'
+  testImplementation 'org.amshove.kluent:kluent:1.64'
 
   // Robolectric http://robolectric.org/getting-started/
   testImplementation 'org.robolectric:robolectric:4.4'
 
-  // Junit 4
+  // Junit 4 https://github.com/junit-team/junit4
   testImplementation 'junit:junit:4.13.1'
 
-  // Junit 5
+  // Junit 5 https://github.com/junit-team/junit5
   def junit5Version = "5.7.0"
   testImplementation "org.junit.jupiter:junit-jupiter-api:$junit5Version"
   testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit5Version"

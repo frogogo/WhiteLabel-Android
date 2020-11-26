@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
+import app.cash.exhaustive.Exhaustive
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -79,6 +80,7 @@ class ReceiptDetailsBottomDialog : BaseBottomSheetDialogFragment<ReceiptDetailsV
   }
 
   private fun handleCommand(command: ReceiptDetailsCommand) {
+    @Exhaustive
     when (command) {
       is ReceiptDetailsCommand.ShowToast -> Toast.makeText(requireContext(), command.textRes, Toast.LENGTH_LONG).show()
     }

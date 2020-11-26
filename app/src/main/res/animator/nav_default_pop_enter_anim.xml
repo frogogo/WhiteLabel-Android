@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:tools="http://schemas.android.com/tools"
+  tools:keep="@animator/nav_default_pop_enter_anim" />

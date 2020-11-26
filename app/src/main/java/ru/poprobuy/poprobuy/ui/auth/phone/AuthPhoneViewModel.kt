@@ -2,6 +2,7 @@ package ru.poprobuy.poprobuy.ui.auth.phone
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import app.cash.exhaustive.Exhaustive
 import com.github.ajalt.timberkt.d
 import com.github.ajalt.timberkt.e
 import com.hadilq.liveevent.LiveEvent
@@ -51,6 +52,7 @@ class AuthPhoneViewModel(
       val result = requestConfirmationCodeUseCase(phoneNumberPrefixed)
       _isLoadingLive.postValue(false)
 
+      @Exhaustive
       when (result) {
         is RequestConfirmationResult.Success -> {
           navigation.navigateToAuthCodeConfirmation(phoneNumberPrefixed, result.refreshRate).navigate()

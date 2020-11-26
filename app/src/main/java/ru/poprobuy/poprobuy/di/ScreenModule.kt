@@ -15,8 +15,7 @@ import ru.poprobuy.poprobuy.ui.auth.policy.AuthPolicyViewModel
 import ru.poprobuy.poprobuy.ui.home.HomeViewModel
 import ru.poprobuy.poprobuy.ui.machine_select.MachineSelectViewModel
 import ru.poprobuy.poprobuy.ui.onboarding.OnboardingViewModel
-import ru.poprobuy.poprobuy.ui.products.ProductsViewModel
-import ru.poprobuy.poprobuy.ui.products.select.ProductSelectionInteractor
+import ru.poprobuy.poprobuy.ui.products.MachineProductsViewModel
 import ru.poprobuy.poprobuy.ui.products.select.ProductSelectionViewModel
 import ru.poprobuy.poprobuy.ui.profile.ProfileViewModel
 import ru.poprobuy.poprobuy.ui.profile.receipts.ReceiptsViewModel
@@ -25,6 +24,7 @@ import ru.poprobuy.poprobuy.ui.profile.receipts.details.ReceiptDetailsViewModel
 import ru.poprobuy.poprobuy.ui.scanner.ScannerViewModel
 import ru.poprobuy.poprobuy.ui.splash.SplashViewModel
 import ru.poprobuy.poprobuy.ui.webview.WebViewViewModel
+import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragmentCallbackViewModel
 
 val screenModule = module {
   viewModel { MainViewModel(get(), get()) }
@@ -62,18 +62,34 @@ val screenModule = module {
       receiptId = receiptId,
       navigation = get(),
       createReceiptUseCase = get(),
+      assignVendingMachineUseCase = get(),
       resourceProvider = get()
     )
   }
-  viewModel { (receiptId: Int) -> MachineSelectViewModel(receiptId, get(), get(), get()) }
+  viewModel { (receiptId: Int) -> MachineSelectViewModel(receiptId, get(), get()) }
 
   // Products
-  viewModel { (vendingMachine: VendingMachineUiModel) -> ProductsViewModel(vendingMachine) }
-  viewModel { ProductSelectionViewModel() }
-  viewModel { ProductSelectionInteractor() }
+  viewModel { (receiptId: Int, machine: VendingMachineUiModel) ->
+    MachineProductsViewModel(
+      receiptId = receiptId,
+      vendingMachine = machine,
+      navigation = get(),
+      productSelectionInteractor = get()
+    )
+  }
+  viewModel { (params: ProductSelectionViewModel.Params) ->
+    ProductSelectionViewModel(
+      params = params,
+      takeProductUseCase = get(),
+      productSelectionInteractor = get()
+    )
+  }
 
   // Profile
   viewModel { ProfileViewModel(get(), get(), get(), get(), get()) }
   viewModel { ReceiptsViewModel(get(), get()) }
   viewModel { (buttonState: ReceiptDetailsButtonState) -> ReceiptDetailsViewModel(get(), buttonState) }
+
+  // Stuff
+  viewModel { ErrorDialogFragmentCallbackViewModel() }
 }

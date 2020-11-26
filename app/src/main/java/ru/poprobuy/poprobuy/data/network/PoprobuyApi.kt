@@ -4,6 +4,7 @@ import retrofit2.Response
 import retrofit2.http.*
 import ru.poprobuy.poprobuy.data.model.api.auth.*
 import ru.poprobuy.poprobuy.data.model.api.home.HomeResponse
+import ru.poprobuy.poprobuy.data.model.api.machine.TakeProductRequest
 import ru.poprobuy.poprobuy.data.model.api.machine.VendingMachine
 import ru.poprobuy.poprobuy.data.model.api.machine.VendingMachineAssignRequest
 import ru.poprobuy.poprobuy.data.model.api.receipt.Receipt
@@ -45,5 +46,11 @@ interface PoprobuyApi {
     @Path("machineId") machineId: String,
     @Body body: VendingMachineAssignRequest,
   ): Response<VendingMachine>
+
+  @POST("vending_machines/{machineId}/take_item")
+  suspend fun takeProduct(
+    @Path("machineId") machineId: Int,
+    @Body body: TakeProductRequest,
+  ): Response<Unit>
 
 }

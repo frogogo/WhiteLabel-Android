@@ -1,7 +1,6 @@
 package ru.poprobuy.poprobuy.ui.auth.code
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
@@ -12,6 +11,7 @@ import androidx.core.os.postDelayed
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionManager
+import app.cash.exhaustive.Exhaustive
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.github.ajalt.timberkt.e
 import com.github.ajalt.timberkt.i
@@ -72,8 +72,8 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
     }
   }
 
-  override fun onAttach(context: Context) {
-    super.onAttach(context)
+  override fun onActivityCreated(savedInstanceState: Bundle?) {
+    super.onActivityCreated(savedInstanceState)
     viewModel.setResendDelay(args.codeRefreshRate)
   }
 
@@ -135,6 +135,7 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
     TransitionManager.beginDelayedTransition(binding.layoutContent, ParallelAutoTransition().apply {
       excludeChildren(binding.textInputLayout, true)
     })
+    @Exhaustive
     when (command) {
       AuthCodeCommand.ClearError -> binding.apply {
         textInputLayout.setError(false)

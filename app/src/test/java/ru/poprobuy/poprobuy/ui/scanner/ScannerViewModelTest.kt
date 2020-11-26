@@ -7,6 +7,7 @@ import org.junit.Rule
 import org.junit.Test
 import ru.poprobuy.poprobuy.dictionary.ScanMode
 import ru.poprobuy.poprobuy.usecase.receipt.CreateReceiptUseCase
+import ru.poprobuy.poprobuy.usecase.vending_machine.AssignVendingMachineUseCase
 import ru.poprobuy.poprobuy.util.ResourceProvider
 
 class ScannerViewModelTest {
@@ -15,12 +16,20 @@ class ScannerViewModelTest {
   val instantExecutorRule = InstantTaskExecutorRule()
 
   private val createReceiptUseCase: CreateReceiptUseCase = mockk(relaxed = true)
+  private val assignVendingMachineUseCase: AssignVendingMachineUseCase = mockk(relaxed = true)
   private val resourceProvider: ResourceProvider = mockk()
 
   @Test
   fun `view model navigates to machine help`() {
     val navigation = mockk<ScannerNavigation>(relaxed = true)
-    val viewModel = ScannerViewModel(ScanMode.MACHINE, 1, navigation, createReceiptUseCase, resourceProvider)
+    val viewModel = ScannerViewModel(
+      scanMode = ScanMode.MACHINE,
+      receiptId = 1,
+      navigation = navigation,
+      createReceiptUseCase = createReceiptUseCase,
+      assignVendingMachineUseCase = assignVendingMachineUseCase,
+      resourceProvider = resourceProvider
+    )
 
     viewModel.navigateToHelp()
 
@@ -30,7 +39,14 @@ class ScannerViewModelTest {
   @Test
   fun `view model navigates to receipt help`() {
     val navigation = mockk<ScannerNavigation>(relaxed = true)
-    val viewModel = ScannerViewModel(ScanMode.RECEIPT, -1, navigation, createReceiptUseCase, resourceProvider)
+    val viewModel = ScannerViewModel(
+      scanMode = ScanMode.RECEIPT,
+      receiptId = -1,
+      navigation = navigation,
+      createReceiptUseCase = createReceiptUseCase,
+      assignVendingMachineUseCase = assignVendingMachineUseCase,
+      resourceProvider = resourceProvider
+    )
 
     viewModel.navigateToHelp()
 
@@ -40,7 +56,14 @@ class ScannerViewModelTest {
   @Test
   fun `view model navigates to manual machine enter`() {
     val navigation = mockk<ScannerNavigation>(relaxed = true)
-    val viewModel = ScannerViewModel(ScanMode.MACHINE, 1, navigation, createReceiptUseCase, resourceProvider)
+    val viewModel = ScannerViewModel(
+      scanMode = ScanMode.MACHINE,
+      receiptId = 1,
+      navigation = navigation,
+      createReceiptUseCase = createReceiptUseCase,
+      assignVendingMachineUseCase = assignVendingMachineUseCase,
+      resourceProvider = resourceProvider
+    )
 
     viewModel.navigateToManualMachineEnter()
 

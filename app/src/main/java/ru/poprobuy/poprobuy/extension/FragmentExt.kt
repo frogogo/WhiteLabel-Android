@@ -12,6 +12,8 @@ import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
+import ru.poprobuy.poprobuy.util.Event
+import ru.poprobuy.poprobuy.util.observeEvent
 
 typealias Func = () -> Unit
 typealias RationaleShouldBeShown = (PermissionToken) -> Unit
@@ -55,4 +57,9 @@ inline fun Fragment.alert(dialog: MaterialAlertDialogBuilder.() -> Unit): AlertD
 @MainThread
 inline fun <T> Fragment.observe(liveData: LiveData<T>, crossinline onChanged: (T) -> Unit) {
   liveData.observe(owner = viewLifecycleOwner, onChanged = onChanged)
+}
+
+@MainThread
+inline fun <T> Fragment.observeEvent(liveData: LiveData<Event<T>>, crossinline onChanged: (T) -> Unit) {
+  liveData.observeEvent(owner = viewLifecycleOwner, onChanged = onChanged)
 }
