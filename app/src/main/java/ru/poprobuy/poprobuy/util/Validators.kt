@@ -2,6 +2,7 @@ package ru.poprobuy.poprobuy.util
 
 import android.util.Patterns
 import androidx.annotation.StringRes
+import androidx.annotation.VisibleForTesting
 import ru.poprobuy.poprobuy.R
 
 object Validators {
@@ -12,8 +13,10 @@ object Validators {
 
   private const val MIN_LENGTH_PHONE = 10
 
-  private const val MIN_USER_NAME_LENGTH = 2
-  private const val MAX_USER_NAME_LENGTH = 20
+  @VisibleForTesting
+  const val MIN_USER_NAME_LENGTH = 2
+  @VisibleForTesting
+  const val MAX_USER_NAME_LENGTH = 20
 
   /**
    * Checks phone number validity

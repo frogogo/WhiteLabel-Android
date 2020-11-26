@@ -6,9 +6,13 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import ru.poprobuy.poprobuy.R
+import ru.poprobuy.poprobuy.util.Validators.MAX_USER_NAME_LENGTH
+import ru.poprobuy.poprobuy.util.Validators.MIN_USER_NAME_LENGTH
 
 @RunWith(RobolectricTestRunner::class)
 class ValidatorsTest {
+
+  // region isPhone
 
   @Test
   fun `isPhone clears phone string allows valid phone number`() {
@@ -29,6 +33,31 @@ class ValidatorsTest {
   fun `isPhone allows only phone symbols`() {
     Validators.isPhone("a9162795600") shouldBeEqualTo R.string.error_phone_format
   }
+
+  // endregion
+
+  // region isUserName
+
+  @Test
+  fun `isUserName allows valid name`() {
+    Validators.isUserName("Alexey").shouldBeNull()
+  }
+
+  @Test
+  fun `isUserName respects min length`() {
+    Validators.isUserName("a".repeat(MIN_USER_NAME_LENGTH - 1)) shouldBeEqualTo R.string.error_user_name_length
+  }
+
+  @Test
+  fun `isUserName respects max length`() {
+    Validators.isUserName("a".repeat(MAX_USER_NAME_LENGTH + 1)) shouldBeEqualTo R.string.error_user_name_length
+  }
+
+  // TODO: 26.11.2020 isUserName regexp test
+
+  // endregion
+
+  // region isConfirmationCode
 
   @Test
   fun `isConfirmationCode respects max length`() {
@@ -57,5 +86,32 @@ class ValidatorsTest {
 
     Validators.isConfirmationCode(code) shouldBeEqualTo R.string.error_confirmation_code_format
   }
+
+  // endregion
+
+  // region isEmail
+
+  // TODO: 26.11.2020 isEmail tests
+
+  // endregion
+
+  // region isVendingMachineNumber
+
+  @Test
+  fun `isVendingMachineNumber allows valid number`() {
+    Validators.isVendingMachineNumber("54149115").shouldBeNull()
+  }
+
+  @Test
+  fun `isVendingMachineNumber should not be empty`() {
+    Validators.isVendingMachineNumber("") shouldBeEqualTo R.string.error_machine_number_empty
+  }
+
+  @Test
+  fun `isVendingMachineNumber should not be blank`() {
+    Validators.isVendingMachineNumber("  ") shouldBeEqualTo R.string.error_machine_number_empty
+  }
+
+  // endregion
 
 }
