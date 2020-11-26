@@ -2,6 +2,7 @@ package ru.poprobuy.poprobuy.arch.navigation
 
 import android.net.Uri
 import androidx.navigation.NavController
+import app.cash.exhaustive.Exhaustive
 import com.github.ajalt.timberkt.Timber.e
 import ru.poprobuy.poprobuy.MainNavigationDirections
 
@@ -18,6 +19,7 @@ class NavigationRouter(
   }
 
   private fun executeCommand(command: NavigationCommand) {
+    @Exhaustive
     when (command) {
       is NavigationCommand.ByAction -> {
         controller.navigate(command.action, command.navOptions)

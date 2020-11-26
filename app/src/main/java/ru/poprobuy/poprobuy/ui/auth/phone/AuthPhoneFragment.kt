@@ -3,6 +3,7 @@ package ru.poprobuy.poprobuy.ui.auth.phone
 import android.text.method.LinkMovementMethod
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionManager
+import app.cash.exhaustive.Exhaustive
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -67,6 +68,7 @@ class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(
     TransitionManager.beginDelayedTransition(binding.layoutContent, ParallelAutoTransition().apply {
       excludeChildren(binding.textInputLayout, true)
     })
+    @Exhaustive
     when (command) {
       AuthPhoneCommand.ClearError -> binding.apply {
         textInputLayout.setError(false)

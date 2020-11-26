@@ -2,6 +2,7 @@ package ru.poprobuy.poprobuy.ui.products
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import app.cash.exhaustive.Exhaustive
 import com.github.ajalt.timberkt.d
 import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.Job
@@ -16,7 +17,6 @@ import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingCellUiModel
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingMachineUiModel
 import ru.poprobuy.poprobuy.extension.asLiveData
-import ru.poprobuy.poprobuy.extension.exhaustive
 import ru.poprobuy.poprobuy.ui.products.select.MachineProductSelectionInteractor
 import java.util.*
 import kotlin.math.roundToLong
@@ -80,6 +80,7 @@ class MachineProductsViewModel(
   private fun startInteractorCommandsCollector() {
     viewModelScope.launch {
       productSelectionInteractor.commandEvent.collect { command ->
+        @Exhaustive
         when (command) {
           MachineProductSelectionInteractor.Command.NavigateToHome -> {
             navigation.navigateToHome().navigate()
@@ -87,7 +88,7 @@ class MachineProductsViewModel(
           is MachineProductSelectionInteractor.Command.ShowErrorDialog -> {
             _commandLive.postValue(MachineProductsCommand.ShowErrorDialog(command.error))
           }
-        }.exhaustive
+        }
       }
     }
   }

@@ -2,13 +2,13 @@ package ru.poprobuy.poprobuy.ui.machine_select
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import app.cash.exhaustive.Exhaustive
 import com.github.ajalt.timberkt.i
 import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
 import ru.poprobuy.poprobuy.extension.asLiveData
-import ru.poprobuy.poprobuy.extension.exhaustive
 import ru.poprobuy.poprobuy.usecase.vending_machine.AssignVendingMachineUseCase
 import ru.poprobuy.poprobuy.usecase.vending_machine.AssignVendingMachineUseCaseResult
 import ru.poprobuy.poprobuy.util.Validators
@@ -38,6 +38,7 @@ class MachineSelectViewModel(
       )
       _isLoadingLive.value = false
 
+      @Exhaustive
       when (result) {
         is AssignVendingMachineUseCaseResult.Success -> {
           hideKeyboard()
@@ -52,7 +53,7 @@ class MachineSelectViewModel(
         AssignVendingMachineUseCaseResult.Failure -> {
           _commandLiveEvent.value = MachineSelectCommand.ShowDialogError(null)
         }
-      }.exhaustive
+      }
     }
   }
 

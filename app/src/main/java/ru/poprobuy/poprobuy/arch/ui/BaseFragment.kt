@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import app.cash.exhaustive.Exhaustive
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
@@ -105,6 +106,7 @@ abstract class BaseFragment<out T : BaseViewModel>(
   }
 
   private fun handleCommand(command: BaseCommand) {
+    @Exhaustive
     when (command) {
       BaseCommand.HideKeyboard -> requireActivity().hideKeyboard()
     }

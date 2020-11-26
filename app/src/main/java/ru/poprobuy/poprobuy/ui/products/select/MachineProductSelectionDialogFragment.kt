@@ -8,6 +8,7 @@ import android.view.KeyEvent
 import android.view.MotionEvent
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
+import app.cash.exhaustive.Exhaustive
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import com.github.ajalt.timberkt.d
@@ -17,7 +18,10 @@ import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseDialogFragment
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingCellUiModel
 import ru.poprobuy.poprobuy.databinding.DialogMachineProductSelectionBinding
-import ru.poprobuy.poprobuy.extension.*
+import ru.poprobuy.poprobuy.extension.observe
+import ru.poprobuy.poprobuy.extension.observeEvent
+import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
+import ru.poprobuy.poprobuy.extension.setVisible
 import ru.poprobuy.poprobuy.util.argument
 import ru.poprobuy.poprobuy.view.dialog.DialogCompanion
 
@@ -119,10 +123,11 @@ class MachineProductSelectionDialogFragment : BaseDialogFragment(R.layout.dialog
   }
 
   private fun handleCommand(command: MachineProductSelectionCommand) {
+    @Exhaustive
     when (command) {
       is MachineProductSelectionCommand.SetCancelable -> isCancelable = command.isCancelable
       MachineProductSelectionCommand.DismissDialog -> dismiss()
-    }.exhaustive
+    }
   }
 
   companion object : DialogCompanion<MachineProductSelectionDialogFragment> {

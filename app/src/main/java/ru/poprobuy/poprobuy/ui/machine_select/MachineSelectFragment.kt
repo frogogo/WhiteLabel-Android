@@ -2,6 +2,7 @@ package ru.poprobuy.poprobuy.ui.machine_select
 
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionManager
+import app.cash.exhaustive.Exhaustive
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -56,6 +57,7 @@ class MachineSelectFragment : BaseFragment<MachineSelectViewModel>(
     TransitionManager.beginDelayedTransition(binding.layoutContent, ParallelAutoTransition().apply {
       excludeChildren(binding.textInputLayout, true)
     })
+    @Exhaustive
     when (command) {
       is MachineSelectCommand.ShowDialogError -> {
         ErrorDialogFragment.newInstance(command.error)
@@ -66,9 +68,8 @@ class MachineSelectFragment : BaseFragment<MachineSelectViewModel>(
           textViewError.setNullableTextRes(command.errorResId)
           textInputLayout.setError(command.errorResId != null)
         }
-        Unit
       }
-    }.exhaustive
+    }
   }
 
   private fun selectMachine() {

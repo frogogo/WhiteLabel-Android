@@ -2,6 +2,7 @@ package ru.poprobuy.poprobuy.ui.scanner
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import app.cash.exhaustive.Exhaustive
 import com.github.ajalt.timberkt.d
 import com.github.ajalt.timberkt.e
 import com.hadilq.liveevent.LiveEvent
@@ -32,6 +33,7 @@ class ScannerViewModel(
   fun handleQrString(string: String) {
     d { "Handling QR string - $string" }
 
+    @Exhaustive
     when (scanMode) {
       ScanMode.RECEIPT -> createReceipt(string)
       ScanMode.MACHINE -> TODO()
@@ -49,6 +51,7 @@ class ScannerViewModel(
       val result = createReceiptUseCase(string)
       _isLoadingLive.postValue(false)
 
+      @Exhaustive
       when (result) {
         CreateReceiptResult.Success -> {
           navigation.navigateToHome().navigate()

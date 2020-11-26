@@ -2,6 +2,7 @@ package ru.poprobuy.poprobuy.ui.auth.code
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import app.cash.exhaustive.Exhaustive
 import com.github.ajalt.timberkt.d
 import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.Job
@@ -83,6 +84,7 @@ class AuthCodeViewModel(
       val result = authenticationUseCase(phoneNumber, confirmationCode)
       _isLoadingLive.postValue(false)
 
+      @Exhaustive
       when (result) {
         is AuthenticationResult.Success -> {
           if (result.isNewUser) {

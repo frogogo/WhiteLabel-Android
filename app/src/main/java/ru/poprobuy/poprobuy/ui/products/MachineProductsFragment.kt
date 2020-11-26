@@ -1,6 +1,7 @@
 package ru.poprobuy.poprobuy.ui.products
 
 import androidx.navigation.fragment.navArgs
+import app.cash.exhaustive.Exhaustive
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.github.ajalt.timberkt.d
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -9,7 +10,6 @@ import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.recycler.BaseDelegationAdapter
 import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentMachineProductsBinding
-import ru.poprobuy.poprobuy.extension.exhaustive
 import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible
@@ -66,10 +66,11 @@ class MachineProductsFragment : BaseFragment<MachineProductsViewModel>(
   }
 
   private fun handleCommand(command: MachineProductsCommand) {
+    @Exhaustive
     when (command) {
       is MachineProductsCommand.ShowSelectionDialog -> showProductSelectionDialog(command)
       is MachineProductsCommand.ShowErrorDialog -> showErrorDialog(command)
-    }.exhaustive
+    }
   }
 
   private fun showProductSelectionDialog(command: MachineProductsCommand.ShowSelectionDialog) {
