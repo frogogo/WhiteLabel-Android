@@ -3,21 +3,30 @@ package ru.poprobuy.poprobuy.ui.products
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.github.ajalt.timberkt.d
-import kotlinx.coroutines.*
+import com.hadilq.liveevent.LiveEvent
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.ObsoleteCoroutinesApi
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.ticker
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.arch.navigation.AppNavigation
 import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.data.model.ui.machine.VendingCellUiModel
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingMachineUiModel
-import ru.poprobuy.poprobuy.data.model.ui.product.ProductUiModel
 import ru.poprobuy.poprobuy.extension.asLiveData
+import ru.poprobuy.poprobuy.extension.exhaustive
+import ru.poprobuy.poprobuy.ui.products.select.MachineProductSelectionInteractor
 import java.util.*
 import kotlin.math.roundToLong
-import kotlin.random.Random
 
-class ProductsViewModel(
-  @Suppress("unused")
+// TODO: 26.11.2020 Tests
+class MachineProductsViewModel(
+  private val receiptId: Int,
   private val vendingMachine: VendingMachineUiModel,
+  private val navigation: MachineProductsNavigation,
+  private val productSelectionInteractor: MachineProductSelectionInteractor,
 ) : BaseViewModel() {
 
   val dataLive: MutableLiveData<List<RecyclerViewItem>> get() = _dataLive
@@ -29,64 +38,65 @@ class ProductsViewModel(
   private val _timerStateLive = MutableLiveData<TimerState>()
   val timerStateLive = _timerStateLive.asLiveData()
 
-  private var timerJob: Job? = null
+  private val _commandLive = LiveEvent<MachineProductsCommand>()
+  val commandLive = _commandLive.asLiveData()
+
   private var timerEnd = Date(System.currentTimeMillis() + SELECTION_TIME * 1000)
+
+  private var timerJob: Job? = null
+  private var commandsCollectorJob: Job? = null
 
   init {
     viewModelScope.launch {
-      _isLoadingLive.postValue(true)
-      delay(750)
-      val list = arrayListOf<ProductUiModel>()
-      list += ProductUiModel(
-        id = 1,
-        name = "Чай черный Greenfield",
-        imageUrl = "https://cloud.egin.al/s/Df2qMJwnHcTkqtP/preview",
-        inStock = true,
-        triedBefore = false
-      )
-      list += ProductUiModel(
-        id = 2,
-        name = "Батончик Kinder Bueno",
-        imageUrl = "https://cloud.egin.al/s/FonHWFxK7njHkR7/preview",
-        inStock = false,
-        triedBefore = false
-      )
-      list += ProductUiModel(
-        id = 3,
-        name = "Печенье Полет Овсяное",
-        imageUrl = "https://cloud.egin.al/s/tTcR7YyzacrDqii/preview",
-        inStock = true,
-        triedBefore = true
-      )
-      list += ProductUiModel(
-        id = 4,
-        name = "Биойогурт питьевой Активиа",
-        imageUrl = "https://cloud.egin.al/s/YdFZBqZim55ndMt/preview",
-        inStock = false,
-        triedBefore = true
-      )
+      productSelectionInteractor.clearState()
+      _dataLive.value = vendingMachine.cells
+    }
+  }
 
-      list += List(40) {
-        ProductUiModel(
-          id = 5 + it,
-          name = "item $it",
-          imageUrl = "https://picsum.photos/${300 + it}",
-          inStock = Random.nextBoolean(),
-          triedBefore = Random.nextBoolean()
-        )
+  override fun onStart() {
+    super.onStart()
+    startTimer()
+    startInteractorCommandsCollector()
+  }
+
+  override fun onStop() {
+    super.onStop()
+    cancelJobs()
+  }
+
+  override fun onCleared() {
+    super.onCleared()
+    cancelJobs()
+  }
+
+  fun takeProduct(vendingCell: VendingCellUiModel) {
+    _commandLive.value = MachineProductsCommand.ShowSelectionDialog(
+      receiptId = receiptId,
+      vendingMachineId = vendingMachine.id,
+      vendingCell = vendingCell
+    )
+  }
+
+  private fun startInteractorCommandsCollector() {
+    viewModelScope.launch {
+      productSelectionInteractor.commandEvent.collect { command ->
+        when (command) {
+          MachineProductSelectionInteractor.Command.NavigateToHome -> {
+            navigation.navigateToHome().navigate()
+          }
+          is MachineProductSelectionInteractor.Command.ShowErrorDialog -> {
+            _commandLive.postValue(MachineProductsCommand.ShowErrorDialog(command.error))
+          }
+        }.exhaustive
       }
-
-      _dataLive.postValue(list)
-      _isLoadingLive.postValue(false)
     }
   }
 
   @ObsoleteCoroutinesApi
-  override fun onStart() {
-    super.onStart()
+  private fun startTimer() {
     d { "Starting timer job" }
     timerJob?.cancel()
-    timerJob = viewModelScope.launch(Dispatchers.IO) {
+    timerJob = viewModelScope.launch {
       val ticker = ticker(COUNTDOWN_INTERVAL, COUNTDOWN_START_DELAY)
       for (ignored in ticker) {
         val state = getTimerState(SELECTION_TIME)
@@ -101,18 +111,6 @@ class ProductsViewModel(
     }
   }
 
-  override fun onStop() {
-    super.onStop()
-    timerJob?.cancel()
-    d { "Timer job canceled" }
-  }
-
-  override fun onCleared() {
-    super.onCleared()
-    timerJob?.cancel()
-    d { "Timer job canceled" }
-  }
-
   private fun getTimerState(duration: Int): TimerState {
     val currentTime = Date()
 
@@ -125,6 +123,12 @@ class ProductsViewModel(
       maxProgress = duration,
       timeRemaining = remainingSeconds
     )
+  }
+
+  private fun cancelJobs() {
+    d { "Jobs canceled" }
+    timerJob?.cancel()
+    commandsCollectorJob?.cancel()
   }
 
   data class TimerState(

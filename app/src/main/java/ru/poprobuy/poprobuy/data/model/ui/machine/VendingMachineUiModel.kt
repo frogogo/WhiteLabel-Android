@@ -7,5 +7,6 @@ import kotlinx.parcelize.Parcelize
 @Keep
 @Parcelize
 data class VendingMachineUiModel(
-  val products: List<VendingProductUiModel>,
+  val id: Int,
+  val cells: List<VendingCellUiModel>,
 ) : Parcelable

@@ -1,6 +1,7 @@
 package ru.poprobuy.poprobuy.ui.machine_select
 
 import androidx.navigation.fragment.navArgs
+import androidx.transition.TransitionManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -9,8 +10,10 @@ import ru.poprobuy.poprobuy.arch.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentMachineSelectBinding
 import ru.poprobuy.poprobuy.extension.*
 import ru.poprobuy.poprobuy.extension.binding.initMachineNumberType
+import ru.poprobuy.poprobuy.util.ParallelAutoTransition
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragment
+import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragment.Companion.showIn
 
 class MachineSelectFragment : BaseFragment<MachineSelectViewModel>(
   layoutId = R.layout.fragment_machine_select,
@@ -50,12 +53,15 @@ class MachineSelectFragment : BaseFragment<MachineSelectViewModel>(
   }
 
   private fun handleCommand(command: MachineSelectCommand) {
+    TransitionManager.beginDelayedTransition(binding.layoutContent, ParallelAutoTransition().apply {
+      excludeChildren(binding.textInputLayout, true)
+    })
     when (command) {
-      is MachineSelectCommand.DialogError -> {
+      is MachineSelectCommand.ShowDialogError -> {
         ErrorDialogFragment.newInstance(command.error)
-          .show(childFragmentManager, ErrorDialogFragment.TAG)
+          .showIn(childFragmentManager)
       }
-      is MachineSelectCommand.NumberValidationError -> {
+      is MachineSelectCommand.ShowFieldError -> {
         binding.apply {
           textViewError.setNullableTextRes(command.errorResId)
           textInputLayout.setError(command.errorResId != null)

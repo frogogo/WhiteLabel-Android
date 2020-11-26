@@ -21,6 +21,8 @@ import ru.poprobuy.poprobuy.ui.machine_select.MachineSelectNavigation
 import ru.poprobuy.poprobuy.ui.machine_select.MachineSelectNavigationImpl
 import ru.poprobuy.poprobuy.ui.onboarding.OnboardingNavigation
 import ru.poprobuy.poprobuy.ui.onboarding.OnboardingNavigationImpl
+import ru.poprobuy.poprobuy.ui.products.MachineProductsNavigation
+import ru.poprobuy.poprobuy.ui.products.MachineProductsNavigationImpl
 import ru.poprobuy.poprobuy.ui.profile.ProfileNavigation
 import ru.poprobuy.poprobuy.ui.profile.ProfileNavigationImpl
 import ru.poprobuy.poprobuy.ui.profile.receipts.ReceiptsNavigation
@@ -47,10 +49,13 @@ val navigationModule = module {
   // Home
   factory { HomeNavigationImpl() as HomeNavigation }
   factory { ScannerNavigationImpl() as ScannerNavigation }
-  factory { MachineSelectNavigationImpl() as MachineSelectNavigation }
 
   // Profile
   factory { ProfileNavigationImpl() as ProfileNavigation }
   factory { ReceiptsNavigationImpl() as ReceiptsNavigation }
   factory { ReceiptDetailsNavigationImpl() as ReceiptDetailsNavigation }
+
+  // Machine
+  factory { MachineSelectNavigationImpl() as MachineSelectNavigation }
+  factory { MachineProductsNavigationImpl() as MachineProductsNavigation }
 }

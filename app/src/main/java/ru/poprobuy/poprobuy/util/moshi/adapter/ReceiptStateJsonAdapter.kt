@@ -8,9 +8,9 @@ import java.util.*
 class ReceiptStateJsonAdapter {
 
   @ToJson
-  fun toJson(chatType: ReceiptState): String = chatType.name.toLowerCase(Locale.ENGLISH)
+  fun toJson(state: ReceiptState): String = state.name.toLowerCase(Locale.ENGLISH)
 
   @FromJson
-  fun fromJson(chatType: String): ReceiptState = ReceiptState.valueOf(chatType.toUpperCase(Locale.ENGLISH))
+  fun fromJson(state: String): ReceiptState = ReceiptState.valueOf(state.toUpperCase(Locale.ENGLISH))
 
 }

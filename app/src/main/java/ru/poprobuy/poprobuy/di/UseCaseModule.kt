@@ -13,6 +13,7 @@ import ru.poprobuy.poprobuy.usecase.receipt.GetReceiptsUseCase
 import ru.poprobuy.poprobuy.usecase.user.GetUserInfoUseCase
 import ru.poprobuy.poprobuy.usecase.user.UpdateUserDetailsUseCase
 import ru.poprobuy.poprobuy.usecase.vending_machine.AssignVendingMachineUseCase
+import ru.poprobuy.poprobuy.usecase.vending_machine.TakeProductUseCase
 
 val useCaseModule = module {
   // Auth
@@ -35,6 +36,7 @@ val useCaseModule = module {
 
   // Vending Machine
   single { AssignVendingMachineUseCase(get()) }
+  single { TakeProductUseCase(get()) }
 
   // System
   single { ClearUserDataUseCase(get()) }

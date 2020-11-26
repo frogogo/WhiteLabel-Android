@@ -11,13 +11,12 @@ import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.extension.exhaustive
 import ru.poprobuy.poprobuy.usecase.vending_machine.AssignVendingMachineUseCase
 import ru.poprobuy.poprobuy.usecase.vending_machine.AssignVendingMachineUseCaseResult
-import ru.poprobuy.poprobuy.util.ResourceProvider
 import ru.poprobuy.poprobuy.util.Validators
 
+// TODO: 26.11.2020 Tests
 class MachineSelectViewModel(
   private val receiptId: Int,
   private val navigation: MachineSelectNavigation,
-  private val resourceProvider: ResourceProvider,
   private val assignVendingMachineUseCase: AssignVendingMachineUseCase,
 ) : BaseViewModel() {
 
@@ -32,28 +31,26 @@ class MachineSelectViewModel(
     i { "Selecting machine - $machineNumber" }
 
     viewModelScope.launch {
-      _isLoadingLive.postValue(true)
+      _isLoadingLive.value = true
       val result = assignVendingMachineUseCase(
         machineId = machineNumber,
         receiptId = receiptId
       )
-      _isLoadingLive.postValue(false)
+      _isLoadingLive.value = false
 
       when (result) {
         is AssignVendingMachineUseCaseResult.Success -> {
           hideKeyboard()
-          navigation.navigateToProducts(result.vendingMachine).navigate()
+          navigation.navigateToProducts(receiptId = receiptId, vendingMachine = result.vendingMachine).navigate()
         }
         is AssignVendingMachineUseCaseResult.ValidationFailure -> {
-          _commandLiveEvent.postValue(MachineSelectCommand.DialogError(result.error))
+          _commandLiveEvent.value = MachineSelectCommand.ShowDialogError(result.error)
         }
         AssignVendingMachineUseCaseResult.MachineNotFound -> {
-          _commandLiveEvent.postValue(
-            MachineSelectCommand.DialogError(resourceProvider.getString(R.string.machine_select_error_not_found))
-          )
+          _commandLiveEvent.value = MachineSelectCommand.ShowFieldError(R.string.machine_select_error_not_found)
         }
         AssignVendingMachineUseCaseResult.Failure -> {
-          _commandLiveEvent.postValue(MachineSelectCommand.DialogError(null))
+          _commandLiveEvent.value = MachineSelectCommand.ShowDialogError(null)
         }
       }.exhaustive
     }
@@ -61,7 +58,7 @@ class MachineSelectViewModel(
 
   private fun validateNumber(number: String): Boolean {
     val error = Validators.isVendingMachineNumber(number)
-    _commandLiveEvent.postValue(MachineSelectCommand.NumberValidationError(error))
+    _commandLiveEvent.value = MachineSelectCommand.ShowFieldError(error)
 
     return error == null
   }

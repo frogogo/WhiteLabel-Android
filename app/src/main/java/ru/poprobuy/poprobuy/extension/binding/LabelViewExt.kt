@@ -1,7 +1,7 @@
 package ru.poprobuy.poprobuy.extension.binding
 
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.data.model.ui.product.ProductUiModel
+import ru.poprobuy.poprobuy.data.model.ui.machine.VendingProductUiModel
 import ru.poprobuy.poprobuy.dictionary.ReceiptState
 import ru.poprobuy.poprobuy.dictionary.ReceiptState.*
 import ru.poprobuy.poprobuy.extension.setVisible
@@ -21,18 +21,12 @@ fun LabelView.setReceiptState(state: ReceiptState) {
   setIcon(drawableRes)
 }
 
-fun LabelView.setProductState(product: ProductUiModel) {
+fun LabelView.setProductState(product: VendingProductUiModel) {
   setVisible(!product.isActive())
 
   // Do not continue if label shouldn't be shown
   if (product.isActive()) return
 
-  val (textRes, colorRes) = when {
-    product.triedBefore -> R.string.products_status_tried_before to R.color.products_state_tried_before
-    !product.inStock -> R.string.products_status_out_of_stock to R.color.products_state_out_of_stock
-    else -> 1 to 1 // Should never happens
-  }
-
-  setText(textRes)
-  setLabelBackground(context.getColor(colorRes))
+  setText(product.state.getNameRes() ?: return)
+  setLabelBackground(context.getColor(product.state.getColorRes() ?: return))
 }

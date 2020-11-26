@@ -1,6 +1,7 @@
 package ru.poprobuy.poprobuy.view.dialog
 
 import androidx.core.os.bundleOf
+import androidx.fragment.app.FragmentManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.arch.ui.BaseDialogFragment
@@ -24,18 +25,20 @@ class ErrorDialogFragment : BaseDialogFragment(R.layout.dialog_error) {
     }
   }
 
-  companion object {
+  companion object : DialogCompanion<ErrorDialogFragment> {
 
-    const val TAG = "ErrorDialogFragment"
-
+    private const val TAG = "ErrorDialogFragment"
     private const val ARG_ERROR_TEXT = "arg:error_text"
+
+    override fun ErrorDialogFragment.showIn(fragmentManager: FragmentManager) {
+      show(fragmentManager, TAG)
+    }
 
     fun newInstance(errorText: String?): ErrorDialogFragment = ErrorDialogFragment().apply {
       arguments = bundleOf(
         ARG_ERROR_TEXT to errorText
       )
     }
-
   }
 
 }

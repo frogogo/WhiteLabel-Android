@@ -22,6 +22,7 @@
   <string name="products_title">Выбор товара</string>
   <string name="products_status_tried_before">Уже пробовал(а)</string>
   <string name="products_status_out_of_stock">Разобрали</string>
+  <string name="products_status_unavailable">Недоступен</string>
   <string name="products_header">Отлично, у вас есть 1 минута, чтобы выбрать товар.</string>
 
 </resources>

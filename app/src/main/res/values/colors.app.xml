@@ -40,6 +40,7 @@
   <!-- Products -->
   <color name="products_state_tried_before">@color/green</color>
   <color name="products_state_out_of_stock">@color/red</color>
+  <color name="products_state_unavailable">@color/gray_300</color>
 
   <!-- Widgets -->
   <color name="circle_indicator_selected">@color/primary_500</color>

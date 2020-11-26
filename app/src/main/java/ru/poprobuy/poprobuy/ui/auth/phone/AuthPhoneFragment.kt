@@ -19,6 +19,7 @@ import ru.poprobuy.poprobuy.util.ParallelAutoTransition
 import ru.poprobuy.poprobuy.util.SpannableUtils
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragment
+import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragment.Companion.showIn
 
 class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(
   layoutId = R.layout.fragment_auth_phone,
@@ -83,7 +84,7 @@ class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(
       }
       AuthPhoneCommand.ShowLogoutDialog -> {
         ErrorDialogFragment.newInstance(getString(R.string.error_logout))
-          .show(childFragmentManager, ErrorDialogFragment.TAG)
+          .showIn(childFragmentManager)
       }
       is AuthPhoneCommand.PhoneValidationResult -> binding.apply {
         textViewError.setNullableTextRes(command.errorRes)

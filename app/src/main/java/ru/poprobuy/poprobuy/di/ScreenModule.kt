@@ -15,8 +15,7 @@ import ru.poprobuy.poprobuy.ui.auth.policy.AuthPolicyViewModel
 import ru.poprobuy.poprobuy.ui.home.HomeViewModel
 import ru.poprobuy.poprobuy.ui.machine_select.MachineSelectViewModel
 import ru.poprobuy.poprobuy.ui.onboarding.OnboardingViewModel
-import ru.poprobuy.poprobuy.ui.products.ProductsViewModel
-import ru.poprobuy.poprobuy.ui.products.select.ProductSelectionInteractor
+import ru.poprobuy.poprobuy.ui.products.MachineProductsViewModel
 import ru.poprobuy.poprobuy.ui.products.select.ProductSelectionViewModel
 import ru.poprobuy.poprobuy.ui.profile.ProfileViewModel
 import ru.poprobuy.poprobuy.ui.profile.receipts.ReceiptsViewModel
@@ -65,12 +64,24 @@ val screenModule = module {
       resourceProvider = get()
     )
   }
-  viewModel { (receiptId: Int) -> MachineSelectViewModel(receiptId, get(), get(), get()) }
+  viewModel { (receiptId: Int) -> MachineSelectViewModel(receiptId, get(), get()) }
 
   // Products
-  viewModel { (vendingMachine: VendingMachineUiModel) -> ProductsViewModel(vendingMachine) }
-  viewModel { ProductSelectionViewModel() }
-  viewModel { ProductSelectionInteractor() }
+  viewModel { (receiptId: Int, machine: VendingMachineUiModel) ->
+    MachineProductsViewModel(
+      receiptId = receiptId,
+      vendingMachine = machine,
+      navigation = get(),
+      productSelectionInteractor = get()
+    )
+  }
+  viewModel { (params: ProductSelectionViewModel.Params) ->
+    ProductSelectionViewModel(
+      params = params,
+      takeProductUseCase = get(),
+      productSelectionInteractor = get()
+    )
+  }
 
   // Profile
   viewModel { ProfileViewModel(get(), get(), get(), get(), get()) }

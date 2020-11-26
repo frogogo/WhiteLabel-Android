@@ -246,11 +246,21 @@
 
   <fragment
     android:id="@+id/products"
-    android:name="ru.poprobuy.poprobuy.ui.products.ProductsFragment"
-    tools:layout="@layout/fragment_products">
+    android:name="ru.poprobuy.poprobuy.ui.products.MachineProductsFragment"
+    tools:layout="@layout/fragment_machine_products">
+    <argument
+      android:name="receiptId"
+      app:argType="integer" />
     <argument
       android:name="vendingMachine"
       app:argType="ru.poprobuy.poprobuy.data.model.ui.machine.VendingMachineUiModel" />
+    <action
+      android:id="@+id/products_to_home"
+      app:destination="@id/home"
+      app:enterAnim="@anim/scale_enter"
+      app:exitAnim="@anim/scale_exit"
+      app:popUpTo="@id/main_navigation"
+      app:popUpToInclusive="true" />
   </fragment>
 
   <fragment
