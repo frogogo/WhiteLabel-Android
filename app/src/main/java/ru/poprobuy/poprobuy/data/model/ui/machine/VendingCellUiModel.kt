@@ -2,7 +2,7 @@ package ru.poprobuy.poprobuy.data.model.ui.machine
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
+import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 
 @Parcelize
 data class VendingCellUiModel(

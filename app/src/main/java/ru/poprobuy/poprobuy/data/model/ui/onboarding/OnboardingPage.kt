@@ -2,7 +2,7 @@ package ru.poprobuy.poprobuy.data.model.ui.onboarding
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
+import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 
 private const val ID = "ITEM_PAGE"
 

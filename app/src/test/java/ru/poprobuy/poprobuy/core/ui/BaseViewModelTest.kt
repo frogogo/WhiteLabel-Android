@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.arch.ui
+package ru.poprobuy.poprobuy.core.ui
 
 import io.mockk.verifySequence
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -6,8 +6,8 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Test
 import ru.poprobuy.poprobuy.ViewModelTest
-import ru.poprobuy.poprobuy.arch.navigation.AppNavigation
-import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.core.navigation.AppNavigation
+import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.mockkObserver
 
 @ExperimentalCoroutinesApi

@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.arch.navigation
+package ru.poprobuy.poprobuy.core.navigation
 
 object AppNavigation {
 

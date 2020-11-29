@@ -1,10 +1,10 @@
-package ru.poprobuy.poprobuy.arch.ui
+package ru.poprobuy.poprobuy.core.ui
 
 import androidx.lifecycle.ViewModel
 import com.github.ajalt.timberkt.d
 import com.hadilq.liveevent.LiveEvent
-import ru.poprobuy.poprobuy.arch.navigation.AppNavigation
-import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.core.navigation.AppNavigation
+import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.extension.asLiveData
 
 open class BaseViewModel : ViewModel() {

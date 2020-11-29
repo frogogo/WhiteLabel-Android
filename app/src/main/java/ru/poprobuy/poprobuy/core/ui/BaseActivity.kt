@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.arch.ui
+package ru.poprobuy.poprobuy.core.ui
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes

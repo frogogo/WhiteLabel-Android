@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.arch.ui
+package ru.poprobuy.poprobuy.core.ui
 
 sealed class BaseCommand {
   object HideKeyboard : BaseCommand()

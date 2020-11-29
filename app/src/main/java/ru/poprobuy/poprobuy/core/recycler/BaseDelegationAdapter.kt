@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.arch.recycler
+package ru.poprobuy.poprobuy.core.recycler
 
 import com.github.ajalt.timberkt.d
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate

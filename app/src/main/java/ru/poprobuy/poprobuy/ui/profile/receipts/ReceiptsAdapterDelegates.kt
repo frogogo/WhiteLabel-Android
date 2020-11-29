@@ -2,7 +2,7 @@ package ru.poprobuy.poprobuy.ui.profile.receipts
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
+import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.data.model.ui.profile.receipts.ReceiptsEmptyState
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptsScanAvailable

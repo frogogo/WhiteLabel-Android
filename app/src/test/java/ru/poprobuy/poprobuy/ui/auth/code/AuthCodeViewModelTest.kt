@@ -6,8 +6,8 @@ import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Test
 import ru.poprobuy.poprobuy.ViewModelTest
-import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
-import ru.poprobuy.poprobuy.arch.ui.BaseCommand
+import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.core.ui.BaseCommand
 import ru.poprobuy.poprobuy.mockkObserver
 import ru.poprobuy.poprobuy.usecase.auth.AuthenticationResult
 import ru.poprobuy.poprobuy.usecase.auth.AuthenticationUseCase

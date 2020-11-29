@@ -1,6 +1,6 @@
 package ru.poprobuy.poprobuy.ui.home
 
-import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.dictionary.ScanMode
 
 interface HomeNavigation {

@@ -3,7 +3,7 @@ package ru.poprobuy.poprobuy.ui.products
 import coil.load
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
+import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingCellUiModel
 import ru.poprobuy.poprobuy.databinding.ItemProductBinding
 import ru.poprobuy.poprobuy.extension.binding.setProductState

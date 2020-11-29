@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.arch.recycler
+package ru.poprobuy.poprobuy.core.recycler
 
 interface RecyclerViewItem {
   fun getId(): Any

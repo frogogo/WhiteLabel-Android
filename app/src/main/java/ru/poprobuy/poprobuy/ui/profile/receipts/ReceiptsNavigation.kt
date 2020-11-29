@@ -1,6 +1,6 @@
 package ru.poprobuy.poprobuy.ui.profile.receipts
 
-import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 import ru.poprobuy.poprobuy.ui.profile.receipts.details.ReceiptDetailsButtonState
 

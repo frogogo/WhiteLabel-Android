@@ -1,6 +1,6 @@
 package ru.poprobuy.poprobuy.data.model.ui.home
 
-import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
+import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 
 sealed class HomeState : RecyclerViewItem {

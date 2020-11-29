@@ -1,6 +1,6 @@
 package ru.poprobuy.poprobuy.ui.auth.code
 
-import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 
 interface AuthCodeConfirmationNavigation {
   fun navigateToAuthName(): NavigationCommand

@@ -5,7 +5,7 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.arch.ui.BaseFragment
+import ru.poprobuy.poprobuy.core.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentWebViewBinding
 import ru.poprobuy.poprobuy.extension.setOnClickListener
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen

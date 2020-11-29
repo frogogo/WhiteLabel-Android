@@ -1,7 +1,7 @@
 package ru.poprobuy.poprobuy.ui
 
 import ru.poprobuy.poprobuy.MainNavigationDirections
-import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 
 interface MainNavigation {
   fun navigateToLoginDestructive(): NavigationCommand

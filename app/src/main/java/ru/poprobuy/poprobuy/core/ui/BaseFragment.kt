@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.arch.ui
+package ru.poprobuy.poprobuy.core.ui
 
 import android.os.Bundle
 import android.view.View
@@ -14,7 +14,7 @@ import app.cash.exhaustive.Exhaustive
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.arch.navigation.NavigationRouter
+import ru.poprobuy.poprobuy.core.navigation.NavigationRouter
 import ru.poprobuy.poprobuy.extension.*
 import ru.poprobuy.poprobuy.util.SimpleWindowAnimator
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsManager

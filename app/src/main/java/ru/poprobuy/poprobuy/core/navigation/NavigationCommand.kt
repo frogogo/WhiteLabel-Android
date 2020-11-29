@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.arch.navigation
+package ru.poprobuy.poprobuy.core.navigation
 
 import androidx.annotation.StringRes
 import androidx.navigation.NavDirections

@@ -8,8 +8,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
 import org.junit.Test
 import ru.poprobuy.poprobuy.ViewModelTest
-import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
-import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
+import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.data.model.ui.onboarding.OnboardingPage
 import ru.poprobuy.poprobuy.data.repository.OnboardingRepository
 import ru.poprobuy.poprobuy.mockkObserver

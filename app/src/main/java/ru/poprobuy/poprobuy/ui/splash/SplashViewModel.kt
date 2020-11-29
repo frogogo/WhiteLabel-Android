@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.github.ajalt.timberkt.i
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.core.ui.BaseViewModel
 import ru.poprobuy.poprobuy.usecase.GetUserAuthStateUseCase
 import ru.poprobuy.poprobuy.usecase.GetUserAuthStateUseCase.State
 

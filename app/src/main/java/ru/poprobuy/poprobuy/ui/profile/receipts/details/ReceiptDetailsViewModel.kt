@@ -3,7 +3,7 @@ package ru.poprobuy.poprobuy.ui.profile.receipts.details
 import com.github.ajalt.timberkt.d
 import com.hadilq.liveevent.LiveEvent
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.core.ui.BaseViewModel
 import ru.poprobuy.poprobuy.extension.asLiveData
 
 class ReceiptDetailsViewModel(

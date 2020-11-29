@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.arch.ui
+package ru.poprobuy.poprobuy.core.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
-import ru.poprobuy.poprobuy.arch.navigation.NavigationRouter
+import ru.poprobuy.poprobuy.core.navigation.NavigationRouter
 import ru.poprobuy.poprobuy.extension.observe
 
 abstract class BaseBottomSheetDialogFragment<out T : BaseViewModel>(

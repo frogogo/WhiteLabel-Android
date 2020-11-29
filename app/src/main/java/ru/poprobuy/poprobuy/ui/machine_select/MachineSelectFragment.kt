@@ -7,7 +7,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.arch.ui.BaseFragment
+import ru.poprobuy.poprobuy.core.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentMachineSelectBinding
 import ru.poprobuy.poprobuy.extension.*
 import ru.poprobuy.poprobuy.extension.binding.initMachineNumberType

@@ -8,7 +8,7 @@ import com.github.ajalt.timberkt.e
 import com.hadilq.liveevent.LiveEvent
 import com.skydoves.whatif.whatIfNotNull
 import kotlinx.coroutines.launch
-import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.core.ui.BaseViewModel
 import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.extension.getUnformattedPhoneNumber
 import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationCodeUseCase

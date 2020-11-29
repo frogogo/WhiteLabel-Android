@@ -1,6 +1,6 @@
 package ru.poprobuy.poprobuy.ui.auth.email
 
-import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 
 interface AuthEmailNavigation {
   fun navigateToApp(): NavigationCommand

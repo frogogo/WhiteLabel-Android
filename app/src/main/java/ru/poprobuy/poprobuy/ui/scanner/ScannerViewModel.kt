@@ -8,7 +8,7 @@ import com.github.ajalt.timberkt.e
 import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.core.ui.BaseViewModel
 import ru.poprobuy.poprobuy.dictionary.ScanMode
 import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.usecase.receipt.CreateReceiptResult

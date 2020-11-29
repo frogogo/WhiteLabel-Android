@@ -1,6 +1,6 @@
 package ru.poprobuy.poprobuy.ui.machine_select
 
-import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingMachineUiModel
 
 interface MachineSelectNavigation {

@@ -20,7 +20,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.arch.ui.BaseFragment
+import ru.poprobuy.poprobuy.core.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentScannerBinding
 import ru.poprobuy.poprobuy.dictionary.ScanMode.MACHINE
 import ru.poprobuy.poprobuy.dictionary.ScanMode.RECEIPT

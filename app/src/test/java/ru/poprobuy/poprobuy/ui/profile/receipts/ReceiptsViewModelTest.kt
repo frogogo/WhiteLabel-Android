@@ -8,7 +8,7 @@ import org.junit.Before
 import org.junit.Test
 import ru.poprobuy.poprobuy.DataFixtures
 import ru.poprobuy.poprobuy.ViewModelTest
-import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
+import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.mockkObserver
 import ru.poprobuy.poprobuy.testError
 import ru.poprobuy.poprobuy.ui.profile.receipts.details.ReceiptDetailsButtonState
