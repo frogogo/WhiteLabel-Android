@@ -42,7 +42,7 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
   private val binding: FragmentAuthCodeBinding by viewBinding()
   private val args: AuthCodeFragmentArgs by navArgs()
   private val smsVerificationReceiver: SmsVerificationReceiver by lazy {
-    SmsVerificationReceiver(SMS_CONSENT_REQUEST) { this }
+    SmsVerificationReceiver(SMS_CONSENT_ACTIVITY_REQUEST_CODE) { this }
   }
   private var codeTextWatcher: TextWatcher? = null
   private val handler = Handler()
@@ -80,7 +80,7 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     SmsRetriever.getClient(requireContext())
-      .startSmsUserConsent(Constants.SMS_SENDER_NAME)
+      .startSmsUserConsent(null) // TODO: 01.12.2020 Return handling sms from specific sender
   }
 
   override fun onStart() {
@@ -114,7 +114,7 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)
 
-    if (requestCode == SMS_CONSENT_REQUEST) {
+    if (requestCode == SMS_CONSENT_ACTIVITY_REQUEST_CODE) {
       if (resultCode == Activity.RESULT_OK && data != null) {
         val message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE)
         i { "Received message - $message" }
@@ -200,7 +200,7 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
 
   companion object {
     private const val CODE_RESEND_ERROR_DURATION = 1500L
-    private const val SMS_CONSENT_REQUEST = 2
+    private const val SMS_CONSENT_ACTIVITY_REQUEST_CODE = 2
   }
 
 }
