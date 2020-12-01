@@ -12,8 +12,8 @@ import androidx.core.view.ViewCompat
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 import ru.poprobuy.poprobuy.databinding.ViewReceiptBinding
+import ru.poprobuy.poprobuy.di.inflateViewBinding
 import ru.poprobuy.poprobuy.extension.binding.setReceipt
-import ru.poprobuy.poprobuy.extension.layoutInflater
 
 class ReceiptView @JvmOverloads constructor(
   context: Context,
@@ -21,7 +21,7 @@ class ReceiptView @JvmOverloads constructor(
   defStyleAttr: Int = 0,
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
-  private val binding = ViewReceiptBinding.inflate(layoutInflater, this, true)
+  private val binding: ViewReceiptBinding = inflateViewBinding()
 
   init {
     // Shadow
