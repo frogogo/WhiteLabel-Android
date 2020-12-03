@@ -19,29 +19,31 @@ import ru.poprobuy.poprobuy.data.network.PoprobuyApi
 import ru.poprobuy.poprobuy.data.network.interceptor.*
 import ru.poprobuy.poprobuy.util.Constants
 import ru.poprobuy.poprobuy.util.Constants.POPROBUY_API_ENDPOINT
+import ru.poprobuy.poprobuy.util.NetworkConstants.CACHE_DIRECTORY
+import ru.poprobuy.poprobuy.util.NetworkConstants.CACHE_SIZE_BYTES
+import ru.poprobuy.poprobuy.util.NetworkConstants.TIMEOUT_CONNECT
+import ru.poprobuy.poprobuy.util.NetworkConstants.TIMEOUT_READ
+import ru.poprobuy.poprobuy.util.NetworkConstants.TIMEOUT_WRITE
 import ru.poprobuy.poprobuy.util.moshi.MoshiUtils
 import ru.poprobuy.poprobuy.util.network.UserAgentFactory
 import java.io.File
 import java.util.concurrent.TimeUnit
 
-private const val TIMEOUT_CONNECT = 60L
-private const val TIMEOUT_READ = 60L
-private const val TIMEOUT_WRITE = 60L
-
-private const val CACHE_SIZE_BYTES: Long = 1024 * 1024 * 10 // 10 MB
-private const val CACHE_DIRECTORY = "network"
-
 val networkModule = module {
   // Interceptors
   single { AuthInterceptor(get()) as Interceptor }
   single { TokenAuthenticator() as Authenticator }
+  single { MachineSessionIdTakeInterceptor(get()) }
+  single { MachineSessionIdProviderInterceptor(get()) }
 
   // Network
   single {
     createHttpClient(
       context = androidContext(),
-      authorizationInterceptor = get(),
       authenticator = get(),
+      authorizationInterceptor = get(),
+      machineSessionIdTakeInterceptor = get(),
+      machineSessionIdProviderInterceptor = get(),
       userAgent = UserAgentFactory.create()
     )
   }
@@ -59,8 +61,10 @@ val networkModule = module {
 
 fun createHttpClient(
   context: Context,
-  authorizationInterceptor: Interceptor,
   authenticator: Authenticator,
+  authorizationInterceptor: Interceptor,
+  machineSessionIdTakeInterceptor: MachineSessionIdTakeInterceptor,
+  machineSessionIdProviderInterceptor: MachineSessionIdProviderInterceptor,
   userAgent: String,
 ): OkHttpClient {
   return OkHttpClient.Builder().apply {
@@ -82,6 +86,8 @@ fun createHttpClient(
     addInterceptor(AcceptLanguageInterceptor())
     addInterceptor(ApiVersionInterceptor(Constants.POPROBUY_API_VERSION))
     addInterceptor(NoContentInterceptor())
+    addInterceptor(machineSessionIdTakeInterceptor)
+    addInterceptor(machineSessionIdProviderInterceptor)
 
     // Auth
     authenticator(authenticator)

@@ -24,6 +24,7 @@ object DataFixtures {
   const val SMS_CODE = "3030"
   const val ACCESS_TOKEN = "access_token"
   const val REFRESH_TOKEN = "refresh_token"
+  const val SESSION_ID = "session-id"
 
   val user = User(
     firstName = USER_NAME,
