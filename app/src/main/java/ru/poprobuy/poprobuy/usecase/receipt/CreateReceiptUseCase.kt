@@ -3,13 +3,13 @@ package ru.poprobuy.poprobuy.usecase.receipt
 import com.github.ajalt.timberkt.e
 import com.github.ajalt.timberkt.i
 import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
-import ru.poprobuy.poprobuy.data.model.api.getErrorOrDefault
 import ru.poprobuy.poprobuy.data.repository.ReceiptsRepository
 import ru.poprobuy.poprobuy.util.Result
 import ru.poprobuy.poprobuy.util.network.HttpStatus
 import ru.poprobuy.poprobuy.util.network.NetworkError
 import ru.poprobuy.poprobuy.util.network.onHttpErrorWithCode
 
+// TODO: 01.12.2020 Tests
 class CreateReceiptUseCase(
   private val receiptsRepository: ReceiptsRepository,
 ) {
@@ -28,7 +28,7 @@ class CreateReceiptUseCase(
   private fun handleFailure(error: NetworkError<ErrorResponse>): CreateReceiptResult {
     error.onHttpErrorWithCode(HttpStatus.UNPROCESSABLE_ENTITY_422) { errorResponse ->
       e { "Unprocessable entity while creating receipt" }
-      return CreateReceiptResult.ValidationError(errorResponse.data.getErrorOrDefault())
+      return CreateReceiptResult.ValidationError(errorResponse.data?.errorText)
     }
 
     e { "Generic error while creating receipt" }

@@ -10,8 +10,10 @@ import org.junit.Before
 import org.junit.Test
 import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequestResponse
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
+import ru.poprobuy.poprobuy.test422Error
 import ru.poprobuy.poprobuy.testError
 import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.util.network.HttpErrorReason.ERROR_REASON_PASSWORD_REFRESH_RATE_LIMIT
 import ru.poprobuy.poprobuy.util.network.NetworkError
 
 @ExperimentalCoroutinesApi
@@ -46,8 +48,9 @@ class RequestConfirmationCodeUseCaseTest {
   }
 
   @Test
-  fun `too many requests returned if request failed with 429 status code`() = runBlockingTest {
-    coEvery { authRepository.requestConfirmationCode(any()) } returns Result.Failure(NetworkError.testError(429))
+  fun `too many requests error should be returned`() = runBlockingTest {
+    coEvery { authRepository.requestConfirmationCode(any()) } returns
+        Result.Failure(NetworkError.test422Error(ERROR_REASON_PASSWORD_REFRESH_RATE_LIMIT))
 
     val result = useCase("")
 

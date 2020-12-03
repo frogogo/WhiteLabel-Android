@@ -6,9 +6,8 @@ import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
 import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequestResponse
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.util.Result
-import ru.poprobuy.poprobuy.util.network.HttpStatus
+import ru.poprobuy.poprobuy.util.network.HttpErrorReason
 import ru.poprobuy.poprobuy.util.network.NetworkError
-import ru.poprobuy.poprobuy.util.network.onHttpErrorWithCode
 
 class RequestConfirmationCodeUseCase(
   private val authRepository: AuthRepository,
@@ -27,8 +26,9 @@ class RequestConfirmationCodeUseCase(
   }
 
   private fun handleFailure(error: NetworkError<ErrorResponse>): RequestConfirmationResult {
-    error.onHttpErrorWithCode(HttpStatus.TOO_MANY_REQUESTS_429) {
-      e { "TooManyRequests while requesting code" }
+    if (error is NetworkError.HttpError && error.data?.errorReason ==
+      HttpErrorReason.ERROR_REASON_PASSWORD_REFRESH_RATE_LIMIT
+    ) {
       return RequestConfirmationResult.TooManyRequests
     }
 

@@ -18,9 +18,7 @@
   <string name="error_email_format">Такой email не подойдет</string>
   <string name="error_machine_number_empty">Необходимо ввести номер аппарата</string>
 
-  <string name="error_receipt_not_unique">Данный чек уже был отсканирован ранее</string>
   <string name="error_receipt_format">Отсканированный QR-код имеет неверный формат</string>
-  <string name="error_receipt_daily_limit">Превышено максимальное число сканирований на сегодня</string>
 
   <string name="error_something_went_wrong">Что-то пошло не так!</string>
   <string name="error_something_went_wrong_retry">Повторить</string>

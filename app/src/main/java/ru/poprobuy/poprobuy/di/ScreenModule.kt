@@ -66,7 +66,7 @@ val screenModule = module {
       resourceProvider = get()
     )
   }
-  viewModel { (receiptId: Int) -> MachineSelectViewModel(receiptId, get(), get()) }
+  viewModel { (receiptId: Int) -> MachineSelectViewModel(receiptId, get(), get(), get()) }
 
   // Products
   viewModel { (receiptId: Int, machine: VendingMachineUiModel) ->
@@ -80,6 +80,7 @@ val screenModule = module {
   viewModel { (params: ProductSelectionViewModel.Params) ->
     ProductSelectionViewModel(
       params = params,
+      resourceProvider = get(),
       takeProductUseCase = get(),
       productSelectionInteractor = get()
     )
