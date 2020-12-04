@@ -56,15 +56,13 @@ object DataFixtures {
 
   fun getVendingMachine(id: Int = 1): VendingMachine = VendingMachine(
     id = id,
-    address = "",
     vendingCells = listOf(
       VendingCell(1, getVendingProduct(1)),
       VendingCell(2, getVendingProduct(2)),
       VendingCell(3, getVendingProduct(3)),
       VendingCell(4, getVendingProduct(4)),
     ),
-    vendingCellsColumns = 10,
-    vendingCellsRows = 6
+    assignExpiresIn = 60
   )
 
   fun getVendingMachineUiModel(id: Int = 1): VendingMachineUiModel = getVendingMachine(id).toDomain()

@@ -41,7 +41,7 @@ class MachineProductsViewModel(
   private val _commandLive = LiveEvent<MachineProductsCommand>()
   val commandLive = _commandLive.asLiveData()
 
-  private var timerEnd = Date(System.currentTimeMillis() + SELECTION_TIME * 1000)
+  private var timerEnd = Date(System.currentTimeMillis() + vendingMachine.assignExpiresIn * 1000)
 
   private var timerJob: Job? = null
   private var commandsCollectorJob: Job? = null
