@@ -8,7 +8,9 @@ import org.junit.Test
 import ru.poprobuy.poprobuy.ViewModelTest
 import ru.poprobuy.poprobuy.core.navigation.AppNavigation
 import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
-import ru.poprobuy.poprobuy.mockkObserver
+import ru.poprobuy.poprobuy.mockkEventObserver
+import ru.poprobuy.poprobuy.onEventChanged
+import ru.poprobuy.poprobuy.util.Event
 
 @ExperimentalCoroutinesApi
 class BaseViewModelTest : ViewModelTest() {
@@ -22,7 +24,7 @@ class BaseViewModelTest : ViewModelTest() {
 
   @Test
   fun `navigate extensions calls live data`() {
-    val navigationObserver = mockkObserver<NavigationCommand>()
+    val navigationObserver = mockkEventObserver<NavigationCommand>()
     viewModel.navigationLiveEvent.observeForever(navigationObserver)
 
     viewModel.apply {
@@ -31,36 +33,36 @@ class BaseViewModelTest : ViewModelTest() {
 
     val destination = AppNavigation.navigateBack()
     verifySequence {
-      navigationObserver.onChanged(destination)
+      navigationObserver.onEventChanged(destination)
     }
-    viewModel.navigationLiveEvent.value shouldBeEqualTo destination
+    viewModel.navigationLiveEvent.value shouldBeEqualTo Event(destination)
   }
 
   @Test
   fun `navigateBack executes proper action`() {
-    val navigationObserver = mockkObserver<NavigationCommand>()
+    val navigationObserver = mockkEventObserver<NavigationCommand>()
     viewModel.navigationLiveEvent.observeForever(navigationObserver)
 
     viewModel.navigateBack()
 
     val destination = AppNavigation.navigateBack()
     verifySequence {
-      navigationObserver.onChanged(destination)
+      navigationObserver.onEventChanged(destination)
     }
-    viewModel.navigationLiveEvent.value shouldBeEqualTo destination
+    viewModel.navigationLiveEvent.value shouldBeEqualTo Event(destination)
   }
 
   @Test
   fun `hide command executes proper action`() {
-    val commandObserver = mockkObserver<BaseCommand>()
+    val commandObserver = mockkEventObserver<BaseCommand>()
     viewModel.baseCommandLiveEvent.observeForever(commandObserver)
 
     viewModel.hideKeyboard()
 
     verifySequence {
-      commandObserver.onChanged(BaseCommand.HideKeyboard)
+      commandObserver.onEventChanged(BaseCommand.HideKeyboard)
     }
-    viewModel.baseCommandLiveEvent.value shouldBeEqualTo BaseCommand.HideKeyboard
+    viewModel.baseCommandLiveEvent.value shouldBeEqualTo Event(BaseCommand.HideKeyboard)
   }
 
 }

@@ -8,6 +8,7 @@ import org.junit.Before
 import org.junit.Test
 import ru.poprobuy.poprobuy.ViewModelTest
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
+import ru.poprobuy.poprobuy.util.Event
 
 @ExperimentalCoroutinesApi
 class AuthPolicyViewModelTest : ViewModelTest() {
@@ -29,7 +30,7 @@ class AuthPolicyViewModelTest : ViewModelTest() {
       authRepository.setPolicyAccepted()
       navigation.navigateToAuthPhoneEnter()
     }
-    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToAuthPhoneEnter()
+    viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToAuthPhoneEnter())
   }
 
 }

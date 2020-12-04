@@ -2,7 +2,7 @@ package ru.poprobuy.poprobuy.ui.products.select
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.github.ajalt.timberkt.d
+import com.github.ajalt.timberkt.i
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.core.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingCellUiModel
@@ -36,6 +36,7 @@ class ProductSelectionViewModel(
   }
 
   fun takeProduct() {
+    i { "Taking product" }
     viewModelScope.launch {
       _commandLive.setEvent(MachineProductSelectionCommand.SetCancelable(false))
       _stateLive.value = MachineProductSelectionState.Product(params.vendingCell.product, isLoading = true)
@@ -59,12 +60,11 @@ class ProductSelectionViewModel(
   }
 
   fun requestDismiss() {
-    d { "Dismiss requested" }
+    i { "Dismiss requested" }
     viewModelScope.launch {
+      _commandLive.setEvent(MachineProductSelectionCommand.DismissDialog)
       if (productWasTaken) {
         productSelectionInteractor.issueCommand(MachineProductSelectionInteractor.Command.NavigateToHome)
-      } else {
-        _commandLive.setEvent(MachineProductSelectionCommand.DismissDialog)
       }
     }
   }

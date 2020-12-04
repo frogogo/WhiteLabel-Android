@@ -8,6 +8,7 @@ import org.junit.Test
 import ru.poprobuy.poprobuy.dictionary.ScanMode
 import ru.poprobuy.poprobuy.usecase.receipt.CreateReceiptUseCase
 import ru.poprobuy.poprobuy.usecase.vending_machine.AssignVendingMachineUseCase
+import ru.poprobuy.poprobuy.util.Event
 import ru.poprobuy.poprobuy.util.ResourceProvider
 
 class ScannerViewModelTest {
@@ -33,7 +34,7 @@ class ScannerViewModelTest {
 
     viewModel.navigateToHelp()
 
-    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToMachineHelp()
+    viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToMachineHelp())
   }
 
   @Test
@@ -50,7 +51,7 @@ class ScannerViewModelTest {
 
     viewModel.navigateToHelp()
 
-    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToReceiptHelp()
+    viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToReceiptHelp())
   }
 
   @Test
@@ -67,7 +68,7 @@ class ScannerViewModelTest {
 
     viewModel.navigateToManualMachineEnter()
 
-    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToManualMachineEnter(1)
+    viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToManualMachineEnter(1))
   }
 
 }

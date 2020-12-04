@@ -20,7 +20,7 @@ class MainActivity : BaseActivity<MainViewModel>(R.layout.activity_main) {
   private val navController: NavController by lazy { findNavController(R.id.mainNavHost) }
 
   override fun initObservers() {
-    viewModel.navigationLiveEvent.observe(this, navigationRouter::navigate)
+    viewModel.navigationLiveEvent.observeEvent(this, navigationRouter::navigate)
     logoutNotifier.logoutEvent.observeEvent(this) {
       viewModel.logout()
     }

@@ -10,7 +10,9 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import ru.poprobuy.poprobuy.ViewModelTest
 import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.mockkEventObserver
 import ru.poprobuy.poprobuy.mockkObserver
+import ru.poprobuy.poprobuy.onEventChanged
 import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationCodeUseCase
 import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationResult
 
@@ -101,7 +103,7 @@ class AuthPhoneViewModelTest : ViewModelTest() {
     coEvery { requestConfirmationCodeUseCase(any()) } returns RequestConfirmationResult.Success(60)
     val commandsObserver = mockkObserver<AuthPhoneCommand>()
     val isLoadingObserver = mockkObserver<Boolean>()
-    val navigationObserver = mockkObserver<NavigationCommand>()
+    val navigationObserver = mockkEventObserver<NavigationCommand>()
     viewModel.apply {
       commandLiveEvent.observeForever(commandsObserver)
       isLoadingLive.observeForever(isLoadingObserver)
@@ -116,7 +118,7 @@ class AuthPhoneViewModelTest : ViewModelTest() {
       isLoadingObserver.onChanged(true)
       requestConfirmationCodeUseCase(any())
       isLoadingObserver.onChanged(false)
-      navigationObserver.onChanged(navigationDestination)
+      navigationObserver.onEventChanged(navigationDestination)
     }
   }
 
@@ -125,7 +127,7 @@ class AuthPhoneViewModelTest : ViewModelTest() {
     coEvery { requestConfirmationCodeUseCase(any()) } returns RequestConfirmationResult.TooManyRequests
     val commandsObserver = mockkObserver<AuthPhoneCommand>()
     val isLoadingObserver = mockkObserver<Boolean>()
-    val navigationObserver = mockkObserver<NavigationCommand>()
+    val navigationObserver = mockkEventObserver<NavigationCommand>()
     viewModel.apply {
       commandLiveEvent.observeForever(commandsObserver)
       isLoadingLive.observeForever(isLoadingObserver)
@@ -152,7 +154,7 @@ class AuthPhoneViewModelTest : ViewModelTest() {
     coEvery { requestConfirmationCodeUseCase(any()) } returns RequestConfirmationResult.Error
     val commandsObserver = mockkObserver<AuthPhoneCommand>()
     val isLoadingObserver = mockkObserver<Boolean>()
-    val navigationObserver = mockkObserver<NavigationCommand>()
+    val navigationObserver = mockkEventObserver<NavigationCommand>()
     viewModel.apply {
       commandLiveEvent.observeForever(commandsObserver)
       isLoadingLive.observeForever(isLoadingObserver)

@@ -100,8 +100,8 @@ abstract class BaseFragment<out T : BaseViewModel>(
    */
   private fun initInnerObservers() {
     with(viewModel) {
-      observe(navigationLiveEvent, navigationRouter::navigate)
-      observe(baseCommandLiveEvent, ::handleCommand)
+      observeEvent(navigationLiveEvent, navigationRouter::navigate)
+      observeEvent(baseCommandLiveEvent, ::handleCommand)
     }
   }
 
