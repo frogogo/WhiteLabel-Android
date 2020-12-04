@@ -33,8 +33,8 @@ class AuthEmailViewModel(
       _isLoadingLive.postValue(true)
       updateUserDetailsUseCase(email, userName).handle(
         onSuccess = {
-          authRepository.setUserAuthorized()
           hideKeyboard()
+          authRepository.setUserAuthorized()
           navigation.navigateToApp().navigate()
         },
         onFailure = { _commandLiveEvent.postValue(AuthEmailCommand.SomethingWentWrong) }
