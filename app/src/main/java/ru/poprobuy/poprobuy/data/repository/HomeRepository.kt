@@ -9,7 +9,6 @@ import ru.poprobuy.poprobuy.util.network.NetworkError
 import ru.poprobuy.poprobuy.util.network.apiCall
 import ru.poprobuy.poprobuy.util.network.mapToResult
 
-// TODO: 26.11.2020 Tests
 class HomeRepository(
   private val api: PoprobuyApi,
 ) {

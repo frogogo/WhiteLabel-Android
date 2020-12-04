@@ -2,6 +2,7 @@ package ru.poprobuy.poprobuy
 
 import ru.poprobuy.poprobuy.data.mapper.toDomain
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponse
+import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequestResponse
 import ru.poprobuy.poprobuy.data.model.api.home.HomeResponse
 import ru.poprobuy.poprobuy.data.model.api.machine.VendingCell
 import ru.poprobuy.poprobuy.data.model.api.machine.VendingMachine
@@ -25,6 +26,7 @@ object DataFixtures {
   const val ACCESS_TOKEN = "access_token"
   const val REFRESH_TOKEN = "refresh_token"
   const val SESSION_ID = "session-id"
+  const val QR_RECEIPT = "qr_receipt"
 
   val user = User(
     firstName = USER_NAME,
@@ -38,6 +40,8 @@ object DataFixtures {
     refreshToken = REFRESH_TOKEN,
     isNew = true
   )
+
+  val confirmationCodeRequestResponse = ConfirmationCodeRequestResponse(60)
 
   val home = HomeResponse(getReceipt())
 

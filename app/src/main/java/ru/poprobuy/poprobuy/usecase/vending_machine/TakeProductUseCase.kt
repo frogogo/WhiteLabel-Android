@@ -5,7 +5,6 @@ import ru.poprobuy.poprobuy.data.repository.VendingMachineRepository
 import ru.poprobuy.poprobuy.util.Result
 import ru.poprobuy.poprobuy.util.network.NetworkError
 
-// TODO: 26.11.2020 Tests
 class TakeProductUseCase(
   private val vendingMachineRepository: VendingMachineRepository,
 ) {

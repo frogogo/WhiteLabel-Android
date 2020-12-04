@@ -9,7 +9,6 @@ import ru.poprobuy.poprobuy.util.network.HttpStatus
 import ru.poprobuy.poprobuy.util.network.NetworkError
 import ru.poprobuy.poprobuy.util.network.onHttpErrorWithCode
 
-// TODO: 01.12.2020 Tests
 class CreateReceiptUseCase(
   private val receiptsRepository: ReceiptsRepository,
 ) {
