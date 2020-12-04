@@ -3,7 +3,6 @@ package ru.poprobuy.poprobuy.ui.scanner
 import android.Manifest
 import android.content.DialogInterface
 import android.view.View
-import android.widget.Toast
 import androidx.core.view.doOnLayout
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -91,9 +90,6 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
     requireContext().vibratePhone()
     binding.barcodeView.pause()
     viewModel.handleQrString(result.text)
-
-    // FIXME Remove temp toast
-    Toast.makeText(requireContext(), result.text, Toast.LENGTH_LONG).show()
   }
 
   override fun possibleResultPoints(resultPoints: MutableList<ResultPoint>): Unit = Unit
