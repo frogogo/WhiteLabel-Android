@@ -1,7 +1,7 @@
 package ru.poprobuy.poprobuy.ui.home
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
+import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.data.model.ui.home.HomeState
 import ru.poprobuy.poprobuy.databinding.ItemHomeEmptyBinding
 import ru.poprobuy.poprobuy.databinding.ItemHomeReceiptBinding

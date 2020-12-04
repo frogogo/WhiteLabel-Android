@@ -9,4 +9,5 @@ import kotlinx.parcelize.Parcelize
 data class VendingMachineUiModel(
   val id: Int,
   val cells: List<VendingCellUiModel>,
+  val assignExpiresIn: Int,
 ) : Parcelable

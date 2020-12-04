@@ -9,7 +9,7 @@ import com.redmadrobot.inputmask.MaskedTextChangedListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.arch.ui.BaseFragment
+import ru.poprobuy.poprobuy.core.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentAuthPhoneBinding
 import ru.poprobuy.poprobuy.extension.binding.editText
 import ru.poprobuy.poprobuy.extension.binding.initPhoneType

@@ -21,14 +21,12 @@ internal class MachineMappersKtTest {
     val cell3 = DataFixtures.getVendingCell(3).copy(item = null)
     val machine = VendingMachine(
       id = 1,
-      address = "address",
       vendingCells = listOf(
         cell1,
         cell2,
         cell3
       ),
-      vendingCellsColumns = 10,
-      vendingCellsRows = 6
+      assignExpiresIn = 60
     )
 
     val expected = VendingMachineUiModel(
@@ -36,7 +34,8 @@ internal class MachineMappersKtTest {
       cells = listOf(
         cell1.toDomain()!!,
         cell2.toDomain()!!
-      )
+      ),
+      assignExpiresIn = 60
     )
 
     machine.toDomain() shouldBeEqualTo expected

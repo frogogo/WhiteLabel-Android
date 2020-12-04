@@ -92,25 +92,6 @@ class AuthenticationUseCaseTest {
     result shouldBeEqualTo AuthenticationResult.Error
   }
 
-//  private fun testSuccess(isNew: Boolean) = runBlocking {
-//    val response = DataFixtures.authenticationResponse.copy(isNew = isNew)
-//    coEvery { authRepository.authenticate(any(), any()) } returns Result.Success(response)
-//
-//    val result = useCase(DataFixtures.PHONE_NUMBER, DataFixtures.SMS_CODE)
-//
-//    coVerifySequence {
-//      authRepository.authenticate(DataFixtures.PHONE_NUMBER, DataFixtures.SMS_CODE)
-//      authRepository.saveAuthTokens(response.accessToken, response.refreshToken)
-//      authRepository.setUserAuthorized()
-//      if (!isNew) {
-//        userRepository.saveUser(response.user!!)
-//      }
-//    }
-//    confirmVerified()
-//
-//    result shouldBeEqualTo AuthenticationResult.Success(isNew)
-//  }
-
   private fun confirmVerified() {
     confirmVerified(authRepository, userRepository)
   }

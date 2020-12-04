@@ -13,7 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.arch.ui.BaseBottomSheetDialogFragment
+import ru.poprobuy.poprobuy.core.ui.BaseBottomSheetDialogFragment
 import ru.poprobuy.poprobuy.databinding.DialogReceiptDetailsBinding
 import ru.poprobuy.poprobuy.dictionary.ReceiptState
 import ru.poprobuy.poprobuy.extension.binding.setReceipt

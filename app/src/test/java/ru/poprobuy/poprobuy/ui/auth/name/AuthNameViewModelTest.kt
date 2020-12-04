@@ -10,8 +10,10 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import ru.poprobuy.poprobuy.ViewModelTest
-import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.mockkEventObserver
 import ru.poprobuy.poprobuy.mockkObserver
+import ru.poprobuy.poprobuy.onEventChanged
 
 @ExperimentalCoroutinesApi
 @RunWith(RobolectricTestRunner::class)
@@ -42,7 +44,7 @@ class AuthNameViewModelTest : ViewModelTest() {
   fun `view model navigates next`() {
     val name = "Alexey"
     val validationResultObserver = mockkObserver<Int?>()
-    val navigationObserver = mockkObserver<NavigationCommand>()
+    val navigationObserver = mockkEventObserver<NavigationCommand>()
     viewModel.apply {
       nameValidationLiveEvent.observeForever(validationResultObserver)
       navigationLiveEvent.observeForever(navigationObserver)
@@ -53,7 +55,7 @@ class AuthNameViewModelTest : ViewModelTest() {
     val navigationDestination = navigation.navigateToAuthEmail(name)
     verifySequence {
       validationResultObserver.onChanged(isNull())
-      navigationObserver.onChanged(navigationDestination)
+      navigationObserver.onEventChanged(navigationDestination)
     }
   }
 

@@ -11,9 +11,9 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.ticker
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import ru.poprobuy.poprobuy.arch.navigation.AppNavigation
-import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
-import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.core.navigation.AppNavigation
+import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
+import ru.poprobuy.poprobuy.core.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingCellUiModel
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingMachineUiModel
 import ru.poprobuy.poprobuy.extension.asLiveData
@@ -41,7 +41,7 @@ class MachineProductsViewModel(
   private val _commandLive = LiveEvent<MachineProductsCommand>()
   val commandLive = _commandLive.asLiveData()
 
-  private var timerEnd = Date(System.currentTimeMillis() + SELECTION_TIME * 1000)
+  private var timerEnd = Date(System.currentTimeMillis() + vendingMachine.assignExpiresIn * 1000)
 
   private var timerJob: Job? = null
   private var commandsCollectorJob: Job? = null

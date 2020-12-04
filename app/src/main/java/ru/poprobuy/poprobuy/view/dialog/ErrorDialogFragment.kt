@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.arch.ui.BaseDialogFragment
+import ru.poprobuy.poprobuy.core.ui.BaseDialogFragment
 import ru.poprobuy.poprobuy.databinding.DialogErrorBinding
 import ru.poprobuy.poprobuy.extension.setVisible
 import ru.poprobuy.poprobuy.util.argument

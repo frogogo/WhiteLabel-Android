@@ -2,6 +2,7 @@ package ru.poprobuy.poprobuy
 
 import ru.poprobuy.poprobuy.data.mapper.toDomain
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponse
+import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequestResponse
 import ru.poprobuy.poprobuy.data.model.api.home.HomeResponse
 import ru.poprobuy.poprobuy.data.model.api.machine.VendingCell
 import ru.poprobuy.poprobuy.data.model.api.machine.VendingMachine
@@ -24,6 +25,8 @@ object DataFixtures {
   const val SMS_CODE = "3030"
   const val ACCESS_TOKEN = "access_token"
   const val REFRESH_TOKEN = "refresh_token"
+  const val SESSION_ID = "session-id"
+  const val QR_RECEIPT = "qr_receipt"
 
   val user = User(
     firstName = USER_NAME,
@@ -37,6 +40,8 @@ object DataFixtures {
     refreshToken = REFRESH_TOKEN,
     isNew = true
   )
+
+  val confirmationCodeRequestResponse = ConfirmationCodeRequestResponse(60)
 
   val home = HomeResponse(getReceipt())
 
@@ -55,15 +60,13 @@ object DataFixtures {
 
   fun getVendingMachine(id: Int = 1): VendingMachine = VendingMachine(
     id = id,
-    address = "",
     vendingCells = listOf(
       VendingCell(1, getVendingProduct(1)),
       VendingCell(2, getVendingProduct(2)),
       VendingCell(3, getVendingProduct(3)),
       VendingCell(4, getVendingProduct(4)),
     ),
-    vendingCellsColumns = 10,
-    vendingCellsRows = 6
+    assignExpiresIn = 60
   )
 
   fun getVendingMachineUiModel(id: Int = 1): VendingMachineUiModel = getVendingMachine(id).toDomain()

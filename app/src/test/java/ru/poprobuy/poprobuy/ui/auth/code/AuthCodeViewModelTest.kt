@@ -6,9 +6,11 @@ import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Test
 import ru.poprobuy.poprobuy.ViewModelTest
-import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
-import ru.poprobuy.poprobuy.arch.ui.BaseCommand
+import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.core.ui.BaseCommand
+import ru.poprobuy.poprobuy.mockkEventObserver
 import ru.poprobuy.poprobuy.mockkObserver
+import ru.poprobuy.poprobuy.onEventChanged
 import ru.poprobuy.poprobuy.usecase.auth.AuthenticationResult
 import ru.poprobuy.poprobuy.usecase.auth.AuthenticationUseCase
 import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationCodeUseCase
@@ -24,8 +26,8 @@ class AuthCodeViewModelTest : ViewModelTest() {
   private val requestConfirmationCodeUseCase: RequestConfirmationCodeUseCase = mockk(relaxed = true)
   private val otpRequestDisabler: OtpRequestDisabler = mockk(relaxed = true)
 
-  private val baseCommandsObserver = mockkObserver<BaseCommand>()
-  private val navigationObserver = mockkObserver<NavigationCommand>()
+  private val baseCommandsObserver = mockkEventObserver<BaseCommand>()
+  private val navigationObserver = mockkEventObserver<NavigationCommand>()
   private val commandsObserver = mockkObserver<AuthCodeCommand>()
   private val isLoadingObserver = mockkObserver<Boolean>()
   private val isResendingCodeObserver = mockkObserver<Boolean>()
@@ -107,7 +109,7 @@ class AuthCodeViewModelTest : ViewModelTest() {
       isLoadingObserver.onChanged(true)
       authenticationUseCase(PHONE_NUMBER, CONFIRMATION_CODE)
       isLoadingObserver.onChanged(false)
-      navigationObserver.onChanged(navigationDestination)
+      navigationObserver.onEventChanged(navigationDestination)
     }
   }
 
@@ -123,8 +125,8 @@ class AuthCodeViewModelTest : ViewModelTest() {
       isLoadingObserver.onChanged(true)
       authenticationUseCase(PHONE_NUMBER, CONFIRMATION_CODE)
       isLoadingObserver.onChanged(false)
-      baseCommandsObserver.onChanged(BaseCommand.HideKeyboard)
-      navigationObserver.onChanged(navigationDestination)
+      baseCommandsObserver.onEventChanged(BaseCommand.HideKeyboard)
+      navigationObserver.onEventChanged(navigationDestination)
     }
   }
 

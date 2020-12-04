@@ -9,7 +9,8 @@ import ru.poprobuy.poprobuy.data.model.ui.machine.VendingProductUiModel
 
 fun VendingMachine.toDomain(): VendingMachineUiModel = VendingMachineUiModel(
   id = id,
-  cells = vendingCells.mapNotNull { it.toDomain() }
+  cells = vendingCells.mapNotNull { it.toDomain() },
+  assignExpiresIn = assignExpiresIn
 )
 
 fun VendingCell.toDomain(): VendingCellUiModel? {

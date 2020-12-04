@@ -10,6 +10,7 @@ import org.junit.Rule
 import org.junit.Test
 import ru.poprobuy.poprobuy.CoroutinesTestRule
 import ru.poprobuy.poprobuy.usecase.GetUserAuthStateUseCase
+import ru.poprobuy.poprobuy.util.Event
 
 @ExperimentalCoroutinesApi
 class SplashViewModelTest {
@@ -39,7 +40,7 @@ class SplashViewModelTest {
     viewModel.onCreate()
     advanceUntilIdle()
 
-    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToOnboarding()
+    viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToOnboarding())
   }
 
   /**
@@ -52,7 +53,7 @@ class SplashViewModelTest {
     viewModel.onCreate()
     advanceUntilIdle()
 
-    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToPolicy()
+    viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToPolicy())
   }
 
   /**
@@ -65,7 +66,7 @@ class SplashViewModelTest {
     viewModel.onCreate()
     advanceUntilIdle()
 
-    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToAuth()
+    viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToAuth())
   }
 
   /**
@@ -78,7 +79,7 @@ class SplashViewModelTest {
     viewModel.onCreate()
     advanceUntilIdle()
 
-    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToApp()
+    viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToApp())
   }
 
 }

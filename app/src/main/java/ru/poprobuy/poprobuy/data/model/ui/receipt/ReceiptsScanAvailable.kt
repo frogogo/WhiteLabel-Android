@@ -1,6 +1,6 @@
 package ru.poprobuy.poprobuy.data.model.ui.receipt
 
-import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
+import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 
 private const val ID = "ITEM_SCAN_AVAILABLE"
 

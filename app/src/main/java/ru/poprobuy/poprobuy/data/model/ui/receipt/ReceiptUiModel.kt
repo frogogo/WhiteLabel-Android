@@ -3,7 +3,7 @@ package ru.poprobuy.poprobuy.data.model.ui.receipt
 import android.os.Parcelable
 import androidx.annotation.Keep
 import kotlinx.parcelize.Parcelize
-import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
+import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.dictionary.ReceiptState
 import java.util.*
 

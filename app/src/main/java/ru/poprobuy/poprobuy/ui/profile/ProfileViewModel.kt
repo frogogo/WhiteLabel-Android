@@ -6,7 +6,7 @@ import com.github.ajalt.timberkt.i
 import com.hadilq.liveevent.LiveEvent
 import com.skydoves.whatif.whatIfNotNull
 import kotlinx.coroutines.launch
-import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.core.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.mapper.toProfileModel
 import ru.poprobuy.poprobuy.data.model.ui.profile.ProfileUiModel
 import ru.poprobuy.poprobuy.data.repository.AuthRepository

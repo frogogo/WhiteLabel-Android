@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.github.ajalt.timberkt.d
 import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.launch
-import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
-import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
+import ru.poprobuy.poprobuy.core.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.extension.isEmpty

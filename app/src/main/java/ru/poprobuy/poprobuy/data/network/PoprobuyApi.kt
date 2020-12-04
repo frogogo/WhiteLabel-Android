@@ -11,6 +11,8 @@ import ru.poprobuy.poprobuy.data.model.api.receipt.Receipt
 import ru.poprobuy.poprobuy.data.model.api.receipt.ReceiptCreationRequest
 import ru.poprobuy.poprobuy.data.model.api.user.User
 import ru.poprobuy.poprobuy.data.model.api.user.UserUpdateRequest
+import ru.poprobuy.poprobuy.data.network.annotation.ProvideMachineSessionId
+import ru.poprobuy.poprobuy.data.network.annotation.TakeMachineSessionId
 
 interface PoprobuyApi {
 
@@ -41,12 +43,15 @@ interface PoprobuyApi {
   @GET("home")
   suspend fun getHome(): Response<HomeResponse>
 
+  @TakeMachineSessionId
+  @ProvideMachineSessionId
   @POST("vending_machines/{machineId}/assign")
   suspend fun assignVendingMachine(
     @Path("machineId") machineId: String,
     @Body body: VendingMachineAssignRequest,
   ): Response<VendingMachine>
 
+  @ProvideMachineSessionId
   @POST("vending_machines/{machineId}/take_item")
   suspend fun takeProduct(
     @Path("machineId") machineId: Int,

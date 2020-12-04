@@ -15,7 +15,7 @@ import com.github.ajalt.timberkt.d
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.arch.ui.BaseDialogFragment
+import ru.poprobuy.poprobuy.core.ui.BaseDialogFragment
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingCellUiModel
 import ru.poprobuy.poprobuy.databinding.DialogMachineProductSelectionBinding
 import ru.poprobuy.poprobuy.extension.observe

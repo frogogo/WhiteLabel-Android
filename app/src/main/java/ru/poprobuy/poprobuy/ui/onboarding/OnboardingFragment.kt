@@ -5,8 +5,8 @@ import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.arch.recycler.BaseDelegationAdapter
-import ru.poprobuy.poprobuy.arch.ui.BaseFragment
+import ru.poprobuy.poprobuy.core.recycler.BaseDelegationAdapter
+import ru.poprobuy.poprobuy.core.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentOnboardingBinding
 import ru.poprobuy.poprobuy.extension.*
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen

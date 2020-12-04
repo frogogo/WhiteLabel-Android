@@ -1,7 +1,7 @@
 package ru.poprobuy.poprobuy.ui.scanner
 
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingMachineUiModel
 import ru.poprobuy.poprobuy.util.Constants
 

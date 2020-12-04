@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.github.ajalt.timberkt.d
 import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.launch
-import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.core.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.usecase.user.UpdateUserDetailsUseCase
@@ -33,8 +33,8 @@ class AuthEmailViewModel(
       _isLoadingLive.postValue(true)
       updateUserDetailsUseCase(email, userName).handle(
         onSuccess = {
-          authRepository.setUserAuthorized()
           hideKeyboard()
+          authRepository.setUserAuthorized()
           navigation.navigateToApp().navigate()
         },
         onFailure = { _commandLiveEvent.postValue(AuthEmailCommand.SomethingWentWrong) }

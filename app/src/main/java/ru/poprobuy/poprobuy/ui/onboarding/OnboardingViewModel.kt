@@ -1,8 +1,8 @@
 package ru.poprobuy.poprobuy.ui.onboarding
 
 import androidx.lifecycle.MutableLiveData
-import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
-import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
+import ru.poprobuy.poprobuy.core.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.repository.OnboardingRepository
 import ru.poprobuy.poprobuy.extension.asLiveData
 

@@ -1,7 +1,7 @@
 package ru.poprobuy.poprobuy.ui.onboarding
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
+import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.data.model.ui.onboarding.OnboardingPage
 import ru.poprobuy.poprobuy.databinding.ItemOnboardingPageBinding
 

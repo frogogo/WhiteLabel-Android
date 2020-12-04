@@ -1,6 +1,6 @@
 package ru.poprobuy.poprobuy.ui.auth.policy
 
-import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 
 interface AuthPolicyNavigation {
   fun navigateToAuthPhoneEnter(): NavigationCommand

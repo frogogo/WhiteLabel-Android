@@ -11,11 +11,12 @@ import org.junit.Before
 import org.junit.Test
 import ru.poprobuy.poprobuy.DataFixtures
 import ru.poprobuy.poprobuy.ViewModelTest
-import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
+import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.data.mapper.toDomain
 import ru.poprobuy.poprobuy.mockkObserver
 import ru.poprobuy.poprobuy.testError
 import ru.poprobuy.poprobuy.usecase.home.GetHomeUseCase
+import ru.poprobuy.poprobuy.util.Event
 import ru.poprobuy.poprobuy.util.Result
 import ru.poprobuy.poprobuy.util.network.NetworkError
 
@@ -107,28 +108,28 @@ class HomeViewModelTest : ViewModelTest() {
   fun `view model navigates to profile`() {
     viewModel.navigateToProfile()
 
-    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToProfile()
+    viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToProfile())
   }
 
   @Test
   fun `view model navigates to receipts`() {
     viewModel.navigateToReceiptScan()
 
-    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToReceiptScan()
+    viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToReceiptScan())
   }
 
   @Test
   fun `view model navigates to machine code enter`() {
     viewModel.navigateToMachineEnter(1)
 
-    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToMachineEnter(1)
+    viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToMachineEnter(1))
   }
 
   @Test
   fun `view model navigates to machine scan`() {
     viewModel.navigateToMachineScan(1)
 
-    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToMachineScan(1)
+    viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToMachineScan(1))
   }
 
   private fun executeSuccessFetch() {

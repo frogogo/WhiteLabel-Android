@@ -36,7 +36,7 @@ class AssignVendingMachineUseCase(
   ): AssignVendingMachineUseCaseResult {
     result.onHttpErrorWithCode(HttpStatus.UNPROCESSABLE_ENTITY_422) { error ->
       e { "Machine assign request failed, $error returned" }
-      return AssignVendingMachineUseCaseResult.ValidationFailure("Error occurred") // TODO: 15.11.2020
+      return AssignVendingMachineUseCaseResult.ValidationFailure(error.data?.errorText)
     }
 
     result.onHttpErrorWithCode(HttpStatus.NOT_FOUND_404) {

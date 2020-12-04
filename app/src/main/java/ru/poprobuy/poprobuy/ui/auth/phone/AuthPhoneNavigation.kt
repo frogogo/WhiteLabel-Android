@@ -1,6 +1,6 @@
 package ru.poprobuy.poprobuy.ui.auth.phone
 
-import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 
 interface AuthPhoneNavigation {
   fun navigateToAuthCodeConfirmation(phoneNumber: String, passwordRefreshRate: Int): NavigationCommand

@@ -2,20 +2,23 @@ package ru.poprobuy.poprobuy.ui.products.select
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.github.ajalt.timberkt.d
+import com.github.ajalt.timberkt.i
 import kotlinx.coroutines.launch
-import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.core.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingCellUiModel
 import ru.poprobuy.poprobuy.extension.asLiveData
+import ru.poprobuy.poprobuy.extension.errorOrDefault
 import ru.poprobuy.poprobuy.extension.setEvent
 import ru.poprobuy.poprobuy.usecase.vending_machine.TakeProductUseCase
 import ru.poprobuy.poprobuy.util.Event
+import ru.poprobuy.poprobuy.util.ResourceProvider
 import ru.poprobuy.poprobuy.util.doOnFailure
 import ru.poprobuy.poprobuy.util.doOnSuccess
 
 // TODO: 26.11.2020 Tests
 class ProductSelectionViewModel(
   private val params: Params,
+  private val resourceProvider: ResourceProvider,
   private val takeProductUseCase: TakeProductUseCase,
   private val productSelectionInteractor: MachineProductSelectionInteractor,
 ) : BaseViewModel() {
@@ -33,6 +36,7 @@ class ProductSelectionViewModel(
   }
 
   fun takeProduct() {
+    i { "Taking product" }
     viewModelScope.launch {
       _commandLive.setEvent(MachineProductSelectionCommand.SetCancelable(false))
       _stateLive.value = MachineProductSelectionState.Product(params.vendingCell.product, isLoading = true)
@@ -45,22 +49,22 @@ class ProductSelectionViewModel(
       ).doOnSuccess {
         productWasTaken = true
         _stateLive.value = MachineProductSelectionState.Success
-      }.doOnFailure {
+      }.doOnFailure { error ->
         _commandLive.setEvent(MachineProductSelectionCommand.DismissDialog)
-        // TODO: 22.11.2020 Real error
-        productSelectionInteractor.issueCommand(MachineProductSelectionInteractor.Command.ShowErrorDialog("Error"))
+        productSelectionInteractor.issueCommand(
+          MachineProductSelectionInteractor.Command.ShowErrorDialog(resourceProvider.errorOrDefault(error))
+        )
       }
       _commandLive.setEvent(MachineProductSelectionCommand.SetCancelable(true))
     }
   }
 
   fun requestDismiss() {
-    d { "Dismiss requested" }
+    i { "Dismiss requested" }
     viewModelScope.launch {
+      _commandLive.setEvent(MachineProductSelectionCommand.DismissDialog)
       if (productWasTaken) {
         productSelectionInteractor.issueCommand(MachineProductSelectionInteractor.Command.NavigateToHome)
-      } else {
-        _commandLive.setEvent(MachineProductSelectionCommand.DismissDialog)
       }
     }
   }

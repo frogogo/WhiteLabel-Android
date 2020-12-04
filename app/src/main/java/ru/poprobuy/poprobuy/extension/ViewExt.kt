@@ -3,7 +3,6 @@ package ru.poprobuy.poprobuy.extension
 import android.annotation.SuppressLint
 import android.content.res.TypedArray
 import android.util.AttributeSet
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.Px
@@ -18,9 +17,6 @@ fun View.setVisible(visible: Boolean, useInvisible: Boolean = false) {
 fun View.hideKeyboard() {
   context.getInputMethodManager().hideSoftInputFromWindow(windowToken, 0)
 }
-
-val View.layoutInflater: LayoutInflater
-  get() = LayoutInflater.from(context)
 
 inline fun View.setOnSafeClickListener(
   crossinline clickAction: (View) -> Unit,

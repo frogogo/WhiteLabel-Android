@@ -7,12 +7,8 @@ import com.squareup.moshi.JsonClass
 data class VendingMachine(
   @Json(name = "public_id")
   val id: Int,
-  @Json(name = "address")
-  val address: String,
   @Json(name = "vending_cells")
   val vendingCells: List<VendingCell>,
-  @Json(name = "vending_cells_columns")
-  val vendingCellsColumns: Int,
-  @Json(name = "vending_cells_rows")
-  val vendingCellsRows: Int,
+  @Json(name = "assign_expires_in")
+  val assignExpiresIn: Int,
 )

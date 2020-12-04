@@ -7,15 +7,18 @@ import com.github.ajalt.timberkt.i
 import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.core.ui.BaseViewModel
 import ru.poprobuy.poprobuy.extension.asLiveData
+import ru.poprobuy.poprobuy.extension.errorOrDefault
 import ru.poprobuy.poprobuy.usecase.vending_machine.AssignVendingMachineUseCase
 import ru.poprobuy.poprobuy.usecase.vending_machine.AssignVendingMachineUseCaseResult
+import ru.poprobuy.poprobuy.util.ResourceProvider
 import ru.poprobuy.poprobuy.util.Validators
 
 // TODO: 26.11.2020 Tests
 class MachineSelectViewModel(
   private val receiptId: Int,
+  private val resourceProvider: ResourceProvider,
   private val navigation: MachineSelectNavigation,
   private val assignVendingMachineUseCase: AssignVendingMachineUseCase,
 ) : BaseViewModel() {
@@ -45,7 +48,7 @@ class MachineSelectViewModel(
           navigation.navigateToProducts(receiptId = receiptId, vendingMachine = result.vendingMachine).navigate()
         }
         is AssignVendingMachineUseCaseResult.ValidationFailure -> {
-          _commandLiveEvent.value = MachineSelectCommand.ShowDialogError(result.error)
+          _commandLiveEvent.value = MachineSelectCommand.ShowDialogError(resourceProvider.errorOrDefault(result.error))
         }
         AssignVendingMachineUseCaseResult.MachineNotFound -> {
           _commandLiveEvent.value = MachineSelectCommand.ShowFieldError(R.string.machine_select_error_not_found)

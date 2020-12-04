@@ -8,9 +8,10 @@ import com.github.ajalt.timberkt.e
 import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.arch.ui.BaseViewModel
+import ru.poprobuy.poprobuy.core.ui.BaseViewModel
 import ru.poprobuy.poprobuy.dictionary.ScanMode
 import ru.poprobuy.poprobuy.extension.asLiveData
+import ru.poprobuy.poprobuy.extension.errorOrDefault
 import ru.poprobuy.poprobuy.usecase.receipt.CreateReceiptResult
 import ru.poprobuy.poprobuy.usecase.receipt.CreateReceiptUseCase
 import ru.poprobuy.poprobuy.usecase.vending_machine.AssignVendingMachineUseCase
@@ -63,7 +64,7 @@ class ScannerViewModel(
           _errorLiveEvent.postValue(resourceProvider.getString(R.string.error_something_went_wrong))
         }
         is CreateReceiptResult.ValidationError -> {
-          _errorLiveEvent.postValue(resourceProvider.getString(result.errorRes))
+          _errorLiveEvent.postValue(resourceProvider.errorOrDefault(result.error))
         }
       }
     }

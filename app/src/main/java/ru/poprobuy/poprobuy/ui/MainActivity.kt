@@ -6,8 +6,8 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
-import ru.poprobuy.poprobuy.arch.navigation.NavigationRouter
-import ru.poprobuy.poprobuy.arch.ui.BaseActivity
+import ru.poprobuy.poprobuy.core.navigation.NavigationRouter
+import ru.poprobuy.poprobuy.core.ui.BaseActivity
 import ru.poprobuy.poprobuy.data.network.interceptor.AutoLogoutNotifier
 import ru.poprobuy.poprobuy.util.observeEvent
 
@@ -20,7 +20,7 @@ class MainActivity : BaseActivity<MainViewModel>(R.layout.activity_main) {
   private val navController: NavController by lazy { findNavController(R.id.mainNavHost) }
 
   override fun initObservers() {
-    viewModel.navigationLiveEvent.observe(this, navigationRouter::navigate)
+    viewModel.navigationLiveEvent.observeEvent(this, navigationRouter::navigate)
     logoutNotifier.logoutEvent.observeEvent(this) {
       viewModel.logout()
     }

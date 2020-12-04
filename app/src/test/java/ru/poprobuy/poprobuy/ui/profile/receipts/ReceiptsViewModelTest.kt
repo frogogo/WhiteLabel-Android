@@ -6,13 +6,12 @@ import kotlinx.coroutines.test.runBlockingTest
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Test
-import ru.poprobuy.poprobuy.DataFixtures
-import ru.poprobuy.poprobuy.ViewModelTest
-import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
-import ru.poprobuy.poprobuy.mockkObserver
-import ru.poprobuy.poprobuy.testError
+import ru.poprobuy.poprobuy.*
+import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.ui.profile.receipts.details.ReceiptDetailsButtonState
 import ru.poprobuy.poprobuy.usecase.receipt.GetReceiptsUseCase
+import ru.poprobuy.poprobuy.util.Event
 import ru.poprobuy.poprobuy.util.Result
 import ru.poprobuy.poprobuy.util.network.NetworkError
 
@@ -23,6 +22,7 @@ class ReceiptsViewModelTest : ViewModelTest() {
   private val getReceiptsUseCase: GetReceiptsUseCase = mockk(relaxed = true)
   private val navigation: ReceiptsNavigation = mockk(relaxed = true)
 
+  private val navigationObserver = mockkEventObserver<NavigationCommand>()
   private val isLoadingObserver = mockkObserver<Boolean>()
   private val dataObserver = mockkObserver<List<RecyclerViewItem>>()
   private val errorOccurredObserver = mockkObserver<Unit>()
@@ -36,6 +36,7 @@ class ReceiptsViewModelTest : ViewModelTest() {
       navigation = navigation,
       getReceiptsUseCase = getReceiptsUseCase
     ).apply {
+      navigationLiveEvent.observeForever(navigationObserver)
       isLoadingLive.observeForever(isLoadingObserver)
       dataLive.observeForever(dataObserver)
       errorOccurredLiveEvent.observeForever(errorOccurredObserver)
@@ -97,9 +98,10 @@ class ReceiptsViewModelTest : ViewModelTest() {
     val state = ReceiptDetailsButtonState(canCreateReceipt = false, canTakeProduct = false)
     every { ReceiptsDataUtils.getReceiptDetailsButtonState(any()) } returns state
     val receipt = DataFixtures.getReceiptUIModel()
+
     viewModel.navigateToReceipt(receipt)
 
-    viewModel.navigationLiveEvent.value shouldBeEqualTo navigation.navigateToReceipt(receipt, state)
+    viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToReceipt(receipt, state))
   }
 
 }

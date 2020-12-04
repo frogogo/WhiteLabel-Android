@@ -1,18 +1,17 @@
 package ru.poprobuy.poprobuy.ui.onboarding
 
+import io.mockk.coVerifySequence
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import io.mockk.verifyOrder
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
 import org.junit.Test
-import ru.poprobuy.poprobuy.ViewModelTest
-import ru.poprobuy.poprobuy.arch.navigation.NavigationCommand
-import ru.poprobuy.poprobuy.arch.recycler.RecyclerViewItem
+import ru.poprobuy.poprobuy.*
+import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.data.model.ui.onboarding.OnboardingPage
 import ru.poprobuy.poprobuy.data.repository.OnboardingRepository
-import ru.poprobuy.poprobuy.mockkObserver
 
 @ExperimentalCoroutinesApi
 class OnboardingViewModelTest : ViewModelTest() {
@@ -40,18 +39,22 @@ class OnboardingViewModelTest : ViewModelTest() {
   @Test
   fun `onboarding view state is stored on going next`() {
     // Prepare
-    val navigationObserver = mockkObserver<NavigationCommand>()
+    val command = navigation.navigateToAuth()
+    navigation.clearRecordedCalls()
+    val navigationObserver = mockkEventObserver<NavigationCommand>()
     viewModel.navigationLiveEvent.observeForever(navigationObserver)
 
     // Execute
     viewModel.completeOnboarding()
 
     // Verify
-    verifyOrder {
+    coVerifySequence {
+      onboardingRepository.getPages()
       // State was saved
       onboardingRepository.setOnboardingCompleted()
       // Navigation executed
-      navigationObserver.onChanged(navigation.navigateToAuth())
+      navigation.navigateToAuth()
+      navigationObserver.onEventChanged(command)
     }
   }
 
