@@ -18,8 +18,11 @@ import java.net.SocketTimeoutException
  * @param block a suspend Retrofit call that returns a [Response]
  * @return a [NetworkResource] response.
  */
-inline fun <T, reified E : Any> safeApiCall(block: () -> Response<T>): NetworkResource<T, E> {
-  val result = runCatching(block)
+suspend inline fun <T, reified E : Any> safeApiCall(
+  @Suppress("REDUNDANT_INLINE_SUSPEND_FUNCTION_TYPE")
+  block: suspend () -> Response<T>,
+): NetworkResource<T, E> {
+  val result = runCatching { block() }
   return if (result.isSuccess) {
     val response = result.getOrNull()!!
     if (response.isSuccessful) {
