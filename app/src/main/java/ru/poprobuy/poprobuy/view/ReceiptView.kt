@@ -46,6 +46,7 @@ class ReceiptView @JvmOverloads constructor(
    * Outline provider for ReceiptView
    */
   private class ReceiptOutlineProvider(private val radius: Float) : ViewOutlineProvider() {
+
     override fun getOutline(view: View, outline: Outline) {
       val heightModifier = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) 0.99F else 0.97F
       val rect = Rect(
@@ -58,6 +59,7 @@ class ReceiptView @JvmOverloads constructor(
       // Use radius to respect rounded top corners
       outline.setRoundRect(rect, radius)
     }
+
   }
 
 }

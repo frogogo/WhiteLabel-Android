@@ -7,14 +7,15 @@ import ru.poprobuy.poprobuy.R
 
 object Validators {
 
-  private val PATTERN_NON_DIGITS = Regex("[^0-9]+")
-  private val PATTERN_DIGITS = Regex("\\d+")
-  private val PATTERN_USER_NAME = Regex("[A-Za-zА-Яа-я\\-]+")
+  private val PATTERN_NON_DIGITS by lazy { Regex("[^0-9]+") }
+  private val PATTERN_DIGITS by lazy { Regex("\\d+") }
+  private val PATTERN_USER_NAME by lazy { Regex("[A-Za-zА-Яа-я\\-]+") }
 
   private const val MIN_LENGTH_PHONE = 10
 
   @VisibleForTesting
   const val MIN_USER_NAME_LENGTH = 2
+
   @VisibleForTesting
   const val MAX_USER_NAME_LENGTH = 20
 
