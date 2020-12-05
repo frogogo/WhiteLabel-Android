@@ -86,9 +86,9 @@ abstract class BaseFragment<out T : BaseViewModel>(
     )
   }
 
-  override fun onDestroy() {
-    super.onDestroy()
+  override fun onDestroyView() {
     (view as? ViewGroup)?.let(this::unsubscribeAdapters)
+    super.onDestroyView()
   }
 
   open fun initViews(): Unit = Unit
