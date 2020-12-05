@@ -15,9 +15,9 @@ val dataModule = module {
 
   // Repository
   single { OnboardingRepository(get()) }
-  single { AuthRepository(get(), get()) }
-  single { UserRepository(get(), get()) }
-  single { ReceiptsRepository(get()) }
-  single { HomeRepository(get()) }
-  single { VendingMachineRepository(get()) }
+  single { AuthRepository(get(), get(), get()) }
+  single { UserRepository(get(), get(), get()) }
+  single { ReceiptsRepository(get(), get()) }
+  single { HomeRepository(get(), get()) }
+  single { VendingMachineRepository(get(), get()) }
 }

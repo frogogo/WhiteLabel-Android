@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import retrofit2.Response
 import ru.poprobuy.poprobuy.DataFixtures
+import ru.poprobuy.poprobuy.RepositoryTest
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationRequest
 import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequest
 import ru.poprobuy.poprobuy.data.model.api.auth.TokenRefreshRequest
@@ -17,7 +18,7 @@ import ru.poprobuy.poprobuy.data.preferences.UserPreferences
 import ru.poprobuy.poprobuy.util.Result
 
 @ExperimentalCoroutinesApi
-class AuthRepositoryTest {
+class AuthRepositoryTest : RepositoryTest() {
 
   private lateinit var repository: AuthRepository
 
@@ -27,6 +28,7 @@ class AuthRepositoryTest {
   @BeforeEach
   fun startUp() {
     repository = AuthRepository(
+      dispatcher = coroutineTestExtension.testDispatcherProvider,
       api = api,
       userPreferences = userPreferences
     )

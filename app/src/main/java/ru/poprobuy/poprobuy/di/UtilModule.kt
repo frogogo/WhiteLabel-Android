@@ -1,3 +1,5 @@
+@file:Suppress("USELESS_CAST")
+
 package ru.poprobuy.poprobuy.di
 
 import androidx.navigation.NavController
@@ -11,6 +13,8 @@ import ru.poprobuy.poprobuy.util.OtpRequestDisabler
 import ru.poprobuy.poprobuy.util.ProfileUtils
 import ru.poprobuy.poprobuy.util.ResourceProvider
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsManager
+import ru.poprobuy.poprobuy.util.dispatcher.AppDispatchers
+import ru.poprobuy.poprobuy.util.dispatcher.DispatchersProvider
 
 val utilModule = module {
   single { AnalyticsManager(FirebaseAnalytics.getInstance(androidContext())) }
@@ -24,4 +28,5 @@ val utilModule = module {
   }
   factory { OtpRequestDisabler() }
   single { RecyclerView.RecycledViewPool() }
+  single { AppDispatchers as DispatchersProvider }
 }

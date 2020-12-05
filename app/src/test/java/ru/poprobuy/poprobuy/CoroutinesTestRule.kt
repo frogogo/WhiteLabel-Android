@@ -1,25 +1,20 @@
 package ru.poprobuy.poprobuy
 
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.*
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
 @ExperimentalCoroutinesApi
-class CoroutinesTestRule(val dispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()) : TestWatcher() {
+class CoroutinesTestRule : TestWatcher(), CoroutinesTestHelper by CoroutinesTestHelperImpl() {
 
-  override fun starting(description: Description?) {
+  override fun starting(description: Description) {
     super.starting(description)
-    Dispatchers.setMain(dispatcher)
+    start()
   }
 
-  override fun finished(description: Description?) {
+  override fun finished(description: Description) {
     super.finished(description)
-    Dispatchers.resetMain()
-    dispatcher.cleanupTestCoroutines()
+    finish()
   }
 
-  fun runBlockingTest(block: suspend TestCoroutineScope.() -> Unit) =
-    dispatcher.runBlockingTest { block() }
 }

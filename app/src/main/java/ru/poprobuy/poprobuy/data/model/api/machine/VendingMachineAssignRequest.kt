@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-class VendingMachineAssignRequest(
+data class VendingMachineAssignRequest(
   @Json(name = "receipt_id")
   val receiptId: Int,
 )

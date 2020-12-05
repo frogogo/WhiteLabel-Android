@@ -5,33 +5,37 @@ import ru.poprobuy.poprobuy.data.model.api.auth.*
 import ru.poprobuy.poprobuy.data.network.PoprobuyApi
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
 import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.util.dispatcher.DispatchersProvider
 import ru.poprobuy.poprobuy.util.network.NetworkError
 import ru.poprobuy.poprobuy.util.network.apiCall
 import ru.poprobuy.poprobuy.util.network.mapToResult
 
 class AuthRepository(
+  dispatcher: DispatchersProvider,
   private val api: PoprobuyApi,
   private val userPreferences: UserPreferences,
-) {
+) : Repository(dispatcher) {
 
   suspend fun requestConfirmationCode(
     phoneNumber: String,
-  ): Result<ConfirmationCodeRequestResponse, NetworkError<ErrorResponse>> {
+  ): Result<ConfirmationCodeRequestResponse, NetworkError<ErrorResponse>> = withIOContext {
     val request = ConfirmationCodeRequest(phoneNumber)
-    return apiCall { api.requestPasswordCode(request) }.mapToResult()
+    apiCall { api.requestPasswordCode(request) }.mapToResult()
   }
 
   suspend fun authenticate(
     phoneNumber: String,
     password: String,
-  ): Result<AuthenticationResponse, NetworkError<ErrorResponse>> {
+  ): Result<AuthenticationResponse, NetworkError<ErrorResponse>> = withIOContext {
     val request = AuthenticationRequest(phoneNumber = phoneNumber, password = password)
-    return apiCall { api.authenticate(request) }.mapToResult()
+    apiCall { api.authenticate(request) }.mapToResult()
   }
 
-  suspend fun refreshToken(refreshToken: String): Result<AuthenticationResponse, NetworkError<ErrorResponse>> {
+  suspend fun refreshToken(
+    refreshToken: String,
+  ): Result<AuthenticationResponse, NetworkError<ErrorResponse>> = withIOContext {
     val request = TokenRefreshRequest(refreshToken)
-    return apiCall { api.refreshToken(request) }.mapToResult()
+    apiCall { api.refreshToken(request) }.mapToResult()
   }
 
   fun saveAuthTokens(accessToken: String, refreshToken: String) {
