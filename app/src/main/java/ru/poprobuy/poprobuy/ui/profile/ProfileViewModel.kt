@@ -43,17 +43,17 @@ class ProfileViewModel(
       // Get local user
       val user = userRepository.getUser()
       user.whatIfNotNull(
-        whatIf = { _profileLive.postValue(it.toProfileModel(profileUtils.getAboutVersionText())) },
-        whatIfNot = { _isLoadingLive.postValue(true) }
+        whatIf = { _profileLive.value = it.toProfileModel(profileUtils.getAboutVersionText()) },
+        whatIfNot = { _isLoadingLive.value = true }
       )
 
       // Fetch network data
       getUserInfoUseCase().doOnSuccess {
-        _profileLive.postValue(it.toProfileModel(profileUtils.getAboutVersionText()))
-        _isLoadingLive.postValue(false)
+        _profileLive.value = it.toProfileModel(profileUtils.getAboutVersionText())
+        _isLoadingLive.value = false
       }.doOnFailure {
         // Do not pass error if user retrieved from local storage
-        if (user == null) _errorOccurredLiveEvent.postValue(Unit)
+        if (user == null) _errorOccurredLiveEvent.value = Unit
       }
     }
   }
