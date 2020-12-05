@@ -9,8 +9,11 @@ import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.core.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentMachineSelectBinding
-import ru.poprobuy.poprobuy.extension.*
 import ru.poprobuy.poprobuy.extension.binding.initMachineNumberType
+import ru.poprobuy.poprobuy.extension.hideKeyboard
+import ru.poprobuy.poprobuy.extension.observe
+import ru.poprobuy.poprobuy.extension.setNullableTextRes
+import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.util.ParallelAutoTransition
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragment
