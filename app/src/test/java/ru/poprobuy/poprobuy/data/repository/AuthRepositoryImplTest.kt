@@ -8,16 +8,17 @@ import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import retrofit2.Response
-import ru.poprobuy.poprobuy.DataFixtures
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationRequest
 import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequest
 import ru.poprobuy.poprobuy.data.model.api.auth.TokenRefreshRequest
 import ru.poprobuy.poprobuy.data.network.PoprobuyApi
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
-import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.test.DataFixtures
+import ru.poprobuy.test.base.RepositoryTest
 
 @ExperimentalCoroutinesApi
-class AuthRepositoryTest {
+class AuthRepositoryImplTest : RepositoryTest() {
 
   private lateinit var repository: AuthRepository
 
@@ -26,7 +27,8 @@ class AuthRepositoryTest {
 
   @BeforeEach
   fun startUp() {
-    repository = AuthRepository(
+    repository = AuthRepositoryImpl(
+      dispatcher = coroutineTestExtension.testDispatcherProvider,
       api = api,
       userPreferences = userPreferences
     )
@@ -63,12 +65,10 @@ class AuthRepositoryTest {
 
     result shouldBeEqualTo Result.Success(responseBody)
     coVerifySequence {
-      api.authenticate(
-        AuthenticationRequest(
-          phoneNumber = DataFixtures.PHONE_NUMBER,
-          password = DataFixtures.SMS_CODE
-        )
-      )
+      api.authenticate(AuthenticationRequest(
+        phoneNumber = DataFixtures.PHONE_NUMBER,
+        password = DataFixtures.SMS_CODE
+      ))
     }
     confirmVerified()
   }
@@ -88,7 +88,33 @@ class AuthRepositoryTest {
   }
 
   @Test
-  fun `policy state is stored to shared preferences`() {
+  fun `repository should return access token`() {
+    every { userPreferences.accessToken } returns DataFixtures.ACCESS_TOKEN
+
+    val token = repository.getAccessToken()
+
+    token shouldBeEqualTo DataFixtures.ACCESS_TOKEN
+    verifySequence {
+      userPreferences.accessToken
+    }
+    confirmVerified()
+  }
+
+  @Test
+  fun `repository should return refresh token`() {
+    every { userPreferences.refreshToken } returns DataFixtures.REFRESH_TOKEN
+
+    val token = repository.getRefreshToken()
+
+    token shouldBeEqualTo DataFixtures.REFRESH_TOKEN
+    verifySequence {
+      userPreferences.refreshToken
+    }
+    confirmVerified()
+  }
+
+  @Test
+  fun `repository should save policy accepted`() {
     repository.setPolicyAccepted()
 
     verify { userPreferences.policyAccepted = true }
@@ -96,7 +122,7 @@ class AuthRepositoryTest {
   }
 
   @Test
-  fun `auth token is stored to shared preferences`() {
+  fun `repository should save auth tokens`() {
     repository.saveAuthTokens(DataFixtures.ACCESS_TOKEN, DataFixtures.REFRESH_TOKEN)
 
     verify {
@@ -107,7 +133,7 @@ class AuthRepositoryTest {
   }
 
   @Test
-  fun `authorization state is stored to shared preferences`() {
+  fun `repository should save auth state`() {
     repository.setUserAuthorized()
 
     verify { userPreferences.isLoggedIn = true }
@@ -115,7 +141,7 @@ class AuthRepositoryTest {
   }
 
   @Test
-  fun `data is cleared on logout`() {
+  fun `repository should clear data on logout`() {
     repository.logout()
 
     verify { userPreferences.clearData() }

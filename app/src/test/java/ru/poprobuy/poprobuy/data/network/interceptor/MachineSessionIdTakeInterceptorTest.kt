@@ -1,18 +1,20 @@
 package ru.poprobuy.poprobuy.data.network.interceptor
 
+import io.mockk.clearAllMocks
 import io.mockk.coVerifySequence
 import io.mockk.confirmVerified
 import io.mockk.mockk
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.http.GET
-import ru.poprobuy.poprobuy.DataFixtures
-import ru.poprobuy.poprobuy.NetworkTest
+import ru.poprobuy.test.DataFixtures
+import ru.poprobuy.test.base.NetworkTest
 import ru.poprobuy.poprobuy.data.SessionStorage
 import ru.poprobuy.poprobuy.data.network.annotation.TakeMachineSessionId
 import ru.poprobuy.poprobuy.util.NetworkConstants
@@ -39,6 +41,11 @@ internal class MachineSessionIdTakeInterceptorTest : NetworkTest() {
       .create(ApiService::class.java)
   }
 
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
+  }
+
   @Test
   fun `interceptor should take sessionId from annotated call`() {
     val response = MockResponse()
@@ -60,7 +67,6 @@ internal class MachineSessionIdTakeInterceptorTest : NetworkTest() {
     assertDoesNotThrow {
       apiService.callWithTakeSessionId().execute()
     }
-
     confirmVerified()
   }
 

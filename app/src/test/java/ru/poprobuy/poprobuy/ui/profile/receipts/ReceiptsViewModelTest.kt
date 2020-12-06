@@ -4,21 +4,24 @@ import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Before
-import org.junit.Test
-import ru.poprobuy.poprobuy.*
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import ru.poprobuy.poprobuy.core.Event
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.ui.profile.receipts.details.ReceiptDetailsButtonState
 import ru.poprobuy.poprobuy.usecase.receipt.GetReceiptsUseCase
-import ru.poprobuy.poprobuy.util.Event
-import ru.poprobuy.poprobuy.util.Result
 import ru.poprobuy.poprobuy.util.network.NetworkError
+import ru.poprobuy.test.*
+import ru.poprobuy.test.base.ViewModelTestJUnit5
 
 @ExperimentalCoroutinesApi
-class ReceiptsViewModelTest : ViewModelTest() {
+class ReceiptsViewModelTest : ViewModelTestJUnit5() {
 
   private lateinit var viewModel: ReceiptsViewModel
+
   private val getReceiptsUseCase: GetReceiptsUseCase = mockk(relaxed = true)
   private val navigation: ReceiptsNavigation = mockk(relaxed = true)
 
@@ -27,9 +30,8 @@ class ReceiptsViewModelTest : ViewModelTest() {
   private val dataObserver = mockkObserver<List<RecyclerViewItem>>()
   private val errorOccurredObserver = mockkObserver<Unit>()
 
-  @Before
+  @BeforeEach
   fun startUp() {
-    clearAllMocks()
     mockkObject(ReceiptsDataUtils)
 
     viewModel = ReceiptsViewModel(
@@ -41,6 +43,11 @@ class ReceiptsViewModelTest : ViewModelTest() {
       dataLive.observeForever(dataObserver)
       errorOccurredLiveEvent.observeForever(errorOccurredObserver)
     }
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

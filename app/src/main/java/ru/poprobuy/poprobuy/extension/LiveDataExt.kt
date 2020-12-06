@@ -2,7 +2,7 @@ package ru.poprobuy.poprobuy.extension
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import ru.poprobuy.poprobuy.util.Event
+import ru.poprobuy.poprobuy.core.Event
 
 @Suppress("detekt.UnsafeCast")
 fun <T> MutableLiveData<T>.asLiveData(): LiveData<T> = this

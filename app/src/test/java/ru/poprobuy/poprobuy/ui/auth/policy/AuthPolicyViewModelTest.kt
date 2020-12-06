@@ -1,25 +1,36 @@
 package ru.poprobuy.poprobuy.ui.auth.policy
 
+import io.mockk.clearAllMocks
 import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Before
-import org.junit.Test
-import ru.poprobuy.poprobuy.ViewModelTest
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import ru.poprobuy.test.base.ViewModelTestJUnit5
+import ru.poprobuy.poprobuy.core.Event
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
-import ru.poprobuy.poprobuy.util.Event
 
 @ExperimentalCoroutinesApi
-class AuthPolicyViewModelTest : ViewModelTest() {
+class AuthPolicyViewModelTest : ViewModelTestJUnit5() {
 
   private lateinit var viewModel: AuthPolicyViewModel
+
   private val authRepository: AuthRepository = mockk(relaxed = true)
   private val navigation: AuthPolicyNavigation = mockk(relaxed = true)
 
-  @Before
+  @BeforeEach
   fun startUp() {
-    viewModel = AuthPolicyViewModel(authRepository, navigation)
+    viewModel = AuthPolicyViewModel(
+      authRepository = authRepository,
+      navigation = navigation
+    )
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

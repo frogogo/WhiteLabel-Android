@@ -10,6 +10,7 @@ import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.core.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentAuthEmailBinding
 import ru.poprobuy.poprobuy.extension.binding.initEmailType
+import ru.poprobuy.poprobuy.extension.hideKeyboard
 import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.setNullableTextRes
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
@@ -48,6 +49,11 @@ class AuthEmailFragment : BaseFragment<AuthEmailViewModel>(
       }
       observe(commandLiveEvent, ::handleCommand)
     }
+  }
+
+  override fun hideKeyboard() {
+    super.hideKeyboard()
+    binding.textInputLayout.hideKeyboard()
   }
 
   private fun handleCommand(command: AuthEmailCommand) {

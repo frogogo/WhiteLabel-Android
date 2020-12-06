@@ -4,14 +4,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.ajalt.timberkt.d
-import com.github.ajalt.timberkt.e
 import kotlinx.coroutines.launch
 import ru.poprobuy.poprobuy.core.navigation.AppNavigation
 import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.extension.postEvent
 import ru.poprobuy.poprobuy.extension.setEvent
-import ru.poprobuy.poprobuy.util.Event
+import ru.poprobuy.poprobuy.core.Event
 
 open class BaseViewModel : ViewModel() {
 
@@ -31,7 +30,6 @@ open class BaseViewModel : ViewModel() {
    * Convenient method to handle navigation from a [ViewModel]
    */
   fun NavigationCommand.navigate() {
-    e { "Posting command" }
     _navigationLiveEvent.postEvent(this)
   }
 

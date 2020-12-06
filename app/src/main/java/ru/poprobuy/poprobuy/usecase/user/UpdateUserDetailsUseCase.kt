@@ -2,7 +2,7 @@ package ru.poprobuy.poprobuy.usecase.user
 
 import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
 import ru.poprobuy.poprobuy.data.repository.UserRepository
-import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.util.network.NetworkError
 
 class UpdateUserDetailsUseCase(

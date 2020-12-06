@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy
+package ru.poprobuy.test.base
 
 import okhttp3.Request
 import okhttp3.mockwebserver.MockWebServer

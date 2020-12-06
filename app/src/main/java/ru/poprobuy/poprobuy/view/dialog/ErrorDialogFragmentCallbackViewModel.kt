@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.github.ajalt.timberkt.d
 import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.extension.postEvent
-import ru.poprobuy.poprobuy.util.Event
+import ru.poprobuy.poprobuy.core.Event
 
 class ErrorDialogFragmentCallbackViewModel : ViewModel() {
 

@@ -2,7 +2,7 @@ package ru.poprobuy.poprobuy.util
 
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Assert.assertEquals
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 class PhoneUtilsTest {
 

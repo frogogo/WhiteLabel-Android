@@ -4,21 +4,22 @@ import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.amshove.kluent.shouldBeInstanceOf
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
-import ru.poprobuy.poprobuy.ViewModelTest
+import ru.poprobuy.test.base.ViewModelTestJUnit4
 import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
-import ru.poprobuy.poprobuy.mockkEventObserver
-import ru.poprobuy.poprobuy.mockkObserver
-import ru.poprobuy.poprobuy.onEventChanged
+import ru.poprobuy.test.mockkEventObserver
+import ru.poprobuy.test.mockkObserver
+import ru.poprobuy.test.onEventChanged
 import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationCodeUseCase
 import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationResult
 
 @ExperimentalCoroutinesApi
 @RunWith(RobolectricTestRunner::class)
-class AuthPhoneViewModelTest : ViewModelTest() {
+class AuthPhoneViewModelTest : ViewModelTestJUnit4() {
 
   private lateinit var viewModel: AuthPhoneViewModel
 
@@ -27,7 +28,16 @@ class AuthPhoneViewModelTest : ViewModelTest() {
 
   @Before
   fun setUp() {
-    viewModel = AuthPhoneViewModel(false, navigation, requestConfirmationCodeUseCase)
+    viewModel = AuthPhoneViewModel(
+      showLogoutDialog = false,
+      navigation = navigation,
+      requestConfirmationCodeUseCase = requestConfirmationCodeUseCase
+    )
+  }
+
+  @After
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

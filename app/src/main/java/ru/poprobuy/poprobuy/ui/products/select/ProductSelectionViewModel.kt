@@ -10,10 +10,10 @@ import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.extension.errorOrDefault
 import ru.poprobuy.poprobuy.extension.setEvent
 import ru.poprobuy.poprobuy.usecase.vending_machine.TakeProductUseCase
-import ru.poprobuy.poprobuy.util.Event
+import ru.poprobuy.poprobuy.core.Event
+import ru.poprobuy.poprobuy.core.doOnFailure
+import ru.poprobuy.poprobuy.core.doOnSuccess
 import ru.poprobuy.poprobuy.util.ResourceProvider
-import ru.poprobuy.poprobuy.util.doOnFailure
-import ru.poprobuy.poprobuy.util.doOnSuccess
 
 // TODO: 26.11.2020 Tests
 class ProductSelectionViewModel(

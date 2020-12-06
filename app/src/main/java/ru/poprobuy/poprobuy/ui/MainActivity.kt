@@ -7,9 +7,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.core.navigation.NavigationRouter
+import ru.poprobuy.poprobuy.core.observeEvent
 import ru.poprobuy.poprobuy.core.ui.BaseActivity
 import ru.poprobuy.poprobuy.data.network.interceptor.AutoLogoutNotifier
-import ru.poprobuy.poprobuy.util.observeEvent
 
 class MainActivity : BaseActivity<MainViewModel>(R.layout.activity_main) {
 

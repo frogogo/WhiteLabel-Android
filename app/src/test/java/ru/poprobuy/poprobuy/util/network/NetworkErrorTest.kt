@@ -3,7 +3,7 @@ package ru.poprobuy.poprobuy.util.network
 import io.mockk.Called
 import io.mockk.mockk
 import io.mockk.verify
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 class NetworkErrorTest {
 

@@ -1,7 +1,7 @@
 package ru.poprobuy.poprobuy.extension
 
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import ru.poprobuy.poprobuy.util.Constants
 
 class StringExtKtTest {

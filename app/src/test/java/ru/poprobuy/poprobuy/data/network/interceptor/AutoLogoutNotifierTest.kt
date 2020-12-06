@@ -1,21 +1,25 @@
 package ru.poprobuy.poprobuy.data.network.interceptor
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import io.mockk.clearAllMocks
 import io.mockk.confirmVerified
 import io.mockk.mockk
 import io.mockk.verifySequence
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.RegisterExtension
+import ru.poprobuy.test.rule.InstantTaskExecutorExtension
 import ru.poprobuy.poprobuy.analytics.SystemEvents
-import ru.poprobuy.poprobuy.mockkObserver
-import ru.poprobuy.poprobuy.util.Event
+import ru.poprobuy.poprobuy.core.Event
+import ru.poprobuy.test.mockkObserver
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsManager
 
 class AutoLogoutNotifierTest {
 
-  @get:Rule
-  val instantTaskExecutorRule = InstantTaskExecutorRule()
+  @Suppress("unused")
+  @JvmField
+  @RegisterExtension
+  val instantExecutorExtension = InstantTaskExecutorExtension()
 
   private lateinit var sut: AutoLogoutNotifier
 
@@ -23,13 +27,18 @@ class AutoLogoutNotifierTest {
 
   private val eventObserver = mockkObserver<Event<Unit>>()
 
-  @Before
+  @BeforeEach
   fun startUp() {
     sut = AutoLogoutNotifier(
       analyticsManager = analyticsManager
     ).apply {
       logoutEvent.observeForever(eventObserver)
     }
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

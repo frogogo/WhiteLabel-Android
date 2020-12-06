@@ -8,14 +8,15 @@ import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import retrofit2.Response
-import ru.poprobuy.poprobuy.DataFixtures
+import ru.poprobuy.test.DataFixtures
+import ru.poprobuy.test.base.RepositoryTest
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.data.model.api.user.UserUpdateRequest
 import ru.poprobuy.poprobuy.data.network.PoprobuyApi
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
-import ru.poprobuy.poprobuy.util.Result
 
 @ExperimentalCoroutinesApi
-internal class UserRepositoryTest {
+internal class UserRepositoryImplTest : RepositoryTest() {
 
   private lateinit var userRepository: UserRepository
 
@@ -24,7 +25,8 @@ internal class UserRepositoryTest {
 
   @BeforeEach
   fun startUp() {
-    userRepository = UserRepository(
+    userRepository = UserRepositoryImpl(
+      dispatcher = coroutineTestExtension.testDispatcherProvider,
       api = api,
       userPreferences = userPreferences
     )

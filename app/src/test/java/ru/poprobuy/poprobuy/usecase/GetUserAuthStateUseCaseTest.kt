@@ -1,10 +1,12 @@
 package ru.poprobuy.poprobuy.usecase
 
+import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockk
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
 import ru.poprobuy.poprobuy.usecase.GetUserAuthStateUseCase.State
 
@@ -13,9 +15,14 @@ class GetUserAuthStateUseCaseTest {
   private lateinit var useCase: GetUserAuthStateUseCase
   private val userPreferences: UserPreferences = mockk(relaxed = true)
 
-  @Before
+  @BeforeEach
   fun startUp() {
     useCase = GetUserAuthStateUseCase(userPreferences)
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   /**

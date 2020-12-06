@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.util
+package ru.poprobuy.poprobuy.core
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner

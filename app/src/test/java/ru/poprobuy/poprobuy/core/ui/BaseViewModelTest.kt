@@ -1,25 +1,32 @@
 package ru.poprobuy.poprobuy.core.ui
 
+import io.mockk.clearAllMocks
 import io.mockk.verifySequence
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Before
-import org.junit.Test
-import ru.poprobuy.poprobuy.ViewModelTest
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import ru.poprobuy.test.base.ViewModelTestJUnit5
+import ru.poprobuy.poprobuy.core.Event
 import ru.poprobuy.poprobuy.core.navigation.AppNavigation
 import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
-import ru.poprobuy.poprobuy.mockkEventObserver
-import ru.poprobuy.poprobuy.onEventChanged
-import ru.poprobuy.poprobuy.util.Event
+import ru.poprobuy.test.mockkEventObserver
+import ru.poprobuy.test.onEventChanged
 
 @ExperimentalCoroutinesApi
-class BaseViewModelTest : ViewModelTest() {
+class BaseViewModelTest : ViewModelTestJUnit5() {
 
   private lateinit var viewModel: BaseViewModel
 
-  @Before
+  @BeforeEach
   fun startUp() {
     viewModel = BaseViewModel()
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

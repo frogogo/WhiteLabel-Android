@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.util
+package ru.poprobuy.poprobuy.core
 
 sealed class Result<T, E> {
   data class Success<T, E>(val value: T) : Result<T, E>()

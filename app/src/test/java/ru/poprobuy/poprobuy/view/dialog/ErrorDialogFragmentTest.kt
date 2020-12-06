@@ -1,7 +1,7 @@
 package ru.poprobuy.poprobuy.view.dialog
 
 import org.amshove.kluent.shouldHaveSize
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 internal class ErrorDialogFragmentTest {
 

@@ -6,6 +6,8 @@ import com.github.ajalt.timberkt.i
 import com.hadilq.liveevent.LiveEvent
 import com.skydoves.whatif.whatIfNotNull
 import kotlinx.coroutines.launch
+import ru.poprobuy.poprobuy.core.doOnFailure
+import ru.poprobuy.poprobuy.core.doOnSuccess
 import ru.poprobuy.poprobuy.core.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.mapper.toProfileModel
 import ru.poprobuy.poprobuy.data.model.ui.profile.ProfileUiModel
@@ -14,8 +16,6 @@ import ru.poprobuy.poprobuy.data.repository.UserRepository
 import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.usecase.user.GetUserInfoUseCase
 import ru.poprobuy.poprobuy.util.ProfileUtils
-import ru.poprobuy.poprobuy.util.doOnFailure
-import ru.poprobuy.poprobuy.util.doOnSuccess
 
 class ProfileViewModel(
   private val getUserInfoUseCase: GetUserInfoUseCase,
@@ -43,17 +43,17 @@ class ProfileViewModel(
       // Get local user
       val user = userRepository.getUser()
       user.whatIfNotNull(
-        whatIf = { _profileLive.postValue(it.toProfileModel(profileUtils.getAboutVersionText())) },
-        whatIfNot = { _isLoadingLive.postValue(true) }
+        whatIf = { _profileLive.value = it.toProfileModel(profileUtils.getAboutVersionText()) },
+        whatIfNot = { _isLoadingLive.value = true }
       )
 
       // Fetch network data
       getUserInfoUseCase().doOnSuccess {
-        _profileLive.postValue(it.toProfileModel(profileUtils.getAboutVersionText()))
-        _isLoadingLive.postValue(false)
+        _profileLive.value = it.toProfileModel(profileUtils.getAboutVersionText())
+        _isLoadingLive.value = false
       }.doOnFailure {
         // Do not pass error if user retrieved from local storage
-        if (user == null) _errorOccurredLiveEvent.postValue(Unit)
+        if (user == null) _errorOccurredLiveEvent.value = Unit
       }
     }
   }

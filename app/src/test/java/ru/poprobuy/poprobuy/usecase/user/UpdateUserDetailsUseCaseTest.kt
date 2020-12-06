@@ -7,12 +7,13 @@ import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
 import ru.poprobuy.poprobuy.data.repository.UserRepository
-import ru.poprobuy.poprobuy.testError
-import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.test.testError
 import ru.poprobuy.poprobuy.util.network.NetworkError
 
 @ExperimentalCoroutinesApi
@@ -21,10 +22,14 @@ class UpdateUserDetailsUseCaseTest {
   private lateinit var useCase: UpdateUserDetailsUseCase
   private val userRepository: UserRepository = mockk(relaxed = true)
 
-  @Before
+  @BeforeEach
   fun startUp() {
-    clearAllMocks()
     useCase = UpdateUserDetailsUseCase(userRepository)
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

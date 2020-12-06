@@ -4,25 +4,27 @@ import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Before
-import org.junit.Test
-import ru.poprobuy.poprobuy.DataFixtures
-import ru.poprobuy.poprobuy.ViewModelTest
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import ru.poprobuy.test.DataFixtures
+import ru.poprobuy.test.base.ViewModelTestJUnit5
+import ru.poprobuy.poprobuy.core.Event
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.data.model.ui.profile.ProfileUiModel
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.data.repository.UserRepository
-import ru.poprobuy.poprobuy.mockkObserver
-import ru.poprobuy.poprobuy.testError
+import ru.poprobuy.test.mockkObserver
+import ru.poprobuy.test.testError
 import ru.poprobuy.poprobuy.usecase.user.GetUserInfoUseCase
-import ru.poprobuy.poprobuy.util.Event
 import ru.poprobuy.poprobuy.util.ProfileUtils
-import ru.poprobuy.poprobuy.util.Result
 import ru.poprobuy.poprobuy.util.network.NetworkError
 
 @ExperimentalCoroutinesApi
-class ProfileViewModelTest : ViewModelTest() {
+class ProfileViewModelTest : ViewModelTestJUnit5() {
 
   private lateinit var viewModel: ProfileViewModel
+
   private val getUserInfoUseCase: GetUserInfoUseCase = mockk(relaxed = true)
   private val userRepository: UserRepository = mockk(relaxed = true)
   private val authRepository: AuthRepository = mockk(relaxed = true)
@@ -33,9 +35,8 @@ class ProfileViewModelTest : ViewModelTest() {
   private val profileObserver = mockkObserver<ProfileUiModel>()
   private val errorOccurredObserver = mockkObserver<Unit>()
 
-  @Before
+  @BeforeEach
   fun startUp() {
-    clearAllMocks()
     viewModel = ProfileViewModel(
       getUserInfoUseCase = getUserInfoUseCase,
       userRepository = userRepository,
@@ -47,6 +48,11 @@ class ProfileViewModelTest : ViewModelTest() {
       profileLive.observeForever(profileObserver)
       errorOccurredLiveEvent.observeForever(errorOccurredObserver)
     }
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

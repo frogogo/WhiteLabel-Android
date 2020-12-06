@@ -9,7 +9,10 @@ import androidx.core.widget.doAfterTextChanged
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.databinding.ViewInputLayoutBinding
 import ru.poprobuy.poprobuy.di.inflateViewBinding
-import ru.poprobuy.poprobuy.extension.*
+import ru.poprobuy.poprobuy.extension.onImeAction
+import ru.poprobuy.poprobuy.extension.setVisible
+import ru.poprobuy.poprobuy.extension.showKeyboard
+import ru.poprobuy.poprobuy.extension.withTypedArray
 
 typealias ImeGoAction = () -> Unit
 

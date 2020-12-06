@@ -1,29 +1,38 @@
 package ru.poprobuy.poprobuy.ui.onboarding
 
-import io.mockk.coVerifySequence
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.verify
+import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.junit.Before
-import org.junit.Test
-import ru.poprobuy.poprobuy.*
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.data.model.ui.onboarding.OnboardingPage
 import ru.poprobuy.poprobuy.data.repository.OnboardingRepository
+import ru.poprobuy.test.*
+import ru.poprobuy.test.base.ViewModelTestJUnit5
 
 @ExperimentalCoroutinesApi
-class OnboardingViewModelTest : ViewModelTest() {
+class OnboardingViewModelTest : ViewModelTestJUnit5() {
 
   private lateinit var viewModel: OnboardingViewModel
+
   private val onboardingRepository: OnboardingRepository = mockk(relaxed = true)
   private val navigation: OnboardingNavigationImpl = mockk(relaxed = true)
 
-  @Before
+  @BeforeEach
   fun startUp() {
     every { onboardingRepository.getPages() } returns getOnboardingPages()
-    viewModel = OnboardingViewModel(onboardingRepository, navigation)
+
+    viewModel = OnboardingViewModel(
+      onboardingRepository = onboardingRepository,
+      navigation = navigation
+    )
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

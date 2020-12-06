@@ -1,19 +1,21 @@
 package ru.poprobuy.poprobuy.extension
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import io.mockk.every
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldBeFalse
 import org.amshove.kluent.shouldBeTrue
-import org.junit.Rule
-import org.junit.Test
-import ru.poprobuy.poprobuy.mockkObserver
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.RegisterExtension
+import ru.poprobuy.test.rule.InstantTaskExecutorExtension
+import ru.poprobuy.test.mockkObserver
 
 class LiveDataExtKtTest {
 
-  @get:Rule
-  val instantExecutorRule = InstantTaskExecutorRule()
+  @Suppress("unused")
+  @JvmField
+  @RegisterExtension
+  val instantExecutorExtension = InstantTaskExecutorExtension()
 
   @Test
   fun `converted live data delivers values`() {

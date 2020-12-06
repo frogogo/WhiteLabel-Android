@@ -7,11 +7,11 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import ru.poprobuy.poprobuy.DataFixtures
+import ru.poprobuy.test.DataFixtures
 import ru.poprobuy.poprobuy.data.repository.ReceiptsRepository
-import ru.poprobuy.poprobuy.test422Error
-import ru.poprobuy.poprobuy.testError
-import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.test.test422Error
+import ru.poprobuy.test.testError
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.util.network.NetworkError
 
 @ExperimentalCoroutinesApi

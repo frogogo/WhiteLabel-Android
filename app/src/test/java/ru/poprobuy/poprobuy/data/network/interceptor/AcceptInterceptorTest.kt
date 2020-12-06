@@ -3,8 +3,8 @@ package ru.poprobuy.poprobuy.data.network.interceptor
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Test
-import ru.poprobuy.poprobuy.NetworkTest
+import org.junit.jupiter.api.Test
+import ru.poprobuy.test.base.NetworkTest
 
 class AcceptInterceptorTest : NetworkTest() {
 

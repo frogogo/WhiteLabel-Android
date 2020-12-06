@@ -10,8 +10,8 @@ import okhttp3.ResponseBody
 import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.Test
 import retrofit2.Response
 import java.io.IOException
 import java.net.SocketTimeoutException
@@ -27,8 +27,8 @@ class SafeApiCallKtTest {
 
   private val mockService: MockService = mockk(relaxed = true)
 
-  @Before
-  fun setup() {
+  @AfterEach
+  fun tearDown() {
     clearAllMocks()
   }
 

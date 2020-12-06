@@ -3,14 +3,15 @@ package ru.poprobuy.poprobuy.ui.auth.code
 import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Before
-import org.junit.Test
-import ru.poprobuy.poprobuy.ViewModelTest
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import ru.poprobuy.test.base.ViewModelTestJUnit5
 import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.core.ui.BaseCommand
-import ru.poprobuy.poprobuy.mockkEventObserver
-import ru.poprobuy.poprobuy.mockkObserver
-import ru.poprobuy.poprobuy.onEventChanged
+import ru.poprobuy.test.mockkEventObserver
+import ru.poprobuy.test.mockkObserver
+import ru.poprobuy.test.onEventChanged
 import ru.poprobuy.poprobuy.usecase.auth.AuthenticationResult
 import ru.poprobuy.poprobuy.usecase.auth.AuthenticationUseCase
 import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationCodeUseCase
@@ -18,9 +19,10 @@ import ru.poprobuy.poprobuy.usecase.auth.RequestConfirmationResult
 import ru.poprobuy.poprobuy.util.OtpRequestDisabler
 
 @ExperimentalCoroutinesApi
-class AuthCodeViewModelTest : ViewModelTest() {
+class AuthCodeViewModelTest : ViewModelTestJUnit5() {
 
   private lateinit var viewModel: AuthCodeViewModel
+
   private val navigation: AuthCodeConfirmationNavigation = mockk(relaxed = true)
   private val authenticationUseCase: AuthenticationUseCase = mockk(relaxed = true)
   private val requestConfirmationCodeUseCase: RequestConfirmationCodeUseCase = mockk(relaxed = true)
@@ -32,9 +34,8 @@ class AuthCodeViewModelTest : ViewModelTest() {
   private val isLoadingObserver = mockkObserver<Boolean>()
   private val isResendingCodeObserver = mockkObserver<Boolean>()
 
-  @Before
+  @BeforeEach
   fun startUp() {
-    clearAllMocks()
     viewModel = AuthCodeViewModel(
       phoneNumber = PHONE_NUMBER,
       navigation = navigation,
@@ -48,6 +49,11 @@ class AuthCodeViewModelTest : ViewModelTest() {
       isResendingCodeLive.observeForever(isResendingCodeObserver)
       commandLiveEvent.observeForever(commandsObserver)
     }
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.util
+package ru.poprobuy.poprobuy.core
 
 import io.mockk.Called
 import io.mockk.spyk

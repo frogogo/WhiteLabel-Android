@@ -1,27 +1,35 @@
 package ru.poprobuy.poprobuy.util
 
+import io.mockk.clearAllMocks
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.test.runBlockingTest
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldBeNull
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
-import ru.poprobuy.poprobuy.CoroutinesTestRule
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.RegisterExtension
+import ru.poprobuy.test.rule.CoroutinesTestExtension
 
 @ExperimentalCoroutinesApi
 class OtpRequestDisablerTest {
 
-  @get:Rule
-  val coroutineTestRule = CoroutinesTestRule()
+  @JvmField
+  @RegisterExtension
+  val coroutineTestExtension = CoroutinesTestExtension()
 
   private lateinit var otpRequestDisabler: OtpRequestDisabler
 
-  @Before
+  @BeforeEach
   fun setUp() {
     otpRequestDisabler = OtpRequestDisabler()
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

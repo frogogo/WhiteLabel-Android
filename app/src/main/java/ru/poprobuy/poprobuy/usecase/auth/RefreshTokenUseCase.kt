@@ -1,8 +1,8 @@
 package ru.poprobuy.poprobuy.usecase.auth
 
+import ru.poprobuy.poprobuy.core.successOrNull
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.data.repository.UserRepository
-import ru.poprobuy.poprobuy.util.successOrNull
 
 class RefreshTokenUseCase(
   private val authRepository: AuthRepository,

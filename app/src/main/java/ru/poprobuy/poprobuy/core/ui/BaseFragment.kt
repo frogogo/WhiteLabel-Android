@@ -86,14 +86,18 @@ abstract class BaseFragment<out T : BaseViewModel>(
     )
   }
 
-  override fun onDestroy() {
-    super.onDestroy()
+  override fun onDestroyView() {
     (view as? ViewGroup)?.let(this::unsubscribeAdapters)
+    super.onDestroyView()
   }
 
   open fun initViews(): Unit = Unit
 
   open fun initObservers(): Unit = Unit
+
+  open fun hideKeyboard() {
+    requireActivity().hideKeyboard()
+  }
 
   /**
    * Handles navigation events from a [ViewModel]
@@ -108,7 +112,7 @@ abstract class BaseFragment<out T : BaseViewModel>(
   private fun handleCommand(command: BaseCommand) {
     @Exhaustive
     when (command) {
-      BaseCommand.HideKeyboard -> requireActivity().hideKeyboard()
+      BaseCommand.HideKeyboard -> hideKeyboard()
     }
   }
 

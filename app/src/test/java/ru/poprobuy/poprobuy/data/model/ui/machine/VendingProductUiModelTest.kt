@@ -3,7 +3,7 @@ package ru.poprobuy.poprobuy.data.model.ui.machine
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.TestFactory
-import ru.poprobuy.poprobuy.DataFixtures
+import ru.poprobuy.test.DataFixtures
 import ru.poprobuy.poprobuy.dictionary.VendingProductState
 
 internal class VendingProductUiModelTest {
