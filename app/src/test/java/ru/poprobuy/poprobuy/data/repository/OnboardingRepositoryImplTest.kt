@@ -3,12 +3,15 @@ package ru.poprobuy.poprobuy.data.repository
 import io.mockk.confirmVerified
 import io.mockk.mockk
 import io.mockk.verify
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.amshove.kluent.shouldHaveSize
 import org.junit.Before
 import org.junit.Test
+import ru.poprobuy.poprobuy.RepositoryTest
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
 
-class OnboardingRepositoryTest {
+@ExperimentalCoroutinesApi
+class OnboardingRepositoryImplTest : RepositoryTest() {
 
   private lateinit var repository: OnboardingRepository
 
@@ -16,7 +19,8 @@ class OnboardingRepositoryTest {
 
   @Before
   fun startUp() {
-    repository = OnboardingRepository(
+    repository = OnboardingRepositoryImpl(
+      dispatchers = coroutineTestExtension.testDispatcherProvider,
       userPreferences = userPreferences
     )
   }

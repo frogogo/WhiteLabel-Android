@@ -10,12 +10,12 @@ import org.junit.jupiter.api.Test
 import retrofit2.Response
 import ru.poprobuy.poprobuy.DataFixtures
 import ru.poprobuy.poprobuy.RepositoryTest
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.data.mapper.toDomain
 import ru.poprobuy.poprobuy.data.network.PoprobuyApi
-import ru.poprobuy.poprobuy.core.Result
 
 @ExperimentalCoroutinesApi
-internal class HomeRepositoryTest : RepositoryTest() {
+internal class HomeRepositoryImplTest : RepositoryTest() {
 
   private lateinit var repository: HomeRepository
 
@@ -23,7 +23,7 @@ internal class HomeRepositoryTest : RepositoryTest() {
 
   @BeforeEach
   fun startUp() {
-    repository = HomeRepository(
+    repository = HomeRepositoryImpl(
       dispatcher = coroutineTestExtension.testDispatcherProvider,
       api = api
     )

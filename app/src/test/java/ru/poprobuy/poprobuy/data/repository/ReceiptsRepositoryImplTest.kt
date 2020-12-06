@@ -10,13 +10,13 @@ import org.junit.jupiter.api.Test
 import retrofit2.Response
 import ru.poprobuy.poprobuy.DataFixtures
 import ru.poprobuy.poprobuy.RepositoryTest
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.data.mapper.toDomain
 import ru.poprobuy.poprobuy.data.model.api.receipt.ReceiptCreationRequest
 import ru.poprobuy.poprobuy.data.network.PoprobuyApi
-import ru.poprobuy.poprobuy.core.Result
 
 @ExperimentalCoroutinesApi
-internal class ReceiptsRepositoryTest : RepositoryTest() {
+internal class ReceiptsRepositoryImplTest : RepositoryTest() {
 
   private lateinit var repository: ReceiptsRepository
 
@@ -24,7 +24,7 @@ internal class ReceiptsRepositoryTest : RepositoryTest() {
 
   @BeforeEach
   fun startUp() {
-    repository = ReceiptsRepository(
+    repository = ReceiptsRepositoryImpl(
       dispatcher = coroutineTestExtension.testDispatcherProvider,
       api = api
     )

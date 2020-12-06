@@ -13,14 +13,14 @@ import org.junit.jupiter.api.Test
 import retrofit2.Response
 import ru.poprobuy.poprobuy.DataFixtures
 import ru.poprobuy.poprobuy.RepositoryTest
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.data.mapper.toDomain
 import ru.poprobuy.poprobuy.data.model.api.machine.TakeProductRequest
 import ru.poprobuy.poprobuy.data.model.api.machine.VendingMachineAssignRequest
 import ru.poprobuy.poprobuy.data.network.PoprobuyApi
-import ru.poprobuy.poprobuy.core.Result
 
 @ExperimentalCoroutinesApi
-internal class VendingMachineRepositoryTest : RepositoryTest() {
+internal class VendingMachineRepositoryImplTest : RepositoryTest() {
 
   private lateinit var repository: VendingMachineRepository
 
@@ -28,7 +28,7 @@ internal class VendingMachineRepositoryTest : RepositoryTest() {
 
   @BeforeEach
   fun startUp() {
-    repository = VendingMachineRepository(
+    repository = VendingMachineRepositoryImpl(
       dispatcher = coroutineTestExtension.testDispatcherProvider,
       api = api
     )

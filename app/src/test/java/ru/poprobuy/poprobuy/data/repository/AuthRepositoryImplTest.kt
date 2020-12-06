@@ -18,7 +18,7 @@ import ru.poprobuy.poprobuy.data.network.PoprobuyApi
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
 
 @ExperimentalCoroutinesApi
-class AuthRepositoryTest : RepositoryTest() {
+class AuthRepositoryImplTest : RepositoryTest() {
 
   private lateinit var repository: AuthRepository
 
@@ -27,7 +27,7 @@ class AuthRepositoryTest : RepositoryTest() {
 
   @BeforeEach
   fun startUp() {
-    repository = AuthRepository(
+    repository = AuthRepositoryImpl(
       dispatcher = coroutineTestExtension.testDispatcherProvider,
       api = api,
       userPreferences = userPreferences
