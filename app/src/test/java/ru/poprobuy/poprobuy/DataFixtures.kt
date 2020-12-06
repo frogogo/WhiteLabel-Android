@@ -8,10 +8,16 @@ import ru.poprobuy.poprobuy.data.model.api.machine.VendingCell
 import ru.poprobuy.poprobuy.data.model.api.machine.VendingMachine
 import ru.poprobuy.poprobuy.data.model.api.machine.VendingProduct
 import ru.poprobuy.poprobuy.data.model.api.receipt.Receipt
+import ru.poprobuy.poprobuy.data.model.api.receipt.ReceiptDistributionNetwork
+import ru.poprobuy.poprobuy.data.model.api.receipt.ReceiptProduct
+import ru.poprobuy.poprobuy.data.model.api.receipt.ReceiptRejectReason
 import ru.poprobuy.poprobuy.data.model.api.user.User
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingCellUiModel
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingMachineUiModel
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingProductUiModel
+import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptDistributionNetworkUiModel
+import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptProductUiModel
+import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptRejectReasonUiModel
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 import ru.poprobuy.poprobuy.dictionary.ReceiptState
 import ru.poprobuy.poprobuy.dictionary.VendingProductState
@@ -86,5 +92,22 @@ object DataFixtures {
   )
 
   fun getVendingProductUiModel(id: Int = 1): VendingProductUiModel = getVendingProduct(id).toDomain()
+
+  fun getReceiptRejectReason(): ReceiptRejectReason = ReceiptRejectReason("reason", "reason_text")
+
+  fun getReceiptRejectReasonUIModel(): ReceiptRejectReasonUiModel = getReceiptRejectReason().toDomain()
+
+  fun getReceiptDistributionNetwork(): ReceiptDistributionNetwork = ReceiptDistributionNetwork("name")
+
+  fun getReceiptDistributionNetworkUiModel(): ReceiptDistributionNetworkUiModel =
+    getReceiptDistributionNetwork().toDomain()
+
+  fun getReceiptProduct(id: Int = 1): ReceiptProduct = ReceiptProduct(
+    id = id,
+    name = "Name $id",
+    imageUrl = "https://picsum.photos/${500 + id}/${500 + id}"
+  )
+
+  fun getReceiptProductUiModel(id: Int = 1): ReceiptProductUiModel = getReceiptProduct(id).toDomain()
 
 }
