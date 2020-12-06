@@ -9,7 +9,7 @@ object Validators {
 
   private val PATTERN_NON_DIGITS by lazy { Regex("[^0-9]+") }
   private val PATTERN_DIGITS by lazy { Regex("\\d+") }
-  private val PATTERN_USER_NAME by lazy { Regex("[A-Za-zА-Яа-я\\-]+") }
+  private val PATTERN_USER_NAME by lazy { Regex("[A-Za-zА-ЯЁа-яё\\-]+") }
 
   private const val MIN_LENGTH_PHONE = 10
 

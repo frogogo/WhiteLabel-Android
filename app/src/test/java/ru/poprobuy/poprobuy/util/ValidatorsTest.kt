@@ -3,6 +3,8 @@ package ru.poprobuy.poprobuy.util
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldBeNull
 import org.junit.Test
+import org.junit.jupiter.api.DynamicTest
+import org.junit.jupiter.api.TestFactory
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import ru.poprobuy.poprobuy.R
@@ -38,22 +40,35 @@ class ValidatorsTest {
 
   // region isUserName
 
-  @Test
-  fun `isUserName allows valid name`() {
-    Validators.isUserName("Alexey").shouldBeNull()
+  @TestFactory
+  fun isUserName(): List<DynamicTest> {
+    val tests = listOf(
+      UserNameTest("Алёна", null),
+      UserNameTest("Лёша", null),
+      UserNameTest("Ёлманбет", null),
+      UserNameTest("Александра-Валерия", null),
+      UserNameTest("Alexey", null),
+      UserNameTest("Иван 1", R.string.error_user_name_format),
+      UserNameTest("%Иван%", R.string.error_user_name_format),
+      UserNameTest("a".repeat(MIN_USER_NAME_LENGTH - 1), R.string.error_user_name_length),
+      UserNameTest("a".repeat(MAX_USER_NAME_LENGTH + 1), R.string.error_user_name_length),
+    )
+
+    fun test(param: UserNameTest) {
+      Validators.isUserName(param.name) shouldBeEqualTo param.expectedError
+    }
+
+    return tests.mapIndexed { index, param ->
+      DynamicTest.dynamicTest("isUserName $index") {
+        test(param)
+      }
+    }
   }
 
-  @Test
-  fun `isUserName respects min length`() {
-    Validators.isUserName("a".repeat(MIN_USER_NAME_LENGTH - 1)) shouldBeEqualTo R.string.error_user_name_length
-  }
-
-  @Test
-  fun `isUserName respects max length`() {
-    Validators.isUserName("a".repeat(MAX_USER_NAME_LENGTH + 1)) shouldBeEqualTo R.string.error_user_name_length
-  }
-
-  // TODO: 26.11.2020 isUserName regexp test
+  private data class UserNameTest(
+    val name: String,
+    val expectedError: Int?,
+  )
 
   // endregion
 
