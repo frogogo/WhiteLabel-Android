@@ -3,7 +3,7 @@ package ru.poprobuy.poprobuy.data.mapper
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldBeNull
 import org.junit.jupiter.api.Test
-import ru.poprobuy.poprobuy.DataFixtures
+import ru.poprobuy.test.DataFixtures
 import ru.poprobuy.poprobuy.data.model.api.machine.VendingCell
 import ru.poprobuy.poprobuy.data.model.api.machine.VendingMachine
 import ru.poprobuy.poprobuy.data.model.api.machine.VendingProduct

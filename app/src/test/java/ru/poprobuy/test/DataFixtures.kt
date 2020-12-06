@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy
+package ru.poprobuy.test
 
 import ru.poprobuy.poprobuy.data.mapper.toDomain
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponse
@@ -47,7 +47,8 @@ object DataFixtures {
     isNew = true
   )
 
-  val confirmationCodeRequestResponse = ConfirmationCodeRequestResponse(60)
+  val confirmationCodeRequestResponse =
+    ConfirmationCodeRequestResponse(60)
 
   val home = HomeResponse(getReceipt())
 
@@ -62,7 +63,8 @@ object DataFixtures {
     rejectReason = null
   )
 
-  fun getReceiptUIModel(id: Int = 1): ReceiptUiModel = getReceipt(id).toDomain()
+  fun getReceiptUIModel(id: Int = 1): ReceiptUiModel =
+    getReceipt(id).toDomain()
 
   fun getVendingMachine(id: Int = 1): VendingMachine = VendingMachine(
     id = id,
@@ -75,14 +77,16 @@ object DataFixtures {
     assignExpiresIn = 60
   )
 
-  fun getVendingMachineUiModel(id: Int = 1): VendingMachineUiModel = getVendingMachine(id).toDomain()
+  fun getVendingMachineUiModel(id: Int = 1): VendingMachineUiModel =
+    getVendingMachine(id).toDomain()
 
   fun getVendingCell(id: Int = 1): VendingCell = VendingCell(
     id = id,
     getVendingProduct(id * 10)
   )
 
-  fun getVendingCellUiModel(id: Int = 1): VendingCellUiModel = getVendingCell(id).toDomain()!!
+  fun getVendingCellUiModel(id: Int = 1): VendingCellUiModel =
+    getVendingCell(id).toDomain()!!
 
   fun getVendingProduct(id: Int = 1): VendingProduct = VendingProduct(
     id = id,
@@ -91,13 +95,17 @@ object DataFixtures {
     state = VendingProductState.AVAILABLE
   )
 
-  fun getVendingProductUiModel(id: Int = 1): VendingProductUiModel = getVendingProduct(id).toDomain()
+  fun getVendingProductUiModel(id: Int = 1): VendingProductUiModel =
+    getVendingProduct(id).toDomain()
 
-  fun getReceiptRejectReason(): ReceiptRejectReason = ReceiptRejectReason("reason", "reason_text")
+  fun getReceiptRejectReason(): ReceiptRejectReason =
+    ReceiptRejectReason("reason", "reason_text")
 
-  fun getReceiptRejectReasonUIModel(): ReceiptRejectReasonUiModel = getReceiptRejectReason().toDomain()
+  fun getReceiptRejectReasonUIModel(): ReceiptRejectReasonUiModel =
+    getReceiptRejectReason().toDomain()
 
-  fun getReceiptDistributionNetwork(): ReceiptDistributionNetwork = ReceiptDistributionNetwork("name")
+  fun getReceiptDistributionNetwork(): ReceiptDistributionNetwork =
+    ReceiptDistributionNetwork("name")
 
   fun getReceiptDistributionNetworkUiModel(): ReceiptDistributionNetworkUiModel =
     getReceiptDistributionNetwork().toDomain()
@@ -108,6 +116,7 @@ object DataFixtures {
     imageUrl = "https://picsum.photos/${500 + id}/${500 + id}"
   )
 
-  fun getReceiptProductUiModel(id: Int = 1): ReceiptProductUiModel = getReceiptProduct(id).toDomain()
+  fun getReceiptProductUiModel(id: Int = 1): ReceiptProductUiModel =
+    getReceiptProduct(id).toDomain()
 
 }

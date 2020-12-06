@@ -1,21 +1,19 @@
 package ru.poprobuy.poprobuy.usecase.vending_machine
 
-import io.mockk.coEvery
-import io.mockk.coVerifySequence
-import io.mockk.confirmVerified
-import io.mockk.mockk
+import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.amshove.kluent.shouldBeEqualTo
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import ru.poprobuy.poprobuy.DataFixtures
+import ru.poprobuy.test.DataFixtures
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingMachineUiModel
 import ru.poprobuy.poprobuy.data.repository.VendingMachineRepository
-import ru.poprobuy.poprobuy.test422Error
-import ru.poprobuy.poprobuy.testError
-import ru.poprobuy.poprobuy.core.Result
+import ru.poprobuy.test.test422Error
+import ru.poprobuy.test.testError
 import ru.poprobuy.poprobuy.util.network.NetworkError
 
 @ExperimentalCoroutinesApi
@@ -30,6 +28,11 @@ internal class AssignVendingMachineUseCaseTest {
     useCase = AssignVendingMachineUseCase(
       vendingMachineRepository = vendingMachineRepository
     )
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

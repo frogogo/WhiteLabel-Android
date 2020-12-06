@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy
+package ru.poprobuy.test
 
 import androidx.lifecycle.Observer
 import io.mockk.clearMocks

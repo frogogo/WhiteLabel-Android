@@ -1,20 +1,18 @@
 package ru.poprobuy.poprobuy.data.network.interceptor
 
-import io.mockk.coVerifySequence
-import io.mockk.confirmVerified
-import io.mockk.every
-import io.mockk.mockk
+import io.mockk.*
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldBeNull
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.http.GET
-import ru.poprobuy.poprobuy.DataFixtures
-import ru.poprobuy.poprobuy.NetworkTest
+import ru.poprobuy.test.DataFixtures
+import ru.poprobuy.test.base.NetworkTest
 import ru.poprobuy.poprobuy.data.SessionStorage
 import ru.poprobuy.poprobuy.data.network.annotation.ProvideMachineSessionId
 import ru.poprobuy.poprobuy.util.NetworkConstants
@@ -39,6 +37,11 @@ internal class MachineSessionIdProviderInterceptorTest : NetworkTest() {
       .client(client)
       .build()
       .create(ApiService::class.java)
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test
@@ -82,7 +85,6 @@ internal class MachineSessionIdProviderInterceptorTest : NetworkTest() {
 
     val request = mockWebServer.takeRequest()
     request.getHeader(NetworkConstants.HEADER_SESSION_ID).shouldBeNull()
-
     confirmVerified()
   }
 

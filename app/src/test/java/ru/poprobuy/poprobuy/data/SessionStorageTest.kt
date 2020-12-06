@@ -2,7 +2,7 @@ package ru.poprobuy.poprobuy.data
 
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
-import ru.poprobuy.poprobuy.DataFixtures
+import ru.poprobuy.test.DataFixtures
 
 internal class SessionStorageTest {
 

@@ -2,7 +2,7 @@ package ru.poprobuy.poprobuy.extension
 
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
-import ru.poprobuy.poprobuy.toDate
+import ru.poprobuy.test.toDate
 import java.time.LocalDate
 import java.time.LocalDateTime
 

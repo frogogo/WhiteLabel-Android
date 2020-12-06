@@ -6,7 +6,7 @@ import org.amshove.kluent.shouldNotContain
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestFactory
-import ru.poprobuy.poprobuy.DataFixtures
+import ru.poprobuy.test.DataFixtures
 import ru.poprobuy.poprobuy.data.model.ui.profile.receipts.ReceiptsEmptyState
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptsScanAvailable

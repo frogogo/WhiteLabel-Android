@@ -7,23 +7,25 @@ import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Before
-import org.junit.Test
-import ru.poprobuy.poprobuy.DataFixtures
-import ru.poprobuy.poprobuy.ViewModelTest
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.data.mapper.toDomain
-import ru.poprobuy.poprobuy.mockkObserver
-import ru.poprobuy.poprobuy.testError
 import ru.poprobuy.poprobuy.usecase.home.GetHomeUseCase
 import ru.poprobuy.poprobuy.core.Event
 import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.util.network.NetworkError
+import ru.poprobuy.test.DataFixtures
+import ru.poprobuy.test.base.ViewModelTestJUnit5
+import ru.poprobuy.test.mockkObserver
+import ru.poprobuy.test.testError
 
 @ExperimentalCoroutinesApi
-class HomeViewModelTest : ViewModelTest() {
+class HomeViewModelTest : ViewModelTestJUnit5() {
 
   private lateinit var viewModel: HomeViewModel
+
   private val navigation: HomeNavigation = mockk(relaxed = true)
   private val getHomeUseCase: GetHomeUseCase = mockk(relaxed = true)
 
@@ -31,7 +33,7 @@ class HomeViewModelTest : ViewModelTest() {
   private val dataObserver = mockkObserver<List<RecyclerViewItem>>()
   private val errorOccurredObserver = mockkObserver<Unit>()
 
-  @Before
+  @BeforeEach
   fun startUp() {
     clearAllMocks()
     viewModel = HomeViewModel(
@@ -42,6 +44,11 @@ class HomeViewModelTest : ViewModelTest() {
       dataLive.observeForever(dataObserver)
       errorOccurredLiveEvent.observeForever(errorOccurredObserver)
     }
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

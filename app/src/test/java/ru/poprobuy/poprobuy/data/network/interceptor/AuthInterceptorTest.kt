@@ -1,14 +1,14 @@
 package ru.poprobuy.poprobuy.data.network.interceptor
 
-import io.mockk.every
-import io.mockk.mockk
+import io.mockk.*
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldBeNull
-import org.junit.Before
-import org.junit.Test
-import ru.poprobuy.poprobuy.NetworkTest
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import ru.poprobuy.test.base.NetworkTest
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
 
 class AuthInterceptorTest : NetworkTest() {
@@ -18,12 +18,17 @@ class AuthInterceptorTest : NetworkTest() {
   private lateinit var interceptor: AuthInterceptor
   private lateinit var client: OkHttpClient
 
-  @Before
+  @BeforeEach
   fun startUp() {
     interceptor = AuthInterceptor(userPreferences)
     client = OkHttpClient.Builder()
       .addInterceptor(interceptor)
       .build()
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test
@@ -35,6 +40,10 @@ class AuthInterceptorTest : NetworkTest() {
     val recorded = mockWebServer.takeRequest()
 
     recorded.getHeader(AUTHORIZATION_HEADER).shouldBeNull()
+    verifySequence {
+      userPreferences.accessToken
+    }
+    confirmVerified()
   }
 
   @Test
@@ -46,6 +55,14 @@ class AuthInterceptorTest : NetworkTest() {
     val recorded = mockWebServer.takeRequest()
 
     recorded.getHeader(AUTHORIZATION_HEADER) shouldBeEqualTo "Bearer $TEST_TOKEN"
+    verifySequence {
+      userPreferences.accessToken
+    }
+    confirmVerified()
+  }
+
+  private fun confirmVerified() {
+    confirmVerified(userPreferences)
   }
 
   companion object {

@@ -1,10 +1,8 @@
 package ru.poprobuy.poprobuy.util.moshi.adapter
 
-import org.amshove.kluent.AnyException
-import org.amshove.kluent.invoking
 import org.amshove.kluent.shouldBeEqualTo
-import org.amshove.kluent.shouldThrow
-import org.junit.Test
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import ru.poprobuy.poprobuy.dictionary.ReceiptState
 
 class ReceiptStateJsonAdapterTest {
@@ -23,7 +21,9 @@ class ReceiptStateJsonAdapterTest {
 
   @Test
   fun `test failure conversion`() {
-    invoking { adapter.fromJson("blahblah") } shouldThrow AnyException
+    assertThrows<Exception> {
+      adapter.fromJson("blahblah")
+    }
   }
 
 }

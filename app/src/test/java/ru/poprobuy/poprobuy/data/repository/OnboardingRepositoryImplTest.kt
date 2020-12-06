@@ -1,13 +1,15 @@
 package ru.poprobuy.poprobuy.data.repository
 
+import io.mockk.clearAllMocks
 import io.mockk.confirmVerified
 import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.amshove.kluent.shouldHaveSize
-import org.junit.Before
-import org.junit.Test
-import ru.poprobuy.poprobuy.RepositoryTest
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import ru.poprobuy.test.base.RepositoryTest
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
 
 @ExperimentalCoroutinesApi
@@ -17,12 +19,17 @@ class OnboardingRepositoryImplTest : RepositoryTest() {
 
   private val userPreferences: UserPreferences = mockk(relaxed = true)
 
-  @Before
+  @BeforeEach
   fun startUp() {
     repository = OnboardingRepositoryImpl(
       dispatchers = coroutineTestExtension.testDispatcherProvider,
       userPreferences = userPreferences
     )
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

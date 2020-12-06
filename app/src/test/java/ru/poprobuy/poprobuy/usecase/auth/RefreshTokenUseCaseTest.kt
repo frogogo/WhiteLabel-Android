@@ -5,13 +5,14 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldBeNull
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import ru.poprobuy.poprobuy.DataFixtures
+import ru.poprobuy.test.DataFixtures
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.data.repository.UserRepository
-import ru.poprobuy.poprobuy.testError
-import ru.poprobuy.poprobuy.core.Result
+import ru.poprobuy.test.testError
 import ru.poprobuy.poprobuy.util.network.NetworkError
 
 @ExperimentalCoroutinesApi
@@ -28,6 +29,11 @@ internal class RefreshTokenUseCaseTest {
       authRepository = authRepository,
       userRepository = userRepository
     )
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

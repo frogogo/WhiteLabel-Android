@@ -1,24 +1,29 @@
 package ru.poprobuy.poprobuy.ui.scanner
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import io.mockk.clearAllMocks
 import io.mockk.mockk
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Rule
-import org.junit.Test
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.Test
+import ru.poprobuy.test.base.ViewModelTestJUnit5
+import ru.poprobuy.poprobuy.core.Event
 import ru.poprobuy.poprobuy.dictionary.ScanMode
 import ru.poprobuy.poprobuy.usecase.receipt.CreateReceiptUseCase
 import ru.poprobuy.poprobuy.usecase.vending_machine.AssignVendingMachineUseCase
-import ru.poprobuy.poprobuy.core.Event
 import ru.poprobuy.poprobuy.util.ResourceProvider
 
-class ScannerViewModelTest {
-
-  @get:Rule
-  val instantExecutorRule = InstantTaskExecutorRule()
+@ExperimentalCoroutinesApi
+class ScannerViewModelTest : ViewModelTestJUnit5() {
 
   private val createReceiptUseCase: CreateReceiptUseCase = mockk(relaxed = true)
   private val assignVendingMachineUseCase: AssignVendingMachineUseCase = mockk(relaxed = true)
   private val resourceProvider: ResourceProvider = mockk()
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
+  }
 
   @Test
   fun `view model navigates to machine help`() {

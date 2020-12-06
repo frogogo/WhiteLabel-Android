@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy
+package ru.poprobuy.test.rule
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

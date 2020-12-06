@@ -9,15 +9,15 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
-import ru.poprobuy.poprobuy.ViewModelTest
+import ru.poprobuy.test.base.ViewModelTestJUnit4
 import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
-import ru.poprobuy.poprobuy.mockkEventObserver
-import ru.poprobuy.poprobuy.mockkObserver
-import ru.poprobuy.poprobuy.onEventChanged
+import ru.poprobuy.test.mockkEventObserver
+import ru.poprobuy.test.mockkObserver
+import ru.poprobuy.test.onEventChanged
 
 @ExperimentalCoroutinesApi
 @RunWith(RobolectricTestRunner::class)
-class AuthNameViewModelTest : ViewModelTest() {
+class AuthNameViewModelTest : ViewModelTestJUnit4() {
 
   private lateinit var viewModel: AuthNameViewModel
   private val navigation: AuthNameNavigation = mockk(relaxed = true)

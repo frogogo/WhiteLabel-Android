@@ -5,6 +5,7 @@ import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.amshove.kluent.shouldBeEqualTo
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import ru.poprobuy.poprobuy.analytics.SystemEvents
@@ -27,6 +28,11 @@ internal class RefreshTokenWorkerUseCaseTest {
       refreshTokenUseCase = refreshTokenUseCase,
       analyticsManager = analyticsManager
     )
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

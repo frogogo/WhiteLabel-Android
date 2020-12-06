@@ -1,8 +1,8 @@
 package ru.poprobuy.poprobuy.data.mapper
 
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.Test
-import ru.poprobuy.poprobuy.DataFixtures
+import org.junit.jupiter.api.Test
+import ru.poprobuy.test.DataFixtures
 import ru.poprobuy.poprobuy.data.model.api.home.HomeResponse
 import ru.poprobuy.poprobuy.data.model.ui.home.HomeState
 

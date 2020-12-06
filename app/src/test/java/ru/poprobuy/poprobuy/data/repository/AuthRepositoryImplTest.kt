@@ -8,14 +8,14 @@ import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import retrofit2.Response
-import ru.poprobuy.poprobuy.DataFixtures
-import ru.poprobuy.poprobuy.RepositoryTest
 import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationRequest
 import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequest
 import ru.poprobuy.poprobuy.data.model.api.auth.TokenRefreshRequest
 import ru.poprobuy.poprobuy.data.network.PoprobuyApi
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
+import ru.poprobuy.test.DataFixtures
+import ru.poprobuy.test.base.RepositoryTest
 
 @ExperimentalCoroutinesApi
 class AuthRepositoryImplTest : RepositoryTest() {
@@ -65,12 +65,10 @@ class AuthRepositoryImplTest : RepositoryTest() {
 
     result shouldBeEqualTo Result.Success(responseBody)
     coVerifySequence {
-      api.authenticate(
-        AuthenticationRequest(
-          phoneNumber = DataFixtures.PHONE_NUMBER,
-          password = DataFixtures.SMS_CODE
-        )
-      )
+      api.authenticate(AuthenticationRequest(
+        phoneNumber = DataFixtures.PHONE_NUMBER,
+        password = DataFixtures.SMS_CODE
+      ))
     }
     confirmVerified()
   }

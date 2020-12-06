@@ -2,7 +2,7 @@ package ru.poprobuy.poprobuy.data.mapper
 
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
-import ru.poprobuy.poprobuy.DataFixtures
+import ru.poprobuy.test.DataFixtures
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponse
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponseJson
 

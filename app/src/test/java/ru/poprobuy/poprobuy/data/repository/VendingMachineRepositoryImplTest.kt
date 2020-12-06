@@ -11,13 +11,13 @@ import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import retrofit2.Response
-import ru.poprobuy.poprobuy.DataFixtures
-import ru.poprobuy.poprobuy.RepositoryTest
 import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.data.mapper.toDomain
 import ru.poprobuy.poprobuy.data.model.api.machine.TakeProductRequest
 import ru.poprobuy.poprobuy.data.model.api.machine.VendingMachineAssignRequest
 import ru.poprobuy.poprobuy.data.network.PoprobuyApi
+import ru.poprobuy.test.DataFixtures
+import ru.poprobuy.test.base.RepositoryTest
 
 @ExperimentalCoroutinesApi
 internal class VendingMachineRepositoryImplTest : RepositoryTest() {
@@ -67,7 +67,8 @@ internal class VendingMachineRepositoryImplTest : RepositoryTest() {
     result shouldBeEqualTo Result.Success(Unit)
     coVerifySequence {
       api.takeProduct(
-        machineId, TakeProductRequest(
+        machineId = machineId,
+        body = TakeProductRequest(
           itemId = productId,
           receiptId = receiptId,
           vendingCellId = vendingCellId
