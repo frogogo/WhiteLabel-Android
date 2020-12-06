@@ -16,7 +16,7 @@ open class AnalyticsEvent(
           // must start with an alphabetic character
           eventName.first().isLetter()
     ) {
-      "Event name policy violated"
+      "Event name policy violated - \"$eventName\""
     }
   }
 

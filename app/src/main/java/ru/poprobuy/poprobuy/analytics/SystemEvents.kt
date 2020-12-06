@@ -12,8 +12,9 @@ object SystemEvents {
 
   data class TokenRefreshWork(val result: Result) : AnalyticsEvent("system_token_refresh_work") {
 
-    override fun getEventParameters(): Bundle? =
-      bundleOf(PARAM_RESULT to result.name.toLowerCase(Locale.ENGLISH))
+    override fun getEventParameters(): Bundle = bundleOf(
+      PARAM_RESULT to result.name.toLowerCase(Locale.ENGLISH)
+    )
 
     companion object {
       @VisibleForTesting
