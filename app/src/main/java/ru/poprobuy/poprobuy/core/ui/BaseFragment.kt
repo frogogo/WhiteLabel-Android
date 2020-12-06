@@ -95,6 +95,10 @@ abstract class BaseFragment<out T : BaseViewModel>(
 
   open fun initObservers(): Unit = Unit
 
+  open fun hideKeyboard() {
+    requireActivity().hideKeyboard()
+  }
+
   /**
    * Handles navigation events from a [ViewModel]
    */
@@ -108,7 +112,7 @@ abstract class BaseFragment<out T : BaseViewModel>(
   private fun handleCommand(command: BaseCommand) {
     @Exhaustive
     when (command) {
-      BaseCommand.HideKeyboard -> requireActivity().hideKeyboard()
+      BaseCommand.HideKeyboard -> hideKeyboard()
     }
   }
 

@@ -72,6 +72,11 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
     }
   }
 
+  override fun hideKeyboard() {
+    super.hideKeyboard()
+    binding.textInputLayout.hideKeyboard()
+  }
+
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
     viewModel.setResendDelay(args.codeRefreshRate)

@@ -4,10 +4,15 @@ import android.app.Activity
 import android.graphics.Rect
 import android.view.View
 import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
 
 fun Activity.hideKeyboard() {
-  applicationContext.getInputMethodManager().toggleSoftInput(0, InputMethodManager.HIDE_IMPLICIT_ONLY)
+  var view = currentFocus
+  if (view == null) {
+    view = View(this)
+    view.requestFocus()
+  }
+  view.hideKeyboard()
+  view.clearFocus()
 }
 
 fun Activity.setStatusBarColor(color: Int) {
