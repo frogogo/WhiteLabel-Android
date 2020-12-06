@@ -1,7 +1,7 @@
 apply from: './versions_plugin.gradle'
 
 buildscript {
-  ext.kotlinVersion = "1.4.20"
+  ext.kotlinVersion = '1.4.20'
   ext.detektVersion = '1.14.2'
 
   repositories {
@@ -23,16 +23,16 @@ buildscript {
     // Versions https://github.com/ben-manes/gradle-versions-plugin
     classpath "com.github.ben-manes:gradle-versions-plugin:0.36.0"
     // https://github.com/plnice/can-i-drop-jetifier
-    classpath "com.github.plnice:canidropjetifier:0.5"
+    classpath 'com.github.plnice:canidropjetifier:0.5'
     // Exhaustive https://github.com/cashapp/exhaustive
-    classpath("app.cash.exhaustive:exhaustive-gradle:0.1.1")
+    classpath 'app.cash.exhaustive:exhaustive-gradle:0.1.1'
   }
 }
 
 allprojects {
+  apply plugin: "app.cash.exhaustive"
   apply plugin: "com.github.plnice.canidropjetifier"
   apply from: "$rootDir/detekt.gradle"
-  apply plugin: "app.cash.exhaustive"
 
   repositories {
     google()
