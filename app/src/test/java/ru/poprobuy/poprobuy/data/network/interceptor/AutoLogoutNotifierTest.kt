@@ -9,7 +9,7 @@ import org.junit.Rule
 import org.junit.Test
 import ru.poprobuy.poprobuy.analytics.SystemEvents
 import ru.poprobuy.poprobuy.mockkObserver
-import ru.poprobuy.poprobuy.util.Event
+import ru.poprobuy.poprobuy.core.Event
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsManager
 
 class AutoLogoutNotifierTest {

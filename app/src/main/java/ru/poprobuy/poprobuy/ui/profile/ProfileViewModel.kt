@@ -6,6 +6,8 @@ import com.github.ajalt.timberkt.i
 import com.hadilq.liveevent.LiveEvent
 import com.skydoves.whatif.whatIfNotNull
 import kotlinx.coroutines.launch
+import ru.poprobuy.poprobuy.core.doOnFailure
+import ru.poprobuy.poprobuy.core.doOnSuccess
 import ru.poprobuy.poprobuy.core.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.mapper.toProfileModel
 import ru.poprobuy.poprobuy.data.model.ui.profile.ProfileUiModel
@@ -14,8 +16,6 @@ import ru.poprobuy.poprobuy.data.repository.UserRepository
 import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.usecase.user.GetUserInfoUseCase
 import ru.poprobuy.poprobuy.util.ProfileUtils
-import ru.poprobuy.poprobuy.util.doOnFailure
-import ru.poprobuy.poprobuy.util.doOnSuccess
 
 class ProfileViewModel(
   private val getUserInfoUseCase: GetUserInfoUseCase,

@@ -1,8 +1,8 @@
 package ru.poprobuy.poprobuy.usecase.user
 
+import ru.poprobuy.poprobuy.core.doOnSuccess
 import ru.poprobuy.poprobuy.data.model.api.user.User
 import ru.poprobuy.poprobuy.data.repository.UserRepository
-import ru.poprobuy.poprobuy.util.doOnSuccess
 
 class GetUserInfoUseCase(
   private val userRepository: UserRepository,

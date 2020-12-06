@@ -10,7 +10,7 @@ import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.extension.postEvent
 import ru.poprobuy.poprobuy.extension.setEvent
-import ru.poprobuy.poprobuy.util.Event
+import ru.poprobuy.poprobuy.core.Event
 
 open class BaseViewModel : ViewModel() {
 

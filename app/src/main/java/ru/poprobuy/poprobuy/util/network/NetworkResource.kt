@@ -1,7 +1,7 @@
 package ru.poprobuy.poprobuy.util.network
 
 import retrofit2.Response
-import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.core.Result
 
 /**
  * A generic class that contains data and status about loading this data.

@@ -17,7 +17,7 @@ import ru.poprobuy.poprobuy.data.mapper.toDomain
 import ru.poprobuy.poprobuy.data.model.api.machine.TakeProductRequest
 import ru.poprobuy.poprobuy.data.model.api.machine.VendingMachineAssignRequest
 import ru.poprobuy.poprobuy.data.network.PoprobuyApi
-import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.core.Result
 
 @ExperimentalCoroutinesApi
 internal class VendingMachineRepositoryTest : RepositoryTest() {

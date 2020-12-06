@@ -13,7 +13,7 @@ import ru.poprobuy.poprobuy.RepositoryTest
 import ru.poprobuy.poprobuy.data.mapper.toDomain
 import ru.poprobuy.poprobuy.data.model.api.receipt.ReceiptCreationRequest
 import ru.poprobuy.poprobuy.data.network.PoprobuyApi
-import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.core.Result
 
 @ExperimentalCoroutinesApi
 internal class ReceiptsRepositoryTest : RepositoryTest() {

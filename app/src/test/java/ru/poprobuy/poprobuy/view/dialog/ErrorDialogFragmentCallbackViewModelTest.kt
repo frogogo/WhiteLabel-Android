@@ -7,7 +7,7 @@ import org.junit.Before
 import org.junit.Test
 import ru.poprobuy.poprobuy.ViewModelTest
 import ru.poprobuy.poprobuy.mockkObserver
-import ru.poprobuy.poprobuy.util.Event
+import ru.poprobuy.poprobuy.core.Event
 
 @ExperimentalCoroutinesApi
 internal class ErrorDialogFragmentCallbackViewModelTest : ViewModelTest() {

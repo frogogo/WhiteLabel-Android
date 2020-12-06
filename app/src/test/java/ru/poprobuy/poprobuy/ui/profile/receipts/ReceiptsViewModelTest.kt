@@ -11,8 +11,8 @@ import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.ui.profile.receipts.details.ReceiptDetailsButtonState
 import ru.poprobuy.poprobuy.usecase.receipt.GetReceiptsUseCase
-import ru.poprobuy.poprobuy.util.Event
-import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.core.Event
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.util.network.NetworkError
 
 @ExperimentalCoroutinesApi

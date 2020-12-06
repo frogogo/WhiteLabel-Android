@@ -10,7 +10,7 @@ import org.junit.Rule
 import org.junit.Test
 import ru.poprobuy.poprobuy.CoroutinesTestRule
 import ru.poprobuy.poprobuy.usecase.GetUserAuthStateUseCase
-import ru.poprobuy.poprobuy.util.Event
+import ru.poprobuy.poprobuy.core.Event
 
 @ExperimentalCoroutinesApi
 class SplashViewModelTest {

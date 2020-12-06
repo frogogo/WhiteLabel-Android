@@ -12,7 +12,7 @@ import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequestResponse
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.test422Error
 import ru.poprobuy.poprobuy.testError
-import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.util.network.HttpErrorReason.ERROR_REASON_PASSWORD_REFRESH_RATE_LIMIT
 import ru.poprobuy.poprobuy.util.network.NetworkError
 

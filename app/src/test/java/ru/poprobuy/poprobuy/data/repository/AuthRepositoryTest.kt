@@ -15,7 +15,7 @@ import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequest
 import ru.poprobuy.poprobuy.data.model.api.auth.TokenRefreshRequest
 import ru.poprobuy.poprobuy.data.network.PoprobuyApi
 import ru.poprobuy.poprobuy.data.preferences.UserPreferences
-import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.core.Result
 
 @ExperimentalCoroutinesApi
 class AuthRepositoryTest : RepositoryTest() {

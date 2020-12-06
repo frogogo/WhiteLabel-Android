@@ -14,9 +14,9 @@ import ru.poprobuy.poprobuy.data.repository.UserRepository
 import ru.poprobuy.poprobuy.mockkObserver
 import ru.poprobuy.poprobuy.testError
 import ru.poprobuy.poprobuy.usecase.user.GetUserInfoUseCase
-import ru.poprobuy.poprobuy.util.Event
+import ru.poprobuy.poprobuy.core.Event
 import ru.poprobuy.poprobuy.util.ProfileUtils
-import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.util.network.NetworkError
 
 @ExperimentalCoroutinesApi

@@ -4,7 +4,7 @@ import com.github.ajalt.timberkt.e
 import com.github.ajalt.timberkt.i
 import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
 import ru.poprobuy.poprobuy.data.repository.ReceiptsRepository
-import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.util.network.HttpStatus
 import ru.poprobuy.poprobuy.util.network.NetworkError
 import ru.poprobuy.poprobuy.util.network.onHttpErrorWithCode

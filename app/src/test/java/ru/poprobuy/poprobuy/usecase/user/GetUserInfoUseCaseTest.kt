@@ -11,7 +11,7 @@ import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
 import ru.poprobuy.poprobuy.data.model.api.user.User
 import ru.poprobuy.poprobuy.data.repository.UserRepository
 import ru.poprobuy.poprobuy.testError
-import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.util.network.NetworkError
 
 @ExperimentalCoroutinesApi

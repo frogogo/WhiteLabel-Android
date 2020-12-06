@@ -12,8 +12,8 @@ import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
-import ru.poprobuy.poprobuy.util.Event
-import ru.poprobuy.poprobuy.util.observeEvent
+import ru.poprobuy.poprobuy.core.Event
+import ru.poprobuy.poprobuy.core.observeEvent
 
 typealias Func = () -> Unit
 typealias RationaleShouldBeShown = (PermissionToken) -> Unit

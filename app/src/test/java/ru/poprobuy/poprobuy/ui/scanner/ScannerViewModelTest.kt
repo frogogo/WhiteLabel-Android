@@ -8,7 +8,7 @@ import org.junit.Test
 import ru.poprobuy.poprobuy.dictionary.ScanMode
 import ru.poprobuy.poprobuy.usecase.receipt.CreateReceiptUseCase
 import ru.poprobuy.poprobuy.usecase.vending_machine.AssignVendingMachineUseCase
-import ru.poprobuy.poprobuy.util.Event
+import ru.poprobuy.poprobuy.core.Event
 import ru.poprobuy.poprobuy.util.ResourceProvider
 
 class ScannerViewModelTest {

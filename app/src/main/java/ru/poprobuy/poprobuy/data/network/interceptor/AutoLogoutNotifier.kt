@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.github.ajalt.timberkt.e
 import ru.poprobuy.poprobuy.analytics.SystemEvents
 import ru.poprobuy.poprobuy.extension.postEvent
-import ru.poprobuy.poprobuy.util.Event
+import ru.poprobuy.poprobuy.core.Event
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsManager
 
 class AutoLogoutNotifier(

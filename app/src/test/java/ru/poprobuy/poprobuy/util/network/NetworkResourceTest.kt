@@ -3,7 +3,7 @@ package ru.poprobuy.poprobuy.util.network
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Test
 import retrofit2.Response
-import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.core.Result
 
 class NetworkResourceTest {
 

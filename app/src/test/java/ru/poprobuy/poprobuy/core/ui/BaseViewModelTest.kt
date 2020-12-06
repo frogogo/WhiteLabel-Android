@@ -10,7 +10,7 @@ import ru.poprobuy.poprobuy.core.navigation.AppNavigation
 import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.mockkEventObserver
 import ru.poprobuy.poprobuy.onEventChanged
-import ru.poprobuy.poprobuy.util.Event
+import ru.poprobuy.poprobuy.core.Event
 
 @ExperimentalCoroutinesApi
 class BaseViewModelTest : ViewModelTest() {

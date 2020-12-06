@@ -5,12 +5,12 @@ import androidx.lifecycle.viewModelScope
 import com.github.ajalt.timberkt.d
 import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.launch
+import ru.poprobuy.poprobuy.core.handle
 import ru.poprobuy.poprobuy.core.ui.BaseViewModel
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.extension.asLiveData
 import ru.poprobuy.poprobuy.usecase.user.UpdateUserDetailsUseCase
 import ru.poprobuy.poprobuy.util.Validators
-import ru.poprobuy.poprobuy.util.handle
 
 class AuthEmailViewModel(
   private val userName: String,

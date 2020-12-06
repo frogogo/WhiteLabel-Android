@@ -2,7 +2,7 @@ package ru.poprobuy.poprobuy.usecase.vending_machine
 
 import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
 import ru.poprobuy.poprobuy.data.repository.VendingMachineRepository
-import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.util.network.NetworkError
 
 class TakeProductUseCase(

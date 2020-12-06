@@ -6,7 +6,7 @@ import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
 import ru.poprobuy.poprobuy.data.model.api.auth.AuthenticationResponse
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
 import ru.poprobuy.poprobuy.data.repository.UserRepository
-import ru.poprobuy.poprobuy.util.Result
+import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.util.network.HttpStatus
 import ru.poprobuy.poprobuy.util.network.NetworkError
 import ru.poprobuy.poprobuy.util.network.onHttpErrorWithCode

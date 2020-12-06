@@ -5,7 +5,7 @@ import io.mockk.clearMocks
 import io.mockk.mockk
 import retrofit2.Response
 import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
-import ru.poprobuy.poprobuy.util.Event
+import ru.poprobuy.poprobuy.core.Event
 import ru.poprobuy.poprobuy.util.network.NetworkError
 import ru.poprobuy.poprobuy.util.network.NetworkResource
 
