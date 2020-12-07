@@ -4,8 +4,8 @@
   <!-- Common -->
   <dimen name="card_corner_radius_small">10dp</dimen>
   <dimen name="card_corner_radius_big">16dp</dimen>
-  <dimen name="card_elevation">6dp</dimen>
-  <dimen name="toolbar_elevation">6dp</dimen>
+  <dimen name="card_elevation">3dp</dimen>
+  <dimen name="toolbar_elevation">2dp</dimen>
 
   <dimen name="button_height">36dp</dimen>
   <dimen name="button_icon_size">16dp</dimen>
@@ -19,7 +19,7 @@
   <dimen name="auth_confirmation_code_letter_spacing">0.37</dimen>
 
   <!-- Receipt -->
-  <dimen name="receipt_elevation">4dp</dimen>
+  <dimen name="receipt_elevation">16dp</dimen>
   <dimen name="receipt_top_radius">16dp</dimen>
 
   <!-- Receipt Header -->
