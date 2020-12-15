@@ -7,10 +7,15 @@ import android.view.WindowManager
 
 fun Activity.hideKeyboard() {
   var view = currentFocus
+
+  if (view == null) {
+    view = findViewById(android.R.id.content)
+  }
   if (view == null) {
     view = View(this)
     view.requestFocus()
   }
+
   view.hideKeyboard()
   view.clearFocus()
 }
