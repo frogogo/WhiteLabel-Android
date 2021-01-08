@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.constraintlayout.widget.ConstraintLayout
 import ru.poprobuy.poprobuy.databinding.ViewErrorStateBinding
-import ru.poprobuy.poprobuy.di.inflateViewBinding
+import ru.poprobuy.poprobuy.extension.inflateViewBinding
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 
 typealias OnRefreshClickAction = () -> Unit

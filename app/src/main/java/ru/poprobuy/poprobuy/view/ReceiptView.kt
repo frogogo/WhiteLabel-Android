@@ -12,7 +12,7 @@ import androidx.core.view.ViewCompat
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 import ru.poprobuy.poprobuy.databinding.ViewReceiptBinding
-import ru.poprobuy.poprobuy.di.inflateViewBinding
+import ru.poprobuy.poprobuy.extension.inflateViewBinding
 import ru.poprobuy.poprobuy.extension.binding.setReceipt
 
 class ReceiptView @JvmOverloads constructor(

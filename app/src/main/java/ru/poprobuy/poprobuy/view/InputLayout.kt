@@ -8,7 +8,7 @@ import android.widget.FrameLayout
 import androidx.core.widget.doAfterTextChanged
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.databinding.ViewInputLayoutBinding
-import ru.poprobuy.poprobuy.di.inflateViewBinding
+import ru.poprobuy.poprobuy.extension.inflateViewBinding
 import ru.poprobuy.poprobuy.extension.onImeAction
 import ru.poprobuy.poprobuy.extension.setVisible
 import ru.poprobuy.poprobuy.extension.showKeyboard

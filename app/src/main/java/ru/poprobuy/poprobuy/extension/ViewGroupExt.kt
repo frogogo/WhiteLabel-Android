@@ -1,4 +1,4 @@
-package ru.poprobuy.poprobuy.di
+package ru.poprobuy.poprobuy.extension
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import androidx.viewbinding.ViewBinding
 import com.github.ajalt.timberkt.d
 import java.lang.reflect.Method
 import kotlin.reflect.KClass
+
+private val inflateMethodsCache = mutableMapOf<Class<out ViewBinding>, Method>()
 
 inline fun <reified VB : ViewBinding> ViewGroup.inflateViewBinding(
   context: Context = this.context,
@@ -29,8 +31,6 @@ fun <VB : ViewBinding> KClass<VB>.inflate(
     inflateMethod.invoke(null, inflater, root)
   } as VB
 }
-
-private val inflateMethodsCache = mutableMapOf<Class<out ViewBinding>, Method>()
 
 private fun Class<out ViewBinding>.getInflateMethod(): Method {
   return inflateMethodsCache.getOrPut(this) {
