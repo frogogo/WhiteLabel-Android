@@ -50,7 +50,9 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:barrierDirection="bottom"
-    app:constraint_referenced_ids="text_view_receipt_number,text_view_receipt_value" />
+    app:constraint_referenced_ids="
+    text_view_receipt_number,
+    text_view_receipt_value" />
 
   <TextView
     android:id="@+id/text_view_shop"
@@ -74,7 +76,7 @@
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/spacing_4"
-    android:layout_marginTop="4dp"
+    android:layout_marginTop="@dimen/spacing_1"
     android:layout_marginEnd="@dimen/spacing_4"
     android:gravity="center"
     android:textColor="@color/receipt_date"
@@ -87,8 +89,8 @@
   <!-- Status -->
   <ImageView
     android:id="@+id/image_view_state"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="@dimen/receipt_header_state_image_size"
+    android:layout_height="@dimen/receipt_header_state_image_size"
     app:layout_constraintBottom_toBottomOf="@id/view_header"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"

@@ -22,8 +22,8 @@
 
   <ImageView
     android:id="@+id/image_view_product"
-    android:layout_width="129dp"
-    android:layout_height="129dp"
+    android:layout_width="@dimen/receipt_details_image_size"
+    android:layout_height="@dimen/receipt_details_image_size"
     android:layout_marginTop="@dimen/spacing_4"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"

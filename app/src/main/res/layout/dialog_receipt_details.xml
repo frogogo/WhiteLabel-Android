@@ -19,7 +19,7 @@
   <ImageView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="6dp"
+    android:layout_marginTop="@dimen/spacing_2"
     android:src="@drawable/ic_handlebar"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
@@ -76,7 +76,11 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:barrierDirection="bottom"
-    app:constraint_referenced_ids="layout_footer_approved,layout_footer_processing,layout_footer_completed,layout_footer_rejected" />
+    app:constraint_referenced_ids="
+    layout_footer_approved,
+    layout_footer_processing,
+    layout_footer_completed,
+    layout_footer_rejected" />
 
   <include
     android:id="@+id/layout_controls_goods"

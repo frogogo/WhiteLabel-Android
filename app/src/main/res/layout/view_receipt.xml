@@ -75,7 +75,10 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:barrierDirection="bottom"
-    app:constraint_referenced_ids="layout_footer_approved,layout_footer_processing,layout_footer_rejected" />
+    app:constraint_referenced_ids="
+    layout_footer_approved,
+    layout_footer_processing,
+    layout_footer_rejected" />
 
   <ImageView
     android:id="@+id/image_footer"

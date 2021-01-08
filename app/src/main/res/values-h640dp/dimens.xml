@@ -6,11 +6,24 @@
   <dimen name="button_text_size">16sp</dimen>
   <dimen name="toolbar_height">56dp</dimen>
 
+  <!-- Splash -->
+  <dimen name="splash_logo_size">96dp</dimen>
+
+  <!-- Onboarding -->
+  <dimen name="onboarding_image_size">96dp</dimen>
+
   <!-- Auth -->
   <dimen name="auth_phone_text_layout_margin_top">66dp</dimen>
+
+  <!-- Receipt Details -->
+  <dimen name="receipt_details_image_size">129dp</dimen>
 
   <!-- Receipt Header -->
   <dimen name="receipt_header_height_small">136dp</dimen>
   <dimen name="receipt_header_height_large">144dp</dimen>
+  <dimen name="receipt_header_state_image_size">56dp</dimen>
+
+  <!-- Product Select -->
+  <dimen name="product_select_dialog_product_size">215dp</dimen>
 
 </resources>

@@ -27,7 +27,7 @@
     style="@style/Text.Title1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginStart="6dp"
+    android:layout_marginStart="@dimen/spacing_2"
     android:lines="1"
     android:maxLines="1"
     android:textColor="@color/auth_text_placeholder"
@@ -45,7 +45,7 @@
     style="@style/Text.Title1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginStart="6dp"
+    android:layout_marginStart="@dimen/spacing_2"
     android:background="@null"
     android:imeOptions="actionGo"
     android:importantForAutofill="no"
@@ -66,7 +66,9 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:barrierDirection="end"
-    app:constraint_referenced_ids="text_view_placeholder,edit_text" />
+    app:constraint_referenced_ids="
+    text_view_placeholder,
+    edit_text" />
 
   <ProgressBar
     android:id="@+id/progress_bar"

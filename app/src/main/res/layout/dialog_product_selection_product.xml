@@ -9,8 +9,8 @@
 
   <ImageView
     android:id="@+id/image_view_icon"
-    android:layout_width="215dp"
-    android:layout_height="215dp"
+    android:layout_width="@dimen/product_select_dialog_product_size"
+    android:layout_height="@dimen/product_select_dialog_product_size"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
@@ -35,7 +35,7 @@
     android:layout_width="wrap_content"
     android:layout_height="@dimen/button_height"
     android:layout_marginTop="@dimen/spacing_10"
-    android:layout_marginEnd="6dp"
+    android:layout_marginEnd="@dimen/spacing_2"
     android:minWidth="@dimen/product_select_buttons_min_width"
     android:text="@string/common_button_no"
     app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +48,7 @@
     android:id="@+id/button_yes"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/button_height"
-    android:layout_marginStart="6dp"
+    android:layout_marginStart="@dimen/spacing_2"
     android:layout_marginTop="@dimen/spacing_10"
     android:minWidth="@dimen/product_select_buttons_min_width"
     android:text="@string/common_button_yes"

@@ -96,7 +96,9 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       app:barrierDirection="top"
-      app:constraint_referenced_ids="button_resend_code,button_resend_code_await" />
+      app:constraint_referenced_ids="
+      button_resend_code,
+      button_resend_code_await" />
 
     <com.google.android.material.button.MaterialButton
       android:id="@+id/button_resend_code_await"
