@@ -7,8 +7,8 @@
 
   <!-- Title Large -->
   <style name="Text.TitleLarge">
-    <item name="android:textSize">32sp</item>
-    <item name="android:lineSpacingExtra">1.5sp</item>
+    <item name="android:textSize">@dimen/text_title_large_size</item>
+    <item name="android:lineSpacingExtra">@dimen/text_title_large_spacing_extra</item>
   </style>
 
   <style name="Text.TitleLarge.Medium">
@@ -17,11 +17,11 @@
 
   <!-- Title1 -->
   <style name="Text.Title1">
-    <item name="android:textSize">25sp</item>
-    <item name="android:lineSpacingExtra">0sp</item>
+    <item name="android:textSize">@dimen/text_title_1_size</item>
+    <item name="android:lineSpacingExtra">@dimen/text_title_1_spacing_extra</item>
 
     <item name="autoSizeTextType">uniform</item>
-    <item name="autoSizeMinTextSize">21sp</item>
+    <item name="autoSizeMinTextSize">@dimen/text_title_1_size_min</item>
   </style>
 
   <style name="Text.Title1.Medium">
@@ -30,8 +30,8 @@
 
   <!-- Title2 -->
   <style name="Text.Title2">
-    <item name="android:textSize">18sp</item>
-    <item name="android:lineSpacingExtra">0sp</item>
+    <item name="android:textSize">@dimen/text_title_2_size</item>
+    <item name="android:lineSpacingExtra">@dimen/text_title_2_spacing_extra</item>
   </style>
 
   <style name="Text.Title2.Medium">
@@ -40,8 +40,8 @@
 
   <!-- Headline -->
   <style name="Text.Headline">
-    <item name="android:textSize">14sp</item>
-    <item name="android:lineSpacingExtra">4sp</item>
+    <item name="android:textSize">@dimen/text_headline_size</item>
+    <item name="android:lineSpacingExtra">@dimen/text_headline_spacing_extra</item>
   </style>
 
   <style name="Text.Headline.Medium">
@@ -54,8 +54,8 @@
 
   <!-- Body -->
   <style name="Text.Body">
-    <item name="android:textSize">14sp</item>
-    <item name="android:lineSpacingExtra">4sp</item>
+    <item name="android:textSize">@dimen/text_body_size</item>
+    <item name="android:lineSpacingExtra">@dimen/text_body_spacing_extra</item>
   </style>
 
   <style name="Text.Body.Medium">
@@ -64,8 +64,8 @@
 
   <!-- Subhead -->
   <style name="Text.Subhead">
-    <item name="android:textSize">12sp</item>
-    <item name="android:lineSpacingExtra">2sp</item>
+    <item name="android:textSize">@dimen/text_subhead_size</item>
+    <item name="android:lineSpacingExtra">@dimen/text_subhead_spacing_extra</item>
   </style>
 
   <style name="Text.Subhead.Medium">
@@ -78,8 +78,8 @@
 
   <!-- Caption -->
   <style name="Text.Caption">
-    <item name="android:textSize">11sp</item>
-    <item name="android:lineSpacingExtra">1.5sp</item>
+    <item name="android:textSize">@dimen/text_caption_size</item>
+    <item name="android:lineSpacingExtra">@dimen/text_caption_spacing_extra</item>
   </style>
 
   <style name="Text.Caption.Medium">
