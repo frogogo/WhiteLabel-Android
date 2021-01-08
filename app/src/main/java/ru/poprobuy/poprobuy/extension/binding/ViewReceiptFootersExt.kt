@@ -14,7 +14,7 @@ import ru.poprobuy.poprobuy.databinding.ViewReceiptFooterRejectedBinding
 import ru.poprobuy.poprobuy.dictionary.ReceiptState
 import ru.poprobuy.poprobuy.extension.setVisible
 
-fun ViewReceiptFooterApprovedBinding.setReceipt(receipt: ReceiptUiModel) {
+fun ViewReceiptFooterApprovedBinding.bind(receipt: ReceiptUiModel) {
   root.setVisible(receipt.state == ReceiptState.APPROVED)
 
   textViewStateSubtitle.text = context.getString(
@@ -23,11 +23,11 @@ fun ViewReceiptFooterApprovedBinding.setReceipt(receipt: ReceiptUiModel) {
   )
 }
 
-fun ViewReceiptFooterProcessingBinding.setReceipt(receipt: ReceiptUiModel) {
+fun ViewReceiptFooterProcessingBinding.bind(receipt: ReceiptUiModel) {
   root.setVisible(receipt.state == ReceiptState.PROCESSING)
 }
 
-fun ViewReceiptFooterCompletedBinding.setReceipt(receipt: ReceiptUiModel) {
+fun ViewReceiptFooterCompletedBinding.bind(receipt: ReceiptUiModel) {
   root.setVisible(receipt.state == ReceiptState.COMPLETED)
 
   textViewStateSubtitle.text = context.getString(
@@ -40,7 +40,7 @@ fun ViewReceiptFooterCompletedBinding.setReceipt(receipt: ReceiptUiModel) {
   }
 }
 
-fun ViewReceiptFooterRejectedBinding.setReceipt(receipt: ReceiptUiModel, showTopDivider: Boolean = false) {
+fun ViewReceiptFooterRejectedBinding.bind(receipt: ReceiptUiModel, showTopDivider: Boolean = false) {
   root.setVisible(receipt.state == ReceiptState.REJECTED)
 
   divider1.setVisible(showTopDivider)

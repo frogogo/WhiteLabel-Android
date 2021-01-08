@@ -15,12 +15,10 @@ import org.koin.core.parameter.parametersOf
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.core.ui.BaseBottomSheetDialogFragment
 import ru.poprobuy.poprobuy.databinding.DialogReceiptDetailsBinding
-import ru.poprobuy.poprobuy.dictionary.ReceiptState
-import ru.poprobuy.poprobuy.extension.binding.setReceipt
+import ru.poprobuy.poprobuy.extension.binding.bind
+import ru.poprobuy.poprobuy.extension.binding.initListeners
 import ru.poprobuy.poprobuy.extension.binding.useLargeSize
 import ru.poprobuy.poprobuy.extension.observe
-import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
-import ru.poprobuy.poprobuy.extension.setVisible
 
 class ReceiptDetailsBottomDialog : BaseBottomSheetDialogFragment<ReceiptDetailsViewModel>(
   R.layout.dialog_receipt_details
@@ -33,7 +31,7 @@ class ReceiptDetailsBottomDialog : BaseBottomSheetDialogFragment<ReceiptDetailsV
 
   override fun initViews() {
     binding.apply {
-      layoutHeader.setReceipt(args.receipt)
+      layoutHeader.bind(args.receipt)
       layoutHeader.useLargeSize()
     }
     initFooters()
@@ -62,20 +60,20 @@ class ReceiptDetailsBottomDialog : BaseBottomSheetDialogFragment<ReceiptDetailsV
 
     binding.apply {
       // Footer
-      layoutFooterApproved.setReceipt(receipt)
-      layoutFooterProcessing.setReceipt(receipt)
-      layoutFooterCompleted.setReceipt(receipt)
-      layoutFooterRejected.setReceipt(receipt, showTopDivider = true)
+      layoutFooterApproved.bind(receipt)
+      layoutFooterProcessing.bind(receipt)
+      layoutFooterCompleted.bind(receipt)
+      layoutFooterRejected.bind(receipt, showTopDivider = true)
+
       // Controls
-      layoutControlsGoods.apply {
-        root.setVisible(receipt.state == ReceiptState.APPROVED)
-        buttonEnterMachine.setOnSafeClickListener { viewModel.navigateToMachineEnter(receipt.id) }
-        buttonScanMachine.setOnSafeClickListener { viewModel.navigateToMachineScan(receipt.id) }
-      }
-      layoutControlsScan.root.apply {
-        setVisible(receipt.state in listOf(ReceiptState.COMPLETED, ReceiptState.REJECTED))
-        setOnSafeClickListener { viewModel.navigateToReceiptScan() }
-      }
+      layoutControlsGoods.initListeners(
+        scanMachineClickAction = { viewModel.navigateToMachineEnter(receipt.id) },
+        enterMachineClickAction = { viewModel.navigateToMachineScan(receipt.id) }
+      )
+      layoutControlsGoods.bind(receipt)
+
+      layoutControlsScan.initListeners { viewModel.navigateToReceiptScan() }
+      layoutControlsScan.bind(receipt)
     }
   }
 

@@ -6,6 +6,7 @@
   android:layout_height="wrap_content">
 
   <com.google.android.material.button.MaterialButton
+    android:id="@+id/button_scan"
     android:layout_width="match_parent"
     android:layout_height="@dimen/button_height"
     android:text="@string/home_rejected_button_scan"

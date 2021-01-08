@@ -13,7 +13,7 @@ import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel
 import ru.poprobuy.poprobuy.databinding.ViewReceiptBinding
 import ru.poprobuy.poprobuy.extension.inflateViewBinding
-import ru.poprobuy.poprobuy.extension.binding.setReceipt
+import ru.poprobuy.poprobuy.extension.binding.bind
 
 class ReceiptView @JvmOverloads constructor(
   context: Context,
@@ -34,12 +34,12 @@ class ReceiptView @JvmOverloads constructor(
     }
   }
 
-  fun setReceipt(receipt: ReceiptUiModel) = binding.run {
-    layoutHeader.setReceipt(receipt)
+  fun bind(receipt: ReceiptUiModel) = binding.run {
+    layoutHeader.bind(receipt)
     // Footer
-    layoutFooterApproved.setReceipt(receipt)
-    layoutFooterProcessing.setReceipt(receipt)
-    layoutFooterRejected.setReceipt(receipt)
+    layoutFooterApproved.bind(receipt)
+    layoutFooterProcessing.bind(receipt)
+    layoutFooterRejected.bind(receipt)
   }
 
   /**

@@ -16,7 +16,7 @@ private val STATES_WITHOUT_SHOP_NAME = listOf(
   ReceiptState.REJECTED
 )
 
-fun ViewReceiptHeaderBinding.setReceipt(receipt: ReceiptUiModel) {
+fun ViewReceiptHeaderBinding.bind(receipt: ReceiptUiModel) {
   // Header
   val headerColor = context.getColor(receipt.state.getColor())
   viewHeader.backgroundTintList = ColorStateList.valueOf(headerColor)

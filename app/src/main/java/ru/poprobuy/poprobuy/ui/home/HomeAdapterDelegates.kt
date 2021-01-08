@@ -5,9 +5,9 @@ import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 import ru.poprobuy.poprobuy.data.model.ui.home.HomeState
 import ru.poprobuy.poprobuy.databinding.ItemHomeEmptyBinding
 import ru.poprobuy.poprobuy.databinding.ItemHomeReceiptBinding
-import ru.poprobuy.poprobuy.dictionary.ReceiptState
+import ru.poprobuy.poprobuy.extension.binding.bind
+import ru.poprobuy.poprobuy.extension.binding.initListeners
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
-import ru.poprobuy.poprobuy.extension.setVisible
 
 object HomeAdapterDelegates {
 
@@ -27,19 +27,19 @@ object HomeAdapterDelegates {
     viewBinding = { layoutInflater, root -> ItemHomeReceiptBinding.inflate(layoutInflater, root, false) }
   ) {
     binding.apply {
-      layoutControlsGoods.apply {
-        buttonScanMachine.setOnSafeClickListener { scanMachineCallback(item.receipt.id) }
-        buttonEnterMachine.setOnSafeClickListener { enterMachineAction(item.receipt.id) }
-      }
-      layoutControlsScan.root.setOnSafeClickListener { scanReceiptAction() }
+      layoutControlsGoods.initListeners(
+        scanMachineClickAction = { scanMachineCallback(item.receipt.id) },
+        enterMachineClickAction = { enterMachineAction(item.receipt.id) }
+      )
+      layoutControlsScan.initListeners { scanReceiptAction() }
     }
 
     bind {
       binding.apply {
-        viewReceipt.setReceipt(item.receipt)
+        viewReceipt.bind(item.receipt)
 
-        layoutControlsGoods.root.setVisible(item.receipt.state == ReceiptState.APPROVED)
-        layoutControlsScan.root.setVisible(item.receipt.state == ReceiptState.REJECTED)
+        layoutControlsGoods.bind(item.receipt)
+        layoutControlsScan.bind(item.receipt)
       }
     }
   }
