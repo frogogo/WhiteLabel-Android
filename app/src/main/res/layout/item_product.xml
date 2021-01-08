@@ -12,7 +12,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-      android:id="@+id/imageViewProduct"
+      android:id="@+id/image_view_product"
       android:layout_width="72dp"
       android:layout_height="72dp"
       android:layout_marginStart="@dimen/spacing_4"
@@ -24,7 +24,7 @@
       tools:src="@sample/product" />
 
     <TextView
-      android:id="@+id/textViewName"
+      android:id="@+id/text_view_name"
       style="@style/Text.Body"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
@@ -35,13 +35,13 @@
       android:textColor="@color/screen_title"
       app:layout_constrainedHeight="true"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintLeft_toRightOf="@id/imageViewProduct"
+      app:layout_constraintLeft_toRightOf="@id/image_view_product"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       tools:text="@sample/products.json/data/name" />
 
     <ru.poprobuy.poprobuy.view.LabelView
-      android:id="@+id/viewLabel"
+      android:id="@+id/view_label"
       style="@style/LabelView"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"

@@ -6,7 +6,7 @@
   android:layout_height="wrap_content">
 
   <com.google.android.material.button.MaterialButton
-    android:id="@+id/buttonReceipts"
+    android:id="@+id/button_receipts"
     style="@style/ProfileMenuButton"
     android:layout_width="0dp"
     android:layout_height="@dimen/profile_button_height"
@@ -16,7 +16,7 @@
     app:layout_constraintTop_toTopOf="parent" />
 
   <View
-    android:id="@+id/divider1"
+    android:id="@+id/divider_1"
     style="@style/Divider"
     android:layout_width="0dp"
     android:layout_marginStart="@dimen/profile_side_padding"
@@ -24,10 +24,10 @@
     android:visibility="gone"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/buttonReceipts" />
+    app:layout_constraintTop_toBottomOf="@id/button_receipts" />
 
   <com.google.android.material.button.MaterialButton
-    android:id="@+id/buttonGoods"
+    android:id="@+id/button_goods"
     style="@style/ProfileMenuButton"
     android:layout_width="0dp"
     android:layout_height="@dimen/profile_button_height"
@@ -35,6 +35,6 @@
     android:visibility="gone"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/divider1" />
+    app:layout_constraintTop_toBottomOf="@id/divider_1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

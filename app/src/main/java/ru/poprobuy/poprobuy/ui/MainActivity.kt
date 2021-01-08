@@ -17,7 +17,7 @@ class MainActivity : BaseActivity<MainViewModel>(R.layout.activity_main) {
   private val logoutNotifier: AutoLogoutNotifier by inject()
 
   private val navigationRouter: NavigationRouter by inject { parametersOf(navController) }
-  private val navController: NavController by lazy { findNavController(R.id.mainNavHost) }
+  private val navController: NavController by lazy { findNavController(R.id.main_nav_host) }
 
   override fun initObservers() {
     viewModel.navigationLiveEvent.observeEvent(this, navigationRouter::navigate)

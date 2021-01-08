@@ -8,7 +8,7 @@
   android:background="@color/screen_background">
 
   <RelativeLayout
-    android:id="@+id/layoutToolbar"
+    android:id="@+id/layout_toolbar"
     android:layout_width="0dp"
     android:layout_height="@dimen/toolbar_height"
     app:layout_constraintLeft_toLeftOf="parent"
@@ -16,7 +16,7 @@
     app:layout_constraintTop_toTopOf="parent">
 
     <ImageButton
-      android:id="@+id/buttonClose"
+      android:id="@+id/button_close"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_alignParentEnd="true"
@@ -33,10 +33,10 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/layoutToolbar">
+    app:layout_constraintTop_toBottomOf="@id/layout_toolbar">
 
     <include
-      android:id="@+id/layoutContent"
+      android:id="@+id/layout_content"
       layout="@layout/fragment_profile_content"
       android:visibility="invisible"
       tools:visibility="visible" />
@@ -44,7 +44,7 @@
   </ScrollView>
 
   <ProgressBar
-    android:id="@+id/progressBar"
+    android:id="@+id/progress_bar"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:visibility="gone"
@@ -54,7 +54,7 @@
     app:layout_constraintTop_toTopOf="parent" />
 
   <ru.poprobuy.poprobuy.view.ErrorStateView
-    android:id="@+id/viewErrorState"
+    android:id="@+id/view_error_state"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:visibility="gone"
@@ -64,7 +64,7 @@
     app:layout_constraintTop_toTopOf="parent" />
 
   <com.google.android.material.button.MaterialButton
-    android:id="@+id/buttonLogout"
+    android:id="@+id/button_logout"
     android:layout_width="wrap_content"
     android:layout_height="30dp"
     android:layout_margin="15dp"

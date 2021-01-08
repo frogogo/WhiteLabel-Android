@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  android:id="@+id/layoutContent"
+  android:id="@+id/layout_content"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:paddingStart="@dimen/spacing_6"
@@ -10,13 +10,13 @@
   android:paddingBottom="@dimen/spacing_10">
 
   <include
-    android:id="@+id/layoutProduct"
+    android:id="@+id/layout_product"
     layout="@layout/dialog_product_selection_product"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
 
   <include
-    android:id="@+id/layoutSuccess"
+    android:id="@+id/layout_success"
     layout="@layout/dialog_product_selection_success"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

@@ -9,7 +9,7 @@
   android:paddingEnd="@dimen/spacing_4">
 
   <TextView
-    android:id="@+id/textViewStateSubtitle"
+    android:id="@+id/text_view_state_subtitle"
     style="@style/Text.Subhead"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -27,18 +27,18 @@
     android:layout_marginTop="@dimen/spacing_3"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/textViewStateSubtitle" />
+    app:layout_constraintTop_toBottomOf="@id/text_view_state_subtitle" />
 
   <ImageView
-    android:id="@+id/imageViewStep1"
+    android:id="@+id/image_view_step_1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:src="@drawable/ic_info"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toTopOf="@id/textViewStep1" />
+    app:layout_constraintTop_toTopOf="@id/text_view_step_1" />
 
   <TextView
-    android:id="@+id/textViewStep1"
+    android:id="@+id/text_view_step_1"
     style="@style/Text.Caption"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -46,20 +46,20 @@
     android:layout_marginTop="@dimen/spacing_3"
     android:text="@string/receipt_state_approved_footer_1"
     android:textColor="@color/receipt_subtitle"
-    app:layout_constraintLeft_toRightOf="@id/imageViewStep1"
+    app:layout_constraintLeft_toRightOf="@id/image_view_step_1"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@id/divider" />
 
   <ImageView
-    android:id="@+id/imageViewStep2"
+    android:id="@+id/image_view_step_2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:src="@drawable/ic_info"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toTopOf="@id/textViewStep2" />
+    app:layout_constraintTop_toTopOf="@id/text_view_step_2" />
 
   <TextView
-    android:id="@+id/textViewStep2"
+    android:id="@+id/text_view_step_2"
     style="@style/Text.Caption"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -67,8 +67,8 @@
     android:layout_marginTop="@dimen/spacing_4"
     android:text="@string/receipt_state_approved_footer_2"
     android:textColor="@color/receipt_subtitle"
-    app:layout_constraintLeft_toRightOf="@id/imageViewStep2"
+    app:layout_constraintLeft_toRightOf="@id/image_view_step_2"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/textViewStep1" />
+    app:layout_constraintTop_toBottomOf="@id/text_view_step_1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

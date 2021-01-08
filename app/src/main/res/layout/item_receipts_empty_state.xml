@@ -8,18 +8,18 @@
   <include layout="@layout/item_scan_available" />
 
   <ImageView
-    android:id="@+id/imageViewIcon"
+    android:id="@+id/image_view_icon"
     android:layout_width="64dp"
     android:layout_height="64dp"
     android:src="@drawable/ic_receipts_empty"
-    app:layout_constraintBottom_toTopOf="@id/textViewTitle"
+    app:layout_constraintBottom_toTopOf="@id/text_view_title"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_chainStyle="packed" />
 
   <TextView
-    android:id="@+id/textViewTitle"
+    android:id="@+id/text_view_title"
     style="@style/Text.Body"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -30,6 +30,6 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/imageViewIcon" />
+    app:layout_constraintTop_toBottomOf="@id/image_view_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

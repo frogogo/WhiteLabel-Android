@@ -8,7 +8,7 @@
   android:layout_height="wrap_content">
 
   <ImageView
-    android:id="@+id/imageViewIcon"
+    android:id="@+id/image_view_icon"
     android:layout_width="215dp"
     android:layout_height="215dp"
     app:layout_constraintLeft_toLeftOf="parent"
@@ -17,7 +17,7 @@
     tools:src="@sample/product" />
 
   <TextView
-    android:id="@+id/textViewTitle"
+    android:id="@+id/text_view_title"
     style="@style/Text.Title2.Medium"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -27,10 +27,10 @@
     android:textColor="@color/screen_title"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/imageViewIcon" />
+    app:layout_constraintTop_toBottomOf="@id/image_view_icon" />
 
   <com.google.android.material.button.MaterialButton
-    android:id="@+id/buttonNo"
+    android:id="@+id/button_no"
     style="@style/OutlinedButton"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/button_height"
@@ -41,11 +41,11 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintHorizontal_chainStyle="packed"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toLeftOf="@id/buttonYes"
-    app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+    app:layout_constraintRight_toLeftOf="@id/button_yes"
+    app:layout_constraintTop_toBottomOf="@id/text_view_title" />
 
   <com.google.android.material.button.MaterialButton
-    android:id="@+id/buttonYes"
+    android:id="@+id/button_yes"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/button_height"
     android:layout_marginStart="6dp"
@@ -53,12 +53,12 @@
     android:minWidth="@dimen/product_select_buttons_min_width"
     android:text="@string/common_button_yes"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toRightOf="@id/buttonNo"
+    app:layout_constraintLeft_toRightOf="@id/button_no"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+    app:layout_constraintTop_toBottomOf="@id/text_view_title" />
 
   <ProgressBar
-    android:id="@+id/progressBar"
+    android:id="@+id/progress_bar"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/spacing_10"
@@ -66,6 +66,6 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+    app:layout_constraintTop_toBottomOf="@id/text_view_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

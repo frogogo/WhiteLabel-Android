@@ -8,7 +8,7 @@
   android:paddingBottom="@dimen/spacing_8">
 
   <include
-    android:id="@+id/layoutHeader"
+    android:id="@+id/layout_header"
     layout="@layout/view_receipt_header"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
 
   <!-- Footer -->
   <include
-    android:id="@+id/layoutFooterApproved"
+    android:id="@+id/layout_footer_approved"
     layout="@layout/view_receipt_footer_approved"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -35,11 +35,11 @@
     android:visibility="gone"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/layoutHeader"
+    app:layout_constraintTop_toBottomOf="@id/layout_header"
     tools:visibility="visible" />
 
   <include
-    android:id="@+id/layoutFooterProcessing"
+    android:id="@+id/layout_footer_processing"
     layout="@layout/view_receipt_footer_processing"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -47,10 +47,10 @@
     android:visibility="gone"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/layoutHeader" />
+    app:layout_constraintTop_toBottomOf="@id/layout_header" />
 
   <include
-    android:id="@+id/layoutFooterCompleted"
+    android:id="@+id/layout_footer_completed"
     layout="@layout/view_receipt_footer_completed"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -58,10 +58,10 @@
     android:visibility="gone"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/layoutHeader" />
+    app:layout_constraintTop_toBottomOf="@id/layout_header" />
 
   <include
-    android:id="@+id/layoutFooterRejected"
+    android:id="@+id/layout_footer_rejected"
     layout="@layout/view_receipt_footer_rejected"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -69,17 +69,17 @@
     android:visibility="gone"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/layoutHeader" />
+    app:layout_constraintTop_toBottomOf="@id/layout_header" />
 
   <androidx.constraintlayout.widget.Barrier
-    android:id="@+id/barrierFooter"
+    android:id="@+id/barrier_footer"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:barrierDirection="bottom"
-    app:constraint_referenced_ids="layoutFooterApproved,layoutFooterProcessing,layoutFooterCompleted,layoutFooterRejected" />
+    app:constraint_referenced_ids="layout_footer_approved,layout_footer_processing,layout_footer_completed,layout_footer_rejected" />
 
   <include
-    android:id="@+id/layoutControlsGoods"
+    android:id="@+id/layout_controls_goods"
     layout="@layout/view_receipt_controls_goods"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -90,11 +90,11 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/barrierFooter"
+    app:layout_constraintTop_toBottomOf="@id/barrier_footer"
     tools:visibility="visible" />
 
   <include
-    android:id="@+id/layoutControlsScan"
+    android:id="@+id/layout_controls_scan"
     layout="@layout/view_receipt_controls_scan"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -105,6 +105,6 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/barrierFooter" />
+    app:layout_constraintTop_toBottomOf="@id/barrier_footer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

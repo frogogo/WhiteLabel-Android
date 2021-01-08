@@ -14,14 +14,14 @@
     android:paddingEnd="@dimen/spacing_8">
 
     <TextView
-      android:id="@+id/textViewTitle"
+      android:id="@+id/text_view_title"
       style="@style/Text.TitleLarge.Medium"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/spacing_6"
       android:text="@string/auth_email_title"
       android:textColor="@color/screen_title"
-      app:layout_constraintBottom_toTopOf="@id/textViewSubtitle"
+      app:layout_constraintBottom_toTopOf="@id/text_view_subtitle"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"
@@ -29,43 +29,43 @@
       app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-      android:id="@+id/textViewSubtitle"
+      android:id="@+id/text_view_subtitle"
       style="@style/Text.Body"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/spacing_4"
       android:text="@string/auth_email_subtitle"
       android:textColor="@color/screen_subtitle"
-      app:layout_constraintBottom_toTopOf="@id/textInputLayout"
+      app:layout_constraintBottom_toTopOf="@id/text_input_layout"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+      app:layout_constraintTop_toBottomOf="@id/text_view_title" />
 
     <ru.poprobuy.poprobuy.view.InputLayout
-      android:id="@+id/textInputLayout"
+      android:id="@+id/text_input_layout"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/spacing_6"
-      app:layout_constraintBottom_toTopOf="@id/textViewError"
+      app:layout_constraintBottom_toTopOf="@id/text_view_error"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/textViewSubtitle"
+      app:layout_constraintTop_toBottomOf="@id/text_view_subtitle"
       app:placeholderText="@string/auth_email_placeholder" />
 
     <TextView
-      android:id="@+id/textViewError"
+      android:id="@+id/text_view_error"
       style="@style/Text.Error"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/spacing_6"
       android:layout_marginBottom="@dimen/spacing_6"
-      app:layout_constraintBottom_toTopOf="@id/buttonContinue"
-      app:layout_constraintLeft_toLeftOf="@id/textInputLayout"
+      app:layout_constraintBottom_toTopOf="@id/button_continue"
+      app:layout_constraintLeft_toLeftOf="@id/text_input_layout"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/textInputLayout" />
+      app:layout_constraintTop_toBottomOf="@id/text_input_layout" />
 
     <com.google.android.material.button.MaterialButton
-      android:id="@+id/buttonContinue"
+      android:id="@+id/button_continue"
       android:layout_width="0dp"
       android:layout_height="@dimen/button_height"
       android:layout_marginBottom="@dimen/spacing_6"

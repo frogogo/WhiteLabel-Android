@@ -59,7 +59,7 @@ class MachineProductsFragment : BaseFragment<MachineProductsViewModel>(
 
   private fun renderTimer(state: MachineProductsViewModel.TimerState) {
     binding.layoutTimer.apply {
-      textViewTimberRemaining.text = state.timeRemaining.toString()
+      textViewTimerRemaining.text = state.timeRemaining.toString()
       viewTimer.progressMax = state.maxProgress.toFloat()
       viewTimer.progress = state.progress
     }

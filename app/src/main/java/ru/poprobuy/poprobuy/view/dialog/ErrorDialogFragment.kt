@@ -30,7 +30,7 @@ class ErrorDialogFragment : BaseDialogFragment(R.layout.dialog_error) {
       } ?: run {
         textViewSubtitle.setVisible(false)
       }
-      buttonOk.setOnClickListener { dismissAllowingStateLoss() }
+      buttonContinue.setOnClickListener { dismissAllowingStateLoss() }
     }
   }
 

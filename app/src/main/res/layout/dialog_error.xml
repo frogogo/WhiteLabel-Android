@@ -11,7 +11,7 @@
   android:paddingBottom="@dimen/spacing_10">
 
   <TextView
-    android:id="@+id/textViewTitle"
+    android:id="@+id/text_view_title"
     style="@style/Text.Title2.Medium"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
     app:layout_constraintTop_toTopOf="parent" />
 
   <TextView
-    android:id="@+id/textViewSubtitle"
+    android:id="@+id/text_view_subtitle"
     style="@style/Text.Body"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -32,11 +32,11 @@
     android:textColor="@color/screen_subtitle"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+    app:layout_constraintTop_toBottomOf="@id/text_view_title"
     tools:text="@string/product_select_error_description" />
 
   <com.google.android.material.button.MaterialButton
-    android:id="@+id/buttonOk"
+    android:id="@+id/button_continue"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/button_height"
     android:layout_marginTop="@dimen/spacing_8"
@@ -44,6 +44,6 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/textViewSubtitle" />
+    app:layout_constraintTop_toBottomOf="@id/text_view_subtitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
