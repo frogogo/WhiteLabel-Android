@@ -1,6 +1,7 @@
 package ru.poprobuy.poprobuy.ui.auth.policy
 
 import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.extension.toCommand
 
 interface AuthPolicyNavigation {
   fun navigateToAuthPhoneEnter(): NavigationCommand
@@ -8,9 +9,7 @@ interface AuthPolicyNavigation {
 
 class AuthPolicyNavigationImpl : AuthPolicyNavigation {
 
-  override fun navigateToAuthPhoneEnter(): NavigationCommand {
-    val action = AuthPolicyFragmentDirections.authPolicyToAuthPhone()
-    return NavigationCommand.ByAction(action)
-  }
+  override fun navigateToAuthPhoneEnter(): NavigationCommand =
+    AuthPolicyFragmentDirections.authPolicyToAuthPhone().toCommand()
 
 }

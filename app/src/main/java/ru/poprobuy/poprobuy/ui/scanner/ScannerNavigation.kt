@@ -3,6 +3,7 @@ package ru.poprobuy.poprobuy.ui.scanner
 import ru.poprobuy.poprobuy.R
 import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingMachineUiModel
+import ru.poprobuy.poprobuy.extension.toCommand
 import ru.poprobuy.poprobuy.util.Constants
 
 interface ScannerNavigation {
@@ -15,27 +16,25 @@ interface ScannerNavigation {
 
 class ScannerNavigationImpl : ScannerNavigation {
 
-  override fun navigateToMachineHelp(): NavigationCommand {
-    return NavigationCommand.ByWebUrl(Constants.HELP_SCAN_MACHINE_URL, R.string.scanner_help_machine_title)
-  }
+  override fun navigateToMachineHelp(): NavigationCommand =
+    NavigationCommand.ByWebUrl(
+      url = Constants.HELP_SCAN_MACHINE_URL,
+      titleRes = R.string.scanner_help_machine_title
+    )
 
-  override fun navigateToReceiptHelp(): NavigationCommand {
-    return NavigationCommand.ByWebUrl(Constants.HELP_SCAN_RECEIPT_URL, R.string.scanner_help_receipt_title)
-  }
+  override fun navigateToReceiptHelp(): NavigationCommand =
+    NavigationCommand.ByWebUrl(
+      url = Constants.HELP_SCAN_RECEIPT_URL,
+      titleRes = R.string.scanner_help_receipt_title
+    )
 
-  override fun navigateToManualMachineEnter(receiptId: Int): NavigationCommand {
-    val action = ScannerFragmentDirections.scannerToMachineSelect(receiptId)
-    return NavigationCommand.ByAction(action)
-  }
+  override fun navigateToManualMachineEnter(receiptId: Int): NavigationCommand =
+    ScannerFragmentDirections.scannerToMachineSelect(receiptId).toCommand()
 
-  override fun navigateToHome(): NavigationCommand {
-    val action = ScannerFragmentDirections.scannerToHome()
-    return NavigationCommand.ByAction(action)
-  }
+  override fun navigateToHome(): NavigationCommand =
+    ScannerFragmentDirections.scannerToHome().toCommand()
 
-  override fun navigateToProducts(receiptId: Int, vendingMachine: VendingMachineUiModel): NavigationCommand {
-    val action = ScannerFragmentDirections.scannerToProducts(receiptId, vendingMachine)
-    return NavigationCommand.ByAction(action)
-  }
+  override fun navigateToProducts(receiptId: Int, vendingMachine: VendingMachineUiModel): NavigationCommand =
+    ScannerFragmentDirections.scannerToProducts(receiptId, vendingMachine).toCommand()
 
 }

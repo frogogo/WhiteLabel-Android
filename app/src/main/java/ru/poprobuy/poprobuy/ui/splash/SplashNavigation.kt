@@ -1,6 +1,7 @@
 package ru.poprobuy.poprobuy.ui.splash
 
 import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.extension.toCommand
 
 interface SplashNavigation {
   fun navigateToPolicy(): NavigationCommand
@@ -11,24 +12,16 @@ interface SplashNavigation {
 
 class SplashNavigationImpl : SplashNavigation {
 
-  override fun navigateToPolicy(): NavigationCommand {
-    val action = SplashFragmentDirections.splashToAuthPolicy()
-    return NavigationCommand.ByAction(action)
-  }
+  override fun navigateToPolicy(): NavigationCommand =
+    SplashFragmentDirections.splashToAuthPolicy().toCommand()
 
-  override fun navigateToAuth(): NavigationCommand {
-    val action = SplashFragmentDirections.splashToAuth()
-    return NavigationCommand.ByAction(action)
-  }
+  override fun navigateToAuth(): NavigationCommand =
+    SplashFragmentDirections.splashToAuth().toCommand()
 
-  override fun navigateToApp(): NavigationCommand {
-    val action = SplashFragmentDirections.splashToHome()
-    return NavigationCommand.ByAction(action)
-  }
+  override fun navigateToApp(): NavigationCommand =
+    SplashFragmentDirections.splashToHome().toCommand()
 
-  override fun navigateToOnboarding(): NavigationCommand {
-    val action = SplashFragmentDirections.splashToOnboarding()
-    return NavigationCommand.ByAction(action)
-  }
+  override fun navigateToOnboarding(): NavigationCommand =
+    SplashFragmentDirections.splashToOnboarding().toCommand()
 
 }

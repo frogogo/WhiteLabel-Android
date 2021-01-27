@@ -1,6 +1,7 @@
 package ru.poprobuy.poprobuy.ui.profile
 
 import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.extension.toCommand
 
 interface ProfileNavigation {
   fun navigateToReceipts(): NavigationCommand
@@ -10,18 +11,14 @@ interface ProfileNavigation {
 
 class ProfileNavigationImpl : ProfileNavigation {
 
-  override fun navigateToReceipts(): NavigationCommand {
-    val action = ProfileFragmentDirections.profileToReceipts()
-    return NavigationCommand.ByAction(action)
-  }
+  override fun navigateToReceipts(): NavigationCommand =
+    ProfileFragmentDirections.profileToReceipts().toCommand()
 
   override fun navigateToGoods(): NavigationCommand {
     return NavigationCommand.Back // TODO: 04.07.2020 Real action
   }
 
-  override fun navigateToSplash(): NavigationCommand {
-    val action = ProfileFragmentDirections.profileToSplash()
-    return NavigationCommand.ByAction(action)
-  }
+  override fun navigateToSplash(): NavigationCommand =
+    ProfileFragmentDirections.profileToSplash().toCommand()
 
 }

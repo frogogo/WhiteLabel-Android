@@ -1,6 +1,7 @@
 package ru.poprobuy.poprobuy.ui.auth.code
 
 import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.extension.toCommand
 
 interface AuthCodeConfirmationNavigation {
   fun navigateToAuthName(): NavigationCommand
@@ -9,14 +10,10 @@ interface AuthCodeConfirmationNavigation {
 
 class AuthCodeConfirmationNavigationImpl : AuthCodeConfirmationNavigation {
 
-  override fun navigateToAuthName(): NavigationCommand {
-    val action = AuthCodeFragmentDirections.authCodeConfirmationToAuthName()
-    return NavigationCommand.ByAction(action)
-  }
+  override fun navigateToAuthName(): NavigationCommand =
+    AuthCodeFragmentDirections.authCodeConfirmationToAuthName().toCommand()
 
-  override fun navigateToApp(): NavigationCommand {
-    val action = AuthCodeFragmentDirections.authCodeConfirmationToHome()
-    return NavigationCommand.ByAction(action)
-  }
+  override fun navigateToApp(): NavigationCommand =
+    AuthCodeFragmentDirections.authCodeConfirmationToHome().toCommand()
 
 }

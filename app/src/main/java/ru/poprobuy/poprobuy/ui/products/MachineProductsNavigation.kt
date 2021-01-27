@@ -1,6 +1,7 @@
 package ru.poprobuy.poprobuy.ui.products
 
 import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.extension.toCommand
 
 interface MachineProductsNavigation {
   fun navigateToHome(): NavigationCommand
@@ -8,9 +9,7 @@ interface MachineProductsNavigation {
 
 class MachineProductsNavigationImpl : MachineProductsNavigation {
 
-  override fun navigateToHome(): NavigationCommand {
-    val action = MachineProductsFragmentDirections.productsToHome()
-    return NavigationCommand.ByAction(action)
-  }
+  override fun navigateToHome(): NavigationCommand =
+    MachineProductsFragmentDirections.productsToHome().toCommand()
 
 }

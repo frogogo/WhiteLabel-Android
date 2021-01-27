@@ -1,6 +1,7 @@
 package ru.poprobuy.poprobuy.ui.auth.name
 
 import ru.poprobuy.poprobuy.core.navigation.NavigationCommand
+import ru.poprobuy.poprobuy.extension.toCommand
 
 interface AuthNameNavigation {
   fun navigateToAuthEmail(userName: String): NavigationCommand
@@ -8,9 +9,7 @@ interface AuthNameNavigation {
 
 class AuthNameNavigationImpl : AuthNameNavigation {
 
-  override fun navigateToAuthEmail(userName: String): NavigationCommand {
-    val action = AuthNameFragmentDirections.authNameToAuthEmail(userName)
-    return NavigationCommand.ByAction(action)
-  }
+  override fun navigateToAuthEmail(userName: String): NavigationCommand =
+    AuthNameFragmentDirections.authNameToAuthEmail(userName).toCommand()
 
 }
