@@ -12,7 +12,7 @@ class SystemEventsTest {
   fun `TokenRefreshWork should lowercase result name`() {
     val event = SystemEvents.TokenRefreshWork(SystemEvents.TokenRefreshWork.Result.REFRESHED)
 
-    event.getEventParameters()!!.getString(SystemEvents.TokenRefreshWork.PARAM_RESULT) shouldBeEqualTo "refreshed"
+    event.getEventParameters().getString(SystemEvents.TokenRefreshWork.PARAM_RESULT) shouldBeEqualTo "refreshed"
   }
 
 }
