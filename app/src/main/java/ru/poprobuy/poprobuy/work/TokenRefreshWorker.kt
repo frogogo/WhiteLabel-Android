@@ -34,6 +34,7 @@ class TokenRefreshWorker(
     fun enqueue(manager: WorkManager) {
       val constraints = Constraints.Builder()
         .setRequiredNetworkType(NetworkType.CONNECTED)
+        .setRequiresCharging(true)
         .build()
 
       val work = PeriodicWorkRequestBuilder<TokenRefreshWorker>(
