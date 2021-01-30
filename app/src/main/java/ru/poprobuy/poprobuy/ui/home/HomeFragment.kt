@@ -13,6 +13,7 @@ import ru.poprobuy.poprobuy.extension.observe
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
+import ru.poprobuy.poprobuy.util.unsafeLazy
 
 class HomeFragment : BaseFragment<HomeViewModel>(
   layoutId = R.layout.fragment_home,
@@ -23,7 +24,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(
 
   private val binding: FragmentHomeBinding by viewBinding()
   private val recycledViewPool: RecyclerView.RecycledViewPool by inject()
-  private val adapter by lazy { createAdapter() }
+  private val adapter by unsafeLazy { createAdapter() }
 
   override fun initViews() {
     binding.apply {

@@ -25,10 +25,7 @@ import ru.poprobuy.poprobuy.databinding.FragmentAuthCodeBinding
 import ru.poprobuy.poprobuy.extension.*
 import ru.poprobuy.poprobuy.extension.binding.editText
 import ru.poprobuy.poprobuy.extension.binding.initCodeConfirmationType
-import ru.poprobuy.poprobuy.util.ConfirmationCodeUtils
-import ru.poprobuy.poprobuy.util.Constants
-import ru.poprobuy.poprobuy.util.ParallelAutoTransition
-import ru.poprobuy.poprobuy.util.SpannableUtils
+import ru.poprobuy.poprobuy.util.*
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
 class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
@@ -41,7 +38,7 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
 
   private val binding: FragmentAuthCodeBinding by viewBinding()
   private val args: AuthCodeFragmentArgs by navArgs()
-  private val smsVerificationReceiver: SmsVerificationReceiver by lazy {
+  private val smsVerificationReceiver: SmsVerificationReceiver by unsafeLazy {
     SmsVerificationReceiver(SMS_CONSENT_ACTIVITY_REQUEST_CODE) { this }
   }
   private var codeTextWatcher: TextWatcher? = null

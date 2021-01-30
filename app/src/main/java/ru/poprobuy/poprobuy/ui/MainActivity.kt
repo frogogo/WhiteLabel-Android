@@ -10,6 +10,7 @@ import ru.poprobuy.poprobuy.core.navigation.NavigationRouter
 import ru.poprobuy.poprobuy.core.observeEvent
 import ru.poprobuy.poprobuy.core.ui.BaseActivity
 import ru.poprobuy.poprobuy.data.network.interceptor.AutoLogoutNotifier
+import ru.poprobuy.poprobuy.util.unsafeLazy
 
 class MainActivity : BaseActivity<MainViewModel>(R.layout.activity_main) {
 
@@ -17,7 +18,7 @@ class MainActivity : BaseActivity<MainViewModel>(R.layout.activity_main) {
   private val logoutNotifier: AutoLogoutNotifier by inject()
 
   private val navigationRouter: NavigationRouter by inject { parametersOf(navController) }
-  private val navController: NavController by lazy { findNavController(R.id.main_nav_host) }
+  private val navController: NavController by unsafeLazy { findNavController(R.id.main_nav_host) }
 
   override fun initObservers() {
     viewModel.navigationLiveEvent.observeEvent(this, navigationRouter::navigate)

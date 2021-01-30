@@ -19,6 +19,7 @@ import ru.poprobuy.poprobuy.extension.*
 import ru.poprobuy.poprobuy.util.SimpleWindowAnimator
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsManager
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
+import ru.poprobuy.poprobuy.util.unsafeLazy
 import java.util.*
 
 abstract class BaseFragment<out T : BaseViewModel>(
@@ -39,7 +40,7 @@ abstract class BaseFragment<out T : BaseViewModel>(
 
   abstract val viewModel: T
 
-  private val windowAnimator: SimpleWindowAnimator by lazy { SimpleWindowAnimator(requireActivity().window) }
+  private val windowAnimator: SimpleWindowAnimator by unsafeLazy { SimpleWindowAnimator(requireActivity().window) }
   private val navigationRouter: NavigationRouter by inject { parametersOf(findNavController()) }
   private val analytics: AnalyticsManager by inject()
 

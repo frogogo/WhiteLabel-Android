@@ -11,6 +11,7 @@ import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.extension.setVisible
 import ru.poprobuy.poprobuy.util.ItemDecoration
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
+import ru.poprobuy.poprobuy.util.unsafeLazy
 
 class ReceiptsFragment : BaseFragment<ReceiptsViewModel>(
   layoutId = R.layout.fragment_receipts,
@@ -20,7 +21,7 @@ class ReceiptsFragment : BaseFragment<ReceiptsViewModel>(
   override val viewModel: ReceiptsViewModel by viewModel()
 
   private val binding: FragmentReceiptsBinding by viewBinding()
-  private val adapter: BaseDelegationAdapter by lazy { createAdapter() }
+  private val adapter: BaseDelegationAdapter by unsafeLazy { createAdapter() }
 
   override fun initViews() {
     binding.apply {

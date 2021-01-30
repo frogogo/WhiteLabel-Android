@@ -26,7 +26,7 @@ abstract class BaseWindowAnimator(private val window: Window) {
 
 class SimpleWindowAnimator(window: Window) : BaseWindowAnimator(window) {
 
-  private val sceneRoot: ViewGroup? by lazy(LazyThreadSafetyMode.NONE) {
+  private val sceneRoot: ViewGroup? by unsafeLazy {
     window.decorView.findViewById<View>(Window.ID_ANDROID_CONTENT)?.parent as? ViewGroup
   }
 

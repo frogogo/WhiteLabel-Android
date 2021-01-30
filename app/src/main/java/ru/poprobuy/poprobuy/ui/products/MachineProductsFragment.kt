@@ -17,6 +17,7 @@ import ru.poprobuy.poprobuy.ui.products.select.MachineProductSelectionDialogFrag
 import ru.poprobuy.poprobuy.ui.products.select.MachineProductSelectionDialogFragment.Companion.showIn
 import ru.poprobuy.poprobuy.util.ItemDecoration
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
+import ru.poprobuy.poprobuy.util.unsafeLazy
 import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragment
 import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragment.Companion.showIn
 
@@ -29,7 +30,7 @@ class MachineProductsFragment : BaseFragment<MachineProductsViewModel>(
 
   private val binding: FragmentMachineProductsBinding by viewBinding()
   private val args: MachineProductsFragmentArgs by navArgs()
-  private val adapter: BaseDelegationAdapter by lazy { createAdapter() }
+  private val adapter: BaseDelegationAdapter by unsafeLazy { createAdapter() }
 
   override fun initViews() {
     binding.buttonClose.setOnSafeClickListener { viewModel.navigateBack() }

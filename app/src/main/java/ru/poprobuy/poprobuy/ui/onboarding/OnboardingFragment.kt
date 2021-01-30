@@ -10,6 +10,7 @@ import ru.poprobuy.poprobuy.core.ui.BaseFragment
 import ru.poprobuy.poprobuy.databinding.FragmentOnboardingBinding
 import ru.poprobuy.poprobuy.extension.*
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
+import ru.poprobuy.poprobuy.util.unsafeLazy
 
 class OnboardingFragment : BaseFragment<OnboardingViewModel>(
   layoutId = R.layout.fragment_onboarding,
@@ -19,7 +20,7 @@ class OnboardingFragment : BaseFragment<OnboardingViewModel>(
   override val viewModel: OnboardingViewModel by viewModel()
 
   private val binding: FragmentOnboardingBinding by viewBinding()
-  private val adapter: BaseDelegationAdapter by lazy { createAdapter() }
+  private val adapter: BaseDelegationAdapter by unsafeLazy { createAdapter() }
 
   private val pageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
     override fun onPageSelected(position: Int) {
