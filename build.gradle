@@ -2,7 +2,7 @@ apply from: './versions_plugin.gradle'
 
 buildscript {
   ext.kotlinVersion = '1.4.21'
-  ext.detektVersion = '1.14.2'
+  ext.detektVersion = '1.16.0-RC1'
 
   repositories {
     google()

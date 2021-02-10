@@ -17,11 +17,18 @@ processors:
   active: true
   exclude:
     - 'DetektProgressListener'
+  # - 'KtFileCountProcessor'
+  # - 'PackageCountProcessor'
+  # - 'ClassCountProcessor'
   # - 'FunctionCountProcessor'
   # - 'PropertyCountProcessor'
-  # - 'ClassCountProcessor'
-  # - 'PackageCountProcessor'
-  # - 'KtFileCountProcessor'
+  # - 'ProjectComplexityProcessor'
+  # - 'ProjectCognitiveComplexityProcessor'
+  # - 'ProjectLLOCProcessor'
+  # - 'ProjectCLOCProcessor'
+  # - 'ProjectLOCProcessor'
+  # - 'ProjectSLOCProcessor'
+  # - 'LicenseHeaderLoaderExtension'
 
 console-reports:
   active: true
@@ -99,6 +106,9 @@ complexity:
   MethodOverloading:
     active: false
     threshold: 6
+  NamedArguments:
+    active: true # Changed
+    threshold: 3
   NestedBlockDepth:
     active: true
     threshold: 4
@@ -128,6 +138,8 @@ coroutines:
   GlobalCoroutineUsage:
     active: true # Changed
   RedundantSuspendModifier:
+    active: true # Changed
+  SleepInsteadOfDelay:
     active: true # Changed
   SuspendFunWithFlowReturnType:
     active: true # Changed
@@ -314,6 +326,9 @@ formatting:
     active: true
     autoCorrect: true
     indentSize: 2 # Changed from 4
+  SpacingAroundAngleBrackets:
+    active: true # Changed
+    autoCorrect: true
   SpacingAroundColon:
     active: true
     autoCorrect: true
@@ -340,6 +355,9 @@ formatting:
     autoCorrect: true
   SpacingAroundRangeOperator:
     active: true
+    autoCorrect: true
+  SpacingAroundUnaryOperator:
+    active: true # Changed
     autoCorrect: true
   SpacingBetweenDeclarationsWithAnnotations:
     active: false
@@ -460,6 +478,8 @@ potential-bugs:
     active: true
   EqualsWithHashCodeExist:
     active: true
+  ExitOutsideMain:
+    active: true # Changed
   ExplicitGarbageCollectionCall:
     active: true
   HasPlatformType:
@@ -520,6 +540,9 @@ style:
     conversionFunctionPrefix: 'to'
   DataClassShouldBeImmutable:
     active: false
+  DestructuringDeclarationWithTooManyEntries:
+    active: true # Changed
+    maxDestructuringEntries: 3
   EqualsNullCall:
     active: true
   EqualsOnSignatureLine:
@@ -544,6 +567,7 @@ style:
     methods: ['kotlin.io.println', 'kotlin.io.print']
   ForbiddenPublicDataClass:
     active: false
+    excludes: ['**']
     ignorePackages: ['*.internal', '*.internal.*']
   ForbiddenVoid:
     active: true # Changed
@@ -558,6 +582,7 @@ style:
     active: true
   LibraryEntitiesShouldNotBePublic:
     active: false
+    excludes: ['**']
   LoopWithTooManyJumpStatements:
     active: true
     maxJumpCount: 1
@@ -588,8 +613,10 @@ style:
     active: true
   ModifierOrder:
     active: true
+  MultilineLambdaItParameter:
+    active: false # TODO Enable
   NestedClassesVisibility:
-    active: false
+    active: true # Changed
   NewLineAtEndOfFile:
     active: true
   NoTabs:
@@ -605,6 +632,8 @@ style:
   ProtectedMemberInFinalClass:
     active: true
   RedundantExplicitType:
+    active: true # Changed
+  RedundantHigherOrderMapUsage:
     active: true # Changed
   RedundantVisibilityModifierRule:
     active: true # Changed
