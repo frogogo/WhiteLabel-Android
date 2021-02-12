@@ -48,7 +48,7 @@ class ReceiptDetailsBottomDialog : BaseBottomSheetDialogFragment<ReceiptDetailsV
       val bottomSheet = bottomDialog.findViewById<View>(DESIGN_BOTTOM_SHEET_ID) as FrameLayout
       BottomSheetBehavior.from(bottomSheet).apply {
         state = BottomSheetBehavior.STATE_EXPANDED
-        peekHeight = binding.root.height
+        skipCollapsed = true
       }
     }
 
