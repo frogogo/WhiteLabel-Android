@@ -12,10 +12,10 @@ import org.junit.jupiter.api.Test
 import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.data.model.api.auth.ConfirmationCodeRequestResponse
 import ru.poprobuy.poprobuy.data.repository.AuthRepository
-import ru.poprobuy.test.test422Error
-import ru.poprobuy.test.testError
 import ru.poprobuy.poprobuy.util.network.HttpErrorReason.ERROR_REASON_PASSWORD_REFRESH_RATE_LIMIT
 import ru.poprobuy.poprobuy.util.network.NetworkError
+import ru.poprobuy.test.test422Error
+import ru.poprobuy.test.testError
 
 @ExperimentalCoroutinesApi
 class RequestConfirmationCodeUseCaseTest {
@@ -54,8 +54,8 @@ class RequestConfirmationCodeUseCaseTest {
 
   @Test
   fun `too many requests error should be returned`() = runBlockingTest {
-    coEvery { authRepository.requestConfirmationCode(any()) } returns
-        Result.Failure(NetworkError.test422Error(ERROR_REASON_PASSWORD_REFRESH_RATE_LIMIT))
+    coEvery { authRepository.requestConfirmationCode(any()) }
+      .returns(Result.Failure(NetworkError.test422Error(ERROR_REASON_PASSWORD_REFRESH_RATE_LIMIT)))
 
     val result = useCase("")
 

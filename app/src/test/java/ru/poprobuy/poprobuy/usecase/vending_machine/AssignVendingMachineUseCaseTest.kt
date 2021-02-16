@@ -7,14 +7,14 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import ru.poprobuy.test.DataFixtures
 import ru.poprobuy.poprobuy.core.Result
 import ru.poprobuy.poprobuy.data.model.api.ErrorResponse
 import ru.poprobuy.poprobuy.data.model.ui.machine.VendingMachineUiModel
 import ru.poprobuy.poprobuy.data.repository.VendingMachineRepository
+import ru.poprobuy.poprobuy.util.network.NetworkError
+import ru.poprobuy.test.DataFixtures
 import ru.poprobuy.test.test422Error
 import ru.poprobuy.test.testError
-import ru.poprobuy.poprobuy.util.network.NetworkError
 
 @ExperimentalCoroutinesApi
 internal class AssignVendingMachineUseCaseTest {
@@ -57,7 +57,8 @@ internal class AssignVendingMachineUseCaseTest {
   fun `useCase should return machine not found`() = runBlockingTest {
     val receiptId = 21
     val machineId = "3278"
-    coEvery { vendingMachineRepository.assignMachine(any(), any()) } returns Result.Failure(NetworkError.testError(404))
+    coEvery { vendingMachineRepository.assignMachine(any(), any()) }
+      .returns(Result.Failure(NetworkError.testError(404)))
 
     val result = useCase(machineId = machineId, receiptId = receiptId)
 
@@ -72,10 +73,8 @@ internal class AssignVendingMachineUseCaseTest {
   fun `useCase should return validation failure`() = runBlockingTest {
     val receiptId = 21
     val machineId = "3278"
-    coEvery {
-      vendingMachineRepository.assignMachine(any(),
-        any())
-    } returns Result.Failure(NetworkError.test422Error("error"))
+    val response = NetworkError.test422Error("error")
+    coEvery { vendingMachineRepository.assignMachine(any(), any()) } returns Result.Failure(response)
 
     val result = useCase(machineId = machineId, receiptId = receiptId)
 

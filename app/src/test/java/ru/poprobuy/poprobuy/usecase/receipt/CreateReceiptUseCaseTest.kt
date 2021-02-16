@@ -43,7 +43,8 @@ internal class CreateReceiptUseCaseTest {
 
   @Test
   fun `useCase should return validation error`() = runBlockingTest {
-    coEvery { receiptsRepository.activateQrString(any()) } returns Result.Failure(NetworkError.test422Error("test"))
+    coEvery { receiptsRepository.activateQrString(any()) }
+      .returns(Result.Failure(NetworkError.test422Error("test")))
 
     val result = useCase(DataFixtures.QR_RECEIPT)
 
