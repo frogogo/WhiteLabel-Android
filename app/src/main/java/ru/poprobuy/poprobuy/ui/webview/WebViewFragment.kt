@@ -41,5 +41,4 @@ class WebViewFragment : BaseFragment<WebViewViewModel>(
       loadUrl(args.url)
     }
   }
-
 }

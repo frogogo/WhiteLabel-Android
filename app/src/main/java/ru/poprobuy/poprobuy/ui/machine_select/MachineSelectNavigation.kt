@@ -12,5 +12,4 @@ class MachineSelectNavigationImpl : MachineSelectNavigation {
 
   override fun navigateToProducts(receiptId: Int, vendingMachine: VendingMachineUiModel): NavigationCommand =
     MachineSelectFragmentDirections.machineSelectToProducts(receiptId, vendingMachine).toCommand()
-
 }

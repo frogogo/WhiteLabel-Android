@@ -112,5 +112,4 @@ class ResultTest {
       onFailure wasNot Called
     }
   }
-
 }

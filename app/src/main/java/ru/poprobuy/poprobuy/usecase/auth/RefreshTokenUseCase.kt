@@ -23,5 +23,4 @@ class RefreshTokenUseCase(
 
     return authData.accessToken
   }
-
 }

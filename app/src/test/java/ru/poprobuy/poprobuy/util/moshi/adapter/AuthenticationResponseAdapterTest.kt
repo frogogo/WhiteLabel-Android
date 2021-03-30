@@ -21,5 +21,4 @@ internal class AuthenticationResponseAdapterTest {
 
     AuthenticationResponseAdapter().fromJson(jsonObject) shouldBeEqualTo jsonObject.toResponse()
   }
-
 }

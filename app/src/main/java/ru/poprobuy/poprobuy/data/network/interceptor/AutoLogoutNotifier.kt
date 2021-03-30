@@ -20,5 +20,4 @@ class AutoLogoutNotifier(
     analyticsManager.logEvent(SystemEvents.AutoLogout)
     _logoutEvent.postEvent()
   }
-
 }

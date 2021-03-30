@@ -107,5 +107,4 @@ class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(
   private fun detachFormatter() {
     binding.textInputLayout.editText.removeTextChangedListener(textChangedListener)
   }
-
 }

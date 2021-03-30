@@ -42,5 +42,4 @@ class AuthNameFragment : BaseFragment<AuthNameViewModel>(
   private fun setName() {
     viewModel.setUserName(binding.textInputLayout.text)
   }
-
 }

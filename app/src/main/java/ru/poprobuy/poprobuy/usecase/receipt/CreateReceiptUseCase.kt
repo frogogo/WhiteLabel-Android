@@ -33,5 +33,4 @@ class CreateReceiptUseCase(
     e { "Generic error while creating receipt" }
     return CreateReceiptResult.Error
   }
-
 }

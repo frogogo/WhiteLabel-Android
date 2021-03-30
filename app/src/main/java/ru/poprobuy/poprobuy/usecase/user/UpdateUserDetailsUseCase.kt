@@ -11,5 +11,4 @@ class UpdateUserDetailsUseCase(
 
   suspend operator fun invoke(email: String, name: String): Result<Unit, NetworkError<ErrorResponse>> =
     userRepository.updateUser(email, name)
-
 }

@@ -36,5 +36,4 @@ class ScannerNavigationImpl : ScannerNavigation {
 
   override fun navigateToProducts(receiptId: Int, vendingMachine: VendingMachineUiModel): NavigationCommand =
     ScannerFragmentDirections.scannerToProducts(receiptId, vendingMachine).toCommand()
-
 }

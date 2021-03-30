@@ -76,5 +76,4 @@ class ItemDecoration(
     // span index in current item's span group
     val spanIndex: Int,
   )
-
 }

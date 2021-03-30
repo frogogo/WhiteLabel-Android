@@ -88,5 +88,4 @@ internal class RefreshTokenWorkerUseCaseTest {
       analyticsManager
     )
   }
-
 }

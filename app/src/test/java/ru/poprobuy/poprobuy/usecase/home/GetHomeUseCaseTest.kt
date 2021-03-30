@@ -46,5 +46,4 @@ class GetHomeUseCaseTest {
       homeRepository.getHome()
     }
   }
-
 }

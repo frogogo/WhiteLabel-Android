@@ -43,5 +43,4 @@ abstract class BaseBottomSheetDialogFragment<out T : BaseViewModel>(
   private fun initInnerObservers() {
     observeEvent(viewModel.navigationLiveEvent, navigationRouter::navigate)
   }
-
 }

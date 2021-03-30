@@ -49,5 +49,4 @@ class AuthEmailViewModel(
 
     return error == null
   }
-
 }

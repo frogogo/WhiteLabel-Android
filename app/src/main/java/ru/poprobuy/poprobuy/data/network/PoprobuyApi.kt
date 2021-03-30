@@ -57,5 +57,4 @@ interface PoprobuyApi {
     @Path("machineId") machineId: Int,
     @Body body: TakeProductRequest,
   ): Response<Unit>
-
 }

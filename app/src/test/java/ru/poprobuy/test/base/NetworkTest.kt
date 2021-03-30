@@ -10,5 +10,4 @@ open class NetworkTest {
   fun createRequest(): Request = Request.Builder().url(mockWebServer.url("/")).build()
 
   fun Request.modify(action: Request.Builder.() -> Unit): Request = newBuilder().apply(action).build()
-
 }

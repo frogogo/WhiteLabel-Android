@@ -13,5 +13,4 @@ data class VendingProductUiModel(
 ) : Parcelable {
 
   fun isActive(): Boolean = state == VendingProductState.AVAILABLE
-
 }

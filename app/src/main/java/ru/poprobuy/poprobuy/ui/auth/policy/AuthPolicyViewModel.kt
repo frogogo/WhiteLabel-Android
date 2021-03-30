@@ -12,5 +12,4 @@ class AuthPolicyViewModel(
     authRepository.setPolicyAccepted()
     navigation.navigateToAuthPhoneEnter().navigate()
   }
-
 }

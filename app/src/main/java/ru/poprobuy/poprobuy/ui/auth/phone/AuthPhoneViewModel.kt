@@ -78,5 +78,4 @@ class AuthPhoneViewModel(
 
     return error == null
   }
-
 }

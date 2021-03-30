@@ -77,5 +77,4 @@ class ProfileFragment : BaseFragment<ProfileViewModel>(
       setOnSafeClickListener(viewModel::logout)
     }
   }
-
 }

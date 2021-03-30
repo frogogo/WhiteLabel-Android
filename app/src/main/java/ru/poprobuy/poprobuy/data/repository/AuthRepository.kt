@@ -32,5 +32,4 @@ interface AuthRepository {
   fun setUserAuthorized()
 
   fun logout()
-
 }

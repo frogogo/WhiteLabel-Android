@@ -31,5 +31,4 @@ class OnboardingRepositoryImpl(
   override fun setOnboardingCompleted() {
     userPreferences.onboardingCompleted = true
   }
-
 }

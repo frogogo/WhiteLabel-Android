@@ -67,5 +67,4 @@ class HomeFragment : BaseFragment<HomeViewModel>(
       scanReceiptAction = { viewModel.navigateToReceiptScan() }
     )
   )
-
 }

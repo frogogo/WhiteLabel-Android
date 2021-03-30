@@ -45,5 +45,4 @@ object ReceiptsDataUtils {
       canTakeProduct = canTakeProduct
     )
   }
-
 }

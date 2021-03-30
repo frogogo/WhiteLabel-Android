@@ -75,5 +75,4 @@ class AuthEmailFragment : BaseFragment<AuthEmailViewModel>(
   private fun setEmail() {
     viewModel.updateUserData(binding.textInputLayout.text)
   }
-
 }

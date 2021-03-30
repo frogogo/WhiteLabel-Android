@@ -5,5 +5,4 @@ import ru.poprobuy.poprobuy.core.recycler.RecyclerViewItem
 object ReceiptsEmptyState : RecyclerViewItem {
 
   override fun getId(): Any = "ITEM_RECEIPTS_EMPTY_STATE"
-
 }

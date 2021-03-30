@@ -11,5 +11,4 @@ class SplashFragment : BaseFragment<SplashViewModel>(
 ) {
 
   override val viewModel: SplashViewModel by viewModel()
-
 }

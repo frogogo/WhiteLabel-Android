@@ -32,5 +32,4 @@ class UserRepositoryImpl(
   override fun saveUser(user: User) {
     userPreferences.user = user
   }
-
 }

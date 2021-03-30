@@ -46,5 +46,4 @@ class OtpRequestDisablerTest {
       it shouldBeEqualTo 60
     }
   }
-
 }

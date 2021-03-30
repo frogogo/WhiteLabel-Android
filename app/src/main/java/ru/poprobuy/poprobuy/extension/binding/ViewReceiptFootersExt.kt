@@ -55,5 +55,4 @@ fun ViewReceiptFooterRejectedBinding.bind(receipt: ReceiptUiModel, showTopDivide
     append(" ")
     receipt.rejectReason?.reasonText?.let { append(it) }
   }
-
 }

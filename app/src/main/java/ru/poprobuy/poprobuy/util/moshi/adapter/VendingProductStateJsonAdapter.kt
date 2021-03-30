@@ -9,5 +9,4 @@ class VendingProductStateJsonAdapter {
   @FromJson
   fun fromJson(state: String): VendingProductState =
     VendingProductState.valueOf(state.toUpperCase(Locale.ENGLISH))
-
 }

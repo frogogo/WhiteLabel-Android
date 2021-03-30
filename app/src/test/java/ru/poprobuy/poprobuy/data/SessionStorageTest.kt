@@ -13,5 +13,4 @@ internal class SessionStorageTest {
     storage.saveSessionId(DataFixtures.SESSION_ID)
     storage.getSessionId() shouldBeEqualTo DataFixtures.SESSION_ID
   }
-
 }

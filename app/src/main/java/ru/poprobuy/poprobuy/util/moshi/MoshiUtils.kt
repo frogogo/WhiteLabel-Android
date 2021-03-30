@@ -18,5 +18,4 @@ object MoshiUtils {
     .add(AuthenticationResponseAdapter())
     .add(VendingProductStateJsonAdapter())
     .build()
-
 }

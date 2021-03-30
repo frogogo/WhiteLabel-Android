@@ -28,7 +28,6 @@ object PriceUtils {
    */
   fun formatPrice(price: Int, formatSign: Boolean = false): String =
     "${price.format(formatSign)} ${CURRENCY_SYMBOL[AppLocale.RU]}"
-
 }
 
 private sealed class AppLocale {

@@ -32,5 +32,4 @@ internal class VendingProductUiModelTest {
     val state: VendingProductState,
     val expected: Boolean,
   )
-
 }

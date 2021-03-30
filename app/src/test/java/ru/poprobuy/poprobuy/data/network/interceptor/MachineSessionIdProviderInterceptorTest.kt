@@ -100,7 +100,5 @@ internal class MachineSessionIdProviderInterceptorTest : NetworkTest() {
 
     @GET("/")
     fun callWithoutProvideSessionId(): Call<Unit>
-
   }
-
 }

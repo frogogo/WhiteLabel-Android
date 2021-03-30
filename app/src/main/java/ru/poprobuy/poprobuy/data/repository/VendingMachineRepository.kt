@@ -18,5 +18,4 @@ interface VendingMachineRepository {
     productId: Int,
     vendingCellId: Int,
   ): Result<Unit, NetworkError<ErrorResponse>>
-
 }

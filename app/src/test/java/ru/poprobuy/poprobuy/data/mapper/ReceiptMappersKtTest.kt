@@ -54,5 +54,4 @@ class ReceiptMappersKtTest {
       imageUrl = product.imageUrl
     )
   }
-
 }

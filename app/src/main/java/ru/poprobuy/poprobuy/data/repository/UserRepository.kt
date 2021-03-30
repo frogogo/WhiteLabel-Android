@@ -14,5 +14,4 @@ interface UserRepository {
   fun getUser(): User?
 
   fun saveUser(user: User)
-
 }

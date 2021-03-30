@@ -143,5 +143,4 @@ class MachineProductsViewModel(
     private const val COUNTDOWN_INTERVAL = 1000L
     private const val COUNTDOWN_START_DELAY = 0L
   }
-
 }

@@ -35,5 +35,4 @@ class RequestConfirmationCodeUseCase(
     e { "Generic error while requesting code" }
     return RequestConfirmationResult.Error
   }
-
 }

@@ -61,5 +61,4 @@ class RequestConfirmationCodeUseCaseTest {
 
     result shouldBeEqualTo RequestConfirmationResult.TooManyRequests
   }
-
 }

@@ -166,5 +166,4 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
     private val BARCODE_FORMATS = listOf(BarcodeFormat.QR_CODE)
     private val ERROR_DIALOG_ID = ErrorDialogFragment.getDialogId()
   }
-
 }

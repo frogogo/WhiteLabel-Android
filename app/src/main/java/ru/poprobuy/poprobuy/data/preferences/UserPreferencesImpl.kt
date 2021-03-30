@@ -54,5 +54,4 @@ class UserPreferencesImpl(context: Context) : UserPreferences {
     private const val KEY_POLICY_ACCEPTED = "policy_accepted"
     private const val KEY_USER = "user"
   }
-
 }

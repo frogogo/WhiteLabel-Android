@@ -12,5 +12,4 @@ class GetHomeUseCase(
 
   suspend operator fun invoke(): Result<HomeState, NetworkError<ErrorResponse>> =
     homeRepository.getHome()
-
 }

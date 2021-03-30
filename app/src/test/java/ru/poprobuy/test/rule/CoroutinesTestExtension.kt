@@ -16,5 +16,4 @@ class CoroutinesTestExtension : CoroutinesTestHelper by CoroutinesTestHelperImpl
   override fun afterEach(context: ExtensionContext) {
     finish()
   }
-
 }

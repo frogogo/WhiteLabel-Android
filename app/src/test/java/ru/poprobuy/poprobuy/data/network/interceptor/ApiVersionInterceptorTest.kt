@@ -39,5 +39,4 @@ class ApiVersionInterceptorTest : NetworkTest() {
     private const val API_VERSION = 1
     private const val HEADER_API_VERSION = "API-Version"
   }
-
 }

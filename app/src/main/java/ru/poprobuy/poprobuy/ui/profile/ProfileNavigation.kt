@@ -20,5 +20,4 @@ class ProfileNavigationImpl : ProfileNavigation {
 
   override fun navigateToSplash(): NavigationCommand =
     ProfileFragmentDirections.profileToSplash().toCommand()
-
 }

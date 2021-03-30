@@ -21,7 +21,6 @@ interface CoroutinesTestHelper {
   fun enableTestDispatchers()
 
   fun disableTestDispatchers()
-
 }
 
 @ExperimentalCoroutinesApi
@@ -62,5 +61,4 @@ internal class CoroutinesTestHelperImpl(
   override fun disableTestDispatchers() {
     useTestDispatchers = false
   }
-
 }

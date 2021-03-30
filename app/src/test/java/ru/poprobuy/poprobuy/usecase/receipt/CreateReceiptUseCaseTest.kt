@@ -66,7 +66,6 @@ internal class CreateReceiptUseCaseTest {
       receiptsRepository.activateQrString(DataFixtures.QR_RECEIPT)
     }
     confirmVerified()
-
   }
 
   @AfterEach
@@ -77,5 +76,4 @@ internal class CreateReceiptUseCaseTest {
   private fun confirmVerified() {
     confirmVerified(receiptsRepository)
   }
-
 }

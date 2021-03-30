@@ -22,5 +22,4 @@ class HomeMapperKtTest {
 
     home.toDomain() shouldBeEqualTo HomeState.Receipt(receipt.toDomain())
   }
-
 }

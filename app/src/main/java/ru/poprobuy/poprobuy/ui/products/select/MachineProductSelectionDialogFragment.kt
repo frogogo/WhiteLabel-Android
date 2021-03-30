@@ -155,5 +155,4 @@ class MachineProductSelectionDialogFragment : BaseDialogFragment(R.layout.dialog
         )
       }
   }
-
 }

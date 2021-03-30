@@ -68,5 +68,4 @@ class QRCodeUtilsTest {
   fun `checks empty query string`() {
     isQueryString("").shouldBeFalse()
   }
-
 }

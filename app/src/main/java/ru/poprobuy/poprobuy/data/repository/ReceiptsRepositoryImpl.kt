@@ -26,5 +26,4 @@ class ReceiptsRepositoryImpl(
     val request = ReceiptCreationRequest(qrString)
     apiCall { api.createReceipt(request) }.mapToResult()
   }
-
 }

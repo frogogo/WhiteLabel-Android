@@ -25,5 +25,4 @@ data class ReceiptUiModel(
   companion object {
     private const val ID = "ITEM_RECEIPT"
   }
-
 }

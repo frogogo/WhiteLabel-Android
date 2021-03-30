@@ -10,5 +10,4 @@ class WebClient : WebViewClient() {
     view.loadUrl(request.url.toString())
     return true
   }
-
 }

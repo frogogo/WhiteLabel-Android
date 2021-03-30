@@ -7,5 +7,4 @@ interface OnboardingRepository {
   fun getPages(): List<OnboardingPage>
 
   fun setOnboardingCompleted()
-
 }

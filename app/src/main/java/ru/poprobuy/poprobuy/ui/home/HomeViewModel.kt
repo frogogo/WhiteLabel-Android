@@ -106,5 +106,4 @@ class HomeViewModel(
     private const val REFRESH_DELAY = 5 * 1000L // 5 seconds
     private val errorState = emptyList<RecyclerViewItem>()
   }
-
 }

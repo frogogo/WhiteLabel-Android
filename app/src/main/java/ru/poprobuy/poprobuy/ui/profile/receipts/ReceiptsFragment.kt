@@ -60,5 +60,4 @@ class ReceiptsFragment : BaseFragment<ReceiptsViewModel>(
     ReceiptsAdapterDelegates.receiptDelegate(viewModel::navigateToReceipt),
     ReceiptsAdapterDelegates.scanAvailableDelegate()
   )
-
 }

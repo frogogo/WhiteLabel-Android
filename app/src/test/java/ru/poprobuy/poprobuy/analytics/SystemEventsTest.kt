@@ -14,5 +14,4 @@ class SystemEventsTest {
 
     event.getEventParameters().getString(SystemEvents.TokenRefreshWork.PARAM_RESULT) shouldBeEqualTo "refreshed"
   }
-
 }

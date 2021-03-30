@@ -13,5 +13,4 @@ open class ViewModelTestJUnit4 {
 
   @get:Rule
   val coroutineTestRule = CoroutinesTestRule()
-
 }

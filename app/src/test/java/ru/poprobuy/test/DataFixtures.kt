@@ -118,5 +118,4 @@ object DataFixtures {
 
   fun getReceiptProductUiModel(id: Int = 1): ReceiptProductUiModel =
     getReceiptProduct(id).toDomain()
-
 }

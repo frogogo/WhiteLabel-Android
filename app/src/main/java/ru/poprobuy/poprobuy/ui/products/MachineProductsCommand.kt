@@ -13,5 +13,4 @@ sealed class MachineProductsCommand {
   data class ShowErrorDialog(
     val error: String,
   ) : MachineProductsCommand()
-
 }

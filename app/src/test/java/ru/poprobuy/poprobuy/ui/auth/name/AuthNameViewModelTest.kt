@@ -58,5 +58,4 @@ class AuthNameViewModelTest : ViewModelTestJUnit4() {
       navigationObserver.onEventChanged(navigationDestination)
     }
   }
-
 }

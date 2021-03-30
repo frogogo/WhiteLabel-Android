@@ -58,5 +58,4 @@ class ErrorDialogFragment : BaseDialogFragment(R.layout.dialog_error) {
 
     fun getDialogId(): Int = lastDialogId++
   }
-
 }

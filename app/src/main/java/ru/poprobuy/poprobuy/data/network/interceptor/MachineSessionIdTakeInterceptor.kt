@@ -28,5 +28,4 @@ class MachineSessionIdTakeInterceptor(
       sessionStorage.saveSessionId(sessionId)
     }
   }
-
 }

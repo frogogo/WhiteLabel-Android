@@ -34,5 +34,4 @@ class ClearUserDataUseCaseTest {
       userPreferences.clearUserData()
     }
   }
-
 }

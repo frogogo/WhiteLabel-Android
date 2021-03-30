@@ -43,5 +43,4 @@ enum class ReceiptState {
     REJECTED -> R.string.receipt_state_rejected
     COMPLETED -> R.string.receipt_state_completed
   }
-
 }

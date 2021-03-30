@@ -88,5 +88,4 @@ class MachineProductsFragment : BaseFragment<MachineProductsViewModel>(
     ErrorDialogFragment.newInstance(command.error)
       .showIn(childFragmentManager)
   }
-
 }

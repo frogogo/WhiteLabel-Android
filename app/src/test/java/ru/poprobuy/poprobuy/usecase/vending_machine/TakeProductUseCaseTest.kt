@@ -52,5 +52,4 @@ internal class TakeProductUseCaseTest {
   private fun confirmVerified() {
     confirmVerified(vendingMachineRepository)
   }
-
 }

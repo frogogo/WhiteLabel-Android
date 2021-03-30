@@ -7,5 +7,4 @@ object PhoneUtils {
   } else {
     "${Constants.PHONE_PREFIX}$phoneNumber"
   }
-
 }

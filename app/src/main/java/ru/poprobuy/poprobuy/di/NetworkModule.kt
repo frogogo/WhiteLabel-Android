@@ -95,7 +95,6 @@ fun createHttpClient(
 
     // Cache
     cache(Cache(File("${context.cacheDir.path}/$CACHE_DIRECTORY"), CACHE_SIZE_BYTES))
-
   }.build()
 }
 

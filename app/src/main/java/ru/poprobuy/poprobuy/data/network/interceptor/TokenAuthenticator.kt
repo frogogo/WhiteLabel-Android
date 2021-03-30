@@ -92,5 +92,4 @@ class TokenAuthenticator : Authenticator, KoinComponent {
 
     private val REQUEST_AUTH = Regex("/api/user_token")
   }
-
 }

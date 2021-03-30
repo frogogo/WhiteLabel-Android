@@ -82,5 +82,4 @@ object Validators {
     text.isBlank() -> R.string.error_machine_number_empty
     else -> null
   }
-
 }

@@ -54,5 +54,4 @@ class ConfirmationCodeUtilsTest {
     val sms: String?,
     val code: String?,
   )
-
 }

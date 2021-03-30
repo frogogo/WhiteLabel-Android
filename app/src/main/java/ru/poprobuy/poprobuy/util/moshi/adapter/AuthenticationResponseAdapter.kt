@@ -9,5 +9,4 @@ class AuthenticationResponseAdapter {
 
   @FromJson
   fun fromJson(response: AuthenticationResponseJson): AuthenticationResponse = response.toResponse()
-
 }

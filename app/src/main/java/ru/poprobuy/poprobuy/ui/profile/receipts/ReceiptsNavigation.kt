@@ -21,5 +21,4 @@ class ReceiptsNavigationImpl : ReceiptsNavigation {
     receipt = receipt,
     buttonState = buttonState
   ).toCommand()
-
 }

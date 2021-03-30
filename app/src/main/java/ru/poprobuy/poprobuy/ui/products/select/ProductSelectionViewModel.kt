@@ -74,5 +74,4 @@ class ProductSelectionViewModel(
     val vendingMachineId: Int,
     val vendingCell: VendingCellUiModel,
   )
-
 }

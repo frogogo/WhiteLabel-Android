@@ -7,6 +7,6 @@ import java.util.*
 class ReceiptStateJsonAdapter {
 
   @FromJson
-  fun fromJson(state: String): ReceiptState = ReceiptState.valueOf(state.toUpperCase(Locale.ENGLISH))
-
+  fun fromJson(state: String): ReceiptState =
+    ReceiptState.valueOf(state.toUpperCase(Locale.ENGLISH))
 }

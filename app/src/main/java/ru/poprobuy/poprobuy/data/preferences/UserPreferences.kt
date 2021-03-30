@@ -18,5 +18,4 @@ interface UserPreferences {
   fun clearData()
 
   fun clearUserData()
-
 }

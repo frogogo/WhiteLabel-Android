@@ -24,5 +24,4 @@ object UserAgentFactory {
       append("Retrofit/$retrofitVersion")
     }
   }
-
 }

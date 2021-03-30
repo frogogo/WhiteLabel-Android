@@ -62,5 +62,4 @@ internal class AnalyticsManagerTest {
       })
     }
   }
-
 }

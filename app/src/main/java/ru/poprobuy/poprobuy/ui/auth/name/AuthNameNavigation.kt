@@ -11,5 +11,4 @@ class AuthNameNavigationImpl : AuthNameNavigation {
 
   override fun navigateToAuthEmail(userName: String): NavigationCommand =
     AuthNameFragmentDirections.authNameToAuthEmail(userName).toCommand()
-
 }

@@ -75,5 +75,4 @@ class ScannerViewModelTest : ViewModelTestJUnit5() {
 
     viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToManualMachineEnter(1))
   }
-
 }

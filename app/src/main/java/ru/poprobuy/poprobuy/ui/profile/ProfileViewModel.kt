@@ -73,5 +73,4 @@ class ProfileViewModel(
     authRepository.logout()
     navigation.navigateToSplash().navigate()
   }
-
 }

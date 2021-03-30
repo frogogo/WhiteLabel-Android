@@ -26,5 +26,4 @@ class UserAgentInterceptorTest : NetworkTest() {
     private const val HEADER_USER_AGENT = "User-Agent"
     private const val USER_AGENT = "Poprobuy/0.0.1 (ru.poprobuy.poprobuy; build:1; Android 10) Retrofit/2.9.0"
   }
-
 }

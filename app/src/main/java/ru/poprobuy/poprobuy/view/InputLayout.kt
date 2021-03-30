@@ -127,5 +127,4 @@ class InputLayout @JvmOverloads constructor(
       // keyListener = if (!isActive) null else textKeyListener
     }
   }
-
 }

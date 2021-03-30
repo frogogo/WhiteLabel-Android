@@ -16,5 +16,4 @@ class CoroutinesTestRule : TestWatcher(), CoroutinesTestHelper by CoroutinesTest
     super.finished(description)
     finish()
   }
-
 }

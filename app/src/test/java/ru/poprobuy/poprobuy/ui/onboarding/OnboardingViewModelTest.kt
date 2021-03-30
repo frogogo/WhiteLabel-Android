@@ -74,5 +74,4 @@ class OnboardingViewModelTest : ViewModelTestJUnit5() {
       iconResId = 3
     )
   )
-
 }

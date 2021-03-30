@@ -45,7 +45,5 @@ object ReceiptsAdapterDelegates {
     adapterDelegateViewBinding<ReceiptsScanAvailable, RecyclerViewItem, ItemScanAvailableBinding>(
       viewBinding = { layoutInflater, root -> ItemScanAvailableBinding.inflate(layoutInflater, root, false) }
     ) {
-
     }
-
 }

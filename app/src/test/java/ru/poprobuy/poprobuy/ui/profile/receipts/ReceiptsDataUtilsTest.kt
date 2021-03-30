@@ -90,5 +90,4 @@ class ReceiptsDataUtilsTest {
     val receipts: List<ReceiptUiModel>,
     val state: ReceiptDetailsButtonState,
   )
-
 }

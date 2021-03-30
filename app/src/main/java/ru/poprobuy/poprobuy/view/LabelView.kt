@@ -33,5 +33,4 @@ class LabelView @JvmOverloads constructor(
   fun setIcon(@DrawableRes iconRes: Int) {
     setCompoundDrawablesWithIntrinsicBounds(iconRes, 0, 0, 0)
   }
-
 }

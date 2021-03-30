@@ -10,5 +10,4 @@ open class RepositoryTest {
   @JvmField
   @RegisterExtension
   val coroutineTestExtension = CoroutinesTestExtension()
-
 }

@@ -13,5 +13,4 @@ data class OnboardingPage(
 ) : RecyclerViewItem {
 
   override fun getId() = "$ID${hashCode()}"
-
 }

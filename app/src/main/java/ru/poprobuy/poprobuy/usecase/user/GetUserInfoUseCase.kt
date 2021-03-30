@@ -15,5 +15,4 @@ class GetUserInfoUseCase(
   private fun handleSuccess(user: User) {
     userRepository.saveUser(user)
   }
-
 }

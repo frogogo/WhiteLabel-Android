@@ -91,5 +91,4 @@ class GetUserAuthStateUseCaseTest {
 
     useCase() shouldBeEqualTo State.LOGGED_IN
   }
-
 }

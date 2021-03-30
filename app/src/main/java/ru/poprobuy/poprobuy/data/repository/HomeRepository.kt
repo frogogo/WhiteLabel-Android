@@ -8,5 +8,4 @@ import ru.poprobuy.poprobuy.util.network.NetworkError
 interface HomeRepository {
 
   suspend fun getHome(): Result<HomeState, NetworkError<ErrorResponse>>
-
 }

@@ -100,5 +100,4 @@ class AuthenticationUseCaseTest {
   private fun confirmVerified() {
     confirmVerified(authRepository, userRepository)
   }
-
 }

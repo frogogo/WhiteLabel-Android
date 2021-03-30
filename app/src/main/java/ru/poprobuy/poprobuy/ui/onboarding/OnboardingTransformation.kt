@@ -15,5 +15,4 @@ class OnboardingTransformation : ViewPager2.PageTransformer {
       title.translationX = -position * (page.width / 4f)
     }
   }
-
 }

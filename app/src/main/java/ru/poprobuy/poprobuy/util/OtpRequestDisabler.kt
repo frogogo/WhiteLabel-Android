@@ -28,5 +28,4 @@ class OtpRequestDisabler {
     val secondsToWait = DateUtils.calculateSecondsDifferenceBetweenDates(Date(), resendTime)
     return if (secondsToWait > 0) secondsToWait else null
   }
-
 }

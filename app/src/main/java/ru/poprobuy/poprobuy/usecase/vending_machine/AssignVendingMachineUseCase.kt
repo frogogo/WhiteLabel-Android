@@ -47,5 +47,4 @@ class AssignVendingMachineUseCase(
     e { "Generic failure occurred" }
     return AssignVendingMachineUseCaseResult.Failure
   }
-
 }

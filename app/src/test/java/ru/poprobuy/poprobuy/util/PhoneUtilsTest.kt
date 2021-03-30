@@ -20,5 +20,4 @@ class PhoneUtilsTest {
     result shouldBeEqualTo "+79162795600"
     assertEquals("+79162795600", result)
   }
-
 }

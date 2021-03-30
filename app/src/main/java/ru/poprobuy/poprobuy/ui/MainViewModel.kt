@@ -12,5 +12,4 @@ class MainViewModel(
     clearUserDataUseCase()
     navigation.navigateToLoginDestructive().navigate()
   }
-
 }

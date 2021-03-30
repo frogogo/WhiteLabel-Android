@@ -29,5 +29,4 @@ class GetUserAuthStateUseCase(
     // User has passed and auth process
     LOGGED_IN
   }
-
 }

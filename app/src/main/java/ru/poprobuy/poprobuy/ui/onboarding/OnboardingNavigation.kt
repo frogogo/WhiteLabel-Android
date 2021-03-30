@@ -11,5 +11,4 @@ class OnboardingNavigationImpl : OnboardingNavigation {
 
   override fun navigateToAuth(): NavigationCommand =
     OnboardingFragmentDirections.onboardingToAuthPolicy().toCommand()
-
 }

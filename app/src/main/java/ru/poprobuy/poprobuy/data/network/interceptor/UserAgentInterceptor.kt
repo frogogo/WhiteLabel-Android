@@ -19,5 +19,4 @@ class UserAgentInterceptor(
   companion object {
     private const val HEADER_USER_AGENT = "User-Agent"
   }
-
 }

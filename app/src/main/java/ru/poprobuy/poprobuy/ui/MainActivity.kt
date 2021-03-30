@@ -26,5 +26,4 @@ class MainActivity : BaseActivity<MainViewModel>(R.layout.activity_main) {
       viewModel.logout()
     }
   }
-
 }

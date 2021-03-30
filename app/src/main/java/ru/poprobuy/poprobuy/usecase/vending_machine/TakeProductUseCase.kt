@@ -20,5 +20,4 @@ class TakeProductUseCase(
     productId = productId,
     vendingCellId = vendingCellId,
   )
-
 }

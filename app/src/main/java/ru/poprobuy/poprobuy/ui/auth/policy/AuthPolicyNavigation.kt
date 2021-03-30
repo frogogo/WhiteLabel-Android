@@ -11,5 +11,4 @@ class AuthPolicyNavigationImpl : AuthPolicyNavigation {
 
   override fun navigateToAuthPhoneEnter(): NavigationCommand =
     AuthPolicyFragmentDirections.authPolicyToAuthPhone().toCommand()
-
 }

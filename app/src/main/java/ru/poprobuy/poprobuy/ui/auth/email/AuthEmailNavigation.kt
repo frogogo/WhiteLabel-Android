@@ -11,5 +11,4 @@ class AuthEmailNavigationImpl : AuthEmailNavigation {
 
   override fun navigateToApp(): NavigationCommand =
     AuthEmailFragmentDirections.authEmailToHome().toCommand()
-
 }

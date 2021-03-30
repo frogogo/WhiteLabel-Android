@@ -10,5 +10,4 @@ interface ReceiptsRepository {
   suspend fun getReceipts(): Result<List<ReceiptUiModel>, NetworkError<ErrorResponse>>
 
   suspend fun activateQrString(qrString: String): Result<Unit, NetworkError<ErrorResponse>>
-
 }

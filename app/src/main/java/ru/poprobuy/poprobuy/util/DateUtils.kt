@@ -12,5 +12,4 @@ object DateUtils {
     val difference = (end.time - start.time) / 1000F
     return difference.roundToInt()
   }
-
 }

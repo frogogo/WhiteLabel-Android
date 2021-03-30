@@ -42,5 +42,4 @@ internal class VendingProductStateJsonAdapterTest {
     val stateName: String,
     val expectedState: VendingProductState,
   )
-
 }

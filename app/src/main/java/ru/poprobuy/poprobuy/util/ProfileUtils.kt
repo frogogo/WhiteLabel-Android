@@ -17,5 +17,4 @@ class ProfileUtils(private val context: Context) {
 
     return context.getString(R.string.profile_app_version, versionName, versionCode, date)
   }
-
 }

@@ -43,5 +43,4 @@ internal class ErrorDialogFragmentCallbackViewModelTest : ViewModelTestJUnit5() 
   private fun confirmVerified() {
     confirmVerified(onDismissEventObserver)
   }
-
 }

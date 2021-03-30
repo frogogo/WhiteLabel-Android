@@ -43,5 +43,4 @@ object QRCodeUtils {
     val parameters = getQueryParametersMap(string)
     return parameters.isNotEmpty()
   }
-
 }

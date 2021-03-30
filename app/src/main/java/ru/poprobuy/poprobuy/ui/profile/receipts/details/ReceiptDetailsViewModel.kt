@@ -40,5 +40,4 @@ class ReceiptDetailsViewModel(
     d { "Navigating to machine scan" }
     navigation.navigateToMachineScan(receiptId).navigate()
   }
-
 }

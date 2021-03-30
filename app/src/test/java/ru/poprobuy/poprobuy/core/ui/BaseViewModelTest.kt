@@ -71,5 +71,4 @@ class BaseViewModelTest : ViewModelTestJUnit5() {
     }
     viewModel.baseCommandLiveEvent.value shouldBeEqualTo Event(BaseCommand.HideKeyboard)
   }
-
 }

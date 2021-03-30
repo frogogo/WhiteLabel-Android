@@ -27,5 +27,4 @@ class HomeNavigationImpl : HomeNavigation {
 
   override fun navigateToMachineEnter(receiptId: Int): NavigationCommand =
     HomeFragmentDirections.homeToMachineSelect(receiptId).toCommand()
-
 }

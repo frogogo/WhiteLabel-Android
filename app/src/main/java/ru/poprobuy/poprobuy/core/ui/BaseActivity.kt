@@ -33,5 +33,4 @@ abstract class BaseActivity<out T : BaseViewModel>(
   protected open fun initViews(): Unit = Unit
 
   protected open fun initObservers(): Unit = Unit
-
 }

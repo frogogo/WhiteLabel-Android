@@ -58,5 +58,4 @@ class ReceiptsViewModel(
       ReceiptsDataUtils.getReceiptDetailsButtonState(receipts)
     ).navigate()
   }
-
 }

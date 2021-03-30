@@ -49,5 +49,4 @@ class GetReceiptsUseCaseTest {
       receiptsRepository.getReceipts()
     }
   }
-
 }

@@ -78,5 +78,4 @@ class MachineSelectFragment : BaseFragment<MachineSelectViewModel>(
   private fun selectMachine() {
     viewModel.selectMachine(binding.textInputLayout.text)
   }
-
 }

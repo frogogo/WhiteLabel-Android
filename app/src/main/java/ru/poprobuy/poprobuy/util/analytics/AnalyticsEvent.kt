@@ -26,5 +26,4 @@ open class AnalyticsEvent(
     // https://firebase.google.com/docs/reference/android/com/google/firebase/analytics/FirebaseAnalytics.Event
     const val EVENT_NAME_MAX_LENGTH = 40
   }
-
 }

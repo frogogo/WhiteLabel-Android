@@ -9,5 +9,4 @@ class ClearUserDataUseCase(
   operator fun invoke() {
     userPreferences.clearUserData()
   }
-
 }

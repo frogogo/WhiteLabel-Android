@@ -6,5 +6,4 @@ import androidx.fragment.app.FragmentManager
 interface DialogCompanion<T : DialogFragment> {
 
   fun T.showIn(fragmentManager: FragmentManager)
-
 }

@@ -59,7 +59,5 @@ class ReceiptView @JvmOverloads constructor(
       // Use radius to respect rounded top corners
       outline.setRoundRect(rect, radius)
     }
-
   }
-
 }

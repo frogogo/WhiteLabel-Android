@@ -96,5 +96,4 @@ class SafeApiCallKtTest {
     assertTrue(result is NetworkResource.Error)
     assertTrue(result.error is NetworkError.JsonParsingError)
   }
-
 }

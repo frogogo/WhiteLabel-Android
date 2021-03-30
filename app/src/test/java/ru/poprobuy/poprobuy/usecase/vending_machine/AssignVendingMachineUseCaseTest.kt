@@ -103,5 +103,4 @@ internal class AssignVendingMachineUseCaseTest {
   private fun confirmVerified() {
     confirmVerified(vendingMachineRepository)
   }
-
 }

@@ -48,5 +48,4 @@ class TokenRefreshWorker(
       manager.enqueueUniquePeriodicWork(NAME, ExistingPeriodicWorkPolicy.KEEP, work)
     }
   }
-
 }

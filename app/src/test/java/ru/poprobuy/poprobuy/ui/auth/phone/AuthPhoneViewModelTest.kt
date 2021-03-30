@@ -189,5 +189,4 @@ class AuthPhoneViewModelTest : ViewModelTestJUnit4() {
   companion object {
     const val VALID_PHONE_NUMBER = "+79162795600"
   }
-
 }

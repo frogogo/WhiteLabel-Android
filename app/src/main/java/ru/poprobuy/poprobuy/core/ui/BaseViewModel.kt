@@ -46,5 +46,4 @@ open class BaseViewModel : ViewModel() {
       _baseCommandLiveEvent.setEvent(BaseCommand.HideKeyboard)
     }
   }
-
 }

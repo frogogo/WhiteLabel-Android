@@ -166,5 +166,4 @@ class HomeViewModelTest : ViewModelTestJUnit5() {
       errorOccurredObserver.onChanged(Unit)
     }
   }
-
 }

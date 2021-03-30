@@ -13,5 +13,4 @@ open class Repository(
 
   @Marker
   protected suspend fun <T> withIOContext(block: suspend CoroutineScope.() -> T): T = withContext(dispatchers.io, block)
-
 }

@@ -22,5 +22,4 @@ internal class AuthInterceptor(
 
     return chain.proceed(request)
   }
-
 }

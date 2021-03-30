@@ -53,5 +53,4 @@ class OnboardingRepositoryImplTest : RepositoryTest() {
   private fun confirmVerified() {
     confirmVerified(userPreferences)
   }
-
 }

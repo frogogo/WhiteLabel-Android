@@ -22,5 +22,4 @@ class OnboardingViewModel(
     onboardingRepository.setOnboardingCompleted()
     navigation.navigateToAuth().navigate()
   }
-
 }

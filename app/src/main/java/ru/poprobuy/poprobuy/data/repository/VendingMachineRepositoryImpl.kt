@@ -41,5 +41,4 @@ class VendingMachineRepositoryImpl(
 
     apiCall { api.takeProduct(machineId = machineId, body) }.mapToResult()
   }
-
 }

@@ -44,5 +44,4 @@ class NetworkResourceTest {
 
     result shouldBeEqualTo Result.Failure(error)
   }
-
 }

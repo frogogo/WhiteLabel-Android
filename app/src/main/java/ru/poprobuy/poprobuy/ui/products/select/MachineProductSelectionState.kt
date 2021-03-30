@@ -10,5 +10,4 @@ sealed class MachineProductSelectionState {
   ) : MachineProductSelectionState()
 
   object Success : MachineProductSelectionState()
-
 }

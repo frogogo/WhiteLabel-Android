@@ -61,5 +61,4 @@ class GetUserInfoUseCaseTest {
       userRepository.saveUser(any())
     }
   }
-
 }

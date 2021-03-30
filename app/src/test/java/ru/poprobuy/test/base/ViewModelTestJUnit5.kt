@@ -15,5 +15,4 @@ open class ViewModelTestJUnit5 {
   @JvmField
   @RegisterExtension
   val coroutineTestExtension = CoroutinesTestExtension()
-
 }

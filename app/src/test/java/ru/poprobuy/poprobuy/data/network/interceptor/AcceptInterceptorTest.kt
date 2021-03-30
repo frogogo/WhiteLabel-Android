@@ -26,5 +26,4 @@ class AcceptInterceptorTest : NetworkTest() {
     private const val HEADER_ACCEPT = "Accept"
     private const val JSON_CONTENT_TYPE = "application/json"
   }
-
 }

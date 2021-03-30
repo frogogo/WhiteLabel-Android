@@ -15,5 +15,4 @@ class AuthCodeConfirmationNavigationImpl : AuthCodeConfirmationNavigation {
 
   override fun navigateToApp(): NavigationCommand =
     AuthCodeFragmentDirections.authCodeConfirmationToHome().toCommand()
-
 }

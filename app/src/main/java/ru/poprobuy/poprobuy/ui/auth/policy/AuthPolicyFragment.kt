@@ -20,5 +20,4 @@ class AuthPolicyFragment : BaseFragment<AuthPolicyViewModel>(
   override fun initViews() {
     binding.buttonContinue.setOnSafeClickListener(viewModel::navigateNext)
   }
-
 }

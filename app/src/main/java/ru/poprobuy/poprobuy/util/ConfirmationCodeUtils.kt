@@ -14,5 +14,4 @@ object ConfirmationCodeUtils {
 
     return regexp.find(message)?.value
   }
-
 }

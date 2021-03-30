@@ -11,5 +11,4 @@ data class VendingCellUiModel(
 ) : RecyclerViewItem, Parcelable {
 
   override fun getId(): Any = "ITEM_CELL_$id"
-
 }

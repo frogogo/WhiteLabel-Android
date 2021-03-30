@@ -39,5 +39,4 @@ class PoprobuyApp : Application(), ImageLoaderFactory {
   private fun scheduleWorks() {
     TokenRefreshWorker.enqueue(applicationContext.getWorkManager())
   }
-
 }

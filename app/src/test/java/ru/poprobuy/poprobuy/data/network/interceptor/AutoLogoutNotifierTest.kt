@@ -55,5 +55,4 @@ class AutoLogoutNotifierTest {
   private fun confirmVerified() {
     confirmVerified(analyticsManager, eventObserver)
   }
-
 }

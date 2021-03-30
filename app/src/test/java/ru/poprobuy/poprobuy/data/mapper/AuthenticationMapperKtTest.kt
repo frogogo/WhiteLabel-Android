@@ -60,5 +60,4 @@ internal class AuthenticationMapperKtTest {
       isNew = true
     )
   }
-
 }

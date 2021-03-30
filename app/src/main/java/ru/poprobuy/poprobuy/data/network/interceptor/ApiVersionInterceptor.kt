@@ -28,5 +28,4 @@ class ApiVersionInterceptor(
   companion object {
     private const val HEADER_API_VERSION = "API-Version"
   }
-
 }

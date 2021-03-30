@@ -23,5 +23,4 @@ class SplashNavigationImpl : SplashNavigation {
 
   override fun navigateToOnboarding(): NavigationCommand =
     SplashFragmentDirections.splashToOnboarding().toCommand()
-
 }

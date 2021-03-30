@@ -85,5 +85,4 @@ internal class MachineMappersKtTest {
 
     product.toDomain() shouldBeEqualTo expected
   }
-
 }

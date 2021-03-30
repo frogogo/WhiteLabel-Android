@@ -57,5 +57,4 @@ class UpdateUserDetailsUseCaseTest {
       userRepository.updateUser(any(), any())
     }
   }
-
 }

@@ -46,5 +46,4 @@ internal class RequestExtKtTest {
 
     private const val TOKEN = "auth_token"
   }
-
 }

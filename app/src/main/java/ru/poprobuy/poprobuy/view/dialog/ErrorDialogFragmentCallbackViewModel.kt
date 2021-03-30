@@ -16,5 +16,4 @@ class ErrorDialogFragmentCallbackViewModel : ViewModel() {
     d { "Dismissing dialog with id=$dialogId" }
     _onDismissEvent.postEvent(dialogId)
   }
-
 }

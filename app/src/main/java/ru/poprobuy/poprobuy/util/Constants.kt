@@ -26,5 +26,4 @@ object Constants {
 
   const val CONFIRMATION_CODE_LENGTH = 4
   const val VENDING_MACHINE_ID_MAX_LENGTH = 8
-
 }

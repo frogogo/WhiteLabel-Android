@@ -15,7 +15,6 @@ sealed class NetworkError<E> {
   class JsonParsingError<E>(val exception: JsonDataException) : NetworkError<E>()
 
   companion object
-
 }
 
 inline fun <E> NetworkError<E>.onHttpErrorWithCode(code: Int, callback: (NetworkError.HttpError<E>) -> Unit) {

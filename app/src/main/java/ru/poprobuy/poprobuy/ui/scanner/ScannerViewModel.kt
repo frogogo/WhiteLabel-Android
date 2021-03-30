@@ -117,5 +117,4 @@ class ScannerViewModel(
       e { "Receipt wasn't set" }
     }
   }
-
 }

@@ -27,5 +27,4 @@ class AuthNameViewModel(
 
     return error == null
   }
-
 }

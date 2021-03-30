@@ -37,5 +37,4 @@ object CoilImageLoaderFactory {
 
     return this
   }
-
 }

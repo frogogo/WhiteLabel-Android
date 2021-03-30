@@ -51,5 +51,4 @@ internal class HomeRepositoryImplTest : RepositoryTest() {
   private fun confirmVerified() {
     confirmVerified(api)
   }
-
 }

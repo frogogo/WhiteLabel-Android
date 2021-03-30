@@ -31,5 +31,4 @@ class MachineSessionIdProviderInterceptor(
 
     return builder.build()
   }
-
 }

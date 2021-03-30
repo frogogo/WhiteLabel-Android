@@ -85,5 +85,4 @@ internal class RefreshTokenUseCaseTest {
   private fun confirmVerified() {
     confirmVerified(authRepository, userRepository)
   }
-
 }

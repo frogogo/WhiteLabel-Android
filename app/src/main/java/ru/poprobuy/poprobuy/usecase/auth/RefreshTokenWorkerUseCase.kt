@@ -32,5 +32,4 @@ class RefreshTokenWorkerUseCase(
   private fun logResult(result: TokenRefreshWork.Result) {
     analyticsManager.logEvent(TokenRefreshWork(result))
   }
-
 }

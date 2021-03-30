@@ -65,5 +65,4 @@ internal class ReceiptsRepositoryImplTest : RepositoryTest() {
   private fun confirmVerified() {
     confirmVerified(api)
   }
-
 }

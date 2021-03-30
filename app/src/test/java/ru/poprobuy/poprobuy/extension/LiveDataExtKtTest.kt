@@ -47,5 +47,4 @@ class LiveDataExtKtTest {
 
     mutableLiveData.isEmpty().shouldBeFalse()
   }
-
 }

@@ -121,5 +121,4 @@ class ProfileViewModelTest : ViewModelTestJUnit5() {
 
     viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToReceipts())
   }
-
 }

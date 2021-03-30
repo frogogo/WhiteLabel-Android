@@ -16,5 +16,4 @@ class ColoredSwipeRefreshLayout : SwipeRefreshLayout {
 
   constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
   constructor(context: Context) : super(context)
-
 }

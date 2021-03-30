@@ -20,5 +20,4 @@ class AcceptLanguageInterceptor(
     private const val HEADER_ACCEPT_LANGUAGE = "Accept-Language"
     private const val RU = "ru"
   }
-
 }

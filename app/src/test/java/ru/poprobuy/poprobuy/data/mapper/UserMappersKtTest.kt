@@ -18,5 +18,4 @@ class UserMappersKtTest {
       appVersion = appVersion
     )
   }
-
 }

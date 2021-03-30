@@ -31,5 +31,4 @@ enum class VendingProductState {
     OUT_OF_STOCK -> R.string.products_status_out_of_stock
     UNAVAILABLE -> R.string.products_status_unavailable
   }
-
 }

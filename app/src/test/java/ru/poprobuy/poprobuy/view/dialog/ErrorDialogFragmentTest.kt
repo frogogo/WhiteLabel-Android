@@ -22,5 +22,4 @@ internal class ErrorDialogFragmentTest {
   object Caller3 {
     val ERROR_DIALOG_ID = ErrorDialogFragment.getDialogId()
   }
-
 }

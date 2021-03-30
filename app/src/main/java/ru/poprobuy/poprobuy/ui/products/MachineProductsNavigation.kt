@@ -11,5 +11,4 @@ class MachineProductsNavigationImpl : MachineProductsNavigation {
 
   override fun navigateToHome(): NavigationCommand =
     MachineProductsFragmentDirections.productsToHome().toCommand()
-
 }

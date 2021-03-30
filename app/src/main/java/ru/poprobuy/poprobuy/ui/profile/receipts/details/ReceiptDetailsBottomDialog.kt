@@ -87,5 +87,4 @@ class ReceiptDetailsBottomDialog : BaseBottomSheetDialogFragment<ReceiptDetailsV
   companion object {
     private val DESIGN_BOTTOM_SHEET_ID = com.google.android.material.R.id.design_bottom_sheet
   }
-
 }

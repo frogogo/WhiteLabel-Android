@@ -23,5 +23,4 @@ class InstantTaskExecutorExtension : BeforeEachCallback, AfterEachCallback {
   override fun afterEach(context: ExtensionContext) {
     ArchTaskExecutor.getInstance().setDelegate(null)
   }
-
 }

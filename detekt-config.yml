@@ -285,7 +285,7 @@ formatting:
     active: true
     autoCorrect: true
   NoBlankLineBeforeRbrace:
-    active: false # Changed
+    active: true
     autoCorrect: true
   NoConsecutiveBlankLines:
     active: true

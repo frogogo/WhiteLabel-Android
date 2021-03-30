@@ -11,5 +11,4 @@ class AuthPhoneNavigationImpl : AuthPhoneNavigation {
 
   override fun navigateToAuthCodeConfirmation(phoneNumber: String, passwordRefreshRate: Int): NavigationCommand =
     AuthPhoneFragmentDirections.authPhoneToAuthCodeConfirmation(phoneNumber, passwordRefreshRate).toCommand()
-
 }

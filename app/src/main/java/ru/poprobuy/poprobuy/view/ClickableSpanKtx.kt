@@ -20,5 +20,4 @@ class ClickableSpanKtx(
   override fun onClick(widget: View) {
     action.invoke()
   }
-
 }

@@ -19,5 +19,4 @@ sealed class HomeState : RecyclerViewItem {
     private const val ID_EMPTY = "ITEM_HOME_EMPTY"
     private const val ID_RECEIPT = "ITEM_HOME_RECEIPT"
   }
-
 }

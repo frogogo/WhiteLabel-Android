@@ -19,5 +19,4 @@ class AnalyticsManager(private val analytics: FirebaseAnalytics) {
     )
     analytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, params)
   }
-
 }

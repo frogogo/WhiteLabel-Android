@@ -42,5 +42,4 @@ class ReceiptStateJsonAdapterTest {
     val stateName: String,
     val expectedState: ReceiptState,
   )
-
 }

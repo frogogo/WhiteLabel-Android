@@ -93,5 +93,4 @@ class ResourceProvider(private val context: Context) {
   fun loadAnimation(@AnimRes id: Int): Animation {
     return AnimationUtils.loadAnimation(context, id)
   }
-
 }

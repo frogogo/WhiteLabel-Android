@@ -23,5 +23,4 @@ class MachineProductSelectionInteractor {
     object NavigateToHome : Command()
     data class ShowErrorDialog(val error: String) : Command()
   }
-
 }

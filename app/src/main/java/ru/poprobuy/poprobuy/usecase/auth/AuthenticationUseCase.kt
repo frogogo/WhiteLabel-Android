@@ -48,5 +48,4 @@ class AuthenticationUseCase(
     e { "Generic error while performing authorization" }
     return AuthenticationResult.Error
   }
-
 }

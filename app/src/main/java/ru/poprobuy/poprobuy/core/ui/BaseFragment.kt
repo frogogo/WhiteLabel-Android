@@ -125,5 +125,4 @@ abstract class BaseFragment<out T : BaseViewModel>(
       }
     }
   }
-
 }

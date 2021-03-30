@@ -9,5 +9,4 @@ class SessionStorage {
   fun saveSessionId(sessionId: String) {
     this.sessionId = sessionId
   }
-
 }

@@ -21,5 +21,4 @@ internal class DateExtKtTest {
 
     date.toSimpleDate() shouldBeEqualTo "05.10.2020"
   }
-
 }

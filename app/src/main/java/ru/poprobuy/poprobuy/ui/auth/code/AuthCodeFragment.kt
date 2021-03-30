@@ -204,5 +204,4 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
     private const val CODE_RESEND_ERROR_DURATION = 1500L
     private const val SMS_CONSENT_ACTIVITY_REQUEST_CODE = 2
   }
-
 }

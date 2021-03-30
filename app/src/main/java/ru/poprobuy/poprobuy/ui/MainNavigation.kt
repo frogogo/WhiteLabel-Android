@@ -12,5 +12,4 @@ class MainNavigationImpl : MainNavigation {
 
   override fun navigateToLoginDestructive(): NavigationCommand =
     MainNavigationDirections.actionGlobalLoginDestructive(showLogoutDialog = true).toCommand()
-
 }

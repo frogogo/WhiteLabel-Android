@@ -23,5 +23,4 @@ class ReceiptDetailsNavigationImpl : ReceiptDetailsNavigation {
 
   override fun navigateToMachineEnter(receiptId: Int): NavigationCommand =
     ReceiptDetailsBottomDialogDirections.receiptDetailsToMachineSelect(receiptId).toCommand()
-
 }

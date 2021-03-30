@@ -12,5 +12,4 @@ class GetReceiptsUseCase(
 
   suspend operator fun invoke(): Result<List<ReceiptUiModel>, NetworkError<ErrorResponse>> =
     receiptsRepository.getReceipts()
-
 }

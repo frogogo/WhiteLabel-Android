@@ -32,7 +32,6 @@ class BooleanItem(
   operator fun setValue(thisRef: Any?, property: KProperty<*>, value: Boolean) {
     preferences.edit().putBoolean(key, value).apply()
   }
-
 }
 
 class IntItem(
@@ -48,7 +47,6 @@ class IntItem(
   operator fun setValue(thisRef: Any?, property: KProperty<*>, value: Int) {
     preferences.edit().putInt(key, value).apply()
   }
-
 }
 
 class LongItem(
@@ -64,7 +62,6 @@ class LongItem(
   operator fun setValue(thisRef: Any?, property: KProperty<*>, value: Long) {
     preferences.edit().putLong(key, value).apply()
   }
-
 }
 
 class StringItem(
@@ -80,7 +77,6 @@ class StringItem(
   operator fun setValue(thisRef: Any?, property: KProperty<*>, value: String) {
     preferences.edit().putString(key, value).apply()
   }
-
 }
 
 class StringItemNullable(private val preferences: SharedPreferences, private val key: String) {
@@ -92,7 +88,6 @@ class StringItemNullable(private val preferences: SharedPreferences, private val
   operator fun setValue(thisRef: Any?, property: KProperty<*>, value: String?) {
     preferences.edit().putString(key, value).apply()
   }
-
 }
 
 class JsonItem<T : Any>(
@@ -112,5 +107,4 @@ class JsonItem<T : Any>(
     val jsonValue = moshi.adapter(clazz.java).toJson(value)
     preferences.edit().putString(key, jsonValue).apply()
   }
-
 }

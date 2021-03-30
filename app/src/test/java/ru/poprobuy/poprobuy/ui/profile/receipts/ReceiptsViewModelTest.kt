@@ -110,5 +110,4 @@ class ReceiptsViewModelTest : ViewModelTestJUnit5() {
 
     viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToReceipt(receipt, state))
   }
-
 }

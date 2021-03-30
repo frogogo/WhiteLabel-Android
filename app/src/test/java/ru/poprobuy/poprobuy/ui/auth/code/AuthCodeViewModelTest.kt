@@ -170,5 +170,4 @@ class AuthCodeViewModelTest : ViewModelTestJUnit5() {
     private const val PHONE_NUMBER = "+79162795600"
     private const val CONFIRMATION_CODE = "1233"
   }
-
 }

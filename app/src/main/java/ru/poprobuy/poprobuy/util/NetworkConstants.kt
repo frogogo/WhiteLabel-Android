@@ -10,5 +10,4 @@ object NetworkConstants {
   const val CACHE_DIRECTORY = "network"
 
   const val HEADER_SESSION_ID = "Session-Id"
-
 }

@@ -76,5 +76,4 @@ internal class VendingMachineRepositoryImplTest : RepositoryTest() {
       )
     }
   }
-
 }

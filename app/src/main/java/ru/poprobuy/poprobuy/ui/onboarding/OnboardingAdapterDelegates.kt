@@ -19,5 +19,4 @@ object OnboardingAdapterDelegates {
       }
     }
   }
-
 }

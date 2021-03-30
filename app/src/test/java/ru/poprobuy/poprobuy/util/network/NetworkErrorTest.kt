@@ -42,5 +42,4 @@ class NetworkErrorTest {
       callback wasNot Called
     }
   }
-
 }

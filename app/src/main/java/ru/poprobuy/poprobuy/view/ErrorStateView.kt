@@ -26,5 +26,4 @@ class ErrorStateView @JvmOverloads constructor(
   fun setOnRefreshClickListener(listener: OnRefreshClickAction) {
     onRefreshClickListener = listener
   }
-
 }

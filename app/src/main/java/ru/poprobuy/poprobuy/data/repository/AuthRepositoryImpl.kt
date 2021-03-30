@@ -60,5 +60,4 @@ class AuthRepositoryImpl(
   override fun logout() {
     userPreferences.clearData()
   }
-
 }

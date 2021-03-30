@@ -15,5 +15,4 @@ class FirebaseReportingTree : Timber.Tree() {
       throwable?.let(FirebaseCrashlytics.getInstance()::recordException)
     }
   }
-
 }

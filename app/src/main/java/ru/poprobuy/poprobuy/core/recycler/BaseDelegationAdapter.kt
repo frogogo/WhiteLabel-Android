@@ -28,5 +28,4 @@ open class BaseDelegationAdapter(
     }
     differ.submitList(itemsMutable, commitCallback)
   }
-
 }

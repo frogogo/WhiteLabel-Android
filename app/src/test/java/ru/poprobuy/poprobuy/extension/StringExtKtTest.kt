@@ -25,5 +25,4 @@ class StringExtKtTest {
   fun `unformatted  number without prefix`() {
     "(916) 123-45-67".getUnformattedPhoneNumber() shouldBeEqualTo "9161234567"
   }
-
 }
