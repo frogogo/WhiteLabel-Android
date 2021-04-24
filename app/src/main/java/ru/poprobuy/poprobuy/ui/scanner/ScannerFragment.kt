@@ -29,13 +29,8 @@ import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragment
 import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragment.Companion.showIn
 import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragmentCallbackViewModel
 
-class ScannerFragment : BaseFragment<ScannerViewModel>(
-  layoutId = R.layout.fragment_scanner,
-  screen = AnalyticsScreen.SCANNER,
-  statusBarColor = R.color.transparent,
-  fullscreen = true,
-  lightStatusBar = false
-), BarcodeCallback {
+class ScannerFragment : BaseFragment<ScannerViewModel>(),
+  BarcodeCallback {
 
   override val viewModel: ScannerViewModel by viewModel { parametersOf(args.mode, args.receiptId) }
 
@@ -43,6 +38,14 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(
   private val binding: FragmentScannerBinding by viewBinding()
   private val args: ScannerFragmentArgs by navArgs()
   private var flashIsOn = false
+
+  override fun provideConfiguration(): Configuration = Configuration(
+    layoutId = R.layout.fragment_scanner,
+    screen = AnalyticsScreen.SCANNER,
+    statusBarColor = R.color.transparent,
+    fullscreen = true,
+    lightStatusBar = false
+  )
 
   override fun initViews() {
     // Move toolbar down as activity is in fullscreen mode

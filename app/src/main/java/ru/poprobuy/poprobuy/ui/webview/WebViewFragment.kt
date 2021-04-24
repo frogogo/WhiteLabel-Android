@@ -10,15 +10,17 @@ import ru.poprobuy.poprobuy.databinding.FragmentWebViewBinding
 import ru.poprobuy.poprobuy.extension.setOnClickListener
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
-class WebViewFragment : BaseFragment<WebViewViewModel>(
-  layoutId = R.layout.fragment_web_view,
-  screen = AnalyticsScreen.WEB_VIEW
-) {
+class WebViewFragment : BaseFragment<WebViewViewModel>() {
 
   override val viewModel: WebViewViewModel by viewModel()
 
   private val args: WebViewFragmentArgs by navArgs()
   private val binding: FragmentWebViewBinding by viewBinding()
+
+  override fun provideConfiguration(): Configuration = Configuration(
+    layoutId = R.layout.fragment_web_view,
+    screen = AnalyticsScreen.WEB_VIEW
+  )
 
   override fun initViews() {
     binding.apply {

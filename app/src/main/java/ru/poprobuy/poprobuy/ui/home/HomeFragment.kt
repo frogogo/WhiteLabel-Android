@@ -15,16 +15,19 @@ import ru.poprobuy.poprobuy.extension.setVisible
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 import ru.poprobuy.poprobuy.util.unsafeLazy
 
-class HomeFragment : BaseFragment<HomeViewModel>(
-  layoutId = R.layout.fragment_home,
-  screen = AnalyticsScreen.HOME
-), SwipeRefreshLayout.OnRefreshListener {
+class HomeFragment : BaseFragment<HomeViewModel>(),
+  SwipeRefreshLayout.OnRefreshListener {
 
   override val viewModel: HomeViewModel by viewModel()
 
   private val binding: FragmentHomeBinding by viewBinding()
   private val recycledViewPool: RecyclerView.RecycledViewPool by inject()
   private val adapter by unsafeLazy { createAdapter() }
+
+  override fun provideConfiguration(): Configuration = Configuration(
+    layoutId = R.layout.fragment_home,
+    screen = AnalyticsScreen.HOME
+  )
 
   override fun initViews() {
     binding.apply {

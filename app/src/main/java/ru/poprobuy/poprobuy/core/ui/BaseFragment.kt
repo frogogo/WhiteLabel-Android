@@ -1,6 +1,7 @@
 package ru.poprobuy.poprobuy.core.ui
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.ColorRes
@@ -19,30 +20,24 @@ import ru.poprobuy.poprobuy.extension.*
 import ru.poprobuy.poprobuy.util.SimpleWindowAnimator
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsManager
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
+import ru.poprobuy.poprobuy.util.analytics.lowercaseName
 import ru.poprobuy.poprobuy.util.unsafeLazy
-import java.util.*
 
-abstract class BaseFragment<out T : BaseViewModel>(
-  @LayoutRes layoutId: Int,
-  private val screen: AnalyticsScreen,
-  @ColorRes private val statusBarColor: Int = R.color.status_bar,
-  private val fullscreen: Boolean = false,
-  /**
-   * Enables window inset animations
-   */
-  private val windowAnimations: Boolean = false,
-  /**
-   * Determines status bar color state.
-   * Should be true if status bar color is light and status bar content should be dark
-   */
-  private val lightStatusBar: Boolean = true,
-) : Fragment(layoutId) {
+abstract class BaseFragment<out T : BaseViewModel> : Fragment() {
 
   abstract val viewModel: T
 
   private val windowAnimator: SimpleWindowAnimator by unsafeLazy { SimpleWindowAnimator(requireActivity().window) }
   private val navigationRouter: NavigationRouter by inject { parametersOf(findNavController()) }
   private val analytics: AnalyticsManager by inject()
+  private val configuration: Configuration by lazy { provideConfiguration() }
+
+  abstract fun provideConfiguration(): Configuration
+
+  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    applyConfiguration()
+    return inflater.inflate(configuration.layoutId, container, false)
+  }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
@@ -58,15 +53,8 @@ abstract class BaseFragment<out T : BaseViewModel>(
   override fun onStart() {
     super.onStart()
     viewModel.onStart()
-
-    // Status bar theme
-    requireActivity().setStatusBarLight(lightStatusBar)
-    // Status bar color
-    requireActivity().setStatusBarColor(requireContext().getColor(statusBarColor))
-    // Fullscreen
-    requireActivity().setFullScreen(fullscreen)
     // Inset animations
-    if (windowAnimations) {
+    if (configuration.windowAnimations) {
       windowAnimator.start()
     } else {
       windowAnimator.stop()
@@ -82,7 +70,7 @@ abstract class BaseFragment<out T : BaseViewModel>(
     super.onResume()
     // Track fragment
     analytics.trackScreen(
-      screenName = screen.name.toLowerCase(Locale.getDefault()),
+      screenName = configuration.screen.lowercaseName(),
       className = javaClass.simpleName
     )
   }
@@ -125,4 +113,31 @@ abstract class BaseFragment<out T : BaseViewModel>(
       }
     }
   }
+
+  private fun applyConfiguration() {
+    requireActivity().apply {
+      // Status bar theme
+      setStatusBarLight(configuration.lightStatusBar)
+      // Status bar color
+      setStatusBarColor(requireContext().getColor(configuration.statusBarColor))
+      // Fullscreen
+      setFullScreen(configuration.fullscreen)
+    }
+  }
+
+  data class Configuration(
+    @LayoutRes val layoutId: Int,
+    val screen: AnalyticsScreen,
+    @ColorRes val statusBarColor: Int = R.color.status_bar,
+    val fullscreen: Boolean = false,
+    /**
+     * Enables window inset animations
+     */
+    val windowAnimations: Boolean = false,
+    /**
+     * Determines status bar color state.
+     * Should be true if status bar color is light and status bar content should be dark
+     */
+    val lightStatusBar: Boolean = true,
+  )
 }

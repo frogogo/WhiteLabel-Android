@@ -17,16 +17,18 @@ import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.util.SpannableUtils
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
-class AuthEmailFragment : BaseFragment<AuthEmailViewModel>(
-  layoutId = R.layout.fragment_auth_email,
-  screen = AnalyticsScreen.AUTH_EMAIL,
-  windowAnimations = true
-) {
+class AuthEmailFragment : BaseFragment<AuthEmailViewModel>() {
 
   override val viewModel: AuthEmailViewModel by viewModel { parametersOf(args.name) }
 
   private val binding: FragmentAuthEmailBinding by viewBinding()
   private val args: AuthEmailFragmentArgs by navArgs()
+
+  override fun provideConfiguration(): Configuration = Configuration(
+    layoutId = R.layout.fragment_auth_email,
+    screen = AnalyticsScreen.AUTH_EMAIL,
+    windowAnimations = true
+  )
 
   override fun initViews() {
     binding.apply {

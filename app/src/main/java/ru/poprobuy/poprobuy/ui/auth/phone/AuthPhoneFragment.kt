@@ -22,17 +22,20 @@ import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragment
 import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragment.Companion.showIn
 
-class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(
-  layoutId = R.layout.fragment_auth_phone,
-  screen = AnalyticsScreen.AUTH_PHONE,
-  windowAnimations = true
-), MaskedTextChangedListener.ValueListener {
+class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(),
+  MaskedTextChangedListener.ValueListener {
 
   override val viewModel: AuthPhoneViewModel by viewModel { parametersOf(args.showLogoutDialog) }
 
   private val binding: FragmentAuthPhoneBinding by viewBinding()
   private val args: AuthPhoneFragmentArgs by navArgs()
   private var textChangedListener: MaskedTextChangedListener? = null
+
+  override fun provideConfiguration(): Configuration = Configuration(
+    layoutId = R.layout.fragment_auth_phone,
+    screen = AnalyticsScreen.AUTH_PHONE,
+    windowAnimations = true
+  )
 
   override fun initViews() {
     binding.textInputLayout.apply {

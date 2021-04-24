@@ -1,5 +1,7 @@
 package ru.poprobuy.poprobuy.util.analytics
 
+import java.util.*
+
 enum class AnalyticsScreen {
   SPLASH,
   ONBOARDING,
@@ -19,3 +21,5 @@ enum class AnalyticsScreen {
   PRODUCTS,
   MACHINE_SELECT,
 }
+
+fun AnalyticsScreen.lowercaseName(): String = name.toLowerCase(Locale.ENGLISH)

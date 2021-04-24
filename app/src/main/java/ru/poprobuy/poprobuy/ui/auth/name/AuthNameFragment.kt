@@ -11,15 +11,17 @@ import ru.poprobuy.poprobuy.extension.setNullableTextRes
 import ru.poprobuy.poprobuy.extension.setOnSafeClickListener
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
-class AuthNameFragment : BaseFragment<AuthNameViewModel>(
-  layoutId = R.layout.fragment_auth_name,
-  screen = AnalyticsScreen.AUTH_NAME,
-  windowAnimations = true
-) {
+class AuthNameFragment : BaseFragment<AuthNameViewModel>() {
 
   override val viewModel: AuthNameViewModel by viewModel()
 
   private val binding: FragmentAuthNameBinding by viewBinding()
+
+  override fun provideConfiguration(): Configuration = Configuration(
+    layoutId = R.layout.fragment_auth_name,
+    screen = AnalyticsScreen.AUTH_NAME,
+    windowAnimations = true
+  )
 
   override fun initViews() {
     // Force keyboard

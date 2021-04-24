@@ -19,16 +19,18 @@ import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragment
 import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragment.Companion.showIn
 
-class MachineSelectFragment : BaseFragment<MachineSelectViewModel>(
-  layoutId = R.layout.fragment_machine_select,
-  screen = AnalyticsScreen.MACHINE_SELECT,
-  windowAnimations = true
-) {
+class MachineSelectFragment : BaseFragment<MachineSelectViewModel>() {
 
   override val viewModel: MachineSelectViewModel by viewModel { parametersOf(args.receiptId) }
 
   private val binding: FragmentMachineSelectBinding by viewBinding()
   private val args: MachineSelectFragmentArgs by navArgs()
+
+  override fun provideConfiguration(): Configuration = Configuration(
+    layoutId = R.layout.fragment_machine_select,
+    screen = AnalyticsScreen.MACHINE_SELECT,
+    windowAnimations = true
+  )
 
   override fun initViews() {
     binding.apply {

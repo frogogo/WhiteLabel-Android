@@ -21,16 +21,18 @@ import ru.poprobuy.poprobuy.util.unsafeLazy
 import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragment
 import ru.poprobuy.poprobuy.view.dialog.ErrorDialogFragment.Companion.showIn
 
-class MachineProductsFragment : BaseFragment<MachineProductsViewModel>(
-  layoutId = R.layout.fragment_machine_products,
-  screen = AnalyticsScreen.PRODUCTS
-) {
+class MachineProductsFragment : BaseFragment<MachineProductsViewModel>() {
 
   override val viewModel: MachineProductsViewModel by viewModel { parametersOf(args.receiptId, args.vendingMachine) }
 
   private val binding: FragmentMachineProductsBinding by viewBinding()
   private val args: MachineProductsFragmentArgs by navArgs()
   private val adapter: BaseDelegationAdapter by unsafeLazy { createAdapter() }
+
+  override fun provideConfiguration(): Configuration = Configuration(
+    layoutId = R.layout.fragment_machine_products,
+    screen = AnalyticsScreen.PRODUCTS
+  )
 
   override fun initViews() {
     binding.buttonClose.setOnSafeClickListener { viewModel.navigateBack() }
