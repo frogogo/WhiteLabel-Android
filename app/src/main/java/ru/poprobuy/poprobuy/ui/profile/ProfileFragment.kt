@@ -14,14 +14,16 @@ import ru.poprobuy.poprobuy.extension.setVisible
 import ru.poprobuy.poprobuy.util.Constants
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
-class ProfileFragment : BaseFragment<ProfileViewModel>(
-  layoutId = R.layout.fragment_profile,
-  screen = AnalyticsScreen.PROFILE
-) {
+class ProfileFragment : BaseFragment<ProfileViewModel>() {
 
   override val viewModel: ProfileViewModel by viewModel()
 
   private val binding: FragmentProfileBinding by viewBinding()
+
+  override fun provideConfiguration(): Configuration = Configuration(
+    layoutId = R.layout.fragment_profile,
+    screen = AnalyticsScreen.PROFILE
+  )
 
   override fun initViews() {
     binding.apply {

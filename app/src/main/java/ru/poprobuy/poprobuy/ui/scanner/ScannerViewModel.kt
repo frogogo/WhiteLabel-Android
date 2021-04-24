@@ -31,7 +31,7 @@ class ScannerViewModel(
   private val _isLoadingLive = MutableLiveData<Boolean>()
   val isLoadingLive = _isLoadingLive.asLiveData()
 
-  private val _errorLiveEvent = LiveEvent<String>()
+  private val _errorLiveEvent = LiveEvent<String?>()
   val errorLiveEvent = _errorLiveEvent.asLiveData()
 
   fun handleQrString(string: String) {

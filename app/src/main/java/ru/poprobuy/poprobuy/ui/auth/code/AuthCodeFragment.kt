@@ -28,11 +28,7 @@ import ru.poprobuy.poprobuy.extension.binding.initCodeConfirmationType
 import ru.poprobuy.poprobuy.util.*
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 
-class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
-  layoutId = R.layout.fragment_auth_code,
-  screen = AnalyticsScreen.AUTH_CODE,
-  windowAnimations = true
-) {
+class AuthCodeFragment : BaseFragment<AuthCodeViewModel>() {
 
   override val viewModel: AuthCodeViewModel by viewModel { parametersOf(args.phoneNumber) }
 
@@ -43,6 +39,12 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>(
   }
   private var codeTextWatcher: TextWatcher? = null
   private val handler = Handler()
+
+  override fun provideConfiguration(): Configuration = Configuration(
+    layoutId = R.layout.fragment_auth_code,
+    screen = AnalyticsScreen.AUTH_CODE,
+    windowAnimations = true
+  )
 
   override fun initViews() {
     binding.apply {

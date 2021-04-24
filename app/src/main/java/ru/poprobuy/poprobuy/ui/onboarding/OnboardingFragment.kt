@@ -12,10 +12,7 @@ import ru.poprobuy.poprobuy.extension.*
 import ru.poprobuy.poprobuy.util.analytics.AnalyticsScreen
 import ru.poprobuy.poprobuy.util.unsafeLazy
 
-class OnboardingFragment : BaseFragment<OnboardingViewModel>(
-  layoutId = R.layout.fragment_onboarding,
-  screen = AnalyticsScreen.ONBOARDING
-) {
+class OnboardingFragment : BaseFragment<OnboardingViewModel>() {
 
   override val viewModel: OnboardingViewModel by viewModel()
 
@@ -37,6 +34,11 @@ class OnboardingFragment : BaseFragment<OnboardingViewModel>(
       binding.viewPager.currentItem--
     }
   }
+
+  override fun provideConfiguration(): Configuration = Configuration(
+    layoutId = R.layout.fragment_onboarding,
+    screen = AnalyticsScreen.ONBOARDING
+  )
 
   override fun initViews() {
     binding.run {
