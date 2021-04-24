@@ -20,11 +20,31 @@
     <item name="imageButtonStyle">@style/ImageButton</item>
     <item name="materialCardViewStyle">@style/StyledCardView</item>
     <item name="bottomSheetDialogTheme">@style/BottomSheetDialog</item>
+    <item name="circularProgressIndicatorStyle">@style/CircularProgressIndicator</item>
   </style>
 
   <style name="AppTheme.Versioned">
     <item name="android:ambientShadowAlpha">0.05</item>
     <item name="android:spotShadowAlpha">0.1</item>
+  </style>
+
+  <style name="CircularProgressIndicator" parent="Widget.MaterialComponents.CircularProgressIndicator">
+    <item name="trackCornerRadius">6dp</item>
+    <item name="trackThickness">3.5dp</item>
+    <item name="indicatorSize">32dp</item>
+    <item name="indicatorColor">@color/primary</item>
+    <item name="minHideDelay">0</item>
+    <item name="android:indeterminate">true</item>
+  </style>
+
+  <style name="CircularProgressIndicator.Backgrounded">
+    <item name="android:background">@drawable/background_progress_bar</item>
+    <item name="android:padding">4dp</item>
+  </style>
+
+  <style name="CircularProgressIndicator.Small">
+    <item name="trackThickness">2.5dp</item>
+    <item name="indicatorSize">@dimen/progress_bar_size</item>
   </style>
 
   <style name="StyledCardView" parent="Widget.MaterialComponents.CardView">

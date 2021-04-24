@@ -119,7 +119,7 @@ dependencies {
   // SwipeRefresh https://developer.android.com/jetpack/androidx/releases/swiperefreshlayout
   implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
   // WorkManager https://developer.android.com/jetpack/androidx/releases/work
-  implementation 'androidx.work:work-runtime-ktx:2.4.0'
+  implementation 'androidx.work:work-runtime-ktx:2.5.0'
 
   // Google Play Services https://developers.google.com/android/guides/setup
   implementation 'com.google.android.gms:play-services-auth:19.0.0'
@@ -127,19 +127,19 @@ dependencies {
   implementation 'com.google.android.gms:play-services-auth-api-phone:17.5.0'
 
   // Material Design Components https://github.com/material-components/material-components-android
-  implementation 'com.google.android.material:material:1.2.1'
+  implementation 'com.google.android.material:material:1.3.0'
 
   // Navigation https://developer.android.com/jetpack/androidx/releases/navigation
-  def navVersion = '2.3.2'
+  def navVersion = '2.3.5'
   implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
   implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
 
   // ViewModel and LiveData https://developer.android.com/jetpack/androidx/releases/lifecycle
-  def lifecycleVersion = '2.2.0'
-  implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+  def lifecycleVersion = '2.3.1'
   implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
   implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
   implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+  implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
 
   // Adapter Delegates https://github.com/sockeqwe/AdapterDelegates
   def adapterDelegatesVersion = '4.3.0'
@@ -147,10 +147,10 @@ dependencies {
   implementation "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding:$adapterDelegatesVersion"
 
   // ViewBindingPropertyDelegate https://github.com/kirich1409/ViewBindingPropertyDelegate
-  implementation 'com.kirich1409.viewbindingpropertydelegate:viewbindingpropertydelegate:1.3.1'
+  implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.4.5'
 
   // CircleIndicator https://github.com/ongakuer/CircleIndicator
-  implementation 'me.relex:circleindicator:2.1.4'
+  implementation 'me.relex:circleindicator:2.1.6'
 
   // CircularProgressBar https://github.com/lopspower/CircularProgressBar
   implementation 'com.mikhaellopez:circularprogressbar:3.0.3'
@@ -159,7 +159,7 @@ dependencies {
   implementation "com.github.hadilq.liveevent:liveevent:1.2.0"
 
   // WhatIf https://github.com/skydoves/WhatIf
-  implementation 'com.github.skydoves:whatif:1.0.9'
+  implementation 'com.github.skydoves:whatif:1.1.0'
 
   // Coroutines https://github.com/Kotlin/kotlinx.coroutines
   def coroutinesVersion = '1.4.2'
@@ -167,16 +167,16 @@ dependencies {
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
 
   // AndroidX Crypto https://developer.android.com/jetpack/androidx/releases/security
-  implementation 'androidx.security:security-crypto:1.0.0-rc03'
+  implementation 'androidx.security:security-crypto:1.0.0'
 
   // Input Mask https://github.com/RedMadRobot/input-mask-android
   implementation 'com.redmadrobot:input-mask-android:6.0.0'
 
   // Coil https://github.com/coil-kt/coil/
-  implementation 'io.coil-kt:coil:1.1.0'
+  implementation 'io.coil-kt:coil:1.2.0'
 
   // Koin https://github.com/InsertKoinIO/koin
-  def koinVersion = '2.2.1'
+  def koinVersion = '2.2.2'
   implementation "org.koin:koin-android:$koinVersion"
   implementation "org.koin:koin-androidx-scope:$koinVersion"
   implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
@@ -188,12 +188,12 @@ dependencies {
   implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
 
   // OkHttp https://github.com/square/okhttp/
-  def okHttpVersion = '4.9.0'
+  def okHttpVersion = '4.9.1'
   implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
   implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
 
   // Moshi https://github.com/square/moshi
-  def moshiVersion = '1.11.0'
+  def moshiVersion = '1.12.0'
   implementation "com.squareup.moshi:moshi:$moshiVersion"
   implementation "com.squareup.moshi:moshi-adapters:$moshiVersion"
   kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
@@ -207,7 +207,7 @@ dependencies {
   implementation 'com.github.ajalt:timberkt:1.5.1'
 
   // Firebase https://firebase.google.com/support/release-notes/android
-  implementation platform('com.google.firebase:firebase-bom:26.1.1')
+  implementation platform('com.google.firebase:firebase-bom:27.1.0')
   implementation 'com.google.firebase:firebase-analytics-ktx'
   implementation 'com.google.firebase:firebase-crashlytics-ktx'
   implementation 'com.google.firebase:firebase-perf-ktx'
@@ -224,7 +224,7 @@ dependencies {
   implementation 'com.github.razir.progressbutton:progressbutton:2.1.0'
 
   // https://square.github.io/leakcanary/getting_started
-  debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
+  debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
 
   //
   // Test Libraries
@@ -234,13 +234,13 @@ dependencies {
   testImplementation "com.squareup.okhttp3:mockwebserver:$okHttpVersion"
 
   // Kluent https://github.com/MarkusAmshove/Kluent
-  testImplementation 'org.amshove.kluent:kluent:1.64'
+  testImplementation 'org.amshove.kluent:kluent:1.65'
 
   // Robolectric http://robolectric.org/getting-started/
-  testImplementation 'org.robolectric:robolectric:4.4'
+  testImplementation 'org.robolectric:robolectric:4.5.1'
 
   // Junit 5 https://github.com/junit-team/junit5
-  def junit5Version = "5.7.0"
+  def junit5Version = "5.7.1"
   testImplementation "org.junit.jupiter:junit-jupiter-api:$junit5Version"
   testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit5Version"
   testImplementation "org.junit.jupiter:junit-jupiter-params:$junit5Version"
@@ -253,7 +253,7 @@ dependencies {
   testImplementation 'androidx.arch.core:core-testing:2.1.0'
 
   // MockK https://github.com/mockk/mockk
-  testImplementation 'io.mockk:mockk:1.10.2'
+  testImplementation 'io.mockk:mockk:1.11.0'
 
   // Add field to BuildConfig
   android.defaultConfig.buildConfigField 'String', 'RETROFIT_VERSION', "\"$retrofitVersion\""

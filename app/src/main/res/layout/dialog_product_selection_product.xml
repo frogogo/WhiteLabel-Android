@@ -57,7 +57,7 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@id/text_view_title" />
 
-  <ProgressBar
+  <com.google.android.material.progressindicator.CircularProgressIndicator
     android:id="@+id/progress_bar"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

@@ -4,7 +4,6 @@ import androidx.annotation.MainThread
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.observe
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
@@ -55,8 +54,8 @@ inline fun Fragment.alert(dialog: MaterialAlertDialogBuilder.() -> Unit): AlertD
 }
 
 @MainThread
-inline fun <T> Fragment.observe(liveData: LiveData<T>, crossinline onChanged: (T) -> Unit) {
-  liveData.observe(owner = viewLifecycleOwner, onChanged = onChanged)
+fun <T> Fragment.observe(liveData: LiveData<T>, onChanged: (T) -> Unit) {
+  liveData.observe(viewLifecycleOwner, onChanged)
 }
 
 @MainThread

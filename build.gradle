@@ -1,8 +1,8 @@
 apply from: './versions_plugin.gradle'
 
 buildscript {
-  ext.kotlinVersion = '1.4.21'
-  ext.detektVersion = '1.16.0-RC1'
+  ext.kotlinVersion = '1.4.32'
+  ext.detektVersion = '1.16.0'
 
   repositories {
     google()
@@ -12,16 +12,16 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:4.1.1'
+    classpath 'com.android.tools.build:gradle:4.1.3'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-    classpath 'com.google.gms:google-services:4.3.4'
-    classpath 'com.google.firebase:firebase-crashlytics-gradle:2.4.1'
-    classpath 'com.google.firebase:perf-plugin:1.3.4'
-    classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.2"
+    classpath 'com.google.gms:google-services:4.3.5'
+    classpath 'com.google.firebase:firebase-crashlytics-gradle:2.5.2'
+    classpath 'com.google.firebase:perf-plugin:1.3.5'
+    classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
     // Detekt https://github.com/detekt/detekt
     classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion"
     // Versions https://github.com/ben-manes/gradle-versions-plugin
-    classpath "com.github.ben-manes:gradle-versions-plugin:0.36.0"
+    classpath "com.github.ben-manes:gradle-versions-plugin:0.38.0"
     // https://github.com/plnice/can-i-drop-jetifier
     classpath 'com.github.plnice:canidropjetifier:0.5'
     // Exhaustive https://github.com/cashapp/exhaustive

@@ -70,8 +70,9 @@
     text_view_placeholder,
     edit_text" />
 
-  <ProgressBar
+  <com.google.android.material.progressindicator.CircularProgressIndicator
     android:id="@+id/progress_bar"
+    style="@style/CircularProgressIndicator.Small"
     android:layout_width="@dimen/progress_bar_size"
     android:layout_height="@dimen/progress_bar_size"
     android:layout_marginStart="@dimen/spacing_3"
