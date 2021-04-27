@@ -1,6 +1,7 @@
 package ru.frogogo.whitelabel.ui.auth.code
 
 import ru.frogogo.whitelabel.core.navigation.NavigationCommand
+import ru.frogogo.whitelabel.extension.toCommand
 
 interface AuthCodeConfirmationNavigation {
   fun navigateToAuthName(): NavigationCommand

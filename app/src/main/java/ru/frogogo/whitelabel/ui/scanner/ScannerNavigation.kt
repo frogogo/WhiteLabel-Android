@@ -3,6 +3,7 @@ package ru.frogogo.whitelabel.ui.scanner
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.navigation.NavigationCommand
 import ru.frogogo.whitelabel.data.model.ui.machine.VendingMachineUiModel
+import ru.frogogo.whitelabel.extension.toCommand
 import ru.frogogo.whitelabel.util.Constants
 
 interface ScannerNavigation {

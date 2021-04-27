@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import androidx.constraintlayout.widget.ConstraintLayout
 import ru.frogogo.whitelabel.databinding.ViewErrorStateBinding
 import ru.frogogo.whitelabel.extension.inflateViewBinding
+import ru.frogogo.whitelabel.extension.setOnSafeClickListener
 
 typealias OnRefreshClickAction = () -> Unit
 

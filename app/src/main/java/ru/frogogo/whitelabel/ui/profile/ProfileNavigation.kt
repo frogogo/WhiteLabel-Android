@@ -1,6 +1,7 @@
 package ru.frogogo.whitelabel.ui.profile
 
 import ru.frogogo.whitelabel.core.navigation.NavigationCommand
+import ru.frogogo.whitelabel.extension.toCommand
 
 interface ProfileNavigation {
   fun navigateToReceipts(): NavigationCommand

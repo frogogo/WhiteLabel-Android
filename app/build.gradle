@@ -43,7 +43,7 @@ android {
     setProperty("archivesBaseName", applicationName + "-v" + versionCode + "(" + versionName + ")-" + getDate())
 
     buildConfigField 'int', 'API_VERSION', '1'
-    buildConfigField 'String', 'BASE_URL', '"https://poprobuy.ru"'
+    buildConfigField 'String', 'BASE_URL', '"https://zboom-staging.herokuapp.com"'
     buildConfigField 'boolean', 'DEBUG_STUFF', 'true'
     buildConfigField "java.util.Date", "BUILD_TIME", "new java.util.Date(" + System.currentTimeMillis() + "L)"
   }

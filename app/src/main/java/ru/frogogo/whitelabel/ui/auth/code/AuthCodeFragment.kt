@@ -8,6 +8,7 @@ import android.os.Handler
 import android.text.TextWatcher
 import android.text.method.LinkMovementMethod
 import androidx.core.os.postDelayed
+import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionManager
 import app.cash.exhaustive.Exhaustive
@@ -22,6 +23,8 @@ import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.ui.BaseFragment
 import ru.frogogo.whitelabel.databinding.FragmentAuthCodeBinding
 import ru.frogogo.whitelabel.extension.*
+import ru.frogogo.whitelabel.extension.binding.editText
+import ru.frogogo.whitelabel.extension.binding.initCodeConfirmationType
 import ru.frogogo.whitelabel.util.*
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 

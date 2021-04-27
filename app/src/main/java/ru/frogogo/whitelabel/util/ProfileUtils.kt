@@ -3,6 +3,7 @@ package ru.frogogo.whitelabel.util
 import android.content.Context
 import ru.frogogo.whitelabel.BuildConfig
 import ru.frogogo.whitelabel.R
+import ru.frogogo.whitelabel.extension.toSimpleDate
 
 class ProfileUtils(private val context: Context) {
 

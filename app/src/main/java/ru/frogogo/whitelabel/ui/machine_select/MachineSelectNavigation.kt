@@ -2,6 +2,7 @@ package ru.frogogo.whitelabel.ui.machine_select
 
 import ru.frogogo.whitelabel.core.navigation.NavigationCommand
 import ru.frogogo.whitelabel.data.model.ui.machine.VendingMachineUiModel
+import ru.frogogo.whitelabel.extension.toCommand
 
 interface MachineSelectNavigation {
   fun navigateToProducts(receiptId: Int, vendingMachine: VendingMachineUiModel): NavigationCommand

@@ -2,13 +2,11 @@ package ru.frogogo.whitelabel.work
 
 import android.content.Context
 import androidx.work.*
-import org.koin.core.component.KoinApiExtension
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import ru.frogogo.whitelabel.usecase.auth.RefreshTokenWorkerUseCase
 import java.util.concurrent.TimeUnit
 
-@OptIn(KoinApiExtension::class)
 class TokenRefreshWorker(
   appContext: Context,
   workerParams: WorkerParameters,

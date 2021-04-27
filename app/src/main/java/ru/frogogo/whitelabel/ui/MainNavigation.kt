@@ -2,6 +2,7 @@ package ru.frogogo.whitelabel.ui
 
 import ru.frogogo.whitelabel.MainNavigationDirections
 import ru.frogogo.whitelabel.core.navigation.NavigationCommand
+import ru.frogogo.whitelabel.extension.toCommand
 
 interface MainNavigation {
   fun navigateToLoginDestructive(): NavigationCommand

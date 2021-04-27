@@ -7,7 +7,6 @@ import okhttp3.Authenticator
 import okhttp3.Request
 import okhttp3.Response
 import okhttp3.Route
-import org.koin.core.component.KoinApiExtension
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import ru.frogogo.whitelabel.data.repository.AuthRepository
@@ -15,7 +14,6 @@ import ru.frogogo.whitelabel.extension.addAuthHeader
 import ru.frogogo.whitelabel.usecase.auth.RefreshTokenUseCase
 import java.net.HttpURLConnection
 
-@OptIn(KoinApiExtension::class)
 class TokenAuthenticator : Authenticator, KoinComponent {
 
   private val authRepository: AuthRepository by inject()

@@ -1,6 +1,7 @@
 package ru.frogogo.whitelabel.ui.splash
 
 import ru.frogogo.whitelabel.core.navigation.NavigationCommand
+import ru.frogogo.whitelabel.extension.toCommand
 
 interface SplashNavigation {
   fun navigateToPolicy(): NavigationCommand
