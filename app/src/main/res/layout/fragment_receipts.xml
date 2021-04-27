@@ -63,7 +63,7 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@id/layout_toolbar" />
 
-  <ru.poprobuy.poprobuy.view.ErrorStateView
+  <ru.frogogo.whitelabel.view.ErrorStateView
     android:id="@+id/view_error_state"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

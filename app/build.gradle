@@ -23,7 +23,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 // Build archive name
-def applicationName = "Poprobuy"
+def applicationName = "ZBoom"
 
 android {
 
@@ -31,7 +31,7 @@ android {
   buildToolsVersion "29.0.3"
 
   defaultConfig {
-    applicationId "ru.poprobuy.poprobuy"
+    applicationId "ru.frogogo.zboom"
 
     minSdkVersion 23
     targetSdkVersion 29
@@ -178,10 +178,8 @@ dependencies {
   implementation 'io.coil-kt:coil:1.2.0'
 
   // Koin https://github.com/InsertKoinIO/koin
-  def koinVersion = '2.2.2'
-  implementation "org.koin:koin-android:$koinVersion"
-  implementation "org.koin:koin-androidx-scope:$koinVersion"
-  implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+  def koinVersion = '3.0.1'
+  implementation "io.insert-koin:koin-android:$koinVersion"
 
   // Retrofit https://github.com/square/retrofit
   def retrofitVersion = '2.9.0'

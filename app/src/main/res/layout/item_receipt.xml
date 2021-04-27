@@ -52,7 +52,7 @@
       app:layout_constraintTop_toTopOf="@id/view_label"
       tools:text="23.05.2020 - 13:20" />
 
-    <ru.poprobuy.poprobuy.view.LabelView
+    <ru.frogogo.whitelabel.view.LabelView
       android:id="@+id/view_label"
       style="@style/LabelView"
       android:layout_width="wrap_content"

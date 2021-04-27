@@ -1,10 +1,10 @@
 ############
-# Poprobuy
+# frogogo
 ############
 
--repackageclasses ru.poprobuy.poprobuy
+-repackageclasses ru.frogogo.whitelabel
 
--keep class ru.poprobuy.poprobuy.dictionary.** { *; }
+-keep class ru.frogogo.whitelabel.dictionary.** { *; }
 
 # Keep ViewBinding methods that are accessed via reflection
 -keepclassmembers class * implements androidx.viewbinding.ViewBinding {

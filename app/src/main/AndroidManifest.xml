@@ -2,7 +2,7 @@
 <manifest
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
-  package="ru.poprobuy.poprobuy">
+  package="ru.frogogo.whitelabel">
 
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.CAMERA" />
@@ -11,7 +11,7 @@
   <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
 
   <application
-    android:name=".PoprobuyApp"
+    android:name="ru.frogogo.whitelabel.WhiteLabelApp"
     android:allowBackup="false"
     android:hardwareAccelerated="true"
     android:icon="@mipmap/ic_launcher"
@@ -21,7 +21,7 @@
     android:theme="@style/AppTheme.Versioned">
 
     <activity
-      android:name=".ui.MainActivity"
+      android:name="ru.frogogo.whitelabel.ui.MainActivity"
       android:screenOrientation="portrait"
       android:windowSoftInputMode="adjustResize">
       <intent-filter>
