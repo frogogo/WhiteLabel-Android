@@ -2,9 +2,9 @@ package ru.frogogo.whitelabel.ui.home
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import app.cash.exhaustive.Exhaustive
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.github.ajalt.timberkt.e
-import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.scope.fragmentScope
@@ -17,7 +17,6 @@ import ru.frogogo.whitelabel.databinding.FragmentHomeBinding
 import ru.frogogo.whitelabel.extension.observe
 import ru.frogogo.whitelabel.extension.setOnSafeClickListener
 import ru.frogogo.whitelabel.extension.setVisible
-import ru.frogogo.whitelabel.ui.home.delegate.HomeClickHandlerDelegate
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 import ru.frogogo.whitelabel.util.unsafeLazy
 
@@ -49,12 +48,14 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
 
   override fun initObservers() {
     with(viewModel) {
-      observe(viewModel.dataLive) { adapter.items = it }
+      observe(viewModel.dataLive) { data ->
+        binding.swipeRefreshLayout.isRefreshing = false
+        adapter.items = data
+      }
       observe(isLoadingLive) { isLoading ->
         renderState(isLoading = isLoading)
-        binding.swipeRefreshLayout.isRefreshing = false
       }
-      observe(errorOccurredLiveEvent) { renderState(isError = true) }
+      observe(effectLiveEvent, ::handleEffect)
     }
   }
 
@@ -78,4 +79,14 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
       scanReceiptAction = { viewModel.onScanClicked() }
     )
   )
+
+  private fun handleEffect(effect: HomeEffect) {
+    @Exhaustive
+    when (effect) {
+      HomeEffect.ShowLoadingError -> {
+        binding.swipeRefreshLayout.isRefreshing = false
+        renderState(isError = true)
+      }
+    }
+  }
 }
