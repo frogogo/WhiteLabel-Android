@@ -23,7 +23,4 @@
   <dimen name="receipt_header_height_large">144dp</dimen>
   <dimen name="receipt_header_state_image_size">56dp</dimen>
 
-  <!-- Product Select -->
-  <dimen name="product_select_dialog_product_size">215dp</dimen>
-
 </resources>

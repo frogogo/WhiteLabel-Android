@@ -5,8 +5,6 @@
   <string name="common_button_ok">Ок</string>
   <string name="common_button_continue">Продолжить</string>
   <string name="common_button_cancel">Отменить</string>
-  <string name="common_button_yes">Да</string>
-  <string name="common_button_no">Нет</string>
 
   <!-- Errors -->
   <string name="error_phone_length">Телефон не может быть меньше 10 символов</string>
@@ -25,7 +23,5 @@
   <string name="error_logout">Произошла внутренняя ошибка, авторизуйтесь заново</string>
 
   <!-- Error State -->
-  <string name="view_error_state_description">Ошибка загрузки</string>
-  <string name="view_error_state_button">Повторить</string>
 
 </resources>

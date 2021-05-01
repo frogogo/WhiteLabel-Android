@@ -72,18 +72,10 @@
     <item name="android:fontFamily">@font/rubik_medium</item>
   </style>
 
-  <style name="Text.Subhead.Bold">
-    <item name="android:fontFamily">@font/rubik_bold</item>
-  </style>
-
   <!-- Caption -->
   <style name="Text.Caption">
     <item name="android:textSize">@dimen/text_caption_size</item>
     <item name="android:lineSpacingExtra">@dimen/text_caption_spacing_extra</item>
-  </style>
-
-  <style name="Text.Caption.Medium">
-    <item name="android:fontFamily">@font/rubik_medium</item>
   </style>
 
   <style name="Text.Caption.Bold">

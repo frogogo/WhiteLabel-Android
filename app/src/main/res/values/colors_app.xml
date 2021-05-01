@@ -24,10 +24,6 @@
   <color name="swipe_refresh_1">@color/primary_500</color>
   <color name="swipe_refresh_2">@color/red</color>
 
-  <!-- Auth -->
-  <color name="auth_text">@color/black</color>
-  <color name="auth_text_placeholder">@color/gray_300</color>
-
   <color name="auth_code_confirmation_phone">#1e1e3c</color>
 
   <!-- Scanner -->
