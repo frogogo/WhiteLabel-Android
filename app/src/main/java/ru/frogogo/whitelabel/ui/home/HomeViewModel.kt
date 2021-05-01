@@ -92,16 +92,6 @@ class HomeViewModel(
     navigation.navigateToReceiptScan().navigate()
   }
 
-  fun navigateToMachineEnter(receiptId: Int) {
-    d { "Navigating to machine enter" }
-    navigation.navigateToMachineEnter(receiptId).navigate()
-  }
-
-  fun navigateToMachineScan(receiptId: Int) {
-    d { "Navigating to machine scan" }
-    navigation.navigateToMachineScan(receiptId).navigate()
-  }
-
   companion object {
     private const val REFRESH_DELAY = 5 * 1000L // 5 seconds
     private val errorState = emptyList<RecyclerViewItem>()

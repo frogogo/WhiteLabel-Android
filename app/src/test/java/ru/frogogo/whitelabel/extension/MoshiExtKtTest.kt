@@ -12,16 +12,6 @@ class MoshiExtKtTest {
   private val moshi = Moshi.Builder().build()
 
   @Test
-  fun `fromJsonOrNull returns null if json is empty`() {
-    UserJsonAdapter(moshi).fromJsonOrNull(JSON_EMPTY).shouldBeNull()
-  }
-
-  @Test
-  fun `fromJsonOrNull returns null if json is corrupted`() {
-    UserJsonAdapter(moshi).fromJsonOrNull(JSON_CORRUPTED).shouldBeNull()
-  }
-
-  @Test
   fun `fromJsonOrNull returns object if json is correct`() {
     val expected = User(firstName = "First", email = "mail@mail.ru", phoneNumber = "+7999112233")
 

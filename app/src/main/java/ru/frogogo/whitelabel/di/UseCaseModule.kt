@@ -12,8 +12,6 @@ import ru.frogogo.whitelabel.usecase.receipt.CreateReceiptUseCase
 import ru.frogogo.whitelabel.usecase.receipt.GetReceiptsUseCase
 import ru.frogogo.whitelabel.usecase.user.GetUserInfoUseCase
 import ru.frogogo.whitelabel.usecase.user.UpdateUserDetailsUseCase
-import ru.frogogo.whitelabel.usecase.vending_machine.AssignVendingMachineUseCase
-import ru.frogogo.whitelabel.usecase.vending_machine.TakeProductUseCase
 
 val useCaseModule = module {
   // Auth
@@ -33,10 +31,6 @@ val useCaseModule = module {
   // Receipt
   single { GetReceiptsUseCase(get()) }
   single { CreateReceiptUseCase(get()) }
-
-  // Vending Machine
-  single { AssignVendingMachineUseCase(get()) }
-  single { TakeProductUseCase(get()) }
 
   // System
   single { ClearUserDataUseCase(get()) }

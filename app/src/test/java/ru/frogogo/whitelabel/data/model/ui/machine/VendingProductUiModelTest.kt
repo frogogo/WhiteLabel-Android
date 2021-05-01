@@ -1,10 +1,8 @@
 package ru.frogogo.whitelabel.data.model.ui.machine
 
-import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.TestFactory
 import ru.frogogo.test.DataFixtures
-import ru.frogogo.whitelabel.dictionary.VendingProductState
 
 internal class VendingProductUiModelTest {
 

@@ -17,12 +17,8 @@ import ru.frogogo.whitelabel.ui.auth.policy.AuthPolicyNavigation
 import ru.frogogo.whitelabel.ui.auth.policy.AuthPolicyNavigationImpl
 import ru.frogogo.whitelabel.ui.home.HomeNavigation
 import ru.frogogo.whitelabel.ui.home.HomeNavigationImpl
-import ru.frogogo.whitelabel.ui.machine_select.MachineSelectNavigation
-import ru.frogogo.whitelabel.ui.machine_select.MachineSelectNavigationImpl
 import ru.frogogo.whitelabel.ui.onboarding.OnboardingNavigation
 import ru.frogogo.whitelabel.ui.onboarding.OnboardingNavigationImpl
-import ru.frogogo.whitelabel.ui.products.MachineProductsNavigation
-import ru.frogogo.whitelabel.ui.products.MachineProductsNavigationImpl
 import ru.frogogo.whitelabel.ui.profile.ProfileNavigation
 import ru.frogogo.whitelabel.ui.profile.ProfileNavigationImpl
 import ru.frogogo.whitelabel.ui.profile.receipts.ReceiptsNavigation
@@ -54,8 +50,4 @@ val navigationModule = module {
   factory { ProfileNavigationImpl() as ProfileNavigation }
   factory { ReceiptsNavigationImpl() as ReceiptsNavigation }
   factory { ReceiptDetailsNavigationImpl() as ReceiptDetailsNavigation }
-
-  // Machine
-  factory { MachineSelectNavigationImpl() as MachineSelectNavigation }
-  factory { MachineProductsNavigationImpl() as MachineProductsNavigation }
 }

@@ -160,9 +160,6 @@
     <action
       android:id="@+id/home_to_scanner"
       app:destination="@id/scanner" />
-    <action
-      android:id="@+id/home_to_machine_select"
-      app:destination="@id/machine_select" />
   </fragment>
 
   <fragment
@@ -183,19 +180,6 @@
     android:id="@+id/scanner"
     android:name="ru.frogogo.whitelabel.ui.scanner.ScannerFragment"
     tools:layout="@layout/fragment_scanner">
-    <argument
-      android:name="mode"
-      app:argType="ru.frogogo.whitelabel.dictionary.ScanMode" />
-    <argument
-      android:name="receiptId"
-      android:defaultValue="-1"
-      app:argType="integer" />
-    <action
-      android:id="@+id/scanner_to_products"
-      app:destination="@id/products" />
-    <action
-      android:id="@+id/scanner_to_machine_select"
-      app:destination="@id/machine_select" />
     <action
       android:id="@+id/scanner_to_home"
       app:destination="@id/home"
@@ -203,18 +187,6 @@
       app:exitAnim="@anim/scale_exit"
       app:popUpTo="@id/main_navigation"
       app:popUpToInclusive="true" />
-  </fragment>
-
-  <fragment
-    android:id="@+id/machine_select"
-    android:name="ru.frogogo.whitelabel.ui.machine_select.MachineSelectFragment"
-    tools:layout="@layout/fragment_machine_select">
-    <action
-      android:id="@+id/machine_select_to_products"
-      app:destination="@id/products" />
-    <argument
-      android:name="receiptId"
-      app:argType="integer" />
   </fragment>
 
   <fragment
@@ -236,32 +208,10 @@
     <action
       android:id="@+id/receipt_details_to_scanner"
       app:destination="@id/scanner" />
-    <action
-      android:id="@+id/receipt_details_to_machine_select"
-      app:destination="@id/machine_select" />
     <argument
       android:name="buttonState"
       app:argType="ru.frogogo.whitelabel.ui.profile.receipts.details.ReceiptDetailsButtonState" />
   </dialog>
-
-  <fragment
-    android:id="@+id/products"
-    android:name="ru.frogogo.whitelabel.ui.products.MachineProductsFragment"
-    tools:layout="@layout/fragment_machine_products">
-    <argument
-      android:name="receiptId"
-      app:argType="integer" />
-    <argument
-      android:name="vendingMachine"
-      app:argType="ru.frogogo.whitelabel.data.model.ui.machine.VendingMachineUiModel" />
-    <action
-      android:id="@+id/products_to_home"
-      app:destination="@id/home"
-      app:enterAnim="@anim/scale_enter"
-      app:exitAnim="@anim/scale_exit"
-      app:popUpTo="@id/main_navigation"
-      app:popUpToInclusive="true" />
-  </fragment>
 
   <fragment
     android:id="@+id/web_view"

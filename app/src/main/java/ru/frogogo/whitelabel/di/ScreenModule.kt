@@ -4,8 +4,6 @@ package ru.frogogo.whitelabel.di
 
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import ru.frogogo.whitelabel.data.model.ui.machine.VendingMachineUiModel
-import ru.frogogo.whitelabel.dictionary.ScanMode
 import ru.frogogo.whitelabel.ui.MainViewModel
 import ru.frogogo.whitelabel.ui.auth.code.AuthCodeViewModel
 import ru.frogogo.whitelabel.ui.auth.email.AuthEmailViewModel
@@ -13,10 +11,7 @@ import ru.frogogo.whitelabel.ui.auth.name.AuthNameViewModel
 import ru.frogogo.whitelabel.ui.auth.phone.AuthPhoneViewModel
 import ru.frogogo.whitelabel.ui.auth.policy.AuthPolicyViewModel
 import ru.frogogo.whitelabel.ui.home.HomeViewModel
-import ru.frogogo.whitelabel.ui.machine_select.MachineSelectViewModel
 import ru.frogogo.whitelabel.ui.onboarding.OnboardingViewModel
-import ru.frogogo.whitelabel.ui.products.MachineProductsViewModel
-import ru.frogogo.whitelabel.ui.products.select.ProductSelectionViewModel
 import ru.frogogo.whitelabel.ui.profile.ProfileViewModel
 import ru.frogogo.whitelabel.ui.profile.receipts.ReceiptsViewModel
 import ru.frogogo.whitelabel.ui.profile.receipts.details.ReceiptDetailsButtonState
@@ -56,35 +51,7 @@ val screenModule = module {
 
   // Home
   viewModel { HomeViewModel(get(), get()) }
-  viewModel { (scanMode: ScanMode, receiptId: Int) ->
-    ScannerViewModel(
-      scanMode = scanMode,
-      receiptId = receiptId,
-      navigation = get(),
-      createReceiptUseCase = get(),
-      assignVendingMachineUseCase = get(),
-      resourceProvider = get()
-    )
-  }
-  viewModel { (receiptId: Int) -> MachineSelectViewModel(receiptId, get(), get(), get()) }
-
-  // Products
-  viewModel { (receiptId: Int, machine: VendingMachineUiModel) ->
-    MachineProductsViewModel(
-      receiptId = receiptId,
-      vendingMachine = machine,
-      navigation = get(),
-      productSelectionInteractor = get()
-    )
-  }
-  viewModel { (params: ProductSelectionViewModel.Params) ->
-    ProductSelectionViewModel(
-      params = params,
-      resourceProvider = get(),
-      takeProductUseCase = get(),
-      productSelectionInteractor = get()
-    )
-  }
+  viewModel { ScannerViewModel(get(), get(), get()) }
 
   // Profile
   viewModel { ProfileViewModel(get(), get(), get(), get(), get()) }

@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.DialogInterface
 import android.view.View
 import androidx.core.view.doOnLayout
-import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.github.ajalt.timberkt.d
 import com.github.ajalt.timberkt.e
@@ -17,12 +16,9 @@ import com.journeyapps.barcodescanner.DefaultDecoderFactory
 import com.journeyapps.barcodescanner.Size
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.parameter.parametersOf
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.ui.BaseFragment
 import ru.frogogo.whitelabel.databinding.FragmentScannerBinding
-import ru.frogogo.whitelabel.dictionary.ScanMode.MACHINE
-import ru.frogogo.whitelabel.dictionary.ScanMode.RECEIPT
 import ru.frogogo.whitelabel.extension.*
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 import ru.frogogo.whitelabel.view.dialog.ErrorDialogFragment
@@ -32,11 +28,10 @@ import ru.frogogo.whitelabel.view.dialog.ErrorDialogFragmentCallbackViewModel
 class ScannerFragment : BaseFragment<ScannerViewModel>(),
   BarcodeCallback {
 
-  override val viewModel: ScannerViewModel by viewModel { parametersOf(args.mode, args.receiptId) }
+  override val viewModel: ScannerViewModel by viewModel()
 
   private val errorDialogFragmentCallbackViewModel: ErrorDialogFragmentCallbackViewModel by sharedViewModel()
   private val binding: FragmentScannerBinding by viewBinding()
-  private val args: ScannerFragmentArgs by navArgs()
   private var flashIsOn = false
 
   override fun provideConfiguration(): Configuration = Configuration(
@@ -54,10 +49,6 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(),
       buttonFlash.setOnClickListener { toggleFlash() }
       buttonClose.setOnSafeClickListener(viewModel::navigateBack)
       buttonHelp.setOnSafeClickListener(viewModel::navigateToHelp)
-      buttonEnterManual.apply {
-        setVisible(args.mode == MACHINE)
-        setOnSafeClickListener(viewModel::navigateToManualMachineEnter)
-      }
     }
 
     initScanner()
@@ -100,11 +91,7 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(),
   private fun initScanner() {
     binding.barcodeView.apply {
       // Title
-      val title = when (args.mode) {
-        RECEIPT -> R.string.scanner_title_receipt
-        MACHINE -> R.string.scanner_title_machine
-      }
-      setStatusText(getString(title))
+      setStatusText(getString(R.string.scanner_title_receipt))
       // Decoder
       barcodeView.decoderFactory = DefaultDecoderFactory(BARCODE_FORMATS)
       // Size

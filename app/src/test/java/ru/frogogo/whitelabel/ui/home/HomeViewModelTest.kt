@@ -10,16 +10,16 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
-import ru.frogogo.whitelabel.data.mapper.toDomain
-import ru.frogogo.whitelabel.usecase.home.GetHomeUseCase
-import ru.frogogo.whitelabel.core.Event
-import ru.frogogo.whitelabel.core.Result
-import ru.frogogo.whitelabel.util.network.NetworkError
 import ru.frogogo.test.DataFixtures
 import ru.frogogo.test.base.ViewModelTestJUnit5
 import ru.frogogo.test.mockkObserver
 import ru.frogogo.test.testError
+import ru.frogogo.whitelabel.core.Event
+import ru.frogogo.whitelabel.core.Result
+import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
+import ru.frogogo.whitelabel.data.mapper.toDomain
+import ru.frogogo.whitelabel.usecase.home.GetHomeUseCase
+import ru.frogogo.whitelabel.util.network.NetworkError
 
 @ExperimentalCoroutinesApi
 class HomeViewModelTest : ViewModelTestJUnit5() {
@@ -123,20 +123,6 @@ class HomeViewModelTest : ViewModelTestJUnit5() {
     viewModel.navigateToReceiptScan()
 
     viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToReceiptScan())
-  }
-
-  @Test
-  fun `view model navigates to machine code enter`() {
-    viewModel.navigateToMachineEnter(1)
-
-    viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToMachineEnter(1))
-  }
-
-  @Test
-  fun `view model navigates to machine scan`() {
-    viewModel.navigateToMachineScan(1)
-
-    viewModel.navigationLiveEvent.value shouldBeEqualTo Event(navigation.navigateToMachineScan(1))
   }
 
   private fun executeSuccessFetch() {
