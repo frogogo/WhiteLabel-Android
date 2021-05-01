@@ -67,8 +67,8 @@ class ReceiptDetailsBottomDialog : BaseBottomSheetDialogFragment<ReceiptDetailsV
 
       // Controls
       layoutControlsGoods.initListeners(
-        scanMachineClickAction = { viewModel.navigateToMachineEnter(receipt.id) },
-        enterMachineClickAction = { viewModel.navigateToMachineScan(receipt.id) }
+        scanMachineClickAction = { /* TODO */ },
+        enterMachineClickAction = { /* TODO */ }
       )
       layoutControlsGoods.bind(receipt)
 

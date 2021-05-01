@@ -1,18 +1,16 @@
 package ru.frogogo.whitelabel.data.network
 
 import retrofit2.Response
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.PATCH
+import retrofit2.http.POST
 import ru.frogogo.whitelabel.data.model.api.auth.*
 import ru.frogogo.whitelabel.data.model.api.home.HomeResponse
-import ru.frogogo.whitelabel.data.model.api.machine.TakeProductRequest
-import ru.frogogo.whitelabel.data.model.api.machine.VendingMachine
-import ru.frogogo.whitelabel.data.model.api.machine.VendingMachineAssignRequest
 import ru.frogogo.whitelabel.data.model.api.receipt.Receipt
 import ru.frogogo.whitelabel.data.model.api.receipt.ReceiptCreationRequest
 import ru.frogogo.whitelabel.data.model.api.user.User
 import ru.frogogo.whitelabel.data.model.api.user.UserUpdateRequest
-import ru.frogogo.whitelabel.data.network.annotation.ProvideMachineSessionId
-import ru.frogogo.whitelabel.data.network.annotation.TakeMachineSessionId
 
 interface FrogogoApi {
 
@@ -42,19 +40,4 @@ interface FrogogoApi {
 
   @GET("home")
   suspend fun getHome(): Response<HomeResponse>
-
-  @TakeMachineSessionId
-  @ProvideMachineSessionId
-  @POST("vending_machines/{machineId}/assign")
-  suspend fun assignVendingMachine(
-    @Path("machineId") machineId: String,
-    @Body body: VendingMachineAssignRequest,
-  ): Response<VendingMachine>
-
-  @ProvideMachineSessionId
-  @POST("vending_machines/{machineId}/take_item")
-  suspend fun takeProduct(
-    @Path("machineId") machineId: Int,
-    @Body body: TakeProductRequest,
-  ): Response<Unit>
 }

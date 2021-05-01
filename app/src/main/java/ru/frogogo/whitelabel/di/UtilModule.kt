@@ -8,7 +8,6 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import ru.frogogo.whitelabel.core.navigation.NavigationRouter
-import ru.frogogo.whitelabel.ui.products.select.MachineProductSelectionInteractor
 import ru.frogogo.whitelabel.util.OtpRequestDisabler
 import ru.frogogo.whitelabel.util.ProfileUtils
 import ru.frogogo.whitelabel.util.ResourceProvider
@@ -20,7 +19,6 @@ val utilModule = module {
   single { AnalyticsManager(FirebaseAnalytics.getInstance(androidContext())) }
   single { ResourceProvider(androidContext()) }
   single { ProfileUtils(androidContext()) }
-  single { MachineProductSelectionInteractor() }
   factory { (navController: NavController) ->
     NavigationRouter(
       controller = navController

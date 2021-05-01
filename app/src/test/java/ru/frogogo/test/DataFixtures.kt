@@ -4,23 +4,16 @@ import ru.frogogo.whitelabel.data.mapper.toDomain
 import ru.frogogo.whitelabel.data.model.api.auth.AuthenticationResponse
 import ru.frogogo.whitelabel.data.model.api.auth.ConfirmationCodeRequestResponse
 import ru.frogogo.whitelabel.data.model.api.home.HomeResponse
-import ru.frogogo.whitelabel.data.model.api.machine.VendingCell
-import ru.frogogo.whitelabel.data.model.api.machine.VendingMachine
-import ru.frogogo.whitelabel.data.model.api.machine.VendingProduct
 import ru.frogogo.whitelabel.data.model.api.receipt.Receipt
 import ru.frogogo.whitelabel.data.model.api.receipt.ReceiptDistributionNetwork
 import ru.frogogo.whitelabel.data.model.api.receipt.ReceiptProduct
 import ru.frogogo.whitelabel.data.model.api.receipt.ReceiptRejectReason
 import ru.frogogo.whitelabel.data.model.api.user.User
-import ru.frogogo.whitelabel.data.model.ui.machine.VendingCellUiModel
-import ru.frogogo.whitelabel.data.model.ui.machine.VendingMachineUiModel
-import ru.frogogo.whitelabel.data.model.ui.machine.VendingProductUiModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptDistributionNetworkUiModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptProductUiModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptRejectReasonUiModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.dictionary.ReceiptState
-import ru.frogogo.whitelabel.dictionary.VendingProductState
 import java.util.*
 
 object DataFixtures {
@@ -65,38 +58,6 @@ object DataFixtures {
 
   fun getReceiptUIModel(id: Int = 1): ReceiptUiModel =
     getReceipt(id).toDomain()
-
-  fun getVendingMachine(id: Int = 1): VendingMachine = VendingMachine(
-    id = id,
-    vendingCells = listOf(
-      VendingCell(1, getVendingProduct(1)),
-      VendingCell(2, getVendingProduct(2)),
-      VendingCell(3, getVendingProduct(3)),
-      VendingCell(4, getVendingProduct(4)),
-    ),
-    assignExpiresIn = 60
-  )
-
-  fun getVendingMachineUiModel(id: Int = 1): VendingMachineUiModel =
-    getVendingMachine(id).toDomain()
-
-  fun getVendingCell(id: Int = 1): VendingCell = VendingCell(
-    id = id,
-    getVendingProduct(id * 10)
-  )
-
-  fun getVendingCellUiModel(id: Int = 1): VendingCellUiModel =
-    getVendingCell(id).toDomain()!!
-
-  fun getVendingProduct(id: Int = 1): VendingProduct = VendingProduct(
-    id = id,
-    name = "Name $id",
-    imageUrl = "https://picsum.photos/${500 + id}/${500 + id}",
-    state = VendingProductState.AVAILABLE
-  )
-
-  fun getVendingProductUiModel(id: Int = 1): VendingProductUiModel =
-    getVendingProduct(id).toDomain()
 
   fun getReceiptRejectReason(): ReceiptRejectReason =
     ReceiptRejectReason("reason", "reason_text")

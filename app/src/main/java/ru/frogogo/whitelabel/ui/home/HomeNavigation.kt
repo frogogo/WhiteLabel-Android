@@ -1,14 +1,11 @@
 package ru.frogogo.whitelabel.ui.home
 
 import ru.frogogo.whitelabel.core.navigation.NavigationCommand
-import ru.frogogo.whitelabel.dictionary.ScanMode
 import ru.frogogo.whitelabel.extension.toCommand
 
 interface HomeNavigation {
   fun navigateToProfile(): NavigationCommand
   fun navigateToReceiptScan(): NavigationCommand
-  fun navigateToMachineScan(receiptId: Int): NavigationCommand
-  fun navigateToMachineEnter(receiptId: Int): NavigationCommand
 }
 
 class HomeNavigationImpl : HomeNavigation {
@@ -17,14 +14,5 @@ class HomeNavigationImpl : HomeNavigation {
     HomeFragmentDirections.homeToProfile().toCommand()
 
   override fun navigateToReceiptScan(): NavigationCommand =
-    HomeFragmentDirections.homeToScanner(ScanMode.RECEIPT).toCommand()
-
-  override fun navigateToMachineScan(receiptId: Int): NavigationCommand =
-    HomeFragmentDirections.homeToScanner(
-      mode = ScanMode.MACHINE,
-      receiptId = receiptId
-    ).toCommand()
-
-  override fun navigateToMachineEnter(receiptId: Int): NavigationCommand =
-    HomeFragmentDirections.homeToMachineSelect(receiptId).toCommand()
+    HomeFragmentDirections.homeToScanner().toCommand()
 }

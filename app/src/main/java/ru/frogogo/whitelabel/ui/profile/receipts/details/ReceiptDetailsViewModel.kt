@@ -22,22 +22,4 @@ class ReceiptDetailsViewModel(
     d { "Navigating to receipt scan" }
     navigation.navigateToReceiptScan().navigate()
   }
-
-  fun navigateToMachineEnter(receiptId: Int) {
-    if (!buttonState.canTakeProduct) {
-      _commandEvent.postValue(ReceiptDetailsCommand.ShowToast(R.string.receipt_details_error_take_unavailable))
-      return
-    }
-    d { "Navigating to machine enter" }
-    navigation.navigateToMachineEnter(receiptId).navigate()
-  }
-
-  fun navigateToMachineScan(receiptId: Int) {
-    if (!buttonState.canTakeProduct) {
-      _commandEvent.postValue(ReceiptDetailsCommand.ShowToast(R.string.receipt_details_error_take_unavailable))
-      return
-    }
-    d { "Navigating to machine scan" }
-    navigation.navigateToMachineScan(receiptId).navigate()
-  }
 }

@@ -33,8 +33,6 @@ val networkModule = module {
   // Interceptors
   single { AuthInterceptor(get()) as Interceptor }
   single { TokenAuthenticator() as Authenticator }
-  single { MachineSessionIdTakeInterceptor(get()) }
-  single { MachineSessionIdProviderInterceptor(get()) }
 
   // Network
   single {
@@ -42,8 +40,6 @@ val networkModule = module {
       context = androidContext(),
       authenticator = get(),
       authorizationInterceptor = get(),
-      machineSessionIdTakeInterceptor = get(),
-      machineSessionIdProviderInterceptor = get(),
       userAgent = UserAgentFactory.create()
     )
   }
@@ -59,12 +55,10 @@ val networkModule = module {
   single { AutoLogoutNotifier(get()) }
 }
 
-fun createHttpClient(
+private fun createHttpClient(
   context: Context,
   authenticator: Authenticator,
   authorizationInterceptor: Interceptor,
-  machineSessionIdTakeInterceptor: MachineSessionIdTakeInterceptor,
-  machineSessionIdProviderInterceptor: MachineSessionIdProviderInterceptor,
   userAgent: String,
 ): OkHttpClient {
   return OkHttpClient.Builder().apply {
@@ -86,8 +80,6 @@ fun createHttpClient(
     addInterceptor(AcceptLanguageInterceptor())
     addInterceptor(ApiVersionInterceptor(Constants.FROGOGO_API_VERSION))
     addInterceptor(NoContentInterceptor())
-    addInterceptor(machineSessionIdTakeInterceptor)
-    addInterceptor(machineSessionIdProviderInterceptor)
 
     // Auth
     authenticator(authenticator)
