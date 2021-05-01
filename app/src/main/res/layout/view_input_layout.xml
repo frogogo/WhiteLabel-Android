@@ -40,7 +40,7 @@
     app:layout_goneMarginStart="0dp"
     tools:text="(000) 000-00-00" />
 
-  <ru.poprobuy.poprobuy.view.ClearFocusEditText
+  <ru.frogogo.whitelabel.view.ClearFocusEditText
     android:id="@+id/edit_text"
     style="@style/Text.Title1"
     android:layout_width="wrap_content"

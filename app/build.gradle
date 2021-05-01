@@ -23,7 +23,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 // Build archive name
-def applicationName = "Poprobuy"
+def applicationName = "S-Boom"
 
 android {
 
@@ -31,19 +31,19 @@ android {
   buildToolsVersion "29.0.3"
 
   defaultConfig {
-    applicationId "ru.poprobuy.poprobuy"
+    applicationId "ru.frogogo.sboom"
 
     minSdkVersion 23
     targetSdkVersion 29
 
-    versionCode 14
-    versionName "0.10.1"
+    versionCode 1
+    versionName "0.0.1"
 
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     setProperty("archivesBaseName", applicationName + "-v" + versionCode + "(" + versionName + ")-" + getDate())
 
     buildConfigField 'int', 'API_VERSION', '1'
-    buildConfigField 'String', 'BASE_URL', '"https://poprobuy.ru"'
+    buildConfigField 'String', 'BASE_URL', '"https://zboom-staging.herokuapp.com"'
     buildConfigField 'boolean', 'DEBUG_STUFF', 'true'
     buildConfigField "java.util.Date", "BUILD_TIME", "new java.util.Date(" + System.currentTimeMillis() + "L)"
   }
@@ -178,10 +178,8 @@ dependencies {
   implementation 'io.coil-kt:coil:1.2.0'
 
   // Koin https://github.com/InsertKoinIO/koin
-  def koinVersion = '2.2.2'
-  implementation "org.koin:koin-android:$koinVersion"
-  implementation "org.koin:koin-androidx-scope:$koinVersion"
-  implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+  def koinVersion = '3.0.1'
+  implementation "io.insert-koin:koin-android:$koinVersion"
 
   // Retrofit https://github.com/square/retrofit
   def retrofitVersion = '2.9.0'

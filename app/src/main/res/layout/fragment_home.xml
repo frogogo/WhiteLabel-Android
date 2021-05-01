@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ru.poprobuy.poprobuy.view.ColoredSwipeRefreshLayout
+<ru.frogogo.whitelabel.view.ColoredSwipeRefreshLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
@@ -53,7 +53,7 @@
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toBottomOf="@id/layout_toolbar" />
 
-    <ru.poprobuy.poprobuy.view.ErrorStateView
+    <ru.frogogo.whitelabel.view.ErrorStateView
       android:id="@+id/view_error_state"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -65,4 +65,4 @@
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ru.poprobuy.poprobuy.view.ColoredSwipeRefreshLayout>
+</ru.frogogo.whitelabel.view.ColoredSwipeRefreshLayout>
