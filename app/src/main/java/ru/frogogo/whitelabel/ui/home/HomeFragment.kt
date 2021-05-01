@@ -3,8 +3,13 @@ package ru.frogogo.whitelabel.ui.home
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.github.ajalt.timberkt.e
+import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
+import org.koin.android.scope.AndroidScopeComponent
+import org.koin.androidx.scope.fragmentScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.scope.Scope
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.recycler.BaseDelegationAdapter
 import ru.frogogo.whitelabel.core.ui.BaseFragment
@@ -12,12 +17,15 @@ import ru.frogogo.whitelabel.databinding.FragmentHomeBinding
 import ru.frogogo.whitelabel.extension.observe
 import ru.frogogo.whitelabel.extension.setOnSafeClickListener
 import ru.frogogo.whitelabel.extension.setVisible
+import ru.frogogo.whitelabel.ui.home.delegate.HomeClickHandlerDelegate
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 import ru.frogogo.whitelabel.util.unsafeLazy
 
 class HomeFragment : BaseFragment<HomeViewModel>(),
-  SwipeRefreshLayout.OnRefreshListener {
+  SwipeRefreshLayout.OnRefreshListener,
+  AndroidScopeComponent {
 
+  override val scope: Scope by fragmentScope()
   override val viewModel: HomeViewModel by viewModel()
 
   private val binding: FragmentHomeBinding by viewBinding()
@@ -31,7 +39,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
 
   override fun initViews() {
     binding.apply {
-      buttonProfile.setOnSafeClickListener(viewModel::navigateToProfile)
+      buttonProfile.setOnSafeClickListener(viewModel::onProfileClicked)
       recyclerView.setRecycledViewPool(recycledViewPool)
       recyclerView.adapter = this@HomeFragment.adapter
       swipeRefreshLayout.setOnRefreshListener(this@HomeFragment)
@@ -63,11 +71,11 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
   }
 
   private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(
-    HomeAdapterDelegates.emptyStateDelegate { viewModel.navigateToReceiptScan() },
+    HomeAdapterDelegates.emptyStateDelegate { viewModel.onScanClicked() },
     HomeAdapterDelegates.approvedStateDelegate(
       scanMachineCallback = { /* TODO */ },
       enterMachineAction = { /* TODO */ },
-      scanReceiptAction = { viewModel.navigateToReceiptScan() }
+      scanReceiptAction = { viewModel.onScanClicked() }
     )
   )
 }

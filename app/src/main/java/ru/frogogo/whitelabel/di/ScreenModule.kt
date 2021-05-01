@@ -4,13 +4,13 @@ package ru.frogogo.whitelabel.di
 
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import ru.frogogo.whitelabel.di.scope.homeScope
 import ru.frogogo.whitelabel.ui.MainViewModel
 import ru.frogogo.whitelabel.ui.auth.code.AuthCodeViewModel
 import ru.frogogo.whitelabel.ui.auth.email.AuthEmailViewModel
 import ru.frogogo.whitelabel.ui.auth.name.AuthNameViewModel
 import ru.frogogo.whitelabel.ui.auth.phone.AuthPhoneViewModel
 import ru.frogogo.whitelabel.ui.auth.policy.AuthPolicyViewModel
-import ru.frogogo.whitelabel.ui.home.HomeViewModel
 import ru.frogogo.whitelabel.ui.onboarding.OnboardingViewModel
 import ru.frogogo.whitelabel.ui.profile.ProfileViewModel
 import ru.frogogo.whitelabel.ui.profile.receipts.ReceiptsViewModel
@@ -50,7 +50,7 @@ val screenModule = module {
   }
 
   // Home
-  viewModel { HomeViewModel(get(), get()) }
+  homeScope()
   viewModel { ScannerViewModel(get(), get(), get()) }
 
   // Profile
