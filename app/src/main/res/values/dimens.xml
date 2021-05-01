@@ -10,6 +10,7 @@
   <dimen name="button_height">36dp</dimen>
   <dimen name="button_icon_size">14dp</dimen>
   <dimen name="button_text_size">12sp</dimen>
+  <dimen name="progress_bar_size">18dp</dimen>
   <dimen name="toolbar_height">48dp</dimen>
   <dimen name="divider_height">1dp</dimen>
 
@@ -46,5 +47,9 @@
   <!-- Widgets -->
   <dimen name="label_padding_vertical">4dp</dimen>
   <dimen name="label_padding_horizontal">6dp</dimen>
+
+  <!-- Product Select -->
+  <dimen name="product_select_buttons_min_width">94dp</dimen>
+  <dimen name="product_select_dialog_product_size">172dp</dimen>
 
 </resources>
