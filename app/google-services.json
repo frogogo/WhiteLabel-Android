@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:99713790578:android:f8a640fe200a65fff388eb",
+        "mobilesdk_app_id": "1:99713790578:android:443959648489ec1cf388eb",
         "android_client_info": {
-          "package_name": "ru.frogogo.zboom"
+          "package_name": "ru.frogogo.sboom"
         }
       },
       "oauth_client": [
