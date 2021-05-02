@@ -1,7 +1,9 @@
 package ru.frogogo.whitelabel.ui.home.data
 
+import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.data.model.ui.home.HomeState
+import ru.frogogo.whitelabel.ui.home.model.HomeSectionHeader
 
 class HomeDataFactoryImpl : HomeDataFactory {
 
@@ -28,5 +30,10 @@ class HomeDataFactoryImpl : HomeDataFactory {
     list: MutableList<RecyclerViewItem>,
   ) {
     list += state.couponProgress
+
+    if (state.coupons.isNotEmpty()) {
+      list += HomeSectionHeader(R.string.home_section_coupons)
+      list += state.coupons
+    }
   }
 }

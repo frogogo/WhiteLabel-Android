@@ -17,6 +17,7 @@ import ru.frogogo.whitelabel.extension.animateToVisible
 import ru.frogogo.whitelabel.extension.observe
 import ru.frogogo.whitelabel.extension.setOnSafeClickListener
 import ru.frogogo.whitelabel.extension.setVisible
+import ru.frogogo.whitelabel.ui.common.CommonAdapterDelegates
 import ru.frogogo.whitelabel.util.ItemDecoration
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 import ru.frogogo.whitelabel.util.unsafeLazy
@@ -75,7 +76,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
 
   private fun initRecyclerView() {
     val decoration = ItemDecoration(
-      verticalSpacing = 0,
+      verticalSpacing = resources.getDimensionPixelSize(R.dimen.spacing_2),
       horizontalSpacing = resources.getDimensionPixelSize(R.dimen.spacing_4),
       topSpacing = resources.getDimensionPixelSize(R.dimen.spacing_6),
       bottomSpacing = resources.getDimensionPixelSize(R.dimen.spacing_24)
@@ -95,7 +96,9 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
     //    enterMachineAction = { /* TODO */ },
     //    scanReceiptAction = { viewModel.onScanClicked() }
     //  )
+    HomeAdapterDelegates.sectionHeaderDelegate(),
     HomeAdapterDelegates.couponProgressDelegate(),
+    CommonAdapterDelegates.couponDelegate { viewModel.onCouponClicked(it) },
   )
 
   private fun handleEffect(effect: HomeEffect) {

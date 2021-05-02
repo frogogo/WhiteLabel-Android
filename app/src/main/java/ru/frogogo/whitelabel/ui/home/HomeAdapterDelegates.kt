@@ -3,13 +3,9 @@ package ru.frogogo.whitelabel.ui.home
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.data.model.ui.home.HomeCouponProgressUiModel
-import ru.frogogo.whitelabel.data.model.ui.home.HomeState
 import ru.frogogo.whitelabel.databinding.ItemHomeCouponProgressBinding
-import ru.frogogo.whitelabel.databinding.ItemHomeEmptyBinding
-import ru.frogogo.whitelabel.databinding.ItemHomeReceiptBinding
-import ru.frogogo.whitelabel.extension.binding.bind
-import ru.frogogo.whitelabel.extension.binding.initListeners
-import ru.frogogo.whitelabel.extension.setOnSafeClickListener
+import ru.frogogo.whitelabel.databinding.ItemHomeSectionHeaderBinding
+import ru.frogogo.whitelabel.ui.home.model.HomeSectionHeader
 import ru.frogogo.whitelabel.util.PriceUtils
 
 object HomeAdapterDelegates {
@@ -34,6 +30,15 @@ object HomeAdapterDelegates {
           progress = item.progressCurrent
         }
         binding.textViewNotice.text = item.notice
+      }
+    }
+
+  fun sectionHeaderDelegate() =
+    adapterDelegateViewBinding<HomeSectionHeader, RecyclerViewItem, ItemHomeSectionHeaderBinding>(
+      viewBinding = { layoutInflater, root -> ItemHomeSectionHeaderBinding.inflate(layoutInflater, root, false) }
+    ) {
+      bind {
+        binding.root.setText(item.textResId)
       }
     }
 
