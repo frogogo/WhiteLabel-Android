@@ -55,29 +55,4 @@ object HomeAdapterDelegates {
       binding.imageViewStatus.setImageResource(item.state.getStatusIcon())
     }
   }
-
-//  fun approvedStateDelegate(
-//    scanMachineCallback: (Int) -> Unit,
-//    enterMachineAction: (Int) -> Unit,
-//    scanReceiptAction: () -> Unit,
-//  ) = adapterDelegateViewBinding<HomeState.Progress, RecyclerViewItem, ItemHomeReceiptBinding>(
-//    viewBinding = { layoutInflater, root -> ItemHomeReceiptBinding.inflate(layoutInflater, root, false) }
-//  ) {
-//    binding.apply {
-//      layoutControlsGoods.initListeners(
-//        scanMachineClickAction = { scanMachineCallback(item.receipt.id) },
-//        enterMachineClickAction = { enterMachineAction(item.receipt.id) }
-//      )
-//      layoutControlsScan.initListeners { scanReceiptAction() }
-//    }
-//
-//    bind {
-//      binding.apply {
-//        viewReceipt.bind(item.receipt)
-//
-//        layoutControlsGoods.bind(item.receipt)
-//        layoutControlsScan.bind(item.receipt)
-//      }
-//    }
-//  }
 }

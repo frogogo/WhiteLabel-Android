@@ -1,7 +1,6 @@
 package ru.frogogo.whitelabel.ui.home
 
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import app.cash.exhaustive.Exhaustive
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.android.ext.android.inject
@@ -23,7 +22,6 @@ import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 import ru.frogogo.whitelabel.util.unsafeLazy
 
 class HomeFragment : BaseFragment<HomeViewModel>(),
-  SwipeRefreshLayout.OnRefreshListener,
   AndroidScopeComponent {
 
   override val scope: Scope by fragmentScope()
@@ -42,7 +40,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
     initRecyclerView()
     binding.apply {
       buttonProfile.setOnSafeClickListener(viewModel::onProfileClicked)
-      swipeRefreshLayout.setOnRefreshListener(this@HomeFragment)
+      swipeRefreshLayout.setOnRefreshListener(viewModel::refreshData)
       viewErrorState.setOnRefreshClickListener(viewModel::refreshData)
       buttonScan.setOnSafeClickListener(viewModel::onScanClicked)
     }
@@ -60,10 +58,6 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
       observe(effectLiveEvent, ::handleEffect)
       observe(scanButtonStateLive, ::handleScanButtonState)
     }
-  }
-
-  override fun onRefresh() {
-    viewModel.refreshData()
   }
 
   private fun renderState(isLoading: Boolean = false, isError: Boolean = false) {
@@ -91,11 +85,6 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
 
   private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(
     //  HomeAdapterDelegates.emptyStateDelegate { viewModel.onScanClicked() },
-    //  HomeAdapterDelegates.approvedStateDelegate(
-    //    scanMachineCallback = { /* TODO */ },
-    //    enterMachineAction = { /* TODO */ },
-    //    scanReceiptAction = { viewModel.onScanClicked() }
-    //  )
     HomeAdapterDelegates.sectionHeaderDelegate(),
     HomeAdapterDelegates.couponProgressDelegate(),
     HomeAdapterDelegates.receiptDelegate(),
@@ -105,10 +94,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
   private fun handleEffect(effect: HomeEffect) {
     @Exhaustive
     when (effect) {
-      HomeEffect.ShowLoadingError -> {
-        binding.swipeRefreshLayout.isRefreshing = false
-        renderState(isError = true)
-      }
+      HomeEffect.ShowLoadingError -> showLoadingError()
     }
   }
 
@@ -117,5 +103,10 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
       animateToVisible()
       isEnabled = state == HomeScanButtonState.SHOWN_ENABLED
     }
+  }
+
+  private fun showLoadingError() {
+    binding.swipeRefreshLayout.isRefreshing = false
+    renderState(isError = true)
   }
 }
