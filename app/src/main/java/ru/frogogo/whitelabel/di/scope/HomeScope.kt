@@ -56,7 +56,7 @@ fun Module.homeScope() {
         dataFactory = get()
       )
     }
-    scoped { HomeViewModel.DelegatesHolder(get(), get()) }
+    scoped { HomeViewModel.DelegatesHolder(get(), get(), get()) }
 
     // Data
     scoped { HomeDataFactoryImpl() as HomeDataFactory }
