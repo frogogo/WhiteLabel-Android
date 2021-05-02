@@ -7,6 +7,7 @@ import ru.frogogo.whitelabel.core.ui.BaseViewModelDelegate
 import ru.frogogo.whitelabel.data.model.ui.home.HomeState
 import ru.frogogo.whitelabel.extension.isEmpty
 import ru.frogogo.whitelabel.ui.home.HomeEffect
+import ru.frogogo.whitelabel.ui.home.data.HomeDataFactory
 import ru.frogogo.whitelabel.util.dispatcher.DispatchersProvider
 
 private val errorState = emptyList<RecyclerViewItem>()
@@ -16,6 +17,7 @@ class HomeStateHandlerDelegate(
   private val mutableDataLive: MutableLiveData<List<RecyclerViewItem>>,
   private val mutableIsLoadingLive: MutableLiveData<Boolean>,
   private val effectLiveEvent: LiveEvent<HomeEffect>,
+  private val dataFactory: HomeDataFactory,
 ) : BaseViewModelDelegate(dispatchersProvider) {
 
   fun showLoader() {
@@ -24,7 +26,7 @@ class HomeStateHandlerDelegate(
 
   fun showData(data: HomeState) {
     mutableIsLoadingLive.value = false
-    mutableDataLive.value = listOf(data)
+    mutableDataLive.value = dataFactory.create(data)
   }
 
   fun showError() {

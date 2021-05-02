@@ -4,7 +4,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import app.cash.exhaustive.Exhaustive
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.github.ajalt.timberkt.e
 import org.koin.android.ext.android.inject
 import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.scope.fragmentScope
@@ -17,6 +16,7 @@ import ru.frogogo.whitelabel.databinding.FragmentHomeBinding
 import ru.frogogo.whitelabel.extension.observe
 import ru.frogogo.whitelabel.extension.setOnSafeClickListener
 import ru.frogogo.whitelabel.extension.setVisible
+import ru.frogogo.whitelabel.util.ItemDecoration
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 import ru.frogogo.whitelabel.util.unsafeLazy
 
@@ -37,10 +37,9 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
   )
 
   override fun initViews() {
+    initRecyclerView()
     binding.apply {
       buttonProfile.setOnSafeClickListener(viewModel::onProfileClicked)
-      recyclerView.setRecycledViewPool(recycledViewPool)
-      recyclerView.adapter = this@HomeFragment.adapter
       swipeRefreshLayout.setOnRefreshListener(this@HomeFragment)
       viewErrorState.setOnRefreshClickListener(viewModel::refreshData)
     }
@@ -71,13 +70,29 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
     }
   }
 
-  private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(
-    HomeAdapterDelegates.emptyStateDelegate { viewModel.onScanClicked() },
-    HomeAdapterDelegates.approvedStateDelegate(
-      scanMachineCallback = { /* TODO */ },
-      enterMachineAction = { /* TODO */ },
-      scanReceiptAction = { viewModel.onScanClicked() }
+  private fun initRecyclerView() {
+    val decoration = ItemDecoration(
+      verticalSpacing = 0,
+      horizontalSpacing = resources.getDimensionPixelSize(R.dimen.spacing_4),
+      topSpacing = resources.getDimensionPixelSize(R.dimen.spacing_6),
+      bottomSpacing = resources.getDimensionPixelSize(R.dimen.spacing_24)
     )
+
+    binding.recyclerView.apply {
+      setRecycledViewPool(recycledViewPool)
+      adapter = this@HomeFragment.adapter
+      addItemDecoration(decoration)
+    }
+  }
+
+  private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(
+    //  HomeAdapterDelegates.emptyStateDelegate { viewModel.onScanClicked() },
+    //  HomeAdapterDelegates.approvedStateDelegate(
+    //    scanMachineCallback = { /* TODO */ },
+    //    enterMachineAction = { /* TODO */ },
+    //    scanReceiptAction = { viewModel.onScanClicked() }
+    //  )
+    HomeAdapterDelegates.couponProgressDelegate(),
   )
 
   private fun handleEffect(effect: HomeEffect) {

@@ -8,64 +8,99 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class ItemDecoration(
-  @Px private val verticalSpacing: Int = 0,
   @Px private val horizontalSpacing: Int = 0,
+  @Px private val verticalSpacing: Int = horizontalSpacing,
+  @Px private val topSpacing: Int = verticalSpacing,
+  @Px private val bottomSpacing: Int = verticalSpacing,
 ) : RecyclerView.ItemDecoration() {
 
   override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-    if (parent.getChildAdapterPosition(view) < 0) {
-      outRect.setEmpty()
-      return
+    val params = getItemParams(view, parent, state)
+
+    outRect.top = if (params.isFirstSpanGroup()) {
+      topSpacing
+    } else {
+      verticalSpacing
     }
 
-    val params = getItemParams(view, parent)
-    val isFirstSpanItem = params.spanIndex == 0
-    val isLastSpanItem = when {
-      // Checks whether item consumes all span size
-      params.spanCount == params.spanSize -> true
-      // Checks whether item has normal size and at last position
-      params.spanCount - 1 == params.spanIndex -> true
-      else -> false
+    outRect.left = if (params.isFirstSpanItem()) {
+      horizontalSpacing
+    } else {
+      // Add half spacing to respect proportions on both sides
+      horizontalSpacing / 2
     }
 
-    outRect.top = verticalSpacing
-    outRect.left = when {
-      isFirstSpanItem -> horizontalSpacing
-      else -> horizontalSpacing / 2
+    outRect.right = if (params.isLastSpanItem()) {
+      horizontalSpacing
+    } else {
+      // Add half spacing to respect proportions on both sides
+      horizontalSpacing / 2
     }
-    outRect.right = when {
-      isLastSpanItem -> horizontalSpacing
-      else -> horizontalSpacing / 2
+
+    outRect.bottom = if (params.isLastSpanGroup()) {
+      bottomSpacing
+    } else {
+      0
     }
   }
 
-  private fun getItemParams(view: View, parent: RecyclerView): ItemParams {
+  private fun getItemParams(view: View, parent: RecyclerView, state: RecyclerView.State): ItemParams {
     val layoutManager = parent.layoutManager
-    val itemPosition = parent.getChildAdapterPosition(view)
+    val itemPosition = parent.getChildViewHolder(view).adapterPosition
 
     when (layoutManager) {
       is GridLayoutManager -> {
         val layoutParams = view.layoutParams as GridLayoutManager.LayoutParams
-        val clampedSpanCount = layoutManager.spanCount.coerceAtLeast(1)
-        val spanSize = layoutManager.spanSizeLookup.getSpanSize(itemPosition)
-        val spanIndex = layoutParams.spanIndex
+        val clampedSpanCount = layoutManager.getClampedSpanCount()
+        val spanSize = layoutParams.spanSize
+        val spanIndex = layoutManager.getSpanIndex(itemPosition, layoutParams)
+        val spanGroupIndex = layoutManager.getSpanGroupIndex(itemPosition)
+        val spanGroups = layoutManager.getSpanGroupsCount(state.itemCount)
 
         return ItemParams(
           spanCount = clampedSpanCount,
           spanSize = spanSize,
-          spanIndex = spanIndex
+          spanIndex = spanIndex,
+          spanGroupIndex = spanGroupIndex,
+          spanGroups = spanGroups,
         )
       }
       is LinearLayoutManager -> {
         return ItemParams(
           spanCount = 1,
           spanSize = 1,
-          spanIndex = 0
+          spanIndex = 0,
+          spanGroupIndex = itemPosition,
+          spanGroups = parent.adapter?.itemCount ?: 0
         )
       }
-      null -> throw IllegalArgumentException("RecyclerView without layout manager")
-      else -> throw IllegalArgumentException("Unsupported layout manager: ${layoutManager::class.java.simpleName}")
+      null -> error("RecyclerView without layout manager")
+      else -> error("Unsupported layout manager: ${layoutManager::class.java.simpleName}")
     }
+  }
+
+  private fun GridLayoutManager.getSpanIndex(
+    itemPosition: Int,
+    layoutParams: GridLayoutManager.LayoutParams,
+  ): Int = if (itemPosition == RecyclerView.NO_POSITION) {
+    // No need to query span index for item without position
+    // (deleted item which is being animated)
+    layoutParams.spanIndex
+  } else {
+    spanSizeLookup.getSpanIndex(itemPosition, spanCount)
+  }
+
+  private fun GridLayoutManager.getClampedSpanCount(): Int =
+    spanCount.coerceAtLeast(1)
+
+  private fun GridLayoutManager.getSpanGroupIndex(itemPosition: Int): Int =
+    spanSizeLookup.getSpanGroupIndex(itemPosition, getClampedSpanCount())
+
+  private fun GridLayoutManager.getSpanGroupsCount(itemCount: Int): Int {
+    val spanSizeLookup = spanSizeLookup
+    val lastItemIndex = if (reverseLayout) 0 else itemCount - 1
+
+    return spanSizeLookup.getSpanGroupIndex(lastItemIndex, getClampedSpanCount()) + 1
   }
 
   private data class ItemParams(
@@ -73,7 +108,29 @@ class ItemDecoration(
     val spanCount: Int,
     // Span size of current item
     val spanSize: Int,
-    // span index in current item's span group
+    // Span index in current item's span group
     val spanIndex: Int,
-  )
+    // Row index
+    val spanGroupIndex: Int,
+    // Rows amount
+    val spanGroups: Int,
+  ) {
+
+    fun isFirstSpanGroup(): Boolean =
+      spanGroupIndex == 0
+
+    fun isLastSpanGroup(): Boolean =
+      spanGroupIndex == spanGroups - 1
+
+    fun isFirstSpanItem(): Boolean =
+      spanIndex == 0
+
+    fun isLastSpanItem(): Boolean = when {
+      // Checks whether item consumes all span size
+      spanCount == spanSize -> true
+      // Checks whether item has normal size and at last position
+      spanCount - 1 == spanIndex -> true
+      else -> false
+    }
+  }
 }

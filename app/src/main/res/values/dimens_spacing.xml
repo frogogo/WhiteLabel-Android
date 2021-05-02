@@ -15,5 +15,6 @@
   <dimen name="spacing_16">48dp</dimen>
   <dimen name="spacing_18">54dp</dimen>
   <dimen name="spacing_20">60dp</dimen>
+  <dimen name="spacing_24">72dp</dimen>
 
 </resources>

@@ -20,6 +20,6 @@ class HomeMapperKtTest {
     val receipt = DataFixtures.getReceipt()
     val home = HomeResponse(receipt)
 
-    home.toDomain() shouldBeEqualTo HomeState.Receipt(receipt.toDomain())
+    home.toDomain() shouldBeEqualTo HomeState.Progress(receipt.toDomain())
   }
 }

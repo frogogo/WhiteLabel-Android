@@ -154,9 +154,6 @@ dependencies {
   // CircleIndicator https://github.com/ongakuer/CircleIndicator
   implementation 'me.relex:circleindicator:2.1.6'
 
-  // CircularProgressBar https://github.com/lopspower/CircularProgressBar
-  implementation 'com.mikhaellopez:circularprogressbar:3.0.3'
-
   // LiveEvent https://github.com/hadilq/LiveEvent
   implementation "com.github.hadilq.liveevent:liveevent:1.2.0"
 

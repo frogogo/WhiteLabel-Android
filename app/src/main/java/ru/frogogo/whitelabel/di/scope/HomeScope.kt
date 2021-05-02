@@ -10,6 +10,8 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.bind
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.ui.home.*
+import ru.frogogo.whitelabel.ui.home.data.HomeDataFactory
+import ru.frogogo.whitelabel.ui.home.data.HomeDataFactoryImpl
 import ru.frogogo.whitelabel.ui.home.delegate.*
 
 private const val NAMED_DATA_LIVE = "data_live"
@@ -47,8 +49,12 @@ fun Module.homeScope() {
         mutableDataLive = get(named(NAMED_DATA_LIVE)),
         mutableIsLoadingLive = get(named(NAMED_IS_LOADING_LIVE)),
         effectLiveEvent = get(named(NAMED_EFFECT_LIVE_EVENT)),
+        dataFactory = get()
       )
     }
     scoped { HomeViewModel.DelegatesHolder(get(), get()) }
+
+    // Data
+    scoped { HomeDataFactoryImpl() as HomeDataFactory }
   }
 }
