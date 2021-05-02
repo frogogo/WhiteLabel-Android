@@ -4,6 +4,7 @@ package ru.frogogo.whitelabel.di
 
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import ru.frogogo.whitelabel.di.scope.couponInfo
 import ru.frogogo.whitelabel.di.scope.homeScope
 import ru.frogogo.whitelabel.ui.MainViewModel
 import ru.frogogo.whitelabel.ui.auth.code.AuthCodeViewModel
@@ -51,6 +52,7 @@ val screenModule = module {
 
   // Home
   homeScope()
+  couponInfo()
   viewModel { ScannerViewModel(get(), get(), get()) }
 
   // Profile
