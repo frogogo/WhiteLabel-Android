@@ -4,13 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.frogogo.whitelabel.core.ui.BaseViewModel
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
+import ru.frogogo.whitelabel.ui.coupon_info.delegates.CouponInfoClicksHandlerDelegate
 import ru.frogogo.whitelabel.ui.coupon_info.delegates.CouponInfoClicksHandlerDelegateImpl
 import ru.frogogo.whitelabel.ui.coupon_info.delegates.CouponInfoContentHandlerDelegate
 
 class CouponInfoViewModel(
   liveData: LiveDataHolder,
   private val delegates: DelegatesHolder,
-) : BaseViewModel() {
+) : BaseViewModel(),
+  CouponInfoClicksHandlerDelegate by delegates.clicksHandlerDelegate {
 
   val contentLive: LiveData<CouponUiModel> = liveData.mutableContentLive
 
