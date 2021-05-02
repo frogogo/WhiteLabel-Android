@@ -3,8 +3,6 @@ package ru.frogogo.whitelabel.data.mapper
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 import ru.frogogo.test.DataFixtures
-import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptDistributionNetworkUiModel
-import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptProductUiModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptRejectReasonUiModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 

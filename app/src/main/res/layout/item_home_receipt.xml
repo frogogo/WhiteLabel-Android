@@ -1,44 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<com.google.android.material.card.MaterialCardView
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:clipToPadding="false">
+  android:layout_height="wrap_content"
+  app:contentPaddingBottom="@dimen/spacing_2"
+  app:contentPaddingLeft="@dimen/spacing_4"
+  app:contentPaddingRight="@dimen/spacing_4"
+  app:contentPaddingTop="@dimen/spacing_2">
 
-  <ru.frogogo.whitelabel.view.ReceiptView
-    android:id="@+id/view_receipt"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    app:layout_constraintBottom_toTopOf="@id/layout_footer"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.4"
-    app:layout_constraintWidth_max="296dp"
-    app:layout_constraintWidth_percent="0.82" />
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-  <FrameLayout
-    android:id="@+id/layout_footer"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/spacing_6"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="@id/view_receipt"
-    app:layout_constraintRight_toRightOf="@id/view_receipt">
+    <!-- Receipt Values -->
+    <TextView
+      android:id="@+id/text_view_receipt_value"
+      style="@style/Text.Headline.Medium"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/spacing_4"
+      android:textColor="@color/receipt_item_text"
+      app:layout_constraintEnd_toStartOf="@id/image_view_status"
+      app:layout_constraintRight_toLeftOf="@id/text_view_receipt_value"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="5 403 ₽" />
 
-    <include
-      android:id="@+id/layout_controls_goods"
-      layout="@layout/view_receipt_controls_goods"
-      android:visibility="gone"
-      tools:visibility="visible" />
+    <TextView
+      android:id="@+id/text_view_date"
+      style="@style/Text.Subhead"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/spacing_4"
+      android:textColor="@color/gray_500"
+      app:layout_constraintEnd_toStartOf="@id/image_view_status"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/text_view_receipt_value"
+      tools:text="23.05.2020 - 13:20" />
 
-    <include
-      android:id="@+id/layout_controls_scan"
-      layout="@layout/view_receipt_controls_scan"
-      android:visibility="gone" />
+    <ImageView
+      android:id="@+id/image_view_status"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:src="@drawable/ic_receipt_processing_small" />
 
-  </FrameLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

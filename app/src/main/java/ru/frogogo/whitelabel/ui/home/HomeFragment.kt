@@ -98,6 +98,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
     //  )
     HomeAdapterDelegates.sectionHeaderDelegate(),
     HomeAdapterDelegates.couponProgressDelegate(),
+    HomeAdapterDelegates.receiptDelegate(),
     CommonAdapterDelegates.couponDelegate { viewModel.onCouponClicked(it) },
   )
 

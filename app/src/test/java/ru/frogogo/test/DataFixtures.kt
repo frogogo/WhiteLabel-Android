@@ -5,12 +5,8 @@ import ru.frogogo.whitelabel.data.model.api.auth.AuthenticationResponse
 import ru.frogogo.whitelabel.data.model.api.auth.ConfirmationCodeRequestResponse
 import ru.frogogo.whitelabel.data.model.api.home.HomeResponse
 import ru.frogogo.whitelabel.data.model.api.receipt.Receipt
-import ru.frogogo.whitelabel.data.model.api.receipt.ReceiptDistributionNetwork
-import ru.frogogo.whitelabel.data.model.api.receipt.ReceiptProduct
 import ru.frogogo.whitelabel.data.model.api.receipt.ReceiptRejectReason
 import ru.frogogo.whitelabel.data.model.api.user.User
-import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptDistributionNetworkUiModel
-import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptProductUiModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptRejectReasonUiModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.dictionary.ReceiptState

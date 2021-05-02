@@ -25,7 +25,7 @@ fun ViewReceiptHeaderBinding.bind(receipt: ReceiptUiModel) {
   // Value
   textViewReceiptValue.text = PriceUtils.formatPrice(receipt.value)
   // Shop
-  textViewShop.text = receipt.distributionNetwork?.name.orEmpty()
+  // textViewShop.text = receipt.distributionNetwork?.name.orEmpty()
   textViewShop.setVisible(receipt.state !in STATES_WITHOUT_SHOP_NAME)
   // Date
   textViewDate.text = receipt.date.toDateTime()

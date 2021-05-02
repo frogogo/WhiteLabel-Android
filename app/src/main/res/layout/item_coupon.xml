@@ -8,8 +8,7 @@
   app:contentPaddingBottom="@dimen/spacing_2"
   app:contentPaddingLeft="@dimen/spacing_4"
   app:contentPaddingRight="@dimen/spacing_4"
-  app:contentPaddingTop="@dimen/spacing_2"
-  tools:layout_marginTop="@dimen/spacing_4">
+  app:contentPaddingTop="@dimen/spacing_2">
 
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"

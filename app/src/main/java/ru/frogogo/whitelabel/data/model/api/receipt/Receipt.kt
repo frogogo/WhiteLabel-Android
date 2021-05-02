@@ -17,10 +17,6 @@ data class Receipt(
   val state: ReceiptState,
   @Json(name = "timestamp")
   val timestamp: Date,
-  @Json(name = "distribution_network")
-  val promotion: ReceiptDistributionNetwork?,
-  @Json(name = "item")
-  val product: ReceiptProduct?,
   @Json(name = "reject_reason")
   val rejectReason: ReceiptRejectReason?,
 )

@@ -34,6 +34,17 @@ enum class ReceiptState {
   }
 
   /**
+   * @return drawable icon resource for given [ReceiptState]
+   */
+  @DrawableRes
+  fun getStatusIcon(): Int = when (this) {
+    PROCESSING -> R.drawable.ic_receipt_processing_small
+    APPROVED -> R.drawable.ic_receipt_approved_small
+    REJECTED -> R.drawable.ic_receipt_rejected_small
+    COMPLETED -> 0
+  }
+
+  /**
    * @return string name resource for given [ReceiptState]
    */
   @StringRes

@@ -15,6 +15,7 @@
   <string name="home_approved_button_scan">Сканировать</string>
 
   <string name="home_section_coupons">Купоны</string>
+  <string name="home_section_receipts">Чеки</string>
 
   <string name="home_rejected_button_scan">Сканировать новый чек</string>
 

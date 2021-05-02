@@ -15,8 +15,6 @@ data class ReceiptUiModel(
   val date: Date,
   val value: Int,
   val state: ReceiptState,
-  val distributionNetwork: ReceiptDistributionNetworkUiModel?,
-  val product: ReceiptProductUiModel?,
   val rejectReason: ReceiptRejectReasonUiModel?,
 ) : RecyclerViewItem, Parcelable {
 

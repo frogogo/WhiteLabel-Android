@@ -35,5 +35,10 @@ class HomeDataFactoryImpl : HomeDataFactory {
       list += HomeSectionHeader(R.string.home_section_coupons)
       list += state.coupons
     }
+
+    if (state.receipts.isNotEmpty()) {
+      list += HomeSectionHeader(R.string.home_section_receipts)
+      list += state.receipts
+    }
   }
 }
