@@ -17,6 +17,7 @@ import ru.frogogo.whitelabel.ui.home.delegate.*
 private const val NAMED_DATA_LIVE = "data_live"
 private const val NAMED_IS_LOADING_LIVE = "is_loading_live"
 private const val NAMED_EFFECT_LIVE_EVENT = "effect_live_event"
+private const val NAMED_SCAN_BUTTON_STATE_LIVE = "scan_button_state_live"
 
 fun Module.homeScope() {
   scope<HomeFragment> {
@@ -28,11 +29,13 @@ fun Module.homeScope() {
     scoped(named(NAMED_DATA_LIVE)) { MutableLiveData<List<RecyclerViewItem>>() }
     scoped(named(NAMED_IS_LOADING_LIVE)) { MutableLiveData<Boolean>() }
     scoped(named(NAMED_EFFECT_LIVE_EVENT)) { LiveEvent<HomeEffect>() }
+    scoped(named(NAMED_SCAN_BUTTON_STATE_LIVE)) { MutableLiveData<HomeScanButtonState>() }
     scoped {
       HomeViewModel.LiveDataHolder(
         mutableDataLive = get(named(NAMED_DATA_LIVE)),
         mutableIsLoadingLive = get(named(NAMED_IS_LOADING_LIVE)),
         mutableEffectLiveEvent = get(named(NAMED_EFFECT_LIVE_EVENT)),
+        mutableScanButtonStateLive = get(named(NAMED_SCAN_BUTTON_STATE_LIVE)),
       )
     }
 
@@ -48,7 +51,8 @@ fun Module.homeScope() {
         dispatchersProvider = get(),
         mutableDataLive = get(named(NAMED_DATA_LIVE)),
         mutableIsLoadingLive = get(named(NAMED_IS_LOADING_LIVE)),
-        effectLiveEvent = get(named(NAMED_EFFECT_LIVE_EVENT)),
+        mutableEffectLiveEvent = get(named(NAMED_EFFECT_LIVE_EVENT)),
+        mutableScanButtonStateLive = get(named(NAMED_SCAN_BUTTON_STATE_LIVE)),
         dataFactory = get()
       )
     }

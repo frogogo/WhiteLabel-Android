@@ -20,6 +20,7 @@ class HomeViewModel(
   val dataLive: LiveData<List<RecyclerViewItem>> = liveData.mutableDataLive
   val isLoadingLive: LiveData<Boolean> = liveData.mutableIsLoadingLive
   val effectLiveEvent: LiveData<HomeEffect> = liveData.mutableEffectLiveEvent
+  val scanButtonStateLive: LiveData<HomeScanButtonState> = liveData.mutableScanButtonStateLive
 
   init {
     attachNavigatorDelegate(delegates.clicksHandlerDelegate)
@@ -47,5 +48,6 @@ class HomeViewModel(
     val mutableDataLive: MutableLiveData<List<RecyclerViewItem>>,
     val mutableIsLoadingLive: MutableLiveData<Boolean>,
     val mutableEffectLiveEvent: LiveEvent<HomeEffect>,
+    val mutableScanButtonStateLive: MutableLiveData<HomeScanButtonState>,
   )
 }

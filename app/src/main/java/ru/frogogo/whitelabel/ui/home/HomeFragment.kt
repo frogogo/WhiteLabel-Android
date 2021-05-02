@@ -13,6 +13,7 @@ import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.recycler.BaseDelegationAdapter
 import ru.frogogo.whitelabel.core.ui.BaseFragment
 import ru.frogogo.whitelabel.databinding.FragmentHomeBinding
+import ru.frogogo.whitelabel.extension.animateToVisible
 import ru.frogogo.whitelabel.extension.observe
 import ru.frogogo.whitelabel.extension.setOnSafeClickListener
 import ru.frogogo.whitelabel.extension.setVisible
@@ -42,6 +43,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
       buttonProfile.setOnSafeClickListener(viewModel::onProfileClicked)
       swipeRefreshLayout.setOnRefreshListener(this@HomeFragment)
       viewErrorState.setOnRefreshClickListener(viewModel::refreshData)
+      buttonScan.setOnSafeClickListener(viewModel::onScanClicked)
     }
   }
 
@@ -55,6 +57,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
         renderState(isLoading = isLoading)
       }
       observe(effectLiveEvent, ::handleEffect)
+      observe(scanButtonStateLive, ::handleScanButtonState)
     }
   }
 
@@ -79,7 +82,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
     )
 
     binding.recyclerView.apply {
-      setRecycledViewPool(recycledViewPool)
+      setRecycledViewPool(this@HomeFragment.recycledViewPool)
       adapter = this@HomeFragment.adapter
       addItemDecoration(decoration)
     }
@@ -102,6 +105,13 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
         binding.swipeRefreshLayout.isRefreshing = false
         renderState(isError = true)
       }
+    }
+  }
+
+  private fun handleScanButtonState(state: HomeScanButtonState) {
+    binding.buttonScan.apply {
+      animateToVisible()
+      isEnabled = state == HomeScanButtonState.SHOWN_ENABLED
     }
   }
 }
