@@ -80,6 +80,9 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
       setRecycledViewPool(this@HomeFragment.recycledViewPool)
       adapter = this@HomeFragment.adapter
       addItemDecoration(decoration)
+      setOnScrollChangeListener { _, _, _, _, _ ->
+        binding.layoutToolbar.isSelected = canScrollVertically(-1)
+      }
     }
   }
 

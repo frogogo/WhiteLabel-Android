@@ -16,6 +16,9 @@
       android:id="@+id/layout_toolbar"
       android:layout_width="0dp"
       android:layout_height="@dimen/toolbar_height"
+      android:background="@color/screen_background"
+      android:outlineSpotShadowColor="@color/elevation_shadow"
+      android:stateListAnimator="@animator/toolbar_elevation"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent">
