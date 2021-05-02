@@ -1,17 +1,35 @@
 package ru.frogogo.whitelabel.ui.coupon_info
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import ru.frogogo.whitelabel.core.ui.BaseViewModel
+import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
+import ru.frogogo.whitelabel.ui.coupon_info.delegates.CouponInfoClicksHandlerDelegateImpl
+import ru.frogogo.whitelabel.ui.coupon_info.delegates.CouponInfoContentHandlerDelegate
 
 class CouponInfoViewModel(
   liveData: LiveDataHolder,
   private val delegates: DelegatesHolder,
 ) : BaseViewModel() {
 
+  val contentLive: LiveData<CouponUiModel> = liveData.mutableContentLive
+
+  override fun onStart() {
+    super.onStart()
+    delegates.contentHandlerDelegate.postData()
+  }
+
+  override fun onCleared() {
+    super.onCleared()
+    delegates.clicksHandlerDelegate.cancelJob()
+  }
+
   data class LiveDataHolder(
-    val stub: Int,
+    val mutableContentLive: MutableLiveData<CouponUiModel>,
   )
 
   data class DelegatesHolder(
-    val stub: Int,
+    val contentHandlerDelegate: CouponInfoContentHandlerDelegate,
+    val clicksHandlerDelegate: CouponInfoClicksHandlerDelegateImpl,
   )
 }

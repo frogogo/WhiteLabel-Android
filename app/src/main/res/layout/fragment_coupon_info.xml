@@ -1,7 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+  <androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <ImageView
+        android:id="@+id/image_view_coupon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/spacing_10"
+        app:layout_constraintDimensionRatio="1:0.68"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+      <TextView
+        android:id="@+id/text_view_coupon_id"
+        style="@style/Text.Caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_4"
+        android:layout_marginTop="@dimen/spacing_6"
+        android:textColor="@color/gray_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_view_coupon"
+        tools:text="Купон № 84934775" />
+
+      <TextView
+        android:id="@+id/text_view_name"
+        style="@style/Text.Title1.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_4"
+        android:layout_marginTop="@dimen/spacing_1"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_coupon_id"
+        tools:text="Ножеточка Lion Sabatier" />
+
+      <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_qr_code"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_4"
+        android:layout_marginTop="@dimen/spacing_6"
+        android:fontFamily="@font/rubik"
+        android:gravity="start|center_vertical"
+        android:text="@string/coupon_button_show_qr"
+        app:icon="@drawable/ic_qr"
+        app:iconGravity="end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_name" />
+
+      <TextView
+        android:id="@+id/text_view_instruction_header"
+        style="@style/Text.Title2.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_4"
+        android:layout_marginTop="@dimen/spacing_6"
+        android:text="@string/coupon_button_instruction_header"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_qr_code" />
+
+      <TextView
+        style="@style/Text.Subhead"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_4"
+        android:layout_marginTop="@dimen/spacing_4"
+        android:textColor="@color/gray_500"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_instruction_header"
+        tools:text="@sample/long_text.json/data/text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+  </androidx.core.widget.NestedScrollView>
+
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/button_close"
+    style="@style/IconButton.Backgrounded"
+    android:layout_width="36dp"
+    android:layout_height="36dp"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentEnd="true"
+    android:layout_marginTop="@dimen/spacing_2.5"
+    android:layout_marginEnd="@dimen/spacing_2.5"
+    android:elevation="0dp"
+    app:icon="@drawable/ic_close" />
+
+</RelativeLayout>

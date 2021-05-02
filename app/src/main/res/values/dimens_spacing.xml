@@ -3,6 +3,7 @@
 
   <dimen name="spacing_1">3dp</dimen>
   <dimen name="spacing_2">6dp</dimen>
+  <dimen name="spacing_2.5">7.5dp</dimen>
   <dimen name="spacing_3">9dp</dimen>
   <dimen name="spacing_4">12dp</dimen>
   <dimen name="spacing_5">15dp</dimen>
