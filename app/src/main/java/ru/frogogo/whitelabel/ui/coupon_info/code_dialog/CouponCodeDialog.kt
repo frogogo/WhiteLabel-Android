@@ -57,18 +57,6 @@ class CouponCodeDialog : BaseDialogFragment(
   private fun renderQrCode(code: CouponCodeUiModel) {
     binding.imageViewCode.doOnLayout {
       binding.imageViewCode.showQrCode(code.value)
-//      runCatching {
-//        val barcodeEncoder = BarcodeEncoder()
-//        val bitMatrix = barcodeEncoder.encode(
-//          code.value,
-//          BarcodeFormat.QR_CODE,
-//          view.width,
-//          view.width,
-//          mapOf(EncodeHintType.MARGIN to 1) // Reduces margin
-//        ).run { barcodeEncoder.createBitmap(this) }
-//        val barCodeDrawable = BitmapDrawable(resources, bitMatrix)
-//        binding.imageViewCode.setImageDrawable(barCodeDrawable)
-//      }.onFailure { e(it) }
     }
   }
 
