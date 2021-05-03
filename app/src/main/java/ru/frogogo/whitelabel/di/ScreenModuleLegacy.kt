@@ -15,7 +15,6 @@ import ru.frogogo.whitelabel.ui.profile.ProfileViewModel
 import ru.frogogo.whitelabel.ui.profile.receipts.ReceiptsViewModel
 import ru.frogogo.whitelabel.ui.profile.receipts.details.ReceiptDetailsButtonState
 import ru.frogogo.whitelabel.ui.profile.receipts.details.ReceiptDetailsViewModel
-import ru.frogogo.whitelabel.ui.scanner.ScannerViewModel
 import ru.frogogo.whitelabel.ui.splash.SplashViewModel
 import ru.frogogo.whitelabel.ui.webview.WebViewViewModel
 import ru.frogogo.whitelabel.view.dialog.ErrorDialogFragmentCallbackViewModel
@@ -48,9 +47,6 @@ val screenModuleLegacy = module {
       updateUserDetailsUseCase = get()
     )
   }
-
-  // Home
-  viewModel { ScannerViewModel(get(), get(), get()) }
 
   // Profile
   viewModel { ProfileViewModel(get(), get(), get(), get(), get()) }

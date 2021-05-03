@@ -14,8 +14,11 @@ import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.BarcodeResult
 import com.journeyapps.barcodescanner.DefaultDecoderFactory
 import com.journeyapps.barcodescanner.Size
+import org.koin.android.scope.AndroidScopeComponent
+import org.koin.androidx.scope.fragmentScope
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.scope.Scope
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.ui.BaseFragment
 import ru.frogogo.whitelabel.databinding.FragmentScannerBinding
@@ -26,8 +29,10 @@ import ru.frogogo.whitelabel.view.dialog.ErrorDialogFragment.Companion.showIn
 import ru.frogogo.whitelabel.view.dialog.ErrorDialogFragmentCallbackViewModel
 
 class ScannerFragment : BaseFragment<ScannerViewModel>(),
+  AndroidScopeComponent,
   BarcodeCallback {
 
+  override val scope: Scope by fragmentScope()
   override val viewModel: ScannerViewModel by viewModel()
 
   private val errorDialogFragmentCallbackViewModel: ErrorDialogFragmentCallbackViewModel by sharedViewModel()

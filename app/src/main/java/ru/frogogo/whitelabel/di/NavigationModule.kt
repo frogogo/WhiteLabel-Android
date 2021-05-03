@@ -23,8 +23,6 @@ import ru.frogogo.whitelabel.ui.profile.receipts.ReceiptsNavigation
 import ru.frogogo.whitelabel.ui.profile.receipts.ReceiptsNavigationImpl
 import ru.frogogo.whitelabel.ui.profile.receipts.details.ReceiptDetailsNavigation
 import ru.frogogo.whitelabel.ui.profile.receipts.details.ReceiptDetailsNavigationImpl
-import ru.frogogo.whitelabel.ui.scanner.ScannerNavigation
-import ru.frogogo.whitelabel.ui.scanner.ScannerNavigationImpl
 import ru.frogogo.whitelabel.ui.splash.SplashNavigation
 import ru.frogogo.whitelabel.ui.splash.SplashNavigationImpl
 
@@ -39,9 +37,6 @@ val navigationModule = module {
   factory { AuthCodeConfirmationNavigationImpl() as AuthCodeConfirmationNavigation }
   factory { AuthNameNavigationImpl() as AuthNameNavigation }
   factory { AuthEmailNavigationImpl() as AuthEmailNavigation }
-
-  // Home
-  factory { ScannerNavigationImpl() as ScannerNavigation }
 
   // Profile
   factory { ProfileNavigationImpl() as ProfileNavigation }
