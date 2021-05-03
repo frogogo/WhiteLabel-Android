@@ -13,6 +13,6 @@ data class Coupon(
   val description: String,
   @Json(name = "image")
   val image: CouponImage,
-  @Json(name = "qr_string")
-  val qrString: String,
+  @Json(name = "code")
+  val code: CouponCode,
 )

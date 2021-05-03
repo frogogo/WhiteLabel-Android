@@ -3,6 +3,7 @@ package ru.frogogo.whitelabel.extension
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
 import org.koin.core.module.Module
+import org.koin.core.qualifier.Qualifier
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.core.scope.ScopeCallback
@@ -28,4 +29,5 @@ fun Scope.unloadBindingModuleOnClose() {
   )
 }
 
-fun Scope.scopedQualifier(name: String) = named("$id-$name")
+fun Scope.scopedQualifier(name: String): Qualifier =
+  named("$id-$name")

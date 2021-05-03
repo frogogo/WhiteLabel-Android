@@ -4,5 +4,5 @@ interface CouponInfoClicksHandlerDelegate {
 
   fun onBackButtonClicked()
 
-  fun onShowQrCodeClicked()
+  fun onShowCodeClicked()
 }

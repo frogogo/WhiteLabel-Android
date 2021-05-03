@@ -10,7 +10,7 @@ data class CouponUiModel(
   val name: String,
   val description: String,
   val image: CouponImageUiModel,
-  val qrString: String,
+  val code: CouponCodeUiModel,
 ) : RecyclerViewItem, Parcelable {
 
   override fun getId(): Any = "ITEM_COUPON$id"

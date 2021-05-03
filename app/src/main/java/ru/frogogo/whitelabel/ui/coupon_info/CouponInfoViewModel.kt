@@ -2,6 +2,7 @@ package ru.frogogo.whitelabel.ui.coupon_info
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.hadilq.liveevent.LiveEvent
 import ru.frogogo.whitelabel.core.ui.BaseViewModel
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
 import ru.frogogo.whitelabel.ui.coupon_info.delegates.CouponInfoClicksHandlerDelegate
@@ -15,6 +16,7 @@ class CouponInfoViewModel(
   CouponInfoClicksHandlerDelegate by delegates.clicksHandlerDelegate {
 
   val contentLive: LiveData<CouponUiModel> = liveData.mutableContentLive
+  val effectLiveEvent: LiveData<CouponInfoEffect> = liveData.mutableEffectLiveEvent
 
   override fun onStart() {
     super.onStart()
@@ -28,6 +30,7 @@ class CouponInfoViewModel(
 
   data class LiveDataHolder(
     val mutableContentLive: MutableLiveData<CouponUiModel>,
+    val mutableEffectLiveEvent: LiveEvent<CouponInfoEffect>,
   )
 
   data class DelegatesHolder(

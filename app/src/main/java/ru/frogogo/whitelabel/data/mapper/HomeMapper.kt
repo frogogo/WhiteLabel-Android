@@ -25,7 +25,7 @@ fun HomeResponse.toDomain(): HomeState =
           largeUrl = "",
           thumbUrl = "https://picsum.photos/200"
         ),
-        qrString = ""
+        codeString = ""
       ),
       CouponUiModel(
         id = 1,
@@ -35,7 +35,7 @@ fun HomeResponse.toDomain(): HomeState =
           largeUrl = "https://picsum.photos/1000/500",
           thumbUrl = "https://picsum.photos/200"
         ),
-        qrString = ""
+        codeString = ""
       )
     ),
     receipts = listOf(
