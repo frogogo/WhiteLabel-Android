@@ -20,6 +20,8 @@ import ru.frogogo.whitelabel.databinding.FragmentCouponInfoBinding
 import ru.frogogo.whitelabel.extension.observe
 import ru.frogogo.whitelabel.extension.setOnSafeClickListener
 import ru.frogogo.whitelabel.extension.unloadBindingModuleOnClose
+import ru.frogogo.whitelabel.ui.coupon_info.code_dialog.CouponCodeDialog
+import ru.frogogo.whitelabel.ui.coupon_info.code_dialog.CouponCodeDialog.Companion.showIn
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 
 private typealias Binding = FragmentCouponInfoBinding
@@ -79,6 +81,6 @@ class CouponInfoFragment : BaseFragment<CouponInfoViewModel>(),
   }
 
   private fun showCodeDialog(code: CouponCodeUiModel) {
-    // TODO: 03.05.2021
+    CouponCodeDialog.newInstance(code).showIn(childFragmentManager)
   }
 }

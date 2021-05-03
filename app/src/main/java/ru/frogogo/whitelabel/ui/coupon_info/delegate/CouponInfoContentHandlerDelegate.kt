@@ -1,4 +1,4 @@
-package ru.frogogo.whitelabel.ui.coupon_info.delegates
+package ru.frogogo.whitelabel.ui.coupon_info.delegate
 
 import androidx.lifecycle.MutableLiveData
 import ru.frogogo.whitelabel.core.ui.BaseViewModelDelegate

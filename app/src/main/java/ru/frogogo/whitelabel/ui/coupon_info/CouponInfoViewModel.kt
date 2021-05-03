@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import com.hadilq.liveevent.LiveEvent
 import ru.frogogo.whitelabel.core.ui.BaseViewModel
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
-import ru.frogogo.whitelabel.ui.coupon_info.delegates.CouponInfoClicksHandlerDelegate
-import ru.frogogo.whitelabel.ui.coupon_info.delegates.CouponInfoClicksHandlerDelegateImpl
-import ru.frogogo.whitelabel.ui.coupon_info.delegates.CouponInfoContentHandlerDelegate
+import ru.frogogo.whitelabel.ui.coupon_info.delegate.CouponInfoClicksHandlerDelegate
+import ru.frogogo.whitelabel.ui.coupon_info.delegate.CouponInfoClicksHandlerDelegateImpl
+import ru.frogogo.whitelabel.ui.coupon_info.delegate.CouponInfoContentHandlerDelegate
 
 class CouponInfoViewModel(
   liveData: LiveDataHolder,

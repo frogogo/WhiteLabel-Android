@@ -40,8 +40,8 @@ fun HomeResponse.toDomain(): HomeState =
           thumbUrl = "https://picsum.photos/200"
         ),
         code = CouponCodeUiModel(
-          value = "",
-          type = ""
+          value = "barcode value",
+          type = "qr"
         )
       )
     ),

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:orientation="vertical"
+  tools:background="@color/black"
+  tools:layout_gravity="center"
+  tools:layout_width="300dp">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_dialog"
+    android:paddingHorizontal="@dimen/spacing_6"
+    android:paddingVertical="@dimen/spacing_8">
+
+    <ImageView
+      android:id="@+id/image_view_code"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:adjustViewBounds="true"
+      android:scaleType="centerCrop"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:src="@drawable/ic_scan" />
+
+    <TextView
+      android:id="@+id/text_view_description"
+      style="@style/Text.Body"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_6"
+      android:text="@string/coupon_code_description"
+      android:textColor="@color/gray_500"
+      app:layout_constrainedWidth="true"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/image_view_code" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/button_close"
+    style="@style/IconButton.Backgrounded"
+    android:layout_width="36dp"
+    android:layout_height="36dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="@dimen/spacing_7"
+    android:elevation="0dp"
+    app:icon="@drawable/ic_close" />
+
+</LinearLayout>

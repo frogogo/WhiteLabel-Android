@@ -1,4 +1,4 @@
-package ru.frogogo.whitelabel.ui.coupon_info.delegates
+package ru.frogogo.whitelabel.ui.coupon_info.delegate
 
 interface CouponInfoClicksHandlerDelegate {
 

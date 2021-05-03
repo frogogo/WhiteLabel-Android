@@ -15,9 +15,9 @@ import ru.frogogo.whitelabel.extension.scopedQualifier
 import ru.frogogo.whitelabel.ui.coupon_info.CouponInfoEffect
 import ru.frogogo.whitelabel.ui.coupon_info.CouponInfoFragment
 import ru.frogogo.whitelabel.ui.coupon_info.CouponInfoViewModel
-import ru.frogogo.whitelabel.ui.coupon_info.delegates.CouponInfoClicksHandlerDelegate
-import ru.frogogo.whitelabel.ui.coupon_info.delegates.CouponInfoClicksHandlerDelegateImpl
-import ru.frogogo.whitelabel.ui.coupon_info.delegates.CouponInfoContentHandlerDelegate
+import ru.frogogo.whitelabel.ui.coupon_info.delegate.CouponInfoClicksHandlerDelegate
+import ru.frogogo.whitelabel.ui.coupon_info.delegate.CouponInfoClicksHandlerDelegateImpl
+import ru.frogogo.whitelabel.ui.coupon_info.delegate.CouponInfoContentHandlerDelegate
 
 private const val NAMED_COUPON = "coupon"
 private const val NAMED_CONTENT_LIVE = "content_live"
@@ -39,8 +39,8 @@ fun Module.couponInfo() {
     scoped(named(NAMED_EFFECT_EVENT)) { LiveEvent<CouponInfoEffect>() }
     scoped {
       CouponInfoViewModel.LiveDataHolder(
-        mutableContentLive = get(named(NAMED_CONTENT_LIVE)),
-        mutableEffectLiveEvent = get(named(NAMED_EFFECT_EVENT)),
+        mutableContentLive = getContentLive(),
+        mutableEffectLiveEvent = getEffectEvent(),
       )
     }
 
@@ -49,14 +49,14 @@ fun Module.couponInfo() {
       CouponInfoContentHandlerDelegate(
         dispatchersProvider = get(),
         coupon = getCoupon(),
-        mutableContentLive = get(named(NAMED_CONTENT_LIVE)),
+        mutableContentLive = getContentLive(),
       )
     }
     scoped {
       CouponInfoClicksHandlerDelegateImpl(
         dispatchersProvider = get(),
         coupon = getCoupon(),
-        mutableEffectLiveEvent = get(named(NAMED_EFFECT_EVENT)),
+        mutableEffectLiveEvent = getEffectEvent(),
       )
     } bind CouponInfoClicksHandlerDelegate::class
     scoped { CouponInfoViewModel.DelegatesHolder(get(), get()) }
@@ -65,3 +65,9 @@ fun Module.couponInfo() {
 
 private fun Scope.getCoupon(): CouponUiModel =
   get(scopedQualifier(NAMED_COUPON))
+
+private fun Scope.getEffectEvent(): LiveEvent<CouponInfoEffect> =
+  get(named(NAMED_EFFECT_EVENT))
+
+private fun Scope.getContentLive(): MutableLiveData<CouponUiModel> =
+  get(named(NAMED_CONTENT_LIVE))
