@@ -18,6 +18,10 @@ class CouponInfoViewModel(
   val contentLive: LiveData<CouponUiModel> = liveData.mutableContentLive
   val effectLiveEvent: LiveData<CouponInfoEffect> = liveData.mutableEffectLiveEvent
 
+  init {
+    attachNavigatorDelegate(delegates.clicksHandlerDelegate)
+  }
+
   override fun onStart() {
     super.onStart()
     delegates.contentHandlerDelegate.postData()

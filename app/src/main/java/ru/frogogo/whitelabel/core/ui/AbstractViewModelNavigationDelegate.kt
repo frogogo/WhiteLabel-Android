@@ -21,4 +21,8 @@ abstract class AbstractViewModelNavigationDelegate(
       mutableNavigationFlow.emit(this@navigate)
     }
   }
+
+  fun navigateBack() {
+    NavigationCommand.Back.navigate()
+  }
 }
