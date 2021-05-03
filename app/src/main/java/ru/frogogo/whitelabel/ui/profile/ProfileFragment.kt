@@ -33,7 +33,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
         layoutInvite.buttonShare.setOnSafeClickListener { /* TODO: 04.07.2020 Invitation */ }
         layoutMenu.apply {
           buttonReceipts.setOnSafeClickListener(viewModel::navigateToReceipts)
-          buttonGoods.setOnSafeClickListener(viewModel::navigateToGoods)
+          buttonCoupons.setOnSafeClickListener(viewModel::navigateToCoupons)
         }
       }
       initLogoutButton()

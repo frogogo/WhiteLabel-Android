@@ -7,7 +7,7 @@
   <string name="profile_invite_description">Приглашайте друзей и получайте бесплатные товары</string>
 
   <string name="profile_button_receipts">Мои чеки</string>
-  <string name="profile_button_goods">Мои товары</string>
+  <string name="profile_button_coupons">Мои купоны</string>
   <string name="profile_button_logout">Выход</string>
 
   <!-- Receipts -->

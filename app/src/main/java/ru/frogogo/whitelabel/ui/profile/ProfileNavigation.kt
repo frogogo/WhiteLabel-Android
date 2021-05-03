@@ -5,7 +5,7 @@ import ru.frogogo.whitelabel.extension.toCommand
 
 interface ProfileNavigation {
   fun navigateToReceipts(): NavigationCommand
-  fun navigateToGoods(): NavigationCommand
+  fun navigateToCoupons(): NavigationCommand
   fun navigateToSplash(): NavigationCommand
 }
 
@@ -14,7 +14,7 @@ class ProfileNavigationImpl : ProfileNavigation {
   override fun navigateToReceipts(): NavigationCommand =
     ProfileFragmentDirections.profileToReceipts().toCommand()
 
-  override fun navigateToGoods(): NavigationCommand {
+  override fun navigateToCoupons(): NavigationCommand {
     return NavigationCommand.Back // TODO: 04.07.2020 Real action
   }
 

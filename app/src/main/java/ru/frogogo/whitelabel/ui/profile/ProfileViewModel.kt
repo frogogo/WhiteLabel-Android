@@ -63,9 +63,9 @@ class ProfileViewModel(
     navigation.navigateToReceipts().navigate()
   }
 
-  fun navigateToGoods() {
+  fun navigateToCoupons() {
     i { "Navigating to goods" }
-    navigation.navigateToGoods().navigate()
+    navigation.navigateToCoupons().navigate()
   }
 
   fun logout() {
