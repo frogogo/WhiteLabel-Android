@@ -8,9 +8,7 @@ import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.dsl.bind
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
-import ru.frogogo.whitelabel.ui.profile.coupons.CouponsEffect
-import ru.frogogo.whitelabel.ui.profile.coupons.CouponsFragment
-import ru.frogogo.whitelabel.ui.profile.coupons.CouponsViewModel
+import ru.frogogo.whitelabel.ui.profile.coupons.*
 import ru.frogogo.whitelabel.ui.profile.coupons.data.CouponsDataFactory
 import ru.frogogo.whitelabel.ui.profile.coupons.data.CouponsDataFactoryImpl
 import ru.frogogo.whitelabel.ui.profile.coupons.delegate.*
@@ -23,6 +21,7 @@ private const val NAMED_EFFECT_LIVE_EVENT = "effect_live_event"
 fun Module.coupons() {
   scope<CouponsFragment> {
     viewModel { CouponsViewModel(get(), get()) }
+    scoped { CouponsNavigationImpl() as CouponsNavigation }
 
     // LiveData
     scoped(named(NAMED_DATA_LIVE)) { MutableLiveData<List<RecyclerViewItem>>() }
@@ -41,7 +40,7 @@ fun Module.coupons() {
       CouponsDataLoadDelegateImpl(get(), get())
     } bind CouponsDataLoadDelegate::class
     scoped {
-      CouponsClicksHandlerDelegateImpl(get())
+      CouponsClicksHandlerDelegateImpl(get(), get())
     } bind CouponsClicksHandlerDelegate::class
     scoped {
       CouponsStateHandlerDelegate(

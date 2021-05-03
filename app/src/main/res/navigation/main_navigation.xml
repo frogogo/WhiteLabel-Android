@@ -209,7 +209,7 @@
     android:name="ru.frogogo.whitelabel.ui.profile.coupons.CouponsFragment"
     android:label="@layout/fragment_coupons">
     <action
-      android:id="@+id/action_coupons_to_coupon_info"
+      android:id="@+id/coupons_to_coupon_info"
       app:destination="@id/coupon_info" />
   </fragment>
 
