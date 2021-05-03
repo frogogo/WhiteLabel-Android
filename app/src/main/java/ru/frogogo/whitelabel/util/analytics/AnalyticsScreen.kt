@@ -16,6 +16,7 @@ enum class AnalyticsScreen {
   PROFILE,
   SCANNER,
   RECEIPTS,
+  COUPONS,
   WEB_VIEW,
 
   COUPON_INFO,

@@ -173,6 +173,9 @@
       android:id="@+id/profile_to_receipts"
       app:destination="@id/receipts" />
     <action
+      android:id="@+id/profile_to_coupons"
+      app:destination="@id/coupons" />
+    <action
       android:id="@+id/profile_to_splash"
       app:destination="@id/splash"
       app:popUpTo="@id/main_navigation"
@@ -199,6 +202,15 @@
     <action
       android:id="@+id/action_receipts_to_receipt_details"
       app:destination="@id/receipt_details" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/coupons"
+    android:name="ru.frogogo.whitelabel.ui.profile.coupons.CouponsFragment"
+    android:label="@layout/fragment_coupons">
+    <action
+      android:id="@+id/action_coupons_to_coupon_info"
+      app:destination="@id/coupon_info" />
   </fragment>
 
   <dialog
