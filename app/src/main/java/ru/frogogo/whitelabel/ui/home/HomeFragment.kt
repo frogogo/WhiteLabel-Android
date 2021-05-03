@@ -49,7 +49,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
 
   override fun initObservers() {
     with(viewModel) {
-      observe(viewModel.dataLive) { data ->
+      observe(dataLive) { data ->
         binding.swipeRefreshLayout.isRefreshing = false
         adapter.items = data
       }
