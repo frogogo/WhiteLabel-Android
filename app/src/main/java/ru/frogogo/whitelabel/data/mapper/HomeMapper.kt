@@ -1,6 +1,7 @@
 package ru.frogogo.whitelabel.data.mapper
 
 import ru.frogogo.whitelabel.data.model.api.home.HomeResponse
+import ru.frogogo.whitelabel.data.model.ui.coupon.CouponCodeUiModel
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponImageUiModel
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
 import ru.frogogo.whitelabel.data.model.ui.home.HomeCouponProgressUiModel
@@ -25,7 +26,10 @@ fun HomeResponse.toDomain(): HomeState =
           largeUrl = "",
           thumbUrl = "https://picsum.photos/200"
         ),
-        codeString = ""
+        code = CouponCodeUiModel(
+          value = "",
+          type = ""
+        )
       ),
       CouponUiModel(
         id = 1,
@@ -35,7 +39,10 @@ fun HomeResponse.toDomain(): HomeState =
           largeUrl = "https://picsum.photos/1000/500",
           thumbUrl = "https://picsum.photos/200"
         ),
-        codeString = ""
+        code = CouponCodeUiModel(
+          value = "",
+          type = ""
+        )
       )
     ),
     receipts = listOf(
