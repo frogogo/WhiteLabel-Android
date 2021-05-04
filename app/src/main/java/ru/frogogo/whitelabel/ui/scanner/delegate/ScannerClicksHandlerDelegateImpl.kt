@@ -21,6 +21,10 @@ class ScannerClicksHandlerDelegateImpl(
     navigateBack()
   }
 
+  override fun onSuccessScanDialogClosed() {
+    navigateBack()
+  }
+
   override fun onFlashButtonClicked() {
     mutableEffectEvent.value = ScannerEffect.ToggleFlash
   }

@@ -6,5 +6,7 @@ interface ScannerClicksHandlerDelegate {
 
   fun onBackButtonClicked()
 
+  fun onSuccessScanDialogClosed()
+
   fun onFlashButtonClicked()
 }

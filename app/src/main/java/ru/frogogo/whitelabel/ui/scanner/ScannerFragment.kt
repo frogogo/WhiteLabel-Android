@@ -2,7 +2,10 @@ package ru.frogogo.whitelabel.ui.scanner
 
 import android.Manifest
 import android.content.DialogInterface
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.core.view.doOnLayout
 import app.cash.exhaustive.Exhaustive
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -22,12 +25,17 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.scope.Scope
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.ui.BaseFragment
+import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.databinding.FragmentScannerBinding
+import ru.frogogo.whitelabel.dictionary.ReceiptState
 import ru.frogogo.whitelabel.extension.*
+import ru.frogogo.whitelabel.ui.scanner.success_dialog.SuccessScanDialog
+import ru.frogogo.whitelabel.ui.scanner.success_dialog.SuccessScanDialog.Companion.showIn
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 import ru.frogogo.whitelabel.view.dialog.ErrorDialogFragment
 import ru.frogogo.whitelabel.view.dialog.ErrorDialogFragment.Companion.showIn
 import ru.frogogo.whitelabel.view.dialog.ErrorDialogFragmentCallbackViewModel
+import java.util.*
 
 class ScannerFragment : BaseFragment<ScannerViewModel>(),
   AndroidScopeComponent,
@@ -68,6 +76,11 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(),
     observeEvent(errorDialogFragmentCallbackViewModel.onDismissEvent) { dialogId ->
       if (dialogId == ERROR_DIALOG_ID) binding.barcodeView.resume()
     }
+  }
+
+  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    SuccessScanDialog.setDismissListener(this, viewModel::onSuccessScanDialogClosed)
+    return super.onCreateView(inflater, container, savedInstanceState)
   }
 
   override fun onStart() {
@@ -147,10 +160,10 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(),
 
   private fun handleEffect(effect: ScannerEffect) {
     @Exhaustive
-    when(effect) {
-      is ScannerEffect.ShowError -> showErrorDialog(effect.error)
+    when (effect) {
       ScannerEffect.ToggleFlash -> toggleFlash()
-      ScannerEffect.ShowSuccess -> TODO()
+      is ScannerEffect.ShowError -> showErrorDialog(effect.error)
+      is ScannerEffect.ShowSuccess -> showSuccessDialog(effect.receipt)
     }
   }
 
@@ -165,6 +178,10 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(),
       buttonFlash.setImageResource(if (flashIsOn) R.drawable.ic_flash_on else R.drawable.ic_flash_off)
       if (flashIsOn) barcodeView.setTorchOn() else barcodeView.setTorchOff()
     }
+  }
+
+  private fun showSuccessDialog(receipt: ReceiptUiModel) {
+    SuccessScanDialog.newInstance(receipt).showIn(childFragmentManager)
   }
 
   companion object {
