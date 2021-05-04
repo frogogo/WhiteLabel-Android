@@ -14,7 +14,7 @@ class ProfileNavigationImpl : ProfileNavigation {
   override fun navigateToReceipts(): NavigationCommand =
     ProfileFragmentDirections.profileToReceipts().toCommand()
 
-  override fun navigateToCoupons(): NavigationCommand=
+  override fun navigateToCoupons(): NavigationCommand =
     ProfileFragmentDirections.profileToCoupons().toCommand()
 
   override fun navigateToSplash(): NavigationCommand =
