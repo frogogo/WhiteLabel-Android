@@ -1,6 +1,8 @@
 package ru.frogogo.whitelabel.ui.coupon_info.code_dialog
 
+import android.app.Dialog
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.core.os.bundleOf
 import androidx.core.view.doOnLayout
 import androidx.fragment.app.FragmentManager
@@ -42,6 +44,17 @@ class CouponCodeDialog : BaseDialogFragment(
   override fun initObservers() {
     super.initObservers()
     observe(viewModel.codeLive, ::renderQrCode)
+  }
+
+  override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+    val dialog = super.onCreateDialog(savedInstanceState)
+
+    dialog.window?.apply {
+      addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+      attributes = attributes.apply { screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_FULL }
+    }
+
+    return dialog
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
