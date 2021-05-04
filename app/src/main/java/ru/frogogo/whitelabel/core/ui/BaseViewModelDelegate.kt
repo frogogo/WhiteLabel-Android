@@ -6,7 +6,7 @@ import kotlinx.coroutines.cancelChildren
 import ru.frogogo.whitelabel.util.dispatcher.DispatchersProvider
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseViewModelDelegate(
+open class BaseViewModelDelegate(
   dispatchers: DispatchersProvider,
 ) {
 
@@ -18,7 +18,7 @@ abstract class BaseViewModelDelegate(
   private val coroutineContext: CoroutineContext by lazy { dispatchers.main + SupervisorJob() }
   private var scopeInitialized = false
 
-  public fun cancelJob() {
+  fun cancelJob() {
     if (!scopeInitialized) {
       return
     }

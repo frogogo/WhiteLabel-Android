@@ -9,5 +9,4 @@ data class HomeCouponProgressUiModel(
 ) : RecyclerViewItem {
 
   override fun getId(): Any = "item_coupon_progress"
-
 }
