@@ -1,7 +1,6 @@
 package ru.frogogo.whitelabel.ui.scanner
 
 import android.Manifest
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,11 @@ import android.view.ViewGroup
 import androidx.core.view.doOnLayout
 import app.cash.exhaustive.Exhaustive
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.github.ajalt.timberkt.d
+import com.fondesa.kpermissions.allDenied
+import com.fondesa.kpermissions.allGranted
+import com.fondesa.kpermissions.allPermanentlyDenied
+import com.fondesa.kpermissions.extension.permissionsBuilder
+import com.fondesa.kpermissions.extension.send
 import com.github.ajalt.timberkt.e
 import com.github.ajalt.timberkt.i
 import com.google.zxing.BarcodeFormat
@@ -27,7 +30,6 @@ import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.ui.BaseFragment
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.databinding.FragmentScannerBinding
-import ru.frogogo.whitelabel.dictionary.ReceiptState
 import ru.frogogo.whitelabel.extension.*
 import ru.frogogo.whitelabel.ui.scanner.success_dialog.SuccessScanDialog
 import ru.frogogo.whitelabel.ui.scanner.success_dialog.SuccessScanDialog.Companion.showIn
@@ -35,7 +37,6 @@ import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 import ru.frogogo.whitelabel.view.dialog.ErrorDialogFragment
 import ru.frogogo.whitelabel.view.dialog.ErrorDialogFragment.Companion.showIn
 import ru.frogogo.whitelabel.view.dialog.ErrorDialogFragmentCallbackViewModel
-import java.util.*
 
 class ScannerFragment : BaseFragment<ScannerViewModel>(),
   AndroidScopeComponent,
@@ -124,38 +125,45 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(),
   }
 
   private fun checkPermissions() {
-    withPermission(
-      permission = Manifest.permission.CAMERA,
-      onNeverAskAgain = {
-        e { "Permission request denied, never ask again" }
-        alert {
-          setTitle(R.string.scanner_permissions_denied_title)
-          setMessage(R.string.scanner_permissions_denied_settings)
-          setPositiveButton(R.string.common_button_ok) { _, _ -> context.showAppDetailsSettings() }
-          setNegativeButton(R.string.common_button_cancel) { dialog: DialogInterface, _ ->
-            dialog.cancel()
-            viewModel.navigateBack()
-          }
-          setCancelable(false)
+    permissionsBuilder(Manifest.permission.CAMERA).build().send { result ->
+      when {
+        result.allGranted() -> {
+          binding.barcodeView.decodeContinuous(this)
         }
-      },
-      onPermissionDenied = {
-        e { "Permission request denied" }
-        alert {
-          setMessage(R.string.scanner_permissions_denied_title)
-          setPositiveButton(R.string.common_button_ok) { _, _ -> checkPermissions() }
-          setNegativeButton(R.string.common_button_cancel) { dialog: DialogInterface, _ ->
-            dialog.cancel()
-            viewModel.navigateBack()
-          }
-          setCancelable(false)
+        result.allPermanentlyDenied() -> {
+          e { "Permission request denied, never ask again" }
+          showPermissionsDeniedDialog(true)
         }
-      },
-      onPermissionGranted = {
-        d { "Permission granted" }
-        binding.barcodeView.decodeContinuous(this)
+        result.allDenied() -> {
+          e { "Permission request denied" }
+          showPermissionsDeniedDialog(false)
+        }
       }
-    )
+    }
+  }
+
+  private fun showPermissionsDeniedDialog(permanentlyDenied: Boolean) {
+    alert {
+      if (permanentlyDenied) {
+        setTitle(R.string.scanner_permissions_denied_title)
+        setMessage(R.string.scanner_permissions_denied_settings)
+      } else {
+        setMessage(R.string.scanner_permissions_denied_title)
+      }
+
+      setPositiveButton(R.string.common_button_ok) { _, _ ->
+        if (permanentlyDenied) {
+          context.showAppDetailsSettings()
+        } else {
+          checkPermissions()
+        }
+      }
+      setNegativeButton(R.string.common_button_cancel) { _, _ ->
+        viewModel.onBackButtonClicked()
+      }
+      setCancelable(false)
+    }
+
   }
 
   private fun handleEffect(effect: ScannerEffect) {
