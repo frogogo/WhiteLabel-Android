@@ -31,6 +31,13 @@
       </intent-filter>
     </activity>
 
+    <!-- Required for Koin WorkManager Factory -->
+    <provider
+      android:name="androidx.work.impl.WorkManagerInitializer"
+      android:authorities="${applicationId}.workmanager-init"
+      android:exported="false"
+      tools:node="remove" />
+
   </application>
 
 </manifest>
