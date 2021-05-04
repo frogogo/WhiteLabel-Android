@@ -7,6 +7,7 @@ import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
 import ru.frogogo.whitelabel.data.model.ui.home.HomeCouponProgressUiModel
 import ru.frogogo.whitelabel.data.model.ui.home.HomeState
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
+import ru.frogogo.whitelabel.dictionary.CouponCodeType
 import ru.frogogo.whitelabel.dictionary.ReceiptState
 import java.util.*
 
@@ -27,8 +28,8 @@ fun HomeResponse.toDomain(): HomeState =
           thumbUrl = "https://picsum.photos/200"
         ),
         code = CouponCodeUiModel(
-          value = "",
-          type = ""
+          value = "QR code value",
+          type = CouponCodeType.QR
         )
       ),
       CouponUiModel(
@@ -40,8 +41,8 @@ fun HomeResponse.toDomain(): HomeState =
           thumbUrl = "https://picsum.photos/200"
         ),
         code = CouponCodeUiModel(
-          value = "barcode value",
-          type = "qr"
+          value = "1234567890",
+          type = CouponCodeType.CODE_128
         )
       )
     ),

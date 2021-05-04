@@ -26,7 +26,19 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      tools:src="@drawable/ic_scan" />
+      tools:src="@sample/barcode" />
+
+    <TextView
+      android:id="@+id/text_view_code"
+      style="@style/Text.BarcodeValue"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:visibility="gone"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/image_view_code"
+      tools:text="1234567890"
+      tools:visibility="visible" />
 
     <TextView
       android:id="@+id/text_view_description"
@@ -41,7 +53,7 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.5"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/image_view_code" />
+      app:layout_constraintTop_toBottomOf="@id/text_view_code" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 

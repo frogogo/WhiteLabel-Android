@@ -16,10 +16,8 @@ import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.ui.BaseDialogFragment
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponCodeUiModel
 import ru.frogogo.whitelabel.databinding.DialogCouponCodeBinding
-import ru.frogogo.whitelabel.extension.observe
-import ru.frogogo.whitelabel.extension.setOnSafeClickListener
-import ru.frogogo.whitelabel.extension.showQrCode
-import ru.frogogo.whitelabel.extension.unloadBindingModuleOnClose
+import ru.frogogo.whitelabel.dictionary.CouponCodeType
+import ru.frogogo.whitelabel.extension.*
 import ru.frogogo.whitelabel.view.dialog.DialogCompanion
 
 private typealias Binding = DialogCouponCodeBinding
@@ -68,8 +66,17 @@ class CouponCodeDialog : BaseDialogFragment(
   }
 
   private fun renderQrCode(code: CouponCodeUiModel) {
-    binding.imageViewCode.doOnLayout {
-      binding.imageViewCode.showQrCode(code.value)
+    binding.imageViewCode.apply {
+      doOnLayout {
+        when (code.type) {
+          CouponCodeType.QR -> showQrCode(code.value)
+          CouponCodeType.CODE_128 -> showBarcode(code.value)
+        }
+      }
+    }
+    binding.textViewCode.apply {
+      setVisible(code.type == CouponCodeType.CODE_128)
+      text = code.value
     }
   }
 

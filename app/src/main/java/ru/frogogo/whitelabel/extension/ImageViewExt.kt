@@ -8,16 +8,41 @@ import com.google.zxing.EncodeHintType
 import com.journeyapps.barcodescanner.BarcodeEncoder
 
 fun ImageView.showQrCode(code: String) {
+  showBarCodeImpl(
+    code,
+    BarcodeFormat.QR_CODE,
+    width,
+    width
+  )
+}
+
+fun ImageView.showBarcode(code: String) {
+  showBarCodeImpl(
+    code,
+    BarcodeFormat.CODE_128,
+    width,
+    (width * 0.4F).toInt()
+  )
+}
+
+private fun ImageView.showBarCodeImpl(
+  code: String,
+  format: BarcodeFormat,
+  width: Int,
+  height: Int,
+) {
   runCatching {
     val barcodeEncoder = BarcodeEncoder()
-    val bitMatrix = barcodeEncoder.encode(
+    val matrix = barcodeEncoder.encode(
       code,
-      BarcodeFormat.QR_CODE,
+      format,
       width,
-      width,
+      height,
       mapOf(EncodeHintType.MARGIN to 1) // Reduces margin
-    ).run { barcodeEncoder.createBitmap(this) }
-    val barCodeDrawable = BitmapDrawable(resources, bitMatrix)
-    setImageDrawable(barCodeDrawable)
+    )
+    val bitmap = barcodeEncoder.createBitmap(matrix)
+    val drawable = BitmapDrawable(resources, bitmap)
+
+    setImageDrawable(drawable)
   }.onFailure { e(it) }
 }
