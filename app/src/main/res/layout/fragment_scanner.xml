@@ -26,20 +26,18 @@
 
     <ImageButton
       android:id="@+id/button_close"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_width="@dimen/toolbar_height"
+      android:layout_height="@dimen/toolbar_height"
       android:layout_alignParentStart="true"
       android:layout_centerVertical="true"
-      android:layout_marginStart="@dimen/spacing_4"
       android:src="@drawable/ic_close_white" />
 
     <ImageButton
       android:id="@+id/button_flash"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_width="@dimen/toolbar_height"
+      android:layout_height="@dimen/toolbar_height"
       android:layout_alignParentEnd="true"
       android:layout_centerVertical="true"
-      android:layout_marginEnd="@dimen/spacing_4"
       android:src="@drawable/ic_flash_off" />
 
   </RelativeLayout>

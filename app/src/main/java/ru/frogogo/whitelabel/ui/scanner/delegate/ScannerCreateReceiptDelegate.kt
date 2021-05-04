@@ -1,13 +1,6 @@
 package ru.frogogo.whitelabel.ui.scanner.delegate
 
-import ru.frogogo.whitelabel.core.ui.BaseViewModelDelegate
-import ru.frogogo.whitelabel.util.dispatcher.DispatchersProvider
+interface ScannerCreateReceiptDelegate {
 
-class ScannerCreateReceiptDelegate(
-  dispatchersProvider: DispatchersProvider,
-) : BaseViewModelDelegate(dispatchersProvider) {
-
-  fun create(code: String) {
-
-  }
+  fun createReceipt(code: String)
 }

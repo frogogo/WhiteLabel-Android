@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.DialogInterface
 import android.view.View
 import androidx.core.view.doOnLayout
+import app.cash.exhaustive.Exhaustive
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.github.ajalt.timberkt.d
 import com.github.ajalt.timberkt.e
@@ -51,9 +52,9 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(),
     // Move toolbar down as activity is in fullscreen mode
     binding.apply {
       layoutToolbar.updateMargin(top = requireActivity().getStatusBarHeight())
-      buttonFlash.setOnClickListener { toggleFlash() }
-      buttonClose.setOnSafeClickListener(viewModel::navigateBack)
-      buttonHelp.setOnSafeClickListener(viewModel::navigateToHelp)
+      buttonFlash.setOnClickListener { viewModel.onFlashButtonClicked() }
+      buttonClose.setOnSafeClickListener(viewModel::onBackButtonClicked)
+      buttonHelp.setOnSafeClickListener(viewModel::onHelpButtonClicked)
     }
 
     initScanner()
@@ -62,7 +63,7 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(),
   override fun initObservers() {
     with(viewModel) {
       observe(isLoadingLive, binding.progressBar::setVisible)
-      observe(errorLiveEvent, ::showErrorDialog)
+      observe(effectEvent, ::handleEffect)
     }
     observeEvent(errorDialogFragmentCallbackViewModel.onDismissEvent) { dialogId ->
       if (dialogId == ERROR_DIALOG_ID) binding.barcodeView.resume()
@@ -88,7 +89,7 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(),
     i { "QR code handled - $result" }
     requireContext().vibratePhone()
     binding.barcodeView.pause()
-    viewModel.handleQrString(result.text)
+    viewModel.createReceipt(result.text)
   }
 
   override fun possibleResultPoints(resultPoints: MutableList<ResultPoint>): Unit = Unit
@@ -106,14 +107,6 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(),
         barcodeView.framingRectSize = Size(width, height)
         findViewById<View>(R.id.view_surface_edges).setSize(width, height)
       }
-    }
-  }
-
-  private fun toggleFlash() {
-    flashIsOn = !flashIsOn
-    binding.apply {
-      buttonFlash.setImageResource(if (flashIsOn) R.drawable.ic_flash_on else R.drawable.ic_flash_off)
-      if (flashIsOn) barcodeView.setTorchOn() else barcodeView.setTorchOff()
     }
   }
 
@@ -152,9 +145,26 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(),
     )
   }
 
+  private fun handleEffect(effect: ScannerEffect) {
+    @Exhaustive
+    when(effect) {
+      is ScannerEffect.ShowError -> showErrorDialog(effect.error)
+      ScannerEffect.ToggleFlash -> toggleFlash()
+      ScannerEffect.ShowSuccess -> TODO()
+    }
+  }
+
   private fun showErrorDialog(error: String?) {
     ErrorDialogFragment.newInstance(error, ERROR_DIALOG_ID)
       .showIn(childFragmentManager)
+  }
+
+  private fun toggleFlash() {
+    flashIsOn = !flashIsOn
+    binding.apply {
+      buttonFlash.setImageResource(if (flashIsOn) R.drawable.ic_flash_on else R.drawable.ic_flash_off)
+      if (flashIsOn) barcodeView.setTorchOn() else barcodeView.setTorchOff()
+    }
   }
 
   companion object {
