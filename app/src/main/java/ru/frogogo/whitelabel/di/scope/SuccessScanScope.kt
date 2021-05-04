@@ -10,7 +10,6 @@ import org.koin.dsl.bind
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.extension.loadBindingModule
 import ru.frogogo.whitelabel.extension.scopedQualifier
-import ru.frogogo.whitelabel.ui.scanner.ScannerViewModel
 import ru.frogogo.whitelabel.ui.scanner.success_dialog.SuccessScanDialog
 import ru.frogogo.whitelabel.ui.scanner.success_dialog.SuccessScanEffect
 import ru.frogogo.whitelabel.ui.scanner.success_dialog.SuccessScanViewModel

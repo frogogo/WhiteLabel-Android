@@ -163,7 +163,6 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(),
       }
       setCancelable(false)
     }
-
   }
 
   private fun handleEffect(effect: ScannerEffect) {
