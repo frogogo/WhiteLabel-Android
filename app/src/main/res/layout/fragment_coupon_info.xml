@@ -104,7 +104,7 @@
     style="@style/IconButton.Backgrounded"
     android:layout_width="36dp"
     android:layout_height="36dp"
-    android:layout_alignParentStart=""
+    android:layout_alignParentStart="true"
     android:layout_alignParentTop="true"
     android:layout_marginStart="@dimen/spacing_2.5"
     android:layout_marginTop="@dimen/spacing_2.5"
