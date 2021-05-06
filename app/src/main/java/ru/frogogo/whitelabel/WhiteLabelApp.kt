@@ -5,6 +5,7 @@ import coil.ImageLoader
 import coil.ImageLoaderFactory
 import com.github.ajalt.timberkt.Timber
 import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.context.startKoin
 import ru.frogogo.whitelabel.di.appComponent
 import ru.frogogo.whitelabel.extension.getWorkManager
@@ -32,6 +33,7 @@ class WhiteLabelApp : Application(), ImageLoaderFactory {
   private fun initKoin() {
     startKoin {
       androidContext(applicationContext)
+      workManagerFactory()
       modules(appComponent)
     }
   }

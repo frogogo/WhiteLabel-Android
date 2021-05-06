@@ -180,6 +180,7 @@ dependencies {
   // Koin https://github.com/InsertKoinIO/koin
   def koinVersion = '3.0.1'
   implementation "io.insert-koin:koin-android:$koinVersion"
+  implementation "io.insert-koin:koin-androidx-workmanager:$koinVersion"
 
   // Retrofit https://github.com/square/retrofit
   def retrofitVersion = '2.9.0'
