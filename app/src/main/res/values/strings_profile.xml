@@ -20,6 +20,7 @@
 
   <!-- Coupons -->
   <string name="coupons_title">Мои купоны</string>
+  <string name="coupons_empty_title">У вас пока нет доступных купонов</string>
 
   <string name="receipt_scan_available_title">Вы можете отсканировать чек</string>
   <string name="receipt_scan_available_description">Минимальная сумма чека указана на боковой поверхности аппарата

@@ -66,7 +66,8 @@ class CouponsFragment : BaseFragment<CouponsViewModel>(),
   }
 
   private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(
-    CommonAdapterDelegates.couponDelegate { viewModel.onCouponClicked(it) }
+    CommonAdapterDelegates.couponDelegate { viewModel.onCouponClicked(it) },
+    CouponsAdapterDelegates.emptyState(),
   )
 
   private fun handleEffect(effect: CouponsEffect) {
