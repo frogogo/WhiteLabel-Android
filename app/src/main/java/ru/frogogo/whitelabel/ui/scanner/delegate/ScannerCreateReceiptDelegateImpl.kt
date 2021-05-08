@@ -6,15 +6,12 @@ import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.launch
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.ui.BaseViewModelDelegate
-import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
-import ru.frogogo.whitelabel.dictionary.ReceiptState
 import ru.frogogo.whitelabel.extension.errorOrDefault
 import ru.frogogo.whitelabel.ui.scanner.ScannerEffect
 import ru.frogogo.whitelabel.usecase.receipt.CreateReceiptResult
 import ru.frogogo.whitelabel.usecase.receipt.CreateReceiptUseCase
 import ru.frogogo.whitelabel.util.ResourceProvider
 import ru.frogogo.whitelabel.util.dispatcher.DispatchersProvider
-import java.util.*
 
 class ScannerCreateReceiptDelegateImpl(
   dispatchersProvider: DispatchersProvider,
@@ -42,18 +39,8 @@ class ScannerCreateReceiptDelegateImpl(
   private fun handleResult(result: CreateReceiptResult) {
     @Exhaustive
     when (result) {
-      CreateReceiptResult.Success -> {
-        mutableEffectLiveEvent.value = ScannerEffect.ShowSuccess(
-          // TODO: 04.05.2021 Real data
-          ReceiptUiModel(
-            id = 0,
-            number = 0,
-            date = Date(),
-            value = 0,
-            state = ReceiptState.PROCESSING,
-            rejectReason = null
-          )
-        )
+      is CreateReceiptResult.Success -> {
+        mutableEffectLiveEvent.value = ScannerEffect.ShowSuccess(result.receipt)
       }
       CreateReceiptResult.Error -> {
         val error = resourceProvider.getString(R.string.error_something_went_wrong)

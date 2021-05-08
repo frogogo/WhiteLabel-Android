@@ -22,8 +22,12 @@ class ReceiptsRepositoryImpl(
     }
   }
 
-  override suspend fun activateQrString(qrString: String): Result<Unit, NetworkError<ErrorResponse>> = withIOContext {
+  override suspend fun activateQrString(
+    qrString: String,
+  ): Result<ReceiptUiModel, NetworkError<ErrorResponse>> = withIOContext {
     val request = ReceiptCreationRequest(qrString)
-    apiCall { api.createReceipt(request) }.mapToResult()
+    apiCall { api.createReceipt(request) }.mapToResult { receipt ->
+      receipt.toDomain()
+    }
   }
 }
