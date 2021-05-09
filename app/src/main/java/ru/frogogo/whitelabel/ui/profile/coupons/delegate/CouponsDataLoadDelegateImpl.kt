@@ -6,6 +6,7 @@ import ru.frogogo.whitelabel.core.ui.BaseViewModelDelegate
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponCodeUiModel
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponImageUiModel
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
+import ru.frogogo.whitelabel.dictionary.CouponCodeType
 import ru.frogogo.whitelabel.util.dispatcher.DispatchersProvider
 
 class CouponsDataLoadDelegateImpl(
@@ -31,8 +32,8 @@ class CouponsDataLoadDelegateImpl(
               thumbUrl = "https://picsum.photos/200"
             ),
             code = CouponCodeUiModel(
-              value = "",
-              type = ""
+              value = "13123",
+              type = CouponCodeType.CODE_128
             )
           ),
           CouponUiModel(
@@ -45,7 +46,7 @@ class CouponsDataLoadDelegateImpl(
             ),
             code = CouponCodeUiModel(
               value = "barcode value",
-              type = "qr"
+              type = CouponCodeType.QR
             )
           )
         )
