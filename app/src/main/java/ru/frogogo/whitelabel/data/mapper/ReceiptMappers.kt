@@ -14,6 +14,9 @@ fun Receipt.toDomain(): ReceiptUiModel = ReceiptUiModel(
   rejectReason = rejectReason?.toDomain()
 )
 
+fun List<Receipt>.toDomain(): List<ReceiptUiModel> =
+  map { it.toDomain() }
+
 fun ReceiptRejectReason.toDomain(): ReceiptRejectReasonUiModel = ReceiptRejectReasonUiModel(
   reason = reason,
   reasonText = reasonText

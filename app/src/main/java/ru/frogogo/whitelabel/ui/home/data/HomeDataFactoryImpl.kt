@@ -11,7 +11,7 @@ class HomeDataFactoryImpl : HomeDataFactory {
     val list = mutableListOf<RecyclerViewItem>()
 
     when (state) {
-      HomeState.Empty -> buildEmptyState(state, list)
+      is HomeState.Empty -> buildEmptyState(state, list)
       is HomeState.Progress -> buildContentState(state, list)
     }
 
@@ -22,14 +22,14 @@ class HomeDataFactoryImpl : HomeDataFactory {
     state: HomeState,
     list: MutableList<RecyclerViewItem>,
   ) {
-    // TODO: 02.05.2021  
+    // TODO: 02.05.2021
   }
 
   private fun buildContentState(
     state: HomeState.Progress,
     list: MutableList<RecyclerViewItem>,
   ) {
-    list += state.couponProgress
+    list += state.progress
 
     if (state.coupons.isNotEmpty()) {
       list += HomeSectionHeader(R.string.home_section_coupons)

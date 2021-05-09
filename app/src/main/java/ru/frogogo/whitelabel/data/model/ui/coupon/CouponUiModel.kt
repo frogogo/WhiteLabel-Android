@@ -5,9 +5,9 @@ import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 data class CouponUiModel(
   val id: Int,
   val name: String,
-  val description: String,
+  val steps: List<String>,
   val image: CouponImageUiModel,
-  val qrString: String,
+  val code: String,
 ) : RecyclerViewItem {
 
   override fun getId(): Any = "ITEM_COUPON$id"
