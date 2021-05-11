@@ -28,6 +28,20 @@ fun View.animateToVisible() {
     .start()
 }
 
+fun View.animateToGone() {
+  if (isGone) {
+    return
+  }
+
+  alpha = 1F
+
+  animate()
+    .alpha(0F)
+    .setDuration(500)
+    .withEndAction { setVisible(false) }
+    .start()
+}
+
 fun View.hideKeyboard() {
   context.getInputMethodManager().hideSoftInputFromWindow(windowToken, 0)
 }

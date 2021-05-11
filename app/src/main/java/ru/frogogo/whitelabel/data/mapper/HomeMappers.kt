@@ -29,7 +29,7 @@ fun HomeResponse.toContentState(): HomeState =
 fun HomePromotion.toDomain(): HomePromotionUiModel =
   HomePromotionUiModel(
     name = name,
-    photoUrl = photoUrl,
+    photo = photo.toDomain(),
     steps = steps,
   )
 
