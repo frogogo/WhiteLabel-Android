@@ -32,7 +32,6 @@ object HomeAdapterDelegates {
           max = item.target
           progress = item.current
         }
-        // binding.textViewNotice.text = item.notice
       }
     }
 
