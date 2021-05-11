@@ -1,6 +1,5 @@
 package ru.frogogo.whitelabel.ui.home
 
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import app.cash.exhaustive.Exhaustive
 import by.kirich1409.viewbindingdelegate.viewBinding
