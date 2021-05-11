@@ -5,10 +5,12 @@ import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 
 sealed class HomeState {
 
-  object Empty : HomeState()
+  data class Empty(
+    val promotion: HomePromotionUiModel,
+  ) : HomeState()
 
   data class Progress(
-    val couponProgress: HomeCouponProgressUiModel,
+    val progress: HomeProgressUiModel,
     val coupons: List<CouponUiModel>,
     val receipts: List<ReceiptUiModel>,
   ) : HomeState()

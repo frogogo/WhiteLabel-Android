@@ -2,9 +2,9 @@ package ru.frogogo.whitelabel.ui.home
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
-import ru.frogogo.whitelabel.data.model.ui.home.HomeCouponProgressUiModel
+import ru.frogogo.whitelabel.data.model.ui.home.HomeProgressUiModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
-import ru.frogogo.whitelabel.databinding.ItemHomeCouponProgressBinding
+import ru.frogogo.whitelabel.databinding.ItemHomeProgressBinding
 import ru.frogogo.whitelabel.databinding.ItemHomeReceiptBinding
 import ru.frogogo.whitelabel.databinding.ItemHomeSectionHeaderBinding
 import ru.frogogo.whitelabel.extension.toDateTime
@@ -22,17 +22,16 @@ object HomeAdapterDelegates {
 //  }
 
   fun couponProgressDelegate() =
-    adapterDelegateViewBinding<HomeCouponProgressUiModel, RecyclerViewItem, ItemHomeCouponProgressBinding>(
-      viewBinding = { layoutInflater, root -> ItemHomeCouponProgressBinding.inflate(layoutInflater, root, false) }
+    adapterDelegateViewBinding<HomeProgressUiModel, RecyclerViewItem, ItemHomeProgressBinding>(
+      viewBinding = { layoutInflater, root -> ItemHomeProgressBinding.inflate(layoutInflater, root, false) }
     ) {
       bind {
-        binding.textViewProgressCurrent.text = PriceUtils.formatPrice(item.progressCurrent)
-        binding.textViewProgressTarget.text = PriceUtils.formatPrice(item.progressTarget)
+        binding.textViewProgressCurrent.text = PriceUtils.formatPrice(item.current)
+        binding.textViewProgressTarget.text = PriceUtils.formatPrice(item.target)
         binding.progressBar.apply {
-          max = item.progressTarget
-          progress = item.progressCurrent
+          max = item.target
+          progress = item.current
         }
-        binding.textViewNotice.text = item.notice
       }
     }
 

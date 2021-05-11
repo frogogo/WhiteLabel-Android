@@ -63,12 +63,17 @@ class CouponInfoFragment : BaseFragment<CouponInfoViewModel>(),
 
   private fun renderContent(coupon: CouponUiModel) {
     binding.apply {
-      imageViewCoupon.load(coupon.image.largeUrl)
+      imageViewCoupon.load(coupon.photo.largeUrl)
       textViewCouponId.text = getString(R.string.coupon_number, coupon.id)
       textViewName.text = coupon.name
+
+      // TODO: 11.05.2021 Show steps
       TextViewCompat.setPrecomputedText(
         textViewInstruction,
-        PrecomputedTextCompat.create(coupon.description, TextViewCompat.getTextMetricsParams(textViewInstruction))
+        PrecomputedTextCompat.create(
+          coupon.steps.joinToString(separator = "\n"),
+          TextViewCompat.getTextMetricsParams(textViewInstruction)
+        )
       )
     }
   }

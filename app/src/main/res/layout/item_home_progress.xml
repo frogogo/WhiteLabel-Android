@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  style="@style/StyledCardViewUnelevated"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  app:contentPaddingBottom="@dimen/spacing_2"
+  app:contentPaddingLeft="@dimen/spacing_4"
+  app:contentPaddingRight="@dimen/spacing_4"
+  app:contentPaddingTop="@dimen/spacing_2">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+      android:id="@+id/text_view_progress_current"
+      style="@style/Text.Body.Medium"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="@color/black"
+      app:layout_constraintEnd_toStartOf="@id/text_view_progress_target"
+      app:layout_constraintHorizontal_chainStyle="spread_inside"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="0 ₽" />
+
+    <TextView
+      android:id="@+id/text_view_progress_target"
+      style="@style/Text.Body.Medium"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="@color/black"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/text_view_progress_current"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="3 300 ₽" />
+
+    <androidx.constraintlayout.widget.Barrier
+      android:id="@+id/barrier_values"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:barrierDirection="bottom"
+      app:constraint_referenced_ids="
+      text_view_progress_current,
+      text_view_progress_target" />
+
+    <ProgressBar
+      android:id="@+id/progress_bar"
+      style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+      android:layout_width="0dp"
+      android:layout_height="6dp"
+      android:layout_marginTop="@dimen/spacing_2"
+      android:progressDrawable="@drawable/home_progress_bar"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/barrier_values"
+      tools:progress="25" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
