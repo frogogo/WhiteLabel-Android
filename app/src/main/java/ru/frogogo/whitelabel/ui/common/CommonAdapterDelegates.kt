@@ -19,7 +19,7 @@ object CommonAdapterDelegates {
       itemView.setOnSafeClickListener { onClickAction(item) }
 
       bind {
-        binding.imageViewCoupon.load(item.image.thumbUrl)
+        binding.imageViewCoupon.load(item.photo.thumbUrl)
         binding.textViewId.text = getString(R.string.coupon_number, item.id)
         binding.textViewName.text = item.name
       }
