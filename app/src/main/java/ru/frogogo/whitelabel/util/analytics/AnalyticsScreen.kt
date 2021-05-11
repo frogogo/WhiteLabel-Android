@@ -16,10 +16,10 @@ enum class AnalyticsScreen {
   PROFILE,
   SCANNER,
   RECEIPTS,
+  COUPONS,
   WEB_VIEW,
 
-  PRODUCTS,
-  MACHINE_SELECT,
+  COUPON_INFO,
 }
 
 fun AnalyticsScreen.lowercaseName(): String = name.toLowerCase(Locale.ENGLISH)

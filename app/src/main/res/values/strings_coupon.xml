@@ -2,5 +2,9 @@
 <resources>
 
   <string name="coupon_number">Купон № %d</string>
+  <string name="coupon_button_show_qr">Показать QR-код кассиру</string>
+  <string name="coupon_button_instruction_header">Инструкция по получению</string>
+
+  <string name="coupon_code_description">Покажите код кассиру</string>
 
 </resources>

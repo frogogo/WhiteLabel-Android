@@ -36,7 +36,8 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
   override fun initViews() {
     initRecyclerView()
     binding.apply {
-      buttonProfile.setOnSafeClickListener(viewModel::onProfileClicked)
+      toolbar.setActionButtonListener(viewModel::onProfileClicked)
+      toolbar.attachToRecyclerView(recyclerView)
       swipeRefreshLayout.setOnRefreshListener(viewModel::refreshData)
       viewErrorState.setOnRefreshClickListener(viewModel::refreshData)
       buttonScan.setOnSafeClickListener(viewModel::onScanClicked)
@@ -77,9 +78,6 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
       setRecycledViewPool(this@HomeFragment.recycledViewPool)
       adapter = this@HomeFragment.adapter
       addItemDecoration(decoration)
-      setOnScrollChangeListener { _, _, _, _, _ ->
-        binding.layoutToolbar.isSelected = canScrollVertically(-1)
-      }
     }
   }
 

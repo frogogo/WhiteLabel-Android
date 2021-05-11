@@ -27,12 +27,11 @@
     app:layout_constraintTop_toBottomOf="@id/button_receipts" />
 
   <com.google.android.material.button.MaterialButton
-    android:id="@+id/button_goods"
+    android:id="@+id/button_coupons"
     style="@style/ProfileMenuButton"
     android:layout_width="0dp"
     android:layout_height="@dimen/profile_button_height"
-    android:text="@string/profile_button_goods"
-    android:visibility="gone"
+    android:text="@string/profile_button_coupons"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@id/divider_1" />

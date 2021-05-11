@@ -160,6 +160,9 @@
     <action
       android:id="@+id/home_to_scanner"
       app:destination="@id/scanner" />
+    <action
+      android:id="@+id/home_to_coupon_info"
+      app:destination="@id/coupon_info" />
   </fragment>
 
   <fragment
@@ -169,6 +172,9 @@
     <action
       android:id="@+id/profile_to_receipts"
       app:destination="@id/receipts" />
+    <action
+      android:id="@+id/profile_to_coupons"
+      app:destination="@id/coupons" />
     <action
       android:id="@+id/profile_to_splash"
       app:destination="@id/splash"
@@ -198,6 +204,15 @@
       app:destination="@id/receipt_details" />
   </fragment>
 
+  <fragment
+    android:id="@+id/coupons"
+    android:name="ru.frogogo.whitelabel.ui.profile.coupons.CouponsFragment"
+    android:label="@layout/fragment_coupons">
+    <action
+      android:id="@+id/coupons_to_coupon_info"
+      app:destination="@id/coupon_info" />
+  </fragment>
+
   <dialog
     android:id="@+id/receipt_details"
     android:name="ru.frogogo.whitelabel.ui.profile.receipts.details.ReceiptDetailsBottomDialog"
@@ -223,6 +238,15 @@
     <argument
       android:name="titleResId"
       app:argType="integer" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/coupon_info"
+    android:name="ru.frogogo.whitelabel.ui.coupon_info.CouponInfoFragment"
+    android:label="@layout/fragment_coupon_info">
+    <argument
+      android:name="coupon"
+      app:argType="ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel" />
   </fragment>
 
   <!-- Actions -->

@@ -27,13 +27,13 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
 
   override fun initViews() {
     binding.apply {
-      buttonClose.setOnSafeClickListener(viewModel::navigateBack)
+      toolbar.setActionButtonListener(viewModel::navigateBack)
       viewErrorState.setOnRefreshClickListener(viewModel::loadProfile)
       layoutContent.apply {
         layoutInvite.buttonShare.setOnSafeClickListener { /* TODO: 04.07.2020 Invitation */ }
         layoutMenu.apply {
           buttonReceipts.setOnSafeClickListener(viewModel::navigateToReceipts)
-          buttonGoods.setOnSafeClickListener(viewModel::navigateToGoods)
+          buttonCoupons.setOnSafeClickListener(viewModel::navigateToCoupons)
         }
       }
       initLogoutButton()

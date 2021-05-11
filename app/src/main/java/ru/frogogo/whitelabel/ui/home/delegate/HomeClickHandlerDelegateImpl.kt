@@ -23,6 +23,7 @@ class HomeClickHandlerDelegateImpl(
   }
 
   override fun onCouponClicked(coupon: CouponUiModel) {
-    // TODO: 02.05.2021
+    d { "Navigating to coupon info" }
+    navigation.navigateToCouponInfo(coupon).navigate()
   }
 }
