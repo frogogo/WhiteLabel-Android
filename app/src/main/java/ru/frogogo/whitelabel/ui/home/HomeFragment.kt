@@ -12,10 +12,7 @@ import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.recycler.BaseDelegationAdapter
 import ru.frogogo.whitelabel.core.ui.BaseFragment
 import ru.frogogo.whitelabel.databinding.FragmentHomeBinding
-import ru.frogogo.whitelabel.extension.animateToVisible
-import ru.frogogo.whitelabel.extension.observe
-import ru.frogogo.whitelabel.extension.setOnSafeClickListener
-import ru.frogogo.whitelabel.extension.setVisible
+import ru.frogogo.whitelabel.extension.*
 import ru.frogogo.whitelabel.ui.common.CommonAdapterDelegates
 import ru.frogogo.whitelabel.util.ItemDecoration
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
@@ -49,7 +46,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
 
   override fun initObservers() {
     with(viewModel) {
-      observe(dataLive) { data ->
+      observe(viewModel.dataLive) { data ->
         binding.swipeRefreshLayout.isRefreshing = false
         adapter.items = data
       }
@@ -101,7 +98,11 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
 
   private fun handleScanButtonState(state: HomeScanButtonState) {
     binding.buttonScan.apply {
-      animateToVisible()
+      if (state != HomeScanButtonState.HIDDEN) {
+        animateToVisible()
+      } else {
+        animateToGone()
+      }
       isEnabled = state == HomeScanButtonState.SHOWN_ENABLED
     }
   }
