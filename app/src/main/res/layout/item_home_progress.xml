@@ -59,29 +59,6 @@
       app:layout_constraintTop_toBottomOf="@id/barrier_values"
       tools:progress="25" />
 
-    <ImageView
-      android:id="@+id/image_view_icon"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/spacing_4"
-      android:src="@drawable/ic_info"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/progress_bar" />
-
-    <TextView
-      android:id="@+id/text_view_notice"
-      style="@style/Text.Caption"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="@dimen/spacing_3"
-      android:textColor="@color/black"
-      app:layout_constrainedHeight="true"
-      app:layout_constraintBottom_toBottomOf="@id/image_view_icon"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@id/image_view_icon"
-      app:layout_constraintTop_toTopOf="@id/image_view_icon"
-      tools:text="Вы приобрели акционных товаров на сумму 2 000 ₽. До следующего купона на бесплатный товар осталось 1 300 ₽" />
-
   </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>
