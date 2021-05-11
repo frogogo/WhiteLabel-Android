@@ -1,23 +1,30 @@
 package ru.frogogo.whitelabel.ui.home
 
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import app.cash.exhaustive.Exhaustive
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.android.ext.android.inject
+import org.koin.android.scope.AndroidScopeComponent
+import org.koin.androidx.scope.fragmentScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.scope.Scope
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.recycler.BaseDelegationAdapter
 import ru.frogogo.whitelabel.core.ui.BaseFragment
 import ru.frogogo.whitelabel.databinding.FragmentHomeBinding
+import ru.frogogo.whitelabel.extension.animateToVisible
 import ru.frogogo.whitelabel.extension.observe
 import ru.frogogo.whitelabel.extension.setOnSafeClickListener
 import ru.frogogo.whitelabel.extension.setVisible
+import ru.frogogo.whitelabel.ui.common.CommonAdapterDelegates
+import ru.frogogo.whitelabel.util.ItemDecoration
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 import ru.frogogo.whitelabel.util.unsafeLazy
 
 class HomeFragment : BaseFragment<HomeViewModel>(),
-  SwipeRefreshLayout.OnRefreshListener {
+  AndroidScopeComponent {
 
+  override val scope: Scope by fragmentScope()
   override val viewModel: HomeViewModel by viewModel()
 
   private val binding: FragmentHomeBinding by viewBinding()
@@ -30,28 +37,27 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
   )
 
   override fun initViews() {
+    initRecyclerView()
     binding.apply {
-      buttonProfile.setOnSafeClickListener(viewModel::navigateToProfile)
-      recyclerView.setRecycledViewPool(recycledViewPool)
-      recyclerView.adapter = this@HomeFragment.adapter
-      swipeRefreshLayout.setOnRefreshListener(this@HomeFragment)
+      buttonProfile.setOnSafeClickListener(viewModel::onProfileClicked)
+      swipeRefreshLayout.setOnRefreshListener(viewModel::refreshData)
       viewErrorState.setOnRefreshClickListener(viewModel::refreshData)
+      buttonScan.setOnSafeClickListener(viewModel::onScanClicked)
     }
   }
 
   override fun initObservers() {
     with(viewModel) {
-      observe(viewModel.dataLive) { adapter.items = it }
+      observe(viewModel.dataLive) { data ->
+        binding.swipeRefreshLayout.isRefreshing = false
+        adapter.items = data
+      }
       observe(isLoadingLive) { isLoading ->
         renderState(isLoading = isLoading)
-        binding.swipeRefreshLayout.isRefreshing = false
       }
-      observe(errorOccurredLiveEvent) { renderState(isError = true) }
+      observe(effectLiveEvent, ::handleEffect)
+      observe(scanButtonStateLive, ::handleScanButtonState)
     }
-  }
-
-  override fun onRefresh() {
-    viewModel.refreshData()
   }
 
   private fun renderState(isLoading: Boolean = false, isError: Boolean = false) {
@@ -62,12 +68,48 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
     }
   }
 
-  private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(
-    HomeAdapterDelegates.emptyStateDelegate { viewModel.navigateToReceiptScan() },
-    HomeAdapterDelegates.approvedStateDelegate(
-      scanMachineCallback = { /* TODO */ },
-      enterMachineAction = { /* TODO */ },
-      scanReceiptAction = { viewModel.navigateToReceiptScan() }
+  private fun initRecyclerView() {
+    val decoration = ItemDecoration(
+      verticalSpacing = resources.getDimensionPixelSize(R.dimen.spacing_2),
+      horizontalSpacing = resources.getDimensionPixelSize(R.dimen.spacing_4),
+      topSpacing = resources.getDimensionPixelSize(R.dimen.spacing_6),
+      bottomSpacing = resources.getDimensionPixelSize(R.dimen.spacing_24)
     )
+
+    binding.recyclerView.apply {
+      setRecycledViewPool(this@HomeFragment.recycledViewPool)
+      adapter = this@HomeFragment.adapter
+      addItemDecoration(decoration)
+      setOnScrollChangeListener { _, _, _, _, _ ->
+        binding.layoutToolbar.isSelected = canScrollVertically(-1)
+      }
+    }
+  }
+
+  private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(
+    //  HomeAdapterDelegates.emptyStateDelegate { viewModel.onScanClicked() },
+    HomeAdapterDelegates.sectionHeaderDelegate(),
+    HomeAdapterDelegates.couponProgressDelegate(),
+    HomeAdapterDelegates.receiptDelegate(),
+    CommonAdapterDelegates.couponDelegate { viewModel.onCouponClicked(it) },
   )
+
+  private fun handleEffect(effect: HomeEffect) {
+    @Exhaustive
+    when (effect) {
+      HomeEffect.ShowLoadingError -> showLoadingError()
+    }
+  }
+
+  private fun handleScanButtonState(state: HomeScanButtonState) {
+    binding.buttonScan.apply {
+      animateToVisible()
+      isEnabled = state == HomeScanButtonState.SHOWN_ENABLED
+    }
+  }
+
+  private fun showLoadingError() {
+    binding.swipeRefreshLayout.isRefreshing = false
+    renderState(isError = true)
+  }
 }

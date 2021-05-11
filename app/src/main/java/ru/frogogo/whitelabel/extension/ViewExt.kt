@@ -14,6 +14,20 @@ fun View.setVisible(visible: Boolean, useInvisible: Boolean = false) {
   visibility = if (visible) View.VISIBLE else if (useInvisible) View.INVISIBLE else View.GONE
 }
 
+fun View.animateToVisible() {
+  if (isVisible) {
+    return
+  }
+
+  alpha = 0F
+  setVisible(true)
+
+  animate()
+    .alpha(1F)
+    .setDuration(500)
+    .start()
+}
+
 fun View.hideKeyboard() {
   context.getInputMethodManager().hideSoftInputFromWindow(windowToken, 0)
 }

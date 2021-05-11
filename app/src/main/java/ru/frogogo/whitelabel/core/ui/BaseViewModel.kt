@@ -4,13 +4,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.ajalt.timberkt.d
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import ru.frogogo.whitelabel.core.Event
 import ru.frogogo.whitelabel.core.navigation.AppNavigation
 import ru.frogogo.whitelabel.core.navigation.NavigationCommand
 import ru.frogogo.whitelabel.extension.asLiveData
 import ru.frogogo.whitelabel.extension.postEvent
 import ru.frogogo.whitelabel.extension.setEvent
-import ru.frogogo.whitelabel.core.Event
 
 open class BaseViewModel : ViewModel() {
 
@@ -26,9 +27,18 @@ open class BaseViewModel : ViewModel() {
 
   open fun onStop(): Unit = Unit
 
+  fun attachNavigatorDelegate(delegate: ViewModelNavigationDelegate) {
+    viewModelScope.launch {
+      delegate.navigationCommandFlow.collect { command ->
+        _navigationLiveEvent.postEvent(command)
+      }
+    }
+  }
+
   /**
    * Convenient method to handle navigation from a [ViewModel]
    */
+  @Deprecated("No navigation in ViewModel should be done. Use navigation delegate")
   fun NavigationCommand.navigate() {
     _navigationLiveEvent.postEvent(this)
   }
@@ -36,6 +46,7 @@ open class BaseViewModel : ViewModel() {
   /**
    * Executes back navigation
    */
+  @Deprecated("No navigation in ViewModel should be done. Use navigation delegate")
   fun navigateBack() {
     d { "Navigating back" }
     AppNavigation.navigateBack().navigate()
