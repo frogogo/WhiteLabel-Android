@@ -13,5 +13,9 @@ sealed class HomeState {
     val progress: HomeProgressUiModel,
     val coupons: List<CouponUiModel>,
     val receipts: List<ReceiptUiModel>,
+    val scanAvailable: Boolean,
   ) : HomeState()
 }
+
+fun HomeState.isScanAvailable(): Boolean =
+  this is HomeState.Empty || (this is HomeState.Progress && this.scanAvailable)

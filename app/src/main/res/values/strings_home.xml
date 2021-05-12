@@ -13,6 +13,7 @@
   <string name="home_approved_title">Отсканируйте QR код на аппарате либо введите его номер вручную</string>
   <string name="home_approved_button_enter">Ввести</string>
   <string name="home_approved_button_scan">Сканировать</string>
+  <string name="home_scan_unavailable">Когда ваш чек пройдет проверку, вы сможете отсканировать новый чек.</string>
 
   <string name="home_section_coupons">Купоны</string>
   <string name="home_section_receipts">Чеки</string>

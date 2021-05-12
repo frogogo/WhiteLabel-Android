@@ -6,6 +6,7 @@ import ru.frogogo.whitelabel.data.model.api.home.HomeResponse
 import ru.frogogo.whitelabel.data.model.ui.home.HomeProgressUiModel
 import ru.frogogo.whitelabel.data.model.ui.home.HomePromotionUiModel
 import ru.frogogo.whitelabel.data.model.ui.home.HomeState
+import ru.frogogo.whitelabel.dictionary.ReceiptState
 
 fun HomeResponse.toDomain(): HomeState =
   if (receipts.isEmpty()) {
@@ -19,12 +20,16 @@ fun HomeResponse.toEmptyState(): HomeState =
     promotion = promotion.toDomain(),
   )
 
-fun HomeResponse.toContentState(): HomeState =
-  HomeState.Progress(
-    receipts = receipts.toDomain(),
+fun HomeResponse.toContentState(): HomeState {
+  val receipts = receipts.toDomain()
+
+  return HomeState.Progress(
     progress = progress!!.toDomain(),
     coupons = coupons.toDomain(couponData),
+    receipts = receipts,
+    scanAvailable = receipts.firstOrNull()?.state != ReceiptState.PROCESSING
   )
+}
 
 fun HomePromotion.toDomain(): HomePromotionUiModel =
   HomePromotionUiModel(

@@ -85,6 +85,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
     //  HomeAdapterDelegates.emptyStateDelegate { viewModel.onScanClicked() },
     HomeAdapterDelegates.sectionHeaderDelegate(),
     HomeAdapterDelegates.couponProgressDelegate(),
+    HomeAdapterDelegates.scanUnavailableDelegate(),
     HomeAdapterDelegates.receiptDelegate(),
     CommonAdapterDelegates.couponDelegate { viewModel.onCouponClicked(it) },
   )

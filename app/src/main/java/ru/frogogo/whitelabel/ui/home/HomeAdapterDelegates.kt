@@ -6,8 +6,10 @@ import ru.frogogo.whitelabel.data.model.ui.home.HomeProgressUiModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.databinding.ItemHomeProgressBinding
 import ru.frogogo.whitelabel.databinding.ItemHomeReceiptBinding
+import ru.frogogo.whitelabel.databinding.ItemHomeScanUnavailableBinding
 import ru.frogogo.whitelabel.databinding.ItemHomeSectionHeaderBinding
 import ru.frogogo.whitelabel.extension.toDateTime
+import ru.frogogo.whitelabel.ui.home.model.HomeScanUnavailable
 import ru.frogogo.whitelabel.ui.home.model.HomeSectionHeader
 import ru.frogogo.whitelabel.util.PriceUtils
 
@@ -54,4 +56,11 @@ object HomeAdapterDelegates {
       binding.imageViewStatus.setImageResource(item.state.getStatusIcon())
     }
   }
+
+  fun scanUnavailableDelegate() =
+    adapterDelegateViewBinding<HomeScanUnavailable, RecyclerViewItem, ItemHomeScanUnavailableBinding>(
+      viewBinding = { layoutInflater, root -> ItemHomeScanUnavailableBinding.inflate(layoutInflater, root, false) }
+    ) {
+      /* no-op */
+    }
 }

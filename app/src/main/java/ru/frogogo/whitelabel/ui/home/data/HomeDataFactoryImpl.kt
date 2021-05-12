@@ -3,6 +3,7 @@ package ru.frogogo.whitelabel.ui.home.data
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.data.model.ui.home.HomeState
+import ru.frogogo.whitelabel.ui.home.model.HomeScanUnavailable
 import ru.frogogo.whitelabel.ui.home.model.HomeSectionHeader
 
 class HomeDataFactoryImpl : HomeDataFactory {
@@ -38,6 +39,10 @@ class HomeDataFactoryImpl : HomeDataFactory {
 
     if (state.receipts.isNotEmpty()) {
       list += HomeSectionHeader(R.string.home_section_receipts)
+
+      if (!state.scanAvailable) {
+        list += HomeScanUnavailable
+      }
       list += state.receipts
     }
   }
