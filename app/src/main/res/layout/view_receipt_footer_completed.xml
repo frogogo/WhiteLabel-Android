@@ -9,7 +9,7 @@
   android:paddingEnd="@dimen/spacing_4">
 
   <TextView
-    android:id="@+id/textViewStateSubtitle"
+    android:id="@+id/text_view_state_subtitle"
     style="@style/Text.Subhead"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -21,13 +21,13 @@
     tools:text="Вы получили батончик Kinder Bueno" />
 
   <ImageView
-    android:id="@+id/imageViewProduct"
-    android:layout_width="129dp"
-    android:layout_height="129dp"
+    android:id="@+id/image_view_product"
+    android:layout_width="@dimen/receipt_details_image_size"
+    android:layout_height="@dimen/receipt_details_image_size"
     android:layout_marginTop="@dimen/spacing_4"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/textViewStateSubtitle"
+    app:layout_constraintTop_toBottomOf="@id/text_view_state_subtitle"
     tools:src="@sample/product" />
 
   <View
@@ -37,18 +37,18 @@
     android:layout_marginTop="@dimen/spacing_4"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/imageViewProduct" />
+    app:layout_constraintTop_toBottomOf="@id/image_view_product" />
 
   <ImageView
-    android:id="@+id/imageViewStep"
+    android:id="@+id/image_view_step"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:src="@drawable/ic_info"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toTopOf="@id/textViewStep" />
+    app:layout_constraintTop_toTopOf="@id/text_view_step" />
 
   <TextView
-    android:id="@+id/textViewStep"
+    android:id="@+id/text_view_step"
     style="@style/Text.Caption"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
     android:layout_marginTop="@dimen/spacing_3"
     android:text="@string/receipt_state_completed_next_step"
     android:textColor="@color/receipt_subtitle"
-    app:layout_constraintLeft_toRightOf="@id/imageViewStep"
+    app:layout_constraintLeft_toRightOf="@id/image_view_step"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@id/divider" />
 

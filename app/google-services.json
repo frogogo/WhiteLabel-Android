@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "190747897150",
-    "firebase_url": "https://poprobuy-574ea.firebaseio.com",
-    "project_id": "poprobuy-574ea",
-    "storage_bucket": "poprobuy-574ea.appspot.com"
+    "project_number": "99713790578",
+    "project_id": "zboom-2c9f9",
+    "storage_bucket": "zboom-2c9f9.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:190747897150:android:26a89a9d4fe583821ed06f",
+        "mobilesdk_app_id": "1:99713790578:android:443959648489ec1cf388eb",
         "android_client_info": {
-          "package_name": "ru.poprobuy.poprobuy"
+          "package_name": "ru.frogogo.sboom"
         }
       },
       "oauth_client": [
         {
-          "client_id": "190747897150-pg3sdlv52drdgs7oua71f9h1lf7pmme0.apps.googleusercontent.com",
+          "client_id": "99713790578-110snv82qvlm88eteflcf05sueu4o1cr.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDUeqHK-qPmDuYIYu76GYC9xULdtBXfgXQ"
+          "current_key": "AIzaSyBmggdVETxVr4BYmlXjfQkeeaKkR7iV2pI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "190747897150-pg3sdlv52drdgs7oua71f9h1lf7pmme0.apps.googleusercontent.com",
+              "client_id": "99713790578-110snv82qvlm88eteflcf05sueu4o1cr.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "190747897150-9hqlbljuu3c4dv9u0ivao9vhqg73s7c4.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "ru.poprobuy.poprobuy"
-              }
             }
           ]
         }

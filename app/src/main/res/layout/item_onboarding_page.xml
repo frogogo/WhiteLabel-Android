@@ -9,43 +9,43 @@
   android:paddingEnd="@dimen/spacing_4">
 
   <androidx.constraintlayout.widget.Guideline
-    android:id="@+id/guideBottom"
+    android:id="@+id/guide_bottom"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.6" />
 
   <ImageView
-    android:id="@+id/imageViewIcon"
-    android:layout_width="96dp"
-    android:layout_height="96dp"
-    app:layout_constraintBottom_toTopOf="@id/textViewTitle"
+    android:id="@+id/image_view_icon"
+    android:layout_width="@dimen/onboarding_image_size"
+    android:layout_height="@dimen/onboarding_image_size"
+    app:layout_constraintBottom_toTopOf="@id/text_view_title"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:src="@drawable/onboarding_icon_1" />
 
   <TextView
-    android:id="@+id/textViewTitle"
+    android:id="@+id/text_view_title"
     style="@style/Text.Title1.Medium"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/spacing_4"
     android:gravity="center"
     android:textColor="@color/screen_title"
-    app:layout_constraintBottom_toTopOf="@id/textViewDescription"
+    app:layout_constraintBottom_toTopOf="@id/text_view_description"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     tools:text="@string/onboarding_page_1_title" />
 
   <TextView
-    android:id="@+id/textViewDescription"
+    android:id="@+id/text_view_description"
     style="@style/Text.Body"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:gravity="center"
     android:textColor="@color/screen_subtitle"
-    app:layout_constraintBottom_toTopOf="@id/guideBottom"
+    app:layout_constraintBottom_toTopOf="@id/guide_bottom"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     tools:text="@string/onboarding_page_1_description" />

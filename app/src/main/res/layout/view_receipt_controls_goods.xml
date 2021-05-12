@@ -6,7 +6,7 @@
   android:layout_height="wrap_content">
 
   <TextView
-    android:id="@+id/textViewTitle"
+    android:id="@+id/text_view_title"
     style="@style/Text.Subhead.Medium"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
     app:layout_constraintTop_toTopOf="parent" />
 
   <com.google.android.material.button.MaterialButton
-    android:id="@+id/buttonEnterMachine"
+    android:id="@+id/button_enter_machine"
     style="@style/OutlinedButton"
     android:layout_width="0dp"
     android:layout_height="@dimen/button_height"
@@ -27,19 +27,19 @@
     android:text="@string/home_approved_button_enter"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toLeftOf="@id/buttonScanMachine"
-    app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+    app:layout_constraintRight_toLeftOf="@id/button_scan_machine"
+    app:layout_constraintTop_toBottomOf="@id/text_view_title" />
 
   <com.google.android.material.button.MaterialButton
-    android:id="@+id/buttonScanMachine"
+    android:id="@+id/button_scan_machine"
     android:layout_width="0dp"
     android:layout_height="@dimen/button_height"
     android:layout_marginStart="@dimen/spacing_1"
     android:layout_marginTop="@dimen/spacing_6"
     android:text="@string/home_approved_button_scan"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toRightOf="@id/buttonEnterMachine"
+    app:layout_constraintLeft_toRightOf="@id/button_enter_machine"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+    app:layout_constraintTop_toBottomOf="@id/text_view_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

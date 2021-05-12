@@ -7,7 +7,7 @@
   android:background="@color/screen_background">
 
   <com.journeyapps.barcodescanner.DecoratedBarcodeView
-    android:id="@+id/barcodeView"
+    android:id="@+id/barcode_view"
     android:layout_width="0dp"
     android:layout_height="0dp"
     app:layout_constraintBottom_toBottomOf="parent"
@@ -17,7 +17,7 @@
     app:zxing_scanner_layout="@layout/fragment_scanner_view" />
 
   <RelativeLayout
-    android:id="@+id/layoutToolbar"
+    android:id="@+id/layout_toolbar"
     android:layout_width="0dp"
     android:layout_height="@dimen/toolbar_height"
     app:layout_constraintLeft_toLeftOf="parent"
@@ -25,41 +25,25 @@
     app:layout_constraintTop_toTopOf="parent">
 
     <ImageButton
-      android:id="@+id/buttonClose"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:id="@+id/button_close"
+      android:layout_width="@dimen/toolbar_height"
+      android:layout_height="@dimen/toolbar_height"
       android:layout_alignParentStart="true"
       android:layout_centerVertical="true"
-      android:layout_marginStart="@dimen/spacing_4"
       android:src="@drawable/ic_close_white" />
 
     <ImageButton
-      android:id="@+id/buttonFlash"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:id="@+id/button_flash"
+      android:layout_width="@dimen/toolbar_height"
+      android:layout_height="@dimen/toolbar_height"
       android:layout_alignParentEnd="true"
       android:layout_centerVertical="true"
-      android:layout_marginEnd="@dimen/spacing_4"
       android:src="@drawable/ic_flash_off" />
 
   </RelativeLayout>
 
   <com.google.android.material.button.MaterialButton
-    android:id="@+id/buttonEnterManual"
-    style="@style/OutlinedButton.White"
-    android:layout_width="wrap_content"
-    android:layout_height="@dimen/button_height"
-    android:layout_marginStart="@dimen/spacing_8"
-    android:layout_marginEnd="@dimen/spacing_8"
-    android:layout_marginBottom="@dimen/spacing_3"
-    android:text="@string/scanner_button_enter_manual"
-    app:layout_constrainedWidth="true"
-    app:layout_constraintBottom_toTopOf="@id/buttonHelp"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent" />
-
-  <com.google.android.material.button.MaterialButton
-    android:id="@+id/buttonHelp"
+    android:id="@+id/button_help"
     style="@style/TextButton.White"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/button_height"
@@ -72,9 +56,9 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent" />
 
-  <ProgressBar
-    android:id="@+id/progressBar"
-    style="@style/ProgressBarBackgrounded"
+  <com.google.android.material.progressindicator.CircularProgressIndicator
+    android:id="@+id/progress_bar"
+    style="@style/CircularProgressIndicator.Backgrounded"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:visibility="gone"

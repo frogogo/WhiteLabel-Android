@@ -7,7 +7,7 @@
   android:layout_height="wrap_content">
 
   <View
-    android:id="@+id/viewHeader"
+    android:id="@+id/view_header"
     android:layout_width="0dp"
     android:layout_height="@dimen/receipt_header_height_small"
     android:background="@drawable/receipt_header"
@@ -17,7 +17,7 @@
 
   <!-- Receipt Values -->
   <TextView
-    android:id="@+id/textViewReceiptNumber"
+    android:id="@+id/text_view_receipt_number"
     style="@style/Text.Headline.Medium"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -26,12 +26,12 @@
     android:layout_marginEnd="@dimen/spacing_4"
     android:textColor="@color/receipt_value"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toLeftOf="@id/textViewReceiptValue"
+    app:layout_constraintRight_toLeftOf="@id/text_view_receipt_value"
     app:layout_constraintTop_toTopOf="parent"
     tools:text="№ 3493439" />
 
   <TextView
-    android:id="@+id/textViewReceiptValue"
+    android:id="@+id/text_view_receipt_value"
     style="@style/Text.Headline.Medium"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -50,10 +50,12 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:barrierDirection="bottom"
-    app:constraint_referenced_ids="textViewReceiptNumber,textViewReceiptValue" />
+    app:constraint_referenced_ids="
+    text_view_receipt_number,
+    text_view_receipt_value" />
 
   <TextView
-    android:id="@+id/textViewShop"
+    android:id="@+id/text_view_shop"
     style="@style/Text.Title2.Medium"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -61,7 +63,7 @@
     android:layout_marginEnd="@dimen/spacing_4"
     android:gravity="center"
     android:textColor="@color/receipt_value"
-    app:layout_constraintBottom_toTopOf="@id/textViewDate"
+    app:layout_constraintBottom_toTopOf="@id/text_view_date"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@id/barrier"
@@ -69,34 +71,34 @@
     tools:text="ВкусВилл" />
 
   <TextView
-    android:id="@+id/textViewDate"
+    android:id="@+id/text_view_date"
     style="@style/Text.Caption"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/spacing_4"
-    android:layout_marginTop="4dp"
+    android:layout_marginTop="@dimen/spacing_1"
     android:layout_marginEnd="@dimen/spacing_4"
     android:gravity="center"
     android:textColor="@color/receipt_date"
-    app:layout_constraintBottom_toTopOf="@id/imageViewState"
+    app:layout_constraintBottom_toTopOf="@id/image_view_state"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/textViewShop"
+    app:layout_constraintTop_toBottomOf="@id/text_view_shop"
     tools:text="23.05.2020 - 13:20" />
 
   <!-- Status -->
   <ImageView
-    android:id="@+id/imageViewState"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintBottom_toBottomOf="@id/viewHeader"
+    android:id="@+id/image_view_state"
+    android:layout_width="@dimen/receipt_header_state_image_size"
+    android:layout_height="@dimen/receipt_header_state_image_size"
+    app:layout_constraintBottom_toBottomOf="@id/view_header"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/viewHeader"
+    app:layout_constraintTop_toBottomOf="@id/view_header"
     tools:src="@drawable/ic_receipt_approved" />
 
   <TextView
-    android:id="@+id/textViewState"
+    android:id="@+id/text_view_state"
     style="@style/Text.Headline.Medium"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -107,7 +109,7 @@
     android:textColor="@color/receipt_title"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/imageViewState"
+    app:layout_constraintTop_toBottomOf="@id/image_view_state"
     tools:text="@string/receipt_state_approved" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

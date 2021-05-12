@@ -15,35 +15,32 @@
     android:paddingTop="@dimen/spacing_8"
     android:paddingEnd="@dimen/spacing_8">
 
-    <TextView
-      android:id="@+id/textViewTitle"
-      style="@style/Text.TitleLarge.Medium"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:text="@string/auth_policy_title"
-      android:textColor="@color/screen_title"
-      app:layout_constraintBottom_toTopOf="@id/textViewPolicy"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
+    <ImageView
+      android:id="@+id/image_view_logo"
+      android:layout_width="@dimen/app_logo_size"
+      android:layout_height="@dimen/app_logo_size"
+      android:src="@drawable/ic_app_logo"
+      app:layout_constraintBottom_toTopOf="@id/text_view_policy"
+      app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-      android:id="@+id/textViewPolicy"
+      android:id="@+id/text_view_policy"
       style="@style/Text.Body"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/spacing_6"
+      android:layout_marginTop="@dimen/spacing_8"
       android:layout_marginBottom="@dimen/spacing_12"
       android:text="@string/auth_policy_text"
       android:textColor="@color/screen_subtitle"
-      app:layout_constraintBottom_toTopOf="@id/buttonContinue"
+      app:layout_constraintBottom_toTopOf="@id/button_continue"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+      app:layout_constraintTop_toBottomOf="@id/image_view_logo" />
 
     <com.google.android.material.button.MaterialButton
-      android:id="@+id/buttonContinue"
+      android:id="@+id/button_continue"
       android:layout_width="0dp"
       android:layout_height="@dimen/button_height"
       android:layout_marginBottom="@dimen/spacing_12"

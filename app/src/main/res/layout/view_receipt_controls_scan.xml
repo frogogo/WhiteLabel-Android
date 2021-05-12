@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.button.MaterialButton
+<FrameLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
-  android:layout_height="@dimen/button_height"
-  android:text="@string/home_rejected_button_scan"
-  android:visibility="gone"
-  app:icon="@drawable/ic_scan_qr"
-  app:iconGravity="textEnd" />
+  android:layout_height="wrap_content">
+
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/button_scan"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/button_height"
+    android:text="@string/home_rejected_button_scan"
+    app:icon="@drawable/ic_scan_qr"
+    app:iconGravity="textEnd" />
+
+</FrameLayout>

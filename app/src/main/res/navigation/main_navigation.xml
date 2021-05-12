@@ -8,7 +8,7 @@
 
   <fragment
     android:id="@+id/splash"
-    android:name="ru.poprobuy.poprobuy.ui.splash.SplashFragment"
+    android:name="ru.frogogo.whitelabel.ui.splash.SplashFragment"
     tools:layout="@layout/fragment_splash">
     <action
       android:id="@+id/splash_to_onboarding"
@@ -48,7 +48,7 @@
 
   <fragment
     android:id="@+id/onboarding"
-    android:name="ru.poprobuy.poprobuy.ui.onboarding.OnboardingFragment"
+    android:name="ru.frogogo.whitelabel.ui.onboarding.OnboardingFragment"
     tools:layout="@layout/fragment_onboarding">
     <action
       android:id="@+id/onboarding_to_auth_policy"
@@ -63,7 +63,7 @@
 
   <fragment
     android:id="@+id/auth_policy"
-    android:name="ru.poprobuy.poprobuy.ui.auth.policy.AuthPolicyFragment"
+    android:name="ru.frogogo.whitelabel.ui.auth.policy.AuthPolicyFragment"
     tools:layout="@layout/fragment_auth_policy">
     <action
       android:id="@+id/auth_policy_to_auth_phone"
@@ -78,7 +78,7 @@
 
   <fragment
     android:id="@+id/auth_phone"
-    android:name="ru.poprobuy.poprobuy.ui.auth.phone.AuthPhoneFragment"
+    android:name="ru.frogogo.whitelabel.ui.auth.phone.AuthPhoneFragment"
     tools:layout="@layout/fragment_auth_phone">
     <action
       android:id="@+id/auth_phone_to_auth_code_confirmation"
@@ -95,7 +95,7 @@
 
   <fragment
     android:id="@+id/auth_code"
-    android:name="ru.poprobuy.poprobuy.ui.auth.code.AuthCodeFragment"
+    android:name="ru.frogogo.whitelabel.ui.auth.code.AuthCodeFragment"
     tools:layout="@layout/fragment_auth_code">
     <argument
       android:name="phoneNumber"
@@ -123,7 +123,7 @@
 
   <fragment
     android:id="@+id/auth_name"
-    android:name="ru.poprobuy.poprobuy.ui.auth.name.AuthNameFragment"
+    android:name="ru.frogogo.whitelabel.ui.auth.name.AuthNameFragment"
     tools:layout="@layout/fragment_auth_name">
     <action
       android:id="@+id/auth_name_to_auth_email"
@@ -136,7 +136,7 @@
 
   <fragment
     android:id="@+id/auth_email"
-    android:name="ru.poprobuy.poprobuy.ui.auth.email.AuthEmailFragment"
+    android:name="ru.frogogo.whitelabel.ui.auth.email.AuthEmailFragment"
     tools:layout="@layout/fragment_auth_email">
     <argument
       android:name="name"
@@ -152,7 +152,7 @@
 
   <fragment
     android:id="@+id/home"
-    android:name="ru.poprobuy.poprobuy.ui.home.HomeFragment"
+    android:name="ru.frogogo.whitelabel.ui.home.HomeFragment"
     tools:layout="@layout/fragment_home">
     <action
       android:id="@+id/home_to_profile"
@@ -161,17 +161,20 @@
       android:id="@+id/home_to_scanner"
       app:destination="@id/scanner" />
     <action
-      android:id="@+id/home_to_machine_select"
-      app:destination="@id/machine_select" />
+      android:id="@+id/home_to_coupon_info"
+      app:destination="@id/coupon_info" />
   </fragment>
 
   <fragment
     android:id="@+id/profile"
-    android:name="ru.poprobuy.poprobuy.ui.profile.ProfileFragment"
+    android:name="ru.frogogo.whitelabel.ui.profile.ProfileFragment"
     tools:layout="@layout/fragment_profile">
     <action
       android:id="@+id/profile_to_receipts"
       app:destination="@id/receipts" />
+    <action
+      android:id="@+id/profile_to_coupons"
+      app:destination="@id/coupons" />
     <action
       android:id="@+id/profile_to_splash"
       app:destination="@id/splash"
@@ -181,21 +184,8 @@
 
   <fragment
     android:id="@+id/scanner"
-    android:name="ru.poprobuy.poprobuy.ui.scanner.ScannerFragment"
+    android:name="ru.frogogo.whitelabel.ui.scanner.ScannerFragment"
     tools:layout="@layout/fragment_scanner">
-    <argument
-      android:name="mode"
-      app:argType="ru.poprobuy.poprobuy.dictionary.ScanMode" />
-    <argument
-      android:name="receiptId"
-      android:defaultValue="-1"
-      app:argType="integer" />
-    <action
-      android:id="@+id/scanner_to_products"
-      app:destination="@id/products" />
-    <action
-      android:id="@+id/scanner_to_machine_select"
-      app:destination="@id/machine_select" />
     <action
       android:id="@+id/scanner_to_home"
       app:destination="@id/home"
@@ -206,66 +196,41 @@
   </fragment>
 
   <fragment
-    android:id="@+id/machine_select"
-    android:name="ru.poprobuy.poprobuy.ui.machine_select.MachineSelectFragment"
-    tools:layout="@layout/fragment_machine_select">
-    <action
-      android:id="@+id/machine_select_to_products"
-      app:destination="@id/products" />
-    <argument
-      android:name="receiptId"
-      app:argType="integer" />
-  </fragment>
-
-  <fragment
     android:id="@+id/receipts"
-    android:name="ru.poprobuy.poprobuy.ui.profile.receipts.ReceiptsFragment"
+    android:name="ru.frogogo.whitelabel.ui.profile.receipts.ReceiptsFragment"
     tools:layout="@layout/fragment_receipts">
     <action
       android:id="@+id/action_receipts_to_receipt_details"
       app:destination="@id/receipt_details" />
   </fragment>
 
+  <fragment
+    android:id="@+id/coupons"
+    android:name="ru.frogogo.whitelabel.ui.profile.coupons.CouponsFragment"
+    android:label="@layout/fragment_coupons">
+    <action
+      android:id="@+id/coupons_to_coupon_info"
+      app:destination="@id/coupon_info" />
+  </fragment>
+
   <dialog
     android:id="@+id/receipt_details"
-    android:name="ru.poprobuy.poprobuy.ui.profile.receipts.details.ReceiptDetailsBottomDialog"
+    android:name="ru.frogogo.whitelabel.ui.profile.receipts.details.ReceiptDetailsBottomDialog"
     tools:layout="@layout/dialog_receipt_details">
     <argument
       android:name="receipt"
-      app:argType="ru.poprobuy.poprobuy.data.model.ui.receipt.ReceiptUiModel" />
+      app:argType="ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel" />
     <action
       android:id="@+id/receipt_details_to_scanner"
       app:destination="@id/scanner" />
-    <action
-      android:id="@+id/receipt_details_to_machine_select"
-      app:destination="@id/machine_select" />
     <argument
       android:name="buttonState"
-      app:argType="ru.poprobuy.poprobuy.ui.profile.receipts.details.ReceiptDetailsButtonState" />
+      app:argType="ru.frogogo.whitelabel.ui.profile.receipts.details.ReceiptDetailsButtonState" />
   </dialog>
 
   <fragment
-    android:id="@+id/products"
-    android:name="ru.poprobuy.poprobuy.ui.products.MachineProductsFragment"
-    tools:layout="@layout/fragment_machine_products">
-    <argument
-      android:name="receiptId"
-      app:argType="integer" />
-    <argument
-      android:name="vendingMachine"
-      app:argType="ru.poprobuy.poprobuy.data.model.ui.machine.VendingMachineUiModel" />
-    <action
-      android:id="@+id/products_to_home"
-      app:destination="@id/home"
-      app:enterAnim="@anim/scale_enter"
-      app:exitAnim="@anim/scale_exit"
-      app:popUpTo="@id/main_navigation"
-      app:popUpToInclusive="true" />
-  </fragment>
-
-  <fragment
     android:id="@+id/web_view"
-    android:name="ru.poprobuy.poprobuy.ui.webview.WebViewFragment"
+    android:name="ru.frogogo.whitelabel.ui.webview.WebViewFragment"
     tools:layout="@layout/fragment_web_view">
     <argument
       android:name="url"
@@ -273,6 +238,15 @@
     <argument
       android:name="titleResId"
       app:argType="integer" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/coupon_info"
+    android:name="ru.frogogo.whitelabel.ui.coupon_info.CouponInfoFragment"
+    android:label="@layout/fragment_coupon_info">
+    <argument
+      android:name="coupon"
+      app:argType="ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel" />
   </fragment>
 
   <!-- Actions -->

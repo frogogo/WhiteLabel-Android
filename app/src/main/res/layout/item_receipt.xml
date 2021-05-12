@@ -14,19 +14,19 @@
 
     <!-- Receipt Values -->
     <TextView
-      android:id="@+id/textViewReceiptNumber"
+      android:id="@+id/text_view_receipt_number"
       style="@style/Text.Headline.Medium"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginEnd="@dimen/spacing_4"
       android:textColor="@color/receipt_item_text"
       app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toLeftOf="@id/textViewReceiptValue"
+      app:layout_constraintRight_toLeftOf="@id/text_view_receipt_value"
       app:layout_constraintTop_toTopOf="parent"
       tools:text="№ 3493439" />
 
     <TextView
-      android:id="@+id/textViewReceiptValue"
+      android:id="@+id/text_view_receipt_value"
       style="@style/Text.Headline.Bold"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -38,22 +38,22 @@
       tools:text="5 403 ₽" />
 
     <TextView
-      android:id="@+id/textViewDate"
+      android:id="@+id/text_view_date"
       style="@style/Text.Subhead"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginEnd="@dimen/spacing_4"
       android:textColor="@color/receipt_item_text"
       app:layout_constrainedWidth="true"
-      app:layout_constraintBottom_toBottomOf="@id/viewLabel"
+      app:layout_constraintBottom_toBottomOf="@id/view_label"
       app:layout_constraintHorizontal_bias="0"
       app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toLeftOf="@id/viewLabel"
-      app:layout_constraintTop_toTopOf="@id/viewLabel"
+      app:layout_constraintRight_toLeftOf="@id/view_label"
+      app:layout_constraintTop_toTopOf="@id/view_label"
       tools:text="23.05.2020 - 13:20" />
 
-    <ru.poprobuy.poprobuy.view.LabelView
-      android:id="@+id/viewLabel"
+    <ru.frogogo.whitelabel.view.LabelView
+      android:id="@+id/view_label"
       style="@style/LabelView"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
       android:drawablePadding="4dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/textViewReceiptValue"
+      app:layout_constraintTop_toBottomOf="@id/text_view_receipt_value"
       app:layout_constraintVertical_bias="1"
       tools:drawableStart="@drawable/ic_accept"
       tools:text="@string/receipt_item_state_approved" />

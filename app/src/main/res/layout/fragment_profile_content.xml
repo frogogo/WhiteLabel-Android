@@ -8,14 +8,14 @@
   android:background="@color/screen_background">
 
   <androidx.constraintlayout.widget.Guideline
-    android:id="@+id/guidelineLeft"
+    android:id="@+id/guideline_left"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     app:layout_constraintGuide_begin="@dimen/profile_side_padding" />
 
   <androidx.constraintlayout.widget.Guideline
-    android:id="@+id/guidelineRight"
+    android:id="@+id/guideline_right"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -23,80 +23,80 @@
 
   <!-- Header -->
   <TextView
-    android:id="@+id/textViewUserName"
+    android:id="@+id/text_view_user_name"
     style="@style/Text.TitleLarge.Medium"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/spacing_4"
     android:textColor="@color/screen_title"
-    app:layout_constraintBottom_toTopOf="@+id/textViewPhoneNumber"
-    app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
-    app:layout_constraintRight_toRightOf="@id/guidelineRight"
+    app:layout_constraintBottom_toTopOf="@+id/text_view_phone_number"
+    app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+    app:layout_constraintRight_toRightOf="@id/guideline_right"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.3"
     app:layout_constraintVertical_chainStyle="packed"
     tools:text="Александр" />
 
   <TextView
-    android:id="@+id/textViewPhoneNumber"
+    android:id="@+id/text_view_phone_number"
     style="@style/Text.Body"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/spacing_4"
     android:textColor="@color/screen_subtitle"
-    app:layout_constraintBottom_toTopOf="@+id/textViewEmail"
-    app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
-    app:layout_constraintRight_toRightOf="@id/guidelineRight"
-    app:layout_constraintTop_toBottomOf="@+id/textViewUserName"
+    app:layout_constraintBottom_toTopOf="@+id/text_view_email"
+    app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+    app:layout_constraintRight_toRightOf="@id/guideline_right"
+    app:layout_constraintTop_toBottomOf="@+id/text_view_user_name"
     tools:text="+7 (985) 555-88-60" />
 
   <TextView
-    android:id="@+id/textViewEmail"
+    android:id="@+id/text_view_email"
     style="@style/Text.Body"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:textColor="@color/screen_subtitle"
-    app:layout_constraintBottom_toTopOf="@+id/layoutMenu"
-    app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
-    app:layout_constraintRight_toRightOf="@id/guidelineRight"
-    app:layout_constraintTop_toBottomOf="@+id/textViewPhoneNumber"
+    app:layout_constraintBottom_toTopOf="@+id/layout_menu"
+    app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+    app:layout_constraintRight_toRightOf="@id/guideline_right"
+    app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number"
     tools:text="alex@mail.com" />
 
   <include
-    android:id="@+id/layoutMenu"
+    android:id="@+id/layout_menu"
     layout="@layout/layout_profile_menu"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/spacing_8"
-    app:layout_constraintBottom_toTopOf="@+id/layoutInvite"
+    app:layout_constraintBottom_toTopOf="@+id/layout_invite"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
+    app:layout_constraintTop_toBottomOf="@+id/text_view_email" />
 
   <!-- Friend Invitation -->
   <include
-    android:id="@+id/layoutInvite"
+    android:id="@+id/layout_invite"
     layout="@layout/layout_profile_invite_friend"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/spacing_8"
     android:layout_marginBottom="@dimen/spacing_8"
     android:visibility="invisible"
-    app:layout_constraintBottom_toTopOf="@+id/textViewVersion"
-    app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
-    app:layout_constraintRight_toRightOf="@id/guidelineRight"
-    app:layout_constraintTop_toBottomOf="@+id/layoutMenu" />
+    app:layout_constraintBottom_toTopOf="@+id/text_view_version"
+    app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+    app:layout_constraintRight_toRightOf="@id/guideline_right"
+    app:layout_constraintTop_toBottomOf="@+id/layout_menu" />
 
   <!-- App Version -->
   <TextView
-    android:id="@+id/textViewVersion"
+    android:id="@+id/text_view_version"
     style="@style/Text.Caption"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/spacing_8"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
-    app:layout_constraintRight_toRightOf="@id/guidelineRight"
+    app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+    app:layout_constraintRight_toRightOf="@id/guideline_right"
     tools:text="Версия 1.0.0 (32) от 01.02.2020" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

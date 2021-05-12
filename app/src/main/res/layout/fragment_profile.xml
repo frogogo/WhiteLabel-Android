@@ -7,24 +7,14 @@
   android:layout_height="match_parent"
   android:background="@color/screen_background">
 
-  <RelativeLayout
-    android:id="@+id/layoutToolbar"
+  <ru.frogogo.whitelabel.view.ToolbarView
+    android:id="@+id/toolbar"
     android:layout_width="0dp"
-    android:layout_height="@dimen/toolbar_height"
+    android:layout_height="wrap_content"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
-
-    <ImageButton
-      android:id="@+id/buttonClose"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignParentEnd="true"
-      android:layout_centerVertical="true"
-      android:layout_marginEnd="@dimen/spacing_4"
-      android:src="@drawable/ic_close" />
-
-  </RelativeLayout>
+    app:layout_constraintTop_toTopOf="parent"
+    app:toolbar_backIcon="@drawable/ic_close" />
 
   <ScrollView
     android:layout_width="0dp"
@@ -33,18 +23,18 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/layoutToolbar">
+    app:layout_constraintTop_toBottomOf="@id/toolbar">
 
     <include
-      android:id="@+id/layoutContent"
+      android:id="@+id/layout_content"
       layout="@layout/fragment_profile_content"
       android:visibility="invisible"
       tools:visibility="visible" />
 
   </ScrollView>
 
-  <ProgressBar
-    android:id="@+id/progressBar"
+  <com.google.android.material.progressindicator.CircularProgressIndicator
+    android:id="@+id/progress_bar"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:visibility="gone"
@@ -53,8 +43,8 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
 
-  <ru.poprobuy.poprobuy.view.ErrorStateView
-    android:id="@+id/viewErrorState"
+  <ru.frogogo.whitelabel.view.ErrorStateView
+    android:id="@+id/view_error_state"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:visibility="gone"
@@ -64,12 +54,13 @@
     app:layout_constraintTop_toTopOf="parent" />
 
   <com.google.android.material.button.MaterialButton
-    android:id="@+id/buttonLogout"
+    android:id="@+id/button_logout"
     android:layout_width="wrap_content"
     android:layout_height="30dp"
     android:layout_margin="15dp"
     android:text="@string/profile_button_logout"
     android:visibility="gone"
+    app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:visibility="visible" />

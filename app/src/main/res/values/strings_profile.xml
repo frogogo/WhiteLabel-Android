@@ -7,7 +7,7 @@
   <string name="profile_invite_description">Приглашайте друзей и получайте бесплатные товары</string>
 
   <string name="profile_button_receipts">Мои чеки</string>
-  <string name="profile_button_goods">Мои товары</string>
+  <string name="profile_button_coupons">Мои купоны</string>
   <string name="profile_button_logout">Выход</string>
 
   <!-- Receipts -->
@@ -18,13 +18,15 @@
   <string name="receipt_item_state_completed">Выполнен</string>
   <string name="receipt_item_state_rejected">Отклонен</string>
 
+  <!-- Coupons -->
+  <string name="coupons_title">Мои купоны</string>
+  <string name="coupons_empty_title">У вас пока нет доступных купонов</string>
+
   <string name="receipt_scan_available_title">Вы можете отсканировать чек</string>
   <string name="receipt_scan_available_description">Минимальная сумма чека указана на боковой поверхности аппарата
   </string>
 
   <string name="receipt_details_error_create_unavailable">Сканирование нового чека недоступно, т.к. у вас есть чек в
     состоянии \"Принят\" или \"Проверяется\"</string>
-  <string name="receipt_details_error_take_unavailable">Получение товара недоступно, т.к. у вас нет чека в состоянии
-    \"Принят\"</string>
 
 </resources>

@@ -8,11 +8,17 @@
   <dimen name="toolbar_elevation">2dp</dimen>
 
   <dimen name="button_height">36dp</dimen>
-  <dimen name="button_icon_size">16dp</dimen>
-  <dimen name="button_text_size">14sp</dimen>
+  <dimen name="button_icon_size">14dp</dimen>
+  <dimen name="button_text_size">12sp</dimen>
   <dimen name="progress_bar_size">18dp</dimen>
   <dimen name="toolbar_height">48dp</dimen>
   <dimen name="divider_height">1dp</dimen>
+
+  <!-- Splash -->
+  <dimen name="app_logo_size">76dp</dimen>
+
+  <!-- Onboarding -->
+  <dimen name="onboarding_image_size">76dp</dimen>
 
   <!-- Auth -->
   <dimen name="auth_phone_text_layout_margin_top">54dp</dimen>
@@ -22,9 +28,13 @@
   <dimen name="receipt_elevation">16dp</dimen>
   <dimen name="receipt_top_radius">16dp</dimen>
 
+  <!-- Receipt Details -->
+  <dimen name="receipt_details_image_size">96dp</dimen>
+
   <!-- Receipt Header -->
   <dimen name="receipt_header_height_small">108dp</dimen>
   <dimen name="receipt_header_height_large">115dp</dimen>
+  <dimen name="receipt_header_state_image_size">44dp</dimen>
   <dimen name="receipt_header_margin_top_small">@dimen/spacing_3</dimen>
   <dimen name="receipt_header_margin_top_large">@dimen/spacing_4</dimen>
   <dimen name="receipt_header_state_margin_top_small">0dp</dimen>
@@ -40,5 +50,6 @@
 
   <!-- Product Select -->
   <dimen name="product_select_buttons_min_width">94dp</dimen>
+  <dimen name="product_select_dialog_product_size">172dp</dimen>
 
 </resources>

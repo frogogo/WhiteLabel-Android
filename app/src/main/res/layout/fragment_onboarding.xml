@@ -9,7 +9,7 @@
   android:background="@color/screen_background">
 
   <androidx.viewpager2.widget.ViewPager2
-    android:id="@+id/viewPager"
+    android:id="@+id/view_pager"
     android:layout_width="0dp"
     android:layout_height="0dp"
     app:layout_constraintBottom_toBottomOf="parent"
@@ -18,17 +18,17 @@
     app:layout_constraintTop_toTopOf="parent" />
 
   <me.relex.circleindicator.CircleIndicator3
-    android:id="@+id/circleIndicator"
+    android:id="@+id/circle_indicator"
     style="@style/CircleIndicator"
     android:layout_width="wrap_content"
     android:layout_height="20dp"
     android:layout_marginBottom="@dimen/spacing_8"
-    app:layout_constraintBottom_toTopOf="@id/buttonFinish"
+    app:layout_constraintBottom_toTopOf="@id/button_finish"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent" />
 
   <com.google.android.material.button.MaterialButton
-    android:id="@+id/buttonNext"
+    android:id="@+id/button_next"
     style="@style/OutlinedButton"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/button_height"
@@ -43,7 +43,7 @@
     app:layout_constraintRight_toRightOf="parent" />
 
   <com.google.android.material.button.MaterialButton
-    android:id="@+id/buttonFinish"
+    android:id="@+id/button_finish"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/button_height"
     android:layout_marginStart="@dimen/spacing_4"
