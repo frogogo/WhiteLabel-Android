@@ -27,7 +27,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
 
   override fun initViews() {
     binding.apply {
-      toolbar.setActionButtonListener(viewModel::navigateBack)
+      toolbar.setBackButtonListener(viewModel::navigateBack)
       viewErrorState.setOnRefreshClickListener(viewModel::loadProfile)
       layoutContent.apply {
         layoutInvite.buttonShare.setOnSafeClickListener { /* TODO: 04.07.2020 Invitation */ }
@@ -74,7 +74,9 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
    */
   @Suppress("ConstantConditionIf")
   private fun initLogoutButton() {
-    if (!BuildConfig.DEBUG_STUFF) return
+    if (!BuildConfig.DEBUG_STUFF) {
+      return
+    }
     binding.buttonLogout.apply {
       setVisible(true)
       setOnSafeClickListener(viewModel::logout)
