@@ -8,6 +8,7 @@
   <declare-styleable name="ToolbarView">
     <attr name="toolbar_title" format="string" />
     <attr name="toolbar_actionIcon" format="reference" />
+    <attr name="toolbar_backIcon" format="reference" />
   </declare-styleable>
 
 </resources>

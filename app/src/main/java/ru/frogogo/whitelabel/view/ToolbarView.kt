@@ -41,6 +41,12 @@ class ToolbarView @JvmOverloads constructor(
           setImageDrawable(icon)
         }
       }
+      getDrawable(R.styleable.ToolbarView_toolbar_backIcon)?.let { icon ->
+        binding.buttonBack.apply {
+          setVisible(true)
+          setImageDrawable(icon)
+        }
+      }
     }
   }
 
