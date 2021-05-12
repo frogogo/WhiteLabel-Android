@@ -36,7 +36,7 @@ interface FrogogoApi {
    * Request for activating qr string from receipt
    */
   @POST("receipts")
-  suspend fun createReceipt(@Body body: ReceiptCreationRequest): Response<Unit>
+  suspend fun createReceipt(@Body body: ReceiptCreationRequest): Response<Receipt>
 
   @GET("home")
   suspend fun getHome(): Response<HomeResponse>

@@ -50,7 +50,7 @@ val screenModuleLegacy = module {
   }
 
   // Home
-  viewModel { ScannerViewModel(get(), get(), get()) }
+  viewModel { ScannerViewModel(get(), get()) }
 
   // Profile
   viewModel { ProfileViewModel(get(), get(), get(), get(), get()) }
