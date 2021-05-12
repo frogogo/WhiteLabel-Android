@@ -1,27 +1,27 @@
 package ru.frogogo.whitelabel.ui.home
 
+import coil.load
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.data.model.ui.home.HomeProgressUiModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
-import ru.frogogo.whitelabel.databinding.ItemHomeProgressBinding
-import ru.frogogo.whitelabel.databinding.ItemHomeReceiptBinding
-import ru.frogogo.whitelabel.databinding.ItemHomeScanUnavailableBinding
-import ru.frogogo.whitelabel.databinding.ItemHomeSectionHeaderBinding
+import ru.frogogo.whitelabel.databinding.*
 import ru.frogogo.whitelabel.extension.toDateTime
+import ru.frogogo.whitelabel.ui.home.model.HomeEmptyState
 import ru.frogogo.whitelabel.ui.home.model.HomeScanUnavailable
 import ru.frogogo.whitelabel.ui.home.model.HomeSectionHeader
 import ru.frogogo.whitelabel.util.PriceUtils
 
 object HomeAdapterDelegates {
 
-//  fun emptyStateDelegate(
-//    scanReceiptAction: () -> Unit,
-//  ) = adapterDelegateViewBinding<HomeState.Empty, RecyclerViewItem, ItemHomeEmptyBinding>(
-//    viewBinding = { layoutInflater, root -> ItemHomeEmptyBinding.inflate(layoutInflater, root, false) }
-//  ) {
-//    binding.buttonScan.setOnSafeClickListener { scanReceiptAction() }
-//  }
+  fun emptyStateDelegate() = adapterDelegateViewBinding<HomeEmptyState, RecyclerViewItem, ItemHomeEmptyBinding>(
+    viewBinding = { layoutInflater, root -> ItemHomeEmptyBinding.inflate(layoutInflater, root, false) }
+  ) {
+    bind {
+      binding.imageViewProduct.load(item.promotion.photo.largeUrl)
+      binding.textViewProductName.text = item.promotion.name
+    }
+  }
 
   fun couponProgressDelegate() =
     adapterDelegateViewBinding<HomeProgressUiModel, RecyclerViewItem, ItemHomeProgressBinding>(
