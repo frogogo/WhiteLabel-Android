@@ -4,7 +4,6 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.os.bundleOf
-import androidx.core.view.doOnLayout
 import androidx.fragment.app.FragmentManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.android.scope.AndroidScopeComponent
@@ -67,11 +66,9 @@ class CouponCodeDialog : BaseDialogFragment(
 
   private fun renderQrCode(code: CouponCodeUiModel) {
     binding.imageViewCode.apply {
-      doOnLayout {
-        when (code.type) {
-          CouponCodeType.QR -> showQrCode(code.value)
-          CouponCodeType.CODE_128 -> showBarcode(code.value)
-        }
+      when (code.type) {
+        CouponCodeType.QR -> showQrCode(code.value)
+        CouponCodeType.CODE_128 -> showBarcode(code.value)
       }
     }
     binding.textViewCode.apply {
