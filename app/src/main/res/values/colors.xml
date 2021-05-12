@@ -7,8 +7,6 @@
   <color name="black_alpha_80">#cc253a4c</color>
   <color name="black_alpha_4">#0A253A4C</color>
 
-  <color name="blue">#5c99ff</color>
-
   <color name="gray_50">#f4f6f8</color>
   <color name="gray_100">#e3e7eb</color>
   <color name="gray_300">#acb8c5</color>
@@ -16,11 +14,13 @@
 
   <color name="green">#3fc145</color>
 
-  <color name="primary_500">#ffa956</color>
-  <color name="primary_700">#f19b49</color>
+  <color name="primary_500">#7AC144</color>
+  <color name="primary_700">#0B6B37</color>
 
   <color name="red">#ff6a3b</color>
 
   <color name="white">#ffffff</color>
+
+  <color name="status_orange">#F99D1C</color>
 
 </resources>
