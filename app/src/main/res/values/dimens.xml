@@ -15,7 +15,7 @@
   <dimen name="divider_height">1dp</dimen>
 
   <!-- Splash -->
-  <dimen name="splash_logo_size">76dp</dimen>
+  <dimen name="app_logo_size">76dp</dimen>
 
   <!-- Onboarding -->
   <dimen name="onboarding_image_size">76dp</dimen>

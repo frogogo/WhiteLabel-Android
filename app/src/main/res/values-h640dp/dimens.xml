@@ -7,7 +7,7 @@
   <dimen name="toolbar_height">56dp</dimen>
 
   <!-- Splash -->
-  <dimen name="splash_logo_size">96dp</dimen>
+  <dimen name="app_logo_size">96dp</dimen>
 
   <!-- Onboarding -->
   <dimen name="onboarding_image_size">96dp</dimen>
