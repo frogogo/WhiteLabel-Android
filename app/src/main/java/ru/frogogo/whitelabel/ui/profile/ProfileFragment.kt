@@ -31,6 +31,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
       viewErrorState.setOnRefreshClickListener(viewModel::loadProfile)
       layoutContent.apply {
         layoutInvite.buttonShare.setOnSafeClickListener { /* TODO: 04.07.2020 Invitation */ }
+        layoutMenu.root.setVisible(false)
         layoutMenu.apply {
           buttonReceipts.setOnSafeClickListener(viewModel::navigateToReceipts)
           buttonCoupons.setOnSafeClickListener(viewModel::navigateToCoupons)
