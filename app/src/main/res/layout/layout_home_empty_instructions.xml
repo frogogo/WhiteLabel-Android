@@ -26,7 +26,7 @@
 
   <TextView
     android:id="@+id/text_view_step_1"
-    style="@style/Text.Subhead"
+    style="@style/Text.Caption"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/spacing_3"
@@ -47,7 +47,7 @@
 
   <TextView
     android:id="@+id/text_view_step_2"
-    style="@style/Text.Subhead"
+    style="@style/Text.Caption"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/spacing_3"

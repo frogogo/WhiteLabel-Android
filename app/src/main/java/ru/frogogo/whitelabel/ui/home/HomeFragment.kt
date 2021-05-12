@@ -82,7 +82,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
   }
 
   private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(
-    //  HomeAdapterDelegates.emptyStateDelegate { viewModel.onScanClicked() },
+    HomeAdapterDelegates.emptyStateDelegate(),
     HomeAdapterDelegates.sectionHeaderDelegate(),
     HomeAdapterDelegates.couponProgressDelegate(),
     HomeAdapterDelegates.scanUnavailableDelegate(),
