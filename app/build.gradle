@@ -28,7 +28,6 @@ def applicationName = "S-Boom"
 android {
 
   compileSdkVersion 29
-  buildToolsVersion "29.0.3"
 
   defaultConfig {
     applicationId "ru.frogogo.sboom"
@@ -70,6 +69,8 @@ android {
 
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
       signingConfig signingConfigs.release
+
+      buildConfigField 'boolean', 'DEBUG_STUFF', 'false'
     }
     debug {
       debuggable true
@@ -149,7 +150,7 @@ dependencies {
   implementation "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding:$adapterDelegatesVersion"
 
   // ViewBindingPropertyDelegate https://github.com/kirich1409/ViewBindingPropertyDelegate
-  implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.4.5'
+  implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.4.6'
 
   // CircleIndicator https://github.com/ongakuer/CircleIndicator
   implementation 'me.relex:circleindicator:2.1.6'
@@ -172,7 +173,7 @@ dependencies {
   implementation 'com.redmadrobot:input-mask-android:6.0.0'
 
   // Coil https://github.com/coil-kt/coil/
-  implementation 'io.coil-kt:coil:1.2.0'
+  implementation 'io.coil-kt:coil:1.2.1'
 
   // Koin https://github.com/InsertKoinIO/koin
   def koinVersion = '3.0.1'
@@ -205,12 +206,13 @@ dependencies {
   implementation 'com.github.ajalt:timberkt:1.5.1'
 
   // Firebase https://firebase.google.com/support/release-notes/android
-  implementation platform('com.google.firebase:firebase-bom:27.1.0')
+  implementation platform('com.google.firebase:firebase-bom:28.0.0')
   implementation 'com.google.firebase:firebase-analytics-ktx'
   implementation 'com.google.firebase:firebase-crashlytics-ktx'
   implementation 'com.google.firebase:firebase-perf-ktx'
 
   // QR code scanner https://github.com/journeyapps/zxing-android-embedded
+  //noinspection GradleDependency
   implementation('com.journeyapps:zxing-android-embedded:4.1.0') { transitive = false }
   //noinspection GradleDependency
   implementation 'com.google.zxing:core:3.3.0'
