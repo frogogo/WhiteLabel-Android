@@ -53,6 +53,7 @@
 
     <com.google.android.material.button.MaterialButton
       android:id="@+id/button_scan"
+      style="@style/HomeScanButton"
       android:layout_width="match_parent"
       android:layout_height="@dimen/button_height"
       android:layout_marginHorizontal="@dimen/spacing_4"

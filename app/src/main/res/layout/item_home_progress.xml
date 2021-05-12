@@ -6,6 +6,7 @@
   style="@style/StyledCardViewUnelevated"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
+  app:cardCornerRadius="@dimen/card_corner_radius_small"
   app:contentPaddingBottom="@dimen/spacing_2"
   app:contentPaddingLeft="@dimen/spacing_4"
   app:contentPaddingRight="@dimen/spacing_4"

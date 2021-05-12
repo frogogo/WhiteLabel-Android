@@ -5,6 +5,7 @@ import com.hadilq.liveevent.LiveEvent
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.core.ui.BaseViewModelDelegate
 import ru.frogogo.whitelabel.data.model.ui.home.HomeState
+import ru.frogogo.whitelabel.data.model.ui.home.isScanAvailable
 import ru.frogogo.whitelabel.extension.isEmpty
 import ru.frogogo.whitelabel.ui.home.HomeEffect
 import ru.frogogo.whitelabel.ui.home.HomeScanButtonState
@@ -29,9 +30,12 @@ class HomeStateHandlerDelegate(
   fun showData(data: HomeState) {
     mutableIsLoadingLive.value = false
     mutableDataLive.value = dataFactory.create(data)
-
-    // TODO: 02.05.2021 Proper states
-    mutableScanButtonStateLive.value = HomeScanButtonState.SHOWN_ENABLED
+    mutableScanButtonStateLive.value =
+      if (data.isScanAvailable()) {
+        HomeScanButtonState.SHOWN_ENABLED
+      } else {
+        HomeScanButtonState.SHOWN_DISABLED
+      }
   }
 
   fun showError() {
