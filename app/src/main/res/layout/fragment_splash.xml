@@ -6,9 +6,9 @@
   android:background="@color/screen_background">
 
   <ImageView
-    android:layout_width="@dimen/splash_logo_size"
-    android:layout_height="@dimen/splash_logo_size"
+    android:layout_width="@dimen/app_logo_size"
+    android:layout_height="@dimen/app_logo_size"
     android:layout_centerInParent="true"
-    android:src="@drawable/logo_poprobuy" />
+    android:src="@drawable/ic_app_logo" />
 
 </RelativeLayout>
