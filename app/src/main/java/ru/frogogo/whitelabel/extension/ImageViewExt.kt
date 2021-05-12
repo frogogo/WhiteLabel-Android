@@ -11,8 +11,8 @@ fun ImageView.showQrCode(code: String) {
   showBarCodeImpl(
     code,
     BarcodeFormat.QR_CODE,
-    width,
-    width
+    250.dpToPx(),
+    250.dpToPx()
   )
 }
 
@@ -20,8 +20,8 @@ fun ImageView.showBarcode(code: String) {
   showBarCodeImpl(
     code,
     BarcodeFormat.CODE_128,
-    width,
-    (width * 0.4F).toInt()
+    250.dpToPx(),
+    85.dpToPx()
   )
 }
 
