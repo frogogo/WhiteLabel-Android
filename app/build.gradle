@@ -42,7 +42,6 @@ android {
     setProperty("archivesBaseName", applicationName + "-v" + versionCode + "(" + versionName + ")-" + getDate())
 
     buildConfigField 'int', 'API_VERSION', '1'
-    buildConfigField 'String', 'BASE_URL', '"https://sboom-staging.herokuapp.com"'
     buildConfigField 'boolean', 'DEBUG_STUFF', 'true'
     buildConfigField "java.util.Date", "BUILD_TIME", "new java.util.Date(" + System.currentTimeMillis() + "L)"
   }
@@ -58,6 +57,20 @@ android {
     }
     debug {
       storeFile file(debugKeystorePath)
+    }
+  }
+
+  flavorDimensions 'server'
+  productFlavors {
+    stage {
+      dimension 'server'
+
+      buildConfigField 'String', 'BASE_URL', '"https://sboom-staging.herokuapp.com"'
+    }
+    production {
+      dimension 'server'
+
+      buildConfigField 'String', 'BASE_URL', '"https://sboom.herokuapp.com"'
     }
   }
 
