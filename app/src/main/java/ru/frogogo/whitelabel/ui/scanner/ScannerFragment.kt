@@ -63,6 +63,7 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(),
       layoutToolbar.updateMargin(top = requireActivity().getStatusBarHeight())
       buttonFlash.setOnClickListener { viewModel.onFlashButtonClicked() }
       buttonClose.setOnSafeClickListener(viewModel::onBackButtonClicked)
+      buttonHelp.setVisible(false)
       buttonHelp.setOnSafeClickListener(viewModel::onHelpButtonClicked)
     }
 
