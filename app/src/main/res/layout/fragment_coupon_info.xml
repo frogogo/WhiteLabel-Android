@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_10"
         android:adjustViewBounds="true"
-        android:maxHeight="250dp"
+        android:maxHeight="@dimen/product_max_height"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
