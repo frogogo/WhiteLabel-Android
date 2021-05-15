@@ -5,6 +5,7 @@
   <dimen name="button_icon_size">22dp</dimen>
   <dimen name="button_text_size">16sp</dimen>
   <dimen name="toolbar_height">56dp</dimen>
+  <dimen name="product_height">250dp</dimen>
 
   <!-- Splash -->
   <dimen name="app_logo_size">96dp</dimen>
