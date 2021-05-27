@@ -1,7 +1,7 @@
 apply from: './versions_plugin.gradle'
 
 buildscript {
-  ext.kotlinVersion = '1.5.0'
+  ext.kotlinVersion = '1.5.10'
   ext.detektVersion = '1.16.0'
 
   repositories {
@@ -21,7 +21,7 @@ buildscript {
     // Detekt https://github.com/detekt/detekt
     classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion"
     // Versions https://github.com/ben-manes/gradle-versions-plugin
-    classpath "com.github.ben-manes:gradle-versions-plugin:0.38.0"
+    classpath "com.github.ben-manes:gradle-versions-plugin:0.39.0"
     // https://github.com/plnice/can-i-drop-jetifier
     classpath 'com.github.plnice:canidropjetifier:0.5'
     // Exhaustive https://github.com/cashapp/exhaustive
