@@ -68,5 +68,5 @@ inline fun <reified E : Any> deserializeError(responseBody: ResponseBody): E? {
   val str = responseBody.string()
   return runCatching {
     MoshiUtils.networkErrorParserMoshi.fromJson<E>(str)
-  }.onFailure { e { it.toString() } }.getOrNull()
+  }.onFailure { e(it) { "Error deserialization failed" } }.getOrNull()
 }
