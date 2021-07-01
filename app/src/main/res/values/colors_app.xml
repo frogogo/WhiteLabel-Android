@@ -48,7 +48,6 @@
   <color name="receipt_state_approved">@color/status_green</color>
   <color name="receipt_state_rejected">@color/status_red</color>
   <color name="receipt_state_processing">@color/status_orange</color>
-  <color name="receipt_state_completed">@color/primary_500</color>
 
   <color name="label_text">@color/white</color>
 

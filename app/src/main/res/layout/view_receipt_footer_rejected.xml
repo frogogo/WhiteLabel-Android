@@ -31,34 +31,4 @@
     app:layout_goneMarginTop="0dp"
     tools:text="Причина: Магазин, в котором был выбит чек, не участвует в акциях приложения «Попробуй»." />
 
-  <View
-    android:id="@+id/divider_2"
-    style="@style/Divider"
-    android:layout_width="0dp"
-    android:layout_marginTop="@dimen/spacing_3"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/text_view_reject_reason" />
-
-  <ImageView
-    android:id="@+id/image_view_info"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@drawable/ic_info"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toTopOf="@id/text_view_info" />
-
-  <TextView
-    android:id="@+id/text_view_info"
-    style="@style/Text.Caption"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/spacing_3"
-    android:layout_marginTop="@dimen/spacing_3"
-    android:text="@string/receipt_state_rejected_info"
-    android:textColor="@color/receipt_subtitle"
-    app:layout_constraintLeft_toRightOf="@id/image_view_info"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/divider_2" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

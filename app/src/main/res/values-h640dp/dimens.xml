@@ -16,9 +16,6 @@
   <!-- Auth -->
   <dimen name="auth_phone_text_layout_margin_top">66dp</dimen>
 
-  <!-- Receipt Details -->
-  <dimen name="receipt_details_image_size">129dp</dimen>
-
   <!-- Receipt Header -->
   <dimen name="receipt_header_height_small">136dp</dimen>
   <dimen name="receipt_header_height_large">144dp</dimen>

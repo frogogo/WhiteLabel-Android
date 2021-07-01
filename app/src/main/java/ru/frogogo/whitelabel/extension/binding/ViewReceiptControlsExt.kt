@@ -24,5 +24,5 @@ fun ViewReceiptControlsScanBinding.initListeners(scanClickAction: () -> Unit) {
 }
 
 fun ViewReceiptControlsScanBinding.bind(receipt: ReceiptUiModel) {
-  root.setVisible(receipt.state in listOf(ReceiptState.COMPLETED, ReceiptState.REJECTED))
+  root.setVisible(receipt.state in listOf(ReceiptState.REJECTED))
 }

@@ -84,7 +84,7 @@
     android:id="@+id/image_footer"
     android:layout_width="0dp"
     android:layout_height="12dp"
-    android:layout_marginTop="15dp"
+    android:layout_marginTop="@dimen/spacing_6"
     android:scaleType="fitXY"
     android:src="@drawable/receipt_footer"
     app:layout_constraintLeft_toLeftOf="parent"

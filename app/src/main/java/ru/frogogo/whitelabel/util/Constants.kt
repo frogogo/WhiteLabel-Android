@@ -6,6 +6,8 @@ object Constants {
 
   const val LOCALE_DEFAULT = "ru"
 
+  const val SHOP_NAME = "Семья"
+
   // Preferences
   const val KEY_ALIAS = "frogogo_key"
 
