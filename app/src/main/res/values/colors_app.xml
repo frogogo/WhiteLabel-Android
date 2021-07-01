@@ -45,8 +45,8 @@
   <color name="receipt_error_reason">@color/black</color>
   <color name="receipt_value">@color/white</color>
   <color name="receipt_date">#B3FFFFFF</color>
-  <color name="receipt_state_approved">@color/green</color>
-  <color name="receipt_state_rejected">@color/red</color>
+  <color name="receipt_state_approved">@color/status_green</color>
+  <color name="receipt_state_rejected">@color/status_red</color>
   <color name="receipt_state_processing">@color/status_orange</color>
   <color name="receipt_state_completed">@color/primary_500</color>
 

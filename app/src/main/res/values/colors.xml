@@ -22,5 +22,7 @@
   <color name="white">#ffffff</color>
 
   <color name="status_orange">#F99D1C</color>
+  <color name="status_green">#51BF9D</color>
+  <color name="status_red">#F04E23</color>
 
 </resources>
