@@ -8,7 +8,7 @@ import ru.frogogo.whitelabel.databinding.FragmentAuthNameBinding
 import ru.frogogo.whitelabel.extension.binding.initUserNameType
 import ru.frogogo.whitelabel.extension.observe
 import ru.frogogo.whitelabel.extension.setNullableTextRes
-import ru.frogogo.whitelabel.extension.setOnSafeClickListener
+import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 
 class AuthNameFragment : BaseFragment<AuthNameViewModel>() {
@@ -31,7 +31,7 @@ class AuthNameFragment : BaseFragment<AuthNameViewModel>() {
       showKeyboard()
     }
 
-    binding.buttonContinue.setOnSafeClickListener { setName() }
+    binding.buttonContinue.setSafeOnClickListener { setName() }
   }
 
   override fun initObservers() {

@@ -5,7 +5,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.ui.BaseFragment
 import ru.frogogo.whitelabel.databinding.FragmentAuthPolicyBinding
-import ru.frogogo.whitelabel.extension.setOnSafeClickListener
+import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 
 class AuthPolicyFragment : BaseFragment<AuthPolicyViewModel>() {
@@ -20,6 +20,6 @@ class AuthPolicyFragment : BaseFragment<AuthPolicyViewModel>() {
   )
 
   override fun initViews() {
-    binding.buttonContinue.setOnSafeClickListener(viewModel::navigateNext)
+    binding.buttonContinue.setSafeOnClickListener(viewModel::navigateNext)
   }
 }

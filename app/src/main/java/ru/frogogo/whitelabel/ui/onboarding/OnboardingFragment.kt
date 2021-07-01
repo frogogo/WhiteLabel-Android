@@ -56,7 +56,7 @@ class OnboardingFragment : BaseFragment<OnboardingViewModel>() {
 
       // Init buttons
       buttonNext.setOnClickListener { viewPager.goNext() }
-      buttonFinish.setOnSafeClickListener(viewModel::completeOnboarding)
+      buttonFinish.setSafeOnClickListener(viewModel::completeOnboarding)
     }
 
     // Handle view pager back navigation

@@ -18,7 +18,7 @@ import ru.frogogo.whitelabel.core.ui.BaseDialogFragment
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.databinding.DialogScannerSuccessBinding
 import ru.frogogo.whitelabel.extension.observe
-import ru.frogogo.whitelabel.extension.setOnSafeClickListener
+import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.extension.unloadBindingModuleOnClose
 import ru.frogogo.whitelabel.view.dialog.DialogCompanion
 
@@ -38,7 +38,7 @@ class ReceiptInfoDialogFragment : BaseDialogFragment(
 
   override fun initViews() {
     super.initViews()
-    binding.buttonClose.setOnSafeClickListener(viewModel::onNavigateBackClicked)
+    binding.buttonClose.setSafeOnClickListener(viewModel::onNavigateBackClicked)
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {

@@ -7,7 +7,7 @@ import ru.frogogo.whitelabel.core.recycler.BaseDelegationAdapter
 import ru.frogogo.whitelabel.core.ui.BaseFragment
 import ru.frogogo.whitelabel.databinding.FragmentReceiptsBinding
 import ru.frogogo.whitelabel.extension.observe
-import ru.frogogo.whitelabel.extension.setOnSafeClickListener
+import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.extension.setVisible
 import ru.frogogo.whitelabel.util.ItemDecoration
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
@@ -27,7 +27,7 @@ class ReceiptsFragment : BaseFragment<ReceiptsViewModel>() {
 
   override fun initViews() {
     binding.apply {
-      buttonBack.setOnSafeClickListener(viewModel::navigateBack)
+      buttonBack.setSafeOnClickListener(viewModel::navigateBack)
       viewErrorState.setOnRefreshClickListener(viewModel::loadReceipts)
     }
 

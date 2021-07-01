@@ -35,7 +35,7 @@ class CouponCodeDialog : BaseDialogFragment(
 
   override fun initViews() {
     super.initViews()
-    binding.buttonClose.setOnSafeClickListener { dismiss() }
+    binding.buttonClose.setSafeOnClickListener { dismiss() }
   }
 
   override fun initObservers() {

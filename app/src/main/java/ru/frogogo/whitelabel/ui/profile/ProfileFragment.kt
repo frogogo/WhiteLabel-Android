@@ -9,7 +9,7 @@ import ru.frogogo.whitelabel.data.model.ui.profile.ProfileUiModel
 import ru.frogogo.whitelabel.databinding.FragmentProfileBinding
 import ru.frogogo.whitelabel.extension.formatWithMask
 import ru.frogogo.whitelabel.extension.observe
-import ru.frogogo.whitelabel.extension.setOnSafeClickListener
+import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.extension.setVisible
 import ru.frogogo.whitelabel.util.Constants
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
@@ -30,11 +30,11 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
       toolbar.setBackButtonListener(viewModel::navigateBack)
       viewErrorState.setOnRefreshClickListener(viewModel::loadProfile)
       layoutContent.apply {
-        layoutInvite.buttonShare.setOnSafeClickListener { /* TODO: 04.07.2020 Invitation */ }
+        layoutInvite.buttonShare.setSafeOnClickListener { /* TODO: 04.07.2020 Invitation */ }
         layoutMenu.root.setVisible(false)
         layoutMenu.apply {
-          buttonReceipts.setOnSafeClickListener(viewModel::navigateToReceipts)
-          buttonCoupons.setOnSafeClickListener(viewModel::navigateToCoupons)
+          buttonReceipts.setSafeOnClickListener(viewModel::navigateToReceipts)
+          buttonCoupons.setSafeOnClickListener(viewModel::navigateToCoupons)
         }
       }
       initLogoutButton()
@@ -79,7 +79,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
     }
     binding.buttonLogout.apply {
       setVisible(true)
-      setOnSafeClickListener(viewModel::logout)
+      setSafeOnClickListener(viewModel::logout)
     }
   }
 }

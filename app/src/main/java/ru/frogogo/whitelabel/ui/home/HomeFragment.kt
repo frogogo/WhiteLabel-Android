@@ -40,7 +40,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
       toolbar.attachToRecyclerView(recyclerView)
       swipeRefreshLayout.setOnRefreshListener(viewModel::refreshData)
       viewErrorState.setOnRefreshClickListener(viewModel::refreshData)
-      buttonScan.setOnSafeClickListener(viewModel::onScanClicked)
+      buttonScan.setSafeOnClickListener(viewModel::onScanClicked)
     }
   }
 

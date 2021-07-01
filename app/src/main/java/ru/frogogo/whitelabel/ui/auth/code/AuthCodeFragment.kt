@@ -55,8 +55,8 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>() {
       }
 
       textViewPhoneNumber.text = args.phoneNumber.formatWithMask(Constants.PHONE_MASK_FULL)
-      textViewPhoneNumberChange.setOnSafeClickListener(viewModel::navigateBack)
-      buttonResendCode.setOnSafeClickListener(viewModel::resendConfirmationCode)
+      textViewPhoneNumberChange.setSafeOnClickListener(viewModel::navigateBack)
+      buttonResendCode.setSafeOnClickListener(viewModel::resendConfirmationCode)
       textViewError.movementMethod = LinkMovementMethod.getInstance()
       bindProgressButton(buttonResendCode)
     }
