@@ -5,6 +5,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
+import ru.frogogo.whitelabel.data.model.api.Item
 import ru.frogogo.whitelabel.data.model.api.auth.*
 import ru.frogogo.whitelabel.data.model.api.home.HomeResponse
 import ru.frogogo.whitelabel.data.model.api.receipt.Receipt
@@ -40,4 +41,7 @@ interface FrogogoApi {
 
   @GET("home")
   suspend fun getHome(): Response<HomeResponse>
+
+  @GET
+  suspend fun getItems(): Response<List<Item>>
 }
