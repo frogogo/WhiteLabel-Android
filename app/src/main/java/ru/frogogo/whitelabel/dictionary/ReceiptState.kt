@@ -8,8 +8,7 @@ import ru.frogogo.whitelabel.R
 enum class ReceiptState {
   PROCESSING,
   APPROVED,
-  REJECTED,
-  COMPLETED;
+  REJECTED;
 
   /**
    * @return color resource for given [ReceiptState]
@@ -19,7 +18,6 @@ enum class ReceiptState {
     PROCESSING -> R.color.receipt_state_processing
     APPROVED -> R.color.receipt_state_approved
     REJECTED -> R.color.receipt_state_rejected
-    COMPLETED -> R.color.receipt_state_completed
   }
 
   /**
@@ -30,7 +28,6 @@ enum class ReceiptState {
     PROCESSING -> R.drawable.ic_receipt_processing
     APPROVED -> R.drawable.ic_receipt_approved
     REJECTED -> R.drawable.ic_receipt_rejected
-    COMPLETED -> R.drawable.ic_receipt_completed
   }
 
   /**
@@ -41,7 +38,6 @@ enum class ReceiptState {
     PROCESSING -> R.drawable.ic_receipt_processing_small
     APPROVED -> R.drawable.ic_receipt_approved_small
     REJECTED -> R.drawable.ic_receipt_rejected_small
-    COMPLETED -> 0
   }
 
   /**
@@ -52,6 +48,5 @@ enum class ReceiptState {
     PROCESSING -> R.string.receipt_state_processing
     APPROVED -> R.string.receipt_state_approved
     REJECTED -> R.string.receipt_state_rejected
-    COMPLETED -> R.string.receipt_state_completed
   }
 }

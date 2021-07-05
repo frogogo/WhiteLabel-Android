@@ -1,22 +1,22 @@
-package ru.frogogo.whitelabel.ui.scanner.success_dialog
+package ru.frogogo.whitelabel.ui.receipt_info
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.hadilq.liveevent.LiveEvent
 import ru.frogogo.whitelabel.core.ui.BaseViewModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
-import ru.frogogo.whitelabel.ui.scanner.success_dialog.delegate.SuccessScanClicksHandlerDelegate
-import ru.frogogo.whitelabel.ui.scanner.success_dialog.delegate.SuccessScanClicksHandlerDelegateImpl
-import ru.frogogo.whitelabel.ui.scanner.success_dialog.delegate.SuccessScanInitializationDelegate
+import ru.frogogo.whitelabel.ui.receipt_info.delegate.ReceiptInfoClicksHandlerDelegate
+import ru.frogogo.whitelabel.ui.receipt_info.delegate.ReceiptInfoClicksHandlerDelegateImpl
+import ru.frogogo.whitelabel.ui.receipt_info.delegate.ReceiptInfoInitializationDelegate
 
-class SuccessScanViewModel(
+class ReceiptInfoViewModel(
   liveData: LiveDataHolder,
   private val delegates: DelegatesHolder,
 ) : BaseViewModel(),
-  SuccessScanClicksHandlerDelegate by delegates.clicksHandlerDelegate {
+  ReceiptInfoClicksHandlerDelegate by delegates.clicksHandlerDelegate {
 
   val receiptLive: LiveData<ReceiptUiModel> = liveData.mutableReceiptLive
-  val effectEvent: LiveData<SuccessScanEffect> = liveData.mutableEffectEvent
+  val effectEvent: LiveData<ReceiptInfoEffect> = liveData.mutableEffectEvent
 
   override fun onCreate() {
     super.onCreate()
@@ -33,11 +33,11 @@ class SuccessScanViewModel(
 
   class LiveDataHolder(
     val mutableReceiptLive: MutableLiveData<ReceiptUiModel>,
-    val mutableEffectEvent: LiveEvent<SuccessScanEffect>,
+    val mutableEffectEvent: LiveEvent<ReceiptInfoEffect>,
   )
 
   class DelegatesHolder(
-    val initializationDelegate: SuccessScanInitializationDelegate,
-    val clicksHandlerDelegate: SuccessScanClicksHandlerDelegateImpl,
+    val initializationDelegate: ReceiptInfoInitializationDelegate,
+    val clicksHandlerDelegate: ReceiptInfoClicksHandlerDelegateImpl,
   )
 }

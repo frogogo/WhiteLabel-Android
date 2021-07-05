@@ -11,5 +11,5 @@ val screenModule = module {
   couponCode()
   coupons()
   scanner()
-  successScan()
+  receiptInfo()
 }

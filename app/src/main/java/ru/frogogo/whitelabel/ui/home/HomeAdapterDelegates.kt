@@ -6,11 +6,14 @@ import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.data.model.ui.home.HomeProgressUiModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.databinding.*
+import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.extension.toDateTime
 import ru.frogogo.whitelabel.ui.home.model.HomeEmptyState
 import ru.frogogo.whitelabel.ui.home.model.HomeScanUnavailable
 import ru.frogogo.whitelabel.ui.home.model.HomeSectionHeader
 import ru.frogogo.whitelabel.util.PriceUtils
+
+typealias OnReceiptClickAction = (ReceiptUiModel) -> Unit
 
 object HomeAdapterDelegates {
 
@@ -46,16 +49,18 @@ object HomeAdapterDelegates {
       }
     }
 
-  fun receiptDelegate() = adapterDelegateViewBinding<ReceiptUiModel, RecyclerViewItem, ItemHomeReceiptBinding>(
-    viewBinding = { layoutInflater, root -> ItemHomeReceiptBinding.inflate(layoutInflater, root, false) }
-  ) {
+  fun receiptDelegate(receiptClickAction: OnReceiptClickAction) =
+    adapterDelegateViewBinding<ReceiptUiModel, RecyclerViewItem, ItemHomeReceiptBinding>(
+      viewBinding = { layoutInflater, root -> ItemHomeReceiptBinding.inflate(layoutInflater, root, false) }
+    ) {
+      itemView.setSafeOnClickListener { receiptClickAction.invoke(item) }
 
-    bind {
-      binding.textViewReceiptValue.text = PriceUtils.formatPrice(item.value)
-      binding.textViewDate.text = item.date.toDateTime()
-      binding.imageViewStatus.setImageResource(item.state.getStatusIcon())
+      bind {
+        binding.textViewReceiptValue.text = PriceUtils.formatPrice(item.value)
+        binding.textViewDate.text = item.date.toDateTime()
+        binding.imageViewStatus.setImageResource(item.state.getStatusIcon())
+      }
     }
-  }
 
   fun scanUnavailableDelegate() =
     adapterDelegateViewBinding<HomeScanUnavailable, RecyclerViewItem, ItemHomeScanUnavailableBinding>(

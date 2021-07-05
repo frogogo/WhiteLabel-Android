@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import androidx.constraintlayout.widget.ConstraintLayout
 import ru.frogogo.whitelabel.databinding.ViewErrorStateBinding
 import ru.frogogo.whitelabel.extension.inflateViewBinding
-import ru.frogogo.whitelabel.extension.setOnSafeClickListener
+import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 
 typealias OnRefreshClickAction = () -> Unit
 
@@ -20,7 +20,7 @@ class ErrorStateView @JvmOverloads constructor(
   private val binding: ViewErrorStateBinding = inflateViewBinding()
 
   init {
-    binding.root.setOnSafeClickListener { onRefreshClickListener?.invoke() }
+    binding.root.setSafeOnClickListener { onRefreshClickListener?.invoke() }
   }
 
   fun setOnRefreshClickListener(listener: OnRefreshClickAction) {
