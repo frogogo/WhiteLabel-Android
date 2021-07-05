@@ -42,6 +42,6 @@ interface FrogogoApi {
   @GET("home")
   suspend fun getHome(): Response<HomeResponse>
 
-  @GET
+  @GET("items")
   suspend fun getItems(): Response<List<Item>>
 }

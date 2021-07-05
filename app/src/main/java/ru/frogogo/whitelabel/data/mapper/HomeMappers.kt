@@ -18,6 +18,7 @@ fun HomeResponse.toDomain(): HomeState =
 fun HomeResponse.toEmptyState(): HomeState =
   HomeState.Empty(
     promotion = promotion.toDomain(),
+    items = mutableListOf(),
   )
 
 fun HomeResponse.toContentState(): HomeState {

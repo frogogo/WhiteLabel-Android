@@ -17,8 +17,9 @@ class ItemsRepositoryImpl(
 ) : Repository(dispatchersProvider),
   ItemsRepository {
 
-  override suspend fun getItems(): Result<List<ItemUiModel>, NetworkError<ErrorResponse>> =
+  override suspend fun getItems(): Result<List<ItemUiModel>, NetworkError<ErrorResponse>> = withIOContext {
     apiCall { api.getItems() }.mapToResult { items ->
       items.map(Item::toDomain)
     }
+  }
 }
