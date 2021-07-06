@@ -27,7 +27,7 @@ class HomeDataFactoryImpl : HomeDataFactory {
     list += HomeEmptyState(state.promotion)
 
     if (state.items.isNotEmpty()) {
-
+      list += HomeSectionHeader(R.string.home_empty_items)
       list += state.items
     }
   }
