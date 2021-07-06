@@ -20,7 +20,7 @@
 
   <ru.frogogo.whitelabel.view.LabelView
     android:id="@+id/text_view_label"
-    style="@style/Text.Caption.Medium"
+    style="@style/Text.Body.Medium"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center"
@@ -29,38 +29,30 @@
     app:layout_constraintHorizontal_bias="0"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/image_view_product" />
+    app:layout_constraintTop_toTopOf="@id/text_view_label" />
 
   <TextView
     android:id="@+id/text_view_product_name"
-    style="@style/Text.Title1.Medium"
+    style="@style/Text.Title2.Medium"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/spacing_1"
+    android:breakStrategy="balanced"
+    android:gravity="center"
     android:textColor="@color/black"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/text_view_label"
-    tools:text="Ножеточка Lion Sabatier" />
-
-  <View
-    android:id="@+id/divider"
-    style="@style/Divider"
-    android:layout_width="0dp"
-    android:layout_marginTop="@dimen/spacing_4"
-    app:layout_constraintBottom_toTopOf="@id/layout_instructions"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/text_view_product_name" />
+    app:layout_constraintTop_toBottomOf="@id/image_view_product"
+    tools:text="Электрический чайник Lion Sabatier International" />
 
   <include
     android:id="@+id/layout_instructions"
     layout="@layout/layout_home_empty_instructions"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/spacing_4"
+    android:layout_marginTop="@dimen/spacing_6"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/divider" />
+    app:layout_constraintTop_toBottomOf="@id/text_view_product_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
