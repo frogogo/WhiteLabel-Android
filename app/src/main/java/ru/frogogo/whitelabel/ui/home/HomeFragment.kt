@@ -91,6 +91,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
     HomeAdapterDelegates.scanUnavailableDelegate(),
     HomeAdapterDelegates.receiptDelegate { viewModel.onReceiptClicked(it) },
     CommonAdapterDelegates.couponDelegate { viewModel.onCouponClicked(it) },
+    CommonAdapterDelegates.itemDelegate(),
   )
 
   private fun handleEffect(effect: HomeEffect) {
