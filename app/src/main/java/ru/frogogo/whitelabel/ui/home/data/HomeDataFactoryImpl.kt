@@ -25,6 +25,11 @@ class HomeDataFactoryImpl : HomeDataFactory {
     list: MutableList<RecyclerViewItem>,
   ) {
     list += HomeEmptyState(state.promotion)
+
+    if (state.items.isNotEmpty()) {
+
+      list += state.items
+    }
   }
 
   private fun buildContentState(

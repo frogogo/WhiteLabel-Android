@@ -38,9 +38,11 @@ object CommonAdapterDelegates {
       binding.imageView.load(item.imageUrl)
       binding.textViewName.text = buildSpannedString {
         append(item.name)
-        append(' ')
-        color(context.getColor(R.color.gray_300)) {
-          append(item.specs)
+        if (item.specs != null) {
+          append(' ')
+          color(context.getColor(R.color.gray_300)) {
+            append(item.specs)
+          }
         }
       }
       binding.textViewPrice.text = PriceUtils.formatPrice(item.price)

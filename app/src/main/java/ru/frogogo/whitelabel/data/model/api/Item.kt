@@ -16,5 +16,5 @@ data class Item(
   @Json(name = "discounted_price")
   val discountedPrice: Int,
   @Json(name = "specs")
-  val specs: String,
+  val specs: String?,
 )

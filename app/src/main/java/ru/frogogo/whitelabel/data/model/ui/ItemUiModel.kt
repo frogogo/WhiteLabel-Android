@@ -8,7 +8,7 @@ data class ItemUiModel(
   val imageUrl: String,
   val price: Int,
   val discountedPrice: Int,
-  val specs: String,
+  val specs: String?,
 ) : RecyclerViewItem {
 
   override fun getId(): Any = "item_item$id"
