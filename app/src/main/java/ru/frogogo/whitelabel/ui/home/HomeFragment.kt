@@ -44,8 +44,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
   override fun initViews() {
     initRecyclerView()
     binding.apply {
-      toolbar.setActionButtonListener(viewModel::onProfileClicked)
-      toolbar.attachToRecyclerView(recyclerView)
+      buttonProfile.setSafeOnClickListener(viewModel::onProfileClicked)
       swipeRefreshLayout.setOnRefreshListener(viewModel::refreshData)
       viewErrorState.setOnRefreshClickListener(viewModel::refreshData)
       buttonScan.setSafeOnClickListener(viewModel::onScanClicked)
@@ -54,7 +53,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
 
   override fun initObservers() {
     with(viewModel) {
-      observe(viewModel.dataLive) { data ->
+      observe(dataLive) { data ->
         binding.swipeRefreshLayout.isRefreshing = false
         adapter.items = data
       }
@@ -84,9 +83,14 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
     )
     val layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
     layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-      override fun getSpanSize(position: Int) = when (adapter.items[position]) {
-        is ItemUiModel -> SPAN_COUNT_ITEM
-        else -> SPAN_COUNT
+      override fun getSpanSize(position: Int): Int {
+        val itemsRange = (0..adapter.itemCount)
+        if (!itemsRange.contains(position)) return SPAN_COUNT
+
+        return when (adapter.items[position]) {
+          is ItemUiModel -> SPAN_COUNT_ITEM
+          else -> SPAN_COUNT
+        }
       }
     }
 
@@ -95,6 +99,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
       this.layoutManager = layoutManager
       adapter = this@HomeFragment.adapter
       addItemDecoration(decoration)
+      addItemDecoration(HomeOffsetDecoration(requireContext()))
     }
   }
 

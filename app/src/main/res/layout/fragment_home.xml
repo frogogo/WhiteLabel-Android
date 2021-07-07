@@ -12,15 +12,6 @@
     android:layout_height="match_parent"
     android:background="@color/screen_background">
 
-    <ru.frogogo.whitelabel.view.ToolbarView
-      android:id="@+id/toolbar"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:toolbar_actionIcon="@drawable/ic_profile" />
-
     <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/recycler_view"
       android:layout_width="0dp"
@@ -29,7 +20,19 @@
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/toolbar" />
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+      android:id="@+id/button_profile"
+      style="@style/IconButton.Backgrounded"
+      android:layout_width="36dp"
+      android:layout_height="36dp"
+      android:layout_marginTop="@dimen/spacing_2.5"
+      android:layout_marginEnd="@dimen/spacing_2.5"
+      android:elevation="0dp"
+      app:icon="@drawable/ic_profile"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
       android:id="@+id/progress_bar"
@@ -38,7 +41,7 @@
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/toolbar" />
+      app:layout_constraintTop_toTopOf="parent" />
 
     <ru.frogogo.whitelabel.view.ErrorStateView
       android:id="@+id/view_error_state"
