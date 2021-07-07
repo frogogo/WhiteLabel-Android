@@ -84,8 +84,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
     val layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
     layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
       override fun getSpanSize(position: Int): Int {
-        val itemsRange = (0..adapter.itemCount)
-        if (!itemsRange.contains(position)) return SPAN_COUNT
+        if (!adapter.items.indices.contains(position)) return SPAN_COUNT
 
         return when (adapter.items[position]) {
           is ItemUiModel -> SPAN_COUNT_ITEM
