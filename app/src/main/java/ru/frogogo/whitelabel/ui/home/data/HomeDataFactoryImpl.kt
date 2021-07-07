@@ -38,7 +38,7 @@ class HomeDataFactoryImpl : HomeDataFactory {
     list: MutableList<RecyclerViewItem>,
   ) {
     list += state.progress
-    list += HomeItemsButton
+    list += HomeItemsButton(state.promotion)
 
     if (state.coupons.isNotEmpty()) {
       list += HomeSectionHeader(R.string.home_section_coupons)

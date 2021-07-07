@@ -39,7 +39,7 @@ fun Module.couponInfo() {
     scoped(named(NAMED_EFFECT_EVENT)) { LiveEvent<CouponInfoEffect>() }
     scoped {
       CouponInfoViewModel.LiveDataHolder(
-        mutableContentLive = getContentLive(),
+        mutableContentLive = getDataLive(),
         mutableEffectLiveEvent = getEffectEvent(),
       )
     }
@@ -48,14 +48,14 @@ fun Module.couponInfo() {
     scoped {
       CouponInfoContentHandlerDelegate(
         dispatchersProvider = get(),
-        coupon = getCoupon(),
-        mutableContentLive = getContentLive(),
+        coupon = getPromotion(),
+        mutableContentLive = getDataLive(),
       )
     }
     scoped {
       CouponInfoClicksHandlerDelegateImpl(
         dispatchersProvider = get(),
-        coupon = getCoupon(),
+        coupon = getPromotion(),
         mutableEffectLiveEvent = getEffectEvent(),
       )
     } bind CouponInfoClicksHandlerDelegate::class
@@ -63,11 +63,11 @@ fun Module.couponInfo() {
   }
 }
 
-private fun Scope.getCoupon(): CouponUiModel =
+private fun Scope.getPromotion(): CouponUiModel =
   get(scopedQualifier(NAMED_COUPON))
 
 private fun Scope.getEffectEvent(): LiveEvent<CouponInfoEffect> =
   get(named(NAMED_EFFECT_EVENT))
 
-private fun Scope.getContentLive(): MutableLiveData<CouponUiModel> =
+private fun Scope.getDataLive(): MutableLiveData<CouponUiModel> =
   get(named(NAMED_CONTENT_LIVE))

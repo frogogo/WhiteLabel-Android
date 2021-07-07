@@ -163,6 +163,9 @@
     <action
       android:id="@+id/home_to_coupon_info"
       app:destination="@id/coupon_info" />
+    <action
+      android:id="@+id/home_to_promotion_items"
+      app:destination="@id/promotion_items" />
   </fragment>
 
   <fragment
@@ -243,10 +246,19 @@
   <fragment
     android:id="@+id/coupon_info"
     android:name="ru.frogogo.whitelabel.ui.coupon_info.CouponInfoFragment"
-    android:label="@layout/fragment_coupon_info">
+    android:layout="@layout/fragment_coupon_info">
     <argument
       android:name="coupon"
       app:argType="ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/promotion_items"
+    android:name="ru.frogogo.whitelabel.ui.promotion_items.PromotionItemsFragment"
+    android:layout="@layout/fragment_promotion_items">
+    <argument
+      android:name="promotion"
+      app:argType="ru.frogogo.whitelabel.data.model.ui.home.HomePromotionUiModel" />
   </fragment>
 
   <!-- Actions -->

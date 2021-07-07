@@ -4,6 +4,7 @@ import com.github.ajalt.timberkt.d
 import com.hadilq.liveevent.LiveEvent
 import ru.frogogo.whitelabel.core.ui.AbstractViewModelNavigationDelegate
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
+import ru.frogogo.whitelabel.data.model.ui.home.HomePromotionUiModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.ui.home.HomeEffect
 import ru.frogogo.whitelabel.ui.home.HomeNavigation
@@ -35,7 +36,7 @@ class HomeClickHandlerDelegateImpl(
     mutableEffectLiveEvent.value = HomeEffect.OpenReceiptInfoDialog(receipt)
   }
 
-  override fun onItemButtonClicked() {
-    // TODO: 07.07.2021
+  override fun onItemButtonClicked(promotion: HomePromotionUiModel) {
+    navigation.navigateToPromotionItems(promotion).navigate()
   }
 }

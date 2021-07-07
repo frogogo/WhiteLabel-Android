@@ -25,6 +25,7 @@ fun HomeResponse.toContentState(): HomeState {
   val receipts = receipts.toDomain()
 
   return HomeState.Progress(
+    promotion = promotion.toDomain(),
     progress = progress!!.toDomain(),
     coupons = coupons.toDomain(couponData),
     receipts = receipts,

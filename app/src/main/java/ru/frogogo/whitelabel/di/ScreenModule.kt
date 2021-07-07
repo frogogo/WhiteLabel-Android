@@ -8,6 +8,7 @@ import ru.frogogo.whitelabel.di.scope.*
 val screenModule = module {
   homeScope()
   couponInfo()
+  promotionItems()
   couponCode()
   coupons()
   scanner()

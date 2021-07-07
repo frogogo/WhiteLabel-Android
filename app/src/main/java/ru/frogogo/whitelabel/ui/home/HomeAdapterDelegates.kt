@@ -4,6 +4,7 @@ import coil.load
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.data.model.ui.home.HomeProgressUiModel
+import ru.frogogo.whitelabel.data.model.ui.home.HomePromotionUiModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.databinding.*
 import ru.frogogo.whitelabel.extension.setSafeOnClickListener
@@ -15,7 +16,7 @@ import ru.frogogo.whitelabel.ui.home.model.HomeSectionHeader
 import ru.frogogo.whitelabel.util.PriceUtils
 
 typealias OnReceiptClickAction = (ReceiptUiModel) -> Unit
-typealias OnItemsButtonClickAction = () -> Unit
+typealias OnItemsButtonClickAction = (HomePromotionUiModel) -> Unit
 
 object HomeAdapterDelegates {
 
@@ -77,6 +78,6 @@ object HomeAdapterDelegates {
     adapterDelegateViewBinding<HomeItemsButton, RecyclerViewItem, ItemHomeItemsButtonBinding>(
       viewBinding = { layoutInflater, root -> ItemHomeItemsButtonBinding.inflate(layoutInflater, root, false) }
     ) {
-      itemView.setSafeOnClickListener { clickAction.invoke() }
+      itemView.setSafeOnClickListener { clickAction.invoke(item.promotion) }
     }
 }

@@ -12,6 +12,7 @@ sealed class HomeState {
   ) : HomeState()
 
   data class Progress(
+    val promotion: HomePromotionUiModel,
     val progress: HomeProgressUiModel,
     val coupons: List<CouponUiModel>,
     val receipts: List<ReceiptUiModel>,
