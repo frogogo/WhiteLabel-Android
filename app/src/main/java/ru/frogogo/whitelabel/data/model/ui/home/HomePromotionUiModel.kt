@@ -6,4 +6,6 @@ data class HomePromotionUiModel(
   val name: String,
   val photo: PhotoUiModel,
   val steps: List<String>,
+  val price: Int,
+  val priceDiscounted: Int,
 )

@@ -23,6 +23,8 @@ object HomeAdapterDelegates {
     bind {
       binding.imageViewProduct.load(item.promotion.photo.largeUrl)
       binding.textViewProductName.text = item.promotion.name
+      binding.textViewPrice.text = PriceUtils.formatPrice(item.promotion.price)
+      binding.textViewPriceDiscounted.text = PriceUtils.formatPrice(item.promotion.priceDiscounted)
     }
   }
 
