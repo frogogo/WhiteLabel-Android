@@ -9,11 +9,13 @@ import ru.frogogo.whitelabel.databinding.*
 import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.extension.toDateTime
 import ru.frogogo.whitelabel.ui.home.model.HomeEmptyState
+import ru.frogogo.whitelabel.ui.home.model.HomeItemsButton
 import ru.frogogo.whitelabel.ui.home.model.HomeScanUnavailable
 import ru.frogogo.whitelabel.ui.home.model.HomeSectionHeader
 import ru.frogogo.whitelabel.util.PriceUtils
 
 typealias OnReceiptClickAction = (ReceiptUiModel) -> Unit
+typealias OnItemsButtonClickAction = () -> Unit
 
 object HomeAdapterDelegates {
 
@@ -69,5 +71,12 @@ object HomeAdapterDelegates {
       viewBinding = { layoutInflater, root -> ItemHomeScanUnavailableBinding.inflate(layoutInflater, root, false) }
     ) {
       /* no-op */
+    }
+
+  fun itemsButtonDelegate(clickAction: OnItemsButtonClickAction) =
+    adapterDelegateViewBinding<HomeItemsButton, RecyclerViewItem, ItemHomeItemsButtonBinding>(
+      viewBinding = { layoutInflater, root -> ItemHomeItemsButtonBinding.inflate(layoutInflater, root, false) }
+    ) {
+      itemView.setSafeOnClickListener { clickAction.invoke() }
     }
 }

@@ -12,4 +12,6 @@ interface HomeClickHandlerDelegate {
   fun onCouponClicked(coupon: CouponUiModel)
 
   fun onReceiptClicked(receipt: ReceiptUiModel)
+
+  fun onItemButtonClicked()
 }

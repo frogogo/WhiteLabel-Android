@@ -34,4 +34,8 @@ class HomeClickHandlerDelegateImpl(
   override fun onReceiptClicked(receipt: ReceiptUiModel) {
     mutableEffectLiveEvent.value = HomeEffect.OpenReceiptInfoDialog(receipt)
   }
+
+  override fun onItemButtonClicked() {
+    // TODO: 07.07.2021
+  }
 }
