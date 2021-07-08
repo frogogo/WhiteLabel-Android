@@ -37,7 +37,7 @@ object ReceiptsDataUtils {
   }
 
   fun getReceiptDetailsButtonState(receipts: List<ReceiptUiModel>): ReceiptDetailsButtonState {
-    val canCreateReceipt = receipts.firstOrNull()?.state in listOf(ReceiptState.COMPLETED, ReceiptState.REJECTED)
+    val canCreateReceipt = receipts.firstOrNull()?.state in listOf(ReceiptState.REJECTED)
     val canTakeProduct = receipts.firstOrNull()?.state in listOf(ReceiptState.APPROVED)
 
     return ReceiptDetailsButtonState(

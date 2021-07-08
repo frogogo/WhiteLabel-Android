@@ -4,6 +4,7 @@ import ru.frogogo.whitelabel.data.model.api.receipt.Receipt
 import ru.frogogo.whitelabel.data.model.api.receipt.ReceiptRejectReason
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptRejectReasonUiModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
+import ru.frogogo.whitelabel.util.Constants
 
 fun Receipt.toDomain(): ReceiptUiModel = ReceiptUiModel(
   id = id,
@@ -11,6 +12,7 @@ fun Receipt.toDomain(): ReceiptUiModel = ReceiptUiModel(
   state = state,
   date = timestamp,
   value = sum,
+  shopName = Constants.SHOP_NAME,
   rejectReason = rejectReason?.toDomain()
 )
 

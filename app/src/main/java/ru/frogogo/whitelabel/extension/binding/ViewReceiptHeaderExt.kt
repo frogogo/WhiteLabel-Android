@@ -11,10 +11,7 @@ import ru.frogogo.whitelabel.extension.toDateTime
 import ru.frogogo.whitelabel.extension.updateMargin
 import ru.frogogo.whitelabel.util.PriceUtils
 
-private val STATES_WITHOUT_SHOP_NAME = listOf(
-  ReceiptState.PROCESSING,
-  ReceiptState.REJECTED
-)
+private val STATES_WITHOUT_SHOP_NAME = emptyList<ReceiptState>()
 
 fun ViewReceiptHeaderBinding.bind(receipt: ReceiptUiModel) {
   // Header
@@ -25,7 +22,7 @@ fun ViewReceiptHeaderBinding.bind(receipt: ReceiptUiModel) {
   // Value
   textViewReceiptValue.text = PriceUtils.formatPrice(receipt.value)
   // Shop
-  // textViewShop.text = receipt.distributionNetwork?.name.orEmpty()
+  textViewShop.text = receipt.shopName
   textViewShop.setVisible(receipt.state !in STATES_WITHOUT_SHOP_NAME)
   // Date
   textViewDate.text = receipt.date.toDateTime()

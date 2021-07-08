@@ -1,4 +1,4 @@
-package ru.frogogo.whitelabel.ui.scanner.success_dialog
+package ru.frogogo.whitelabel.ui.receipt_info
 
 import android.content.DialogInterface
 import android.os.Bundle
@@ -18,27 +18,27 @@ import ru.frogogo.whitelabel.core.ui.BaseDialogFragment
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.databinding.DialogScannerSuccessBinding
 import ru.frogogo.whitelabel.extension.observe
-import ru.frogogo.whitelabel.extension.setOnSafeClickListener
+import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.extension.unloadBindingModuleOnClose
 import ru.frogogo.whitelabel.view.dialog.DialogCompanion
 
 private typealias Binding = DialogScannerSuccessBinding
 
-class SuccessScanDialog : BaseDialogFragment(
+class ReceiptInfoDialogFragment : BaseDialogFragment(
   layoutId = R.layout.dialog_scanner_success,
   showBackground = false,
 ), AndroidScopeComponent {
 
   override val scope: Scope by fragmentScope()
 
-  private val viewModel: SuccessScanViewModel by viewModel {
+  private val viewModel: ReceiptInfoViewModel by viewModel {
     parametersOf(requireArguments().getParcelable<ReceiptUiModel>(ARG_RECEIPT))
   }
   private val binding: Binding by viewBinding(Binding::bind)
 
   override fun initViews() {
     super.initViews()
-    binding.buttonClose.setOnSafeClickListener(viewModel::onNavigateBackClicked)
+    binding.buttonClose.setSafeOnClickListener(viewModel::onNavigateBackClicked)
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,26 +64,26 @@ class SuccessScanDialog : BaseDialogFragment(
     binding.receiptView.bind(receipt)
   }
 
-  private fun handleEffect(effect: SuccessScanEffect) {
+  private fun handleEffect(effect: ReceiptInfoEffect) {
     @Exhaustive
     when (effect) {
-      SuccessScanEffect.CloseDialog -> dismiss()
+      ReceiptInfoEffect.CloseDialog -> dismiss()
     }
   }
 
-  companion object : DialogCompanion<SuccessScanDialog> {
+  companion object : DialogCompanion<ReceiptInfoDialogFragment> {
 
     private const val TAG = "ScannerSuccessDialog"
     private const val ARG_RECEIPT = "arg:receipt"
     private const val KEY_RESULT_DISMISS = "key:dismiss"
 
-    override fun SuccessScanDialog.showIn(fragmentManager: FragmentManager) {
+    override fun ReceiptInfoDialogFragment.showIn(fragmentManager: FragmentManager) {
       show(fragmentManager, TAG)
     }
 
     fun newInstance(
       receipt: ReceiptUiModel,
-    ): SuccessScanDialog = SuccessScanDialog().apply {
+    ): ReceiptInfoDialogFragment = ReceiptInfoDialogFragment().apply {
       arguments = bundleOf(
         ARG_RECEIPT to receipt
       )

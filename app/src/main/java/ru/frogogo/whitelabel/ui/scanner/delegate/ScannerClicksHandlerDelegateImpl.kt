@@ -21,7 +21,7 @@ class ScannerClicksHandlerDelegateImpl(
     navigateBack()
   }
 
-  override fun onSuccessScanDialogClosed() {
+  override fun onReceiptInfoDialogClosed() {
     navigateBack()
   }
 

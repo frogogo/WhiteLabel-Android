@@ -18,7 +18,7 @@ import ru.frogogo.whitelabel.data.model.ui.coupon.CouponCodeUiModel
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
 import ru.frogogo.whitelabel.databinding.FragmentCouponInfoBinding
 import ru.frogogo.whitelabel.extension.observe
-import ru.frogogo.whitelabel.extension.setOnSafeClickListener
+import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.extension.unloadBindingModuleOnClose
 import ru.frogogo.whitelabel.ui.coupon_info.code_dialog.CouponCodeDialog
 import ru.frogogo.whitelabel.ui.coupon_info.code_dialog.CouponCodeDialog.Companion.showIn
@@ -48,8 +48,8 @@ class CouponInfoFragment : BaseFragment<CouponInfoViewModel>(),
   override fun initViews() {
     super.initViews()
     binding.apply {
-      buttonClose.setOnSafeClickListener(viewModel::onBackButtonClicked)
-      buttonCode.setOnSafeClickListener(viewModel::onShowCodeClicked)
+      buttonClose.setSafeOnClickListener(viewModel::onBackButtonClicked)
+      buttonCode.setSafeOnClickListener(viewModel::onShowCodeClicked)
     }
   }
 

@@ -8,6 +8,7 @@
     покупки электрического чайника Lion Sabatier International за 1 ₽</string>
   <string name="home_empty_button_scan_qr">Сканировать чек</string>
   <string name="home_empty_label">Купон</string>
+  <string name="home_empty_items">Товары участвующие в акции</string>
 
   <string name="home_approved_title">Отсканируйте QR код на аппарате либо введите его номер вручную</string>
   <string name="home_approved_button_enter">Ввести</string>
@@ -16,6 +17,8 @@
 
   <string name="home_section_coupons">Купоны</string>
   <string name="home_section_receipts">Чеки</string>
+
+  <string name="home_items_button">Товары участвующие в акции</string>
 
   <string name="home_rejected_button_scan">Сканировать новый чек</string>
 

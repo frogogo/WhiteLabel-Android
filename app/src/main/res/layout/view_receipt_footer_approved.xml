@@ -4,7 +4,7 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
-  android:layout_height="match_parent"
+  android:layout_height="wrap_content"
   android:paddingStart="@dimen/spacing_4"
   android:paddingEnd="@dimen/spacing_4">
 
@@ -19,56 +19,5 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:text="@string/receipt_state_approved_description" />
-
-  <View
-    android:id="@+id/divider"
-    style="@style/Divider"
-    android:layout_width="0dp"
-    android:layout_marginTop="@dimen/spacing_3"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/text_view_state_subtitle" />
-
-  <ImageView
-    android:id="@+id/image_view_step_1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@drawable/ic_info"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toTopOf="@id/text_view_step_1" />
-
-  <TextView
-    android:id="@+id/text_view_step_1"
-    style="@style/Text.Caption"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/spacing_3"
-    android:layout_marginTop="@dimen/spacing_3"
-    android:text="@string/receipt_state_approved_footer_1"
-    android:textColor="@color/receipt_subtitle"
-    app:layout_constraintLeft_toRightOf="@id/image_view_step_1"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/divider" />
-
-  <ImageView
-    android:id="@+id/image_view_step_2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@drawable/ic_info"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toTopOf="@id/text_view_step_2" />
-
-  <TextView
-    android:id="@+id/text_view_step_2"
-    style="@style/Text.Caption"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/spacing_3"
-    android:layout_marginTop="@dimen/spacing_4"
-    android:text="@string/receipt_state_approved_footer_2"
-    android:textColor="@color/receipt_subtitle"
-    app:layout_constraintLeft_toRightOf="@id/image_view_step_2"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/text_view_step_1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

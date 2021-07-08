@@ -46,7 +46,7 @@ fun View.hideKeyboard() {
   context.getInputMethodManager().hideSoftInputFromWindow(windowToken, 0)
 }
 
-inline fun View.setOnSafeClickListener(
+inline fun View.setSafeOnClickListener(
   crossinline clickAction: (View) -> Unit,
   throttleDuration: Long = 500,
 ) {
@@ -55,7 +55,7 @@ inline fun View.setOnSafeClickListener(
   })
 }
 
-inline fun View.setOnSafeClickListener(crossinline clickAction: () -> Unit) {
+inline fun View.setSafeOnClickListener(crossinline clickAction: () -> Unit) {
   setOnClickListener(SafeClickListener(500) {
     clickAction.invoke()
   })

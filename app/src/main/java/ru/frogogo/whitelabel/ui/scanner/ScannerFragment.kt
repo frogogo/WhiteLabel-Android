@@ -31,8 +31,8 @@ import ru.frogogo.whitelabel.core.ui.BaseFragment
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.databinding.FragmentScannerBinding
 import ru.frogogo.whitelabel.extension.*
-import ru.frogogo.whitelabel.ui.scanner.success_dialog.SuccessScanDialog
-import ru.frogogo.whitelabel.ui.scanner.success_dialog.SuccessScanDialog.Companion.showIn
+import ru.frogogo.whitelabel.ui.receipt_info.ReceiptInfoDialogFragment
+import ru.frogogo.whitelabel.ui.receipt_info.ReceiptInfoDialogFragment.Companion.showIn
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 import ru.frogogo.whitelabel.view.dialog.ErrorDialogFragment
 import ru.frogogo.whitelabel.view.dialog.ErrorDialogFragment.Companion.showIn
@@ -62,9 +62,9 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(),
     binding.apply {
       layoutToolbar.updateMargin(top = requireActivity().getStatusBarHeight())
       buttonFlash.setOnClickListener { viewModel.onFlashButtonClicked() }
-      buttonClose.setOnSafeClickListener(viewModel::onBackButtonClicked)
+      buttonClose.setSafeOnClickListener(viewModel::onBackButtonClicked)
       buttonHelp.setVisible(false)
-      buttonHelp.setOnSafeClickListener(viewModel::onHelpButtonClicked)
+      buttonHelp.setSafeOnClickListener(viewModel::onHelpButtonClicked)
     }
 
     initScanner()
@@ -81,7 +81,7 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(),
   }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-    SuccessScanDialog.setDismissListener(this, viewModel::onSuccessScanDialogClosed)
+    ReceiptInfoDialogFragment.setDismissListener(this, viewModel::onReceiptInfoDialogClosed)
     return super.onCreateView(inflater, container, savedInstanceState)
   }
 
@@ -189,7 +189,7 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(),
   }
 
   private fun showSuccessDialog(receipt: ReceiptUiModel) {
-    SuccessScanDialog.newInstance(receipt).showIn(childFragmentManager)
+    ReceiptInfoDialogFragment.newInstance(receipt).showIn(childFragmentManager)
   }
 
   companion object {

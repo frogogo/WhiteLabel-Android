@@ -13,7 +13,7 @@ import ru.frogogo.whitelabel.extension.binding.initEmailType
 import ru.frogogo.whitelabel.extension.hideKeyboard
 import ru.frogogo.whitelabel.extension.observe
 import ru.frogogo.whitelabel.extension.setNullableTextRes
-import ru.frogogo.whitelabel.extension.setOnSafeClickListener
+import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.util.SpannableUtils
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 
@@ -38,7 +38,7 @@ class AuthEmailFragment : BaseFragment<AuthEmailViewModel>() {
         setEditGoAction { setEmail() }
         showKeyboard()
       }
-      buttonContinue.setOnSafeClickListener { setEmail() }
+      buttonContinue.setSafeOnClickListener { setEmail() }
       textViewError.movementMethod = LinkMovementMethod.getInstance()
     }
   }

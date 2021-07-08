@@ -10,7 +10,7 @@ import ru.frogogo.whitelabel.databinding.ItemReceiptBinding
 import ru.frogogo.whitelabel.databinding.ItemReceiptsEmptyStateBinding
 import ru.frogogo.whitelabel.databinding.ItemScanAvailableBinding
 import ru.frogogo.whitelabel.extension.binding.setReceiptState
-import ru.frogogo.whitelabel.extension.setOnSafeClickListener
+import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.extension.toDateTime
 import ru.frogogo.whitelabel.util.PriceUtils
 
@@ -24,7 +24,7 @@ object ReceiptsAdapterDelegates {
     viewBinding = { layoutInflater, root -> ItemReceiptBinding.inflate(layoutInflater, root, false) }
   ) {
 
-    itemView.setOnSafeClickListener { clickAction(item) }
+    itemView.setSafeOnClickListener { clickAction(item) }
 
     bind {
       binding.apply {

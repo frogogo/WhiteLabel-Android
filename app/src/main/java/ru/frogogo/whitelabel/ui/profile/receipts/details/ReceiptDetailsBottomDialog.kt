@@ -62,7 +62,6 @@ class ReceiptDetailsBottomDialog : BaseBottomSheetDialogFragment<ReceiptDetailsV
       // Footer
       layoutFooterApproved.bind(receipt)
       layoutFooterProcessing.bind(receipt)
-      layoutFooterCompleted.bind(receipt)
       layoutFooterRejected.bind(receipt, showTopDivider = true)
 
       // Controls

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.databinding.ViewToolbarBinding
 import ru.frogogo.whitelabel.extension.inflateViewBinding
-import ru.frogogo.whitelabel.extension.setOnSafeClickListener
+import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.extension.setVisible
 
 class ToolbarView @JvmOverloads constructor(
@@ -57,14 +57,14 @@ class ToolbarView @JvmOverloads constructor(
   fun setBackButtonListener(onClickAction: () -> Unit) {
     binding.buttonBack.apply {
       setVisible(true)
-      setOnSafeClickListener { onClickAction() }
+      setSafeOnClickListener { onClickAction() }
     }
   }
 
   fun setActionButtonListener(onClickAction: () -> Unit) {
     binding.buttonAction.apply {
       setVisible(true)
-      setOnSafeClickListener { onClickAction() }
+      setSafeOnClickListener { onClickAction() }
     }
   }
 

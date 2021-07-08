@@ -18,12 +18,14 @@ fun HomeResponse.toDomain(): HomeState =
 fun HomeResponse.toEmptyState(): HomeState =
   HomeState.Empty(
     promotion = promotion.toDomain(),
+    items = mutableListOf(),
   )
 
 fun HomeResponse.toContentState(): HomeState {
   val receipts = receipts.toDomain()
 
   return HomeState.Progress(
+    promotion = promotion.toDomain(),
     progress = progress!!.toDomain(),
     coupons = coupons.toDomain(couponData),
     receipts = receipts,
@@ -36,6 +38,8 @@ fun HomePromotion.toDomain(): HomePromotionUiModel =
     name = name,
     photo = photo.toDomain(),
     steps = steps,
+    price = price,
+    priceDiscounted = discountedPrice,
   )
 
 fun HomeProgress.toDomain(): HomeProgressUiModel =
