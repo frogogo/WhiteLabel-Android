@@ -21,9 +21,11 @@ import ru.frogogo.whitelabel.ui.promotion_items.data.PromotionItemsDataFactoryIm
 import ru.frogogo.whitelabel.ui.promotion_items.delegate.PromotionItemsClicksHandlerDelegate
 import ru.frogogo.whitelabel.ui.promotion_items.delegate.PromotionItemsClicksHandlerDelegateImpl
 import ru.frogogo.whitelabel.ui.promotion_items.delegate.PromotionItemsDataLoadDelegate
+import ru.frogogo.whitelabel.ui.promotion_items.delegate.PromotionItemsStateHandlerDelegate
 
 private const val NAMED_PROMOTION = "promotion"
 private const val NAMED_CONTENT_LIVE = "data_live"
+private const val NAMED_IS_LOADING_LIVE = "is_loading_live"
 private const val NAMED_EFFECT_EVENT = "effect_event"
 
 fun Module.promotionItems() {
@@ -39,10 +41,12 @@ fun Module.promotionItems() {
 
     // LiveData
     scoped(named(NAMED_CONTENT_LIVE)) { MutableLiveData<List<RecyclerViewItem>>() }
+    scoped(named(NAMED_IS_LOADING_LIVE)) { MutableLiveData<Boolean>() }
     scoped(named(NAMED_EFFECT_EVENT)) { LiveEvent<PromotionItemsEffect>() }
     scoped {
       PromotionItemsViewModel.LiveDataHolder(
         mutableDataLive = getDataLive(),
+        mutableIsLoadingLive = getIsLoadingLive(),
         mutableEffectLiveEvent = getEffectEvent(),
       )
     }
@@ -51,16 +55,24 @@ fun Module.promotionItems() {
     scoped {
       PromotionItemsDataLoadDelegate(
         dispatchersProvider = get(),
+        getItemsUseCase = get(),
+        stateHandlerDelegate = get()
+      )
+    }
+    scoped {
+      PromotionItemsStateHandlerDelegate(
+        dispatchersProvider = get(),
         promotion = getPromotion(),
         mutableDataLive = getDataLive(),
-        getItemsUseCase = get(),
-        dataFactory = get(),
+        mutableIsLoadingLive = getIsLoadingLive(),
+        mutableEffectLiveEvent = getEffectEvent(),
+        dataFactory = get()
       )
     }
     scoped {
       PromotionItemsClicksHandlerDelegateImpl(get())
     } bind PromotionItemsClicksHandlerDelegate::class
-    scoped { PromotionItemsViewModel.DelegatesHolder(get(), get()) }
+    scoped { PromotionItemsViewModel.DelegatesHolder(get(), get(), get()) }
 
     // Data
     scoped { PromotionItemsDataFactoryImpl() as PromotionItemsDataFactory }
@@ -70,8 +82,11 @@ fun Module.promotionItems() {
 private fun Scope.getPromotion(): HomePromotionUiModel =
   get(scopedQualifier(NAMED_PROMOTION))
 
-private fun Scope.getEffectEvent(): LiveEvent<PromotionItemsEffect> =
-  get(named(NAMED_EFFECT_EVENT))
-
 private fun Scope.getDataLive(): MutableLiveData<List<RecyclerViewItem>> =
   get(named(NAMED_CONTENT_LIVE))
+
+private fun Scope.getIsLoadingLive(): MutableLiveData<Boolean> =
+  get(named(NAMED_IS_LOADING_LIVE))
+
+private fun Scope.getEffectEvent(): LiveEvent<PromotionItemsEffect> =
+  get(named(NAMED_EFFECT_EVENT))

@@ -18,6 +18,7 @@ import ru.frogogo.whitelabel.data.model.ui.ItemUiModel
 import ru.frogogo.whitelabel.databinding.FragmentPromotionItemsBinding
 import ru.frogogo.whitelabel.extension.observe
 import ru.frogogo.whitelabel.extension.setSafeOnClickListener
+import ru.frogogo.whitelabel.extension.setVisible
 import ru.frogogo.whitelabel.extension.unloadBindingModuleOnClose
 import ru.frogogo.whitelabel.ui.common.CommonAdapterDelegates
 import ru.frogogo.whitelabel.ui.home.HomeAdapterDelegates
@@ -54,14 +55,19 @@ class PromotionItemsFragment : BaseFragment<PromotionItemsViewModel>(),
   override fun initViews() {
     super.initViews()
     initRecyclerView()
-    binding.buttonClose.setSafeOnClickListener(viewModel::onBackButtonClicked)
+    binding.apply {
+      viewErrorState.setOnRefreshClickListener(viewModel::retry)
+      buttonClose.setSafeOnClickListener(viewModel::onBackButtonClicked)
+    }
   }
 
   override fun initObservers() {
     super.initObservers()
     viewModel.apply {
-      //observe(contentLive, ::renderContent)
       observe(dataLive, ::renderData)
+      observe(isLoadingLive) { isLoading ->
+        renderState(isLoading = isLoading)
+      }
       observe(effectLiveEvent, ::handleEffect)
     }
   }
@@ -107,10 +113,15 @@ class PromotionItemsFragment : BaseFragment<PromotionItemsViewModel>(),
   private fun handleEffect(effect: PromotionItemsEffect) {
     @Exhaustive
     when (effect) {
-      is PromotionItemsEffect.ShowCode -> {
-
-      }
+      PromotionItemsEffect.ShowLoadingError -> renderState(isError = true)
     }
   }
 
+  private fun renderState(isLoading: Boolean = false, isError: Boolean = false) {
+    binding.apply {
+      progressBar.setVisible(isLoading && !isError)
+      viewErrorState.setVisible(isError && !isLoading)
+      recyclerView.setVisible(!isLoading && !isError)
+    }
+  }
 }
