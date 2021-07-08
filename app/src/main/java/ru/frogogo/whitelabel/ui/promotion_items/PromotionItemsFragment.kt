@@ -23,6 +23,7 @@ import ru.frogogo.whitelabel.extension.unloadBindingModuleOnClose
 import ru.frogogo.whitelabel.ui.common.CommonAdapterDelegates
 import ru.frogogo.whitelabel.ui.home.HomeAdapterDelegates
 import ru.frogogo.whitelabel.ui.home.HomeOffsetDecoration
+import ru.frogogo.whitelabel.ui.promotion_items.adapter.PromotionItemsAdapterDelegates
 import ru.frogogo.whitelabel.util.ItemDecoration
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 import ru.frogogo.whitelabel.util.unsafeLazy
@@ -104,6 +105,7 @@ class PromotionItemsFragment : BaseFragment<PromotionItemsViewModel>(),
     HomeAdapterDelegates.emptyStateDelegate(),
     HomeAdapterDelegates.sectionHeaderDelegate(),
     CommonAdapterDelegates.itemDelegate(),
+    PromotionItemsAdapterDelegates.ruleDelegate(),
   )
 
   private fun renderData(items: List<RecyclerViewItem>) {
