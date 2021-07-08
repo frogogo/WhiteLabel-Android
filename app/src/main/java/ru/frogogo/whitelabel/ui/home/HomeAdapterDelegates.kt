@@ -9,10 +9,7 @@ import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.databinding.*
 import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.extension.toDateTime
-import ru.frogogo.whitelabel.ui.home.model.HomeEmptyState
-import ru.frogogo.whitelabel.ui.home.model.HomeItemsButton
-import ru.frogogo.whitelabel.ui.home.model.HomeScanUnavailable
-import ru.frogogo.whitelabel.ui.home.model.HomeSectionHeader
+import ru.frogogo.whitelabel.ui.home.model.*
 import ru.frogogo.whitelabel.util.PriceUtils
 
 typealias OnReceiptClickAction = (ReceiptUiModel) -> Unit
@@ -70,6 +67,13 @@ object HomeAdapterDelegates {
   fun scanUnavailableDelegate() =
     adapterDelegateViewBinding<HomeScanUnavailable, RecyclerViewItem, ItemHomeScanUnavailableBinding>(
       viewBinding = { layoutInflater, root -> ItemHomeScanUnavailableBinding.inflate(layoutInflater, root, false) }
+    ) {
+      /* no-op */
+    }
+
+  fun instructionsDelegate() =
+    adapterDelegateViewBinding<HomeInstructions, RecyclerViewItem, ItemHomeEmptyInstructionsBinding>(
+      viewBinding = { layoutInflater, root -> ItemHomeEmptyInstructionsBinding.inflate(layoutInflater, root, false) }
     ) {
       /* no-op */
     }

@@ -85,14 +85,4 @@
     app:layout_constraintTop_toBottomOf="@id/text_view_price_discounted"
     tools:text="Электрический чайник Lion Sabatier International" />
 
-  <include
-    android:id="@+id/layout_instructions"
-    layout="@layout/layout_home_empty_instructions"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/spacing_6"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/text_view_product_name" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

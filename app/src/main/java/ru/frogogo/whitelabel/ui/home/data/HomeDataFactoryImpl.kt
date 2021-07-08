@@ -3,10 +3,7 @@ package ru.frogogo.whitelabel.ui.home.data
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.data.model.ui.home.HomeState
-import ru.frogogo.whitelabel.ui.home.model.HomeEmptyState
-import ru.frogogo.whitelabel.ui.home.model.HomeItemsButton
-import ru.frogogo.whitelabel.ui.home.model.HomeScanUnavailable
-import ru.frogogo.whitelabel.ui.home.model.HomeSectionHeader
+import ru.frogogo.whitelabel.ui.home.model.*
 
 class HomeDataFactoryImpl : HomeDataFactory {
 
@@ -26,6 +23,7 @@ class HomeDataFactoryImpl : HomeDataFactory {
     list: MutableList<RecyclerViewItem>,
   ) {
     list += HomeEmptyState(state.promotion)
+    list += HomeInstructions
 
     if (state.items.isNotEmpty()) {
       list += HomeSectionHeader(R.string.home_empty_items)
