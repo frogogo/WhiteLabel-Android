@@ -12,4 +12,8 @@ data class HomePromotion(
   val photo: Photo,
   @Json(name = "steps")
   val steps: List<String>,
+  @Json(name = "price")
+  val price: Int,
+  @Json(name = "discounted_price")
+  val discountedPrice: Int,
 )

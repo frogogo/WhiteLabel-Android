@@ -38,8 +38,8 @@ fun HomePromotion.toDomain(): HomePromotionUiModel =
     name = name,
     photo = photo.toDomain(),
     steps = steps,
-    price = 1599, // TODO: 07.07.2021
-    priceDiscounted = 499, // TODO: 07.07.2021
+    price = price,
+    priceDiscounted = discountedPrice,
   )
 
 fun HomeProgress.toDomain(): HomeProgressUiModel =
