@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  app:contentPaddingBottom="@dimen/spacing_3"
+  app:contentPaddingLeft="@dimen/spacing_3"
+  app:contentPaddingRight="@dimen/spacing_3"
+  app:contentPaddingTop="@dimen/spacing_1"
+  tools:layout_height="250dp"
+  tools:layout_width="167dp">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+      android:id="@+id/image_view"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintDimensionRatio="w,1:1"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:src="@sample/product" />
+
+    <TextView
+      android:id="@+id/text_view_name"
+      style="@style/Text.Caption"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_3"
+      android:textColor="@color/black"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/image_view"
+      tools:text="Нож многофункциональный Sabatier 18 см" />
+
+    <TextView
+      android:id="@+id/text_view_price_discounted"
+      style="@style/Text.Body.Medium"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_3"
+      android:textColor="@color/status_red"
+      app:layout_constrainedWidth="true"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@id/text_view_price"
+      app:layout_constraintHorizontal_bias="0"
+      app:layout_constraintHorizontal_chainStyle="packed"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/text_view_name"
+      app:layout_constraintVertical_bias="1"
+      tools:text="499 ₽" />
+
+    <TextView
+      android:id="@+id/text_view_price"
+      style="@style/Text.Caption"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/spacing_1"
+      android:layout_marginTop="@dimen/spacing_3"
+      android:textColor="@color/gray_300"
+      app:layout_constrainedWidth="true"
+      app:layout_constraintBaseline_toBaselineOf="@id/text_view_price_discounted"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/text_view_price_discounted"
+      tools:text="1 512 ₽" />
+
+    <View
+      android:layout_width="0dp"
+      android:layout_height="1dp"
+      android:background="@drawable/foreground_price_crossing"
+      app:layout_constraintBottom_toBottomOf="@id/text_view_price"
+      app:layout_constraintEnd_toEndOf="@id/text_view_price"
+      app:layout_constraintStart_toStartOf="@id/text_view_price"
+      app:layout_constraintTop_toTopOf="@id/text_view_price" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

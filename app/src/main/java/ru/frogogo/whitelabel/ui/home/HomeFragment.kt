@@ -1,5 +1,6 @@
 package ru.frogogo.whitelabel.ui.home
 
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.cash.exhaustive.Exhaustive
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -11,6 +12,7 @@ import org.koin.core.scope.Scope
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.recycler.BaseDelegationAdapter
 import ru.frogogo.whitelabel.core.ui.BaseFragment
+import ru.frogogo.whitelabel.data.model.ui.ItemUiModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.databinding.FragmentHomeBinding
 import ru.frogogo.whitelabel.extension.*
@@ -20,6 +22,9 @@ import ru.frogogo.whitelabel.ui.receipt_info.ReceiptInfoDialogFragment.Companion
 import ru.frogogo.whitelabel.util.ItemDecoration
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 import ru.frogogo.whitelabel.util.unsafeLazy
+
+private const val SPAN_COUNT = 2
+private const val SPAN_COUNT_ITEM = 1
 
 class HomeFragment : BaseFragment<HomeViewModel>(),
   AndroidScopeComponent {
@@ -39,8 +44,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
   override fun initViews() {
     initRecyclerView()
     binding.apply {
-      toolbar.setActionButtonListener(viewModel::onProfileClicked)
-      toolbar.attachToRecyclerView(recyclerView)
+      buttonProfile.setSafeOnClickListener(viewModel::onProfileClicked)
       swipeRefreshLayout.setOnRefreshListener(viewModel::refreshData)
       viewErrorState.setOnRefreshClickListener(viewModel::refreshData)
       buttonScan.setSafeOnClickListener(viewModel::onScanClicked)
@@ -49,7 +53,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
 
   override fun initObservers() {
     with(viewModel) {
-      observe(viewModel.dataLive) { data ->
+      observe(dataLive) { data ->
         binding.swipeRefreshLayout.isRefreshing = false
         adapter.items = data
       }
@@ -71,16 +75,30 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
 
   private fun initRecyclerView() {
     val decoration = ItemDecoration(
+      horizontalOffset = resources.getDimensionPixelOffset(R.dimen.spacing_4),
+      horizontalSpacing = resources.getDimensionPixelSize(R.dimen.spacing_2),
       verticalSpacing = resources.getDimensionPixelSize(R.dimen.spacing_2),
-      horizontalSpacing = resources.getDimensionPixelSize(R.dimen.spacing_4),
       topSpacing = resources.getDimensionPixelSize(R.dimen.spacing_6),
       bottomSpacing = resources.getDimensionPixelSize(R.dimen.spacing_24)
     )
+    val layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
+    layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+      override fun getSpanSize(position: Int): Int {
+        if (!adapter.items.indices.contains(position)) return SPAN_COUNT
+
+        return when (adapter.items[position]) {
+          is ItemUiModel -> SPAN_COUNT_ITEM
+          else -> SPAN_COUNT
+        }
+      }
+    }
 
     binding.recyclerView.apply {
       setRecycledViewPool(this@HomeFragment.recycledViewPool)
+      this.layoutManager = layoutManager
       adapter = this@HomeFragment.adapter
       addItemDecoration(decoration)
+      addItemDecoration(HomeOffsetDecoration(requireContext()))
     }
   }
 
@@ -89,8 +107,11 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
     HomeAdapterDelegates.sectionHeaderDelegate(),
     HomeAdapterDelegates.couponProgressDelegate(),
     HomeAdapterDelegates.scanUnavailableDelegate(),
+    HomeAdapterDelegates.instructionsDelegate(),
+    HomeAdapterDelegates.itemsButtonDelegate { viewModel.onItemButtonClicked(it) },
     HomeAdapterDelegates.receiptDelegate { viewModel.onReceiptClicked(it) },
     CommonAdapterDelegates.couponDelegate { viewModel.onCouponClicked(it) },
+    CommonAdapterDelegates.itemDelegate(),
   )
 
   private fun handleEffect(effect: HomeEffect) {

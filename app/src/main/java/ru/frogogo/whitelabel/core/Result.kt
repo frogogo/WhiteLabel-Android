@@ -28,3 +28,9 @@ inline fun <T, E> Result<T, E>.doOnFailure(block: (E) -> Unit): Result<T, E> {
   handle(onFailure = block)
   return this
 }
+
+fun <T, E> Result<T, E>.recreateWithSuccess(success: T): Result<T, E> =
+  when (this) {
+    is Result.Success -> Result.Success(success)
+    is Result.Failure -> this
+  }

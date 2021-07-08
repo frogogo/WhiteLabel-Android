@@ -2,6 +2,7 @@ package ru.frogogo.whitelabel.di
 
 import org.koin.dsl.module
 import ru.frogogo.whitelabel.usecase.ClearUserDataUseCase
+import ru.frogogo.whitelabel.usecase.GetItemsUseCase
 import ru.frogogo.whitelabel.usecase.GetUserAuthStateUseCase
 import ru.frogogo.whitelabel.usecase.auth.AuthenticationUseCase
 import ru.frogogo.whitelabel.usecase.auth.RefreshTokenUseCase
@@ -22,7 +23,7 @@ val useCaseModule = module {
   single { RefreshTokenWorkerUseCase(get(), get(), get()) }
 
   // Home
-  single { GetHomeUseCase(get()) }
+  single { GetHomeUseCase(get(), get()) }
 
   // User
   single { UpdateUserDetailsUseCase(get()) }
@@ -31,6 +32,9 @@ val useCaseModule = module {
   // Receipt
   single { GetReceiptsUseCase(get()) }
   single { CreateReceiptUseCase(get()) }
+
+  // Item
+  single { GetItemsUseCase(get()) }
 
   // System
   single { ClearUserDataUseCase(get()) }

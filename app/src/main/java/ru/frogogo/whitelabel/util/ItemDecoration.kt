@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class ItemDecoration(
-  @Px private val horizontalSpacing: Int = 0,
+  @Px private val horizontalOffset: Int = 0,
+  @Px private val horizontalSpacing: Int = horizontalOffset / 2,
   @Px private val verticalSpacing: Int = horizontalSpacing,
   @Px private val topSpacing: Int = verticalSpacing,
   @Px private val bottomSpacing: Int = verticalSpacing,
@@ -24,14 +25,14 @@ class ItemDecoration(
     }
 
     outRect.left = if (params.isFirstSpanItem()) {
-      horizontalSpacing
+      horizontalOffset
     } else {
       // Add half spacing to respect proportions on both sides
       horizontalSpacing / 2
     }
 
     outRect.right = if (params.isLastSpanItem()) {
-      horizontalSpacing
+      horizontalOffset
     } else {
       // Add half spacing to respect proportions on both sides
       horizontalSpacing / 2
