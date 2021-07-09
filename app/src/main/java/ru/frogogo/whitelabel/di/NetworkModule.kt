@@ -14,6 +14,7 @@ import org.koin.dsl.module
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.create
 import ru.frogogo.whitelabel.BuildConfig
 import ru.frogogo.whitelabel.data.network.FrogogoApi
 import ru.frogogo.whitelabel.data.network.interceptor.*
@@ -49,7 +50,7 @@ val networkModule = module {
       url = FROGOGO_API_ENDPOINT
     )
   }
-  single { getApi<FrogogoApi>(get()) }
+  single { get<Retrofit>().create<FrogogoApi>() }
 
   // Util
   single { AutoLogoutNotifier(get()) }
@@ -97,8 +98,6 @@ private fun createRetrofit(client: OkHttpClient, url: String): Retrofit {
     .addConverterFactory(createMoshiConverterFactory())
     .build()
 }
-
-private inline fun <reified T> getApi(retrofit: Retrofit): T = retrofit.create(T::class.java)
 
 private fun createMoshiConverterFactory(): Converter.Factory {
   return MoshiConverterFactory.create(MoshiUtils.getNetworkAdapter())
