@@ -160,7 +160,7 @@ dependencies {
   implementation "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding:$adapterDelegatesVersion"
 
   // ViewBindingPropertyDelegate https://github.com/kirich1409/ViewBindingPropertyDelegate
-  implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.4.7'
+  implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.4.4'
 
   // CircleIndicator https://github.com/ongakuer/CircleIndicator
   implementation 'me.relex:circleindicator:2.1.6'
