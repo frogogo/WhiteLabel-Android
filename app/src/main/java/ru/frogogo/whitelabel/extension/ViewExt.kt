@@ -16,6 +16,8 @@ import androidx.core.view.marginTop
 import androidx.core.view.updateLayoutParams
 import ru.frogogo.whitelabel.util.SafeClickListener
 
+const val CLICK_THROTTLE_DURATION = 500L
+
 fun View.setVisible(visible: Boolean, useInvisible: Boolean = false) {
   visibility = if (visible) View.VISIBLE else if (useInvisible) View.INVISIBLE else View.GONE
 }
@@ -64,11 +66,10 @@ inline fun View.setSafeOnClickListener(
 }
 
 inline fun View.setSafeOnClickListener(
-  interval: Long = 500,
   crossinline clickAction: () -> Unit,
 ) {
   setOnClickListener(
-    SafeClickListener(interval) {
+    SafeClickListener(CLICK_THROTTLE_DURATION) {
       clickAction.invoke()
     },
   )
