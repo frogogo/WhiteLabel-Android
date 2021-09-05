@@ -85,14 +85,14 @@ class ReceiptInfoDialogFragment : BaseDialogFragment(
       receipt: ReceiptUiModel,
     ): ReceiptInfoDialogFragment = ReceiptInfoDialogFragment().apply {
       arguments = bundleOf(
-        ARG_RECEIPT to receipt
+        ARG_RECEIPT to receipt,
       )
     }
 
     fun setDismissListener(fragment: Fragment, onCloseCallback: () -> Unit) {
       fragment.childFragmentManager.setFragmentResultListener(
         KEY_RESULT_DISMISS,
-        fragment.viewLifecycleOwner
+        fragment.viewLifecycleOwner,
       ) { _, _ ->
         onCloseCallback()
       }

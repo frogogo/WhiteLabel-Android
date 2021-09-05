@@ -10,7 +10,7 @@ object PromotionItemsAdapterDelegates {
   fun ruleDelegate() = adapterDelegateViewBinding<PromotionItemsRule, RecyclerViewItem, ItemPromotionItemsRuleBinding>(
     viewBinding = { layoutInflater, viewGroup ->
       ItemPromotionItemsRuleBinding.inflate(layoutInflater, viewGroup, false)
-    }
+    },
   ) {
     /* no-op */
   }

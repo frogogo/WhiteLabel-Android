@@ -30,7 +30,16 @@ import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.ui.BaseFragment
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.databinding.FragmentScannerBinding
-import ru.frogogo.whitelabel.extension.*
+import ru.frogogo.whitelabel.extension.alert
+import ru.frogogo.whitelabel.extension.getStatusBarHeight
+import ru.frogogo.whitelabel.extension.observe
+import ru.frogogo.whitelabel.extension.observeEvent
+import ru.frogogo.whitelabel.extension.setSafeOnClickListener
+import ru.frogogo.whitelabel.extension.setSize
+import ru.frogogo.whitelabel.extension.setVisible
+import ru.frogogo.whitelabel.extension.showAppDetailsSettings
+import ru.frogogo.whitelabel.extension.updateMargin
+import ru.frogogo.whitelabel.extension.vibratePhone
 import ru.frogogo.whitelabel.ui.receipt_info.ReceiptInfoDialogFragment
 import ru.frogogo.whitelabel.ui.receipt_info.ReceiptInfoDialogFragment.Companion.showIn
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
@@ -54,7 +63,7 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(),
     screen = AnalyticsScreen.SCANNER,
     statusBarColor = R.color.transparent,
     fullscreen = true,
-    lightStatusBar = false
+    lightStatusBar = false,
   )
 
   override fun initViews() {
@@ -116,6 +125,7 @@ class ScannerFragment : BaseFragment<ScannerViewModel>(),
       // Decoder
       barcodeView.decoderFactory = DefaultDecoderFactory(BARCODE_FORMATS)
       // Size
+      @Suppress("detekt.MagicNumber")
       doOnLayout { view ->
         val width = (view.width * 0.82).toInt()
         val height = (width * 0.95).toInt()

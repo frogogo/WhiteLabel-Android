@@ -5,7 +5,7 @@ import androidx.annotation.Keep
 import kotlinx.parcelize.Parcelize
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.dictionary.ReceiptState
-import java.util.*
+import java.util.Date
 
 @Keep
 @Parcelize

@@ -9,6 +9,6 @@ fun TextView.setNullableTextRes(@StringRes resId: Int?) {
     // Set passed resource if it is not null
     whatIf = { setText(it) },
     // Clear text
-    whatIfNot = { text = "" }
+    whatIfNot = { text = "" },
   )
 }

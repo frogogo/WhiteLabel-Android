@@ -15,7 +15,7 @@ class AnalyticsManager(private val analytics: FirebaseAnalytics) {
     d { "Screen tracked - $screenName, $className" }
     val params = bundleOf(
       FirebaseAnalytics.Param.SCREEN_CLASS to className,
-      FirebaseAnalytics.Param.SCREEN_NAME to screenName
+      FirebaseAnalytics.Param.SCREEN_NAME to screenName,
     )
     analytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, params)
   }

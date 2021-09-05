@@ -9,10 +9,19 @@ import org.koin.core.module.Module
 import org.koin.core.qualifier.named
 import org.koin.dsl.bind
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
-import ru.frogogo.whitelabel.ui.home.*
+import ru.frogogo.whitelabel.ui.home.HomeEffect
+import ru.frogogo.whitelabel.ui.home.HomeFragment
+import ru.frogogo.whitelabel.ui.home.HomeNavigation
+import ru.frogogo.whitelabel.ui.home.HomeNavigationImpl
+import ru.frogogo.whitelabel.ui.home.HomeScanButtonState
+import ru.frogogo.whitelabel.ui.home.HomeViewModel
 import ru.frogogo.whitelabel.ui.home.data.HomeDataFactory
 import ru.frogogo.whitelabel.ui.home.data.HomeDataFactoryImpl
-import ru.frogogo.whitelabel.ui.home.delegate.*
+import ru.frogogo.whitelabel.ui.home.delegate.HomeClickHandlerDelegate
+import ru.frogogo.whitelabel.ui.home.delegate.HomeClickHandlerDelegateImpl
+import ru.frogogo.whitelabel.ui.home.delegate.HomeDataLoadDelegate
+import ru.frogogo.whitelabel.ui.home.delegate.HomeDataLoadDelegateImpl
+import ru.frogogo.whitelabel.ui.home.delegate.HomeStateHandlerDelegate
 
 private const val NAMED_DATA_LIVE = "data_live"
 private const val NAMED_IS_LOADING_LIVE = "is_loading_live"
@@ -53,7 +62,7 @@ fun Module.homeScope() {
         mutableIsLoadingLive = get(named(NAMED_IS_LOADING_LIVE)),
         mutableEffectLiveEvent = get(named(NAMED_EFFECT_LIVE_EVENT)),
         mutableScanButtonStateLive = get(named(NAMED_SCAN_BUTTON_STATE_LIVE)),
-        dataFactory = get()
+        dataFactory = get(),
       )
     }
     scoped { HomeViewModel.DelegatesHolder(get(), get(), get()) }

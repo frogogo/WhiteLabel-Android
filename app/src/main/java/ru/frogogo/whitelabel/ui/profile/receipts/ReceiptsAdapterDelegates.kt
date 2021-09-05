@@ -21,9 +21,8 @@ object ReceiptsAdapterDelegates {
   fun receiptDelegate(
     clickAction: OnReceiptClickAction,
   ) = adapterDelegateViewBinding<ReceiptUiModel, RecyclerViewItem, ItemReceiptBinding>(
-    viewBinding = { layoutInflater, root -> ItemReceiptBinding.inflate(layoutInflater, root, false) }
+    viewBinding = { layoutInflater, root -> ItemReceiptBinding.inflate(layoutInflater, root, false) },
   ) {
-
     itemView.setSafeOnClickListener { clickAction(item) }
 
     bind {
@@ -38,12 +37,12 @@ object ReceiptsAdapterDelegates {
 
   fun receiptEmptyState() =
     adapterDelegateViewBinding<ReceiptsEmptyState, RecyclerViewItem, ItemReceiptsEmptyStateBinding>(
-      viewBinding = { layoutInflater, root -> ItemReceiptsEmptyStateBinding.inflate(layoutInflater, root, false) }
+      viewBinding = { layoutInflater, root -> ItemReceiptsEmptyStateBinding.inflate(layoutInflater, root, false) },
     ) {}
 
   fun scanAvailableDelegate() =
     adapterDelegateViewBinding<ReceiptsScanAvailable, RecyclerViewItem, ItemScanAvailableBinding>(
-      viewBinding = { layoutInflater, root -> ItemScanAvailableBinding.inflate(layoutInflater, root, false) }
+      viewBinding = { layoutInflater, root -> ItemScanAvailableBinding.inflate(layoutInflater, root, false) },
     ) {
     }
 }

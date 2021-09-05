@@ -9,8 +9,16 @@ import org.koin.core.module.Module
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.dsl.bind
-import ru.frogogo.whitelabel.ui.scanner.*
-import ru.frogogo.whitelabel.ui.scanner.delegate.*
+import ru.frogogo.whitelabel.ui.scanner.ScannerEffect
+import ru.frogogo.whitelabel.ui.scanner.ScannerFragment
+import ru.frogogo.whitelabel.ui.scanner.ScannerNavigation
+import ru.frogogo.whitelabel.ui.scanner.ScannerNavigationImpl
+import ru.frogogo.whitelabel.ui.scanner.ScannerViewModel
+import ru.frogogo.whitelabel.ui.scanner.delegate.ScannerClicksHandlerDelegate
+import ru.frogogo.whitelabel.ui.scanner.delegate.ScannerClicksHandlerDelegateImpl
+import ru.frogogo.whitelabel.ui.scanner.delegate.ScannerCreateReceiptDelegate
+import ru.frogogo.whitelabel.ui.scanner.delegate.ScannerCreateReceiptDelegateImpl
+import ru.frogogo.whitelabel.ui.scanner.delegate.ScannerReceiptValidatorDelegate
 
 private const val NAMED_EFFECT_EVENT = "effect_event"
 private const val NAMED_IS_LOADING_LIVE = "is_loading_live"
@@ -46,15 +54,15 @@ fun Module.scanner() {
         mutableEffectLiveEvent = getEffectEvent(),
         createReceiptUseCase = get(),
         receiptValidatorDelegate = get(),
-        resourceProvider = get()
+        resourceProvider = get(),
 
-      )
+        )
     } bind ScannerCreateReceiptDelegate::class
     scoped {
       ScannerReceiptValidatorDelegate(
         dispatchersProvider = get(),
         mutableEffectLiveEvent = getEffectEvent(),
-        resourceProvider = get()
+        resourceProvider = get(),
       )
     }
     scoped { ScannerViewModel.DelegatesHolder(get(), get(), get()) }

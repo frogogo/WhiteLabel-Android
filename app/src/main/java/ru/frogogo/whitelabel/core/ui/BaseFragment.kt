@@ -16,7 +16,11 @@ import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.navigation.NavigationRouter
-import ru.frogogo.whitelabel.extension.*
+import ru.frogogo.whitelabel.extension.hideKeyboard
+import ru.frogogo.whitelabel.extension.observeEvent
+import ru.frogogo.whitelabel.extension.setFullScreen
+import ru.frogogo.whitelabel.extension.setStatusBarColor
+import ru.frogogo.whitelabel.extension.setStatusBarLight
 import ru.frogogo.whitelabel.util.SimpleWindowAnimator
 import ru.frogogo.whitelabel.util.analytics.AnalyticsManager
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
@@ -71,7 +75,7 @@ abstract class BaseFragment<out T : BaseViewModel> : Fragment() {
     // Track fragment
     analytics.trackScreen(
       screenName = configuration.screen.lowercaseName(),
-      className = javaClass.simpleName
+      className = javaClass.simpleName,
     )
   }
 

@@ -57,7 +57,7 @@ class CouponsFragment : BaseFragment<CouponsViewModel>(),
       verticalSpacing = requireContext().resources.getDimensionPixelSize(R.dimen.spacing_3),
       horizontalSpacing = requireContext().resources.getDimensionPixelSize(R.dimen.spacing_4),
       topSpacing = requireContext().resources.getDimensionPixelSize(R.dimen.spacing_4),
-      bottomSpacing = requireContext().resources.getDimensionPixelSize(R.dimen.spacing_6)
+      bottomSpacing = requireContext().resources.getDimensionPixelSize(R.dimen.spacing_6),
     )
     binding.recyclerView.apply {
       adapter = this@CouponsFragment.adapter

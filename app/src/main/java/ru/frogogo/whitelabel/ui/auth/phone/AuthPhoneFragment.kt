@@ -34,7 +34,7 @@ class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(),
   override fun provideConfiguration(): Configuration = Configuration(
     layoutId = R.layout.fragment_auth_phone,
     screen = AnalyticsScreen.AUTH_PHONE,
-    windowAnimations = true
+    windowAnimations = true,
   )
 
   override fun initViews() {
@@ -68,9 +68,12 @@ class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(),
   }
 
   private fun handleCommand(command: AuthPhoneCommand) {
-    TransitionManager.beginDelayedTransition(binding.layoutContent, ParallelAutoTransition().apply {
-      excludeChildren(binding.textInputLayout, true)
-    })
+    TransitionManager.beginDelayedTransition(
+      binding.layoutContent,
+      ParallelAutoTransition().apply {
+        excludeChildren(binding.textInputLayout, true)
+      },
+    )
     @Exhaustive
     when (command) {
       AuthPhoneCommand.ClearError -> binding.apply {
@@ -103,7 +106,7 @@ class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(),
       editText = binding.textInputLayout.editText,
       primaryFormat = Constants.PHONE_MASK,
       valueListener = this,
-      autocomplete = false // Prevent handling focus change
+      autocomplete = false, // Prevent handling focus change
     )
   }
 

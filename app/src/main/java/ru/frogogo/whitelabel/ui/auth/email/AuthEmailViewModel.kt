@@ -37,7 +37,7 @@ class AuthEmailViewModel(
           authRepository.setUserAuthorized()
           navigation.navigateToApp().navigate()
         },
-        onFailure = { _commandLiveEvent.postValue(AuthEmailCommand.SomethingWentWrong) }
+        onFailure = { _commandLiveEvent.postValue(AuthEmailCommand.SomethingWentWrong) },
       )
       _isLoadingLive.postValue(false)
     }

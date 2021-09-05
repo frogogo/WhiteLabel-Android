@@ -16,7 +16,7 @@ class UserPreferencesImpl(context: Context) : UserPreferences {
   private val preferences = EncryptedSharedPreferences.create(
     PREFERENCES_FILENAME, Constants.KEY_ALIAS, context,
     EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM,
   )
 
   // Auth

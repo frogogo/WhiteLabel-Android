@@ -20,7 +20,7 @@ class AuthNameFragment : BaseFragment<AuthNameViewModel>() {
   override fun provideConfiguration(): Configuration = Configuration(
     layoutId = R.layout.fragment_auth_name,
     screen = AnalyticsScreen.AUTH_NAME,
-    windowAnimations = true
+    windowAnimations = true,
   )
 
   override fun initViews() {

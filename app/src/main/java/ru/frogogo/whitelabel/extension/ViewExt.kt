@@ -7,14 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.Px
 import androidx.annotation.StyleableRes
-import androidx.core.view.*
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
+import androidx.core.view.marginBottom
+import androidx.core.view.marginLeft
+import androidx.core.view.marginRight
+import androidx.core.view.marginTop
+import androidx.core.view.updateLayoutParams
 import ru.frogogo.whitelabel.util.SafeClickListener
 
 fun View.setVisible(visible: Boolean, useInvisible: Boolean = false) {
   visibility = if (visible) View.VISIBLE else if (useInvisible) View.INVISIBLE else View.GONE
 }
 
-fun View.animateToVisible() {
+fun View.animateToVisible(duration: Long = 500) {
   if (isVisible) {
     return
   }
@@ -24,11 +30,11 @@ fun View.animateToVisible() {
 
   animate()
     .alpha(1F)
-    .setDuration(500)
+    .setDuration(duration)
     .start()
 }
 
-fun View.animateToGone() {
+fun View.animateToGone(duration: Long = 500) {
   if (isGone) {
     return
   }
@@ -37,7 +43,7 @@ fun View.animateToGone() {
 
   animate()
     .alpha(0F)
-    .setDuration(500)
+    .setDuration(duration)
     .withEndAction { setVisible(false) }
     .start()
 }
@@ -50,15 +56,22 @@ inline fun View.setSafeOnClickListener(
   crossinline clickAction: (View) -> Unit,
   throttleDuration: Long = 500,
 ) {
-  setOnClickListener(SafeClickListener(throttleDuration) { view ->
-    clickAction(view)
-  })
+  setOnClickListener(
+    SafeClickListener(throttleDuration) { view ->
+      clickAction(view)
+    },
+  )
 }
 
-inline fun View.setSafeOnClickListener(crossinline clickAction: () -> Unit) {
-  setOnClickListener(SafeClickListener(500) {
-    clickAction.invoke()
-  })
+inline fun View.setSafeOnClickListener(
+  interval: Long = 500,
+  crossinline clickAction: () -> Unit,
+) {
+  setOnClickListener(
+    SafeClickListener(interval) {
+      clickAction.invoke()
+    },
+  )
 }
 
 inline fun View.setOnClickListener(crossinline clickAction: () -> Unit) {

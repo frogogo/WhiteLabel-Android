@@ -15,7 +15,7 @@ class ScannerNavigationImpl : ScannerNavigation {
   override fun navigateToReceiptHelp(): NavigationCommand =
     NavigationCommand.ByWebUrl(
       url = Constants.HELP_SCAN_RECEIPT_URL,
-      titleRes = R.string.scanner_help_receipt_title
+      titleRes = R.string.scanner_help_receipt_title,
     )
 
   override fun navigateToHome(): NavigationCommand =

@@ -16,14 +16,19 @@ import ru.frogogo.whitelabel.core.ui.BaseDialogFragment
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponCodeUiModel
 import ru.frogogo.whitelabel.databinding.DialogCouponCodeBinding
 import ru.frogogo.whitelabel.dictionary.CouponCodeType
-import ru.frogogo.whitelabel.extension.*
+import ru.frogogo.whitelabel.extension.observe
+import ru.frogogo.whitelabel.extension.setSafeOnClickListener
+import ru.frogogo.whitelabel.extension.setVisible
+import ru.frogogo.whitelabel.extension.showBarcode
+import ru.frogogo.whitelabel.extension.showQrCode
+import ru.frogogo.whitelabel.extension.unloadBindingModuleOnClose
 import ru.frogogo.whitelabel.view.dialog.DialogCompanion
 
 private typealias Binding = DialogCouponCodeBinding
 
 class CouponCodeDialog : BaseDialogFragment(
   layoutId = R.layout.dialog_coupon_code,
-  showBackground = false
+  showBackground = false,
 ), AndroidScopeComponent {
 
   override val scope: Scope by fragmentScope()
@@ -90,7 +95,7 @@ class CouponCodeDialog : BaseDialogFragment(
       code: CouponCodeUiModel,
     ): CouponCodeDialog = CouponCodeDialog().apply {
       arguments = bundleOf(
-        ARG_CODE to code
+        ARG_CODE to code,
       )
     }
   }

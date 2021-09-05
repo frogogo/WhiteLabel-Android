@@ -3,7 +3,7 @@ package ru.frogogo.whitelabel.data.model.api.receipt
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import ru.frogogo.whitelabel.dictionary.ReceiptState
-import java.util.*
+import java.util.Date
 
 @JsonClass(generateAdapter = true)
 data class Receipt(

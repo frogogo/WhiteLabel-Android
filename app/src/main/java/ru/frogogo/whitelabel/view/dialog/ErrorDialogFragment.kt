@@ -52,7 +52,7 @@ class ErrorDialogFragment : BaseDialogFragment(R.layout.dialog_error) {
     ): ErrorDialogFragment = ErrorDialogFragment().apply {
       arguments = bundleOf(
         ARG_ERROR_TEXT to errorText,
-        ARG_DIALOG_ID to dialogId
+        ARG_DIALOG_ID to dialogId,
       )
     }
 

@@ -19,6 +19,6 @@ class ReceiptsNavigationImpl : ReceiptsNavigation {
     buttonState: ReceiptDetailsButtonState,
   ): NavigationCommand = ReceiptsFragmentDirections.actionReceiptsToReceiptDetails(
     receipt = receipt,
-    buttonState = buttonState
+    buttonState = buttonState,
   ).toCommand()
 }

@@ -25,7 +25,7 @@ fun Scope.unloadBindingModuleOnClose() {
       override fun onScopeClose(scope: Scope) {
         modules.remove(scope.id)?.let(::unloadKoinModules)
       }
-    }
+    },
   )
 }
 

@@ -6,10 +6,20 @@ import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.data.model.ui.home.HomeProgressUiModel
 import ru.frogogo.whitelabel.data.model.ui.home.HomePromotionUiModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
-import ru.frogogo.whitelabel.databinding.*
+import ru.frogogo.whitelabel.databinding.ItemHomeEmptyBinding
+import ru.frogogo.whitelabel.databinding.ItemHomeEmptyInstructionsBinding
+import ru.frogogo.whitelabel.databinding.ItemHomeItemsButtonBinding
+import ru.frogogo.whitelabel.databinding.ItemHomeProgressBinding
+import ru.frogogo.whitelabel.databinding.ItemHomeReceiptBinding
+import ru.frogogo.whitelabel.databinding.ItemHomeScanUnavailableBinding
+import ru.frogogo.whitelabel.databinding.ItemHomeSectionHeaderBinding
 import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.extension.toDateTime
-import ru.frogogo.whitelabel.ui.home.model.*
+import ru.frogogo.whitelabel.ui.home.model.HomeEmptyState
+import ru.frogogo.whitelabel.ui.home.model.HomeInstructions
+import ru.frogogo.whitelabel.ui.home.model.HomeItemsButton
+import ru.frogogo.whitelabel.ui.home.model.HomeScanUnavailable
+import ru.frogogo.whitelabel.ui.home.model.HomeSectionHeader
 import ru.frogogo.whitelabel.util.PriceUtils
 
 typealias OnReceiptClickAction = (ReceiptUiModel) -> Unit
@@ -18,7 +28,7 @@ typealias OnItemsButtonClickAction = (HomePromotionUiModel) -> Unit
 object HomeAdapterDelegates {
 
   fun emptyStateDelegate() = adapterDelegateViewBinding<HomeEmptyState, RecyclerViewItem, ItemHomeEmptyBinding>(
-    viewBinding = { layoutInflater, root -> ItemHomeEmptyBinding.inflate(layoutInflater, root, false) }
+    viewBinding = { layoutInflater, root -> ItemHomeEmptyBinding.inflate(layoutInflater, root, false) },
   ) {
     bind {
       binding.imageViewProduct.load(item.promotion.photo.largeUrl)
@@ -30,7 +40,7 @@ object HomeAdapterDelegates {
 
   fun couponProgressDelegate() =
     adapterDelegateViewBinding<HomeProgressUiModel, RecyclerViewItem, ItemHomeProgressBinding>(
-      viewBinding = { layoutInflater, root -> ItemHomeProgressBinding.inflate(layoutInflater, root, false) }
+      viewBinding = { layoutInflater, root -> ItemHomeProgressBinding.inflate(layoutInflater, root, false) },
     ) {
       bind {
         binding.textViewProgressCurrent.text = PriceUtils.formatPrice(item.current)
@@ -44,7 +54,7 @@ object HomeAdapterDelegates {
 
   fun sectionHeaderDelegate() =
     adapterDelegateViewBinding<HomeSectionHeader, RecyclerViewItem, ItemHomeSectionHeaderBinding>(
-      viewBinding = { layoutInflater, root -> ItemHomeSectionHeaderBinding.inflate(layoutInflater, root, false) }
+      viewBinding = { layoutInflater, root -> ItemHomeSectionHeaderBinding.inflate(layoutInflater, root, false) },
     ) {
       bind {
         binding.root.setText(item.textResId)
@@ -53,7 +63,7 @@ object HomeAdapterDelegates {
 
   fun receiptDelegate(receiptClickAction: OnReceiptClickAction) =
     adapterDelegateViewBinding<ReceiptUiModel, RecyclerViewItem, ItemHomeReceiptBinding>(
-      viewBinding = { layoutInflater, root -> ItemHomeReceiptBinding.inflate(layoutInflater, root, false) }
+      viewBinding = { layoutInflater, root -> ItemHomeReceiptBinding.inflate(layoutInflater, root, false) },
     ) {
       itemView.setSafeOnClickListener { receiptClickAction.invoke(item) }
 
@@ -66,21 +76,21 @@ object HomeAdapterDelegates {
 
   fun scanUnavailableDelegate() =
     adapterDelegateViewBinding<HomeScanUnavailable, RecyclerViewItem, ItemHomeScanUnavailableBinding>(
-      viewBinding = { layoutInflater, root -> ItemHomeScanUnavailableBinding.inflate(layoutInflater, root, false) }
+      viewBinding = { layoutInflater, root -> ItemHomeScanUnavailableBinding.inflate(layoutInflater, root, false) },
     ) {
       /* no-op */
     }
 
   fun instructionsDelegate() =
     adapterDelegateViewBinding<HomeInstructions, RecyclerViewItem, ItemHomeEmptyInstructionsBinding>(
-      viewBinding = { layoutInflater, root -> ItemHomeEmptyInstructionsBinding.inflate(layoutInflater, root, false) }
+      viewBinding = { layoutInflater, root -> ItemHomeEmptyInstructionsBinding.inflate(layoutInflater, root, false) },
     ) {
       /* no-op */
     }
 
   fun itemsButtonDelegate(clickAction: OnItemsButtonClickAction) =
     adapterDelegateViewBinding<HomeItemsButton, RecyclerViewItem, ItemHomeItemsButtonBinding>(
-      viewBinding = { layoutInflater, root -> ItemHomeItemsButtonBinding.inflate(layoutInflater, root, false) }
+      viewBinding = { layoutInflater, root -> ItemHomeItemsButtonBinding.inflate(layoutInflater, root, false) },
     ) {
       itemView.setSafeOnClickListener { clickAction.invoke(item.promotion) }
     }

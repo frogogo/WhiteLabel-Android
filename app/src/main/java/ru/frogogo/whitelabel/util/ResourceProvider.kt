@@ -7,7 +7,17 @@ import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import androidx.annotation.*
+import androidx.annotation.AnimRes
+import androidx.annotation.ArrayRes
+import androidx.annotation.BoolRes
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
+import androidx.annotation.DimenRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.FontRes
+import androidx.annotation.IntegerRes
+import androidx.annotation.PluralsRes
+import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 

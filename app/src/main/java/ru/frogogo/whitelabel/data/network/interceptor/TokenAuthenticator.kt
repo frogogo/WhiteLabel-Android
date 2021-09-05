@@ -20,6 +20,7 @@ class TokenAuthenticator : Authenticator, KoinComponent {
   private val refreshTokenUseCase: RefreshTokenUseCase by inject()
   private val logoutNotifier: AutoLogoutNotifier by inject()
 
+  @Suppress("detekt.ReturnCount")
   override fun authenticate(route: Route?, response: Response): Request? {
     val previousToken = authRepository.getAccessToken()
 

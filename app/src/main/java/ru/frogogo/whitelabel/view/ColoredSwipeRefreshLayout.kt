@@ -10,7 +10,7 @@ class ColoredSwipeRefreshLayout : SwipeRefreshLayout {
   init {
     setColorSchemeResources(
       R.color.swipe_refresh_1,
-      R.color.swipe_refresh_2
+      R.color.swipe_refresh_2,
     )
   }
 

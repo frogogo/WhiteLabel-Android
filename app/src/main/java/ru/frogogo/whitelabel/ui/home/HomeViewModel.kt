@@ -5,7 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import com.hadilq.liveevent.LiveEvent
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.core.ui.BaseViewModel
-import ru.frogogo.whitelabel.ui.home.delegate.*
+import ru.frogogo.whitelabel.ui.home.delegate.HomeClickHandlerDelegate
+import ru.frogogo.whitelabel.ui.home.delegate.HomeClickHandlerDelegateImpl
+import ru.frogogo.whitelabel.ui.home.delegate.HomeDataLoadDelegate
+import ru.frogogo.whitelabel.ui.home.delegate.HomeDataLoadDelegateImpl
+import ru.frogogo.whitelabel.ui.home.delegate.HomeStateHandlerDelegate
 
 class HomeViewModel(
   liveData: LiveDataHolder,

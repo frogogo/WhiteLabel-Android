@@ -12,7 +12,7 @@ fun ImageView.showQrCode(code: String) {
     code,
     BarcodeFormat.QR_CODE,
     250.dpToPx(),
-    250.dpToPx()
+    250.dpToPx(),
   )
 }
 
@@ -21,7 +21,7 @@ fun ImageView.showBarcode(code: String) {
     code,
     BarcodeFormat.CODE_128,
     250.dpToPx(),
-    85.dpToPx()
+    85.dpToPx(),
   )
 }
 
@@ -38,7 +38,7 @@ private fun ImageView.showBarCodeImpl(
       format,
       width,
       height,
-      mapOf(EncodeHintType.MARGIN to 1) // Reduces margin
+      mapOf(EncodeHintType.MARGIN to 1), // Reduces margin
     )
     val bitmap = barcodeEncoder.createBitmap(matrix)
     val drawable = BitmapDrawable(resources, bitmap)

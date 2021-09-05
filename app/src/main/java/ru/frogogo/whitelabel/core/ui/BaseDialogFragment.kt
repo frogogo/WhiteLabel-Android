@@ -10,6 +10,8 @@ import androidx.annotation.LayoutRes
 import androidx.fragment.app.DialogFragment
 import ru.frogogo.whitelabel.R
 
+private const val DIM_AMOUNT = 0.65F
+
 open class BaseDialogFragment(
   @LayoutRes private val layoutId: Int,
   private val showBackground: Boolean = true,
@@ -29,7 +31,7 @@ open class BaseDialogFragment(
       } else {
         setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
       }
-      setDimAmount(0.65F)
+      setDimAmount(DIM_AMOUNT)
     }
 
     return inflater.inflate(layoutId, container, false)

@@ -38,7 +38,7 @@ fun Module.couponCode() {
       CodeDialogInitializationDelegate(
         dispatchersProvider = get(),
         code = get(scopedQualifier(NAMED_CODE)),
-        mutableCodeLive = getCodeLive()
+        mutableCodeLive = getCodeLive(),
       )
     }
     scoped { CouponCodeViewModel.DelegatesHolder(get()) }

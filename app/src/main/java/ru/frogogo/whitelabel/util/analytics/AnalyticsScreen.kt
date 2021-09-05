@@ -1,6 +1,6 @@
 package ru.frogogo.whitelabel.util.analytics
 
-import java.util.*
+import java.util.Locale
 
 enum class AnalyticsScreen {
   SPLASH,
@@ -22,4 +22,4 @@ enum class AnalyticsScreen {
   COUPON_INFO,
 }
 
-fun AnalyticsScreen.lowercaseName(): String = name.toLowerCase(Locale.ENGLISH)
+fun AnalyticsScreen.lowercaseName(): String = name.lowercase(Locale.ENGLISH)

@@ -22,7 +22,7 @@ class ReceiptsFragment : BaseFragment<ReceiptsViewModel>() {
 
   override fun provideConfiguration(): Configuration = Configuration(
     layoutId = R.layout.fragment_receipts,
-    screen = AnalyticsScreen.RECEIPTS
+    screen = AnalyticsScreen.RECEIPTS,
   )
 
   override fun initViews() {
@@ -60,6 +60,6 @@ class ReceiptsFragment : BaseFragment<ReceiptsViewModel>() {
   private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(
     ReceiptsAdapterDelegates.receiptEmptyState(),
     ReceiptsAdapterDelegates.receiptDelegate(viewModel::navigateToReceipt),
-    ReceiptsAdapterDelegates.scanAvailableDelegate()
+    ReceiptsAdapterDelegates.scanAvailableDelegate(),
   )
 }

@@ -16,9 +16,10 @@ class CouponsDataLoadDelegateImpl(
       stateHandlerDelegate.showLoader()
 
       // TODO: 03.05.2021 Real data
+      @Suppress("detekt.MagicNumber")
       delay(1500)
       stateHandlerDelegate.showData(
-        listOf()
+        listOf(),
       )
     }
   }

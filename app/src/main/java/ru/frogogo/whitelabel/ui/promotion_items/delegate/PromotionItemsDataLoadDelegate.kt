@@ -17,7 +17,7 @@ class PromotionItemsDataLoadDelegate(
       stateHandlerDelegate.showLoader()
       getItemsUseCase().handle(
         onSuccess = stateHandlerDelegate::showData,
-        onFailure = { stateHandlerDelegate.showError() }
+        onFailure = { stateHandlerDelegate.showError() },
       )
     }
   }

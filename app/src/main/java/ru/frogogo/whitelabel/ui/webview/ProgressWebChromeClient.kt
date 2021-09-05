@@ -6,6 +6,8 @@ import android.widget.ProgressBar
 import ru.frogogo.whitelabel.extension.setVisible
 import java.lang.ref.WeakReference
 
+private const val MAX_PROGRESS = 100
+
 class ProgressWebChromeClient(progressBar: ProgressBar) : WebChromeClient() {
 
   private val progressBarRef = WeakReference(progressBar)
@@ -13,7 +15,7 @@ class ProgressWebChromeClient(progressBar: ProgressBar) : WebChromeClient() {
   override fun onProgressChanged(view: WebView, newProgress: Int) {
     progressBarRef.get()?.apply {
       progress = newProgress
-      setVisible(newProgress != 100)
+      setVisible(newProgress != MAX_PROGRESS)
     }
     super.onProgressChanged(view, newProgress)
   }

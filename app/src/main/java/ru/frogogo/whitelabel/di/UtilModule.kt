@@ -21,7 +21,7 @@ val utilModule = module {
   single { ProfileUtils(androidContext()) }
   factory { (navController: NavController) ->
     NavigationRouter(
-      controller = navController
+      controller = navController,
     )
   }
   factory { OtpRequestDisabler() }

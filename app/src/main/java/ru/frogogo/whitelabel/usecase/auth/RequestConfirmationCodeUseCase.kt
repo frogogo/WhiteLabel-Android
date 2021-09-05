@@ -2,10 +2,10 @@ package ru.frogogo.whitelabel.usecase.auth
 
 import com.github.ajalt.timberkt.e
 import com.github.ajalt.timberkt.i
+import ru.frogogo.whitelabel.core.Result
 import ru.frogogo.whitelabel.data.model.api.ErrorResponse
 import ru.frogogo.whitelabel.data.model.api.auth.ConfirmationCodeRequestResponse
 import ru.frogogo.whitelabel.data.repository.AuthRepository
-import ru.frogogo.whitelabel.core.Result
 import ru.frogogo.whitelabel.util.network.HttpErrorReason
 import ru.frogogo.whitelabel.util.network.NetworkError
 

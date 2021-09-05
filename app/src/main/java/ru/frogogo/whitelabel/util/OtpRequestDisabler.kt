@@ -5,8 +5,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flow
-import java.util.*
+import java.util.Date
 import java.util.concurrent.TimeUnit
+
+private const val FLOW_INTERVAL = 250L
 
 class OtpRequestDisabler {
 
@@ -15,7 +17,7 @@ class OtpRequestDisabler {
   val disabledForSecondsFlow: Flow<Int?> = flow {
     while (true) {
       emit(getSecondsUntilAvailable())
-      delay(250)
+      delay(FLOW_INTERVAL)
     }
   }.distinctUntilChanged().conflate()
 

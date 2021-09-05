@@ -44,7 +44,7 @@ class ProfileViewModel(
       val user = userRepository.getUser()
       user.whatIfNotNull(
         whatIf = { _profileLive.value = it.toProfileModel(profileUtils.getAboutVersionText()) },
-        whatIfNot = { _isLoadingLive.value = true }
+        whatIfNot = { _isLoadingLive.value = true },
       )
 
       // Fetch network data

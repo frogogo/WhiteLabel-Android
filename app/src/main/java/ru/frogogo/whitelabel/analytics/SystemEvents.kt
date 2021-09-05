@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.annotation.VisibleForTesting
 import androidx.core.os.bundleOf
 import ru.frogogo.whitelabel.util.analytics.AnalyticsEvent
-import java.util.*
+import java.util.Locale
 
 object SystemEvents {
 
@@ -13,7 +13,7 @@ object SystemEvents {
   data class TokenRefreshWork(val result: Result) : AnalyticsEvent("system_token_refresh_work") {
 
     override fun getEventParameters(): Bundle = bundleOf(
-      PARAM_RESULT to result.name.toLowerCase(Locale.ENGLISH)
+      PARAM_RESULT to result.name.lowercase(Locale.ENGLISH),
     )
 
     companion object {

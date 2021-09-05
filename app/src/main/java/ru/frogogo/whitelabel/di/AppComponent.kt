@@ -8,5 +8,5 @@ val appComponent = listOf(
   networkModule,
   useCaseModule,
   utilModule,
-  workerModule
+  workerModule,
 )

@@ -46,7 +46,7 @@ class ReceiptsViewModel(
             addAll(receipts)
           }
         },
-        onFailure = { _errorOccurredLiveEvent.postValue(Unit) }
+        onFailure = { _errorOccurredLiveEvent.postValue(Unit) },
       )
     }
   }
@@ -55,7 +55,7 @@ class ReceiptsViewModel(
     d { "Navigating to receipt details" }
     navigation.navigateToReceipt(
       receipt = receipt,
-      ReceiptsDataUtils.getReceiptDetailsButtonState(receipts)
+      ReceiptsDataUtils.getReceiptDetailsButtonState(receipts),
     ).navigate()
   }
 }

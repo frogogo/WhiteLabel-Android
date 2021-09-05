@@ -11,7 +11,7 @@ fun Coupon.toDomain(data: CouponData): CouponUiModel = CouponUiModel(
   name = data.name,
   steps = data.steps,
   photo = data.photo.toDomain(),
-  code = CouponCodeUiModel(code, CouponCodeType.CODE_128)
+  code = CouponCodeUiModel(code, CouponCodeType.CODE_128),
 )
 
 fun List<Coupon>.toDomain(data: CouponData): List<CouponUiModel> =

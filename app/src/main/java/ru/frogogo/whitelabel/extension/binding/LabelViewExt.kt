@@ -2,7 +2,9 @@ package ru.frogogo.whitelabel.extension.binding
 
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.dictionary.ReceiptState
-import ru.frogogo.whitelabel.dictionary.ReceiptState.*
+import ru.frogogo.whitelabel.dictionary.ReceiptState.APPROVED
+import ru.frogogo.whitelabel.dictionary.ReceiptState.PROCESSING
+import ru.frogogo.whitelabel.dictionary.ReceiptState.REJECTED
 import ru.frogogo.whitelabel.extension.to
 import ru.frogogo.whitelabel.view.LabelView
 
