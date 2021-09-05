@@ -13,8 +13,6 @@ import ru.frogogo.whitelabel.ui.auth.policy.AuthPolicyViewModel
 import ru.frogogo.whitelabel.ui.onboarding.OnboardingViewModel
 import ru.frogogo.whitelabel.ui.profile.ProfileViewModel
 import ru.frogogo.whitelabel.ui.profile.receipts.ReceiptsViewModel
-import ru.frogogo.whitelabel.ui.profile.receipts.details.ReceiptDetailsButtonState
-import ru.frogogo.whitelabel.ui.profile.receipts.details.ReceiptDetailsViewModel
 import ru.frogogo.whitelabel.ui.scanner.ScannerViewModel
 import ru.frogogo.whitelabel.ui.splash.SplashViewModel
 import ru.frogogo.whitelabel.ui.webview.WebViewViewModel
@@ -54,8 +52,7 @@ val screenModuleLegacy = module {
 
   // Profile
   viewModel { ProfileViewModel(get(), get(), get(), get(), get()) }
-  viewModel { ReceiptsViewModel(get(), get()) }
-  viewModel { (buttonState: ReceiptDetailsButtonState) -> ReceiptDetailsViewModel(get(), buttonState) }
+  viewModel { ReceiptsViewModel(get()) }
 
   // Stuff
   viewModel { ErrorDialogFragmentCallbackViewModel() }

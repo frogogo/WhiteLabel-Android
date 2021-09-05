@@ -14,7 +14,6 @@ import ru.frogogo.whitelabel.extension.isEmpty
 import ru.frogogo.whitelabel.usecase.receipt.GetReceiptsUseCase
 
 class ReceiptsViewModel(
-  private val navigation: ReceiptsNavigation,
   private val getReceiptsUseCase: GetReceiptsUseCase,
 ) : BaseViewModel() {
 
@@ -24,8 +23,8 @@ class ReceiptsViewModel(
   private val _isLoadingLive = MutableLiveData<Boolean>()
   val isLoadingLive = _isLoadingLive.asLiveData()
 
-  private val _errorOccurredLiveEvent = LiveEvent<Unit>()
-  val errorOccurredLiveEvent = _errorOccurredLiveEvent.asLiveData()
+  private val _effectEvent = LiveEvent<ReceiptsEffect>()
+  val effectEvent = _effectEvent.asLiveData()
 
   private val receipts: MutableList<ReceiptUiModel> = mutableListOf()
 
@@ -46,16 +45,14 @@ class ReceiptsViewModel(
             addAll(receipts)
           }
         },
-        onFailure = { _errorOccurredLiveEvent.postValue(Unit) },
+        onFailure = { _effectEvent.postValue(ReceiptsEffect.ShowError) },
       )
     }
   }
 
   fun navigateToReceipt(receipt: ReceiptUiModel) {
     d { "Navigating to receipt details" }
-    navigation.navigateToReceipt(
-      receipt = receipt,
-      ReceiptsDataUtils.getReceiptDetailsButtonState(receipts),
-    ).navigate()
+    _effectEvent.value = ReceiptsEffect.OpenReceiptInfoDialog(receipt)
+
   }
 }

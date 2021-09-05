@@ -19,10 +19,6 @@ import ru.frogogo.whitelabel.ui.onboarding.OnboardingNavigation
 import ru.frogogo.whitelabel.ui.onboarding.OnboardingNavigationImpl
 import ru.frogogo.whitelabel.ui.profile.ProfileNavigation
 import ru.frogogo.whitelabel.ui.profile.ProfileNavigationImpl
-import ru.frogogo.whitelabel.ui.profile.receipts.ReceiptsNavigation
-import ru.frogogo.whitelabel.ui.profile.receipts.ReceiptsNavigationImpl
-import ru.frogogo.whitelabel.ui.profile.receipts.details.ReceiptDetailsNavigation
-import ru.frogogo.whitelabel.ui.profile.receipts.details.ReceiptDetailsNavigationImpl
 import ru.frogogo.whitelabel.ui.scanner.ScannerNavigation
 import ru.frogogo.whitelabel.ui.scanner.ScannerNavigationImpl
 import ru.frogogo.whitelabel.ui.splash.SplashNavigation
@@ -45,6 +41,4 @@ val navigationModule = module {
 
   // Profile
   factory { ProfileNavigationImpl() as ProfileNavigation }
-  factory { ReceiptsNavigationImpl() as ReceiptsNavigation }
-  factory { ReceiptDetailsNavigationImpl() as ReceiptDetailsNavigation }
 }
