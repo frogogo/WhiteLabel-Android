@@ -29,7 +29,7 @@ fun HomeResponse.toContentState(): HomeState {
     progress = progress!!.toDomain(),
     coupons = coupons.toDomain(couponData),
     receipts = receipts,
-    scanAvailable = receipts.firstOrNull()?.state != ReceiptState.PROCESSING
+    scanAvailable = receipts.firstOrNull()?.state != ReceiptState.PROCESSING,
   )
 }
 

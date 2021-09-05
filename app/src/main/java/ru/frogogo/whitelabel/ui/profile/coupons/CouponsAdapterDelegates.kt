@@ -10,7 +10,7 @@ object CouponsAdapterDelegates {
   fun emptyState() = adapterDelegateViewBinding<CouponsEmptyState, RecyclerViewItem, ItemCouponsEmptyStateBinding>(
     viewBinding = { layoutInflater, viewGroup ->
       ItemCouponsEmptyStateBinding.inflate(layoutInflater, viewGroup, false)
-    }
+    },
   ) {
     /* no-op */
   }

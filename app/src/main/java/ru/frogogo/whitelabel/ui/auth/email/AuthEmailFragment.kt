@@ -27,7 +27,7 @@ class AuthEmailFragment : BaseFragment<AuthEmailViewModel>() {
   override fun provideConfiguration(): Configuration = Configuration(
     layoutId = R.layout.fragment_auth_email,
     screen = AnalyticsScreen.AUTH_EMAIL,
-    windowAnimations = true
+    windowAnimations = true,
   )
 
   override fun initViews() {

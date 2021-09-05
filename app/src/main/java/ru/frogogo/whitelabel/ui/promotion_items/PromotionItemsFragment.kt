@@ -79,7 +79,7 @@ class PromotionItemsFragment : BaseFragment<PromotionItemsViewModel>(),
       horizontalSpacing = resources.getDimensionPixelSize(R.dimen.spacing_2),
       verticalSpacing = resources.getDimensionPixelSize(R.dimen.spacing_2),
       topSpacing = resources.getDimensionPixelSize(R.dimen.spacing_16),
-      bottomSpacing = resources.getDimensionPixelSize(R.dimen.spacing_10)
+      bottomSpacing = resources.getDimensionPixelSize(R.dimen.spacing_10),
     )
     val layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
     layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {

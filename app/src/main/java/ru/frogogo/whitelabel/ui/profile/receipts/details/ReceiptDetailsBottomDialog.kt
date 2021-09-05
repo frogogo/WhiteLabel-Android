@@ -21,7 +21,7 @@ import ru.frogogo.whitelabel.extension.binding.useLargeSize
 import ru.frogogo.whitelabel.extension.observe
 
 class ReceiptDetailsBottomDialog : BaseBottomSheetDialogFragment<ReceiptDetailsViewModel>(
-  R.layout.dialog_receipt_details
+  R.layout.dialog_receipt_details,
 ) {
 
   override val viewModel: ReceiptDetailsViewModel by viewModel { parametersOf(args.buttonState) }
@@ -67,7 +67,7 @@ class ReceiptDetailsBottomDialog : BaseBottomSheetDialogFragment<ReceiptDetailsV
       // Controls
       layoutControlsGoods.initListeners(
         scanMachineClickAction = { /* TODO */ },
-        enterMachineClickAction = { /* TODO */ }
+        enterMachineClickAction = { /* TODO */ },
       )
       layoutControlsGoods.bind(receipt)
 

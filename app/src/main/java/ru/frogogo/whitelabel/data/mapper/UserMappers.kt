@@ -7,5 +7,5 @@ fun User.toProfileModel(appVersion: String): ProfileUiModel = ProfileUiModel(
   name = firstName,
   email = email,
   phoneNumber = phoneNumber,
-  appVersion = appVersion
+  appVersion = appVersion,
 )

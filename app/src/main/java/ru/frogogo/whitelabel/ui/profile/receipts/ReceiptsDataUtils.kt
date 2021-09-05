@@ -42,7 +42,7 @@ object ReceiptsDataUtils {
 
     return ReceiptDetailsButtonState(
       canCreateReceipt = canCreateReceipt,
-      canTakeProduct = canTakeProduct
+      canTakeProduct = canTakeProduct,
     )
   }
 }

@@ -15,7 +15,11 @@ import ru.frogogo.whitelabel.core.ui.BaseFragment
 import ru.frogogo.whitelabel.data.model.ui.ItemUiModel
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.databinding.FragmentHomeBinding
-import ru.frogogo.whitelabel.extension.*
+import ru.frogogo.whitelabel.extension.animateToGone
+import ru.frogogo.whitelabel.extension.animateToVisible
+import ru.frogogo.whitelabel.extension.observe
+import ru.frogogo.whitelabel.extension.setSafeOnClickListener
+import ru.frogogo.whitelabel.extension.setVisible
 import ru.frogogo.whitelabel.ui.common.CommonAdapterDelegates
 import ru.frogogo.whitelabel.ui.receipt_info.ReceiptInfoDialogFragment
 import ru.frogogo.whitelabel.ui.receipt_info.ReceiptInfoDialogFragment.Companion.showIn
@@ -38,7 +42,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
 
   override fun provideConfiguration(): Configuration = Configuration(
     layoutId = R.layout.fragment_home,
-    screen = AnalyticsScreen.HOME
+    screen = AnalyticsScreen.HOME,
   )
 
   override fun initViews() {
@@ -79,7 +83,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
       horizontalSpacing = resources.getDimensionPixelSize(R.dimen.spacing_2),
       verticalSpacing = resources.getDimensionPixelSize(R.dimen.spacing_2),
       topSpacing = resources.getDimensionPixelSize(R.dimen.spacing_6),
-      bottomSpacing = resources.getDimensionPixelSize(R.dimen.spacing_24)
+      bottomSpacing = resources.getDimensionPixelSize(R.dimen.spacing_24),
     )
     val layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
     layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {

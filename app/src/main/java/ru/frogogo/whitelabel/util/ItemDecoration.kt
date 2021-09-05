@@ -72,7 +72,7 @@ class ItemDecoration(
           spanSize = 1,
           spanIndex = 0,
           spanGroupIndex = itemPosition,
-          spanGroups = parent.adapter?.itemCount ?: 0
+          spanGroups = parent.adapter?.itemCount ?: 0,
         )
       }
       null -> error("RecyclerView without layout manager")

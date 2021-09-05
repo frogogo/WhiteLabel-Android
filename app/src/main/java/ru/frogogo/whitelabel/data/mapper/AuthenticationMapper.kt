@@ -9,10 +9,10 @@ fun AuthenticationResponseJson.toResponse(): AuthenticationResponse = Authentica
     User(
       email = email ?: return@run null,
       firstName = firstName ?: return@run null,
-      phoneNumber = phoneNumber
+      phoneNumber = phoneNumber,
     )
   },
   accessToken = jwt,
   refreshToken = refreshToken,
-  isNew = isNew
+  isNew = isNew,
 )

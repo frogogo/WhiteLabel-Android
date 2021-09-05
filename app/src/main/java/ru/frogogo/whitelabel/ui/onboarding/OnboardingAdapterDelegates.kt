@@ -8,9 +8,8 @@ import ru.frogogo.whitelabel.databinding.ItemOnboardingPageBinding
 object OnboardingAdapterDelegates {
 
   fun pageDelegate() = adapterDelegateViewBinding<OnboardingPage, RecyclerViewItem, ItemOnboardingPageBinding>(
-    viewBinding = { layoutInflater, root -> ItemOnboardingPageBinding.inflate(layoutInflater, root, false) }
+    viewBinding = { layoutInflater, root -> ItemOnboardingPageBinding.inflate(layoutInflater, root, false) },
   ) {
-
     bind {
       binding.apply {
         imageViewIcon.setImageResource(item.iconResId)

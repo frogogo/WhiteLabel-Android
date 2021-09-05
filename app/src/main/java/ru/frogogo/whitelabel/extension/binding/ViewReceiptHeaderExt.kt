@@ -27,7 +27,7 @@ fun ViewReceiptHeaderBinding.bind(receipt: ReceiptUiModel) {
   // Date
   textViewDate.text = receipt.date.toDateTime()
   textViewDate.setTextAppearance(
-    if (receipt.state in STATES_WITHOUT_SHOP_NAME) R.style.ReceiptDateText_Big else R.style.ReceiptDateText_Small
+    if (receipt.state in STATES_WITHOUT_SHOP_NAME) R.style.ReceiptDateText_Big else R.style.ReceiptDateText_Small,
   )
   // Status Icon
   imageViewState.setImageResource(receipt.state.getHeaderIcon())

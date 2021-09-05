@@ -3,9 +3,9 @@ package ru.frogogo.whitelabel.view.dialog
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.ajalt.timberkt.d
+import ru.frogogo.whitelabel.core.Event
 import ru.frogogo.whitelabel.extension.asLiveData
 import ru.frogogo.whitelabel.extension.postEvent
-import ru.frogogo.whitelabel.core.Event
 
 class ErrorDialogFragmentCallbackViewModel : ViewModel() {
 

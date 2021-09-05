@@ -10,5 +10,5 @@ fun Item.toDomain(): ItemUiModel =
     imageUrl = imageUrl,
     price = price,
     discountedPrice = discountedPrice,
-    specs = specs
+    specs = specs,
   )

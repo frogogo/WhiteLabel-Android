@@ -56,7 +56,7 @@ fun Module.promotionItems() {
       PromotionItemsDataLoadDelegate(
         dispatchersProvider = get(),
         getItemsUseCase = get(),
-        stateHandlerDelegate = get()
+        stateHandlerDelegate = get(),
       )
     }
     scoped {
@@ -66,7 +66,7 @@ fun Module.promotionItems() {
         mutableDataLive = getDataLive(),
         mutableIsLoadingLive = getIsLoadingLive(),
         mutableEffectLiveEvent = getEffectEvent(),
-        dataFactory = get()
+        dataFactory = get(),
       )
     }
     scoped {

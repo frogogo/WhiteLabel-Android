@@ -1,7 +1,13 @@
 package ru.frogogo.whitelabel.work
 
 import android.content.Context
-import androidx.work.*
+import androidx.work.Constraints
+import androidx.work.CoroutineWorker
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.NetworkType
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.WorkerParameters
 import org.koin.core.component.KoinComponent
 import ru.frogogo.whitelabel.usecase.auth.RefreshTokenWorkerUseCase
 import java.util.concurrent.TimeUnit

@@ -10,6 +10,7 @@ class OnboardingTransformation : ViewPager2.PageTransformer {
     val icon = page.findViewById<View>(R.id.image_view_icon)
     val title = page.findViewById<View>(R.id.text_view_title)
 
+    @Suppress("detekt.MagicNumber")
     if (position <= 1 && position >= -1) {
       icon.translationX = position * (page.width / 3f)
       title.translationX = -position * (page.width / 4f)

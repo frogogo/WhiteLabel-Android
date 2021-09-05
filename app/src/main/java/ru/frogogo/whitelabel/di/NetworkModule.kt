@@ -17,7 +17,14 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 import ru.frogogo.whitelabel.BuildConfig
 import ru.frogogo.whitelabel.data.network.FrogogoApi
-import ru.frogogo.whitelabel.data.network.interceptor.*
+import ru.frogogo.whitelabel.data.network.interceptor.AcceptInterceptor
+import ru.frogogo.whitelabel.data.network.interceptor.AcceptLanguageInterceptor
+import ru.frogogo.whitelabel.data.network.interceptor.ApiVersionInterceptor
+import ru.frogogo.whitelabel.data.network.interceptor.AuthInterceptor
+import ru.frogogo.whitelabel.data.network.interceptor.AutoLogoutNotifier
+import ru.frogogo.whitelabel.data.network.interceptor.NoContentInterceptor
+import ru.frogogo.whitelabel.data.network.interceptor.TokenAuthenticator
+import ru.frogogo.whitelabel.data.network.interceptor.UserAgentInterceptor
 import ru.frogogo.whitelabel.util.Constants
 import ru.frogogo.whitelabel.util.Constants.FROGOGO_API_ENDPOINT
 import ru.frogogo.whitelabel.util.NetworkConstants.CACHE_DIRECTORY
@@ -41,13 +48,13 @@ val networkModule = module {
       context = androidContext(),
       authenticator = get(),
       authorizationInterceptor = get(),
-      userAgent = UserAgentFactory.create()
+      userAgent = UserAgentFactory.create(),
     )
   }
   single {
     createRetrofit(
       client = get(),
-      url = FROGOGO_API_ENDPOINT
+      url = FROGOGO_API_ENDPOINT,
     )
   }
   single { get<Retrofit>().create<FrogogoApi>() }
@@ -72,9 +79,11 @@ private fun createHttpClient(
     @Suppress("ConstantConditionIf")
     if (BuildConfig.DEBUG) {
       addInterceptor(ChuckerInterceptor.Builder(context).build())
-      addInterceptor(HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.HEADERS
-      })
+      addInterceptor(
+        HttpLoggingInterceptor().apply {
+          level = HttpLoggingInterceptor.Level.HEADERS
+        },
+      )
     }
     addInterceptor(UserAgentInterceptor(userAgent))
     addInterceptor(AcceptInterceptor())

@@ -36,7 +36,7 @@ val screenModuleLegacy = module {
       navigation = get(),
       authenticationUseCase = get(),
       requestConfirmationCodeUseCase = get(),
-      otpRequestDisabler = get()
+      otpRequestDisabler = get(),
     )
   }
   viewModel { AuthNameViewModel(get()) }
@@ -45,7 +45,7 @@ val screenModuleLegacy = module {
       userName = userName,
       navigation = get(),
       authRepository = get(),
-      updateUserDetailsUseCase = get()
+      updateUserDetailsUseCase = get(),
     )
   }
 

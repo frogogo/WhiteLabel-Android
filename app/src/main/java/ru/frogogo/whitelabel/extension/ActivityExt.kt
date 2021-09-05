@@ -55,12 +55,12 @@ fun Activity.setFullScreen(isFullscreen: Boolean) {
 
   window.decorView.systemUiVisibility = if (isFullscreen) {
     window.decorView.systemUiVisibility or
-        View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+      View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+      View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
   } else {
     // To unset the flags (and do not set it again if it wasn't set before) we should use AND NOT operation (& ~)
     window.decorView.systemUiVisibility and
-        View.SYSTEM_UI_FLAG_LAYOUT_STABLE.inv() and
-        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN.inv()
+      View.SYSTEM_UI_FLAG_LAYOUT_STABLE.inv() and
+      View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN.inv()
   }
 }

@@ -16,7 +16,7 @@ class AuthPolicyFragment : BaseFragment<AuthPolicyViewModel>() {
 
   override fun provideConfiguration(): Configuration = Configuration(
     layoutId = R.layout.fragment_auth_policy,
-    screen = AnalyticsScreen.AUTH_POLICY
+    screen = AnalyticsScreen.AUTH_POLICY,
   )
 
   override fun initViews() {

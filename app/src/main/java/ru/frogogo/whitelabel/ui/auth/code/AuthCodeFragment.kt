@@ -15,18 +15,32 @@ import app.cash.exhaustive.Exhaustive
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.github.ajalt.timberkt.e
 import com.github.ajalt.timberkt.i
-import com.github.razir.progressbutton.*
+import com.github.razir.progressbutton.bindProgressButton
+import com.github.razir.progressbutton.hideDrawable
+import com.github.razir.progressbutton.hideProgress
+import com.github.razir.progressbutton.showDrawable
+import com.github.razir.progressbutton.showProgress
 import com.google.android.gms.auth.api.phone.SmsRetriever
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.ui.BaseFragment
 import ru.frogogo.whitelabel.databinding.FragmentAuthCodeBinding
-import ru.frogogo.whitelabel.extension.*
 import ru.frogogo.whitelabel.extension.binding.editText
 import ru.frogogo.whitelabel.extension.binding.initCodeConfirmationType
-import ru.frogogo.whitelabel.util.*
+import ru.frogogo.whitelabel.extension.fetchDrawable
+import ru.frogogo.whitelabel.extension.formatWithMask
+import ru.frogogo.whitelabel.extension.hideKeyboard
+import ru.frogogo.whitelabel.extension.observe
+import ru.frogogo.whitelabel.extension.setNullableTextRes
+import ru.frogogo.whitelabel.extension.setSafeOnClickListener
+import ru.frogogo.whitelabel.extension.setVisible
+import ru.frogogo.whitelabel.util.ConfirmationCodeUtils
+import ru.frogogo.whitelabel.util.Constants
+import ru.frogogo.whitelabel.util.ParallelAutoTransition
+import ru.frogogo.whitelabel.util.SpannableUtils
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
+import ru.frogogo.whitelabel.util.unsafeLazy
 
 class AuthCodeFragment : BaseFragment<AuthCodeViewModel>() {
 
@@ -43,7 +57,7 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>() {
   override fun provideConfiguration(): Configuration = Configuration(
     layoutId = R.layout.fragment_auth_code,
     screen = AnalyticsScreen.AUTH_CODE,
-    windowAnimations = true
+    windowAnimations = true,
   )
 
   override fun initViews() {
@@ -136,9 +150,12 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>() {
   }
 
   private fun handleCommand(command: AuthCodeCommand) {
-    TransitionManager.beginDelayedTransition(binding.layoutContent, ParallelAutoTransition().apply {
-      excludeChildren(binding.textInputLayout, true)
-    })
+    TransitionManager.beginDelayedTransition(
+      binding.layoutContent,
+      ParallelAutoTransition().apply {
+        excludeChildren(binding.textInputLayout, true)
+      },
+    )
     @Exhaustive
     when (command) {
       AuthCodeCommand.ClearError -> binding.apply {

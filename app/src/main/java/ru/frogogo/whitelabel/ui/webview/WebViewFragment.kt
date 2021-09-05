@@ -19,7 +19,7 @@ class WebViewFragment : BaseFragment<WebViewViewModel>() {
 
   override fun provideConfiguration(): Configuration = Configuration(
     layoutId = R.layout.fragment_web_view,
-    screen = AnalyticsScreen.WEB_VIEW
+    screen = AnalyticsScreen.WEB_VIEW,
   )
 
   override fun initViews() {

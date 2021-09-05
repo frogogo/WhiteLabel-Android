@@ -9,12 +9,12 @@ open class AnalyticsEvent(
   init {
     require(
       eventName.isNotBlank() &&
-          // Event names can be up to 40 characters long
-          eventName.length <= EVENT_NAME_MAX_LENGTH &&
-          // may only contain alphanumeric characters and underscores ("_")
-          eventName.all { it.isLetterOrDigit() || it == '_' } &&
-          // must start with an alphabetic character
-          eventName.first().isLetter()
+        // Event names can be up to 40 characters long
+        eventName.length <= EVENT_NAME_MAX_LENGTH &&
+        // may only contain alphanumeric characters and underscores ("_")
+        eventName.all { it.isLetterOrDigit() || it == '_' } &&
+        // must start with an alphabetic character
+        eventName.first().isLetter(),
     ) {
       "Event name policy violated - \"$eventName\""
     }

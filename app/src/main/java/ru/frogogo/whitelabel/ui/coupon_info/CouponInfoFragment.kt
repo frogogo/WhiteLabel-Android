@@ -72,8 +72,8 @@ class CouponInfoFragment : BaseFragment<CouponInfoViewModel>(),
         textViewInstruction,
         PrecomputedTextCompat.create(
           coupon.steps.joinToString(separator = "\n"),
-          TextViewCompat.getTextMetricsParams(textViewInstruction)
-        )
+          TextViewCompat.getTextMetricsParams(textViewInstruction),
+        ),
       )
     }
   }

@@ -27,7 +27,7 @@ fun Context.showKeyboard(view: View) {
 fun Context.showAppDetailsSettings() {
   Intent(
     Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-    Uri.fromParts("package", packageName, null)
+    Uri.fromParts("package", packageName, null),
   ).apply {
     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
   }.also { intent ->
@@ -39,7 +39,7 @@ fun Context.vibratePhone(duration: Long = 200) {
   val vibrator = getVibrator()
   if (!vibrator.hasVibrator()) return
 
-  if (Build.VERSION.SDK_INT >= 26) {
+  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
     vibrator.vibrate(VibrationEffect.createOneShot(duration, VibrationEffect.DEFAULT_AMPLITUDE))
   } else {
     @Suppress("DEPRECATION")

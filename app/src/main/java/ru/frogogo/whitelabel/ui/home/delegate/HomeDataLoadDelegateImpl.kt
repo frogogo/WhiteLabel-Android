@@ -20,7 +20,7 @@ class HomeDataLoadDelegateImpl(
 
       result.handle(
         onSuccess = { stateHandlerDelegate.showData(it) },
-        onFailure = { stateHandlerDelegate.showError() }
+        onFailure = { stateHandlerDelegate.showError() },
       )
     }
   }

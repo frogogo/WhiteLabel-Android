@@ -8,10 +8,18 @@ import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.dsl.bind
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
-import ru.frogogo.whitelabel.ui.profile.coupons.*
+import ru.frogogo.whitelabel.ui.profile.coupons.CouponsEffect
+import ru.frogogo.whitelabel.ui.profile.coupons.CouponsFragment
+import ru.frogogo.whitelabel.ui.profile.coupons.CouponsNavigation
+import ru.frogogo.whitelabel.ui.profile.coupons.CouponsNavigationImpl
+import ru.frogogo.whitelabel.ui.profile.coupons.CouponsViewModel
 import ru.frogogo.whitelabel.ui.profile.coupons.data.CouponsDataFactory
 import ru.frogogo.whitelabel.ui.profile.coupons.data.CouponsDataFactoryImpl
-import ru.frogogo.whitelabel.ui.profile.coupons.delegate.*
+import ru.frogogo.whitelabel.ui.profile.coupons.delegate.CouponsClicksHandlerDelegate
+import ru.frogogo.whitelabel.ui.profile.coupons.delegate.CouponsClicksHandlerDelegateImpl
+import ru.frogogo.whitelabel.ui.profile.coupons.delegate.CouponsDataLoadDelegate
+import ru.frogogo.whitelabel.ui.profile.coupons.delegate.CouponsDataLoadDelegateImpl
+import ru.frogogo.whitelabel.ui.profile.coupons.delegate.CouponsStateHandlerDelegate
 
 private const val NAMED_DATA_LIVE = "data_live"
 private const val NAMED_IS_LOADING_LIVE = "is_loading_live"
@@ -48,7 +56,7 @@ fun Module.coupons() {
         mutableDataLive = getDataLive(),
         mutableIsLoadingLive = getIsLoadingLive(),
         mutableEffectLiveEvent = getEffectEventLive(),
-        dataFactory = get()
+        dataFactory = get(),
       )
     }
     scoped { CouponsViewModel.DelegatesHolder(get(), get(), get()) }

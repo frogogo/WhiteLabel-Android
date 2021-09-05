@@ -46,14 +46,14 @@ fun Module.receiptInfo() {
     scoped {
       ReceiptInfoClicksHandlerDelegateImpl(
         dispatchersProvider = get(),
-        mutableEffectEvent = getEffectEvent()
+        mutableEffectEvent = getEffectEvent(),
       )
     } bind ReceiptInfoClicksHandlerDelegate::class
     scoped {
       ReceiptInfoInitializationDelegate(
         dispatchersProvider = get(),
         mutableReceiptLive = getReceiptLive(),
-        receipt = get(scopedQualifier(NAMED_RECEIPT))
+        receipt = get(scopedQualifier(NAMED_RECEIPT)),
       )
     }
     scoped { ReceiptInfoViewModel.DelegatesHolder(get(), get()) }

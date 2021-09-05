@@ -2,7 +2,11 @@ package ru.frogogo.whitelabel.data.repository
 
 import ru.frogogo.whitelabel.core.Result
 import ru.frogogo.whitelabel.data.model.api.ErrorResponse
-import ru.frogogo.whitelabel.data.model.api.auth.*
+import ru.frogogo.whitelabel.data.model.api.auth.AuthenticationRequest
+import ru.frogogo.whitelabel.data.model.api.auth.AuthenticationResponse
+import ru.frogogo.whitelabel.data.model.api.auth.ConfirmationCodeRequest
+import ru.frogogo.whitelabel.data.model.api.auth.ConfirmationCodeRequestResponse
+import ru.frogogo.whitelabel.data.model.api.auth.TokenRefreshRequest
 import ru.frogogo.whitelabel.data.network.FrogogoApi
 import ru.frogogo.whitelabel.data.preferences.UserPreferences
 import ru.frogogo.whitelabel.util.dispatcher.DispatchersProvider

@@ -8,7 +8,11 @@ import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.recycler.BaseDelegationAdapter
 import ru.frogogo.whitelabel.core.ui.BaseFragment
 import ru.frogogo.whitelabel.databinding.FragmentOnboardingBinding
-import ru.frogogo.whitelabel.extension.*
+import ru.frogogo.whitelabel.extension.goNext
+import ru.frogogo.whitelabel.extension.hasNext
+import ru.frogogo.whitelabel.extension.observe
+import ru.frogogo.whitelabel.extension.setSafeOnClickListener
+import ru.frogogo.whitelabel.extension.setVisible
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 import ru.frogogo.whitelabel.util.unsafeLazy
 
@@ -37,7 +41,7 @@ class OnboardingFragment : BaseFragment<OnboardingViewModel>() {
 
   override fun provideConfiguration(): Configuration = Configuration(
     layoutId = R.layout.fragment_onboarding,
-    screen = AnalyticsScreen.ONBOARDING
+    screen = AnalyticsScreen.ONBOARDING,
   )
 
   override fun initViews() {
@@ -45,6 +49,7 @@ class OnboardingFragment : BaseFragment<OnboardingViewModel>() {
       // Init view pager
       viewPager.apply {
         adapter = this@OnboardingFragment.adapter
+        @Suppress("detekt.MagicNumber")
         offscreenPageLimit = 3
         registerOnPageChangeCallback(pageChangeCallback)
         setPageTransformer(OnboardingTransformation())
@@ -85,6 +90,6 @@ class OnboardingFragment : BaseFragment<OnboardingViewModel>() {
   }
 
   private fun createAdapter() = BaseDelegationAdapter(
-    OnboardingAdapterDelegates.pageDelegate()
+    OnboardingAdapterDelegates.pageDelegate(),
   )
 }

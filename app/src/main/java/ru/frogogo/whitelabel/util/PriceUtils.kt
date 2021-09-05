@@ -1,7 +1,7 @@
 package ru.frogogo.whitelabel.util
 
 import java.text.NumberFormat
-import java.util.*
+import java.util.Locale
 import kotlin.math.absoluteValue
 
 private val CURRENCY_SYMBOL by lazy {

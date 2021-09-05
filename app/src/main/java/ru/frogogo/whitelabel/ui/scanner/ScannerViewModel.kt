@@ -4,7 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.hadilq.liveevent.LiveEvent
 import ru.frogogo.whitelabel.core.ui.BaseViewModel
-import ru.frogogo.whitelabel.ui.scanner.delegate.*
+import ru.frogogo.whitelabel.ui.scanner.delegate.ScannerClicksHandlerDelegate
+import ru.frogogo.whitelabel.ui.scanner.delegate.ScannerClicksHandlerDelegateImpl
+import ru.frogogo.whitelabel.ui.scanner.delegate.ScannerCreateReceiptDelegate
+import ru.frogogo.whitelabel.ui.scanner.delegate.ScannerCreateReceiptDelegateImpl
+import ru.frogogo.whitelabel.ui.scanner.delegate.ScannerReceiptValidatorDelegate
 
 class ScannerViewModel(
   liveData: LiveDataHolder,

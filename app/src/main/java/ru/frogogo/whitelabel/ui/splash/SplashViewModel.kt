@@ -8,6 +8,8 @@ import ru.frogogo.whitelabel.core.ui.BaseViewModel
 import ru.frogogo.whitelabel.usecase.GetUserAuthStateUseCase
 import ru.frogogo.whitelabel.usecase.GetUserAuthStateUseCase.State
 
+private const val NAVIGATION_DELAY = 750L
+
 class SplashViewModel(
   private val getUserAuthStateUseCase: GetUserAuthStateUseCase,
   private val navigation: SplashNavigation,
@@ -18,7 +20,7 @@ class SplashViewModel(
   }
 
   private fun navigateNext() = viewModelScope.launch {
-    delay(750)
+    delay(NAVIGATION_DELAY)
     when (getUserAuthStateUseCase()) {
       State.CLEAN_START -> {
         i { "Navigating to onboarding" }

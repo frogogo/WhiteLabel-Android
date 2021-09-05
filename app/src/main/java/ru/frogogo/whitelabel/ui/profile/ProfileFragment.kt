@@ -22,7 +22,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
 
   override fun provideConfiguration(): Configuration = Configuration(
     layoutId = R.layout.fragment_profile,
-    screen = AnalyticsScreen.PROFILE
+    screen = AnalyticsScreen.PROFILE,
   )
 
   override fun initViews() {

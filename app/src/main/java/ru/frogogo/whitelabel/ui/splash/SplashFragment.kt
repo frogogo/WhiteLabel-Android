@@ -11,6 +11,6 @@ class SplashFragment : BaseFragment<SplashViewModel>() {
 
   override fun provideConfiguration(): Configuration = Configuration(
     layoutId = R.layout.fragment_splash,
-    screen = AnalyticsScreen.SPLASH
+    screen = AnalyticsScreen.SPLASH,
   )
 }

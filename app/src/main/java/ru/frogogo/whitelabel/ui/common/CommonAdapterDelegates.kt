@@ -19,7 +19,7 @@ object CommonAdapterDelegates {
 
   fun couponDelegate(onClickAction: CouponClickAction) =
     adapterDelegateViewBinding<CouponUiModel, RecyclerViewItem, ItemCouponBinding>(
-      viewBinding = { layoutInflater, viewGroup -> ItemCouponBinding.inflate(layoutInflater, viewGroup, false) }
+      viewBinding = { layoutInflater, viewGroup -> ItemCouponBinding.inflate(layoutInflater, viewGroup, false) },
     ) {
       itemView.setSafeOnClickListener { onClickAction(item) }
 
@@ -31,9 +31,8 @@ object CommonAdapterDelegates {
     }
 
   fun itemDelegate() = adapterDelegateViewBinding<ItemUiModel, RecyclerViewItem, ItemItemBinding>(
-    viewBinding = { layoutInflater, viewGroup -> ItemItemBinding.inflate(layoutInflater, viewGroup, false) }
+    viewBinding = { layoutInflater, viewGroup -> ItemItemBinding.inflate(layoutInflater, viewGroup, false) },
   ) {
-
     bind {
       binding.imageView.load(item.imageUrl)
       binding.textViewName.text = buildSpannedString {

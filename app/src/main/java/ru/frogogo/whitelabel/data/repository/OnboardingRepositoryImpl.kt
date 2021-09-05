@@ -14,18 +14,18 @@ class OnboardingRepositoryImpl(
     OnboardingPage(
       titleResId = R.string.onboarding_page_1_title,
       descriptionResId = R.string.onboarding_page_1_description,
-      iconResId = R.drawable.onboarding_icon_1
+      iconResId = R.drawable.onboarding_icon_1,
     ),
     OnboardingPage(
       titleResId = R.string.onboarding_page_2_title,
       descriptionResId = R.string.onboarding_page_2_description,
-      iconResId = R.drawable.onboarding_icon_2
+      iconResId = R.drawable.onboarding_icon_2,
     ),
     OnboardingPage(
       titleResId = R.string.onboarding_page_3_title,
       descriptionResId = R.string.onboarding_page_3_description,
-      iconResId = R.drawable.onboarding_icon_3
-    )
+      iconResId = R.drawable.onboarding_icon_3,
+    ),
   )
 
   override fun setOnboardingCompleted() {

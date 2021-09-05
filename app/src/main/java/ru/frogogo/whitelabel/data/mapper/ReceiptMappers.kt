@@ -13,7 +13,7 @@ fun Receipt.toDomain(): ReceiptUiModel = ReceiptUiModel(
   date = timestamp,
   value = sum,
   shopName = Constants.SHOP_NAME,
-  rejectReason = rejectReason?.toDomain()
+  rejectReason = rejectReason?.toDomain(),
 )
 
 fun List<Receipt>.toDomain(): List<ReceiptUiModel> =
@@ -21,5 +21,5 @@ fun List<Receipt>.toDomain(): List<ReceiptUiModel> =
 
 fun ReceiptRejectReason.toDomain(): ReceiptRejectReasonUiModel = ReceiptRejectReasonUiModel(
   reason = reason,
-  reasonText = reasonText
+  reasonText = reasonText,
 )

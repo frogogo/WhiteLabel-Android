@@ -17,17 +17,17 @@ processors:
   active: true
   exclude:
     - 'DetektProgressListener'
-  # - 'KtFileCountProcessor'
-  # - 'PackageCountProcessor'
-  # - 'ClassCountProcessor'
-  # - 'FunctionCountProcessor'
-  # - 'PropertyCountProcessor'
-  # - 'ProjectComplexityProcessor'
-  # - 'ProjectCognitiveComplexityProcessor'
-  # - 'ProjectLLOCProcessor'
-  # - 'ProjectCLOCProcessor'
-  # - 'ProjectLOCProcessor'
-  # - 'ProjectSLOCProcessor'
+    - 'KtFileCountProcessor'
+    - 'PackageCountProcessor'
+    - 'ClassCountProcessor'
+    - 'FunctionCountProcessor'
+    - 'PropertyCountProcessor'
+    - 'ProjectComplexityProcessor'
+    - 'ProjectCognitiveComplexityProcessor'
+    - 'ProjectLLOCProcessor'
+    - 'ProjectCLOCProcessor'
+    - 'ProjectLOCProcessor'
+    - 'ProjectSLOCProcessor'
   # - 'LicenseHeaderLoaderExtension'
 
 console-reports:
@@ -47,8 +47,8 @@ output-reports:
   # - 'HtmlOutputReport'
 
 comments:
-  active: false # Changed
-  excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+  active: true
+  excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
   AbsentOrWrongFileLicense:
     active: false
     licenseTemplateFile: 'license.template'
@@ -57,19 +57,24 @@ comments:
     active: false
   CommentOverPrivateProperty:
     active: false
+  DeprecatedBlockTag:
+    active: true # Changed
   EndOfSentenceFormat:
     active: false
     endOfSentenceFormat: '([.?!][ \t\n\r\f<])|([.?!:]$)'
   UndocumentedPublicClass:
     active: false
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
     searchInNestedClass: true
     searchInInnerClass: true
     searchInInnerObject: true
     searchInInnerInterface: true
   UndocumentedPublicFunction:
     active: false
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
   UndocumentedPublicProperty:
     active: false
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
 
 complexity:
   active: true
@@ -82,28 +87,38 @@ complexity:
     includeStaticDeclarations: false
     includePrivateDeclarations: false
   ComplexMethod:
-    active: false # Changed TODO enable
+    active: true
     threshold: 15
     ignoreSingleWhenExpression: false
     ignoreSimpleWhenEntries: false
     ignoreNestingFunctions: false
-    nestingFunctions: [run, let, apply, with, also, use, forEach, isNotNull, ifNull]
+    nestingFunctions:
+      - 'also'
+      - 'apply'
+      - 'forEach'
+      - 'isNotNull'
+      - 'ifNull'
+      - 'let'
+      - 'run'
+      - 'use'
+      - 'with'
   LabeledExpression:
     active: false
-    ignoredLabels: []
+    ignoredLabels: [ ]
   LargeClass:
     active: true
     threshold: 600
   LongMethod:
     active: true
     threshold: 60
+    ignoreAnnotated: [ ]
   LongParameterList:
     active: true
     functionThreshold: 7
     constructorThreshold: 10
-    ignoreDefaultParameters: true
+    ignoreDefaultParameters: false
     ignoreDataClasses: true
-    ignoreAnnotated: []
+    ignoreAnnotated: [ ]
   MethodOverloading:
     active: false
     threshold: 6
@@ -117,19 +132,19 @@ complexity:
     active: true # Changed
   StringLiteralDuplication:
     active: true # Changed
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
     threshold: 3
     ignoreAnnotation: true
     excludeStringsWithLessThan5Characters: true
     ignoreStringsRegex: '$^'
   TooManyFunctions:
-    active: false # Changed TODO Return
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
-    thresholdInFiles: 11
-    thresholdInClasses: 11
-    thresholdInInterfaces: 11
-    thresholdInObjects: 11
-    thresholdInEnums: 11
+    active: true
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
+    thresholdInFiles: 30
+    thresholdInClasses: 30
+    thresholdInInterfaces: 15
+    thresholdInObjects: 30
+    thresholdInEnums: 15
     ignoreDeprecated: false
     ignorePrivate: false
     ignoreOverridden: false
@@ -182,12 +197,17 @@ empty-blocks:
 
 exceptions:
   active: true
+  # https://detekt.github.io/detekt/exceptions.html#exceptionraisedinunexpectedlocation
   ExceptionRaisedInUnexpectedLocation:
-    active: false
-    methodNames: [toString, hashCode, equals, finalize]
+    active: true
+    methodNames:
+      - 'equals'
+      - 'finalize'
+      - 'hashCode'
+      - 'toString'
   InstanceOfCheckForException:
     active: false
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
   NotImplementedDeclaration:
     active: false
   ObjectExtendsThrowable:
@@ -202,10 +222,10 @@ exceptions:
   SwallowedException:
     active: false # Changed
     ignoredExceptionTypes:
-      - InterruptedException
-      - NumberFormatException
-      - ParseException
-      - MalformedURLException
+      - 'InterruptedException'
+      - 'MalformedURLException'
+      - 'NumberFormatException'
+      - 'ParseException'
     allowedExceptionNameRegex: '_|(ignore|expected).*'
   ThrowingExceptionFromFinally:
     active: true
@@ -213,33 +233,39 @@ exceptions:
     active: false
   ThrowingExceptionsWithoutMessageOrCause:
     active: true
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
     exceptions:
-      - IllegalArgumentException
-      - IllegalStateException
-      - IOException
+      - 'ArrayIndexOutOfBoundsException'
+      - 'Exception'
+      - 'IllegalArgumentException'
+      - 'IllegalMonitorStateException'
+      - 'IllegalStateException'
+      - 'IndexOutOfBoundsException'
+      - 'NullPointerException'
+      - 'RuntimeException'
+      - 'Throwable'
   ThrowingNewInstanceOfSameException:
     active: true
   TooGenericExceptionCaught:
     active: false # Changed
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
     exceptionNames:
-      - ArrayIndexOutOfBoundsException
-      - Error
-      - Exception
-      - IllegalMonitorStateException
-      - NullPointerException
-      - IndexOutOfBoundsException
-      - RuntimeException
-      - Throwable
+      - 'ArrayIndexOutOfBoundsException'
+      - 'Error'
+      - 'Exception'
+      - 'IllegalMonitorStateException'
+      - 'IndexOutOfBoundsException'
+      - 'NullPointerException'
+      - 'RuntimeException'
+      - 'Throwable'
     allowedExceptionNameRegex: '_|(ignore|expected).*'
   TooGenericExceptionThrown:
     active: true
     exceptionNames:
-      - Error
-      - Exception
-      - Throwable
-      - RuntimeException
+      - 'Error'
+      - 'Exception'
+      - 'RuntimeException'
+      - 'Throwable'
 
 formatting:
   active: true
@@ -260,6 +286,7 @@ formatting:
   CommentSpacing:
     active: true
     autoCorrect: true
+  # Duplicate of naming:EnumNaming
   EnumEntryNameCase:
     active: false
     autoCorrect: true
@@ -273,14 +300,18 @@ formatting:
     active: false
     autoCorrect: true
     layout: 'idea'
+  # Blocked by bugs: https://github.com/pinterest/ktlint/issues?q=is%3Aissue+is%3Aopen+Indentation
   Indentation:
     active: false
     autoCorrect: true
-    indentSize: 4
-    continuationIndentSize: 4
+    indentSize: 2 # Changed from 4
+    continuationIndentSize: 2 # Changed from 4
+  # Duplicate of style:MaxLineLength
   MaximumLineLength:
     active: false # Changed
     maxLineLength: 120
+    ignoreBackTickedIdentifier: false
+  # https://ktlint.github.io/#rule-modifier-order
   ModifierOrdering:
     active: true
     autoCorrect: true
@@ -290,6 +321,7 @@ formatting:
   NoBlankLineBeforeRbrace:
     active: true
     autoCorrect: true
+  # https://ktlint.github.io/#rule-blank
   NoConsecutiveBlankLines:
     active: true
     autoCorrect: true
@@ -297,7 +329,7 @@ formatting:
     active: true
     autoCorrect: true
   NoEmptyFirstLineInMethodBlock:
-    active: false
+    active: true # Changed
     autoCorrect: true
   NoLineBreakAfterElse:
     active: true
@@ -308,9 +340,11 @@ formatting:
   NoMultipleSpaces:
     active: true
     autoCorrect: true
+  # https://ktlint.github.io/#rule-semi
   NoSemicolons:
     active: true
     autoCorrect: true
+  # https://ktlint.github.io/#rule-trailing-whitespaces
   NoTrailingSpaces:
     active: true
     autoCorrect: true
@@ -328,7 +362,9 @@ formatting:
   ParameterListWrapping:
     active: true
     autoCorrect: true
-    indentSize: 2 # Changed from 4
+    indentSize: 2
+
+  # https://ktlint.github.io/#rule-spacing
   SpacingAroundAngleBrackets:
     active: true # Changed
     autoCorrect: true
@@ -365,58 +401,67 @@ formatting:
   SpacingBetweenDeclarationsWithAnnotations:
     active: false
     autoCorrect: true
+  # https://detekt.github.io/detekt/formatting.html#spacingbetweendeclarationswithcomments
   SpacingBetweenDeclarationsWithComments:
-    active: false
+    active: true
     autoCorrect: true
+  # https://ktlint.github.io/#rule-string-template
   StringTemplate:
     active: true
     autoCorrect: true
 
 naming:
   active: true
+  BooleanPropertyNaming:
+    active: true # Changed
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
+    allowedPattern: '^(is|has|are)'
+  # https://detekt.github.io/detekt/naming.html#classnaming
   ClassNaming:
     active: true
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
     classPattern: '[A-Z][a-zA-Z0-9]*'
+  # https://detekt.github.io/detekt/naming.html#constructorparameternaming
   ConstructorParameterNaming:
     active: true
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
     parameterPattern: '[a-z][A-Za-z0-9]*'
     privateParameterPattern: '[a-z][A-Za-z0-9]*'
     excludeClassPattern: '$^'
     ignoreOverridden: true
   EnumNaming:
     active: true
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
     enumEntryPattern: '[A-Z][_a-zA-Z0-9]*'
   ForbiddenClassName:
     active: false
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
-    forbiddenName: []
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
+    forbiddenName: [ ]
   FunctionMaxLength:
     active: true # Changed
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
     maximumFunctionNameLength: 40 # Changed from 30
   FunctionMinLength:
     active: true # Changed
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
     minimumFunctionNameLength: 3
   FunctionNaming:
     active: true
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
     functionPattern: '([a-z][a-zA-Z0-9]*)|(`.*`)'
     excludeClassPattern: '$^'
     ignoreOverridden: true
-    ignoreAnnotated: ['Composable']
+    ignoreAnnotated:
+      - 'Composable'
   FunctionParameterNaming:
     active: true
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
     parameterPattern: '[a-z][A-Za-z0-9]*'
     excludeClassPattern: '$^'
     ignoreOverridden: true
   InvalidPackageDeclaration:
     active: false
-    excludes: ['*.kts']
+    excludes: [ '**/*.kts' ]
     rootPackage: ''
   MatchingDeclarationName:
     active: true
@@ -428,34 +473,34 @@ naming:
     active: true # Changed
   NonBooleanPropertyPrefixedWithIs:
     active: true # Changed
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
   ObjectPropertyNaming:
     active: true
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
     constantPattern: '[A-Za-z][_A-Za-z0-9]*'
     propertyPattern: '[A-Za-z][_A-Za-z0-9]*'
     privatePropertyPattern: '(_)?[A-Za-z][_A-Za-z0-9]*'
   PackageNaming:
     active: true
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
     packagePattern: '[a-z]+(\.[a-z][A-Za-z0-9_]*)*' # '_' added
   TopLevelPropertyNaming:
     active: true
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
     constantPattern: '[A-Z][_A-Z0-9]*'
     propertyPattern: '[A-Za-z][_A-Za-z0-9]*'
     privatePropertyPattern: '_?[A-Za-z][_A-Za-z0-9]*'
   VariableMaxLength:
     active: true # Changed
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
     maximumVariableNameLength: 64
   VariableMinLength:
     active: false
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
     minimumVariableNameLength: 1
   VariableNaming:
     active: true
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
     variablePattern: '[a-z][A-Za-z0-9]*'
     privateVariablePattern: '(_)?[a-z][A-Za-z0-9]*'
     excludeClassPattern: '$^'
@@ -467,21 +512,28 @@ performance:
     active: true
   ForEachOnRange:
     active: true
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
   SpreadOperator:
     active: false # Changed
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
   UnnecessaryTemporaryInstantiation:
     active: true
 
 potential-bugs:
   active: true
+  AvoidReferentialEquality:
+    active: true # Changed
+    forbiddenTypePatterns:
+      - 'kotlin.String'
   CastToNullableType:
     active: true # Changed
   Deprecation:
     active: false
   DontDowncastCollectionTypes:
     active: true # Changed
+  # https://detekt.github.io/detekt/potential-bugs.html#doublemutabilityforcollection
+  DoubleMutabilityForCollection:
+    active: false
   DuplicateCaseInWhenExpression:
     active: true
   EqualsAlwaysReturnsTrueOrFalse:
@@ -497,7 +549,11 @@ potential-bugs:
   IgnoredReturnValue:
     active: true # Changed
     restrictToAnnotatedMethods: true
-    returnValueAnnotations: ['*.CheckReturnValue', '*.CheckResult']
+    returnValueAnnotations:
+      - '*.CheckResult'
+      - '*.CheckReturnValue'
+    ignoreReturnValueAnnotations:
+      - '*.CanIgnoreReturnValue'
   ImplicitDefaultLocale:
     active: true # Changed
   ImplicitUnitReturnType:
@@ -511,8 +567,8 @@ potential-bugs:
     active: true
   LateinitUsage:
     active: false
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
-    excludeAnnotatedProperties: []
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
+    excludeAnnotatedProperties: [ ]
     ignoreOnClassesPattern: ''
   MapGetWithNotNullAssertionOperator:
     active: true # Changed
@@ -546,67 +602,99 @@ potential-bugs:
 
 style:
   active: true
+  # https://detekt.github.io/detekt/style.html#classordering
   ClassOrdering:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#collapsibleifstatements
   CollapsibleIfStatements:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#dataclasscontainsfunctions
   DataClassContainsFunctions:
     active: false
     conversionFunctionPrefix: 'to'
+  # https://detekt.github.io/detekt/style.html#dataclassshouldbeimmutable
   DataClassShouldBeImmutable:
     active: false
+  # https://detekt.github.io/detekt/style.html#destructuringdeclarationwithtoomanyentries
   DestructuringDeclarationWithTooManyEntries:
     active: true # Changed
     maxDestructuringEntries: 3
+  # https://detekt.github.io/detekt/style.html#equalsnullcall
   EqualsNullCall:
     active: true
+  # https://detekt.github.io/detekt/style.html#equalsonsignatureline
   EqualsOnSignatureLine:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#explicitcollectionelementaccessmethod
   ExplicitCollectionElementAccessMethod:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#explicititlambdaparameter
   ExplicitItLambdaParameter:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#expressionbodysyntax
   ExpressionBodySyntax:
     active: false
     includeLineWrapping: false
+  # https://detekt.github.io/detekt/style.html#forbiddencomment
   ForbiddenComment:
     active: false # Changed
-    values: ['TODO:', 'FIXME:', 'STOPSHIP:']
+    values:
+      - 'FIXME:'
+      - 'STOPSHIP:'
+      - 'TODO:'
     allowedPatterns: ''
+  # https://detekt.github.io/detekt/style.html#forbiddenimport
   ForbiddenImport:
     active: false
-    imports: []
+    imports: [ ]
     forbiddenPatterns: ''
+  # https://detekt.github.io/detekt/style.html#forbiddenmethodcall
   ForbiddenMethodCall:
     active: true # Changed
-    methods: ['kotlin.io.println', 'kotlin.io.print']
+    methods:
+      - 'kotlin.io.print'
+      - 'kotlin.io.println'
+  # https://detekt.github.io/detekt/style.html#forbiddenpublicdataclass
   ForbiddenPublicDataClass:
-    active: false
-    excludes: ['**']
-    ignorePackages: ['*.internal', '*.internal.*']
+    active: false # Changed
+    excludes: [ '**' ]
+    ignorePackages:
+      - '*.internal'
+      - '*.internal.*'
+  # https://detekt.github.io/detekt/style.html#forbiddenvoid
   ForbiddenVoid:
     active: true # Changed
     ignoreOverridden: false
     ignoreUsageInGenerics: false
+  # https://detekt.github.io/detekt/style.html#functiononlyreturningconstant
   FunctionOnlyReturningConstant:
     active: true
     ignoreOverridableFunction: true
     ignoreActualFunction: true
-    excludedFunctions: 'describeContents'
-    excludeAnnotatedFunction: ['dagger.Provides']
+    excludedFunctions: ''
+    excludeAnnotatedFunction:
+      - 'dagger.Provides'
+  # https://detekt.github.io/detekt/style.html#librarycodemustspecifyreturntype
   LibraryCodeMustSpecifyReturnType:
     active: true
-    excludes: ['**']
+    excludes: [ '**' ]
+  # https://detekt.github.io/detekt/style.html#libraryentitiesshouldnotbepublic
   LibraryEntitiesShouldNotBePublic:
     active: false
-    excludes: ['**']
+    excludes: [ '**' ]
+  # https://detekt.github.io/detekt/style.html#loopwithtoomanyjumpstatements
   LoopWithTooManyJumpStatements:
     active: true
     maxJumpCount: 1
+  # https://detekt.github.io/detekt/style.html#magicnumber
   MagicNumber:
-    active: false # Changed
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
-    ignoreNumbers: ['-1', '0', '1', '2']
+    active: true
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
+    ignoreNumbers:
+      - '-1'
+      - '0'
+      - '1'
+      - '2'
     ignoreHashCodeFunction: true
     ignorePropertyDeclaration: false
     ignoreLocalVariableDeclaration: false
@@ -617,120 +705,176 @@ style:
     ignoreEnums: false
     ignoreRanges: false
     ignoreExtensionFunctions: true
+  # https://detekt.github.io/detekt/style.html#mandatorybracesifstatements
   MandatoryBracesIfStatements:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#mandatorybracesloops
   MandatoryBracesLoops:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#maxlinelength
   MaxLineLength:
     active: true
     maxLineLength: 120
     excludePackageStatements: true
     excludeImportStatements: true
     excludeCommentStatements: true # Changed
+  # https://detekt.github.io/detekt/style.html#maybeconst
   MayBeConst:
     active: true
+  # https://detekt.github.io/detekt/style.html#modifierorder
   ModifierOrder:
     active: true
+  # https://detekt.github.io/detekt/style.html#multilinelambdaitparameter
   MultilineLambdaItParameter:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#nestedclassesvisibility
   NestedClassesVisibility:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#newlineatendoffile
   NewLineAtEndOfFile:
     active: false # Changed as it is implemented in ktlint with an ability of auto-formatting
+  # https://detekt.github.io/detekt/style.html#notabs
   NoTabs:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#objectliteraltolambda
+  ObjectLiteralToLambda:
+    active: true # Changed
+  # https://detekt.github.io/detekt/style.html#optionalabstractkeyword
   OptionalAbstractKeyword:
     active: true
+  # https://detekt.github.io/detekt/style.html#optionalunit
   OptionalUnit:
     active: false
+  # https://detekt.github.io/detekt/style.html#optionalwhenbraces
   OptionalWhenBraces:
     active: false
+  # https://detekt.github.io/detekt/style.html#prefertooverpairsyntax
   PreferToOverPairSyntax:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#protectedmemberinfinalclass
   ProtectedMemberInFinalClass:
     active: true
+  # https://detekt.github.io/detekt/style.html#redundantexplicittype
   RedundantExplicitType:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#redundanthigherordermapusage
   RedundantHigherOrderMapUsage:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#redundantvisibilitymodifierrule
+  # todo don't know about kotlin strict mode
   RedundantVisibilityModifierRule:
-    active: true # Changed
+    active: false
+  # https://detekt.github.io/detekt/style.html#returncount
   ReturnCount:
-    active: false # Changed TODO Enable it
+    active: true
     max: 2
     excludedFunctions: 'equals'
     excludeLabeled: false
     excludeReturnFromLambda: true
-    excludeGuardClauses: false
+    excludeGuardClauses: true
+  # https://detekt.github.io/detekt/style.html#safecast
   SafeCast:
     active: true
+  # https://detekt.github.io/detekt/style.html#serialversionuidinserializableclass
   SerialVersionUIDInSerializableClass:
     active: false
+  # https://detekt.github.io/detekt/style.html#spacingbetweenpackageandimports
   SpacingBetweenPackageAndImports:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#throwscount
   ThrowsCount:
     active: true
     max: 2
+    excludeGuardClauses: false
+  # https://detekt.github.io/detekt/style.html#trailingwhitespace
   TrailingWhitespace:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#underscoresinnumericliterals
   UnderscoresInNumericLiterals:
     active: false
     acceptableDecimalLength: 5
+  # https://detekt.github.io/detekt/style.html#unnecessaryabstractclass
   UnnecessaryAbstractClass:
     active: true
-    excludeAnnotatedClasses: ['dagger.Module']
+    excludeAnnotatedClasses:
+      - 'dagger.Module'
+  # https://detekt.github.io/detekt/style.html#unnecessaryannotationusesitetarget
   UnnecessaryAnnotationUseSiteTarget:
     active: false
+  # https://detekt.github.io/detekt/style.html#unnecessaryapply
   UnnecessaryApply:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#unnecessaryfilter
   UnnecessaryFilter:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#unnecessaryinheritance
   UnnecessaryInheritance:
     active: true
+  # https://detekt.github.io/detekt/style.html#unnecessarylet
   UnnecessaryLet:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#unnecessaryparentheses
   UnnecessaryParentheses:
     active: false
+  # https://detekt.github.io/detekt/style.html#untilinsteadofrangeto
   UntilInsteadOfRangeTo:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#unusedimports
   UnusedImports:
     active: false
+  # https://detekt.github.io/detekt/style.html#unusedprivateclass
   UnusedPrivateClass:
     active: true
+  # https://detekt.github.io/detekt/style.html#unusedprivatemember
   UnusedPrivateMember:
     active: true
     allowedNames: '(_|ignored|expected|serialVersionUID)'
+  # https://detekt.github.io/detekt/style.html#usearrayliteralsinannotations
   UseArrayLiteralsInAnnotations:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#usearrayliteralsinannotations
   UseCheckNotNull:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#usecheckorerror
   UseCheckOrError:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#usedataclass
   UseDataClass:
     active: false
-    excludeAnnotatedClasses: []
+    excludeAnnotatedClasses: [ ]
     allowVars: false
+  # https://detekt.github.io/detekt/style.html#useemptycounterpart
   UseEmptyCounterpart:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#useifemptyorifblank
   UseIfEmptyOrIfBlank:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#useifinsteadofwhen
   UseIfInsteadOfWhen:
     active: false
+  # https://detekt.github.io/detekt/style.html#useisnullorempty
   UseIsNullOrEmpty:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#useorempty
   UseOrEmpty:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#userequire
   UseRequire:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#userequirenotnull
   UseRequireNotNull:
     active: true # Changed
+  # https://detekt.github.io/detekt/style.html#uselesscallonnotnull
   UselessCallOnNotNull:
     active: true
+  # https://detekt.github.io/detekt/style.html#utilityclasswithpublicconstructor
   UtilityClassWithPublicConstructor:
     active: true
+  # https://detekt.github.io/detekt/style.html#varcouldbeval
   VarCouldBeVal:
     active: true
+  # https://detekt.github.io/detekt/style.html#wildcardimport
   WildcardImport:
-    active: false # Changed
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
-    excludeImports: ['java.util.*', 'kotlinx.android.synthetic.*']
+    active: true
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
+    excludeImports: [ ]
