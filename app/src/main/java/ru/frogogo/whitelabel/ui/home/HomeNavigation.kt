@@ -8,6 +8,7 @@ import ru.frogogo.whitelabel.extension.toCommand
 interface HomeNavigation {
   fun navigateToProfile(): NavigationCommand
   fun navigateToReceiptScan(): NavigationCommand
+  fun navigateToReceipts(): NavigationCommand
   fun navigateToCouponInfo(coupon: CouponUiModel): NavigationCommand
   fun navigateToPromotionItems(promotion: HomePromotionUiModel): NavigationCommand
 }
@@ -19,6 +20,9 @@ class HomeNavigationImpl : HomeNavigation {
 
   override fun navigateToReceiptScan(): NavigationCommand =
     HomeFragmentDirections.homeToScanner().toCommand()
+
+  override fun navigateToReceipts(): NavigationCommand =
+    HomeFragmentDirections.homeToReceipts().toCommand()
 
   override fun navigateToCouponInfo(coupon: CouponUiModel): NavigationCommand =
     HomeFragmentDirections.homeToCouponInfo(coupon).toCommand()

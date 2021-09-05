@@ -5,25 +5,21 @@ import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.data.model.ui.home.HomeProgressUiModel
 import ru.frogogo.whitelabel.data.model.ui.home.HomePromotionUiModel
-import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.databinding.ItemHomeEmptyBinding
 import ru.frogogo.whitelabel.databinding.ItemHomeEmptyInstructionsBinding
-import ru.frogogo.whitelabel.databinding.ItemHomeItemsButtonBinding
 import ru.frogogo.whitelabel.databinding.ItemHomeProgressBinding
-import ru.frogogo.whitelabel.databinding.ItemHomeReceiptBinding
+import ru.frogogo.whitelabel.databinding.ItemHomeReceiptsButtonBinding
 import ru.frogogo.whitelabel.databinding.ItemHomeScanUnavailableBinding
 import ru.frogogo.whitelabel.databinding.ItemHomeSectionHeaderBinding
 import ru.frogogo.whitelabel.extension.setSafeOnClickListener
-import ru.frogogo.whitelabel.extension.toDateTime
 import ru.frogogo.whitelabel.ui.home.model.HomeEmptyState
 import ru.frogogo.whitelabel.ui.home.model.HomeInstructions
-import ru.frogogo.whitelabel.ui.home.model.HomeItemsButton
+import ru.frogogo.whitelabel.ui.home.model.HomeReceiptsButton
 import ru.frogogo.whitelabel.ui.home.model.HomeScanUnavailable
 import ru.frogogo.whitelabel.ui.home.model.HomeSectionHeader
 import ru.frogogo.whitelabel.util.PriceUtils
 
-typealias OnReceiptClickAction = (ReceiptUiModel) -> Unit
-typealias OnItemsButtonClickAction = (HomePromotionUiModel) -> Unit
+typealias OnReceiptsClickAction = () -> Unit
 
 object HomeAdapterDelegates {
 
@@ -61,17 +57,11 @@ object HomeAdapterDelegates {
       }
     }
 
-  fun receiptDelegate(receiptClickAction: OnReceiptClickAction) =
-    adapterDelegateViewBinding<ReceiptUiModel, RecyclerViewItem, ItemHomeReceiptBinding>(
-      viewBinding = { layoutInflater, root -> ItemHomeReceiptBinding.inflate(layoutInflater, root, false) },
+  fun receiptsButtonDelegate(receiptsClickAction: OnReceiptsClickAction) =
+    adapterDelegateViewBinding<HomeReceiptsButton, RecyclerViewItem, ItemHomeReceiptsButtonBinding>(
+      viewBinding = { layoutInflater, root -> ItemHomeReceiptsButtonBinding.inflate(layoutInflater, root, false) },
     ) {
-      itemView.setSafeOnClickListener { receiptClickAction.invoke(item) }
-
-      bind {
-        binding.textViewReceiptValue.text = PriceUtils.formatPrice(item.value)
-        binding.textViewDate.text = item.date.toDateTime()
-        binding.imageViewStatus.setImageResource(item.state.getStatusIcon())
-      }
+      itemView.setSafeOnClickListener { receiptsClickAction.invoke() }
     }
 
   fun scanUnavailableDelegate() =
@@ -86,12 +76,5 @@ object HomeAdapterDelegates {
       viewBinding = { layoutInflater, root -> ItemHomeEmptyInstructionsBinding.inflate(layoutInflater, root, false) },
     ) {
       /* no-op */
-    }
-
-  fun itemsButtonDelegate(clickAction: OnItemsButtonClickAction) =
-    adapterDelegateViewBinding<HomeItemsButton, RecyclerViewItem, ItemHomeItemsButtonBinding>(
-      viewBinding = { layoutInflater, root -> ItemHomeItemsButtonBinding.inflate(layoutInflater, root, false) },
-    ) {
-      itemView.setSafeOnClickListener { clickAction.invoke(item.promotion) }
     }
 }

@@ -15,7 +15,7 @@
       android:id="@+id/image_view_start"
       android:layout_width="32dp"
       android:layout_height="32dp"
-      android:src="@drawable/ic_bag"
+      android:src="@drawable/ic_receipt"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +26,7 @@
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginHorizontal="@dimen/spacing_4"
-      android:text="@string/home_items_button"
+      android:text="@string/home_receipts_button"
       android:textColor="@color/black"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toStartOf="@id/image_view_end"

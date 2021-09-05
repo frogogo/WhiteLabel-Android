@@ -13,7 +13,6 @@ import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.recycler.BaseDelegationAdapter
 import ru.frogogo.whitelabel.core.ui.BaseFragment
 import ru.frogogo.whitelabel.data.model.ui.ItemUiModel
-import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.databinding.FragmentHomeBinding
 import ru.frogogo.whitelabel.extension.animateToGone
 import ru.frogogo.whitelabel.extension.animateToVisible
@@ -21,8 +20,6 @@ import ru.frogogo.whitelabel.extension.observe
 import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.extension.setVisible
 import ru.frogogo.whitelabel.ui.common.CommonAdapterDelegates
-import ru.frogogo.whitelabel.ui.receipt_info.ReceiptInfoDialogFragment
-import ru.frogogo.whitelabel.ui.receipt_info.ReceiptInfoDialogFragment.Companion.showIn
 import ru.frogogo.whitelabel.util.ItemDecoration
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 import ru.frogogo.whitelabel.util.unsafeLazy
@@ -112,8 +109,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
     HomeAdapterDelegates.couponProgressDelegate(),
     HomeAdapterDelegates.scanUnavailableDelegate(),
     HomeAdapterDelegates.instructionsDelegate(),
-    HomeAdapterDelegates.itemsButtonDelegate { viewModel.onItemButtonClicked(it) },
-    HomeAdapterDelegates.receiptDelegate { viewModel.onReceiptClicked(it) },
+    HomeAdapterDelegates.receiptsButtonDelegate { viewModel.onReceiptsButtonClicked() },
     CommonAdapterDelegates.couponDelegate { viewModel.onCouponClicked(it) },
     CommonAdapterDelegates.itemDelegate(),
   )
@@ -122,7 +118,6 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
     @Exhaustive
     when (effect) {
       HomeEffect.ShowLoadingError -> showLoadingError()
-      is HomeEffect.OpenReceiptInfoDialog -> showReceiptInfoDialog(effect.receipt)
     }
   }
 
@@ -140,10 +135,5 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
   private fun showLoadingError() {
     binding.swipeRefreshLayout.isRefreshing = false
     renderState(isError = true)
-  }
-
-  private fun showReceiptInfoDialog(receipt: ReceiptUiModel) {
-    ReceiptInfoDialogFragment.newInstance(receipt)
-      .showIn(childFragmentManager)
   }
 }

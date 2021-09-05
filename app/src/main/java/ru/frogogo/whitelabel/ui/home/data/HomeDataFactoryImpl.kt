@@ -5,7 +5,7 @@ import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.data.model.ui.home.HomeState
 import ru.frogogo.whitelabel.ui.home.model.HomeEmptyState
 import ru.frogogo.whitelabel.ui.home.model.HomeInstructions
-import ru.frogogo.whitelabel.ui.home.model.HomeItemsButton
+import ru.frogogo.whitelabel.ui.home.model.HomeReceiptsButton
 import ru.frogogo.whitelabel.ui.home.model.HomeScanUnavailable
 import ru.frogogo.whitelabel.ui.home.model.HomeSectionHeader
 
@@ -19,6 +19,11 @@ class HomeDataFactoryImpl : HomeDataFactory {
       is HomeState.Progress -> buildContentState(state, list)
     }
 
+    if (state.items.isNotEmpty()) {
+      list += HomeSectionHeader(R.string.home_empty_items)
+      list += state.items
+    }
+
     return list
   }
 
@@ -28,11 +33,6 @@ class HomeDataFactoryImpl : HomeDataFactory {
   ) {
     list += HomeEmptyState(state.promotion)
     list += HomeInstructions
-
-    if (state.items.isNotEmpty()) {
-      list += HomeSectionHeader(R.string.home_empty_items)
-      list += state.items
-    }
   }
 
   private fun buildContentState(
@@ -40,20 +40,16 @@ class HomeDataFactoryImpl : HomeDataFactory {
     list: MutableList<RecyclerViewItem>,
   ) {
     list += state.progress
-    list += HomeItemsButton(state.promotion)
 
     if (state.coupons.isNotEmpty()) {
       list += HomeSectionHeader(R.string.home_section_coupons)
       list += state.coupons
     }
 
-    if (state.receipts.isNotEmpty()) {
-      list += HomeSectionHeader(R.string.home_section_receipts)
+    list += HomeReceiptsButton
 
-      if (!state.scanAvailable) {
-        list += HomeScanUnavailable
-      }
-      list += state.receipts
+    if (!state.scanAvailable) {
+      list += HomeScanUnavailable
     }
   }
 }
