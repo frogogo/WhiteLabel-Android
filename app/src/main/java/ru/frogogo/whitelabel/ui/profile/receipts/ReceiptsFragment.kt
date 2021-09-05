@@ -60,6 +60,5 @@ class ReceiptsFragment : BaseFragment<ReceiptsViewModel>() {
   private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(
     ReceiptsAdapterDelegates.receiptEmptyState(),
     ReceiptsAdapterDelegates.receiptDelegate(viewModel::navigateToReceipt),
-    ReceiptsAdapterDelegates.scanAvailableDelegate(),
   )
 }

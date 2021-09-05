@@ -5,10 +5,8 @@ import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.data.model.ui.profile.receipts.ReceiptsEmptyState
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
-import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptsScanAvailable
 import ru.frogogo.whitelabel.databinding.ItemReceiptBinding
 import ru.frogogo.whitelabel.databinding.ItemReceiptsEmptyStateBinding
-import ru.frogogo.whitelabel.databinding.ItemScanAvailableBinding
 import ru.frogogo.whitelabel.extension.binding.setReceiptState
 import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.extension.toDateTime
@@ -39,10 +37,4 @@ object ReceiptsAdapterDelegates {
     adapterDelegateViewBinding<ReceiptsEmptyState, RecyclerViewItem, ItemReceiptsEmptyStateBinding>(
       viewBinding = { layoutInflater, root -> ItemReceiptsEmptyStateBinding.inflate(layoutInflater, root, false) },
     ) {}
-
-  fun scanAvailableDelegate() =
-    adapterDelegateViewBinding<ReceiptsScanAvailable, RecyclerViewItem, ItemScanAvailableBinding>(
-      viewBinding = { layoutInflater, root -> ItemScanAvailableBinding.inflate(layoutInflater, root, false) },
-    ) {
-    }
 }
