@@ -7,7 +7,7 @@ import ru.frogogo.whitelabel.core.successOrNull
 import ru.frogogo.whitelabel.data.model.api.ErrorResponse
 import ru.frogogo.whitelabel.data.model.ui.home.HomeState
 import ru.frogogo.whitelabel.data.repository.HomeRepository
-import ru.frogogo.whitelabel.usecase.GetItemsUseCase
+import ru.frogogo.whitelabel.usecase.item.GetItemsUseCase
 import ru.frogogo.whitelabel.util.network.NetworkError
 
 class GetHomeUseCase(

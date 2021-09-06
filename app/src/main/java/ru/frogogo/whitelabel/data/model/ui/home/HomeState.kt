@@ -1,8 +1,7 @@
 package ru.frogogo.whitelabel.data.model.ui.home
 
-import ru.frogogo.whitelabel.data.model.ui.ItemUiModel
+import ru.frogogo.whitelabel.data.model.ui.item.ItemUiModel
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
-import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 
 sealed class HomeState {
 

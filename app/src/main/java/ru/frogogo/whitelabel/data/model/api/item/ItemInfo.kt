@@ -1,10 +1,10 @@
-package ru.frogogo.whitelabel.data.model.api
+package ru.frogogo.whitelabel.data.model.api.item
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Item(
+data class ItemInfo(
   @Json(name = "id")
   val id: Int,
   @Json(name = "name")
@@ -17,4 +17,6 @@ data class Item(
   val discountedPrice: Int,
   @Json(name = "specs")
   val specs: String?,
+  @Json(name = "description")
+  val description: String,
 )

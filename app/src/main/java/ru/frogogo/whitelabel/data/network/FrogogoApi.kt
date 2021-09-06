@@ -5,7 +5,9 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
-import ru.frogogo.whitelabel.data.model.api.Item
+import retrofit2.http.Path
+import ru.frogogo.whitelabel.data.model.api.item.Item
+import ru.frogogo.whitelabel.data.model.api.item.ItemInfo
 import ru.frogogo.whitelabel.data.model.api.auth.AuthenticationRequest
 import ru.frogogo.whitelabel.data.model.api.auth.AuthenticationResponse
 import ru.frogogo.whitelabel.data.model.api.auth.ConfirmationCodeRequest
@@ -48,4 +50,7 @@ interface FrogogoApi {
 
   @GET("items")
   suspend fun getItems(): Response<List<Item>>
+
+  @GET("items/{id}")
+  suspend fun getItem(@Path("id") id: Int): Response<ItemInfo>
 }
