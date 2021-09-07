@@ -111,7 +111,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
     HomeAdapterDelegates.instructionsDelegate(),
     HomeAdapterDelegates.receiptsButtonDelegate { viewModel.onReceiptsButtonClicked() },
     CommonAdapterDelegates.couponDelegate { viewModel.onCouponClicked(it) },
-    CommonAdapterDelegates.itemDelegate(),
+    CommonAdapterDelegates.itemDelegate { viewModel.onItemClicked(it) },
   )
 
   private fun handleEffect(effect: HomeEffect) {

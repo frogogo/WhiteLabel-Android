@@ -3,7 +3,7 @@ package ru.frogogo.whitelabel.ui.home.delegate
 import com.github.ajalt.timberkt.d
 import ru.frogogo.whitelabel.core.ui.AbstractViewModelNavigationDelegate
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
-import ru.frogogo.whitelabel.data.model.ui.home.HomePromotionUiModel
+import ru.frogogo.whitelabel.data.model.ui.item.ItemUiModel
 import ru.frogogo.whitelabel.ui.home.HomeNavigation
 import ru.frogogo.whitelabel.util.dispatcher.DispatchersProvider
 
@@ -28,11 +28,12 @@ class HomeClickHandlerDelegateImpl(
     navigation.navigateToCouponInfo(coupon).navigate()
   }
 
-  override fun onReceiptsButtonClicked() {
-    navigation.navigateToReceipts().navigate()
+  override fun onItemClicked(item: ItemUiModel) {
+    d { "Navigating to item info" }
+    navigation.navigateToItemInfo(item).navigate()
   }
 
-  override fun onItemButtonClicked(promotion: HomePromotionUiModel) {
-    navigation.navigateToPromotionItems(promotion).navigate()
+  override fun onReceiptsButtonClicked() {
+    navigation.navigateToReceipts().navigate()
   }
 }

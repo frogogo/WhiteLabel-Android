@@ -103,7 +103,7 @@ class ItemInfoFragment : BaseFragment<ItemInfoViewModel>(),
   private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(
     HomeAdapterDelegates.emptyStateDelegate(),
     HomeAdapterDelegates.sectionHeaderDelegate(),
-    CommonAdapterDelegates.itemDelegate(),
+    CommonAdapterDelegates.itemDelegate {},
   )
 
   private fun renderData(items: List<RecyclerViewItem>) {

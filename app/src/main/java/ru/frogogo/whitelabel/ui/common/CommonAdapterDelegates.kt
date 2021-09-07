@@ -6,14 +6,15 @@ import coil.load
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
-import ru.frogogo.whitelabel.data.model.ui.item.ItemUiModel
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
+import ru.frogogo.whitelabel.data.model.ui.item.ItemUiModel
 import ru.frogogo.whitelabel.databinding.ItemCouponBinding
 import ru.frogogo.whitelabel.databinding.ItemItemBinding
 import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.util.PriceUtils
 
 typealias CouponClickAction = (CouponUiModel) -> Unit
+typealias ItemClickAction = (ItemUiModel) -> Unit
 
 object CommonAdapterDelegates {
 
@@ -30,22 +31,25 @@ object CommonAdapterDelegates {
       }
     }
 
-  fun itemDelegate() = adapterDelegateViewBinding<ItemUiModel, RecyclerViewItem, ItemItemBinding>(
-    viewBinding = { layoutInflater, viewGroup -> ItemItemBinding.inflate(layoutInflater, viewGroup, false) },
-  ) {
-    bind {
-      binding.imageView.load(item.imageUrl)
-      binding.textViewName.text = buildSpannedString {
-        append(item.name)
-        if (item.specs != null) {
-          append(' ')
-          color(context.getColor(R.color.gray_300)) {
-            append(item.specs)
+  fun itemDelegate(onClickAction: ItemClickAction) =
+    adapterDelegateViewBinding<ItemUiModel, RecyclerViewItem, ItemItemBinding>(
+      viewBinding = { layoutInflater, viewGroup -> ItemItemBinding.inflate(layoutInflater, viewGroup, false) },
+    ) {
+      itemView.setSafeOnClickListener { onClickAction(item) }
+
+      bind {
+        binding.imageView.load(item.imageUrl)
+        binding.textViewName.text = buildSpannedString {
+          append(item.name)
+          if (item.specs != null) {
+            append(' ')
+            color(context.getColor(R.color.gray_300)) {
+              append(item.specs)
+            }
           }
         }
+        binding.textViewPrice.text = PriceUtils.formatPrice(item.price)
+        binding.textViewPriceDiscounted.text = PriceUtils.formatPrice(item.discountedPrice)
       }
-      binding.textViewPrice.text = PriceUtils.formatPrice(item.price)
-      binding.textViewPriceDiscounted.text = PriceUtils.formatPrice(item.discountedPrice)
     }
-  }
 }

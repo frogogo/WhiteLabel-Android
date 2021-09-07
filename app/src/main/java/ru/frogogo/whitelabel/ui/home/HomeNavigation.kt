@@ -3,6 +3,7 @@ package ru.frogogo.whitelabel.ui.home
 import ru.frogogo.whitelabel.core.navigation.NavigationCommand
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
 import ru.frogogo.whitelabel.data.model.ui.home.HomePromotionUiModel
+import ru.frogogo.whitelabel.data.model.ui.item.ItemUiModel
 import ru.frogogo.whitelabel.extension.toCommand
 
 interface HomeNavigation {
@@ -10,7 +11,7 @@ interface HomeNavigation {
   fun navigateToReceiptScan(): NavigationCommand
   fun navigateToReceipts(): NavigationCommand
   fun navigateToCouponInfo(coupon: CouponUiModel): NavigationCommand
-  fun navigateToPromotionItems(promotion: HomePromotionUiModel): NavigationCommand
+  fun navigateToItemInfo(item: ItemUiModel): NavigationCommand
 }
 
 class HomeNavigationImpl : HomeNavigation {
@@ -27,6 +28,6 @@ class HomeNavigationImpl : HomeNavigation {
   override fun navigateToCouponInfo(coupon: CouponUiModel): NavigationCommand =
     HomeFragmentDirections.homeToCouponInfo(coupon).toCommand()
 
-  override fun navigateToPromotionItems(promotion: HomePromotionUiModel): NavigationCommand =
-    HomeFragmentDirections.homeToPromotionItems(1).toCommand()
+  override fun navigateToItemInfo(item: ItemUiModel): NavigationCommand =
+    HomeFragmentDirections.homeToItemInfo(item.id).toCommand()
 }

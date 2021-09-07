@@ -167,8 +167,8 @@
       android:id="@+id/home_to_receipts"
       app:destination="@id/receipts" />
     <action
-      android:id="@+id/home_to_promotion_items"
-      app:destination="@id/promotion_items" />
+      android:id="@+id/home_to_item_info"
+      app:destination="@id/item_info" />
   </fragment>
 
   <fragment
@@ -237,7 +237,7 @@
   </fragment>
 
   <fragment
-    android:id="@+id/promotion_items"
+    android:id="@+id/item_info"
     android:name="ru.frogogo.whitelabel.ui.item_info.ItemInfoFragment"
     android:layout="@layout/fragment_item_info">
     <argument
