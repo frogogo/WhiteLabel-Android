@@ -54,6 +54,7 @@ fun Module.itemInfo() {
     scoped {
       ItemInfoDataLoadDelegate(
         dispatchersProvider = get(),
+        itemId = getItemId(),
         getItemUseCase = get(),
         stateHandlerDelegate = get(),
       )
@@ -61,7 +62,6 @@ fun Module.itemInfo() {
     scoped {
       ItemInfoStateHandlerDelegate(
         dispatchersProvider = get(),
-        itemId = getItemId(),
         mutableDataLive = getDataLive(),
         mutableIsLoadingLive = getIsLoadingLive(),
         mutableEffectLiveEvent = getEffectEvent(),
