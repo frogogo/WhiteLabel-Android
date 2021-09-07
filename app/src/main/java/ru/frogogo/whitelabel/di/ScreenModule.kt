@@ -7,14 +7,14 @@ import ru.frogogo.whitelabel.di.scope.couponCode
 import ru.frogogo.whitelabel.di.scope.couponInfo
 import ru.frogogo.whitelabel.di.scope.coupons
 import ru.frogogo.whitelabel.di.scope.homeScope
-import ru.frogogo.whitelabel.di.scope.promotionItems
+import ru.frogogo.whitelabel.di.scope.itemInfo
 import ru.frogogo.whitelabel.di.scope.receiptInfo
 import ru.frogogo.whitelabel.di.scope.scanner
 
 val screenModule = module {
   homeScope()
   couponInfo()
-  promotionItems()
+  itemInfo()
   couponCode()
   coupons()
   scanner()

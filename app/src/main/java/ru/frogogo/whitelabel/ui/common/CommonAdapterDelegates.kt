@@ -6,7 +6,7 @@ import coil.load
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
-import ru.frogogo.whitelabel.data.model.ui.ItemUiModel
+import ru.frogogo.whitelabel.data.model.ui.item.ItemUiModel
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
 import ru.frogogo.whitelabel.databinding.ItemCouponBinding
 import ru.frogogo.whitelabel.databinding.ItemItemBinding

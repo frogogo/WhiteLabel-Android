@@ -28,5 +28,5 @@ class HomeNavigationImpl : HomeNavigation {
     HomeFragmentDirections.homeToCouponInfo(coupon).toCommand()
 
   override fun navigateToPromotionItems(promotion: HomePromotionUiModel): NavigationCommand =
-    HomeFragmentDirections.homeToPromotionItems(promotion).toCommand()
+    HomeFragmentDirections.homeToPromotionItems(1).toCommand()
 }

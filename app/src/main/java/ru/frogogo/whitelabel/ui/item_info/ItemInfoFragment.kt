@@ -1,4 +1,4 @@
-package ru.frogogo.whitelabel.ui.promotion_items
+package ru.frogogo.whitelabel.ui.item_info
 
 import android.os.Bundle
 import androidx.navigation.fragment.navArgs
@@ -14,8 +14,8 @@ import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.recycler.BaseDelegationAdapter
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.core.ui.BaseFragment
-import ru.frogogo.whitelabel.data.model.ui.ItemUiModel
-import ru.frogogo.whitelabel.databinding.FragmentPromotionItemsBinding
+import ru.frogogo.whitelabel.data.model.ui.item.ItemUiModel
+import ru.frogogo.whitelabel.databinding.FragmentItemInfoBinding
 import ru.frogogo.whitelabel.extension.observe
 import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.extension.setVisible
@@ -23,28 +23,27 @@ import ru.frogogo.whitelabel.extension.unloadBindingModuleOnClose
 import ru.frogogo.whitelabel.ui.common.CommonAdapterDelegates
 import ru.frogogo.whitelabel.ui.home.HomeAdapterDelegates
 import ru.frogogo.whitelabel.ui.home.HomeOffsetDecoration
-import ru.frogogo.whitelabel.ui.promotion_items.adapter.PromotionItemsAdapterDelegates
 import ru.frogogo.whitelabel.util.ItemDecoration
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 import ru.frogogo.whitelabel.util.unsafeLazy
 
-private typealias Binding = FragmentPromotionItemsBinding
+private typealias Binding = FragmentItemInfoBinding
 
 private const val SPAN_COUNT = 2
 private const val SPAN_COUNT_ITEM = 1
 
-class PromotionItemsFragment : BaseFragment<PromotionItemsViewModel>(),
+class ItemInfoFragment : BaseFragment<ItemInfoViewModel>(),
   AndroidScopeComponent {
 
   override val scope: Scope by fragmentScope()
-  override val viewModel: PromotionItemsViewModel by viewModel { parametersOf(args.promotion) }
+  override val viewModel: ItemInfoViewModel by viewModel { parametersOf(args.itemId) }
 
   private val binding: Binding by viewBinding(Binding::bind)
-  private val args: PromotionItemsFragmentArgs by navArgs()
+  private val args: ItemInfoFragmentArgs by navArgs()
   private val adapter by unsafeLazy { createAdapter() }
 
   override fun provideConfiguration(): Configuration = Configuration(
-    layoutId = R.layout.fragment_promotion_items,
+    layoutId = R.layout.fragment_item_info,
     screen = AnalyticsScreen.COUPON_INFO,
   )
 
@@ -95,7 +94,7 @@ class PromotionItemsFragment : BaseFragment<PromotionItemsViewModel>(),
 
     binding.recyclerView.apply {
       this.layoutManager = layoutManager
-      adapter = this@PromotionItemsFragment.adapter
+      adapter = this@ItemInfoFragment.adapter
       addItemDecoration(decoration)
       addItemDecoration(HomeOffsetDecoration(requireContext()))
     }
@@ -105,17 +104,16 @@ class PromotionItemsFragment : BaseFragment<PromotionItemsViewModel>(),
     HomeAdapterDelegates.emptyStateDelegate(),
     HomeAdapterDelegates.sectionHeaderDelegate(),
     CommonAdapterDelegates.itemDelegate(),
-    PromotionItemsAdapterDelegates.ruleDelegate(),
   )
 
   private fun renderData(items: List<RecyclerViewItem>) {
     adapter.items = items
   }
 
-  private fun handleEffect(effect: PromotionItemsEffect) {
+  private fun handleEffect(effect: ItemInfoEffect) {
     @Exhaustive
     when (effect) {
-      PromotionItemsEffect.ShowLoadingError -> renderState(isError = true)
+      ItemInfoEffect.ShowLoadingError -> renderState(isError = true)
     }
   }
 

@@ -238,11 +238,11 @@
 
   <fragment
     android:id="@+id/promotion_items"
-    android:name="ru.frogogo.whitelabel.ui.promotion_items.PromotionItemsFragment"
-    android:layout="@layout/fragment_promotion_items">
+    android:name="ru.frogogo.whitelabel.ui.item_info.ItemInfoFragment"
+    android:layout="@layout/fragment_item_info">
     <argument
-      android:name="promotion"
-      app:argType="ru.frogogo.whitelabel.data.model.ui.home.HomePromotionUiModel" />
+      android:name="itemId"
+      app:argType="integer" />
   </fragment>
 
   <!-- Actions -->

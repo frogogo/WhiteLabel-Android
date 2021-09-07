@@ -1,24 +1,24 @@
-package ru.frogogo.whitelabel.ui.promotion_items
+package ru.frogogo.whitelabel.ui.item_info
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.hadilq.liveevent.LiveEvent
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.core.ui.BaseViewModel
-import ru.frogogo.whitelabel.ui.promotion_items.delegate.PromotionItemsClicksHandlerDelegate
-import ru.frogogo.whitelabel.ui.promotion_items.delegate.PromotionItemsClicksHandlerDelegateImpl
-import ru.frogogo.whitelabel.ui.promotion_items.delegate.PromotionItemsDataLoadDelegate
-import ru.frogogo.whitelabel.ui.promotion_items.delegate.PromotionItemsStateHandlerDelegate
+import ru.frogogo.whitelabel.ui.item_info.delegate.ItemInfoClicksHandlerDelegate
+import ru.frogogo.whitelabel.ui.item_info.delegate.ItemInfoClicksHandlerDelegateImpl
+import ru.frogogo.whitelabel.ui.item_info.delegate.ItemInfoDataLoadDelegate
+import ru.frogogo.whitelabel.ui.item_info.delegate.ItemInfoStateHandlerDelegate
 
-class PromotionItemsViewModel(
+class ItemInfoViewModel(
   liveData: LiveDataHolder,
   private val delegates: DelegatesHolder,
 ) : BaseViewModel(),
-  PromotionItemsClicksHandlerDelegate by delegates.clicksHandlerDelegate {
+  ItemInfoClicksHandlerDelegate by delegates.clicksHandlerDelegate {
 
   val dataLive: LiveData<List<RecyclerViewItem>> = liveData.mutableDataLive
   val isLoadingLive: LiveData<Boolean> = liveData.mutableIsLoadingLive
-  val effectLiveEvent: LiveData<PromotionItemsEffect> = liveData.mutableEffectLiveEvent
+  val effectLiveEvent: LiveData<ItemInfoEffect> = liveData.mutableEffectLiveEvent
 
   init {
     attachNavigatorDelegate(delegates.clicksHandlerDelegate)
@@ -45,12 +45,12 @@ class PromotionItemsViewModel(
   data class LiveDataHolder(
     val mutableDataLive: MutableLiveData<List<RecyclerViewItem>>,
     val mutableIsLoadingLive: MutableLiveData<Boolean>,
-    val mutableEffectLiveEvent: LiveEvent<PromotionItemsEffect>,
+    val mutableEffectLiveEvent: LiveEvent<ItemInfoEffect>,
   )
 
   data class DelegatesHolder(
-    val dataLoadDelegate: PromotionItemsDataLoadDelegate,
-    val stateHandlerDelegate: PromotionItemsStateHandlerDelegate,
-    val clicksHandlerDelegate: PromotionItemsClicksHandlerDelegateImpl,
+    val dataLoadDelegate: ItemInfoDataLoadDelegate,
+    val stateHandlerDelegate: ItemInfoStateHandlerDelegate,
+    val clicksHandlerDelegate: ItemInfoClicksHandlerDelegateImpl,
   )
 }

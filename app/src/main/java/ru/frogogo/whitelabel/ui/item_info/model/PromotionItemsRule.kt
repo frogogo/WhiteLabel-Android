@@ -1,4 +1,4 @@
-package ru.frogogo.whitelabel.ui.promotion_items.model
+package ru.frogogo.whitelabel.ui.item_info.model
 
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 

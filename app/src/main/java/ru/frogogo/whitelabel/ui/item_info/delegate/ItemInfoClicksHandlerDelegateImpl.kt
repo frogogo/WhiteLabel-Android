@@ -1,12 +1,12 @@
-package ru.frogogo.whitelabel.ui.promotion_items.delegate
+package ru.frogogo.whitelabel.ui.item_info.delegate
 
 import ru.frogogo.whitelabel.core.ui.AbstractViewModelNavigationDelegate
 import ru.frogogo.whitelabel.util.dispatcher.DispatchersProvider
 
-class PromotionItemsClicksHandlerDelegateImpl(
+class ItemInfoClicksHandlerDelegateImpl(
   dispatchersProvider: DispatchersProvider,
 ) : AbstractViewModelNavigationDelegate(dispatchersProvider),
-  PromotionItemsClicksHandlerDelegate {
+  ItemInfoClicksHandlerDelegate {
 
   override fun onBackButtonClicked() {
     navigateBack()

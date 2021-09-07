@@ -12,7 +12,7 @@ import org.koin.core.scope.Scope
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.recycler.BaseDelegationAdapter
 import ru.frogogo.whitelabel.core.ui.BaseFragment
-import ru.frogogo.whitelabel.data.model.ui.ItemUiModel
+import ru.frogogo.whitelabel.data.model.ui.item.ItemUiModel
 import ru.frogogo.whitelabel.databinding.FragmentHomeBinding
 import ru.frogogo.whitelabel.extension.animateToGone
 import ru.frogogo.whitelabel.extension.animateToVisible
