@@ -20,6 +20,7 @@ enum class AnalyticsScreen {
   WEB_VIEW,
 
   COUPON_INFO,
+  ITEM_INFO,
 }
 
 fun AnalyticsScreen.lowercaseName(): String = name.lowercase(Locale.ENGLISH)

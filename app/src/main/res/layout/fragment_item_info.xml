@@ -2,26 +2,23 @@
 <RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
-  <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/recycler_view"
+  <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_height="match_parent">
 
-  <com.google.android.material.progressindicator.CircularProgressIndicator
-    android:id="@+id/progress_bar"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerInParent="true" />
+    <include
+      android:id="@+id/layout_content"
+      layout="@layout/fragment_item_info_content"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:visibility="gone"
+      tools:visibility="visible" />
 
-  <ru.frogogo.whitelabel.view.ErrorStateView
-    android:id="@+id/view_error_state"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerInParent="true"
-    android:visibility="gone" />
+  </androidx.core.widget.NestedScrollView>
 
   <com.google.android.material.button.MaterialButton
     android:id="@+id/button_close"
@@ -34,5 +31,18 @@
     android:layout_marginTop="@dimen/spacing_2.5"
     android:elevation="0dp"
     app:icon="@drawable/ic_close" />
+
+  <ru.frogogo.whitelabel.view.ErrorStateView
+    android:id="@+id/view_error_state"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:visibility="gone" />
+
+  <com.google.android.material.progressindicator.CircularProgressIndicator
+    android:id="@+id/progress_bar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true" />
 
 </RelativeLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="item__specification_parameter">Параметр</string>
+  <string name="item__specification_full_price">Полная цена</string>
+  <string name="item__specification_discounted_price">Цена по акции</string>
+
+</resources>

@@ -10,13 +10,12 @@ import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.dsl.bind
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
+import ru.frogogo.whitelabel.data.model.ui.item.ItemInfoUiModel
 import ru.frogogo.whitelabel.extension.loadBindingModule
 import ru.frogogo.whitelabel.extension.scopedQualifier
 import ru.frogogo.whitelabel.ui.item_info.ItemInfoEffect
 import ru.frogogo.whitelabel.ui.item_info.ItemInfoFragment
 import ru.frogogo.whitelabel.ui.item_info.ItemInfoViewModel
-import ru.frogogo.whitelabel.ui.item_info.data.ItemInfoDataFactory
-import ru.frogogo.whitelabel.ui.item_info.data.ItemInfoDataFactoryImpl
 import ru.frogogo.whitelabel.ui.item_info.delegate.ItemInfoClicksHandlerDelegate
 import ru.frogogo.whitelabel.ui.item_info.delegate.ItemInfoClicksHandlerDelegateImpl
 import ru.frogogo.whitelabel.ui.item_info.delegate.ItemInfoDataLoadDelegate
@@ -65,23 +64,19 @@ fun Module.itemInfo() {
         mutableDataLive = getDataLive(),
         mutableIsLoadingLive = getIsLoadingLive(),
         mutableEffectLiveEvent = getEffectEvent(),
-        dataFactory = get(),
       )
     }
     scoped {
       ItemInfoClicksHandlerDelegateImpl(get())
     } bind ItemInfoClicksHandlerDelegate::class
     scoped { ItemInfoViewModel.DelegatesHolder(get(), get(), get()) }
-
-    // Data
-    scoped { ItemInfoDataFactoryImpl() as ItemInfoDataFactory }
   }
 }
 
 private fun Scope.getItemId(): Int =
   get(scopedQualifier(NAMED_ITEM_ID))
 
-private fun Scope.getDataLive(): MutableLiveData<List<RecyclerViewItem>> =
+private fun Scope.getDataLive(): MutableLiveData<ItemInfoUiModel> =
   get(named(NAMED_CONTENT_LIVE))
 
 private fun Scope.getIsLoadingLive(): MutableLiveData<Boolean> =

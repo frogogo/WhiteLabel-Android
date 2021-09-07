@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.hadilq.liveevent.LiveEvent
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.core.ui.BaseViewModel
+import ru.frogogo.whitelabel.data.model.ui.item.ItemInfoUiModel
 import ru.frogogo.whitelabel.ui.item_info.delegate.ItemInfoClicksHandlerDelegate
 import ru.frogogo.whitelabel.ui.item_info.delegate.ItemInfoClicksHandlerDelegateImpl
 import ru.frogogo.whitelabel.ui.item_info.delegate.ItemInfoDataLoadDelegate
@@ -16,7 +17,7 @@ class ItemInfoViewModel(
 ) : BaseViewModel(),
   ItemInfoClicksHandlerDelegate by delegates.clicksHandlerDelegate {
 
-  val dataLive: LiveData<List<RecyclerViewItem>> = liveData.mutableDataLive
+  val dataLive: LiveData<ItemInfoUiModel> = liveData.mutableDataLive
   val isLoadingLive: LiveData<Boolean> = liveData.mutableIsLoadingLive
   val effectLiveEvent: LiveData<ItemInfoEffect> = liveData.mutableEffectLiveEvent
 
@@ -43,7 +44,7 @@ class ItemInfoViewModel(
   }
 
   data class LiveDataHolder(
-    val mutableDataLive: MutableLiveData<List<RecyclerViewItem>>,
+    val mutableDataLive: MutableLiveData<ItemInfoUiModel>,
     val mutableIsLoadingLive: MutableLiveData<Boolean>,
     val mutableEffectLiveEvent: LiveEvent<ItemInfoEffect>,
   )
