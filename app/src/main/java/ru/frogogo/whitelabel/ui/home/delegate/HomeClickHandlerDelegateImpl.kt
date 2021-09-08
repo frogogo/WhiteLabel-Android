@@ -34,6 +34,7 @@ class HomeClickHandlerDelegateImpl(
   }
 
   override fun onReceiptsButtonClicked() {
+    d { "Navigating to receipts" }
     navigation.navigateToReceipts().navigate()
   }
 }
