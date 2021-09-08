@@ -53,6 +53,5 @@ class ReceiptsViewModel(
   fun navigateToReceipt(receipt: ReceiptUiModel) {
     d { "Navigating to receipt details" }
     _effectEvent.value = ReceiptsEffect.OpenReceiptInfoDialog(receipt)
-
   }
 }

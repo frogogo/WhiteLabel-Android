@@ -2,7 +2,6 @@ package ru.frogogo.whitelabel.ui.home
 
 import ru.frogogo.whitelabel.core.navigation.NavigationCommand
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
-import ru.frogogo.whitelabel.data.model.ui.home.HomePromotionUiModel
 import ru.frogogo.whitelabel.data.model.ui.item.ItemUiModel
 import ru.frogogo.whitelabel.extension.toCommand
 

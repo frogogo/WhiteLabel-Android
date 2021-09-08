@@ -4,7 +4,6 @@ import coil.load
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.data.model.ui.home.HomeProgressUiModel
-import ru.frogogo.whitelabel.data.model.ui.home.HomePromotionUiModel
 import ru.frogogo.whitelabel.databinding.ItemHomeEmptyBinding
 import ru.frogogo.whitelabel.databinding.ItemHomeEmptyInstructionsBinding
 import ru.frogogo.whitelabel.databinding.ItemHomeProgressBinding

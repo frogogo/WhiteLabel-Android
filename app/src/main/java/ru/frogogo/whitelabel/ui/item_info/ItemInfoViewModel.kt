@@ -3,7 +3,6 @@ package ru.frogogo.whitelabel.ui.item_info
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.hadilq.liveevent.LiveEvent
-import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.core.ui.BaseViewModel
 import ru.frogogo.whitelabel.data.model.ui.item.ItemInfoUiModel
 import ru.frogogo.whitelabel.ui.item_info.delegate.ItemInfoClicksHandlerDelegate

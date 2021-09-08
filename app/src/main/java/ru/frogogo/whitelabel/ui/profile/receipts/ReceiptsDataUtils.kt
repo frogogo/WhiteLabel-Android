@@ -3,7 +3,6 @@ package ru.frogogo.whitelabel.ui.profile.receipts
 import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.data.model.ui.profile.receipts.ReceiptsEmptyState
 import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
-import ru.frogogo.whitelabel.dictionary.ReceiptState
 
 object ReceiptsDataUtils {
 
