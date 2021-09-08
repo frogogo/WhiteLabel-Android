@@ -17,8 +17,7 @@ fun HomeResponse.toDomain(): HomeState =
 
 fun HomeResponse.toEmptyState(): HomeState =
   HomeState.Empty(
-    promotion = promotion.toDomain(),
-    items = mutableListOf(),
+    promotion = promotion.toDomain()
   )
 
 fun HomeResponse.toContentState(): HomeState {
@@ -28,7 +27,6 @@ fun HomeResponse.toContentState(): HomeState {
     promotion = promotion.toDomain(),
     progress = progress!!.toDomain(),
     coupons = coupons.toDomain(couponData),
-    receipts = receipts,
     scanAvailable = receipts.firstOrNull()?.state != ReceiptState.PROCESSING,
   )
 }

@@ -1,8 +1,7 @@
 package ru.frogogo.whitelabel.ui.home.delegate
 
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
-import ru.frogogo.whitelabel.data.model.ui.home.HomePromotionUiModel
-import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
+import ru.frogogo.whitelabel.data.model.ui.item.ItemUiModel
 
 interface HomeClickHandlerDelegate {
 
@@ -12,7 +11,7 @@ interface HomeClickHandlerDelegate {
 
   fun onCouponClicked(coupon: CouponUiModel)
 
-  fun onReceiptClicked(receipt: ReceiptUiModel)
+  fun onItemClicked(item: ItemUiModel)
 
-  fun onItemButtonClicked(promotion: HomePromotionUiModel)
+  fun onReceiptsButtonClicked()
 }

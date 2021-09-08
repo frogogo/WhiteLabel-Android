@@ -1,19 +1,15 @@
 package ru.frogogo.whitelabel.ui.home.delegate
 
 import com.github.ajalt.timberkt.d
-import com.hadilq.liveevent.LiveEvent
 import ru.frogogo.whitelabel.core.ui.AbstractViewModelNavigationDelegate
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
-import ru.frogogo.whitelabel.data.model.ui.home.HomePromotionUiModel
-import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
-import ru.frogogo.whitelabel.ui.home.HomeEffect
+import ru.frogogo.whitelabel.data.model.ui.item.ItemUiModel
 import ru.frogogo.whitelabel.ui.home.HomeNavigation
 import ru.frogogo.whitelabel.util.dispatcher.DispatchersProvider
 
 class HomeClickHandlerDelegateImpl(
   dispatchersProvider: DispatchersProvider,
   private val navigation: HomeNavigation,
-  private val mutableEffectLiveEvent: LiveEvent<HomeEffect>,
 ) : AbstractViewModelNavigationDelegate(dispatchersProvider),
   HomeClickHandlerDelegate {
 
@@ -32,11 +28,13 @@ class HomeClickHandlerDelegateImpl(
     navigation.navigateToCouponInfo(coupon).navigate()
   }
 
-  override fun onReceiptClicked(receipt: ReceiptUiModel) {
-    mutableEffectLiveEvent.value = HomeEffect.OpenReceiptInfoDialog(receipt)
+  override fun onItemClicked(item: ItemUiModel) {
+    d { "Navigating to item info" }
+    navigation.navigateToItemInfo(item).navigate()
   }
 
-  override fun onItemButtonClicked(promotion: HomePromotionUiModel) {
-    navigation.navigateToPromotionItems(promotion).navigate()
+  override fun onReceiptsButtonClicked() {
+    d { "Navigating to receipts" }
+    navigation.navigateToReceipts().navigate()
   }
 }

@@ -53,7 +53,7 @@ fun Module.homeScope() {
       HomeDataLoadDelegateImpl(get(), get(), get())
     } bind HomeDataLoadDelegate::class
     scoped {
-      HomeClickHandlerDelegateImpl(get(), get(), get(named(NAMED_EFFECT_LIVE_EVENT)))
+      HomeClickHandlerDelegateImpl(get(), get())
     } bind HomeClickHandlerDelegate::class
     scoped {
       HomeStateHandlerDelegate(

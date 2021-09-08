@@ -1,14 +1,18 @@
 package ru.frogogo.whitelabel.ui.profile.receipts
 
+import app.cash.exhaustive.Exhaustive
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.recycler.BaseDelegationAdapter
 import ru.frogogo.whitelabel.core.ui.BaseFragment
+import ru.frogogo.whitelabel.data.model.ui.receipt.ReceiptUiModel
 import ru.frogogo.whitelabel.databinding.FragmentReceiptsBinding
 import ru.frogogo.whitelabel.extension.observe
 import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.extension.setVisible
+import ru.frogogo.whitelabel.ui.receipt_info.ReceiptInfoDialogFragment
+import ru.frogogo.whitelabel.ui.receipt_info.ReceiptInfoDialogFragment.Companion.showIn
 import ru.frogogo.whitelabel.util.ItemDecoration
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 import ru.frogogo.whitelabel.util.unsafeLazy
@@ -46,7 +50,15 @@ class ReceiptsFragment : BaseFragment<ReceiptsViewModel>() {
     with(viewModel) {
       observe(dataLive) { adapter.items = it }
       observe(isLoadingLive) { renderState(isLoading = it) }
-      observe(errorOccurredLiveEvent) { renderState(isError = true) }
+      observe(effectEvent) { handleEffect(it) }
+    }
+  }
+
+  private fun handleEffect(effect: ReceiptsEffect) {
+    @Exhaustive
+    when (effect) {
+      is ReceiptsEffect.OpenReceiptInfoDialog -> showReceiptInfoDialog(effect.receipt)
+      ReceiptsEffect.ShowError -> renderState(isError = true)
     }
   }
 
@@ -60,6 +72,10 @@ class ReceiptsFragment : BaseFragment<ReceiptsViewModel>() {
   private fun createAdapter(): BaseDelegationAdapter = BaseDelegationAdapter(
     ReceiptsAdapterDelegates.receiptEmptyState(),
     ReceiptsAdapterDelegates.receiptDelegate(viewModel::navigateToReceipt),
-    ReceiptsAdapterDelegates.scanAvailableDelegate(),
   )
+
+  private fun showReceiptInfoDialog(receipt: ReceiptUiModel) {
+    ReceiptInfoDialogFragment.newInstance(receipt)
+      .showIn(childFragmentManager)
+  }
 }
