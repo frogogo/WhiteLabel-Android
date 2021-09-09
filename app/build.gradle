@@ -44,6 +44,7 @@ android {
     buildConfigField 'int', 'API_VERSION', '1'
     buildConfigField 'boolean', 'DEBUG_STUFF', 'true'
     buildConfigField "java.util.Date", "BUILD_TIME", "new java.util.Date(" + System.currentTimeMillis() + "L)"
+    buildConfigField 'String', 'PHONE_PREFIX', '"+7"'
   }
 
   signingConfigs {
@@ -71,6 +72,14 @@ android {
       dimension 'server'
 
       buildConfigField 'String', 'BASE_URL', '"https://sboom.herokuapp.com"'
+    }
+    zboom {
+      dimension 'server'
+
+      applicationId "ru.frogogo.zboom.demo"
+
+      buildConfigField 'String', 'BASE_URL', '"https://zboom-eu-staging.herokuapp.com"'
+      buildConfigField 'String', 'PHONE_PREFIX', '"+386"'
     }
   }
 

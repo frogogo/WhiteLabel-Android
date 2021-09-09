@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="auth_button_continue">Сontinue</string>
+  <string name="auth_policy_text">By using this application, you agree to the use of Cooke technologies. and with the collection and processing of personal data. \n\nThese technologies are used to analyze and improve your user experience.</string>
+  <string name="auth_policy_button_continue">Сontinue</string>
+  <string name="auth_phone_title">Enter</string>
+  <string name="auth_phone_subtitle">Enter your phone number</string>
+  <string name="auth_phone_placeholder" tools:ignore="TypographyDashes">(000) 000-00-00</string>
+  <string name="auth_phone_error_too_many_requests">Exceeded the number of attempts to request a confirmation code</string>
+  <string name="auth_code_title">Type code</string>
+  <string name="auth_code_subtitle">The code was sent to the number</string>
+  <string name="auth_code_placeholder">・・・・</string>
+  <string name="auth_code_button_phone_change">Edit</string>
+  <string name="auth_code_button_resend_code">Send a new code</string>
+  <string name="auth_code_button_resend_resending">Sending the code</string>
+  <string name="auth_code_error_invalid_code">Invalid code, please try again or request a new one</string>
+  <string name="auth_code_error_resend">Sending error</string>
+  <string name="auth_name_title">Let’s meet!</string>
+  <string name="auth_name_subtitle">What is your name?</string>
+  <string name="auth_name_placeholder">Your name</string>
+  <string name="auth_email_title">Fine,\n%1$s!</string>
+  <string name="auth_email_subtitle">It remains to enter your email</string>
+  <string name="auth_email_placeholder">Your email address</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="scanner_permissions_denied_title">To scan receipts, access to the camera is required</string>
+  <string name="scanner_permissions_denied_settings">The permission must be granted in the settings</string>
+  <string name="scanner_title_receipt">Point the camera at the QR code on the receipt</string>
+  <string name="scanner_button_help">Help</string>
+  <string name="scanner_help_receipt_title">How to scan a receipt</string>
+</resources>

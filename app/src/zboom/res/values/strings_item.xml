@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="item__specification_parameter">Parameter</string>
+  <string name="item__specification_full_price">Full price</string>
+  <string name="item__specification_discounted_price">Promotional price</string>
+</resources>

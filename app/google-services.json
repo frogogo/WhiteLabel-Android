@@ -29,6 +29,51 @@
             {
               "client_id": "99713790578-110snv82qvlm88eteflcf05sueu4o1cr.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "99713790578-lied9f35g5i1er1k538ef5g1444mhum6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ru.frogogo.WhiteLabel-iOS.sboom",
+                "app_store_id": "1565327032"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:99713790578:android:3348cc8c23709ab5f388eb",
+        "android_client_info": {
+          "package_name": "ru.frogogo.zboom.demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "99713790578-110snv82qvlm88eteflcf05sueu4o1cr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmggdVETxVr4BYmlXjfQkeeaKkR7iV2pI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "99713790578-110snv82qvlm88eteflcf05sueu4o1cr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "99713790578-lied9f35g5i1er1k538ef5g1444mhum6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ru.frogogo.WhiteLabel-iOS.sboom",
+                "app_store_id": "1565327032"
+              }
             }
           ]
         }

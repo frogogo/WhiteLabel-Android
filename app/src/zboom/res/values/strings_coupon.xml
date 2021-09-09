@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="coupon_number">Coupon № %d</string>
+  <string name="coupon_button_show_qr">Show the code to the cashier</string>
+  <string name="coupon_button_instruction_header">Instructions for receiving</string>
+  <string name="coupon_code_description">Show the code to the cashier</string>
+</resources>
