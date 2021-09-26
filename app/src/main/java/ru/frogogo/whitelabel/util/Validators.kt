@@ -26,7 +26,7 @@ object Validators {
   @StringRes
   fun isPhone(text: String): Int? = when {
     // Check length
-    text.replace(PATTERN_NON_DIGITS, "").length < MIN_LENGTH_PHONE -> R.string.error_phone_length
+    // text.replace(PATTERN_NON_DIGITS, "").length < MIN_LENGTH_PHONE -> R.string.error_phone_length
     // Check format
     !Patterns.PHONE.matcher(text).matches() -> R.string.error_phone_format
     // All is ok
