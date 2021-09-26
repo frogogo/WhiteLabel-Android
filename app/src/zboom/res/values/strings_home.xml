@@ -2,7 +2,7 @@
 <resources>
   <string name="home_empty_instructions_title">Remember 2 simple rules:</string>
   <string name="home_empty_instructions_step_1">Scan receipts from stores that have any products from Lion Sabatier International promotional collection</string>
-  <string name="home_empty_instructions_step_2">After you collect the amount of the product for 3300 ₽, you will receive a coupon for the purchase of an electric kettle Lion Sabatier International for 1 ₽</string>
+  <string name="home_empty_instructions_step_2">After you collect the amount of the product for 3300 €, you will receive a coupon for the purchase of an electric kettle Lion Sabatier International for 1 ₽</string>
   <string name="home_empty_button_scan_qr">Scan the receipt</string>
   <string name="home_empty_label">Coupon</string>
   <string name="home_empty_items">Promotion products</string>
