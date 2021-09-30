@@ -79,7 +79,7 @@ android {
       applicationId "ru.frogogo.zboom.demo"
 
       buildConfigField 'String', 'BASE_URL', '"https://zboom-eu-staging.herokuapp.com"'
-      buildConfigField 'String', 'PHONE_PREFIX', '"+386"'
+      buildConfigField 'String', 'PHONE_PREFIX', '"+"'
     }
   }
 

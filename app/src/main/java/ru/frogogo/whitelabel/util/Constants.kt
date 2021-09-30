@@ -17,7 +17,6 @@ object Constants {
 
   // Urls
   const val HELP_SCAN_RECEIPT_URL = "https://poprobuy.ru" // TODO: 14.07.2020 Change url
-  const val HELP_SCAN_MACHINE_URL = "https://google.com" // TODO: 14.07.2020 Change url
 
   // Auth
   const val SMS_SENDER_NAME = "CodoPhone" // TODO: 19.07.2020 Change to own sender

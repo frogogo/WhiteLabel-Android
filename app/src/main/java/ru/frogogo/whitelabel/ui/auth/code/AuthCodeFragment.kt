@@ -68,7 +68,7 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>() {
         showKeyboard()
       }
 
-      textViewPhoneNumber.text = args.phoneNumber.formatWithMask(Constants.PHONE_MASK_FULL)
+      textViewPhoneNumber.text = args.phoneNumber//.formatWithMask(Constants.PHONE_MASK_FULL)
       textViewPhoneNumberChange.setSafeOnClickListener(viewModel::navigateBack)
       buttonResendCode.setSafeOnClickListener(viewModel::resendConfirmationCode)
       textViewError.movementMethod = LinkMovementMethod.getInstance()
