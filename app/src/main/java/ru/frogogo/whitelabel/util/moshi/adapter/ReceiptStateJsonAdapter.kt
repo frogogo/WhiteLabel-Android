@@ -4,7 +4,7 @@ import com.squareup.moshi.FromJson
 import ru.frogogo.whitelabel.dictionary.ReceiptState
 import java.util.Locale
 
-class ReceiptStateJsonAdapter {
+object ReceiptStateJsonAdapter {
 
   @FromJson
   fun fromJson(state: String): ReceiptState =

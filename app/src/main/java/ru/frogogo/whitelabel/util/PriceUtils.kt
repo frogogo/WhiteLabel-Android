@@ -1,5 +1,6 @@
 package ru.frogogo.whitelabel.util
 
+import java.math.BigDecimal
 import java.text.NumberFormat
 import java.util.Locale
 import kotlin.math.absoluteValue
@@ -24,10 +25,12 @@ object PriceUtils {
   /**
    * Returns formatter price with currency symbol
    * @param price integer price value
-   * @param formatSign whether include sign or not
    */
-  fun formatPrice(price: Int, formatSign: Boolean = false): String =
-    "${price.format(formatSign)} ${CURRENCY_SYMBOL[AppLocale.RU]}"
+  fun formatPrice(price: BigDecimal): String =
+    "${price.toPlainString()} €"
+
+  fun formatPrice(price: Int): String =
+    "$price €"
 }
 
 private sealed class AppLocale {
