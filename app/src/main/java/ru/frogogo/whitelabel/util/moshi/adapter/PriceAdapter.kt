@@ -6,7 +6,6 @@ import java.math.BigDecimal
 
 object PriceAdapter {
 
-  //  @Price
   @FromJson
   fun fromJson(string: String): BigDecimal {
     return BigDecimal(string)
