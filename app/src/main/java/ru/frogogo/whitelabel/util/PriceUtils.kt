@@ -28,9 +28,6 @@ object PriceUtils {
    */
   fun formatPrice(price: BigDecimal): String =
     "${price.toPlainString()} €"
-
-  fun formatPrice(price: Int): String =
-    "$price €"
 }
 
 private sealed class AppLocale {
