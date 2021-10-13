@@ -2,7 +2,7 @@
 <resources>
   <string name="receipt_number">№ %1$d</string>
   <string name="receipt_state_approved">Great, the receipt has been accepted!</string>
-  <string name="receipt_state_approved_description">As soon as the total amount of receipts is equal to 3,300, you will receive a coupon for the purchase of an electric kettle Lion Sabatier International for 1 ruble</string>
+  <string name="receipt_state_approved_description">As soon as the total amount of receipts is equal to 38 €, you will receive a coupon for the purchase of an electric kettle Lion Sabatier International for 0,01 €</string>
   <string name="receipt_state_rejected">Your receipt has not been verified!</string>
   <string name="receipt_state_processing">Your receipt is being checked</string>
   <string name="receipt_state_processing_description">This usually takes a few minutes, but it is very rare when it takes more of time</string>

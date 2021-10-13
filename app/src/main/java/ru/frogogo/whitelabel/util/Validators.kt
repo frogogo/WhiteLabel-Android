@@ -42,7 +42,7 @@ object Validators {
     // Check length
     text.length !in MIN_USER_NAME_LENGTH..MAX_USER_NAME_LENGTH -> R.string.error_user_name_length
     // Check format
-    !PATTERN_USER_NAME.matches(text) -> R.string.error_user_name_format
+//    !PATTERN_USER_NAME.matches(text) -> R.string.error_user_name_format
     // All is ok
     else -> null
   }
