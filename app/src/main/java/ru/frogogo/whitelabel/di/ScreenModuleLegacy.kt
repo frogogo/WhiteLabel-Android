@@ -16,6 +16,7 @@ import ru.frogogo.whitelabel.ui.profile.receipts.ReceiptsViewModel
 import ru.frogogo.whitelabel.ui.scanner.ScannerViewModel
 import ru.frogogo.whitelabel.ui.splash.SplashViewModel
 import ru.frogogo.whitelabel.ui.webview.WebViewViewModel
+import ru.frogogo.whitelabel.view.dialog.CouponReceivedDialogFragmentCallbackViewModel
 import ru.frogogo.whitelabel.view.dialog.ErrorDialogFragmentCallbackViewModel
 
 @Deprecated("Use scopes")
@@ -56,4 +57,5 @@ val screenModuleLegacy = module {
 
   // Stuff
   viewModel { ErrorDialogFragmentCallbackViewModel() }
+  viewModel { CouponReceivedDialogFragmentCallbackViewModel() }
 }

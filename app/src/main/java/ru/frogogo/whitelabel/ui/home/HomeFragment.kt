@@ -7,22 +7,28 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.android.ext.android.inject
 import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.scope.fragmentScope
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.scope.Scope
 import ru.frogogo.whitelabel.R
 import ru.frogogo.whitelabel.core.recycler.BaseDelegationAdapter
 import ru.frogogo.whitelabel.core.ui.BaseFragment
+import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
 import ru.frogogo.whitelabel.data.model.ui.item.ItemUiModel
 import ru.frogogo.whitelabel.databinding.FragmentHomeBinding
 import ru.frogogo.whitelabel.extension.animateToGone
 import ru.frogogo.whitelabel.extension.animateToVisible
 import ru.frogogo.whitelabel.extension.observe
+import ru.frogogo.whitelabel.extension.observeEvent
 import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.extension.setVisible
 import ru.frogogo.whitelabel.ui.common.CommonAdapterDelegates
 import ru.frogogo.whitelabel.util.ItemDecoration
 import ru.frogogo.whitelabel.util.analytics.AnalyticsScreen
 import ru.frogogo.whitelabel.util.unsafeLazy
+import ru.frogogo.whitelabel.view.dialog.CouponReceivedDialogFragment
+import ru.frogogo.whitelabel.view.dialog.CouponReceivedDialogFragment.Companion.showIn
+import ru.frogogo.whitelabel.view.dialog.CouponReceivedDialogFragmentCallbackViewModel
 
 private const val SPAN_COUNT = 2
 private const val SPAN_COUNT_ITEM = 1
@@ -32,6 +38,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
 
   override val scope: Scope by fragmentScope()
   override val viewModel: HomeViewModel by viewModel()
+  private val couponReceivedCallbackViewModel: CouponReceivedDialogFragmentCallbackViewModel by sharedViewModel()
 
   private val binding: FragmentHomeBinding by viewBinding()
   private val recycledViewPool: RecyclerView.RecycledViewPool by inject()
@@ -63,6 +70,9 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
       }
       observe(effectLiveEvent, ::handleEffect)
       observe(scanButtonStateLive, ::handleScanButtonState)
+    }
+    observeEvent(couponReceivedCallbackViewModel.onShowClickedEvent) { coupon ->
+      viewModel.onCouponClicked(coupon)
     }
   }
 
@@ -118,6 +128,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
     @Exhaustive
     when (effect) {
       HomeEffect.ShowLoadingError -> showLoadingError()
+      is HomeEffect.ShowCouponReceived -> showCouponReceivedDialog(effect.coupon)
     }
   }
 
@@ -135,5 +146,9 @@ class HomeFragment : BaseFragment<HomeViewModel>(),
   private fun showLoadingError() {
     binding.swipeRefreshLayout.isRefreshing = false
     renderState(isError = true)
+  }
+
+  private fun showCouponReceivedDialog(coupon: CouponUiModel) {
+    CouponReceivedDialogFragment.newInstance(coupon).showIn(childFragmentManager)
   }
 }

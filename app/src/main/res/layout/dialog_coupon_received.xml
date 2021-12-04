@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:paddingStart="@dimen/spacing_6"
+  android:paddingTop="@dimen/spacing_10"
+  android:paddingEnd="@dimen/spacing_6"
+  android:paddingBottom="@dimen/spacing_10">
+
+  <ImageView
+    android:id="@+id/image_view_icon"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_coupon"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/text_view_title"
+    style="@style/Text.Title2.Medium"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:gravity="center"
+    android:text="@string/home_coupon_received_title"
+    android:textColor="@color/screen_title"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/image_view_icon" />
+
+  <TextView
+    android:id="@+id/text_view_subtitle"
+    style="@style/Text.Body"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_4"
+    android:gravity="center"
+    android:textColor="@color/screen_subtitle"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/text_view_title"
+    tools:text="@string/home_coupon_received_text" />
+
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/button_continue"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/button_height"
+    android:layout_marginTop="@dimen/spacing_8"
+    android:text="@string/home_coupon_received_button"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/text_view_subtitle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

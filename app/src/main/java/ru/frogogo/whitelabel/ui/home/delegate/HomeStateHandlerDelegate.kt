@@ -21,6 +21,7 @@ class HomeStateHandlerDelegate(
   private val mutableEffectLiveEvent: LiveEvent<HomeEffect>,
   private val mutableScanButtonStateLive: MutableLiveData<HomeScanButtonState>,
   private val dataFactory: HomeDataFactory,
+  private val couponReceivedDelegate: HomeCouponReceivedDelegate,
 ) : BaseViewModelDelegate(dispatchersProvider) {
 
   fun showLoader() {
@@ -36,6 +37,7 @@ class HomeStateHandlerDelegate(
       } else {
         HomeScanButtonState.SHOWN_DISABLED
       }
+    couponReceivedDelegate.showCouponReceived(data)
   }
 
   fun showError() {
