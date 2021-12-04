@@ -17,7 +17,7 @@ open class BaseDelegationAdapter(
   }
 
   override fun setItems(items: MutableList<RecyclerViewItem>) {
-    this.setItems(items, null)
+    this.setItems(items, commitCallback = null)
   }
 
   fun setItems(items: MutableList<RecyclerViewItem>, commitCallback: (() -> Unit)?) {
