@@ -6,7 +6,6 @@ import com.github.ajalt.timberkt.e
 import ru.frogogo.whitelabel.core.Event
 import ru.frogogo.whitelabel.data.model.ui.coupon.CouponUiModel
 import ru.frogogo.whitelabel.extension.asLiveData
-import ru.frogogo.whitelabel.extension.postEvent
 import ru.frogogo.whitelabel.extension.setEvent
 
 class CouponReceivedDialogFragmentCallbackViewModel : ViewModel() {
