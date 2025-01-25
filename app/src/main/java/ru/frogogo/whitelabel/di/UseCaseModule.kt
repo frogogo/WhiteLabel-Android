@@ -8,6 +8,7 @@ import ru.frogogo.whitelabel.usecase.auth.RefreshTokenUseCase
 import ru.frogogo.whitelabel.usecase.auth.RefreshTokenWorkerUseCase
 import ru.frogogo.whitelabel.usecase.auth.RequestConfirmationCodeUseCase
 import ru.frogogo.whitelabel.usecase.home.GetHomeUseCase
+import ru.frogogo.whitelabel.usecase.home.WasCouponReceivedUseCase
 import ru.frogogo.whitelabel.usecase.item.GetItemUseCase
 import ru.frogogo.whitelabel.usecase.item.GetItemsUseCase
 import ru.frogogo.whitelabel.usecase.receipt.CreateReceiptUseCase
@@ -25,6 +26,7 @@ val useCaseModule = module {
 
   // Home
   single { GetHomeUseCase(get(), get()) }
+  single { WasCouponReceivedUseCase(get()) }
 
   // User
   single { UpdateUserDetailsUseCase(get()) }

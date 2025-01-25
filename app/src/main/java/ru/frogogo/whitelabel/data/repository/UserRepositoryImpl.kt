@@ -32,4 +32,11 @@ class UserRepositoryImpl(
   override fun saveUser(user: User) {
     userPreferences.user = user
   }
+
+  override fun getReceivedCouponsCount(): Int =
+    userPreferences.receivedCouponsCount
+
+  override fun saveReceivedCouponsCount(count: Int) {
+    userPreferences.receivedCouponsCount = count
+  }
 }

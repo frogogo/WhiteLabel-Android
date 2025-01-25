@@ -10,4 +10,8 @@
   <string name="home_section_coupons">Coupons</string>
   <string name="home_receipts_button">My receipts</string>
   <string name="home_rejected_button_scan">Scan a new receipt</string>
+
+  <string name="home_coupon_received_title">You have received a coupon!</string>
+  <string name="home_coupon_received_text">Congratulations you have received a coupon for %s</string>
+  <string name="home_coupon_received_button">Watch</string>
 </resources>

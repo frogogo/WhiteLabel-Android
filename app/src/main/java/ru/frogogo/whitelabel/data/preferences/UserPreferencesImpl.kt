@@ -7,6 +7,7 @@ import com.squareup.moshi.Moshi
 import ru.frogogo.whitelabel.data.model.api.user.User
 import ru.frogogo.whitelabel.util.Constants
 import ru.frogogo.whitelabel.util.boolean
+import ru.frogogo.whitelabel.util.int
 import ru.frogogo.whitelabel.util.json
 import ru.frogogo.whitelabel.util.stringNullable
 
@@ -30,6 +31,7 @@ class UserPreferencesImpl(context: Context) : UserPreferences {
 
   // Data
   override var user: User? by preferences.json(moshi, KEY_USER, User::class)
+  override var receivedCouponsCount: Int by preferences.int(RECEIVED_COUPONS_COUNT, 0)
 
   override fun clearData() {
     preferences.edit { clear() }
@@ -40,6 +42,7 @@ class UserPreferencesImpl(context: Context) : UserPreferences {
     refreshToken = null
     isLoggedIn = false
     user = null
+    receivedCouponsCount = 0
   }
 
   companion object {
@@ -53,5 +56,6 @@ class UserPreferencesImpl(context: Context) : UserPreferences {
     private const val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
     private const val KEY_POLICY_ACCEPTED = "policy_accepted"
     private const val KEY_USER = "user"
+    private const val RECEIVED_COUPONS_COUNT = "received_coupons_count"
   }
 }
