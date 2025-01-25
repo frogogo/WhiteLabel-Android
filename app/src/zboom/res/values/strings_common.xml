@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!--  Common  -->
+  <string name="common_button_ok">OK</string>
+  <string name="common_button_continue">Сontinue</string>
+  <string name="common_button_cancel">Cancel</string>
+  <string name="common_button_yes">Yes</string>
+  <string name="common_button_no">No</string>
+  <!--  Errors  -->
+  <string name="error_phone_length">The phone number cannot be less than 10 characters</string>
+  <string name="error_phone_format">The phone number contains invalid characters</string>
+  <string name="error_user_name_length">The name must consist of 2 to 20 letters</string>
+  <string name="error_user_name_format">Name contains invalid characters</string>
+  <string name="error_confirmation_code_length">The code must consist of 4 digits</string>
+  <string name="error_confirmation_code_format">The code must consist only of digits</string>
+  <string name="error_email_format">This email not correct</string>
+  <string name="error_machine_number_empty">Необходимо ввести номер аппарата</string>
+  <string name="error_receipt_format">Отсканированный QR-код имеет неверный формат</string>
+  <string name="error_something_went_wrong">Something went wrong!</string>
+  <string name="error_something_went_wrong_retry">Repeat</string>
+  <string name="error_logout">An internal error has occurred, log in again</string>
+  <!--  Error State  -->
+  <string name="view_error_state_description">loading error</string>
+  <string name="view_error_state_button">Repeat</string>
+</resources>

@@ -15,6 +15,7 @@ import ru.frogogo.whitelabel.extension.binding.editText
 import ru.frogogo.whitelabel.extension.binding.initPhoneType
 import ru.frogogo.whitelabel.extension.observe
 import ru.frogogo.whitelabel.extension.setNullableTextRes
+import ru.frogogo.whitelabel.extension.setSafeOnClickListener
 import ru.frogogo.whitelabel.util.Constants
 import ru.frogogo.whitelabel.util.ParallelAutoTransition
 import ru.frogogo.whitelabel.util.SpannableUtils
@@ -29,7 +30,7 @@ class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(),
 
   private val binding: FragmentAuthPhoneBinding by viewBinding()
   private val args: AuthPhoneFragmentArgs by navArgs()
-  private var textChangedListener: MaskedTextChangedListener? = null
+//  private var textChangedListener: MaskedTextChangedListener? = null
 
   override fun provideConfiguration(): Configuration = Configuration(
     layoutId = R.layout.fragment_auth_phone,
@@ -40,10 +41,11 @@ class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(),
   override fun initViews() {
     binding.textInputLayout.apply {
       initPhoneType()
-      setEditGoAction { viewModel.requestCode(text, true) }
+      setEditGoAction { requestCode() }
       showKeyboard()
     }
     binding.textViewError.movementMethod = LinkMovementMethod.getInstance()
+    binding.buttonContinue.setSafeOnClickListener { requestCode() }
   }
 
   override fun initObservers() {
@@ -53,15 +55,15 @@ class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(),
     }
   }
 
-  override fun onStart() {
-    super.onStart()
-    attachFormatter()
-  }
+//  override fun onStart() {
+//    super.onStart()
+//    attachFormatter()
+//  }
 
-  override fun onStop() {
-    super.onStop()
-    detachFormatter()
-  }
+//  override fun onStop() {
+//    super.onStop()
+//    detachFormatter()
+//  }
 
   override fun onTextChanged(maskFilled: Boolean, extractedValue: String, formattedValue: String) {
     viewModel.requestCode(extractedValue)
@@ -101,16 +103,20 @@ class AuthPhoneFragment : BaseFragment<AuthPhoneViewModel>(),
     }
   }
 
-  private fun attachFormatter() {
-    textChangedListener = MaskedTextChangedListener.installOn(
-      editText = binding.textInputLayout.editText,
-      primaryFormat = Constants.PHONE_MASK,
-      valueListener = this,
-      autocomplete = false, // Prevent handling focus change
-    )
+  private fun requestCode() {
+    viewModel.requestCode(binding.textInputLayout.text, true)
   }
 
-  private fun detachFormatter() {
-    binding.textInputLayout.editText.removeTextChangedListener(textChangedListener)
-  }
+//  private fun attachFormatter() {
+//    textChangedListener = MaskedTextChangedListener.installOn(
+//      editText = binding.textInputLayout.editText,
+//      primaryFormat = Constants.PHONE_MASK,
+//      valueListener = this,
+//      autocomplete = false, // Prevent handling focus change
+//    )
+//  }
+
+//  private fun detachFormatter() {
+//    binding.textInputLayout.editText.removeTextChangedListener(textChangedListener)
+//  }
 }

@@ -19,6 +19,7 @@ import ru.frogogo.whitelabel.ui.home.data.HomeDataFactory
 import ru.frogogo.whitelabel.ui.home.data.HomeDataFactoryImpl
 import ru.frogogo.whitelabel.ui.home.delegate.HomeClickHandlerDelegate
 import ru.frogogo.whitelabel.ui.home.delegate.HomeClickHandlerDelegateImpl
+import ru.frogogo.whitelabel.ui.home.delegate.HomeCouponReceivedDelegate
 import ru.frogogo.whitelabel.ui.home.delegate.HomeDataLoadDelegate
 import ru.frogogo.whitelabel.ui.home.delegate.HomeDataLoadDelegateImpl
 import ru.frogogo.whitelabel.ui.home.delegate.HomeStateHandlerDelegate
@@ -63,9 +64,13 @@ fun Module.homeScope() {
         mutableEffectLiveEvent = get(named(NAMED_EFFECT_LIVE_EVENT)),
         mutableScanButtonStateLive = get(named(NAMED_SCAN_BUTTON_STATE_LIVE)),
         dataFactory = get(),
+        couponReceivedDelegate = get(),
       )
     }
-    scoped { HomeViewModel.DelegatesHolder(get(), get(), get()) }
+    scoped {
+      HomeCouponReceivedDelegate(get(), get(), get(named(NAMED_EFFECT_LIVE_EVENT)))
+    }
+    scoped { HomeViewModel.DelegatesHolder(get(), get(), get(), get()) }
 
     // Data
     scoped { HomeDataFactoryImpl() as HomeDataFactory }

@@ -2,6 +2,7 @@ package ru.frogogo.whitelabel.data.model.api.item
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import java.math.BigDecimal
 
 @JsonClass(generateAdapter = true)
 data class ItemInfo(
@@ -12,9 +13,9 @@ data class ItemInfo(
   @Json(name = "image_url")
   val imageUrl: String,
   @Json(name = "price")
-  val price: Int,
+  val price: BigDecimal,
   @Json(name = "discounted_price")
-  val discountedPrice: Int,
+  val discountedPrice: BigDecimal,
   @Json(name = "specs")
   val specs: String?,
   @Json(name = "description")

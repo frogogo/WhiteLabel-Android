@@ -7,6 +7,7 @@ import ru.frogogo.whitelabel.core.recycler.RecyclerViewItem
 import ru.frogogo.whitelabel.core.ui.BaseViewModel
 import ru.frogogo.whitelabel.ui.home.delegate.HomeClickHandlerDelegate
 import ru.frogogo.whitelabel.ui.home.delegate.HomeClickHandlerDelegateImpl
+import ru.frogogo.whitelabel.ui.home.delegate.HomeCouponReceivedDelegate
 import ru.frogogo.whitelabel.ui.home.delegate.HomeDataLoadDelegate
 import ru.frogogo.whitelabel.ui.home.delegate.HomeDataLoadDelegateImpl
 import ru.frogogo.whitelabel.ui.home.delegate.HomeStateHandlerDelegate
@@ -38,6 +39,7 @@ class HomeViewModel(
       dataLoadDelegate.cancelJob()
       clicksHandlerDelegate.cancelJob()
       stateHandlerDelegate.cancelJob()
+      couponReceivedDelegate.cancelJob()
     }
   }
 
@@ -45,6 +47,7 @@ class HomeViewModel(
     val dataLoadDelegate: HomeDataLoadDelegateImpl,
     val clicksHandlerDelegate: HomeClickHandlerDelegateImpl,
     val stateHandlerDelegate: HomeStateHandlerDelegate,
+    val couponReceivedDelegate: HomeCouponReceivedDelegate,
   )
 
   data class LiveDataHolder(

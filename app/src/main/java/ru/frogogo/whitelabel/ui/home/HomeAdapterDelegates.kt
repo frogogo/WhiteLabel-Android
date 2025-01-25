@@ -17,6 +17,7 @@ import ru.frogogo.whitelabel.ui.home.model.HomeReceiptsButton
 import ru.frogogo.whitelabel.ui.home.model.HomeScanUnavailable
 import ru.frogogo.whitelabel.ui.home.model.HomeSectionHeader
 import ru.frogogo.whitelabel.util.PriceUtils
+import java.math.BigDecimal
 
 typealias OnReceiptsClickAction = () -> Unit
 
@@ -41,8 +42,8 @@ object HomeAdapterDelegates {
         binding.textViewProgressCurrent.text = PriceUtils.formatPrice(item.current)
         binding.textViewProgressTarget.text = PriceUtils.formatPrice(item.target)
         binding.progressBar.apply {
-          max = item.target
-          progress = item.current
+          max = item.target.multiply(BigDecimal.valueOf(100)).toInt()
+          progress = item.current.multiply(BigDecimal.valueOf(100)).toInt()
         }
       }
     }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="onboarding_button_next">Next</string>
+  <string name="onboarding_button_finish">Sign in</string>
+  <string name="onboarding_page_1_title">Buy it</string>
+  <string name="onboarding_page_1_description">Promotional products of Lion Sabatier Internationall</string>
+  <string name="onboarding_page_2_title">Scan it</string>
+  <string name="onboarding_page_2_description">Receipts containing promotional items</string>
+  <string name="onboarding_page_3_title">Get a coupon</string>
+  <string name="onboarding_page_3_description">You can buy a kettle for 0,01 €. After the purchase Lion Sabatier international advertising products in the amount of 38 €</string>
+</resources>

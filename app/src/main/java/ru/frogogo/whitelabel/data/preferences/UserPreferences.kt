@@ -14,6 +14,7 @@ interface UserPreferences {
 
   // Data
   var user: User?
+  var receivedCouponsCount: Int
 
   fun clearData()
 

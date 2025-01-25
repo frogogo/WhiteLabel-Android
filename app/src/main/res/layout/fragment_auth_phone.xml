@@ -58,10 +58,20 @@
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/spacing_6"
-      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintBottom_toTopOf="@id/button_continue"
       app:layout_constraintLeft_toLeftOf="@id/text_input_layout"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toBottomOf="@id/text_input_layout" />
+
+    <com.google.android.material.button.MaterialButton
+      android:id="@+id/button_continue"
+      android:layout_width="0dp"
+      android:layout_height="@dimen/button_height"
+      android:layout_marginBottom="@dimen/spacing_6"
+      android:text="@string/auth_button_continue"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 

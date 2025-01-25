@@ -29,7 +29,6 @@ import ru.frogogo.whitelabel.databinding.FragmentAuthCodeBinding
 import ru.frogogo.whitelabel.extension.binding.editText
 import ru.frogogo.whitelabel.extension.binding.initCodeConfirmationType
 import ru.frogogo.whitelabel.extension.fetchDrawable
-import ru.frogogo.whitelabel.extension.formatWithMask
 import ru.frogogo.whitelabel.extension.hideKeyboard
 import ru.frogogo.whitelabel.extension.observe
 import ru.frogogo.whitelabel.extension.setNullableTextRes
@@ -68,7 +67,7 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>() {
         showKeyboard()
       }
 
-      textViewPhoneNumber.text = args.phoneNumber.formatWithMask(Constants.PHONE_MASK_FULL)
+      textViewPhoneNumber.text = args.phoneNumber//.formatWithMask(Constants.PHONE_MASK_FULL)
       textViewPhoneNumberChange.setSafeOnClickListener(viewModel::navigateBack)
       buttonResendCode.setSafeOnClickListener(viewModel::resendConfirmationCode)
       textViewError.movementMethod = LinkMovementMethod.getInstance()
@@ -105,7 +104,7 @@ class AuthCodeFragment : BaseFragment<AuthCodeViewModel>() {
     super.onStart()
 
     val intentFilter = IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION)
-    requireActivity().registerReceiver(smsVerificationReceiver, intentFilter)
+    requireActivity().registerReceiver(smsVerificationReceiver, intentFilter, SmsRetriever.SEND_PERMISSION, null)
   }
 
   override fun onStop() {

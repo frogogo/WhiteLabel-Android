@@ -14,4 +14,8 @@ interface UserRepository {
   fun getUser(): User?
 
   fun saveUser(user: User)
+
+  fun getReceivedCouponsCount(): Int
+
+  fun saveReceivedCouponsCount(count: Int)
 }
